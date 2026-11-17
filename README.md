@@ -1,6 +1,6 @@
 # Standards
 
-Ontologies for industry standards, each generated from the standard's official sources.
+Ontologies for industry standards, each generated from the standard's official sources. Each spec uses [Neo4j's ontology graph specification](https://github.com/neo4j/ontology-graph-spec).
 
 | Domain | Standard | Purpose and use | Nodes | Relationships | Generated from |
 |---|---|---|---|---|---|
