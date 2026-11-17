@@ -3,60 +3,6 @@
 A library of ontologies for industry standards, each generated from the standard's official sources and expressed in
 [Neo4j's ontology graph specification](https://github.com/neo4j/ontology-graph-spec).
 
-## Goal
-
-A standard describes its domain precisely, but in a form written for people. A PDF of several hundred pages, an XML
-schema, an OWL ontology spread over a dozen modules. Asking what the standard actually says, what its things are and
-how they relate, means reading all of it, and asking how it would look as a graph means making that decision all over
-again, from scratch, for every standard.
-
-This repository answers both questions once per standard. Each folder distils one standard into a single model in one
-shared format: nodes, relationships, properties and constraints. Because every model has the same shape, they can be
-read side by side whatever the standard started as, an XML schema, an RDF vocabulary, a STIX bundle, and each comes
-with a diagram showing the whole of it on one page, and sample data loading a realistic scenario into Neo4j.
-
-Every model is generated, not transcribed. A `generate.py` in each folder reads the standard's official sources and
-writes the model, so a model can be traced back to the standard and reproduced when the standard changes. Where the
-graph format cannot say exactly what the standard says, the folder's README records the mapping and the places where
-the ontology differs from it.
-
-The models are a reference library. Use them to explore a standard at a glance, to load a worked example of its data,
-to start an ontology of one's own in the domain, or to compare how different standards model the same ideas.
-Nothing here is a runtime dependency of anything.
-
-## The ontology graph spec
-
-[Neo4j's ontology graph specification](https://github.com/neo4j/ontology-graph-spec) defines the format these models
-are written in, and nothing about any particular domain. It describes a graph model as YAML or JSON: the nodes and
-their labels, the relationships and the nodes they run between, typed properties, keys, existence and uniqueness
-constraints, cardinalities and allowed values, with `extensions` for whatever tools need alongside. It publishes a
-JSON Schema for the format, and libraries for the JVM, JavaScript/TypeScript and Go that decode, encode, validate and
-migrate models.
-
-The spec is the format; this repository is content in it. The two connect in these ways:
-
-- **Every model is a graph spec document.** Each `model.json` and `model.yaml` declares the spec's schema, currently
-  `https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json`, and could be loaded by any of the spec's libraries
-  or tools that read the format.
-- **Every model is validated against the spec.** It is valid against the spec's JSON Schema, and meets the rules its
-  libraries' validators check: most models report no issues for any built-in validator set, including `All`, and the
-  rest are checked against the core rules. Each folder's README says which.
-- **Each standard is mapped onto the spec's constructs.** Classes and object types become nodes, subclasses implied
-  labels, attributes typed properties, multiplicities `min_count` and `max_count`, enumerations `one_of`, and term
-  IRIs `reference`. What the format has no construct for, such as an OWL superclass from another ontology or an
-  inverse property, is kept in `extensions.custom` rather than dropped. Most of the standards here are published as
-  RDFS, OWL or SHACL, so the spec's [interoperability tables](https://github.com/neo4j/ontology-graph-spec/blob/main/docs/modules/format/pages/interoperability.adoc)
-  describe the general case; each folder's README gives the mapping for its standard, and where the ontology differs
-  from it.
-- **The tooling here reads the format directly.** `visualise.py` and `cypher.py` are plain Python and don't depend on
-  the spec's libraries. `cypher.py` turns a model's keys and required properties into Neo4j constraints, as the spec
-  defines them. The spec's cardinalities and allowed values are part of the model but aren't enforced in the
-  database, so `cypher.py` checks the sample data against them before writing the script.
-
-The models also exercise the format at scale, from a few dozen nodes to more than a thousand for CCO, across standards
-that started as XML schemas, OWL ontologies and JSON schemas. Where a standard says something the format can't, the
-folder's README records it.
-
 ## Structure
 
 The standards are grouped by domain:
