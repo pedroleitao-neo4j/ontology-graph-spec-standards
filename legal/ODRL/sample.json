@@ -1,0 +1,752 @@
+{
+  "scenario": "A record label, Northwind Records, licenses an album and its four tracks. Its catalogue-wide Set policy prohibits modifying the recordings, with deleting modified copies as the remedy; an Offer inherits from it and lets anyone stream the album for a per-stream fee; and an Agreement with the streaming service Tunely inherits from the offer, permitting it to stream and play the album in the EU or the UK until the end of 2027, with duties to pay, to attribute the artist and to report usage monthly, and a prohibition on commercialising it. ODRL's actions, left operands and operators are nodes keyed by their ODRL IRIs; the companies and their IRIs are fictional.",
+  "nodes": {
+    "use": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/use"
+      }
+    },
+    "play": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/play"
+      }
+    },
+    "stream": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/stream"
+      }
+    },
+    "compensate": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/compensate"
+      }
+    },
+    "attribute": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/attribute"
+      }
+    },
+    "inform": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/inform"
+      }
+    },
+    "modify": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/modify"
+      }
+    },
+    "delete": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/delete"
+      }
+    },
+    "commercialize": {
+      "node": "Action",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/commercialize"
+      }
+    },
+    "spatial": {
+      "node": "LeftOperand",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/spatial"
+      }
+    },
+    "dateTime": {
+      "node": "LeftOperand",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/dateTime"
+      }
+    },
+    "payAmount": {
+      "node": "LeftOperand",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/payAmount"
+      }
+    },
+    "fileFormat": {
+      "node": "LeftOperand",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/fileFormat"
+      }
+    },
+    "eq": {
+      "node": "Operator",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/eq"
+      }
+    },
+    "lteq": {
+      "node": "Operator",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/lteq"
+      }
+    },
+    "perm": {
+      "node": "ConflictTerm",
+      "properties": {
+        "uri": "http://www.w3.org/ns/odrl/2/perm"
+      }
+    },
+    "northwind": {
+      "node": "Party",
+      "properties": {
+        "uri": "http://example.com/party/northwind-records",
+        "uid": [
+          "urn:lei:5299000EXAMPLE0000001"
+        ]
+      }
+    },
+    "tunely": {
+      "node": "Party",
+      "properties": {
+        "uri": "http://example.com/party/tunely"
+      }
+    },
+    "artist": {
+      "node": "Party",
+      "properties": {
+        "uri": "http://example.com/party/the-lantern-years"
+      }
+    },
+    "labelGroup": {
+      "node": "PartyCollection",
+      "properties": {
+        "uri": "http://example.com/party/northwind-music-group",
+        "source": [
+          "http://example.com/party/northwind-music-group/members"
+        ]
+      }
+    },
+    "album": {
+      "node": "AssetCollection",
+      "properties": {
+        "uri": "http://example.com/asset/album/harbour-lights",
+        "uid": [
+          "urn:upc:0123456789012"
+        ],
+        "source": [
+          "http://example.com/catalogue/albums"
+        ]
+      }
+    },
+    "track1": {
+      "node": "Asset",
+      "properties": {
+        "uri": "http://example.com/asset/track/harbour-lights/01",
+        "uid": [
+          "urn:isrc:GBXXX2400001"
+        ]
+      }
+    },
+    "track2": {
+      "node": "Asset",
+      "properties": {
+        "uri": "http://example.com/asset/track/harbour-lights/02",
+        "uid": [
+          "urn:isrc:GBXXX2400002"
+        ]
+      }
+    },
+    "track3": {
+      "node": "Asset",
+      "properties": {
+        "uri": "http://example.com/asset/track/harbour-lights/03",
+        "uid": [
+          "urn:isrc:GBXXX2400003"
+        ]
+      }
+    },
+    "track4": {
+      "node": "Asset",
+      "properties": {
+        "uri": "http://example.com/asset/track/harbour-lights/04",
+        "uid": [
+          "urn:isrc:GBXXX2400004"
+        ]
+      }
+    },
+    "inEU": {
+      "node": "Constraint",
+      "properties": {
+        "uri": "http://example.com/constraint/inEU",
+        "rightOperand": [
+          "https://www.wikidata.org/wiki/Q458"
+        ]
+      }
+    },
+    "inUK": {
+      "node": "Constraint",
+      "properties": {
+        "uri": "http://example.com/constraint/inUK",
+        "rightOperand": [
+          "https://www.wikidata.org/wiki/Q145"
+        ]
+      }
+    },
+    "until2027": {
+      "node": "Constraint",
+      "properties": {
+        "uri": "http://example.com/constraint/until2027",
+        "rightOperand": [
+          "2027-12-31"
+        ],
+        "dataType": [
+          "http://www.w3.org/2001/XMLSchema#date"
+        ]
+      }
+    },
+    "perStream": {
+      "node": "Constraint",
+      "properties": {
+        "uri": "http://example.com/constraint/perStream",
+        "rightOperand": [
+          "0.004"
+        ],
+        "dataType": [
+          "http://www.w3.org/2001/XMLSchema#decimal"
+        ],
+        "unit": [
+          "http://dbpedia.org/resource/Euro"
+        ]
+      }
+    },
+    "flac": {
+      "node": "Constraint",
+      "properties": {
+        "uri": "http://example.com/constraint/flac",
+        "rightOperand": [
+          "audio/flac"
+        ]
+      }
+    },
+    "territory": {
+      "node": "LogicalConstraint",
+      "properties": {
+        "uri": "http://example.com/constraint/territory",
+        "or": [
+          "http://example.com/constraint/inEU",
+          "http://example.com/constraint/inUK"
+        ]
+      }
+    },
+    "catalogue": {
+      "node": "Set",
+      "properties": {
+        "uri": "http://example.com/policy/northwind-catalogue",
+        "uid": [
+          "http://example.com/policy/northwind-catalogue"
+        ],
+        "profile": [
+          "http://example.com/profile/music-licensing"
+        ]
+      }
+    },
+    "offer": {
+      "node": "Offer",
+      "properties": {
+        "uri": "http://example.com/policy/harbour-lights-offer",
+        "uid": [
+          "http://example.com/policy/harbour-lights-offer"
+        ],
+        "profile": [
+          "http://example.com/profile/music-licensing"
+        ]
+      }
+    },
+    "agreement": {
+      "node": "Agreement",
+      "properties": {
+        "uri": "http://example.com/policy/harbour-lights-tunely-2025",
+        "uid": [
+          "http://example.com/policy/harbour-lights-tunely-2025"
+        ],
+        "profile": [
+          "http://example.com/profile/music-licensing"
+        ]
+      }
+    },
+    "noModify": {
+      "node": "Prohibition",
+      "properties": {
+        "uri": "http://example.com/rule/no-modify"
+      }
+    },
+    "deleteCopies": {
+      "node": "Duty",
+      "properties": {
+        "uri": "http://example.com/rule/delete-modified-copies"
+      }
+    },
+    "offerStream": {
+      "node": "Permission",
+      "properties": {
+        "uri": "http://example.com/rule/offer-stream"
+      }
+    },
+    "offerPay": {
+      "node": "Duty",
+      "properties": {
+        "uri": "http://example.com/rule/offer-pay"
+      }
+    },
+    "agrStream": {
+      "node": "Permission",
+      "properties": {
+        "uri": "http://example.com/rule/agrStream"
+      }
+    },
+    "agrPlay": {
+      "node": "Permission",
+      "properties": {
+        "uri": "http://example.com/rule/agrPlay"
+      }
+    },
+    "agrPay": {
+      "node": "Duty",
+      "properties": {
+        "uri": "http://example.com/rule/agreement-pay"
+      }
+    },
+    "agrAttr": {
+      "node": "Duty",
+      "properties": {
+        "uri": "http://example.com/rule/agreement-attribute"
+      }
+    },
+    "lateNotice": {
+      "node": "Duty",
+      "properties": {
+        "uri": "http://example.com/rule/late-payment-notice"
+      }
+    },
+    "report": {
+      "node": "Duty",
+      "properties": {
+        "uri": "http://example.com/rule/monthly-usage-report"
+      }
+    },
+    "noCommercial": {
+      "node": "Prohibition",
+      "properties": {
+        "uri": "http://example.com/rule/no-commercial-sync"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "play",
+      "INCLUDED_IN",
+      "use"
+    ],
+    [
+      "stream",
+      "INCLUDED_IN",
+      "use"
+    ],
+    [
+      "modify",
+      "INCLUDED_IN",
+      "use"
+    ],
+    [
+      "commercialize",
+      "INCLUDED_IN",
+      "use"
+    ],
+    [
+      "northwind",
+      "PART_OF",
+      "labelGroup"
+    ],
+    [
+      "track1",
+      "PART_OF",
+      "album"
+    ],
+    [
+      "track2",
+      "PART_OF",
+      "album"
+    ],
+    [
+      "track3",
+      "PART_OF",
+      "album"
+    ],
+    [
+      "track4",
+      "PART_OF",
+      "album"
+    ],
+    [
+      "inEU",
+      "LEFT_OPERAND",
+      "spatial"
+    ],
+    [
+      "inEU",
+      "OPERATOR",
+      "eq"
+    ],
+    [
+      "inUK",
+      "LEFT_OPERAND",
+      "spatial"
+    ],
+    [
+      "inUK",
+      "OPERATOR",
+      "eq"
+    ],
+    [
+      "until2027",
+      "LEFT_OPERAND",
+      "dateTime"
+    ],
+    [
+      "until2027",
+      "OPERATOR",
+      "lteq"
+    ],
+    [
+      "perStream",
+      "LEFT_OPERAND",
+      "payAmount"
+    ],
+    [
+      "perStream",
+      "OPERATOR",
+      "eq"
+    ],
+    [
+      "flac",
+      "LEFT_OPERAND",
+      "fileFormat"
+    ],
+    [
+      "flac",
+      "OPERATOR",
+      "eq"
+    ],
+    [
+      "album",
+      "REFINEMENT",
+      "flac"
+    ],
+    [
+      "offer",
+      "INHERIT_FROM",
+      "catalogue"
+    ],
+    [
+      "agreement",
+      "INHERIT_FROM",
+      "offer"
+    ],
+    [
+      "catalogue",
+      "CONFLICT",
+      "perm"
+    ],
+    [
+      "offer",
+      "CONFLICT",
+      "perm"
+    ],
+    [
+      "agreement",
+      "CONFLICT",
+      "perm"
+    ],
+    [
+      "album",
+      "HAS_POLICY",
+      "offer"
+    ],
+    [
+      "catalogue",
+      "PROHIBITION",
+      "noModify"
+    ],
+    [
+      "noModify",
+      "ACTION",
+      "modify"
+    ],
+    [
+      "noModify",
+      "TARGET",
+      "album"
+    ],
+    [
+      "noModify",
+      "ASSIGNER",
+      "northwind"
+    ],
+    [
+      "noModify",
+      "REMEDY",
+      "deleteCopies"
+    ],
+    [
+      "deleteCopies",
+      "ACTION",
+      "delete"
+    ],
+    [
+      "deleteCopies",
+      "TARGET",
+      "album"
+    ],
+    [
+      "offer",
+      "PERMISSION",
+      "offerStream"
+    ],
+    [
+      "offerStream",
+      "ACTION",
+      "stream"
+    ],
+    [
+      "offerStream",
+      "TARGET",
+      "album"
+    ],
+    [
+      "offerStream",
+      "ASSIGNER",
+      "northwind"
+    ],
+    [
+      "offerStream",
+      "DUTY",
+      "offerPay"
+    ],
+    [
+      "offerPay",
+      "ACTION",
+      "compensate"
+    ],
+    [
+      "offerPay",
+      "CONSTRAINT",
+      "perStream"
+    ],
+    [
+      "offerPay",
+      "COMPENSATED_PARTY",
+      "northwind"
+    ],
+    [
+      "agreement",
+      "TARGET",
+      "album"
+    ],
+    [
+      "agreement",
+      "ASSIGNER",
+      "northwind"
+    ],
+    [
+      "agreement",
+      "ASSIGNEE",
+      "tunely"
+    ],
+    [
+      "agreement",
+      "PERMISSION",
+      "agrStream"
+    ],
+    [
+      "agrStream",
+      "ACTION",
+      "stream"
+    ],
+    [
+      "agrStream",
+      "TARGET",
+      "album"
+    ],
+    [
+      "agrStream",
+      "ASSIGNER",
+      "northwind"
+    ],
+    [
+      "agrStream",
+      "ASSIGNEE",
+      "tunely"
+    ],
+    [
+      "agrStream",
+      "CONSTRAINT",
+      "territory"
+    ],
+    [
+      "agrStream",
+      "CONSTRAINT",
+      "until2027"
+    ],
+    [
+      "agreement",
+      "PERMISSION",
+      "agrPlay"
+    ],
+    [
+      "agrPlay",
+      "ACTION",
+      "play"
+    ],
+    [
+      "agrPlay",
+      "TARGET",
+      "album"
+    ],
+    [
+      "agrPlay",
+      "ASSIGNER",
+      "northwind"
+    ],
+    [
+      "agrPlay",
+      "ASSIGNEE",
+      "tunely"
+    ],
+    [
+      "agrPlay",
+      "CONSTRAINT",
+      "territory"
+    ],
+    [
+      "agrPlay",
+      "CONSTRAINT",
+      "until2027"
+    ],
+    [
+      "agrStream",
+      "DUTY",
+      "agrPay"
+    ],
+    [
+      "agrPay",
+      "ACTION",
+      "compensate"
+    ],
+    [
+      "agrPay",
+      "CONSTRAINT",
+      "perStream"
+    ],
+    [
+      "agrPay",
+      "COMPENSATING_PARTY",
+      "tunely"
+    ],
+    [
+      "agrPay",
+      "COMPENSATED_PARTY",
+      "northwind"
+    ],
+    [
+      "agrPlay",
+      "DUTY",
+      "agrAttr"
+    ],
+    [
+      "agrAttr",
+      "ACTION",
+      "attribute"
+    ],
+    [
+      "agrAttr",
+      "ATTRIBUTING_PARTY",
+      "tunely"
+    ],
+    [
+      "agrAttr",
+      "ATTRIBUTED_PARTY",
+      "artist"
+    ],
+    [
+      "agrPay",
+      "CONSEQUENCE",
+      "lateNotice"
+    ],
+    [
+      "lateNotice",
+      "ACTION",
+      "inform"
+    ],
+    [
+      "lateNotice",
+      "INFORMING_PARTY",
+      "tunely"
+    ],
+    [
+      "lateNotice",
+      "INFORMED_PARTY",
+      "northwind"
+    ],
+    [
+      "agreement",
+      "OBLIGATION",
+      "report"
+    ],
+    [
+      "report",
+      "ACTION",
+      "inform"
+    ],
+    [
+      "report",
+      "ASSIGNEE",
+      "tunely"
+    ],
+    [
+      "report",
+      "INFORMING_PARTY",
+      "tunely"
+    ],
+    [
+      "report",
+      "INFORMED_PARTY",
+      "northwind"
+    ],
+    [
+      "report",
+      "TARGET",
+      "album"
+    ],
+    [
+      "agreement",
+      "PROHIBITION",
+      "noCommercial"
+    ],
+    [
+      "noCommercial",
+      "ACTION",
+      "commercialize"
+    ],
+    [
+      "noCommercial",
+      "TARGET",
+      "album"
+    ],
+    [
+      "noCommercial",
+      "ASSIGNEE",
+      "tunely"
+    ]
+  ]
+}

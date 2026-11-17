@@ -1,0 +1,22 @@
+{
+  "source": "the UCO 1.5.0 release Turtle files (GitHub ucoProject/UCO, tag 1.5.0)",
+  "link": "the term's page in the UCO documentation",
+  "areas": {
+    "field": "namespace",
+    "groups": [
+      {"name": "Core, types, patterns and markings", "values": ["core", "types", "pattern", "marking"]},
+      {"name": "Observables and their facets", "values": ["observable"]},
+      {"name": "Actions, tools, analysis and configuration", "values": ["action", "tool", "analysis", "configuration"]},
+      {"name": "Identities, roles, locations and victims", "values": ["identity", "role", "location", "victim"]}
+    ]
+  },
+  "sub": ["namespace", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

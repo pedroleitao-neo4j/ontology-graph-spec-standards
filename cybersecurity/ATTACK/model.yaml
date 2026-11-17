@@ -1,0 +1,845 @@
+"schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json"
+"version": "20.1"
+"id": "mitre-attack"
+"name": "MITRE ATT&CK 20.1"
+"description": "MITRE ATT&CK (Adversarial Tactics, Techniques and Common Knowledge) 20.1, MITRE's knowledge base of adversary behaviour and the detection of it (https://attack.mitre.org/). ATT&CK describes what adversaries do as a graph: tactics, the adversary's objectives; techniques and sub-techniques that achieve them; the groups, campaigns, malware and tools that use them; the mitigations that counter them; and, since version 20, detection strategies, analytics and data components. Generated from the official STIX 2.1 bundles of the Enterprise, Mobile and ICS domains published in mitre-attack/attack-stix-data at tag v20.1 (https://github.com/mitre-attack/attack-stix-data/tree/v20.1): each active object is a node, labelled by its category; each relationship object and embedded reference is a relationship between the categories of its ends. Revoked and deprecated objects are left out."
+"nodes":
+  "ATTACKObject":
+    "labels":
+      "identifier": "ATTACKObject"
+    "description": "An object of the MITRE ATT&CK knowledge base: a tactic, technique, mitigation, group, campaign, malware, tool, detection strategy, analytic, data component or asset. Every node carries this label, 5657 in MITRE ATT&CK 20.1; the label of its category, e.g. Technique, says what kind of object it is."
+    "reference": "https://attack.mitre.org/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "name":
+        "type": "STRING"
+        "name": "name"
+        "description": "The ATT&CK name of the object, e.g. `Spearphishing Attachment`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "description":
+        "type": "STRING"
+        "name": "description"
+        "description": "The ATT&CK description of the object, as plain text."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "url":
+        "type": "STRING"
+        "name": "url"
+        "description": "The URL of the object on attack.mitre.org, e.g. `https://attack.mitre.org/techniques/T1566/001`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "created":
+        "type": "ZONED DATETIME"
+        "name": "created"
+        "description": "When the ATT&CK object was created."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+      "modified":
+        "type": "ZONED DATETIME"
+        "name": "modified"
+        "description": "When the ATT&CK object was last modified."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+      "domains":
+        "type": "LIST<STRING>"
+        "name": "domains"
+        "description": "The ATT&CK domains the object belongs to: Enterprise, Mobile or ICS."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "version":
+        "type": "STRING"
+        "name": "version"
+        "description": "The ATT&CK version of the object, e.g. `1.2`, as it has changed over releases."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_ATTACKObject":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_ATTACKObject_key"
+    "extensions":
+      "custom":
+        "area": "Foundation"
+        "holds": "instances"
+        "count": 5657
+        "abstract": true
+        "attackVersion": "20.1"
+  "Tactic":
+    "labels":
+      "identifier": "Tactic"
+      "implied":
+        - "ATTACKObject"
+    "description": "A tactic: the 'why' of an attack, the adversary's tactical objective, e.g. Stealth or Privilege Escalation. Techniques serve a tactic through the technique's kill chain phases. Holds 39 Tactic objects in MITRE ATT&CK 20.1: Enterprise 15, Mobile 12, ICS 12. Examples: Initial Access, Execution, Persistence."
+    "reference": "https://attack.mitre.org/tactics/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^TA\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^TA\\d{4}$"
+      "shortname":
+        "type": "STRING"
+        "name": "shortname"
+        "description": "The tactic's short name, e.g. `privilege-escalation`, as used in a technique's kill chain phases."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Tactic":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Tactic_key"
+    "extensions":
+      "custom":
+        "stixType": "x-mitre-tactic"
+        "area": "Behaviour"
+        "holds": "instances"
+        "count": 39
+        "domains":
+          "Enterprise": 15
+          "Mobile": 12
+          "ICS": 12
+        "attackVersion": "20.1"
+  "Technique":
+    "labels":
+      "identifier": "Technique"
+      "implied":
+        - "ATTACKObject"
+    "description": "A technique: the 'how' of an attack, the means by which an adversary achieves a tactical objective. A sub-technique is a more specific technique, linked to its parent by SUBTECHNIQUE_OF. Holds 935 Technique objects in MITRE ATT&CK 20.1: Enterprise 706, Mobile 125, ICS 104. Examples: Activate Firmware Update Mode, Monitor Process State, Automated Collection."
+    "reference": "https://attack.mitre.org/techniques/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^T\\d{4}(\\.\\d{3})?$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^T\\d{4}(\\.\\d{3})?$"
+      "platforms":
+        "type": "LIST<STRING>"
+        "name": "platforms"
+        "description": "The platforms the technique applies to, e.g. Windows, Linux or macOS."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "isSubtechnique":
+        "type": "BOOLEAN"
+        "name": "isSubtechnique"
+        "description": "Whether the technique is a sub-technique of another."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "impactType":
+        "type": "LIST<STRING>"
+        "name": "impactType"
+        "description": "The kind of impact an ICS technique has, e.g. Availability."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "remoteSupport":
+        "type": "BOOLEAN"
+        "name": "remoteSupport"
+        "description": "Whether the technique can be used remotely, where ATT&CK says so."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "tacticType":
+        "type": "LIST<STRING>"
+        "name": "tacticType"
+        "description": "The stage of a mobile attack the technique belongs to, where ATT&CK gives one."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Technique":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Technique_key"
+    "extensions":
+      "custom":
+        "stixType": "attack-pattern"
+        "area": "Behaviour"
+        "holds": "instances"
+        "count": 935
+        "domains":
+          "Enterprise": 706
+          "Mobile": 125
+          "ICS": 104
+        "attackVersion": "20.1"
+  "Campaign":
+    "labels":
+      "identifier": "Campaign"
+      "implied":
+        - "ATTACKObject"
+    "description": "A campaign: a grouping of intrusion activity conducted over a specific period of time against specific targets. Holds 61 Campaign objects in MITRE ATT&CK 20.1: Enterprise 57, Mobile 3, ICS 10. Examples: Frankenstein, Night Dragon, CostaRicto."
+    "reference": "https://attack.mitre.org/campaigns/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^C\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^C\\d{4}$"
+      "aliases":
+        "type": "LIST<STRING>"
+        "name": "aliases"
+        "description": "The other names the campaign is known by."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "firstSeen":
+        "type": "ZONED DATETIME"
+        "name": "firstSeen"
+        "description": "When the campaign was first seen."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "lastSeen":
+        "type": "ZONED DATETIME"
+        "name": "lastSeen"
+        "description": "When the campaign was last seen."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Campaign":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Campaign_key"
+    "extensions":
+      "custom":
+        "stixType": "campaign"
+        "area": "Adversary"
+        "holds": "instances"
+        "count": 61
+        "domains":
+          "Enterprise": 57
+          "Mobile": 3
+          "ICS": 10
+        "attackVersion": "20.1"
+  "Group":
+    "labels":
+      "identifier": "Group"
+      "implied":
+        - "ATTACKObject"
+    "description": "A group: a set of related intrusion activity that ATT&CK tracks by a common name, e.g. an APT or a criminal organisation. Holds 182 Group objects in MITRE ATT&CK 20.1: Enterprise 178, Mobile 20, ICS 14. Examples: Axiom, Moafee, Cleaver."
+    "reference": "https://attack.mitre.org/groups/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^G\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^G\\d{4}$"
+      "aliases":
+        "type": "LIST<STRING>"
+        "name": "aliases"
+        "description": "The other names the group is known by."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Group":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Group_key"
+    "extensions":
+      "custom":
+        "stixType": "intrusion-set"
+        "area": "Adversary"
+        "holds": "instances"
+        "count": 182
+        "domains":
+          "Enterprise": 178
+          "Mobile": 20
+          "ICS": 14
+        "attackVersion": "20.1"
+  "Malware":
+    "labels":
+      "identifier": "Malware"
+      "implied":
+        - "ATTACKObject"
+    "description": "Malware: a piece of software an adversary uses to compromise a system, e.g. a backdoor, ransomware or an implant. Holds 875 Malware objects in MITRE ATT&CK 20.1: Enterprise 747, Mobile 127, ICS 25. Examples: Trojan.Mebromi, RIPTIDE, TinyZBot."
+    "reference": "https://attack.mitre.org/software/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^S\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^S\\d{4}$"
+      "aliases":
+        "type": "LIST<STRING>"
+        "name": "aliases"
+        "description": "The other names the malware is known by."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "platforms":
+        "type": "LIST<STRING>"
+        "name": "platforms"
+        "description": "The platforms the malware runs on."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "isFamily":
+        "type": "BOOLEAN"
+        "name": "isFamily"
+        "description": "Whether the object describes a malware family rather than a single piece of malware."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Malware":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Malware_key"
+    "extensions":
+      "custom":
+        "stixType": "malware"
+        "area": "Adversary"
+        "holds": "instances"
+        "count": 875
+        "domains":
+          "Enterprise": 747
+          "Mobile": 127
+          "ICS": 25
+        "attackVersion": "20.1"
+  "Tool":
+    "labels":
+      "identifier": "Tool"
+      "implied":
+        - "ATTACKObject"
+    "description": "A tool: a legitimate piece of software an adversary uses, e.g. a command-line utility, a remote access tool or a credential dumper. Holds 97 Tool objects in MITRE ATT&CK 20.1: Enterprise 95, Mobile 2. Examples: Mimikatz, Windows Credential Editor, pwdump."
+    "reference": "https://attack.mitre.org/software/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^S\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^S\\d{4}$"
+      "aliases":
+        "type": "LIST<STRING>"
+        "name": "aliases"
+        "description": "The other names the tool is known by."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "platforms":
+        "type": "LIST<STRING>"
+        "name": "platforms"
+        "description": "The platforms the tool runs on."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Tool":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Tool_key"
+    "extensions":
+      "custom":
+        "stixType": "tool"
+        "area": "Adversary"
+        "holds": "instances"
+        "count": 97
+        "domains":
+          "Enterprise": 95
+          "Mobile": 2
+        "attackVersion": "20.1"
+  "Analytic":
+    "labels":
+      "identifier": "Analytic"
+      "implied":
+        - "ATTACKObject"
+    "description": "An analytic: the logic of a detection, such as a sensor and the condition it watches for, with the data components its log sources collect. Holds 2286 Analytic objects in MITRE ATT&CK 20.1: Enterprise 1773, Mobile 213, ICS 300. Examples: Analytic 0001, Analytic 0002, Analytic 0003."
+    "reference": "https://attack.mitre.org/detectionstrategies/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^AN\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^AN\\d{4}$"
+      "platforms":
+        "type": "LIST<STRING>"
+        "name": "platforms"
+        "description": "The platforms the analytic applies to."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Analytic":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Analytic_key"
+    "extensions":
+      "custom":
+        "stixType": "x-mitre-analytic"
+        "area": "Defence"
+        "holds": "instances"
+        "count": 2286
+        "domains":
+          "Enterprise": 1773
+          "Mobile": 213
+          "ICS": 300
+        "attackVersion": "20.1"
+  "DataComponent":
+    "labels":
+      "identifier": "DataComponent"
+      "implied":
+        - "ATTACKObject"
+    "description": "A data component: a conceptual piece of data that an analytic's log sources collect, e.g. Process Creation or Network Connection Creation. Holds 120 DataComponent objects in MITRE ATT&CK 20.1: Enterprise 106, Mobile 29, ICS 40. Examples: Scheduled Job Creation, User Account Authentication, Malware Metadata."
+    "reference": "https://attack.mitre.org/datacomponents/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^DC\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^DC\\d{4}$"
+    "constraints":
+      "key_DataComponent":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_DataComponent_key"
+    "extensions":
+      "custom":
+        "stixType": "x-mitre-data-component"
+        "area": "Defence"
+        "holds": "instances"
+        "count": 120
+        "domains":
+          "Enterprise": 106
+          "Mobile": 29
+          "ICS": 40
+        "attackVersion": "20.1"
+  "DetectionStrategy":
+    "labels":
+      "identifier": "DetectionStrategy"
+      "implied":
+        - "ATTACKObject"
+    "description": "A detection strategy: one approach to detecting a technique, holding the analytics that implement it. Holds 935 DetectionStrategy objects in MITRE ATT&CK 20.1: Enterprise 706, Mobile 125, ICS 104. Examples: Detect Access to Cloud Instance Metadata API (IaaS), Behavioral Detection of Publish/Subscribe Protocol Misuse for C2, T1136.002 Detection Strategy - Domain Account Creation Across Platforms."
+    "reference": "https://attack.mitre.org/detectionstrategies/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^DET\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^DET\\d{4}$"
+    "constraints":
+      "key_DetectionStrategy":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_DetectionStrategy_key"
+    "extensions":
+      "custom":
+        "stixType": "x-mitre-detection-strategy"
+        "area": "Defence"
+        "holds": "instances"
+        "count": 935
+        "domains":
+          "Enterprise": 706
+          "Mobile": 125
+          "ICS": 104
+        "attackVersion": "20.1"
+  "Mitigation":
+    "labels":
+      "identifier": "Mitigation"
+      "implied":
+        - "ATTACKObject"
+    "description": "A mitigation: a security control that prevents a technique, or makes it harder, e.g. Multi-factor Authentication or Network Segmentation. Holds 109 Mitigation objects in MITRE ATT&CK 20.1: Enterprise 44, Mobile 13, ICS 53. Examples: Authorization Enforcement, Access Management, Communication Authenticity."
+    "reference": "https://attack.mitre.org/mitigations/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^M\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^M\\d{4}$"
+    "constraints":
+      "key_Mitigation":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Mitigation_key"
+    "extensions":
+      "custom":
+        "stixType": "course-of-action"
+        "area": "Defence"
+        "holds": "instances"
+        "count": 109
+        "domains":
+          "Enterprise": 44
+          "Mobile": 13
+          "ICS": 53
+        "attackVersion": "20.1"
+  "Asset":
+    "labels":
+      "identifier": "Asset"
+      "implied":
+        - "ATTACKObject"
+    "description": "An asset: a kind of ICS system or device that a technique targets, e.g. a control server or a field controller. Holds 18 Asset objects in MITRE ATT&CK 20.1: ICS 18. Examples: Workstation, Human-Machine Interface (HMI), Programmable Logic Controller (PLC)."
+    "reference": "https://attack.mitre.org/assets/"
+    "properties":
+      "stixId":
+        "type": "STRING"
+        "name": "stixId"
+        "description": "The STIX identifier of the ATT&CK object, e.g. `attack-pattern--0042a9f5-f053-4769-b3ef-9ad018dfa298`. Unique across the domains."
+        "reference": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html"
+        "pattern": "^[a-z0-9-]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "attackId":
+        "type": "STRING"
+        "name": "attackId"
+        "description": "The ATT&CK identifier of the object, matching `^A\\d{4}$`, e.g. `T1055.011`."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+        "pattern": "^A\\d{4}$"
+      "sectors":
+        "type": "LIST<STRING>"
+        "name": "sectors"
+        "description": "The sectors the asset belongs to, e.g. General or Energy."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+      "platforms":
+        "type": "LIST<STRING>"
+        "name": "platforms"
+        "description": "The platforms the asset runs."
+        "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "constraints":
+      "key_Asset":
+        "type": "KEY"
+        "properties":
+          - "stixId"
+        "name": "stixId_Asset_key"
+    "extensions":
+      "custom":
+        "stixType": "x-mitre-asset"
+        "area": "Foundation"
+        "holds": "instances"
+        "count": 18
+        "domains":
+          "ICS": 18
+        "attackVersion": "20.1"
+"relationships":
+  "Analytic_LOG_SOURCE_REF_DataComponent":
+    "type": "LOG_SOURCE_REF"
+    "from":
+      "node": "Analytic"
+    "to":
+      "node": "DataComponent"
+    "description": "A data component the log sources of an analytic collect, from its `x_mitre_log_source_references`. Links 5233 pairs in MITRE ATT&CK 20.1: Enterprise 4190, Mobile 614, ICS 429. e.g. Analytic 0001 (AN0001) watches the data component Cloud Service Metadata (DC0070); Analytic 0002 (AN0002) watches the data component Network Connection Creation (DC0082); Analytic 0003 (AN0003) watches the data component Process Creation (DC0032)."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": false
+        "property": "x_mitre_log_source_references"
+        "links": 5233
+        "domains":
+          "Enterprise": 4190
+          "Mobile": 614
+          "ICS": 429
+        "attackVersion": "20.1"
+  "Campaign_ATTRIBUTED_TO_Group":
+    "type": "ATTRIBUTED_TO"
+    "from":
+      "node": "Campaign"
+    "to":
+      "node": "Group"
+    "description": "The campaign is attributed to the group it is attributed to. Links 27 pairs in MITRE ATT&CK 20.1: Enterprise 26, ICS 5, Mobile 1. e.g. C0011 is attributed to Transparent Tribe; C0017 is attributed to APT41; Operation Dream Job is attributed to Lazarus Group."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "attributed-to"
+        "links": 27
+        "domains":
+          "Enterprise": 26
+          "ICS": 5
+          "Mobile": 1
+        "attackVersion": "20.1"
+  "Campaign_USES_Malware":
+    "type": "USES"
+    "from":
+      "node": "Campaign"
+    "to":
+      "node": "Malware"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 96 pairs in MITRE ATT&CK 20.1: Enterprise 92, ICS 6, Mobile 3. e.g. Night Dragon uses ASPXSpy; CostaRicto uses PS1; Operation Spalax uses njRAT."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 96
+        "domains":
+          "Enterprise": 92
+          "ICS": 6
+          "Mobile": 3
+        "attackVersion": "20.1"
+  "Campaign_USES_Technique":
+    "type": "USES"
+    "from":
+      "node": "Campaign"
+    "to":
+      "node": "Technique"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 1351 pairs in MITRE ATT&CK 20.1: Enterprise 1213, Mobile 44, ICS 94. e.g. Frankenstein uses Data from Local System; Night Dragon uses Security Account Manager; CostaRicto uses Data from Local System."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 1351
+        "domains":
+          "Enterprise": 1213
+          "Mobile": 44
+          "ICS": 94
+        "attackVersion": "20.1"
+  "Campaign_USES_Tool":
+    "type": "USES"
+    "from":
+      "node": "Campaign"
+    "to":
+      "node": "Tool"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 81 pairs in MITRE ATT&CK 20.1: Enterprise 81. e.g. Frankenstein uses Empire; Night Dragon uses gsecdump; CostaRicto uses PsExec."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 81
+        "domains":
+          "Enterprise": 81
+        "attackVersion": "20.1"
+  "DetectionStrategy_ANALYTIC_REF_Analytic":
+    "type": "ANALYTIC_REF"
+    "from":
+      "node": "DetectionStrategy"
+      "min_count": 1
+    "to":
+      "node": "Analytic"
+    "description": "The analyses a detection strategy holds, from its `x_mitre_analytic_refs`. Links 2271 pairs in MITRE ATT&CK 20.1: Enterprise 1758, Mobile 213, ICS 300. e.g. Detect Access to Cloud Instance Metadata API (IaaS) has Analytic 0001 (AN0001); Behavioral Detection of Publish/Subscribe Protocol Misuse for C2 has Analytic 0002 (AN0002); T1136.002 Detection Strategy - Domain Account Creation Across Platforms has Analytic 0006 (AN0006)."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": false
+        "property": "x_mitre_analytic_refs"
+        "links": 2271
+        "domains":
+          "Enterprise": 1758
+          "Mobile": 213
+          "ICS": 300
+        "attackVersion": "20.1"
+  "DetectionStrategy_DETECTS_Technique":
+    "type": "DETECTS"
+    "from":
+      "node": "DetectionStrategy"
+    "to":
+      "node": "Technique"
+    "description": "The detection strategy detects the technique it detects. Links 935 pairs in MITRE ATT&CK 20.1: Enterprise 706, Mobile 125, ICS 104. e.g. Detect Access to Cloud Instance Metadata API (IaaS) detects Cloud Instance Metadata API; Behavioral Detection of Publish/Subscribe Protocol Misuse for C2 detects Publish/Subscribe Protocols; T1136.002 Detection Strategy - Domain Account Creation Across Platforms detects Domain Account."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "detects"
+        "links": 935
+        "domains":
+          "Enterprise": 706
+          "Mobile": 125
+          "ICS": 104
+        "attackVersion": "20.1"
+  "Group_USES_Malware":
+    "type": "USES"
+    "from":
+      "node": "Group"
+    "to":
+      "node": "Malware"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 705 pairs in MITRE ATT&CK 20.1: Enterprise 691, Mobile 17, ICS 16. e.g. Axiom uses Hikit; Moafee uses PoisonIvy; Cleaver uses TinyZBot."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 705
+        "domains":
+          "Enterprise": 691
+          "Mobile": 17
+          "ICS": 16
+        "attackVersion": "20.1"
+  "Group_USES_Technique":
+    "type": "USES"
+    "from":
+      "node": "Group"
+    "to":
+      "node": "Technique"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 4889 pairs in MITRE ATT&CK 20.1: Enterprise 4815, Mobile 35, ICS 39. e.g. Axiom uses Steganography; Moafee uses Binary Padding; Cleaver uses LSASS Memory."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 4889
+        "domains":
+          "Enterprise": 4815
+          "Mobile": 35
+          "ICS": 39
+        "attackVersion": "20.1"
+  "Group_USES_Tool":
+    "type": "USES"
+    "from":
+      "node": "Group"
+    "to":
+      "node": "Tool"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 475 pairs in MITRE ATT&CK 20.1: Enterprise 475. e.g. Cleaver uses Mimikatz; Ke3chang uses Mimikatz; APT12 uses HTRAN."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 475
+        "domains":
+          "Enterprise": 475
+        "attackVersion": "20.1"
+  "Malware_USES_Technique":
+    "type": "USES"
+    "from":
+      "node": "Malware"
+    "to":
+      "node": "Technique"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 12351 pairs in MITRE ATT&CK 20.1: Enterprise 10739, Mobile 1438, ICS 174. e.g. Trojan.Mebromi uses System Firmware; RIPTIDE uses Web Protocols; TinyZBot uses Keylogging."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 12351
+        "domains":
+          "Enterprise": 10739
+          "Mobile": 1438
+          "ICS": 174
+        "attackVersion": "20.1"
+  "Mitigation_MITIGATES_Technique":
+    "type": "MITIGATES"
+    "from":
+      "node": "Mitigation"
+    "to":
+      "node": "Technique"
+    "description": "The mitigation prevents, or makes harder, the technique it mitigates. Links 2068 pairs in MITRE ATT&CK 20.1: Enterprise 1477, Mobile 167, ICS 424. e.g. Authorization Enforcement mitigates Activate Firmware Update Mode; Access Management mitigates Activate Firmware Update Mode; Communication Authenticity mitigates Activate Firmware Update Mode."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "mitigates"
+        "links": 2068
+        "domains":
+          "Enterprise": 1477
+          "Mobile": 167
+          "ICS": 424
+        "attackVersion": "20.1"
+  "Technique_KILL_CHAIN_PHASE_Tactic":
+    "type": "KILL_CHAIN_PHASE"
+    "from":
+      "node": "Technique"
+      "min_count": 1
+    "to":
+      "node": "Tactic"
+    "description": "The tactic a technique serves, from the `kill_chain_phases` of the technique. Links 1149 pairs in MITRE ATT&CK 20.1: Enterprise 881, Mobile 145, ICS 123. e.g. Activate Firmware Update Mode serves the Inhibit Response Function tactic; Monitor Process State serves the Collection tactic; Automated Collection serves the Collection tactic."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": false
+        "property": "kill_chain_phases"
+        "links": 1149
+        "domains":
+          "Enterprise": 881
+          "Mobile": 145
+          "ICS": 123
+        "attackVersion": "20.1"
+  "Technique_SUBTECHNIQUE_OF_Technique":
+    "type": "SUBTECHNIQUE_OF"
+    "from":
+      "node": "Technique"
+      "max_count": 1
+    "to":
+      "node": "Technique"
+    "description": "The technique is a sub-technique of the more general technique it is of. Links 552 pairs in MITRE ATT&CK 20.1: Enterprise 479, Mobile 47, ICS 26. e.g. Download All is a sub-technique of Program Download; Online Edit is a sub-technique of Program Download; Program Append is a sub-technique of Program Download."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "subtechnique-of"
+        "links": 552
+        "domains":
+          "Enterprise": 479
+          "Mobile": 47
+          "ICS": 26
+        "attackVersion": "20.1"
+  "Technique_TARGETS_Asset":
+    "type": "TARGETS"
+    "from":
+      "node": "Technique"
+    "to":
+      "node": "Asset"
+    "description": "The technique targets the asset it targets. Links 933 pairs in MITRE ATT&CK 20.1: ICS 933. e.g. Activate Firmware Update Mode targets Human-Machine Interface (HMI); Monitor Process State targets Human-Machine Interface (HMI); Automated Collection targets Programmable Logic Controller (PLC)."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "targets"
+        "links": 933
+        "domains":
+          "ICS": 933
+        "attackVersion": "20.1"
+  "Tool_USES_Technique":
+    "type": "USES"
+    "from":
+      "node": "Tool"
+    "to":
+      "node": "Technique"
+    "description": "The source uses the target in the course of an attack: a group or campaign uses a technique, malware or tool; malware or a tool uses a technique. Links 891 pairs in MITRE ATT&CK 20.1: Enterprise 869, Mobile 22. e.g. Mimikatz uses LSASS Memory; Windows Credential Editor uses LSASS Memory; pwdump uses Security Account Manager."
+    "reference": "https://attack.mitre.org/resources/attack-data-and-tools/"
+    "extensions":
+      "custom":
+        "derived": true
+        "relationshipType": "uses"
+        "links": 891
+        "domains":
+          "Enterprise": 869
+          "Mobile": 22
+        "attackVersion": "20.1"

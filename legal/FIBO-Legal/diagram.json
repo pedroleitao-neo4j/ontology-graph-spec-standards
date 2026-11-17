@@ -1,0 +1,22 @@
+{
+  "source": "the EDM Council FIBO ontology at commit 33a92cd, entry modules FND/Law, FND/Agreements, FND/Parties and BE/LegalEntities, with their OMG Commons imports",
+  "link": "the term IRI",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "Law and legal capacity", "values": ["Law and legal capacity"]},
+      {"name": "Agreements and contracts", "values": ["Agreements and contracts"]},
+      {"name": "Parties, people and legal entities", "values": ["Parties, people and legal entities"]},
+      {"name": "Commons foundations and other support modules", "values": ["Commons foundations and other support modules"]}
+    ]
+  },
+  "sub": ["module", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "functional: every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

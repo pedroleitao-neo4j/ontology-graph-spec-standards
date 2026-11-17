@@ -1,0 +1,2435 @@
+{
+  "schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json",
+  "version": "2.2",
+  "id": "odrl-2.2",
+  "name": "ODRL 2.2",
+  "description": "ODRL 2.2, the Open Digital Rights Language vocabulary published by the W3C in the ODRL Vocabulary and Expression 2.2 Recommendation of 15 February 2018 (https://www.w3.org/TR/vocab-odrl/), alongside the ODRL Information Model 2.2 it expresses. ODRL is a policy expression language: a machine-readable way to state what may and may not be done with content and services, and what must be done in return. A Policy — an Agreement, Offer, Request, Ticket, Assertion, Privacy policy or Set — holds Permissions, Prohibitions and Duties; each Rule grants one Action over a target Asset to Parties in functional roles such as assignee and assigner, and is refined by Constraints and Logical Constraints over Operators and left and right operands, with conflict and undefined-term strategies at the Policy level. It is used for digital licensing and usage policies across sectors, and extended by the community profiles built on the ODRL Core Vocabulary. Generated from the ODRL Version 2.2 RDF vocabulary: each class is a node, each object property a relationship from its domain to its range (one per class of a union), each datatype property and each property without a class range a node property, and each superclass an implied label. The individuals ODRL defines — the actions, left operands, operators and the like — are values a data set refers to by IRI, not nodes.",
+  "nodes": {
+    "Thing": {
+      "labels": {
+        "identifier": "Thing"
+      },
+      "description": "Anything at all: owl:Thing. ODRL leaves most of its classes without a superclass — Policy, Rule, Asset and the constraint classes stand alone, and the ones that do specialise classes outside ODRL: a Party is a foaf:Agent, an Action a schema:Action. Each of these roots carries the Thing label, making one tree of the model.",
+      "reference": "http://www.w3.org/2002/07/owl#Thing",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Thing individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Thing": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Thing_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/2002/07/owl#Thing",
+          "area": "Thing"
+        }
+      }
+    },
+    "Action": {
+      "labels": {
+        "identifier": "Action",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "An operation on an Asset. Actions may be allowed by Permissions, disallowed by Prohibitions, or made mandatory by Duties. Specialises schema:Action.",
+      "reference": "http://www.w3.org/ns/odrl/2/Action",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Action individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Action": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Action_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Action",
+          "area": "Actions",
+          "subClassOf": [
+            "schema:Action"
+          ]
+        }
+      }
+    },
+    "Agreement": {
+      "labels": {
+        "identifier": "Agreement",
+        "implied": [
+          "Policy"
+        ]
+      },
+      "description": "A Policy that grants the assignee a Rule over an Asset from an assigner. An Agreement Policy MUST contain at least one Permission or Prohibition rule, a Party with Assigner function, and a Party with Assignee function (in the same Permission or Prohibition). The Agreement Policy will grant the terms of the Policy from the Assigner to the Assignee.",
+      "reference": "http://www.w3.org/ns/odrl/2/Agreement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Agreement individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Agreement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Agreement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Agreement",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Assertion",
+            "Offer",
+            "Privacy",
+            "Request",
+            "Ticket"
+          ]
+        }
+      }
+    },
+    "Assertion": {
+      "labels": {
+        "identifier": "Assertion",
+        "implied": [
+          "Policy"
+        ]
+      },
+      "description": "A Policy that asserts a Rule over an Asset from parties. For example, a party (an assignee or assigner) can claim what terms they have over an Asset. An Assertion Policy does not grant such permissions/prohibitions but only asserts the parties claims. An Assetion Policy MUST contain a target Asset, a Party with any functional role, and at least one of a Permission or Prohibition rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/Assertion",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Assertion individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Assertion": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Assertion_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Assertion",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Offer",
+            "Privacy",
+            "Request",
+            "Ticket"
+          ]
+        }
+      }
+    },
+    "Asset": {
+      "labels": {
+        "identifier": "Asset",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "A resource or a collection of resources that are the subject of a Rule. The Asset entity can be any form of identifiable resource, such as data/information, content/media, applications, or services. Furthermore, it can be used to represent other Asset entities that are needed to undertake the Policy expression, such as with the Duty entity. To describe more details about the Asset, it is recommended to use Dublin Core [[dcterms]] elements or other content metadata.",
+      "reference": "http://www.w3.org/ns/odrl/2/Asset",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Asset individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Asset": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Asset_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Asset",
+          "area": "Assets and parties"
+        }
+      }
+    },
+    "AssetCollection": {
+      "labels": {
+        "identifier": "AssetCollection",
+        "implied": [
+          "Asset"
+        ]
+      },
+      "description": "An Asset that is collection of individual resources.",
+      "reference": "http://www.w3.org/ns/odrl/2/AssetCollection",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the AssetCollection individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "source": {
+          "type": "LIST<STRING>",
+          "name": "source",
+          "description": "Reference to a Asset/PartyCollection. Used by AssetCollection and PartyCollection when constraints are applied. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/source",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/source",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_AssetCollection": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_AssetCollection_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/AssetCollection",
+          "area": "Assets and parties"
+        }
+      }
+    },
+    "AssetScope": {
+      "labels": {
+        "identifier": "AssetScope",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "Scopes for Asset Scope expressions. Instances of the AssetScope class represent the terms for the scope property of Assets. Deprecated.",
+      "reference": "http://www.w3.org/ns/odrl/2/AssetScope",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the AssetScope individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_AssetScope": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_AssetScope_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/AssetScope",
+          "area": "Assets and parties",
+          "deprecated": true
+        }
+      }
+    },
+    "ConflictTerm": {
+      "labels": {
+        "identifier": "ConflictTerm",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "Used to establish strategies to resolve conflicts that arise from the merging of Policies or conflicts between Permissions and Prohibitions in the same Policy. Instances of ConflictTerm describe strategies for resolving conflicts.",
+      "reference": "http://www.w3.org/ns/odrl/2/ConflictTerm",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ConflictTerm individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ConflictTerm": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ConflictTerm_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/ConflictTerm",
+          "area": "Constraints and operands"
+        }
+      }
+    },
+    "Constraint": {
+      "labels": {
+        "identifier": "Constraint",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "A boolean expression that refines the semantics of an Action and Party/Asset Collection or declare the conditions applicable to a Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/Constraint",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Constraint individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "dataType": {
+          "type": "LIST<STRING>",
+          "name": "dataType",
+          "description": "The datatype of the value of the rightOperand or rightOperandReference of a Constraint. In RDF encodings, use of the rdf:datatype MUST be used. In JSON-LD encoding, the use of @type MUST be used. Holds the IRI of the datatype of the value, e.g. xsd:date.",
+          "reference": "http://www.w3.org/ns/odrl/2/dataType",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/dataType",
+              "datatypes": [
+                "rdfs:Datatype"
+              ]
+            }
+          }
+        },
+        "rightOperand": {
+          "type": "LIST<STRING>",
+          "name": "rightOperand",
+          "description": "The value of the right operand in a constraint expression. When used with set-based operators, a list of values may be used. Holds the value, or the IRI of one of the RightOperand individuals ODRL defines.",
+          "reference": "http://www.w3.org/ns/odrl/2/rightOperand",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/rightOperand",
+              "datatypes": [
+                "odrl:RightOperand",
+                "rdfs:Literal",
+                "xsd:anyURI"
+              ]
+            }
+          }
+        },
+        "rightOperandReference": {
+          "type": "LIST<STRING>",
+          "name": "rightOperandReference",
+          "description": "A reference to a web resource providing the value for the right operand of a Constraint. An IRI that MUST be dereferenced to obtain the actual right operand value. When used with set-based operators, a list of IRIs may be used. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/rightOperandReference",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/rightOperandReference"
+            }
+          }
+        },
+        "status": {
+          "type": "LIST<STRING>",
+          "name": "status",
+          "description": "The value generated from the leftOperand action or a value related to the leftOperand set as the reference for the comparison. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/status",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/status"
+            }
+          }
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        },
+        "unit": {
+          "type": "LIST<STRING>",
+          "name": "unit",
+          "description": "The unit of measurement of the value of the rightOperand or rightOperandReference of a Constraint. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/unit",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/unit"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Constraint": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Constraint_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Constraint",
+          "area": "Constraints and operands"
+        }
+      }
+    },
+    "Duty": {
+      "labels": {
+        "identifier": "Duty",
+        "implied": [
+          "Rule"
+        ]
+      },
+      "description": "The obligation to perform an Action.",
+      "reference": "http://www.w3.org/ns/odrl/2/Duty",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Duty individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Duty": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Duty_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Duty",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Permission",
+            "Prohibition"
+          ]
+        }
+      }
+    },
+    "LeftOperand": {
+      "labels": {
+        "identifier": "LeftOperand",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "Left operand for a constraint expression. Instances of the LeftOperand class are used as the leftOperand of a Constraint.",
+      "reference": "http://www.w3.org/ns/odrl/2/LeftOperand",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LeftOperand individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LeftOperand": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LeftOperand_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/LeftOperand",
+          "area": "Constraints and operands"
+        }
+      }
+    },
+    "LogicalConstraint": {
+      "labels": {
+        "identifier": "LogicalConstraint",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "A logical expression that refines the semantics of an Action and Party/Asset Collection or declare the conditions applicable to a Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/LogicalConstraint",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LogicalConstraint individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "and": {
+          "type": "LIST<STRING>",
+          "name": "and",
+          "description": "The relation is satisfied when all of the Constraints are satisfied. This property MUST only be used for Logical Constraints, and the list of operand values MUST be Constraint instances. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/and",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/and",
+              "subPropertyOf": [
+                "operand"
+              ]
+            }
+          }
+        },
+        "andSequence": {
+          "type": "LIST<STRING>",
+          "name": "andSequence",
+          "description": "The relation is satisfied when each of the Constraints are satisfied in the order specified. This property MUST only be used for Logical Constraints, and the list of operand values MUST be Constraint instances. The order of the list MUST be preserved. The andSequence operator is an example where there may be temporal conditional requirements between the operands. This may lead to situations where the outcome is unresolvable, such as deadlock if one of the Constraints is unable to be satisfied. ODRL Processing systems SHOULD plan for these scenarios and implement mechanisms to resolve them. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/andSequence",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/andSequence",
+              "subPropertyOf": [
+                "operand"
+              ]
+            }
+          }
+        },
+        "operand": {
+          "type": "LIST<STRING>",
+          "name": "operand",
+          "description": "Operand is an abstract property for a logical relationship. Sub-properties of operand are used for Logical Constraints. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/operand",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/operand"
+            }
+          }
+        },
+        "or": {
+          "type": "LIST<STRING>",
+          "name": "or",
+          "description": "The relation is satisfied when at least one of the Constraints is satisfied. This property MUST only be used for Logical Constraints, and the list of operand values MUST be Constraint instances. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/or",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/or",
+              "subPropertyOf": [
+                "operand"
+              ]
+            }
+          }
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        },
+        "xone": {
+          "type": "LIST<STRING>",
+          "name": "xone",
+          "description": "The relation is satisfied when only one, and not more, of the Constaints is satisfied. This property MUST only be used for Logical Constraints, and the list of operand values MUST be Constraint instances. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/xone",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/xone",
+              "subPropertyOf": [
+                "operand"
+              ]
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_LogicalConstraint": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LogicalConstraint_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/LogicalConstraint",
+          "area": "Constraints and operands"
+        }
+      }
+    },
+    "Offer": {
+      "labels": {
+        "identifier": "Offer",
+        "implied": [
+          "Policy"
+        ]
+      },
+      "description": "A Policy that proposes a Rule over an Asset from an assigner. An Offer Policy MUST contain at least one Permission or Prohibition rule and a Party with Assigner function (in the same Permission or Prohibition). The Offer Policy MAY contain a Party with Assignee function, but MUST not grant any privileges to that Party.",
+      "reference": "http://www.w3.org/ns/odrl/2/Offer",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Offer individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Offer": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Offer_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Offer",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Agreement",
+            "Assertion",
+            "Privacy",
+            "Request",
+            "Ticket"
+          ]
+        }
+      }
+    },
+    "Operator": {
+      "labels": {
+        "identifier": "Operator",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "Operator for constraint expression. Instances of the Operator class representing relational operators.",
+      "reference": "http://www.w3.org/ns/odrl/2/Operator",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Operator individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Operator": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Operator_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Operator",
+          "area": "Constraints and operands"
+        }
+      }
+    },
+    "Party": {
+      "labels": {
+        "identifier": "Party",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "An entity or a collection of entities that undertake Roles in a Rule. The Party entity could be a person, group of people, organisation, or agent. An agent is a person or thing that takes an active role or produces a specified effect. To describe more details about the Party, it is recommended to use W3C vCard Ontology [[vcard-rdf]] or FOAF Vocabulary [[foaf]]. Specialises schema:Person and schema:Organization and foaf:Person and foaf:Organization and foaf:Agent and vcard:Individual and vcard:Organization and vcard:Agent.",
+      "reference": "http://www.w3.org/ns/odrl/2/Party",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Party individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Party": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Party_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Party",
+          "area": "Assets and parties",
+          "subClassOf": [
+            "schema:Person",
+            "schema:Organization",
+            "foaf:Person",
+            "foaf:Organization",
+            "foaf:Agent",
+            "vcard:Individual",
+            "vcard:Organization",
+            "vcard:Agent"
+          ]
+        }
+      }
+    },
+    "PartyCollection": {
+      "labels": {
+        "identifier": "PartyCollection",
+        "implied": [
+          "Party"
+        ]
+      },
+      "description": "A Party that is a group of individual entities.",
+      "reference": "http://www.w3.org/ns/odrl/2/PartyCollection",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PartyCollection individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "source": {
+          "type": "LIST<STRING>",
+          "name": "source",
+          "description": "Reference to a Asset/PartyCollection. Used by AssetCollection and PartyCollection when constraints are applied. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/source",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/source",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_PartyCollection": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PartyCollection_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/PartyCollection",
+          "area": "Assets and parties"
+        }
+      }
+    },
+    "PartyScope": {
+      "labels": {
+        "identifier": "PartyScope",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "Scopes for Party Scope expressions. Instances of the PartyScope class represent the terms for the scope property of Parties. Deprecated.",
+      "reference": "http://www.w3.org/ns/odrl/2/PartyScope",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PartyScope individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PartyScope": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PartyScope_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/PartyScope",
+          "area": "Assets and parties",
+          "deprecated": true
+        }
+      }
+    },
+    "Permission": {
+      "labels": {
+        "identifier": "Permission",
+        "implied": [
+          "Rule"
+        ]
+      },
+      "description": "The ability to perform an Action over an Asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/Permission",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Permission individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Permission": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Permission_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Permission",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Duty",
+            "Prohibition"
+          ]
+        }
+      }
+    },
+    "Policy": {
+      "labels": {
+        "identifier": "Policy",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "A non-empty group of Permissions and/or Prohibitions. A Policy may contain multiple Rules.",
+      "reference": "http://www.w3.org/ns/odrl/2/Policy",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Policy individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "profile": {
+          "type": "LIST<STRING>",
+          "name": "profile",
+          "description": "The identifier(s) of an ODRL Profile that the Policy conforms to. The profile property is mandatory if the Policy is using an ODRL Profile. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/profile",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/profile"
+            }
+          }
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Policy": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Policy_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Policy",
+          "area": "Policies and rules"
+        }
+      }
+    },
+    "Privacy": {
+      "labels": {
+        "identifier": "Privacy",
+        "implied": [
+          "Policy"
+        ]
+      },
+      "description": "A Policy that expresses a Rule over an Asset containing personal information. A Privacy Policy MUST contain a target Asset, a Party with Assigner is, a Party with Assignee function, and at least one of a Permission or Prohibition rule that MUST include a Duty. The target Asset SHOULD contain or relate to personal information about the Assignee. The Duty MUST describe obligations on the Assigner about managing the Asset. The Assignee is being granted the terms of the Privacy policy from the Assigner.",
+      "reference": "http://www.w3.org/ns/odrl/2/Privacy",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Privacy individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Privacy": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Privacy_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Privacy",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Agreement",
+            "Assertion",
+            "Offer",
+            "Request",
+            "Ticket"
+          ]
+        }
+      }
+    },
+    "Prohibition": {
+      "labels": {
+        "identifier": "Prohibition",
+        "implied": [
+          "Rule"
+        ]
+      },
+      "description": "The inability to perform an Action over an Asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/Prohibition",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Prohibition individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Prohibition": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Prohibition_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Prohibition",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Duty",
+            "Permission"
+          ]
+        }
+      }
+    },
+    "Request": {
+      "labels": {
+        "identifier": "Request",
+        "implied": [
+          "Policy"
+        ]
+      },
+      "description": "A Policy that proposes a Rule over an Asset from an assignee. A Request Policy MUST contain a target Asset, a Party with Assignee function, and at least one of a Permission or Prohibition rule. The Request MAY also contain the Party with Assigner function if this is known. No privileges are granted to any Party.",
+      "reference": "http://www.w3.org/ns/odrl/2/Request",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Request individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Request": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Request_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Request",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Agreement",
+            "Assertion",
+            "Offer",
+            "Privacy",
+            "Ticket"
+          ]
+        }
+      }
+    },
+    "RightOperand": {
+      "labels": {
+        "identifier": "RightOperand",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "Right operand for constraint expression. Instances of the RightOperand class are used as the rightOperand of a Constraint.",
+      "reference": "http://www.w3.org/ns/odrl/2/RightOperand",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the RightOperand individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_RightOperand": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_RightOperand_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/RightOperand",
+          "area": "Constraints and operands"
+        }
+      }
+    },
+    "Rule": {
+      "labels": {
+        "identifier": "Rule",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "An abstract concept that represents the common characteristics of Permissions, Prohibitions, and Duties. Rule is an abstract concept.",
+      "reference": "http://www.w3.org/ns/odrl/2/Rule",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Rule individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Rule": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Rule_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Rule",
+          "area": "Policies and rules"
+        }
+      }
+    },
+    "Set": {
+      "labels": {
+        "identifier": "Set",
+        "implied": [
+          "Policy"
+        ]
+      },
+      "description": "A Policy that expresses a Rule over an Asset. A Set Policy MUST contain a target Asset, and at least one Rule. A Set Policy is the default Policy subclass. The Set is aimed at scenarios where there is an open criteria for the semantics of the policy expressions and typically refined by other systems/profiles that process the information at a later time. No privileges are granted to any Party (if defined).",
+      "reference": "http://www.w3.org/ns/odrl/2/Set",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Set individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Set": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Set_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Set",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Agreement",
+            "Assertion",
+            "Offer",
+            "Privacy",
+            "Request",
+            "Ticket"
+          ]
+        }
+      }
+    },
+    "Ticket": {
+      "labels": {
+        "identifier": "Ticket",
+        "implied": [
+          "Policy"
+        ]
+      },
+      "description": "A Policy that grants the holder a Rule over an Asset from an assigner. A Ticket Policy MUST contain a target Asset and at least one of a Permission or Prohibition rule. The Ticket MAY contain the Party with Assigner function and MUST NOT contain an Assignee. The Ticket Policy will grant the terms of the Policy to the holder of that Ticket. The holder of the Ticket MAY remain unknown or MAY have to be identified at some later stage.",
+      "reference": "http://www.w3.org/ns/odrl/2/Ticket",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Ticket individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Ticket": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Ticket_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/Ticket",
+          "area": "Policies and rules",
+          "disjointWith": [
+            "Agreement",
+            "Assertion",
+            "Offer",
+            "Privacy",
+            "Request"
+          ]
+        }
+      }
+    },
+    "UndefinedTerm": {
+      "labels": {
+        "identifier": "UndefinedTerm",
+        "implied": [
+          "Thing"
+        ]
+      },
+      "description": "Is used to indicate how to support Actions that are not part of any vocabulary or profile in the policy expression system. Instances of UndefinedTerm describe strategies for processing unsupported actions. Deprecated.",
+      "reference": "http://www.w3.org/ns/odrl/2/UndefinedTerm",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the UndefinedTerm individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_UndefinedTerm": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_UndefinedTerm_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/UndefinedTerm",
+          "area": "Constraints and operands",
+          "deprecated": true
+        }
+      }
+    }
+  },
+  "relationships": {
+    "Policy_ACTION_Action": {
+      "type": "ACTION",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Action"
+      },
+      "description": "The operation relating to the Asset for which the Rule is being subjected.",
+      "reference": "http://www.w3.org/ns/odrl/2/action",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/action",
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_ACTION_Action": {
+      "type": "ACTION",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Action"
+      },
+      "description": "The operation relating to the Asset for which the Rule is being subjected.",
+      "reference": "http://www.w3.org/ns/odrl/2/action",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/action",
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_ASSIGNEE_Party": {
+      "type": "ASSIGNEE",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party is the recipient of the Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/assignee",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/assignee",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_ASSIGNEE_Party": {
+      "type": "ASSIGNEE",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party is the recipient of the Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/assignee",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/assignee",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Party_ASSIGNEE_OF_Policy": {
+      "type": "ASSIGNEE_OF",
+      "from": {
+        "node": "Party"
+      },
+      "to": {
+        "node": "Policy"
+      },
+      "description": "Identifies an ODRL Policy for which the identified Party undertakes the assignee functional role. When assigneeOf has been asserted between a metadata expression and an ODRL Policy, the Party being identified MUST be inferred to undertake the assignee functional role of all the Rules of that Policy.",
+      "reference": "http://www.w3.org/ns/odrl/2/assigneeOf",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/assigneeOf"
+        }
+      }
+    },
+    "Policy_ASSIGNER_Party": {
+      "type": "ASSIGNER",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party is the issuer of the Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/assigner",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/assigner",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_ASSIGNER_Party": {
+      "type": "ASSIGNER",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party is the issuer of the Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/assigner",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/assigner",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Party_ASSIGNER_OF_Policy": {
+      "type": "ASSIGNER_OF",
+      "from": {
+        "node": "Party"
+      },
+      "to": {
+        "node": "Policy"
+      },
+      "description": "Identifies an ODRL Policy for which the identified Party undertakes the assigner functional role. When assignerOf has been asserted between a metadata expression and an ODRL Policy, the Party being identified MUST be inferred to undertake the assigner functional role of all the Rules of that Policy.",
+      "reference": "http://www.w3.org/ns/odrl/2/assignerOf",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/assignerOf"
+        }
+      }
+    },
+    "Policy_ATTRIBUTED_PARTY_Party": {
+      "type": "ATTRIBUTED_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party to be attributed. Maybe specified as part of the attribute action.",
+      "reference": "http://www.w3.org/ns/odrl/2/attributedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/attributedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_ATTRIBUTED_PARTY_Party": {
+      "type": "ATTRIBUTED_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party to be attributed. Maybe specified as part of the attribute action.",
+      "reference": "http://www.w3.org/ns/odrl/2/attributedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/attributedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_ATTRIBUTING_PARTY_Party": {
+      "type": "ATTRIBUTING_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who undertakes the attribution. Maybe specified as part of the attribute action.",
+      "reference": "http://www.w3.org/ns/odrl/2/attributingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/attributingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_ATTRIBUTING_PARTY_Party": {
+      "type": "ATTRIBUTING_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who undertakes the attribution. Maybe specified as part of the attribute action.",
+      "reference": "http://www.w3.org/ns/odrl/2/attributingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/attributingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_COMPENSATED_PARTY_Party": {
+      "type": "COMPENSATED_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party is the recipient of the compensation. Maybe specified as part of the compensate duty action.",
+      "reference": "http://www.w3.org/ns/odrl/2/compensatedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/compensatedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_COMPENSATED_PARTY_Party": {
+      "type": "COMPENSATED_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party is the recipient of the compensation. Maybe specified as part of the compensate duty action.",
+      "reference": "http://www.w3.org/ns/odrl/2/compensatedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/compensatedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_COMPENSATING_PARTY_Party": {
+      "type": "COMPENSATING_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party that is the provider of the compensation. Maybe specified as part of the compensate duty action.",
+      "reference": "http://www.w3.org/ns/odrl/2/compensatingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/compensatingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_COMPENSATING_PARTY_Party": {
+      "type": "COMPENSATING_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party that is the provider of the compensation. Maybe specified as part of the compensate duty action.",
+      "reference": "http://www.w3.org/ns/odrl/2/compensatingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/compensatingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_CONFLICT_ConflictTerm": {
+      "type": "CONFLICT",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "ConflictTerm"
+      },
+      "description": "The conflict-resolution strategy for a Policy. If no strategy is specified, the default is invalid.",
+      "reference": "http://www.w3.org/ns/odrl/2/conflict",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/conflict"
+        }
+      }
+    },
+    "Policy_CONSENTED_PARTY_Party": {
+      "type": "CONSENTED_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who obtains the consent. Maybe specified as part of the obtainConsent action.",
+      "reference": "http://www.w3.org/ns/odrl/2/consentedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/consentedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_CONSENTED_PARTY_Party": {
+      "type": "CONSENTED_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who obtains the consent. Maybe specified as part of the obtainConsent action.",
+      "reference": "http://www.w3.org/ns/odrl/2/consentedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/consentedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_CONSENTING_PARTY_Party": {
+      "type": "CONSENTING_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party to obtain consent from. Maybe specified as part of the obtainConsent action.",
+      "reference": "http://www.w3.org/ns/odrl/2/consentingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/consentingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_CONSENTING_PARTY_Party": {
+      "type": "CONSENTING_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party to obtain consent from. Maybe specified as part of the obtainConsent action.",
+      "reference": "http://www.w3.org/ns/odrl/2/consentingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/consentingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Duty_CONSEQUENCE_Duty": {
+      "type": "CONSEQUENCE",
+      "from": {
+        "node": "Duty"
+      },
+      "to": {
+        "node": "Duty"
+      },
+      "description": "Relates a Duty to another Duty, the latter being a consequence of not fulfilling the former. The consequence property is utilised to express the repercussions of not fulfilling an agreed Policy obligation or duty for a Permission. If either of these fails to be fulfilled, then this will result in the consequence Duty also becoming a new requirement, meaning that the original obligation or duty, as well as the consequence Duty must all be fulfilled.",
+      "reference": "http://www.w3.org/ns/odrl/2/consequence",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/consequence",
+          "subPropertyOf": [
+            "failure"
+          ]
+        }
+      }
+    },
+    "Policy_CONSTRAINT_Constraint": {
+      "type": "CONSTRAINT",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Constraint"
+      },
+      "description": "Constraint applied to a Rule. Constraints on Rules are used to determine if a rule is Active or not. Example: the Permission rule is only active during the year 2018.",
+      "reference": "http://www.w3.org/ns/odrl/2/constraint",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/constraint",
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_CONSTRAINT_LogicalConstraint": {
+      "type": "CONSTRAINT",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "LogicalConstraint"
+      },
+      "description": "Constraint applied to a Rule. Constraints on Rules are used to determine if a rule is Active or not. Example: the Permission rule is only active during the year 2018.",
+      "reference": "http://www.w3.org/ns/odrl/2/constraint",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/constraint",
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_CONSTRAINT_Constraint": {
+      "type": "CONSTRAINT",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Constraint"
+      },
+      "description": "Constraint applied to a Rule. Constraints on Rules are used to determine if a rule is Active or not. Example: the Permission rule is only active during the year 2018.",
+      "reference": "http://www.w3.org/ns/odrl/2/constraint",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/constraint",
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_CONSTRAINT_LogicalConstraint": {
+      "type": "CONSTRAINT",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "LogicalConstraint"
+      },
+      "description": "Constraint applied to a Rule. Constraints on Rules are used to determine if a rule is Active or not. Example: the Permission rule is only active during the year 2018.",
+      "reference": "http://www.w3.org/ns/odrl/2/constraint",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/constraint",
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_CONTRACTED_PARTY_Party": {
+      "type": "CONTRACTED_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who is being contracted.",
+      "reference": "http://www.w3.org/ns/odrl/2/contractedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/contractedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_CONTRACTED_PARTY_Party": {
+      "type": "CONTRACTED_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who is being contracted.",
+      "reference": "http://www.w3.org/ns/odrl/2/contractedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/contractedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_CONTRACTING_PARTY_Party": {
+      "type": "CONTRACTING_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who is offering the contract.",
+      "reference": "http://www.w3.org/ns/odrl/2/contractingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/contractingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_CONTRACTING_PARTY_Party": {
+      "type": "CONTRACTING_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who is offering the contract.",
+      "reference": "http://www.w3.org/ns/odrl/2/contractingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/contractingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Permission_DUTY_Duty": {
+      "type": "DUTY",
+      "from": {
+        "node": "Permission"
+      },
+      "to": {
+        "node": "Duty"
+      },
+      "description": "Relates an individual Duty to a Permission. A Duty is a pre-condition which must be fulfilled in order to receive the Permission.",
+      "reference": "http://www.w3.org/ns/odrl/2/duty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/duty"
+        }
+      }
+    },
+    "Rule_FAILURE_Rule": {
+      "type": "FAILURE",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Rule"
+      },
+      "description": "Failure is an abstract property that defines the violation (or unmet) relationship between Rules. The parent property to sub-properties that express explicit failure contexts.",
+      "reference": "http://www.w3.org/ns/odrl/2/failure",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/failure"
+        }
+      }
+    },
+    "Policy_FUNCTION_Party": {
+      "type": "FUNCTION",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "Function is an abstract property whose sub-properties define the functional roles which may be fulfilled by a party in relation to a Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/function",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/function",
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_FUNCTION_Party": {
+      "type": "FUNCTION",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "Function is an abstract property whose sub-properties define the functional roles which may be fulfilled by a party in relation to a Rule.",
+      "reference": "http://www.w3.org/ns/odrl/2/function",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/function",
+          "unionEnds": true
+        }
+      }
+    },
+    "Asset_HAS_POLICY_Policy": {
+      "type": "HAS_POLICY",
+      "from": {
+        "node": "Asset"
+      },
+      "to": {
+        "node": "Policy"
+      },
+      "description": "Identifies an ODRL Policy for which the identified Asset is the target Asset to all the Rules. The Asset being identified MUST be inferred to be the target Asset of all of the Rules of the Policy.",
+      "reference": "http://www.w3.org/ns/odrl/2/hasPolicy",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/hasPolicy"
+        }
+      }
+    },
+    "Action_IMPLIES_Action": {
+      "type": "IMPLIES",
+      "from": {
+        "node": "Action"
+      },
+      "to": {
+        "node": "Action"
+      },
+      "description": "An Action asserts that another Action is not prohibited to enable its operational semantics. The property asserts that an instance of Action entails that the other instance of Action is not prohibited.",
+      "reference": "http://www.w3.org/ns/odrl/2/implies",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/implies"
+        }
+      }
+    },
+    "Action_INCLUDED_IN_Action": {
+      "type": "INCLUDED_IN",
+      "from": {
+        "node": "Action"
+      },
+      "to": {
+        "node": "Action"
+      },
+      "description": "An Action transitively asserts that another Action that encompasses its operational semantics. The purpose is to explicitly assert that the semantics of the referenced instance of an other Action encompasses (includes) the semantics of this instance of Action. The includedIn property is transitive, and as such, the Actions form ancestor relationships. Transitive.",
+      "reference": "http://www.w3.org/ns/odrl/2/includedIn",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/includedIn",
+          "transitive": true
+        }
+      }
+    },
+    "Policy_INFORMED_PARTY_Party": {
+      "type": "INFORMED_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party to be informed of all uses. Maybe specified as part of the inform action.",
+      "reference": "http://www.w3.org/ns/odrl/2/informedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/informedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_INFORMED_PARTY_Party": {
+      "type": "INFORMED_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party to be informed of all uses. Maybe specified as part of the inform action.",
+      "reference": "http://www.w3.org/ns/odrl/2/informedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/informedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_INFORMING_PARTY_Party": {
+      "type": "INFORMING_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who provides the inform use data. Maybe specified as part of the inform action.",
+      "reference": "http://www.w3.org/ns/odrl/2/informingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/informingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_INFORMING_PARTY_Party": {
+      "type": "INFORMING_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who provides the inform use data. Maybe specified as part of the inform action.",
+      "reference": "http://www.w3.org/ns/odrl/2/informingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/informingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_INHERIT_FROM_Policy": {
+      "type": "INHERIT_FROM",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Policy"
+      },
+      "description": "Relates a (child) policy to another (parent) policy from which terms are inherited. The child policy will inherit Rules from the parent policy.",
+      "reference": "http://www.w3.org/ns/odrl/2/inheritFrom",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/inheritFrom"
+        }
+      }
+    },
+    "Constraint_LEFT_OPERAND_LeftOperand": {
+      "type": "LEFT_OPERAND",
+      "from": {
+        "node": "Constraint"
+      },
+      "to": {
+        "node": "LeftOperand"
+      },
+      "description": "The left operand in a constraint expression.",
+      "reference": "http://www.w3.org/ns/odrl/2/leftOperand",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/leftOperand"
+        }
+      }
+    },
+    "Policy_OBLIGATION_Duty": {
+      "type": "OBLIGATION",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Duty"
+      },
+      "description": "Relates an individual Duty to a Policy. The Duty is a requirement which must be fulfilled.",
+      "reference": "http://www.w3.org/ns/odrl/2/obligation",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/obligation"
+        }
+      }
+    },
+    "Constraint_OPERATOR_Operator": {
+      "type": "OPERATOR",
+      "from": {
+        "node": "Constraint"
+      },
+      "to": {
+        "node": "Operator"
+      },
+      "description": "The operator function applied to operands of a Constraint.",
+      "reference": "http://www.w3.org/ns/odrl/2/operator",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/operator"
+        }
+      }
+    },
+    "Rule_OUTPUT_Asset": {
+      "type": "OUTPUT",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Asset"
+      },
+      "description": "The output property specifies the Asset which is created from the output of the Action.",
+      "reference": "http://www.w3.org/ns/odrl/2/output",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/output",
+          "subPropertyOf": [
+            "relation"
+          ]
+        }
+      }
+    },
+    "Asset_PART_OF_AssetCollection": {
+      "type": "PART_OF",
+      "from": {
+        "node": "Asset"
+      },
+      "to": {
+        "node": "AssetCollection"
+      },
+      "description": "Identifies an Asset/PartyCollection that the Asset/Party is a member of.",
+      "reference": "http://www.w3.org/ns/odrl/2/partOf",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/partOf",
+          "unionEnds": true
+        }
+      }
+    },
+    "Asset_PART_OF_PartyCollection": {
+      "type": "PART_OF",
+      "from": {
+        "node": "Asset"
+      },
+      "to": {
+        "node": "PartyCollection"
+      },
+      "description": "Identifies an Asset/PartyCollection that the Asset/Party is a member of.",
+      "reference": "http://www.w3.org/ns/odrl/2/partOf",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/partOf",
+          "unionEnds": true
+        }
+      }
+    },
+    "Party_PART_OF_AssetCollection": {
+      "type": "PART_OF",
+      "from": {
+        "node": "Party"
+      },
+      "to": {
+        "node": "AssetCollection"
+      },
+      "description": "Identifies an Asset/PartyCollection that the Asset/Party is a member of.",
+      "reference": "http://www.w3.org/ns/odrl/2/partOf",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/partOf",
+          "unionEnds": true
+        }
+      }
+    },
+    "Party_PART_OF_PartyCollection": {
+      "type": "PART_OF",
+      "from": {
+        "node": "Party"
+      },
+      "to": {
+        "node": "PartyCollection"
+      },
+      "description": "Identifies an Asset/PartyCollection that the Asset/Party is a member of.",
+      "reference": "http://www.w3.org/ns/odrl/2/partOf",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/partOf",
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_PERMISSION_Permission": {
+      "type": "PERMISSION",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Permission"
+      },
+      "description": "Relates an individual Permission to a Policy.",
+      "reference": "http://www.w3.org/ns/odrl/2/permission",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/permission"
+        }
+      }
+    },
+    "Policy_PROHIBITION_Prohibition": {
+      "type": "PROHIBITION",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Prohibition"
+      },
+      "description": "Relates an individual Prohibition to a Policy.",
+      "reference": "http://www.w3.org/ns/odrl/2/prohibition",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/prohibition"
+        }
+      }
+    },
+    "Action_REFINEMENT_Constraint": {
+      "type": "REFINEMENT",
+      "from": {
+        "node": "Action"
+      },
+      "to": {
+        "node": "Constraint"
+      },
+      "description": "Constraint used to refine the semantics of an Action, or Party/Asset Collection. Example: the Action print is only permitted on 50% of the asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/refinement",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/refinement",
+          "unionEnds": true
+        }
+      }
+    },
+    "Action_REFINEMENT_LogicalConstraint": {
+      "type": "REFINEMENT",
+      "from": {
+        "node": "Action"
+      },
+      "to": {
+        "node": "LogicalConstraint"
+      },
+      "description": "Constraint used to refine the semantics of an Action, or Party/Asset Collection. Example: the Action print is only permitted on 50% of the asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/refinement",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/refinement",
+          "unionEnds": true
+        }
+      }
+    },
+    "AssetCollection_REFINEMENT_Constraint": {
+      "type": "REFINEMENT",
+      "from": {
+        "node": "AssetCollection"
+      },
+      "to": {
+        "node": "Constraint"
+      },
+      "description": "Constraint used to refine the semantics of an Action, or Party/Asset Collection. Example: the Action print is only permitted on 50% of the asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/refinement",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/refinement",
+          "unionEnds": true
+        }
+      }
+    },
+    "AssetCollection_REFINEMENT_LogicalConstraint": {
+      "type": "REFINEMENT",
+      "from": {
+        "node": "AssetCollection"
+      },
+      "to": {
+        "node": "LogicalConstraint"
+      },
+      "description": "Constraint used to refine the semantics of an Action, or Party/Asset Collection. Example: the Action print is only permitted on 50% of the asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/refinement",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/refinement",
+          "unionEnds": true
+        }
+      }
+    },
+    "PartyCollection_REFINEMENT_Constraint": {
+      "type": "REFINEMENT",
+      "from": {
+        "node": "PartyCollection"
+      },
+      "to": {
+        "node": "Constraint"
+      },
+      "description": "Constraint used to refine the semantics of an Action, or Party/Asset Collection. Example: the Action print is only permitted on 50% of the asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/refinement",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/refinement",
+          "unionEnds": true
+        }
+      }
+    },
+    "PartyCollection_REFINEMENT_LogicalConstraint": {
+      "type": "REFINEMENT",
+      "from": {
+        "node": "PartyCollection"
+      },
+      "to": {
+        "node": "LogicalConstraint"
+      },
+      "description": "Constraint used to refine the semantics of an Action, or Party/Asset Collection. Example: the Action print is only permitted on 50% of the asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/refinement",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/refinement",
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_RELATION_Asset": {
+      "type": "RELATION",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Asset"
+      },
+      "description": "Relation is an abstract property which creates an explicit link between an Action and an Asset. Sub-properties of relation are used to define the nature of that link.",
+      "reference": "http://www.w3.org/ns/odrl/2/relation",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/relation",
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_RELATION_Asset": {
+      "type": "RELATION",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Asset"
+      },
+      "description": "Relation is an abstract property which creates an explicit link between an Action and an Asset. Sub-properties of relation are used to define the nature of that link.",
+      "reference": "http://www.w3.org/ns/odrl/2/relation",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/relation",
+          "unionEnds": true
+        }
+      }
+    },
+    "Prohibition_REMEDY_Duty": {
+      "type": "REMEDY",
+      "from": {
+        "node": "Prohibition"
+      },
+      "to": {
+        "node": "Duty"
+      },
+      "description": "Relates an individual remedy Duty to a Prohibition. The remedy property expresses an agreed Duty that must be fulfilled in case that a Prohibition has been violated by being exercised.",
+      "reference": "http://www.w3.org/ns/odrl/2/remedy",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/remedy",
+          "subPropertyOf": [
+            "failure"
+          ]
+        }
+      }
+    },
+    "Policy_TARGET_Asset": {
+      "type": "TARGET",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Asset"
+      },
+      "description": "The target property indicates the Asset that is the primary subject to which the Rule action directly applies.",
+      "reference": "http://www.w3.org/ns/odrl/2/target",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/target",
+          "subPropertyOf": [
+            "relation"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_TARGET_Asset": {
+      "type": "TARGET",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Asset"
+      },
+      "description": "The target property indicates the Asset that is the primary subject to which the Rule action directly applies.",
+      "reference": "http://www.w3.org/ns/odrl/2/target",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/target",
+          "subPropertyOf": [
+            "relation"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_TRACKED_PARTY_Party": {
+      "type": "TRACKED_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party whose usage is being tracked. May be specified as part of the acceptTracking action.",
+      "reference": "http://www.w3.org/ns/odrl/2/trackedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/trackedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_TRACKED_PARTY_Party": {
+      "type": "TRACKED_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party whose usage is being tracked. May be specified as part of the acceptTracking action.",
+      "reference": "http://www.w3.org/ns/odrl/2/trackedParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/trackedParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Policy_TRACKING_PARTY_Party": {
+      "type": "TRACKING_PARTY",
+      "from": {
+        "node": "Policy"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who is tracking usage. May be specified as part of the acceptTracking action.",
+      "reference": "http://www.w3.org/ns/odrl/2/trackingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/trackingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Rule_TRACKING_PARTY_Party": {
+      "type": "TRACKING_PARTY",
+      "from": {
+        "node": "Rule"
+      },
+      "to": {
+        "node": "Party"
+      },
+      "description": "The Party who is tracking usage. May be specified as part of the acceptTracking action.",
+      "reference": "http://www.w3.org/ns/odrl/2/trackingParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://www.w3.org/ns/odrl/2/trackingParty",
+          "subPropertyOf": [
+            "function"
+          ],
+          "unionEnds": true
+        }
+      }
+    }
+  }
+}

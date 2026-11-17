@@ -1,0 +1,826 @@
+{
+ "scenario": "A CAEX file describing assembly cell AC-1 of a fictional plant builder, exchanged between its plant engineering and control engineering tools: an instance hierarchy of a work cell holding a welding robot with a vacuum gripper, a belt conveyor and a PLC, their ports and signal interfaces, the internal links between them, and attributes with units, semantics and nominal constraints. Behind the instances stand a system unit class library with the robot and gripper types — the gripper's supported role class mapped to a user-defined role class by attribute name — and user-defined role and interface class libraries, alongside external references to AutomationML's standard libraries.",
+ "nodes": {
+  "file": {
+   "node": "CAEXFile",
+   "properties": {
+    "id": "a2f0c1d4-3b57-4e88-9a1c-6d0e5f4a3b21",
+    "fileName": "assembly-cell.aml",
+    "schemaVersion": "3.0",
+    "superiorStandardVersion": [
+     "AutomationML 2.10"
+    ],
+    "version": "1.1",
+    "copyright": "Kellerman Automation GmbH",
+    "changeMode": "change",
+    "description": "The engineering data of assembly cell AC-1, exchanged between the plant engineering and the control engineering tools.",
+    "additionalInformation": [
+     "Assembly cell AC-1",
+     "Writer: Kellerman PlantEngineer 5.8.2"
+    ]
+   }
+  },
+  "sourceDoc": {
+   "node": "SourceDocumentInformation",
+   "properties": {
+    "id": "file/AdditionalInformation/SourceDocumentInformation",
+    "originName": "Kellerman PlantEngineer",
+    "originId": "PE-2025-1142",
+    "originVendor": "Kellerman Automation GmbH",
+    "originVendorUrl": "https://kellerman-automation.example",
+    "originVersion": "5.8.2",
+    "originRelease": "5",
+    "lastWritingDateTime": "2025-06-27T14:32:10+02:00",
+    "originProjectTitle": "Assembly cell AC-1",
+    "originProjectId": "AC1"
+   }
+  },
+  "revision": {
+   "node": "Revision",
+   "properties": {
+    "id": "file/Revision",
+    "revisionDate": "2025-06-27T14:32:10+02:00",
+    "authorName": "L. Weber",
+    "oldVersion": "1.0",
+    "newVersion": "1.1",
+    "comment": "Added the part conveyor."
+   }
+  },
+  "extRef0": {
+   "node": "ExternalReference",
+   "properties": {
+    "id": "file/ExternalReference/AutomationMLBaseRoleClassLib",
+    "path": "AutomationMLBaseRoleClassLib.aml",
+    "alias": "AutomationMLBaseRoleClassLib"
+   }
+  },
+  "extRef1": {
+   "node": "ExternalReference",
+   "properties": {
+    "id": "file/ExternalReference/AutomationMLInterfaceClassLib",
+    "path": "AutomationMLInterfaceClassLib.aml",
+    "alias": "AutomationMLInterfaceClassLib"
+   }
+  },
+  "roleLib": {
+   "node": "RoleClassLib",
+   "properties": {
+    "id": "CellRoles",
+    "name": "CellRoles",
+    "description": "The role classes Kellerman Automation defines for its assembly cells."
+   }
+  },
+  "gripperRole": {
+   "node": "RoleClass",
+   "properties": {
+    "id": "CellRoles/GripperTool",
+    "name": "GripperTool",
+    "refBaseClassPath": "AutomationMLDMIRoleClassLib/DiscManufacturingEquipment/Tool"
+   }
+  },
+  "ifcLib": {
+   "node": "InterfaceClassLib",
+   "properties": {
+    "id": "CellICL",
+    "name": "CellICL",
+    "description": "The interface classes Kellerman Automation defines for its assembly cells."
+   }
+  },
+  "vacuumIfc": {
+   "node": "InterfaceClass",
+   "properties": {
+    "id": "CellICL/VacuumInterface",
+    "name": "VacuumInterface"
+   }
+  },
+  "suLib": {
+   "node": "SystemUnitClassLib",
+   "properties": {
+    "id": "CellSUCL",
+    "name": "CellSUCL",
+    "description": "The system unit classes Kellerman Automation reuses across its assembly cells."
+   }
+  },
+  "robotSU": {
+   "node": "SystemUnitClass",
+   "properties": {
+    "id": "CellSUCL/WeldingRobot",
+    "name": "WeldingRobot",
+    "description": "A six-axis welding robot with a tool flange and a fieldbus interface."
+   }
+  },
+  "robotSUCycleTime": {
+   "node": "Attribute",
+   "properties": {
+    "id": "CellSUCL/WeldingRobot/att:CycleTime",
+    "name": "CycleTime",
+    "defaultValue": "6.5",
+    "unit": "s",
+    "attributeDataType": "xs:double"
+   }
+  },
+  "robotSUSem": {
+   "node": "RefSemantic",
+   "properties": {
+    "id": "CellSUCL/WeldingRobot/att:CycleTime/RefSemantic",
+    "correspondingAttributePath": "https://kellerman-automation.example/semantics/CycleTime"
+   }
+  },
+  "robotSUPort": {
+   "node": "Port",
+   "properties": {
+    "id": "CellSUCL/WeldingRobot/if:ToolFlange",
+    "name": "ToolFlange"
+   }
+  },
+  "srcRobot": {
+   "node": "SupportedRoleClass",
+   "properties": {
+    "id": "CellSUCL/WeldingRobot/SupportedRoleClass",
+    "refRoleClassPath": "AutomationMLDMIRoleClassLib/DiscManufacturingEquipment/Robot"
+   }
+  },
+  "gripperSU": {
+   "node": "SystemUnitClass",
+   "properties": {
+    "id": "CellSUCL/Gripper",
+    "name": "Gripper",
+    "description": "A vacuum gripper for flat parts."
+   }
+  },
+  "srcGripper": {
+   "node": "SupportedRoleClass",
+   "properties": {
+    "id": "CellSUCL/Gripper/SupportedRoleClass",
+    "refRoleClassPath": "CellRoles/GripperTool"
+   }
+  },
+  "mapping": {
+   "node": "MappingObject",
+   "properties": {
+    "id": "CellSUCL/Gripper/SupportedRoleClass/MappingObject"
+   }
+  },
+  "nameMap": {
+   "node": "AttributeNameMapping",
+   "properties": {
+    "id": "CellSUCL/Gripper/SupportedRoleClass/MappingObject/AttributeNameMapping:GrippingForce",
+    "systemUnitAttributeName": "GrippingForce",
+    "roleAttributeName": "ToolForce"
+   }
+  },
+  "ih": {
+   "node": "InstanceHierarchy",
+   "properties": {
+    "id": "AC-1",
+    "name": "AssemblyCellAC1"
+   }
+  },
+  "cell": {
+   "node": "WorkCell",
+   "properties": {
+    "id": "e1b2c3d4-0001-4a5b-8c6d-7e8f9a0b1c2d",
+    "name": "AC-1",
+    "description": "Assembly cell AC-1: a welding robot, a part conveyor and its controller."
+   }
+  },
+  "cellDocLang": {
+   "node": "DocLang",
+   "properties": {
+    "id": "e1b2c3d4-0001-4a5b-8c6d-7e8f9a0b1c2d/att:DocumentLanguage",
+    "name": "DocumentLanguage",
+    "value": "en"
+   }
+  },
+  "cellPort": {
+   "node": "Port",
+   "properties": {
+    "id": "e1b2c3d4-0001-4a5b-8c6d-7e8f9a0b1c2d:CellInlet",
+    "name": "CellInlet"
+   }
+  },
+  "cellPortDir": {
+   "node": "Direction",
+   "properties": {
+    "id": "e1b2c3d4-0001-4a5b-8c6d-7e8f9a0b1c2d:CellInlet/att:Direction",
+    "name": "Direction",
+    "value": "In"
+   }
+  },
+  "robot": {
+   "node": "Robot",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d",
+    "name": "WeldingRobot1",
+    "refBaseSystemUnitPath": "CellSUCL/WeldingRobot",
+    "description": "The welding robot of the cell, carrying a vacuum gripper on its tool flange."
+   }
+  },
+  "rrRobot": {
+   "node": "RoleRequirements",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+    "refBaseRoleClassPath": "AutomationMLDMIRoleClassLib/DiscManufacturingEquipment/Robot"
+   }
+  },
+  "robotCycleTime": {
+   "node": "Attribute",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d/att:CycleTime",
+    "name": "CycleTime",
+    "value": "6.5",
+    "unit": "s",
+    "attributeDataType": "xs:double"
+   }
+  },
+  "robotSem": {
+   "node": "RefSemantic",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d/att:CycleTime/RefSemantic",
+    "correspondingAttributePath": "https://kellerman-automation.example/semantics/CycleTime"
+   }
+  },
+  "nominalCycle": {
+   "node": "Constraint",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d/att:CycleTime/Constraint:NominalCycleTime",
+    "name": "NominalCycleTime",
+    "nominalRequiredValue": [
+     "6.5"
+    ]
+   }
+  },
+  "robotCycleTolerance": {
+   "node": "Attribute",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d/att:CycleTime/att:Tolerance",
+    "name": "Tolerance",
+    "value": "0.3",
+    "unit": "s",
+    "attributeDataType": "xs:double"
+   }
+  },
+  "soiRobot": {
+   "node": "SourceObjectInformation",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d/SourceObjectInformation",
+    "originId": "WE-P-77120",
+    "value": "P-77120",
+    "sourceObjId": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d"
+   }
+  },
+  "geometry": {
+   "node": "COLLADAInterface",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:RobotGeometry",
+    "name": "RobotGeometry",
+    "refBaseClassPath": "AutomationMLInterfaceClassLib/AutomationMLBaseInterface/ExternalDataConnector/COLLADAInterface"
+   }
+  },
+  "geomMime": {
+   "node": "MIMEType",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:RobotGeometry/att:MIMEType",
+    "name": "MIMEType",
+    "value": "model/vnd.collada+xml"
+   }
+  },
+  "geomUri": {
+   "node": "refURI",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:RobotGeometry/att:refURI",
+    "name": "refURI",
+    "value": "/geometry/welding-robot.dae"
+   }
+  },
+  "flange": {
+   "node": "Port",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:ToolFlange",
+    "name": "ToolFlange"
+   }
+  },
+  "flangeDir": {
+   "node": "Direction",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:ToolFlange/att:Direction",
+    "name": "Direction",
+    "value": "Out"
+   }
+  },
+  "robotFieldbus": {
+   "node": "SignalInterface",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:FieldbusIn",
+    "name": "FieldbusIn"
+   }
+  },
+  "robotFieldbusDir": {
+   "node": "Direction",
+   "properties": {
+    "id": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:FieldbusIn/att:Direction",
+    "name": "Direction",
+    "value": "In"
+   }
+  },
+  "gripper": {
+   "node": "MovableTool",
+   "properties": {
+    "id": "e1b2c3d4-0003-4a5b-8c6d-7e8f9a0b1c2d",
+    "name": "VacuumGripper1",
+    "description": "The vacuum gripper mounted on the robot's tool flange."
+   }
+  },
+  "rrGripper": {
+   "node": "RoleRequirements",
+   "properties": {
+    "id": "e1b2c3d4-0003-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+    "refBaseRoleClassPath": "CellRoles/GripperTool"
+   }
+  },
+  "gripperForce": {
+   "node": "Attribute",
+   "properties": {
+    "id": "e1b2c3d4-0003-4a5b-8c6d-7e8f9a0b1c2d/att:GrippingForce",
+    "name": "GrippingForce",
+    "value": "120",
+    "unit": "N",
+    "attributeDataType": "xs:double"
+   }
+  },
+  "vacuum": {
+   "node": "ExternalInterface",
+   "properties": {
+    "id": "e1b2c3d4-0003-4a5b-8c6d-7e8f9a0b1c2d:VacuumPort",
+    "name": "VacuumPort",
+    "refBaseClassPath": "CellICL/VacuumInterface"
+   }
+  },
+  "conveyor": {
+   "node": "BeltConveyor",
+   "properties": {
+    "id": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d",
+    "name": "PartConveyor1",
+    "description": "The belt conveyor that carries parts into and out of the cell."
+   }
+  },
+  "rrConveyor": {
+   "node": "RoleRequirements",
+   "properties": {
+    "id": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+    "refBaseRoleClassPath": "AutomationMLDMIRoleClassLib/DiscManufacturingEquipment/Transport/Conveyor/BeltConveyor"
+   }
+  },
+  "conveyorSpeed": {
+   "node": "Attribute",
+   "properties": {
+    "id": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d/att:Speed",
+    "name": "Speed",
+    "value": "0.15",
+    "unit": "m/s",
+    "attributeDataType": "xs:double"
+   }
+  },
+  "PartInlet": {
+   "node": "Port",
+   "properties": {
+    "id": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d:PartInlet",
+    "name": "PartInlet"
+   }
+  },
+  "PartInletDir": {
+   "node": "Direction",
+   "properties": {
+    "id": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d:PartInlet/att:Direction",
+    "name": "Direction",
+    "value": "In"
+   }
+  },
+  "PartOutlet": {
+   "node": "Port",
+   "properties": {
+    "id": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d:PartOutlet",
+    "name": "PartOutlet"
+   }
+  },
+  "PartOutletDir": {
+   "node": "Direction",
+   "properties": {
+    "id": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d:PartOutlet/att:Direction",
+    "name": "Direction",
+    "value": "Out"
+   }
+  },
+  "plc": {
+   "node": "PLC",
+   "properties": {
+    "id": "e1b2c3d4-0005-4a5b-8c6d-7e8f9a0b1c2d",
+    "name": "CellController",
+    "description": "The controller of the cell."
+   }
+  },
+  "rrPlc": {
+   "node": "RoleRequirements",
+   "properties": {
+    "id": "e1b2c3d4-0005-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+    "refBaseRoleClassPath": "AutomationMLCSRoleClassLib/ControlEquipment/Controller/PLC"
+   }
+  },
+  "plcIp": {
+   "node": "Attribute",
+   "properties": {
+    "id": "e1b2c3d4-0005-4a5b-8c6d-7e8f9a0b1c2d/att:IPAddress",
+    "name": "IPAddress",
+    "value": "192.0.2.10",
+    "attributeDataType": "xs:string"
+   }
+  },
+  "plcFirmware": {
+   "node": "Attribute",
+   "properties": {
+    "id": "e1b2c3d4-0005-4a5b-8c6d-7e8f9a0b1c2d/att:FirmwareVersion",
+    "name": "FirmwareVersion",
+    "value": "4.2.1"
+   }
+  },
+  "fieldbusOut": {
+   "node": "SignalInterface",
+   "properties": {
+    "id": "e1b2c3d4-0005-4a5b-8c6d-7e8f9a0b1c2d:FieldbusOut",
+    "name": "FieldbusOut"
+   }
+  },
+  "fieldbusOutDir": {
+   "node": "Direction",
+   "properties": {
+    "id": "e1b2c3d4-0005-4a5b-8c6d-7e8f9a0b1c2d:FieldbusOut/att:Direction",
+    "name": "Direction",
+    "value": "Out"
+   }
+  },
+  "ToConveyor": {
+   "node": "InternalLink",
+   "properties": {
+    "id": "AC-1/link:ToConveyor",
+    "name": "ToConveyor",
+    "refPartnerSideA": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:ToolFlange",
+    "refPartnerSideB": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d:PartOutlet"
+   }
+  },
+  "FromConveyor": {
+   "node": "InternalLink",
+   "properties": {
+    "id": "AC-1/link:FromConveyor",
+    "name": "FromConveyor",
+    "refPartnerSideA": "e1b2c3d4-0004-4a5b-8c6d-7e8f9a0b1c2d:PartInlet",
+    "refPartnerSideB": "e1b2c3d4-0001-4a5b-8c6d-7e8f9a0b1c2d:CellInlet"
+   }
+  },
+  "Fieldbus": {
+   "node": "InternalLink",
+   "properties": {
+    "id": "AC-1/link:Fieldbus",
+    "name": "Fieldbus",
+    "refPartnerSideA": "e1b2c3d4-0005-4a5b-8c6d-7e8f9a0b1c2d:FieldbusOut",
+    "refPartnerSideB": "e1b2c3d4-0002-4a5b-8c6d-7e8f9a0b1c2d:FieldbusIn"
+   }
+  }
+ },
+ "relationships": [
+  [
+   "file",
+   "HAS_SOURCE_DOCUMENT_INFORMATION",
+   "sourceDoc"
+  ],
+  [
+   "file",
+   "HAS_REVISION",
+   "revision"
+  ],
+  [
+   "file",
+   "HAS_EXTERNAL_REFERENCE",
+   "extRef0"
+  ],
+  [
+   "file",
+   "HAS_EXTERNAL_REFERENCE",
+   "extRef1"
+  ],
+  [
+   "roleLib",
+   "HAS_ROLE_CLASS",
+   "gripperRole"
+  ],
+  [
+   "ifcLib",
+   "HAS_INTERFACE_CLASS",
+   "vacuumIfc"
+  ],
+  [
+   "file",
+   "HAS_ROLE_CLASS_LIB",
+   "roleLib"
+  ],
+  [
+   "file",
+   "HAS_INTERFACE_CLASS_LIB",
+   "ifcLib"
+  ],
+  [
+   "file",
+   "HAS_SYSTEM_UNIT_CLASS_LIB",
+   "suLib"
+  ],
+  [
+   "robotSU",
+   "HAS_ATTRIBUTE",
+   "robotSUCycleTime"
+  ],
+  [
+   "robotSUCycleTime",
+   "HAS_REF_SEMANTIC",
+   "robotSUSem"
+  ],
+  [
+   "robotSU",
+   "HAS_EXTERNAL_INTERFACE",
+   "robotSUPort"
+  ],
+  [
+   "robotSU",
+   "HAS_SUPPORTED_ROLE_CLASS",
+   "srcRobot"
+  ],
+  [
+   "gripperSU",
+   "HAS_SUPPORTED_ROLE_CLASS",
+   "srcGripper"
+  ],
+  [
+   "srcGripper",
+   "ROLE_CLASS",
+   "gripperRole"
+  ],
+  [
+   "srcGripper",
+   "HAS_MAPPING_OBJECT",
+   "mapping"
+  ],
+  [
+   "mapping",
+   "HAS_ATTRIBUTE_NAME_MAPPING",
+   "nameMap"
+  ],
+  [
+   "suLib",
+   "HAS_SYSTEM_UNIT_CLASS",
+   "robotSU"
+  ],
+  [
+   "suLib",
+   "HAS_SYSTEM_UNIT_CLASS",
+   "gripperSU"
+  ],
+  [
+   "file",
+   "HAS_INSTANCE_HIERARCHY",
+   "ih"
+  ],
+  [
+   "ih",
+   "HAS_INTERNAL_ELEMENT",
+   "cell"
+  ],
+  [
+   "cell",
+   "HAS_ATTRIBUTE",
+   "cellDocLang"
+  ],
+  [
+   "cell",
+   "HAS_EXTERNAL_INTERFACE",
+   "cellPort"
+  ],
+  [
+   "cellPort",
+   "HAS_ATTRIBUTE",
+   "cellPortDir"
+  ],
+  [
+   "cell",
+   "HAS_INTERNAL_ELEMENT",
+   "robot"
+  ],
+  [
+   "robot",
+   "BASE_SYSTEM_UNIT",
+   "robotSU"
+  ],
+  [
+   "robot",
+   "HAS_ROLE_REQUIREMENTS",
+   "rrRobot"
+  ],
+  [
+   "robot",
+   "HAS_ATTRIBUTE",
+   "robotCycleTime"
+  ],
+  [
+   "robotCycleTime",
+   "HAS_REF_SEMANTIC",
+   "robotSem"
+  ],
+  [
+   "robotCycleTime",
+   "HAS_CONSTRAINT",
+   "nominalCycle"
+  ],
+  [
+   "robotCycleTime",
+   "HAS_ATTRIBUTE",
+   "robotCycleTolerance"
+  ],
+  [
+   "robot",
+   "HAS_SOURCE_OBJECT_INFORMATION",
+   "soiRobot"
+  ],
+  [
+   "robot",
+   "HAS_EXTERNAL_INTERFACE",
+   "geometry"
+  ],
+  [
+   "geometry",
+   "HAS_ATTRIBUTE",
+   "geomMime"
+  ],
+  [
+   "geometry",
+   "HAS_ATTRIBUTE",
+   "geomUri"
+  ],
+  [
+   "robot",
+   "HAS_EXTERNAL_INTERFACE",
+   "flange"
+  ],
+  [
+   "flange",
+   "HAS_ATTRIBUTE",
+   "flangeDir"
+  ],
+  [
+   "robot",
+   "HAS_EXTERNAL_INTERFACE",
+   "robotFieldbus"
+  ],
+  [
+   "robotFieldbus",
+   "HAS_ATTRIBUTE",
+   "robotFieldbusDir"
+  ],
+  [
+   "robot",
+   "HAS_INTERNAL_ELEMENT",
+   "gripper"
+  ],
+  [
+   "gripper",
+   "HAS_ROLE_REQUIREMENTS",
+   "rrGripper"
+  ],
+  [
+   "rrGripper",
+   "BASE_ROLE_CLASS",
+   "gripperRole"
+  ],
+  [
+   "gripper",
+   "HAS_ATTRIBUTE",
+   "gripperForce"
+  ],
+  [
+   "gripper",
+   "HAS_EXTERNAL_INTERFACE",
+   "vacuum"
+  ],
+  [
+   "vacuum",
+   "BASE_CLASS",
+   "vacuumIfc"
+  ],
+  [
+   "cell",
+   "HAS_INTERNAL_ELEMENT",
+   "conveyor"
+  ],
+  [
+   "conveyor",
+   "HAS_ROLE_REQUIREMENTS",
+   "rrConveyor"
+  ],
+  [
+   "conveyor",
+   "HAS_ATTRIBUTE",
+   "conveyorSpeed"
+  ],
+  [
+   "conveyor",
+   "HAS_EXTERNAL_INTERFACE",
+   "PartInlet"
+  ],
+  [
+   "PartInlet",
+   "HAS_ATTRIBUTE",
+   "PartInletDir"
+  ],
+  [
+   "conveyor",
+   "HAS_EXTERNAL_INTERFACE",
+   "PartOutlet"
+  ],
+  [
+   "PartOutlet",
+   "HAS_ATTRIBUTE",
+   "PartOutletDir"
+  ],
+  [
+   "cell",
+   "HAS_INTERNAL_ELEMENT",
+   "plc"
+  ],
+  [
+   "plc",
+   "HAS_ROLE_REQUIREMENTS",
+   "rrPlc"
+  ],
+  [
+   "plc",
+   "HAS_ATTRIBUTE",
+   "plcIp"
+  ],
+  [
+   "plc",
+   "HAS_ATTRIBUTE",
+   "plcFirmware"
+  ],
+  [
+   "plc",
+   "HAS_EXTERNAL_INTERFACE",
+   "fieldbusOut"
+  ],
+  [
+   "fieldbusOut",
+   "HAS_ATTRIBUTE",
+   "fieldbusOutDir"
+  ],
+  [
+   "cell",
+   "HAS_INTERNAL_LINK",
+   "ToConveyor"
+  ],
+  [
+   "ToConveyor",
+   "PARTNER_SIDE_A",
+   "flange"
+  ],
+  [
+   "ToConveyor",
+   "PARTNER_SIDE_B",
+   "PartOutlet"
+  ],
+  [
+   "cell",
+   "HAS_INTERNAL_LINK",
+   "FromConveyor"
+  ],
+  [
+   "FromConveyor",
+   "PARTNER_SIDE_A",
+   "PartInlet"
+  ],
+  [
+   "FromConveyor",
+   "PARTNER_SIDE_B",
+   "cellPort"
+  ],
+  [
+   "cell",
+   "HAS_INTERNAL_LINK",
+   "Fieldbus"
+  ],
+  [
+   "Fieldbus",
+   "PARTNER_SIDE_A",
+   "fieldbusOut"
+  ],
+  [
+   "Fieldbus",
+   "PARTNER_SIDE_B",
+   "robotFieldbus"
+  ]
+ ]
+}

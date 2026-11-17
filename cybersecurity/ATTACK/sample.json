@@ -1,0 +1,1639 @@
+{
+  "scenario": "APT29 and the SolarWinds Compromise (C0024) attributed to it, as ATT&CK Enterprise 20.1 records them: the SUNSPOT, SUNBURST, TEARDROP and Raindrop malware and the AdFind and Mimikatz tools, the techniques they use, from Compromise Software Supply Chain to forged SAML tokens and DCSync, with their parent techniques and tactics. Mitigations of those techniques, and the detection strategies for four of them with their Windows analytics and the data components they read, complete the picture. Every object, identifier and link is taken from the ATT&CK 20.1 Enterprise bundle.",
+  "nodes": {
+    "G0016": {
+      "node": "Group",
+      "properties": {
+        "stixId": "intrusion-set--899ce53f-13a0-479b-a0e4-67d46e241542",
+        "name": "APT29",
+        "description": "APT29 is threat group that has been attributed to Russia's Foreign Intelligence Service (SVR).",
+        "url": "https://attack.mitre.org/groups/G0016",
+        "created": "2017-05-31T21:31:52.748Z",
+        "modified": "2026-07-31T18:48:06.517Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "6.2",
+        "attackId": "G0016",
+        "aliases": [
+          "APT29",
+          "IRON RITUAL",
+          "IRON HEMLOCK",
+          "NobleBaron",
+          "Dark Halo",
+          "NOBELIUM",
+          "UNC2452",
+          "YTTRIUM",
+          "The Dukes",
+          "Cozy Bear",
+          "CozyDuke",
+          "SolarStorm",
+          "Blue Kitsune",
+          "UNC3524",
+          "Midnight Blizzard"
+        ]
+      }
+    },
+    "C0024": {
+      "node": "Campaign",
+      "properties": {
+        "stixId": "campaign--808d6b30-df4e-4341-8248-724da4bac650",
+        "name": "SolarWinds Compromise",
+        "description": "The SolarWinds Compromise was a sophisticated supply chain cyber operation conducted by APT29 that was discovered in mid-December 2020.",
+        "url": "https://attack.mitre.org/campaigns/C0024",
+        "created": "2023-03-24T14:59:26.744Z",
+        "modified": "2026-07-31T18:47:25.784Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.1",
+        "attackId": "C0024",
+        "aliases": [
+          "SolarWinds Compromise"
+        ],
+        "firstSeen": "2019-08-01T05:00:00.000Z",
+        "lastSeen": "2021-01-01T06:00:00.000Z"
+      }
+    },
+    "S0559": {
+      "node": "Malware",
+      "properties": {
+        "stixId": "malware--a8839c95-029f-44cf-8f3d-a3cf2039e927",
+        "name": "SUNBURST",
+        "description": "SUNBURST is a trojanized DLL designed to fit within the SolarWinds Orion software update framework.",
+        "url": "https://attack.mitre.org/software/S0559",
+        "created": "2021-01-05T22:42:05.965Z",
+        "modified": "2023-12-26T19:44:49.643Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.5",
+        "attackId": "S0559",
+        "aliases": [
+          "SUNBURST",
+          "Solorigate"
+        ],
+        "platforms": [
+          "Windows"
+        ],
+        "isFamily": true
+      }
+    },
+    "S0560": {
+      "node": "Malware",
+      "properties": {
+        "stixId": "malware--32f49626-87f4-4d6c-8f59-a0dca953fe26",
+        "name": "TEARDROP",
+        "description": "TEARDROP is a memory-only dropper that was discovered on some victim machines during investigations related to the SolarWinds Compromise.",
+        "url": "https://attack.mitre.org/software/S0560",
+        "created": "2021-01-06T17:34:43.835Z",
+        "modified": "2025-04-16T20:38:01.954Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.2",
+        "attackId": "S0560",
+        "aliases": [
+          "TEARDROP"
+        ],
+        "platforms": [
+          "Windows"
+        ],
+        "isFamily": true
+      }
+    },
+    "S0562": {
+      "node": "Malware",
+      "properties": {
+        "stixId": "malware--bf48e7f8-752c-4ce8-bf8f-748edacd8fa6",
+        "name": "SUNSPOT",
+        "description": "SUNSPOT is an implant that injected the SUNBURST backdoor into the SolarWinds Orion software update framework.",
+        "url": "https://attack.mitre.org/software/S0562",
+        "created": "2021-01-12T16:14:28.845Z",
+        "modified": "2025-04-16T20:38:33.634Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.2",
+        "attackId": "S0562",
+        "aliases": [
+          "SUNSPOT"
+        ],
+        "platforms": [
+          "Windows"
+        ],
+        "isFamily": true
+      }
+    },
+    "S0565": {
+      "node": "Malware",
+      "properties": {
+        "stixId": "malware--4efc3e00-72f2-466a-ab7c-8a7dc6603b19",
+        "name": "Raindrop",
+        "description": "Raindrop is a loader used by APT29 that was discovered on some victim machines during investigations related to the SolarWinds Compromise.",
+        "url": "https://attack.mitre.org/software/S0565",
+        "created": "2021-01-19T19:43:27.828Z",
+        "modified": "2024-04-11T00:23:21.599Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.3",
+        "attackId": "S0565",
+        "aliases": [
+          "Raindrop"
+        ],
+        "platforms": [
+          "Windows"
+        ],
+        "isFamily": true
+      }
+    },
+    "S0002": {
+      "node": "Tool",
+      "properties": {
+        "stixId": "tool--afc079f3-c0ea-4096-b75d-3f05338b7f60",
+        "name": "Mimikatz",
+        "description": "Mimikatz is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks.",
+        "url": "https://attack.mitre.org/software/S0002",
+        "created": "2017-05-31T21:32:11.544Z",
+        "modified": "2026-05-12T15:12:00.740Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.11",
+        "attackId": "S0002",
+        "aliases": [
+          "Mimikatz"
+        ],
+        "platforms": [
+          "Windows"
+        ]
+      }
+    },
+    "S0552": {
+      "node": "Tool",
+      "properties": {
+        "stixId": "tool--f59508a6-3615-47c3-b493-6676e1a39a87",
+        "name": "AdFind",
+        "description": "AdFind is a free command-line query tool that can be used for gathering information from Active Directory.",
+        "url": "https://attack.mitre.org/software/S0552",
+        "created": "2020-12-28T18:35:50.244Z",
+        "modified": "2024-09-25T15:21:53.462Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.5",
+        "attackId": "S0552",
+        "aliases": [
+          "AdFind"
+        ],
+        "platforms": [
+          "Windows"
+        ]
+      }
+    },
+    "TA0001": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--ffd5bcee-6e16-4dd2-8eca-7b3beedf33ca",
+        "name": "Initial Access",
+        "description": "The adversary is trying to get into your network.",
+        "url": "https://attack.mitre.org/tactics/TA0001",
+        "created": "2018-10-17T00:14:20.652Z",
+        "modified": "2025-04-25T14:45:36.917Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0001",
+        "shortname": "initial-access"
+      }
+    },
+    "TA0003": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92",
+        "name": "Persistence",
+        "description": "The adversary is trying to maintain their foothold.",
+        "url": "https://attack.mitre.org/tactics/TA0003",
+        "created": "2018-10-17T00:14:20.652Z",
+        "modified": "2025-04-25T14:45:33.492Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0003",
+        "shortname": "persistence"
+      }
+    },
+    "TA0004": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--5e29b093-294e-49e9-a803-dab3d73b77dd",
+        "name": "Privilege Escalation",
+        "description": "The adversary is trying to gain higher-level permissions.",
+        "url": "https://attack.mitre.org/tactics/TA0004",
+        "created": "2018-10-17T00:14:20.652Z",
+        "modified": "2025-04-25T14:45:33.853Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0004",
+        "shortname": "privilege-escalation"
+      }
+    },
+    "TA0005": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--78b23412-0651-46d7-a540-170a1ce8bd5a",
+        "name": "Stealth",
+        "description": "The adversary is trying to hide and conceal their actions, appearing as normal behavior.",
+        "url": "https://attack.mitre.org/tactics/TA0005",
+        "created": "2018-10-17T00:14:20.652Z",
+        "modified": "2026-05-12T15:12:00.780Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0005",
+        "shortname": "stealth"
+      }
+    },
+    "TA0006": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263",
+        "name": "Credential Access",
+        "description": "The adversary is trying to steal account names and passwords.",
+        "url": "https://attack.mitre.org/tactics/TA0006",
+        "created": "2018-10-17T00:14:20.652Z",
+        "modified": "2025-04-25T14:45:32.408Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0006",
+        "shortname": "credential-access"
+      }
+    },
+    "TA0007": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--c17c5845-175e-4421-9713-829d0573dbc9",
+        "name": "Discovery",
+        "description": "The adversary is trying to figure out your environment.",
+        "url": "https://attack.mitre.org/tactics/TA0007",
+        "created": "2018-10-17T00:14:20.652Z",
+        "modified": "2025-04-25T14:45:35.302Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0007",
+        "shortname": "discovery"
+      }
+    },
+    "TA0011": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--f72804c5-f15a-449e-a5da-2eecd181f813",
+        "name": "Command and Control",
+        "description": "The adversary is trying to communicate with compromised systems to control them.",
+        "url": "https://attack.mitre.org/tactics/TA0011",
+        "created": "2018-10-17T00:14:20.652Z",
+        "modified": "2025-04-25T14:45:36.561Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0011",
+        "shortname": "command-and-control"
+      }
+    },
+    "TA0112": {
+      "node": "Tactic",
+      "properties": {
+        "stixId": "x-mitre-tactic--43c49635-f2fa-44f2-92b9-0ee980bbf4ef",
+        "name": "Defense Impairment",
+        "description": "The adversary is trying to break security mechanisms, pipelines, and tooling so defenders can’t see or trust what’s happening.",
+        "url": "https://attack.mitre.org/tactics/TA0112",
+        "created": "2026-04-14T22:53:16.228Z",
+        "modified": "2026-05-12T15:12:00.780Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "TA0112",
+        "shortname": "defense-impairment"
+      }
+    },
+    "T1003": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--0a3ead4e-6d47-4ccb-854c-a6a4f9d96b22",
+        "name": "OS Credential Dumping",
+        "description": "Adversaries may attempt to dump credentials to obtain account login and credential material, normally in the form of a hash or a clear text password.",
+        "url": "https://attack.mitre.org/techniques/T1003",
+        "created": "2017-05-31T21:30:19.735Z",
+        "modified": "2026-06-13T16:25:46.025Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.2",
+        "attackId": "T1003",
+        "platforms": [
+          "Linux",
+          "macOS",
+          "Windows"
+        ],
+        "isSubtechnique": false
+      }
+    },
+    "T1003.006": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--f303a39a-6255-4b89-aecc-18c4d8ca7163",
+        "name": "DCSync",
+        "description": "Adversaries may attempt to access credentials and other sensitive information by abusing a Windows Domain Controller's application programming interface (API) to simulate the replication process from a remote domain controller using a technique called DCSync.",
+        "url": "https://attack.mitre.org/techniques/T1003/006",
+        "created": "2020-02-11T18:45:34.293Z",
+        "modified": "2026-11-04T00:13:20.464Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.1",
+        "attackId": "T1003.006",
+        "platforms": [
+          "Windows"
+        ],
+        "isSubtechnique": true
+      }
+    },
+    "T1071": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--355be19c-ffc9-46d5-8d50-d6a036c675b6",
+        "name": "Application Layer Protocol",
+        "description": "Adversaries may communicate using OSI application layer protocols to avoid detection/network filtering by blending in with existing traffic.",
+        "url": "https://attack.mitre.org/techniques/T1071",
+        "created": "2017-05-31T21:30:56.776Z",
+        "modified": "2026-09-03T19:46:45.255Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.4",
+        "attackId": "T1071",
+        "platforms": [
+          "Linux",
+          "macOS",
+          "Windows",
+          "Network Devices",
+          "ESXi"
+        ],
+        "isSubtechnique": false
+      }
+    },
+    "T1071.001": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161",
+        "name": "Web Protocols",
+        "description": "Adversaries may communicate using application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic.",
+        "url": "https://attack.mitre.org/techniques/T1071/001",
+        "created": "2020-03-15T16:13:46.151Z",
+        "modified": "2026-09-11T19:29:05.359Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.5",
+        "attackId": "T1071.001",
+        "platforms": [
+          "ESXi",
+          "Linux",
+          "macOS",
+          "Network Devices",
+          "Windows"
+        ],
+        "isSubtechnique": true
+      }
+    },
+    "T1078": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--b17a1a56-e99c-403c-8948-561df0cffe81",
+        "name": "Valid Accounts",
+        "description": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion.",
+        "url": "https://attack.mitre.org/techniques/T1078",
+        "created": "2017-05-31T21:31:00.645Z",
+        "modified": "2026-05-12T15:12:00.707Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "3.0",
+        "attackId": "T1078",
+        "platforms": [
+          "Containers",
+          "ESXi",
+          "IaaS",
+          "Identity Provider",
+          "Linux",
+          "macOS",
+          "Network Devices",
+          "Office Suite",
+          "SaaS",
+          "Windows"
+        ],
+        "isSubtechnique": false
+      }
+    },
+    "T1078.004": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--f232fa7a-025c-4d43-abc7-318e81a73d65",
+        "name": "Cloud Accounts",
+        "description": "Valid accounts in cloud environments may allow adversaries to perform actions to achieve Initial Access, Persistence, Privilege Escalation, or Defense Evasion.",
+        "url": "https://attack.mitre.org/techniques/T1078/004",
+        "created": "2020-03-13T20:36:57.378Z",
+        "modified": "2026-05-12T15:12:00.723Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.0",
+        "attackId": "T1078.004",
+        "platforms": [
+          "IaaS",
+          "Identity Provider",
+          "Office Suite",
+          "SaaS"
+        ],
+        "isSubtechnique": true
+      }
+    },
+    "T1087": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--72b74d71-8169-42aa-92e0-e7b04b9f5a08",
+        "name": "Account Discovery",
+        "description": "Adversaries may attempt to get a listing of valid accounts, usernames, or email addresses on a system or within a compromised environment.",
+        "url": "https://attack.mitre.org/techniques/T1087",
+        "created": "2017-05-31T21:31:06.988Z",
+        "modified": "2026-05-12T15:12:00.641Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.6",
+        "attackId": "T1087",
+        "platforms": [
+          "ESXi",
+          "IaaS",
+          "Identity Provider",
+          "Linux",
+          "macOS",
+          "Office Suite",
+          "SaaS",
+          "Windows"
+        ],
+        "isSubtechnique": false
+      }
+    },
+    "T1087.002": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--21875073-b0ee-49e3-9077-1e2a885359af",
+        "name": "Domain Account",
+        "description": "Adversaries may attempt to get a listing of domain accounts.",
+        "url": "https://attack.mitre.org/techniques/T1087/002",
+        "created": "2020-02-21T21:08:26.480Z",
+        "modified": "2026-05-12T15:12:00.622Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.2",
+        "attackId": "T1087.002",
+        "platforms": [
+          "Linux",
+          "macOS",
+          "Windows"
+        ],
+        "isSubtechnique": true
+      }
+    },
+    "T1195": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--3f18edba-28f4-4bb9-82c3-8aa60dcac5f7",
+        "name": "Supply Chain Compromise",
+        "description": "Adversaries may manipulate products or product delivery mechanisms prior to receipt by a final consumer for the purpose of data or system compromise.",
+        "url": "https://attack.mitre.org/techniques/T1195",
+        "created": "2018-04-18T17:59:24.739Z",
+        "modified": "2025-10-24T17:48:41.675Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.7",
+        "attackId": "T1195",
+        "platforms": [
+          "Linux",
+          "Windows",
+          "macOS",
+          "SaaS"
+        ],
+        "isSubtechnique": false
+      }
+    },
+    "T1195.002": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--bd369cd9-abb8-41ce-b5bb-fff23ee86c00",
+        "name": "Compromise Software Supply Chain",
+        "description": "Adversaries may manipulate application software prior to receipt by a final consumer for the purpose of data or system compromise.",
+        "url": "https://attack.mitre.org/techniques/T1195/002",
+        "created": "2020-03-11T14:17:21.153Z",
+        "modified": "2025-10-24T17:49:18.341Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.1",
+        "attackId": "T1195.002",
+        "platforms": [
+          "Linux",
+          "Windows",
+          "macOS"
+        ],
+        "isSubtechnique": true
+      }
+    },
+    "T1553": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--b83e166d-13d7-4b52-8677-dff90c548fd7",
+        "name": "Subvert Trust Controls",
+        "description": "Adversaries may undermine security controls that will either warn users of untrusted activity or prevent execution of untrusted programs.",
+        "url": "https://attack.mitre.org/techniques/T1553",
+        "created": "2020-02-05T14:54:07.588Z",
+        "modified": "2026-05-12T15:12:00.709Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.0",
+        "attackId": "T1553",
+        "platforms": [
+          "Linux",
+          "macOS",
+          "Windows"
+        ],
+        "isSubtechnique": false
+      }
+    },
+    "T1553.002": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--32901740-b42c-4fdd-bc02-345b5dc57082",
+        "name": "Code Signing",
+        "description": "Adversaries may create, acquire, or steal code signing materials to sign their malware or tools.",
+        "url": "https://attack.mitre.org/techniques/T1553/002",
+        "created": "2020-02-05T16:27:37.784Z",
+        "modified": "2026-11-04T00:55:44.584Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.0",
+        "attackId": "T1553.002",
+        "platforms": [
+          "macOS",
+          "Windows"
+        ],
+        "isSubtechnique": true
+      }
+    },
+    "T1606": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--94cb00a4-b295-4d06-aa2b-5653b9c1be9c",
+        "name": "Forge Web Credentials",
+        "description": "Adversaries may forge credential materials that can be used to gain access to web applications or Internet services.",
+        "url": "https://attack.mitre.org/techniques/T1606",
+        "created": "2020-12-17T02:13:46.247Z",
+        "modified": "2025-10-24T17:49:07.201Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.5",
+        "attackId": "T1606",
+        "platforms": [
+          "SaaS",
+          "Windows",
+          "macOS",
+          "Linux",
+          "IaaS",
+          "Office Suite",
+          "Identity Provider"
+        ],
+        "isSubtechnique": false
+      }
+    },
+    "T1606.002": {
+      "node": "Technique",
+      "properties": {
+        "stixId": "attack-pattern--1f9c2bae-b441-4f66-a8af-b65946ee72f2",
+        "name": "SAML Tokens",
+        "description": "An adversary may forge SAML tokens with any permissions claims and lifetimes if they possess a valid SAML token-signing certificate.",
+        "url": "https://attack.mitre.org/techniques/T1606/002",
+        "created": "2020-12-17T15:24:12.240Z",
+        "modified": "2025-10-24T17:48:30.302Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.4",
+        "attackId": "T1606.002",
+        "platforms": [
+          "SaaS",
+          "Windows",
+          "IaaS",
+          "Office Suite",
+          "Identity Provider"
+        ],
+        "isSubtechnique": true
+      }
+    },
+    "M1015": {
+      "node": "Mitigation",
+      "properties": {
+        "stixId": "course-of-action--e3388c78-2a8d-47c2-8422-c1398b324462",
+        "name": "Active Directory Configuration",
+        "description": "Implement robust Active Directory (AD) configurations using group policies to secure user accounts, control access, and minimize the attack surface.",
+        "url": "https://attack.mitre.org/mitigations/M1015",
+        "created": "2019-06-06T16:39:58.291Z",
+        "modified": "2024-12-10T15:57:59.336Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.2",
+        "attackId": "M1015"
+      }
+    },
+    "M1018": {
+      "node": "Mitigation",
+      "properties": {
+        "stixId": "course-of-action--93e7968a-9074-4eac-8ae9-9f5200ec3317",
+        "name": "User Account Management",
+        "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation.",
+        "url": "https://attack.mitre.org/mitigations/M1018",
+        "created": "2019-06-06T16:50:58.767Z",
+        "modified": "2026-05-12T15:12:00.731Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.2",
+        "attackId": "M1018"
+      }
+    },
+    "M1026": {
+      "node": "Mitigation",
+      "properties": {
+        "stixId": "course-of-action--9bb9e696-bff8-4ae1-9454-961fc7d91d5f",
+        "name": "Privileged Account Management",
+        "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts).",
+        "url": "https://attack.mitre.org/mitigations/M1026",
+        "created": "2019-06-06T21:09:47.115Z",
+        "modified": "2024-12-18T18:44:23.306Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.2",
+        "attackId": "M1026"
+      }
+    },
+    "M1031": {
+      "node": "Mitigation",
+      "properties": {
+        "stixId": "course-of-action--12241367-a8b7-49b4-b86e-2236901ba50c",
+        "name": "Network Intrusion Prevention",
+        "description": "Use intrusion detection signatures to block traffic at network boundaries.",
+        "url": "https://attack.mitre.org/mitigations/M1031",
+        "created": "2019-06-10T20:46:02.263Z",
+        "modified": "2026-09-03T19:46:42.143Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "M1031"
+      }
+    },
+    "M1037": {
+      "node": "Mitigation",
+      "properties": {
+        "stixId": "course-of-action--20f6a9df-37c4-4e20-9e47-025983b1b39d",
+        "name": "Filter Network Traffic",
+        "description": "Employ network appliances and endpoint software to filter ingress, egress, and lateral network traffic.",
+        "url": "https://attack.mitre.org/mitigations/M1037",
+        "created": "2019-06-11T16:33:55.337Z",
+        "modified": "2026-05-12T15:12:00.730Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.2",
+        "attackId": "M1037"
+      }
+    },
+    "M1047": {
+      "node": "Mitigation",
+      "properties": {
+        "stixId": "course-of-action--cc2399fd-3cd3-4319-8d0a-fbd6420cdaf8",
+        "name": "Audit",
+        "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations.",
+        "url": "https://attack.mitre.org/mitigations/M1047",
+        "created": "2019-06-11T17:06:14.029Z",
+        "modified": "2026-05-12T15:12:00.731Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.3",
+        "attackId": "M1047"
+      }
+    },
+    "DET0027": {
+      "node": "DetectionStrategy",
+      "properties": {
+        "stixId": "x-mitre-detection-strategy--e6496b9b-2458-4616-9712-a7c0da7fd3bc",
+        "name": "Detection of Web Protocol-Based C2 Over HTTP, HTTPS, or WebSockets",
+        "description": "",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0027",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2026-05-12T16:34:50.696Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "DET0027"
+      }
+    },
+    "DET0148": {
+      "node": "DetectionStrategy",
+      "properties": {
+        "stixId": "x-mitre-detection-strategy--b6d7d7cb-b56f-4095-b3ac-21147b0123e5",
+        "name": "Detection Strategy for Forged SAML Tokens",
+        "description": "",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0148",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2026-05-12T16:34:50.689Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "DET0148"
+      }
+    },
+    "DET0309": {
+      "node": "DetectionStrategy",
+      "properties": {
+        "stixId": "x-mitre-detection-strategy--77d3b532-9c4f-4f9f-9581-3009b201435d",
+        "name": "Compromised software/update chain (installer/write → first-run/child → egress/signature anomaly)",
+        "description": "",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0309",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2026-05-12T16:34:50.681Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "DET0309"
+      }
+    },
+    "DET0594": {
+      "node": "DetectionStrategy",
+      "properties": {
+        "stixId": "x-mitre-detection-strategy--3796aa06-65fe-4b9d-9d31-e6491b722632",
+        "name": "Detection of Unauthorized DCSync Operations via Replication API Abuse",
+        "description": "",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0594",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2026-05-12T16:34:50.674Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "DET0594"
+      }
+    },
+    "AN0075": {
+      "node": "Analytic",
+      "properties": {
+        "stixId": "x-mitre-analytic--04fe83c3-d8d3-4c96-91a4-9167fa8f405a",
+        "name": "Analytic 0075",
+        "description": "Detects unexpected or high-volume HTTP/S/WebSocket communication from suspicious processes (e.g., PowerShell, rundll32) using uncommon user agents or mimicking browser traffic to unusual domains or IPs.",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0027#AN0075",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2025-11-12T22:03:39.105Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "AN0075",
+        "platforms": [
+          "Windows"
+        ]
+      }
+    },
+    "AN0420": {
+      "node": "Analytic",
+      "properties": {
+        "stixId": "x-mitre-analytic--5d2820b1-af59-4ca2-9f9e-b5bc76f55395",
+        "name": "Analytic 0420",
+        "description": "Forged SAML tokens may be used on Windows systems to authenticate to federated apps without normal Kerberos activity.",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0148#AN0420",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2025-11-12T22:03:39.105Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "AN0420",
+        "platforms": [
+          "Windows"
+        ]
+      }
+    },
+    "AN0862": {
+      "node": "Analytic",
+      "properties": {
+        "stixId": "x-mitre-analytic--e3ddaba3-282b-4bd0-b316-78b724b79acd",
+        "name": "Analytic 0862",
+        "description": "Adversary ships a tampered application or update: an updater/installer (msiexec/setup/update.exe/vendor service) writes or replaces binaries; on first run it spawns scripts/shells or unsigned DLLs and beacons to non-approved update CDNs/hosts.",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0309#AN0862",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2025-11-12T22:03:39.105Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "AN0862",
+        "platforms": [
+          "Windows"
+        ]
+      }
+    },
+    "AN1632": {
+      "node": "Analytic",
+      "properties": {
+        "stixId": "x-mitre-analytic--9a68f1a7-65f0-4eef-a711-888bccbeb0d5",
+        "name": "Analytic 1632",
+        "description": "Detects unauthorized invocation of replication operations (DCSync) via Directory Replication Service (DRS), often executed by threat actors using Mimikatz or similar tools from non-DC endpoints.",
+        "url": "https://attack.mitre.org/detectionstrategies/DET0594#AN1632",
+        "created": "2025-10-21T15:10:28.402Z",
+        "modified": "2025-11-12T22:03:39.105Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "1.0",
+        "attackId": "AN1632",
+        "platforms": [
+          "Windows"
+        ]
+      }
+    },
+    "DC0006": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--5f7c9def-0ddf-423b-b1f8-fb2ddeed0ce3",
+        "name": "Web Credential Creation",
+        "description": "Initial construction of new web credential material (ex: Windows EID 1200 or 4769)",
+        "url": "https://attack.mitre.org/datacomponents/DC0006",
+        "created": "2021-10-20T15:05:19.271Z",
+        "modified": "2025-11-12T22:03:39.105Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.0",
+        "attackId": "DC0006"
+      }
+    },
+    "DC0016": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--c0a4a086-cc20-4e1e-b7cb-29d99dfa3fb1",
+        "name": "Module Load",
+        "description": "When a process or program dynamically attaches a shared library, module, or plugin into its memory space.",
+        "url": "https://attack.mitre.org/datacomponents/DC0016",
+        "created": "2021-10-20T15:05:19.272Z",
+        "modified": "2026-10-13T17:43:48.544Z",
+        "domains": [
+          "ics-attack",
+          "enterprise-attack",
+          "mobile-attack"
+        ],
+        "version": "3.1",
+        "attackId": "DC0016"
+      }
+    },
+    "DC0032": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--3d20385b-24ef-40e1-9f56-f39750379077",
+        "name": "Process Creation",
+        "description": "Refers to the event in which a new process (executable) is initialized by an operating system.",
+        "url": "https://attack.mitre.org/datacomponents/DC0032",
+        "created": "2021-10-20T15:05:19.272Z",
+        "modified": "2026-10-13T17:43:45.184Z",
+        "domains": [
+          "ics-attack",
+          "mobile-attack",
+          "enterprise-attack"
+        ],
+        "version": "2.2",
+        "attackId": "DC0032"
+      }
+    },
+    "DC0039": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--2b3bfe19-d59a-460d-93bb-2f546adc2d2c",
+        "name": "File Creation",
+        "description": "A new file is created on a system or network storage.",
+        "url": "https://attack.mitre.org/datacomponents/DC0039",
+        "created": "2021-10-20T15:05:19.273Z",
+        "modified": "2026-11-03T00:06:23.011Z",
+        "domains": [
+          "ics-attack",
+          "enterprise-attack",
+          "mobile-attack"
+        ],
+        "version": "3.1",
+        "attackId": "DC0039"
+      }
+    },
+    "DC0059": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--639e87f3-acb6-448a-9645-258f20da4bc5",
+        "name": "File Metadata",
+        "description": "contextual information about a file, including attributes such as the file's name, size, type, content (e.g., signatures, headers, media), user/owner, permissions, timestamps, and other related properties.",
+        "url": "https://attack.mitre.org/datacomponents/DC0059",
+        "created": "2021-10-20T15:05:19.273Z",
+        "modified": "2026-10-13T17:43:44.279Z",
+        "domains": [
+          "ics-attack",
+          "enterprise-attack",
+          "mobile-attack"
+        ],
+        "version": "2.1",
+        "attackId": "DC0059"
+      }
+    },
+    "DC0063": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--da85d358-741a-410d-9433-20d6269a6170",
+        "name": "Windows Registry Key Modification",
+        "description": "Changes made to an existing registry key or its values.",
+        "url": "https://attack.mitre.org/datacomponents/DC0063",
+        "created": "2021-10-20T15:05:19.273Z",
+        "modified": "2026-10-13T17:43:52.610Z",
+        "domains": [
+          "ics-attack",
+          "enterprise-attack"
+        ],
+        "version": "2.0",
+        "attackId": "DC0063"
+      }
+    },
+    "DC0067": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--9ce98c86-8d30-4043-ba54-0784d478d0b5",
+        "name": "Logon Session Creation",
+        "description": "The successful establishment of a new user session following a successful authentication attempt.",
+        "url": "https://attack.mitre.org/datacomponents/DC0067",
+        "created": "2021-10-20T15:05:19.274Z",
+        "modified": "2026-10-13T17:43:46.287Z",
+        "domains": [
+          "ics-attack",
+          "enterprise-attack"
+        ],
+        "version": "2.1",
+        "attackId": "DC0067"
+      }
+    },
+    "DC0068": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--9085a576-636a-455b-91d2-c2921bbe6d1d",
+        "name": "Active Directory Object Deletion",
+        "description": "Object deletion in AD (e.g., user accounts, groups, OUs) is logged as Event ID 5141.",
+        "url": "https://attack.mitre.org/datacomponents/DC0068",
+        "created": "2021-10-20T15:05:19.274Z",
+        "modified": "2025-11-12T22:03:39.105Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.0",
+        "attackId": "DC0068"
+      }
+    },
+    "DC0071": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--5c6de881-bc70-4070-855a-7a9631a407f7",
+        "name": "Active Directory Object Access",
+        "description": "Object access refers to activities where AD objects (e.g., user accounts, groups, policies) are accessed or queried.",
+        "url": "https://attack.mitre.org/datacomponents/DC0071",
+        "created": "2021-10-20T15:05:19.274Z",
+        "modified": "2025-10-21T15:14:35.607Z",
+        "domains": [
+          "enterprise-attack"
+        ],
+        "version": "2.0",
+        "attackId": "DC0071"
+      }
+    },
+    "DC0078": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--a7f22107-02e5-4982-9067-6625d4a1765a",
+        "name": "Network Traffic Flow",
+        "description": "Summarized network packet data that captures session-level details such as source/destination IPs, ports, protocol types, timestamps, and data volume, without storing full packet payloads.",
+        "url": "https://attack.mitre.org/datacomponents/DC0078",
+        "created": "2021-10-20T15:05:19.274Z",
+        "modified": "2026-10-13T17:43:50.375Z",
+        "domains": [
+          "ics-attack",
+          "mobile-attack",
+          "enterprise-attack"
+        ],
+        "version": "2.2",
+        "attackId": "DC0078"
+      }
+    },
+    "DC0079": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--3551476e-14f5-4e48-a518-e82135329e03",
+        "name": "Driver Load",
+        "description": "The process of attaching a driver, which is a software component that allows the operating system and applications to interact with hardware devices, to either user-mode or kernel-mode of a system.",
+        "url": "https://attack.mitre.org/datacomponents/DC0079",
+        "created": "2021-10-20T15:05:19.274Z",
+        "modified": "2026-10-13T19:46:23.403Z",
+        "domains": [
+          "enterprise-attack",
+          "ics-attack"
+        ],
+        "version": "2.0",
+        "attackId": "DC0079"
+      }
+    },
+    "DC0082": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--181a9f8c-c780-4f1f-91a8-edb770e904ba",
+        "name": "Network Connection Creation",
+        "description": "The initial establishment of a network session, where a system or process initiates a connection to a local or remote endpoint.",
+        "url": "https://attack.mitre.org/datacomponents/DC0082",
+        "created": "2021-10-20T15:05:19.274Z",
+        "modified": "2026-10-13T17:43:42.443Z",
+        "domains": [
+          "ics-attack",
+          "mobile-attack",
+          "enterprise-attack"
+        ],
+        "version": "2.2",
+        "attackId": "DC0082"
+      }
+    },
+    "DC0085": {
+      "node": "DataComponent",
+      "properties": {
+        "stixId": "x-mitre-data-component--3772e279-27d6-477a-9fe3-c6beb363594c",
+        "name": "Network Traffic Content",
+        "description": "The full packet capture (PCAP) or session data that logs both protocol headers and payload content.",
+        "url": "https://attack.mitre.org/datacomponents/DC0085",
+        "created": "2021-10-20T15:05:19.274Z",
+        "modified": "2026-11-03T00:15:15.935Z",
+        "domains": [
+          "ics-attack",
+          "mobile-attack",
+          "enterprise-attack"
+        ],
+        "version": "2.2",
+        "attackId": "DC0085"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "T1195",
+      "KILL_CHAIN_PHASE",
+      "TA0001"
+    ],
+    [
+      "T1195.002",
+      "KILL_CHAIN_PHASE",
+      "TA0001"
+    ],
+    [
+      "T1553",
+      "KILL_CHAIN_PHASE",
+      "TA0112"
+    ],
+    [
+      "T1553.002",
+      "KILL_CHAIN_PHASE",
+      "TA0112"
+    ],
+    [
+      "T1606",
+      "KILL_CHAIN_PHASE",
+      "TA0006"
+    ],
+    [
+      "T1606.002",
+      "KILL_CHAIN_PHASE",
+      "TA0006"
+    ],
+    [
+      "T1003",
+      "KILL_CHAIN_PHASE",
+      "TA0006"
+    ],
+    [
+      "T1003.006",
+      "KILL_CHAIN_PHASE",
+      "TA0006"
+    ],
+    [
+      "T1071",
+      "KILL_CHAIN_PHASE",
+      "TA0011"
+    ],
+    [
+      "T1071.001",
+      "KILL_CHAIN_PHASE",
+      "TA0011"
+    ],
+    [
+      "T1087",
+      "KILL_CHAIN_PHASE",
+      "TA0007"
+    ],
+    [
+      "T1087.002",
+      "KILL_CHAIN_PHASE",
+      "TA0007"
+    ],
+    [
+      "T1078",
+      "KILL_CHAIN_PHASE",
+      "TA0005"
+    ],
+    [
+      "T1078",
+      "KILL_CHAIN_PHASE",
+      "TA0003"
+    ],
+    [
+      "T1078",
+      "KILL_CHAIN_PHASE",
+      "TA0004"
+    ],
+    [
+      "T1078",
+      "KILL_CHAIN_PHASE",
+      "TA0001"
+    ],
+    [
+      "T1078.004",
+      "KILL_CHAIN_PHASE",
+      "TA0005"
+    ],
+    [
+      "T1078.004",
+      "KILL_CHAIN_PHASE",
+      "TA0003"
+    ],
+    [
+      "T1078.004",
+      "KILL_CHAIN_PHASE",
+      "TA0004"
+    ],
+    [
+      "T1078.004",
+      "KILL_CHAIN_PHASE",
+      "TA0001"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1606.002"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1078.004"
+    ],
+    [
+      "S0002",
+      "USES",
+      "T1003.006"
+    ],
+    [
+      "G0016",
+      "USES",
+      "S0002"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1087.002"
+    ],
+    [
+      "M1015",
+      "MITIGATES",
+      "T1078.004"
+    ],
+    [
+      "M1031",
+      "MITIGATES",
+      "T1071"
+    ],
+    [
+      "T1078.004",
+      "SUBTECHNIQUE_OF",
+      "T1078"
+    ],
+    [
+      "M1015",
+      "MITIGATES",
+      "T1606.002"
+    ],
+    [
+      "C0024",
+      "USES",
+      "S0560"
+    ],
+    [
+      "C0024",
+      "ATTRIBUTED_TO",
+      "G0016"
+    ],
+    [
+      "G0016",
+      "USES",
+      "T1078.004"
+    ],
+    [
+      "DET0148",
+      "DETECTS",
+      "T1606.002"
+    ],
+    [
+      "DET0148",
+      "ANALYTIC_REF",
+      "AN0420"
+    ],
+    [
+      "AN0420",
+      "LOG_SOURCE_REF",
+      "DC0067"
+    ],
+    [
+      "AN0420",
+      "LOG_SOURCE_REF",
+      "DC0006"
+    ],
+    [
+      "M1026",
+      "MITIGATES",
+      "T1078.004"
+    ],
+    [
+      "M1018",
+      "MITIGATES",
+      "T1078"
+    ],
+    [
+      "M1026",
+      "MITIGATES",
+      "T1606"
+    ],
+    [
+      "M1026",
+      "MITIGATES",
+      "T1553"
+    ],
+    [
+      "G0016",
+      "USES",
+      "S0560"
+    ],
+    [
+      "M1015",
+      "MITIGATES",
+      "T1003.006"
+    ],
+    [
+      "C0024",
+      "USES",
+      "S0002"
+    ],
+    [
+      "T1606.002",
+      "SUBTECHNIQUE_OF",
+      "T1606"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1553.002"
+    ],
+    [
+      "S0562",
+      "USES",
+      "T1195.002"
+    ],
+    [
+      "M1026",
+      "MITIGATES",
+      "T1078"
+    ],
+    [
+      "M1047",
+      "MITIGATES",
+      "T1606.002"
+    ],
+    [
+      "DET0309",
+      "DETECTS",
+      "T1195.002"
+    ],
+    [
+      "DET0309",
+      "ANALYTIC_REF",
+      "AN0862"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0032"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0079"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0016"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0039"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0063"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0082"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0059"
+    ],
+    [
+      "AN0862",
+      "LOG_SOURCE_REF",
+      "DC0078"
+    ],
+    [
+      "S0559",
+      "USES",
+      "T1553.002"
+    ],
+    [
+      "M1018",
+      "MITIGATES",
+      "T1606.002"
+    ],
+    [
+      "T1195.002",
+      "SUBTECHNIQUE_OF",
+      "T1195"
+    ],
+    [
+      "T1003.006",
+      "SUBTECHNIQUE_OF",
+      "T1003"
+    ],
+    [
+      "T1553.002",
+      "SUBTECHNIQUE_OF",
+      "T1553"
+    ],
+    [
+      "M1026",
+      "MITIGATES",
+      "T1003"
+    ],
+    [
+      "DET0594",
+      "DETECTS",
+      "T1003.006"
+    ],
+    [
+      "DET0594",
+      "ANALYTIC_REF",
+      "AN1632"
+    ],
+    [
+      "AN1632",
+      "LOG_SOURCE_REF",
+      "DC0071"
+    ],
+    [
+      "AN1632",
+      "LOG_SOURCE_REF",
+      "DC0068"
+    ],
+    [
+      "AN1632",
+      "LOG_SOURCE_REF",
+      "DC0085"
+    ],
+    [
+      "G0016",
+      "USES",
+      "S0565"
+    ],
+    [
+      "T1087.002",
+      "SUBTECHNIQUE_OF",
+      "T1087"
+    ],
+    [
+      "M1018",
+      "MITIGATES",
+      "T1195"
+    ],
+    [
+      "C0024",
+      "USES",
+      "S0562"
+    ],
+    [
+      "C0024",
+      "USES",
+      "S0552"
+    ],
+    [
+      "G0016",
+      "USES",
+      "T1078"
+    ],
+    [
+      "G0016",
+      "USES",
+      "S0552"
+    ],
+    [
+      "M1026",
+      "MITIGATES",
+      "T1606.002"
+    ],
+    [
+      "M1018",
+      "MITIGATES",
+      "T1087"
+    ],
+    [
+      "C0024",
+      "USES",
+      "S0559"
+    ],
+    [
+      "M1031",
+      "MITIGATES",
+      "T1071.001"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1003.006"
+    ],
+    [
+      "DET0027",
+      "DETECTS",
+      "T1071.001"
+    ],
+    [
+      "DET0027",
+      "ANALYTIC_REF",
+      "AN0075"
+    ],
+    [
+      "AN0075",
+      "LOG_SOURCE_REF",
+      "DC0085"
+    ],
+    [
+      "AN0075",
+      "LOG_SOURCE_REF",
+      "DC0082"
+    ],
+    [
+      "T1071.001",
+      "SUBTECHNIQUE_OF",
+      "T1071"
+    ],
+    [
+      "G0016",
+      "USES",
+      "S0562"
+    ],
+    [
+      "M1026",
+      "MITIGATES",
+      "T1003.006"
+    ],
+    [
+      "M1047",
+      "MITIGATES",
+      "T1606"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1195.002"
+    ],
+    [
+      "C0024",
+      "USES",
+      "S0565"
+    ],
+    [
+      "M1037",
+      "MITIGATES",
+      "T1071.001"
+    ],
+    [
+      "S0559",
+      "USES",
+      "T1071.001"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1087"
+    ],
+    [
+      "M1037",
+      "MITIGATES",
+      "T1071"
+    ],
+    [
+      "M1015",
+      "MITIGATES",
+      "T1078"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1078"
+    ],
+    [
+      "M1018",
+      "MITIGATES",
+      "T1606"
+    ],
+    [
+      "G0016",
+      "USES",
+      "S0559"
+    ],
+    [
+      "S0552",
+      "USES",
+      "T1087.002"
+    ],
+    [
+      "M1015",
+      "MITIGATES",
+      "T1003"
+    ],
+    [
+      "C0024",
+      "USES",
+      "T1071.001"
+    ],
+    [
+      "M1018",
+      "MITIGATES",
+      "T1078.004"
+    ]
+  ]
+}

@@ -1,0 +1,1555 @@
+{
+  "scenario": "A threat intelligence bundle on Operation Quiet Invoice, a fictional phishing campaign against a UK building society. It holds the threat actor, intrusion set and campaign; the real ATT&CK attack patterns and Rclone tool they use; the InvoiceDrop dropper and LedgerRAT implant with their command and control infrastructure; the email, files, processes, domain, addresses and network traffic observed on the victim's network; and the indicators, sighting, sandbox analysis, courses of action, opinion and TLP:AMBER report around them. Names, domains (example.*) and addresses (203.0.113.0/24, AS64500) are reserved for documentation; hashes are illustrative.",
+  "nodes": {
+    "tlp_amber": {
+      "node": "MarkingDefinition",
+      "properties": {
+        "id": "marking-definition--f88d31f6-486f-44da-b317-01333bde0b82",
+        "type": "marking-definition",
+        "spec_version": "2.1",
+        "name": "TLP:AMBER",
+        "created": "2017-01-20T00:00:00.000Z",
+        "definition_type": "tlp",
+        "definition": "{\"tlp\": \"amber\"}"
+      }
+    },
+    "fenwick": {
+      "node": "Identity",
+      "properties": {
+        "id": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "type": "identity",
+        "spec_version": "2.1",
+        "created": "2026-01-05T08:00:00.000Z",
+        "modified": "2026-01-05T08:00:00.000Z",
+        "name": "Fenwick Threat Intelligence",
+        "identity_class": "organization",
+        "sectors": [
+          "technology"
+        ],
+        "description": "Threat intelligence team that tracks financially motivated phishing operations.",
+        "contact_information": "cti@fenwick.example.com"
+      }
+    },
+    "harbour": {
+      "node": "Identity",
+      "properties": {
+        "id": "identity--891b1d2d-67bd-4f9e-af4a-84d0df137139",
+        "type": "identity",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "Harbour Mutual Building Society",
+        "identity_class": "organization",
+        "sectors": [
+          "financial-services"
+        ],
+        "description": "UK building society whose staff received the phishing emails."
+      }
+    },
+    "uk": {
+      "node": "Location",
+      "properties": {
+        "id": "location--310c0c45-cb33-43e5-8bec-bf6386c66b20",
+        "type": "location",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "United Kingdom",
+        "region": "northern-europe",
+        "country": "GB"
+      }
+    },
+    "actor": {
+      "node": "ThreatActor",
+      "properties": {
+        "id": "threat-actor--7326a5b0-f00d-42d7-914d-6b1c5ac7eea4",
+        "type": "threat-actor",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "Scarlet Ledger",
+        "threat_actor_types": [
+          "crime-syndicate"
+        ],
+        "aliases": [
+          "SL-17"
+        ],
+        "roles": [
+          "agent"
+        ],
+        "goals": [
+          "Steal online banking credentials and customer data for resale"
+        ],
+        "sophistication": "intermediate",
+        "resource_level": "organization",
+        "primary_motivation": "personal-gain",
+        "first_seen": "2025-11-03T00:00:00.000Z",
+        "description": "Financially motivated group running invoice-themed phishing against UK financial institutions."
+      }
+    },
+    "intrusion": {
+      "node": "IntrusionSet",
+      "properties": {
+        "id": "intrusion-set--983273f3-6e3a-4e91-9f06-9f29006b4ede",
+        "type": "intrusion-set",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "LEDGERFALL",
+        "description": "Activity cluster of shared infrastructure, InvoiceDrop loaders and LedgerRAT implants.",
+        "first_seen": "2025-11-03T00:00:00.000Z",
+        "goals": [
+          "credential theft",
+          "data theft"
+        ],
+        "resource_level": "organization",
+        "primary_motivation": "personal-gain"
+      }
+    },
+    "campaign": {
+      "node": "Campaign",
+      "properties": {
+        "id": "campaign--d5400c8c-f83f-453b-8d64-f26149d4cb64",
+        "type": "campaign",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "Operation Quiet Invoice",
+        "first_seen": "2026-09-02T07:12:00.000Z",
+        "last_seen": "2026-09-17T16:40:00.000Z",
+        "objective": "Gain a foothold in building society networks through finance staff mailboxes.",
+        "description": "Emails posing as overdue supplier invoices, carrying macro-enabled spreadsheets that install LedgerRAT."
+      }
+    },
+    "t1566_001": {
+      "node": "AttackPattern",
+      "properties": {
+        "id": "attack-pattern--2e34237d-8574-43f6-aace-ae2915de8597",
+        "type": "attack-pattern",
+        "spec_version": "2.1",
+        "created": "2026-01-05T08:00:00.000Z",
+        "modified": "2026-01-05T08:00:00.000Z",
+        "name": "Spearphishing Attachment",
+        "external_references": "[{\"source_name\": \"mitre-attack\", \"external_id\": \"T1566.001\", \"url\": \"https://attack.mitre.org/techniques/T1566/001\"}]",
+        "kill_chain_phases": "[{\"kill_chain_name\": \"mitre-attack\", \"phase_name\": \"initial-access\"}]"
+      }
+    },
+    "t1204_002": {
+      "node": "AttackPattern",
+      "properties": {
+        "id": "attack-pattern--232b7f21-adf9-4b42-b936-b9d6f7df856e",
+        "type": "attack-pattern",
+        "spec_version": "2.1",
+        "created": "2026-01-05T08:00:00.000Z",
+        "modified": "2026-01-05T08:00:00.000Z",
+        "name": "Malicious File",
+        "external_references": "[{\"source_name\": \"mitre-attack\", \"external_id\": \"T1204.002\", \"url\": \"https://attack.mitre.org/techniques/T1204/002\"}]",
+        "kill_chain_phases": "[{\"kill_chain_name\": \"mitre-attack\", \"phase_name\": \"execution\"}]"
+      }
+    },
+    "t1071_001": {
+      "node": "AttackPattern",
+      "properties": {
+        "id": "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161",
+        "type": "attack-pattern",
+        "spec_version": "2.1",
+        "created": "2026-01-05T08:00:00.000Z",
+        "modified": "2026-01-05T08:00:00.000Z",
+        "name": "Web Protocols",
+        "external_references": "[{\"source_name\": \"mitre-attack\", \"external_id\": \"T1071.001\", \"url\": \"https://attack.mitre.org/techniques/T1071/001\"}]",
+        "kill_chain_phases": "[{\"kill_chain_name\": \"mitre-attack\", \"phase_name\": \"command-and-control\"}]"
+      }
+    },
+    "t1567_002": {
+      "node": "AttackPattern",
+      "properties": {
+        "id": "attack-pattern--bf1b6176-597c-4600-bfcd-ac989670f96b",
+        "type": "attack-pattern",
+        "spec_version": "2.1",
+        "created": "2026-01-05T08:00:00.000Z",
+        "modified": "2026-01-05T08:00:00.000Z",
+        "name": "Exfiltration to Cloud Storage",
+        "external_references": "[{\"source_name\": \"mitre-attack\", \"external_id\": \"T1567.002\", \"url\": \"https://attack.mitre.org/techniques/T1567/002\"}]",
+        "kill_chain_phases": "[{\"kill_chain_name\": \"mitre-attack\", \"phase_name\": \"exfiltration\"}]"
+      }
+    },
+    "invoicedrop": {
+      "node": "Malware",
+      "properties": {
+        "id": "malware--dc4d0865-6136-4769-9d17-41f1f96ed40b",
+        "type": "malware",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "InvoiceDrop",
+        "is_family": true,
+        "malware_types": [
+          "dropper",
+          "downloader"
+        ],
+        "implementation_languages": [
+          "visual-basic"
+        ],
+        "architecture_execution_envs": [
+          "x86-64"
+        ],
+        "capabilities": [
+          "installs-other-components"
+        ],
+        "first_seen": "2025-11-03T00:00:00.000Z",
+        "kill_chain_phases": "[{\"kill_chain_name\": \"mitre-attack\", \"phase_name\": \"execution\"}]",
+        "description": "VBA macro that writes a DLL to the user's temporary folder and runs it with rundll32."
+      }
+    },
+    "ledgerrat": {
+      "node": "Malware",
+      "properties": {
+        "id": "malware--78f04804-a7e0-49ad-ae9c-a6f924520dd2",
+        "type": "malware",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "LedgerRAT",
+        "is_family": true,
+        "malware_types": [
+          "remote-access-trojan",
+          "spyware"
+        ],
+        "implementation_languages": [
+          "c++"
+        ],
+        "architecture_execution_envs": [
+          "x86-64"
+        ],
+        "capabilities": [
+          "communicates-with-c2",
+          "captures-input-peripherals",
+          "exfiltrates-data"
+        ],
+        "first_seen": "2025-11-20T00:00:00.000Z",
+        "description": "Remote access trojan that beacons over HTTPS and logs keystrokes in browser sessions."
+      }
+    },
+    "rclone": {
+      "node": "Tool",
+      "properties": {
+        "id": "tool--59096109-a1dd-463b-87e7-a8d110fe3a79",
+        "type": "tool",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "Rclone",
+        "tool_types": [
+          "exfiltration"
+        ],
+        "tool_version": "1.66.0",
+        "external_references": "[{\"source_name\": \"mitre-attack\", \"external_id\": \"S1040\", \"url\": \"https://attack.mitre.org/software/S1040\"}]",
+        "description": "Open-source command line program for syncing files with cloud storage, used to exfiltrate data."
+      }
+    },
+    "c2": {
+      "node": "Infrastructure",
+      "properties": {
+        "id": "infrastructure--feb49b10-1df4-4579-bb80-0b4b6c0fd822",
+        "type": "infrastructure",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "LEDGERFALL C2 server",
+        "infrastructure_types": [
+          "command-and-control"
+        ],
+        "first_seen": "2026-08-28T00:00:00.000Z",
+        "description": "VPS answering LedgerRAT beacons on cdn-ledger.example.net."
+      }
+    },
+    "coa_macro": {
+      "node": "CourseOfAction",
+      "properties": {
+        "id": "course-of-action--547b8628-d139-408d-960d-28c18694b978",
+        "type": "course-of-action",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "Block macro-enabled Office attachments from external senders",
+        "description": "Quarantine .xlsm, .docm and .pptm attachments at the mail gateway unless the sender is allow-listed."
+      }
+    },
+    "coa_block": {
+      "node": "CourseOfAction",
+      "properties": {
+        "id": "course-of-action--8688d322-5db1-4a6a-8dd9-70fa9d62d46a",
+        "type": "course-of-action",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "Block LEDGERFALL command and control",
+        "description": "Sinkhole cdn-ledger.example.net and block 203.0.113.45 at the perimeter firewall and web proxy."
+      }
+    },
+    "sender": {
+      "node": "EmailAddr",
+      "properties": {
+        "id": "email-addr--8dda224b-7b64-5073-b623-1565e46ab00f",
+        "type": "email-addr",
+        "spec_version": "2.1",
+        "value": "accounts@paylink-invoices.example.org",
+        "display_name": "PayLink Accounts"
+      }
+    },
+    "recipient": {
+      "node": "EmailAddr",
+      "properties": {
+        "id": "email-addr--92b48876-eb65-5a63-ab55-51352677721a",
+        "type": "email-addr",
+        "spec_version": "2.1",
+        "value": "j.okafor@harbourmutual.example.co.uk",
+        "display_name": "Joy Okafor"
+      }
+    },
+    "xlsm": {
+      "node": "File",
+      "properties": {
+        "id": "file--457f726e-ba42-5c3c-a123-e03236278c30",
+        "type": "file",
+        "spec_version": "2.1",
+        "name": "INV-20931.xlsm",
+        "hashes": "{\"SHA-256\": \"8615033f148624655c4246b1f72d9a754b4ec050577386b2a4983ae284e43f57\"}",
+        "size": 48213,
+        "mime_type": "application/vnd.ms-excel.sheet.macroEnabled.12",
+        "magic_number_hex": "504B0304"
+      }
+    },
+    "dll": {
+      "node": "File",
+      "properties": {
+        "id": "file--c2337eb2-5f63-5d2f-991b-c954dbfc6ee4",
+        "type": "file",
+        "spec_version": "2.1",
+        "name": "upd.dll",
+        "hashes": "{\"SHA-256\": \"3383cc5e89ff232f205c71128f329d1242cfe36ccfb22dab643ac9a4cbb85108\"}",
+        "size": 312832,
+        "mime_type": "application/x-dosexec",
+        "magic_number_hex": "4D5A",
+        "ctime": "2026-09-16T10:04:51.000Z"
+      }
+    },
+    "temp": {
+      "node": "Directory",
+      "properties": {
+        "id": "directory--a30c40be-887f-59fa-94fb-e4b99b35aff7",
+        "type": "directory",
+        "spec_version": "2.1",
+        "path": "C:\\Users\\jokafor\\AppData\\Local\\Temp"
+      }
+    },
+    "email": {
+      "node": "EmailMessage",
+      "properties": {
+        "id": "email-message--d41b3ab4-ccbc-589b-b574-cf848443979d",
+        "type": "email-message",
+        "spec_version": "2.1",
+        "is_multipart": true,
+        "date": "2026-09-16T09:58:12.000Z",
+        "subject": "Invoice INV-20931 overdue",
+        "content_type": "multipart/mixed",
+        "message_id": "<20260916095812.4471@paylink-invoices.example.org>"
+      }
+    },
+    "domain": {
+      "node": "DomainName",
+      "properties": {
+        "id": "domain-name--4fbb0a2a-ea66-5bc7-a574-7fc6e66305ff",
+        "type": "domain-name",
+        "spec_version": "2.1",
+        "value": "cdn-ledger.example.net"
+      }
+    },
+    "ip": {
+      "node": "Ipv4Addr",
+      "properties": {
+        "id": "ipv4-addr--cb9d70c5-d244-531c-9efb-bcae57adc793",
+        "type": "ipv4-addr",
+        "spec_version": "2.1",
+        "value": "203.0.113.45"
+      }
+    },
+    "victim_ip": {
+      "node": "Ipv4Addr",
+      "properties": {
+        "id": "ipv4-addr--bc37a198-2391-5c98-b28b-29bffbf410a4",
+        "type": "ipv4-addr",
+        "spec_version": "2.1",
+        "value": "10.20.4.17"
+      }
+    },
+    "asn": {
+      "node": "AutonomousSystem",
+      "properties": {
+        "id": "autonomous-system--0a5f7072-df00-5729-9f0a-4eb18631a446",
+        "type": "autonomous-system",
+        "spec_version": "2.1",
+        "number": 64500,
+        "name": "EXAMPLE-HOSTING",
+        "rir": "RIPE"
+      }
+    },
+    "url": {
+      "node": "Url",
+      "properties": {
+        "id": "url--ab44a9ef-fd7b-5944-929a-5daa62df4d0c",
+        "type": "url",
+        "spec_version": "2.1",
+        "value": "https://cdn-ledger.example.net/api/v2/sync"
+      }
+    },
+    "traffic": {
+      "node": "NetworkTraffic",
+      "properties": {
+        "id": "network-traffic--1b5719f5-2d94-581b-9ddf-eb8efdc54179",
+        "type": "network-traffic",
+        "spec_version": "2.1",
+        "start": "2026-09-16T10:05:03.000Z",
+        "end": "2026-09-16T10:05:09.000Z",
+        "src_port": 51544,
+        "dst_port": 443,
+        "protocols": [
+          "ipv4",
+          "tcp",
+          "tls"
+        ],
+        "src_byte_count": 2048,
+        "dst_byte_count": 18432,
+        "is_active": false
+      }
+    },
+    "excel": {
+      "node": "Process",
+      "properties": {
+        "id": "process--4d583861-e3cd-5f6f-a742-e1d208541654",
+        "type": "process",
+        "spec_version": "2.1",
+        "pid": 6112,
+        "command_line": "\"C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE\" /dde",
+        "created_time": "2026-09-16T10:04:40.000Z"
+      }
+    },
+    "rundll": {
+      "node": "Process",
+      "properties": {
+        "id": "process--6e3d9ddf-aa90-53ae-a5c0-bda58832d091",
+        "type": "process",
+        "spec_version": "2.1",
+        "pid": 7348,
+        "command_line": "rundll32.exe C:\\Users\\jokafor\\AppData\\Local\\Temp\\upd.dll,Start",
+        "cwd": "C:\\Users\\jokafor\\AppData\\Local\\Temp",
+        "created_time": "2026-09-16T10:04:52.000Z"
+      }
+    },
+    "account": {
+      "node": "UserAccount",
+      "properties": {
+        "id": "user-account--93b7f181-8922-5fd0-97c0-39ecbc7f4f16",
+        "type": "user-account",
+        "spec_version": "2.1",
+        "user_id": "S-1-5-21-3623811015-3361044348-30300820-1104",
+        "account_login": "jokafor",
+        "account_type": "windows-domain",
+        "display_name": "Joy Okafor",
+        "is_privileged": false
+      }
+    },
+    "ind_xlsm": {
+      "node": "Indicator",
+      "properties": {
+        "id": "indicator--0a374a0f-413a-4342-898a-f798fd6e0598",
+        "type": "indicator",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "InvoiceDrop spreadsheet",
+        "indicator_types": [
+          "malicious-activity"
+        ],
+        "pattern": "[file:hashes.'SHA-256' = '8615033f148624655c4246b1f72d9a754b4ec050577386b2a4983ae284e43f57']",
+        "pattern_type": "stix",
+        "pattern_version": "2.1",
+        "valid_from": "2026-09-18T09:30:00.000Z",
+        "valid_until": "2027-03-18T00:00:00.000Z",
+        "description": "SHA-256 of the macro-enabled invoice spreadsheet attached to the phishing emails."
+      }
+    },
+    "ind_dll": {
+      "node": "Indicator",
+      "properties": {
+        "id": "indicator--2bbe7668-40ce-451e-834a-6e766680d6a2",
+        "type": "indicator",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "LedgerRAT loader DLL",
+        "indicator_types": [
+          "malicious-activity"
+        ],
+        "pattern": "[file:hashes.'SHA-256' = '3383cc5e89ff232f205c71128f329d1242cfe36ccfb22dab643ac9a4cbb85108']",
+        "pattern_type": "stix",
+        "pattern_version": "2.1",
+        "valid_from": "2026-09-18T09:30:00.000Z",
+        "valid_until": "2027-03-18T00:00:00.000Z",
+        "description": "SHA-256 of the LedgerRAT DLL written to the temporary folder."
+      }
+    },
+    "ind_domain": {
+      "node": "Indicator",
+      "properties": {
+        "id": "indicator--a5ab69f2-547c-4f79-bd89-0ac5546fcc87",
+        "type": "indicator",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "LEDGERFALL C2 domain",
+        "indicator_types": [
+          "malicious-activity",
+          "attribution"
+        ],
+        "pattern": "[domain-name:value = 'cdn-ledger.example.net']",
+        "pattern_type": "stix",
+        "pattern_version": "2.1",
+        "valid_from": "2026-09-18T09:30:00.000Z",
+        "valid_until": "2027-03-18T00:00:00.000Z",
+        "description": "Domain LedgerRAT beacons to over HTTPS."
+      }
+    },
+    "ind_sender": {
+      "node": "Indicator",
+      "properties": {
+        "id": "indicator--82cba928-c140-46d6-b7ae-fd70af9d09ee",
+        "type": "indicator",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "name": "Quiet Invoice sender",
+        "indicator_types": [
+          "malicious-activity"
+        ],
+        "pattern": "[email-message:from_ref.value = 'accounts@paylink-invoices.example.org']",
+        "pattern_type": "stix",
+        "pattern_version": "2.1",
+        "valid_from": "2026-09-18T09:30:00.000Z",
+        "valid_until": "2027-03-18T00:00:00.000Z",
+        "description": "Sender address of the Operation Quiet Invoice emails."
+      }
+    },
+    "observed": {
+      "node": "ObservedData",
+      "properties": {
+        "id": "observed-data--0d64768c-1bf0-4678-92a1-4aafae447546",
+        "type": "observed-data",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "first_observed": "2026-09-16T09:58:12.000Z",
+        "last_observed": "2026-09-16T10:05:09.000Z",
+        "number_observed": 1
+      }
+    },
+    "analysis": {
+      "node": "MalwareAnalysis",
+      "properties": {
+        "id": "malware-analysis--67a8f0de-2010-4828-a964-0516aa2f507e",
+        "type": "malware-analysis",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "product": "cape",
+        "version": "2.4",
+        "result": "malicious",
+        "result_name": "InvoiceDrop",
+        "analysis_started": "2026-09-17T11:00:00.000Z",
+        "analysis_ended": "2026-09-17T11:06:30.000Z",
+        "modules": [
+          "behavioural",
+          "network"
+        ]
+      }
+    },
+    "sighting": {
+      "node": "Sighting",
+      "properties": {
+        "id": "sighting--137dcd05-36e6-49ef-b008-d7149847b343",
+        "type": "sighting",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "first_seen": "2026-09-16T09:58:12.000Z",
+        "last_seen": "2026-09-17T08:21:40.000Z",
+        "count": 14,
+        "description": "Fourteen copies of the email reached Harbour Mutual mailboxes; one attachment was opened."
+      }
+    },
+    "report": {
+      "node": "Report",
+      "properties": {
+        "id": "report--8622ea3e-a06e-4b98-b1bd-3c4ffe7c83bf",
+        "type": "report",
+        "spec_version": "2.1",
+        "created": "2026-09-25T14:00:00.000Z",
+        "modified": "2026-09-25T14:00:00.000Z",
+        "name": "Operation Quiet Invoice: LEDGERFALL phishing against UK building societies",
+        "published": "2026-09-25T14:00:00.000Z",
+        "report_types": [
+          "campaign",
+          "threat-actor",
+          "indicator"
+        ],
+        "description": "Fenwick analysis of the September 2026 invoice-themed phishing wave, its tooling and its indicators."
+      }
+    },
+    "opinion": {
+      "node": "Opinion",
+      "properties": {
+        "id": "opinion--08457102-7691-41e7-b11a-89a1aa3b1d94",
+        "type": "opinion",
+        "spec_version": "2.1",
+        "created": "2026-09-25T14:00:00.000Z",
+        "modified": "2026-09-25T14:00:00.000Z",
+        "opinion": "agree",
+        "authors": [
+          "Harbour Mutual CSIRT"
+        ],
+        "explanation": "Matches what we saw on the host that opened the attachment."
+      }
+    }
+  },
+  "relationships": [
+    [
+      "harbour",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "uk",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "actor",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "actor",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "intrusion",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "intrusion",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "campaign",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "campaign",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "t1566_001",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "t1204_002",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "t1071_001",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "t1567_002",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "invoicedrop",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "invoicedrop",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "ledgerrat",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "ledgerrat",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "rclone",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "c2",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "c2",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "coa_macro",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "coa_block",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "ind_xlsm",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "ind_xlsm",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "ind_dll",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "ind_dll",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "ind_domain",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "ind_domain",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "ind_sender",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "ind_sender",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "observed",
+      "CREATED_BY_REF",
+      "harbour"
+    ],
+    [
+      "observed",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "analysis",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "sighting",
+      "CREATED_BY_REF",
+      "harbour"
+    ],
+    [
+      "sighting",
+      "SIGHTING_OF_REF",
+      "ind_sender"
+    ],
+    [
+      "sighting",
+      "WHERE_SIGHTED_REFS",
+      "harbour"
+    ],
+    [
+      "sighting",
+      "OBSERVED_DATA_REFS",
+      "observed"
+    ],
+    [
+      "sighting",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "report",
+      "CREATED_BY_REF",
+      "fenwick"
+    ],
+    [
+      "report",
+      "OBJECT_MARKING_REFS",
+      "tlp_amber"
+    ],
+    [
+      "opinion",
+      "CREATED_BY_REF",
+      "harbour"
+    ],
+    [
+      "email",
+      "FROM_REF",
+      "sender"
+    ],
+    [
+      "email",
+      "TO_REFS",
+      "recipient"
+    ],
+    [
+      "email",
+      "BODY_RAW_REF",
+      "xlsm"
+    ],
+    [
+      "dll",
+      "PARENT_DIRECTORY_REF",
+      "temp"
+    ],
+    [
+      "domain",
+      "RESOLVES_TO_REFS",
+      "ip"
+    ],
+    [
+      "ip",
+      "BELONGS_TO_REFS",
+      "asn"
+    ],
+    [
+      "traffic",
+      "SRC_REF",
+      "victim_ip"
+    ],
+    [
+      "traffic",
+      "DST_REF",
+      "ip"
+    ],
+    [
+      "rundll",
+      "PARENT_REF",
+      "excel"
+    ],
+    [
+      "excel",
+      "CHILD_REFS",
+      "rundll"
+    ],
+    [
+      "rundll",
+      "IMAGE_REF",
+      "dll"
+    ],
+    [
+      "rundll",
+      "OPENED_CONNECTION_REFS",
+      "traffic"
+    ],
+    [
+      "rundll",
+      "CREATOR_USER_REF",
+      "account"
+    ],
+    [
+      "recipient",
+      "BELONGS_TO_REF",
+      "account"
+    ],
+    [
+      "observed",
+      "OBJECT_REFS",
+      "email"
+    ],
+    [
+      "observed",
+      "OBJECT_REFS",
+      "xlsm"
+    ],
+    [
+      "observed",
+      "OBJECT_REFS",
+      "dll"
+    ],
+    [
+      "observed",
+      "OBJECT_REFS",
+      "rundll"
+    ],
+    [
+      "observed",
+      "OBJECT_REFS",
+      "traffic"
+    ],
+    [
+      "observed",
+      "OBJECT_REFS",
+      "domain"
+    ],
+    [
+      "analysis",
+      "SAMPLE_REF",
+      "xlsm"
+    ],
+    [
+      "analysis",
+      "ANALYSIS_SCO_REFS",
+      "dll"
+    ],
+    [
+      "analysis",
+      "ANALYSIS_SCO_REFS",
+      "domain"
+    ],
+    [
+      "invoicedrop",
+      "SAMPLE_REFS",
+      "xlsm"
+    ],
+    [
+      "ledgerrat",
+      "SAMPLE_REFS",
+      "dll"
+    ],
+    [
+      "opinion",
+      "OBJECT_REFS",
+      "report"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "actor"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "intrusion"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "campaign"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "t1566_001"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "t1204_002"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "t1071_001"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "t1567_002"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "invoicedrop"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "ledgerrat"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "rclone"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "c2"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "ind_xlsm"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "ind_dll"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "ind_domain"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "ind_sender"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "coa_macro"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "coa_block"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "harbour"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "uk"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "observed"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "analysis"
+    ],
+    [
+      "report",
+      "OBJECT_REFS",
+      "sighting"
+    ],
+    [
+      "intrusion",
+      "ATTRIBUTED_TO",
+      "actor",
+      {
+        "id": "relationship--f2897636-ff66-42eb-a497-09450d5d2d8c",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "confidence": 70
+      }
+    ],
+    [
+      "campaign",
+      "ATTRIBUTED_TO",
+      "intrusion",
+      {
+        "id": "relationship--ae103afa-3e7f-4187-8616-9d8ebc06231a",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "confidence": 85
+      }
+    ],
+    [
+      "actor",
+      "LOCATED_AT",
+      "uk",
+      {
+        "id": "relationship--3b492317-3ca1-4d5d-b949-ef685a579500",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "description": "Operators work UK business hours and register UK-themed domains.",
+        "confidence": 40
+      }
+    ],
+    [
+      "campaign",
+      "TARGETS",
+      "harbour",
+      {
+        "id": "relationship--e706dba9-1782-4f2b-afd6-52e85f9d2868",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "campaign",
+      "TARGETS",
+      "uk",
+      {
+        "id": "relationship--999f7474-da3b-48b5-a221-7e7e6401b1c3",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "actor",
+      "IMPERSONATES",
+      "harbour",
+      {
+        "id": "relationship--fb01262e-6f9b-4dc9-9dbf-cdff7a94484d",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "description": "Follow-up calls claimed to come from Harbour Mutual IT support."
+      }
+    ],
+    [
+      "campaign",
+      "USES",
+      "t1566_001",
+      {
+        "id": "relationship--ac94c024-a56d-45ad-b8a8-0507e746be00",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "campaign",
+      "USES",
+      "t1204_002",
+      {
+        "id": "relationship--1caf6f8f-8627-47a5-9143-37cd8b742312",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "campaign",
+      "USES",
+      "t1071_001",
+      {
+        "id": "relationship--37e936e0-6ca9-43fd-b691-f2df24cca8a3",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "campaign",
+      "USES",
+      "t1567_002",
+      {
+        "id": "relationship--360cce86-25b9-4784-b996-f7e7e0a05afc",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "campaign",
+      "USES",
+      "invoicedrop",
+      {
+        "id": "relationship--ed53ad4d-6cd1-4928-ac47-14e373b99691",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "campaign",
+      "USES",
+      "ledgerrat",
+      {
+        "id": "relationship--fc01ec5d-4652-4c1b-bedf-3d5b7de42c30",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "campaign",
+      "USES",
+      "rclone",
+      {
+        "id": "relationship--d081059c-c91b-4b48-bdbb-26815cc454bc",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "intrusion",
+      "USES",
+      "ledgerrat",
+      {
+        "id": "relationship--5a7be1a0-c923-4094-9d82-f3ae5f30e807",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "intrusion",
+      "OWNS",
+      "c2",
+      {
+        "id": "relationship--4f147e18-8ae7-4045-8a1f-db28c1e677e5",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "t1566_001",
+      "DELIVERS",
+      "invoicedrop",
+      {
+        "id": "relationship--94ff065a-7a2a-4841-a786-2fb74f409a24",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "invoicedrop",
+      "USES",
+      "t1204_002",
+      {
+        "id": "relationship--c76303d1-ae6d-4fae-b0bf-a21732d465d6",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "invoicedrop",
+      "DROPS",
+      "ledgerrat",
+      {
+        "id": "relationship--b4939a55-8fed-488b-9abd-821a3b4a090b",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "description": "The macro writes the LedgerRAT DLL to %TEMP% and runs it."
+      }
+    ],
+    [
+      "ledgerrat",
+      "USES",
+      "t1071_001",
+      {
+        "id": "relationship--eabdcd87-9dcb-4a2f-b8c1-ae78d8d3c1a2",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ledgerrat",
+      "BEACONS_TO",
+      "c2",
+      {
+        "id": "relationship--a8ba5fb2-4d24-417b-b31c-4cc37d9f39d1",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ledgerrat",
+      "COMMUNICATES_WITH",
+      "domain",
+      {
+        "id": "relationship--f9d9d086-6394-4600-94e2-b9605d6acc77",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ledgerrat",
+      "COMMUNICATES_WITH",
+      "url",
+      {
+        "id": "relationship--1f18694d-f5f1-4a1b-8e2a-ff5eb51749a6",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ledgerrat",
+      "AUTHORED_BY",
+      "intrusion",
+      {
+        "id": "relationship--8a99e2a9-2ca5-476c-aebe-7828e7d24c39",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "confidence": 50
+      }
+    ],
+    [
+      "ledgerrat",
+      "USES",
+      "t1567_002",
+      {
+        "id": "relationship--3705af5a-8e0b-431d-b9e3-fffebda1ae17",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "c2",
+      "CONSISTS_OF",
+      "domain",
+      {
+        "id": "relationship--71f79e90-3ad8-4b34-89f7-23c4dd898a20",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "c2",
+      "CONSISTS_OF",
+      "ip",
+      {
+        "id": "relationship--c7edbe08-40a4-4a0e-93b2-921134eb9a62",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "c2",
+      "COMMUNICATES_WITH",
+      "ip",
+      {
+        "id": "relationship--148d15f0-810d-4b1d-9788-651c5ee106ef",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "c2",
+      "HOSTS",
+      "ledgerrat",
+      {
+        "id": "relationship--cac540bf-0e30-4b73-a52c-6c0f3f8704a7",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "domain",
+      "RESOLVES_TO",
+      "ip",
+      {
+        "id": "relationship--3851bc86-718b-4b5d-846c-725ebff1624e",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "start_time": "2026-08-28T00:00:00.000Z"
+      }
+    ],
+    [
+      "ind_xlsm",
+      "INDICATES",
+      "invoicedrop",
+      {
+        "id": "relationship--f49415a3-2a83-46e8-9bf7-4a2f74d549ec",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ind_dll",
+      "INDICATES",
+      "ledgerrat",
+      {
+        "id": "relationship--340ac5df-0e2c-46fc-8a4a-9cf75151570d",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ind_domain",
+      "INDICATES",
+      "c2",
+      {
+        "id": "relationship--39c962d8-0ed9-4d0f-8ae2-a58ece4aab3d",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ind_sender",
+      "INDICATES",
+      "campaign",
+      {
+        "id": "relationship--c1bfc0ad-ce5a-4fe1-aa16-7d921886bdaf",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ind_xlsm",
+      "BASED_ON",
+      "observed",
+      {
+        "id": "relationship--a8257818-847e-41f2-bb14-27819f54fc75",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "ind_sender",
+      "BASED_ON",
+      "observed",
+      {
+        "id": "relationship--421a989a-5aa1-43ad-a18a-61448906c258",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "analysis",
+      "DYNAMIC_ANALYSIS_OF",
+      "invoicedrop",
+      {
+        "id": "relationship--3b069622-093c-4091-bfa3-a16f296fc98b",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "coa_macro",
+      "MITIGATES",
+      "t1566_001",
+      {
+        "id": "relationship--92cc0d41-8a9b-40a5-bf44-a9dde4caeffd",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "coa_macro",
+      "MITIGATES",
+      "invoicedrop",
+      {
+        "id": "relationship--089905bc-0426-410e-b886-15bf4ce79852",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "coa_block",
+      "MITIGATES",
+      "ledgerrat",
+      {
+        "id": "relationship--8af39bc6-3a2e-4e9f-bd74-63222ad87f38",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa"
+      }
+    ],
+    [
+      "coa_block",
+      "INVESTIGATES",
+      "ind_domain",
+      {
+        "id": "relationship--e225c485-c6de-4494-ad89-cf8f38563b71",
+        "spec_version": "2.1",
+        "created": "2026-09-18T09:30:00.000Z",
+        "modified": "2026-09-18T09:30:00.000Z",
+        "created_by_ref": "identity--b31b24c4-0402-41fa-8802-f57a97cd28fa",
+        "description": "Search proxy logs for earlier connections to the domain."
+      }
+    ]
+  ]
+}

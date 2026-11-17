@@ -1,0 +1,22 @@
+{
+  "source": "the LKIF Core 1.1 Turtle files (GitHub RinkeHoekstra/lkif-core)",
+  "link": "the term's declaration in the LKIF Core Turtle files",
+  "areas": {
+    "field": "module",
+    "groups": [
+      {"name": "Legal — norms, legal sources, rights, legal actions and roles", "values": ["norm", "legal-action", "legal-role"]},
+      {"name": "Expressions, actions and roles", "values": ["expression", "action", "role"]},
+      {"name": "Processes, places, time and parthood", "values": ["process", "relative-places", "time", "mereology"]},
+      {"name": "Top — Thing and the top categories", "values": ["lkif-top", "owl"]}
+    ]
+  },
+  "sub": ["module"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "source": "the IDO 4.2 FDIS (ISO 23726-3) Turtle file published by PCA",
+  "link": "the term in PCA RDS",
+  "areas": {
+    "field": "root",
+    "groups": [
+      {"name": "Objects (physical, informational, organisational)", "values": ["Object"]},
+      {"name": "Temporal entities (activities, events, time)", "values": ["Temporal"]},
+      {"name": "Dependent entities (qualities, potentials)", "values": ["Dependent"]},
+      {"name": "Actual and specified entities", "values": ["Actual", "Specified"]}
+    ]
+  },
+  "sub": ["root", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "functional: every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

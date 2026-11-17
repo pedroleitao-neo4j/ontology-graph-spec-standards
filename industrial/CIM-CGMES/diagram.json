@@ -1,0 +1,22 @@
+{
+  "source": "the CGMES 3.0 RDFS vocabularies (GitHub entsoe/application-profiles-library, tag cgmes3.0)",
+  "link": "the class in the RDFS vocabulary",
+  "areas": {
+    "field": "profile",
+    "groups": [
+      {"name": "Equipment and boundary (EQ, EQBD)", "values": ["EQ", "EQBD"]},
+      {"name": "Topology, power flow and operation (TP, SSH, SV, OP, SC)", "values": ["TP", "SSH", "SV", "OP", "SC"]},
+      {"name": "Dynamics (DY)", "values": ["DY"]},
+      {"name": "Diagram layout and geography (DL, GL)", "values": ["DL", "GL"]}
+    ]
+  },
+  "sub": ["profile", "package", "abstract", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

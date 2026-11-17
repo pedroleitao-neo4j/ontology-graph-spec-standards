@@ -1,0 +1,18 @@
+{
+  "source": "the B2MML V0700 XML schemas published by MESA International (GitHub MESAInternational/B2MML-BatchML, tag V7.00.00)",
+  "link": "the type in the B2MML schema",
+  "areas": {
+    "field": "model",
+    "groups": [
+      {"name": "Resources — personnel, equipment, physical assets, material, locations and tests", "values": ["Resources"]},
+      {"name": "Operations — process segments, definitions, schedules, performance, capability and events", "values": ["Operations"]},
+      {"name": "Work — work definitions, schedules, performance, capability, alerts, calendars and records", "values": ["Work"]},
+      {"name": "Common — segment resources, parameters and record templates", "values": ["Common"]}
+    ]
+  },
+  "sub": ["schema", "abstract", "#properties"],
+  "lines": {
+    "by": "field:composition",
+    "legend": {"main": "composition: owner to its nested parts", "dashed": "reference: an ID that identifies another object"}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "source": "the CFIHOS V2.0 data dictionary (C-DM-002)",
+  "link": "the reference",
+  "areas": {
+    "field": "section",
+    "groups": [
+      {"name": "Plant breakdown, tags and items (A.2–A.3)", "values": ["A.2", "A.3"]},
+      {"name": "Reference data library (A.4–A.5)", "values": ["A.4", "A.5"]},
+      {"name": "Documents and spare part records (A.6–A.9)", "values": ["A.6", "A.7", "A.8", "A.9"]}
+    ]
+  },
+  "sub": ["section", "#properties"],
+  "lines": {
+    "by": "to",
+    "legend": {"main": "mandatory: exactly one parent", "dashed": "optional: at most one parent"}
+  }
+}

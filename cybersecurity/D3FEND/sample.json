@@ -1,0 +1,820 @@
+{
+  "scenario": "Phishing seen through D3FEND 1.6.0: the ATT&CK techniques Spearphishing Attachment and Link and the User Execution that follows, the email, URL, mail traffic and executable file artifacts they produce, access or execute, and the D3FEND defensive techniques that analyse, filter or block those artifacts, such as Sender Reputation Analysis, Homoglyph Detection, URL Analysis, Email Filtering, Dynamic Analysis and Executable Allowlisting. Each defensive technique has a reference from its knowledge base article, the ATT&CK mitigations D3FEND relates them to are included, as are the NIST SP 800-53 controls mapped to Dynamic Analysis. Every class, individual and link is taken from the D3FEND 1.6.0 knowledge graph.",
+  "nodes": {
+    "T1566": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#T1566",
+        "name": "Phishing",
+        "definition": "Adversaries may send phishing messages to gain access to victim systems.",
+        "attackId": "T1566",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "T1566.001": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#T1566.001",
+        "name": "Spearphishing Attachment",
+        "definition": "Adversaries may send spearphishing emails with a malicious attachment in an attempt to gain access to victim systems.",
+        "attackId": "T1566.001",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "T1566.002": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#T1566.002",
+        "name": "Spearphishing Link",
+        "definition": "Adversaries may send spearphishing emails with a malicious link in an attempt to gain access to victim systems.",
+        "attackId": "T1566.002",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "T1204": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#T1204",
+        "name": "User Execution",
+        "definition": "An adversary may rely upon specific actions by a user in order to gain execution.",
+        "attackId": "T1204",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "T1204.001": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#T1204.001",
+        "name": "Malicious Link",
+        "definition": "An adversary may rely upon a user clicking a malicious link in order to gain execution.",
+        "attackId": "T1204.001",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "T1204.002": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#T1204.002",
+        "name": "Malicious File",
+        "definition": "An adversary may rely upon a user opening a malicious file in order to gain execution.",
+        "attackId": "T1204.002",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "InitialAccessTechnique": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#InitialAccessTechnique",
+        "name": "Initial Access Technique",
+        "definition": "The adversary is trying to get into your network.",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "ExecutionTechnique": {
+      "node": "OffensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#ExecutionTechnique",
+        "name": "Execution Technique",
+        "definition": "The adversary is trying to run malicious code.",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "TA0001": {
+      "node": "OffensiveTactic",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#TA0001",
+        "name": "Initial Access",
+        "definition": "The adversary is trying to get into your network.",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "TA0002": {
+      "node": "OffensiveTactic",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#TA0002",
+        "name": "Execution",
+        "definition": "The adversary is trying to run malicious code.",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "Detect": {
+      "node": "DefensiveTactic",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Detect",
+        "name": "Detect",
+        "definition": "The detect tactic is used to identify adversary access to or unauthorized activity on computer networks."
+      }
+    },
+    "Isolate": {
+      "node": "DefensiveTactic",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Isolate",
+        "name": "Isolate",
+        "definition": "The isolate tactic creates logical or physical barriers in a system which reduces opportunities for adversaries to create further accesses."
+      }
+    },
+    "MessageAnalysis": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#MessageAnalysis",
+        "name": "Message Analysis",
+        "definition": "Analyzing email or instant message content to detect unauthorized activity.",
+        "d3fendId": "D3-MA"
+      }
+    },
+    "IdentifierAnalysis": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#IdentifierAnalysis",
+        "name": "Identifier Analysis",
+        "definition": "Analyzing identifier artifacts such as IP address, domain names, or URL(I)s.",
+        "d3fendId": "D3-ID"
+      }
+    },
+    "FileAnalysis": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#FileAnalysis",
+        "name": "File Analysis",
+        "definition": "File Analysis is an analytic process to determine a file's status.",
+        "d3fendId": "D3-FA"
+      }
+    },
+    "ExecutionIsolation": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#ExecutionIsolation",
+        "name": "Execution Isolation",
+        "definition": "Execution Isolation techniques prevent application processes from accessing non-essential system resources, such as memory, devices, or files.",
+        "d3fendId": "D3-EI"
+      }
+    },
+    "InboundTrafficFiltering": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#InboundTrafficFiltering",
+        "name": "Inbound Traffic Filtering",
+        "definition": "Restricting network traffic originating from untrusted networks destined towards a private host or enclave.",
+        "d3fendId": "D3-ITF"
+      }
+    },
+    "SenderReputationAnalysis": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#SenderReputationAnalysis",
+        "name": "Sender Reputation Analysis",
+        "definition": "Ascertaining sender reputation based on information associated with a message (e.g.",
+        "d3fendId": "D3-SRA"
+      }
+    },
+    "HomoglyphDetection": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#HomoglyphDetection",
+        "name": "Homoglyph Detection",
+        "definition": "Comparing strings using a variety of techniques to determine if a deceptive or malicious string is being presented to a user.",
+        "d3fendId": "D3-HD"
+      }
+    },
+    "URLAnalysis": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#URLAnalysis",
+        "name": "URL Analysis",
+        "definition": "Determining if a URL is benign or malicious by analyzing the URL or its components.",
+        "d3fendId": "D3-UA"
+      }
+    },
+    "EmailFiltering": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#EmailFiltering",
+        "name": "Email Filtering",
+        "definition": "Filtering incoming email traffic based on specific criteria.",
+        "d3fendId": "D3-EF"
+      }
+    },
+    "DynamicAnalysis": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#DynamicAnalysis",
+        "name": "Dynamic Analysis",
+        "definition": "Executing or opening a file in a synthetic \"sandbox\" environment to determine if the file is a malicious program or if the file exploits another program such as a document reader.",
+        "d3fendId": "D3-DA"
+      }
+    },
+    "ExecutableAllowlisting": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#ExecutableAllowlisting",
+        "name": "Executable Allowlisting",
+        "definition": "Using a digital signature to authenticate a file before opening.",
+        "d3fendId": "D3-EAL"
+      }
+    },
+    "ExecutableDenylisting": {
+      "node": "DefensiveTechnique",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#ExecutableDenylisting",
+        "name": "Executable Denylisting",
+        "definition": "Blocking the execution of files on a host in accordance with defined application policy rules.",
+        "d3fendId": "D3-EDL"
+      }
+    },
+    "Email": {
+      "node": "File",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Email",
+        "name": "Email",
+        "definition": "An email, or email message, is a document that is sent between computer users across computer networks."
+      }
+    },
+    "EmailAttachment": {
+      "node": "File",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#EmailAttachment",
+        "name": "Email Attachment",
+        "definition": "An email attachment is a computer file sent along with an email message."
+      }
+    },
+    "URL": {
+      "node": "DigitalArtifact",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#URL",
+        "name": "URL",
+        "definition": "A Uniform Resource Locator (URL), commonly informally termed a web address (a term which is not defined identically) is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it.A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably."
+      }
+    },
+    "ExecutableFile": {
+      "node": "File",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#ExecutableFile",
+        "name": "Executable File",
+        "definition": "In computing, executable code or an executable file or executable program, sometimes simply an executable, causes a computer \"to perform indicated tasks according to encoded instructions,\" as opposed to a data file that must be parsed by a program to be meaningful."
+      }
+    },
+    "DocumentFile": {
+      "node": "File",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#DocumentFile",
+        "name": "Document File",
+        "definition": "A document is a written, drawn, presented or recorded representation of thoughts."
+      }
+    },
+    "File": {
+      "node": "File",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#File",
+        "name": "File",
+        "definition": "A file maintained in computer-readable form."
+      }
+    },
+    "InboundInternetMailTraffic": {
+      "node": "NetworkTraffic",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#InboundInternetMailTraffic",
+        "name": "Inbound Internet Mail Traffic",
+        "definition": "Inbound internet mail traffic is network traffic that is: (a) coming from a host outside a given network via an incoming connection to a host inside that same network, and (b) using a standard protocol for email."
+      }
+    },
+    "CreateProcess": {
+      "node": "DigitalArtifact",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#CreateProcess",
+        "name": "Create Process",
+        "definition": "A process spawn refers to a function that loads and executes a new child process.The current process may wait for the child to terminate or may continue to execute asynchronously."
+      }
+    },
+    "Process": {
+      "node": "Process",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Process",
+        "name": "Process",
+        "definition": "A process is an instance of a computer program that is being executed."
+      }
+    },
+    "OutboundInternetWebTraffic": {
+      "node": "NetworkTraffic",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#OutboundInternetWebTraffic",
+        "name": "Outbound Internet Web Traffic",
+        "definition": "Outbound internet web traffic is network traffic that is: (a) on an outgoing connection initiated from a host within a network to a host outside the network, and (b) using a standard web protocol."
+      }
+    },
+    "Reference-SystemsAndMethodsForDetectingAnd_orHandlingTargetedAttacksInTheEmailChannel_GraphusInc": {
+      "node": "TechniqueReference",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Reference-SystemsAndMethodsForDetectingAnd_orHandlingTargetedAttacksInTheEmailChannel_GraphusInc",
+        "name": "Reference - Systems and methods for detecting and/or handling targeted attacks in the email channel - Graphus Inc",
+        "title": "Systems and methods for detecting and/or handling targeted attacks in the email channel",
+        "organization": "Graphus Inc",
+        "link": "https://patents.google.com/patent/US20170324767A1",
+        "kind": "PatentReference"
+      }
+    },
+    "Reference-Computer-implementedMethodsAndSystemsForIdentifyingVisuallySimilarTextCharacterStrings_GreathornInc": {
+      "node": "TechniqueReference",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Reference-Computer-implementedMethodsAndSystemsForIdentifyingVisuallySimilarTextCharacterStrings_GreathornInc",
+        "name": "Reference - Computer-implemented methods and systems for identifying visually similar text character strings - Greathorn Inc",
+        "title": "Computer-implemented methods and systems for identifying visually similar text character strings",
+        "organization": "Greathorn Inc",
+        "link": "https://patents.google.com/patent/US10320815B2/en?oq=US-10320815-B2",
+        "kind": "PatentReference"
+      }
+    },
+    "Reference-MethodAndApparatusForDetectingMaliciousWebsites_EndgameInc": {
+      "node": "TechniqueReference",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Reference-MethodAndApparatusForDetectingMaliciousWebsites_EndgameInc",
+        "name": "Reference - Method and Apparatus for Detecting Malicious Websites - Endgame Inc",
+        "title": "Method and Apparatus for Detecting Malicious Websites",
+        "organization": "Endgame Inc",
+        "link": "https://patents.google.com/patent/US20140331319A1",
+        "kind": "PatentReference"
+      }
+    },
+    "Reference-SystemAndMethodForProvidingAnonymousRemailingAndFilteringOfElectronicMail_Nokia": {
+      "node": "TechniqueReference",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Reference-SystemAndMethodForProvidingAnonymousRemailingAndFilteringOfElectronicMail_Nokia",
+        "name": "Reference - System and method for providing anonymous remailing and filtering of electronic mail - Nokia",
+        "title": "System and method for providing anonymous remailing and filtering of electronic mail",
+        "organization": "Nokia of America Corp",
+        "link": "https://patents.google.com/patent/JPH11161574A",
+        "kind": "PatentReference"
+      }
+    },
+    "Reference-MalwareAnalysisSystem_PaloAltoNetworksInc": {
+      "node": "TechniqueReference",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Reference-MalwareAnalysisSystem_PaloAltoNetworksInc",
+        "name": "Reference - Malware analysis system - Palo Alto Networks Inc",
+        "title": "Malware analysis system",
+        "organization": "Palo Alto Networks Inc",
+        "link": "https://patents.google.com/patent/US20150319136A1",
+        "kind": "PatentReference"
+      }
+    },
+    "Reference-ComputingApparatusWithAutomaticIntegrityReferenceGenerationAndMaintenance_Tripwire,Inc.": {
+      "node": "TechniqueReference",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Reference-ComputingApparatusWithAutomaticIntegrityReferenceGenerationAndMaintenance_Tripwire,Inc.",
+        "name": "Reference - Computing apparatus with automatic integrity reference generation and maintenance - Tripwire, Inc.",
+        "title": "Computing apparatus with automatic integrity reference generation and maintenance",
+        "organization": "Tripwire, Inc.",
+        "link": "https://patents.google.com/patent/US20040060046A1",
+        "kind": "PatentReference"
+      }
+    },
+    "Reference-ContentExtractorAndAnalysisSystem_Bit9Inc,CarbonBlackInc": {
+      "node": "TechniqueReference",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#Reference-ContentExtractorAndAnalysisSystem_Bit9Inc,CarbonBlackInc",
+        "name": "Reference - Content extractor and analysis system - Bit 9 Inc, Carbon Black Inc",
+        "title": "Content extractor and analysis system",
+        "organization": "Bit 9 Inc, Carbon Black Inc",
+        "link": "https://patents.google.com/patent/US20070028110A1",
+        "kind": "PatentReference"
+      }
+    },
+    "M1021": {
+      "node": "ATTACKEnterpriseMitigation",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#M1021",
+        "name": "Restrict Web-Based Content",
+        "kind": "ATTACKEnterpriseMitigation",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "M1033": {
+      "node": "ATTACKEnterpriseMitigation",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#M1033",
+        "name": "Limit Software Installation",
+        "kind": "ATTACKEnterpriseMitigation",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "M1038": {
+      "node": "ATTACKEnterpriseMitigation",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#M1038",
+        "name": "Execution Prevention",
+        "kind": "ATTACKEnterpriseMitigation",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "M1042": {
+      "node": "ATTACKEnterpriseMitigation",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#M1042",
+        "name": "Disable or Remove Feature or Program",
+        "kind": "ATTACKEnterpriseMitigation",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "M1045": {
+      "node": "ATTACKEnterpriseMitigation",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#M1045",
+        "name": "Code Signing",
+        "kind": "ATTACKEnterpriseMitigation",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "M1048": {
+      "node": "ATTACKEnterpriseMitigation",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#M1048",
+        "name": "Application Isolation and Sandboxing",
+        "kind": "ATTACKEnterpriseMitigation",
+        "framework": "ATT&CK Enterprise"
+      }
+    },
+    "NIST_SP_800-53_R5_IR-4_12": {
+      "node": "ExternalControl",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#NIST_SP_800-53_R5_IR-4_12",
+        "name": "IR-4(12)",
+        "controlName": "Incident Handling | Malicious Code and Forensic Analysis",
+        "kind": "NISTControl"
+      }
+    },
+    "NIST_SP_800-53_R5_SI-3_10": {
+      "node": "ExternalControl",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#NIST_SP_800-53_R5_SI-3_10",
+        "name": "SI-3(10)",
+        "controlName": "Malicious Code Protection | Malicious Code Analysis",
+        "kind": "NISTControl"
+      }
+    },
+    "NIST_SP_800-53_R5": {
+      "node": "ControlCatalog",
+      "properties": {
+        "uri": "http://d3fend.mitre.org/ontologies/d3fend.owl#NIST_SP_800-53_R5",
+        "name": "NIST SP 800-53 R5",
+        "version": "5",
+        "kind": "NISTSP800-53ControlCatalog"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "T1204.001",
+      "ACCESSES",
+      "URL"
+    ],
+    [
+      "DynamicAnalysis",
+      "ANALYZES",
+      "DocumentFile"
+    ],
+    [
+      "DynamicAnalysis",
+      "ANALYZES",
+      "ExecutableFile"
+    ],
+    [
+      "FileAnalysis",
+      "ANALYZES",
+      "File"
+    ],
+    [
+      "HomoglyphDetection",
+      "ANALYZES",
+      "Email"
+    ],
+    [
+      "HomoglyphDetection",
+      "ANALYZES",
+      "URL"
+    ],
+    [
+      "SenderReputationAnalysis",
+      "ANALYZES",
+      "Email"
+    ],
+    [
+      "URLAnalysis",
+      "ANALYZES",
+      "URL"
+    ],
+    [
+      "EmailAttachment",
+      "ATTACHED_TO",
+      "Email"
+    ],
+    [
+      "ExecutableAllowlisting",
+      "BLOCKS",
+      "ExecutableFile"
+    ],
+    [
+      "ExecutableDenylisting",
+      "BLOCKS",
+      "ExecutableFile"
+    ],
+    [
+      "ExecutionIsolation",
+      "ENABLES",
+      "Isolate"
+    ],
+    [
+      "ExecutionTechnique",
+      "ENABLES",
+      "TA0002"
+    ],
+    [
+      "FileAnalysis",
+      "ENABLES",
+      "Detect"
+    ],
+    [
+      "IdentifierAnalysis",
+      "ENABLES",
+      "Detect"
+    ],
+    [
+      "InitialAccessTechnique",
+      "ENABLES",
+      "TA0001"
+    ],
+    [
+      "MessageAnalysis",
+      "ENABLES",
+      "Detect"
+    ],
+    [
+      "NIST_SP_800-53_R5_SI-3_10",
+      "EXACTLY",
+      "DynamicAnalysis"
+    ],
+    [
+      "CreateProcess",
+      "EXECUTES",
+      "Process"
+    ],
+    [
+      "T1204.002",
+      "EXECUTES",
+      "ExecutableFile"
+    ],
+    [
+      "EmailFiltering",
+      "FILTERS",
+      "Email"
+    ],
+    [
+      "ExecutableAllowlisting",
+      "FILTERS",
+      "CreateProcess"
+    ],
+    [
+      "ExecutableDenylisting",
+      "FILTERS",
+      "CreateProcess"
+    ],
+    [
+      "NIST_SP_800-53_R5",
+      "HAS_MEMBER",
+      "NIST_SP_800-53_R5_IR-4_12"
+    ],
+    [
+      "NIST_SP_800-53_R5",
+      "HAS_MEMBER",
+      "NIST_SP_800-53_R5_SI-3_10"
+    ],
+    [
+      "DynamicAnalysis",
+      "KB_REFERENCE",
+      "Reference-MalwareAnalysisSystem_PaloAltoNetworksInc"
+    ],
+    [
+      "EmailFiltering",
+      "KB_REFERENCE",
+      "Reference-SystemAndMethodForProvidingAnonymousRemailingAndFilteringOfElectronicMail_Nokia"
+    ],
+    [
+      "ExecutableAllowlisting",
+      "KB_REFERENCE",
+      "Reference-ComputingApparatusWithAutomaticIntegrityReferenceGenerationAndMaintenance_Tripwire,Inc."
+    ],
+    [
+      "ExecutableDenylisting",
+      "KB_REFERENCE",
+      "Reference-ContentExtractorAndAnalysisSystem_Bit9Inc,CarbonBlackInc"
+    ],
+    [
+      "HomoglyphDetection",
+      "KB_REFERENCE",
+      "Reference-Computer-implementedMethodsAndSystemsForIdentifyingVisuallySimilarTextCharacterStrings_GreathornInc"
+    ],
+    [
+      "SenderReputationAnalysis",
+      "KB_REFERENCE",
+      "Reference-SystemsAndMethodsForDetectingAnd_orHandlingTargetedAttacksInTheEmailChannel_GraphusInc"
+    ],
+    [
+      "URLAnalysis",
+      "KB_REFERENCE",
+      "Reference-MethodAndApparatusForDetectingMaliciousWebsites_EndgameInc"
+    ],
+    [
+      "Email",
+      "MAY_CONTAIN",
+      "File"
+    ],
+    [
+      "Email",
+      "MAY_CONTAIN",
+      "URL"
+    ],
+    [
+      "File",
+      "MAY_CONTAIN",
+      "File"
+    ],
+    [
+      "File",
+      "MAY_CONTAIN",
+      "URL"
+    ],
+    [
+      "OutboundInternetWebTraffic",
+      "MAY_CONTAIN",
+      "URL"
+    ],
+    [
+      "T1204.001",
+      "PRODUCES",
+      "OutboundInternetWebTraffic"
+    ],
+    [
+      "T1566.001",
+      "PRODUCES",
+      "Email"
+    ],
+    [
+      "T1566.001",
+      "PRODUCES",
+      "InboundInternetMailTraffic"
+    ],
+    [
+      "T1566.002",
+      "PRODUCES",
+      "Email"
+    ],
+    [
+      "T1566.002",
+      "PRODUCES",
+      "InboundInternetMailTraffic"
+    ],
+    [
+      "T1566.002",
+      "PRODUCES",
+      "URL"
+    ],
+    [
+      "M1021",
+      "RELATED",
+      "FileAnalysis"
+    ],
+    [
+      "M1021",
+      "RELATED",
+      "InboundTrafficFiltering"
+    ],
+    [
+      "M1021",
+      "RELATED",
+      "URLAnalysis"
+    ],
+    [
+      "M1033",
+      "RELATED",
+      "ExecutableAllowlisting"
+    ],
+    [
+      "M1033",
+      "RELATED",
+      "ExecutableDenylisting"
+    ],
+    [
+      "M1038",
+      "RELATED",
+      "ExecutableAllowlisting"
+    ],
+    [
+      "M1038",
+      "RELATED",
+      "ExecutableDenylisting"
+    ],
+    [
+      "M1042",
+      "RELATED",
+      "ExecutableDenylisting"
+    ],
+    [
+      "M1045",
+      "RELATED",
+      "ExecutableAllowlisting"
+    ],
+    [
+      "M1048",
+      "RELATED",
+      "DynamicAnalysis"
+    ],
+    [
+      "NIST_SP_800-53_R5_IR-4_12",
+      "RELATED",
+      "DynamicAnalysis"
+    ],
+    [
+      "DocumentFile",
+      "SUBCLASS_OF",
+      "File"
+    ],
+    [
+      "DynamicAnalysis",
+      "SUBCLASS_OF",
+      "FileAnalysis"
+    ],
+    [
+      "Email",
+      "SUBCLASS_OF",
+      "DocumentFile"
+    ],
+    [
+      "EmailAttachment",
+      "SUBCLASS_OF",
+      "DocumentFile"
+    ],
+    [
+      "EmailFiltering",
+      "SUBCLASS_OF",
+      "InboundTrafficFiltering"
+    ],
+    [
+      "ExecutableAllowlisting",
+      "SUBCLASS_OF",
+      "ExecutionIsolation"
+    ],
+    [
+      "ExecutableDenylisting",
+      "SUBCLASS_OF",
+      "ExecutionIsolation"
+    ],
+    [
+      "ExecutableFile",
+      "SUBCLASS_OF",
+      "File"
+    ],
+    [
+      "HomoglyphDetection",
+      "SUBCLASS_OF",
+      "IdentifierAnalysis"
+    ],
+    [
+      "SenderReputationAnalysis",
+      "SUBCLASS_OF",
+      "MessageAnalysis"
+    ],
+    [
+      "T1204",
+      "SUBCLASS_OF",
+      "ExecutionTechnique"
+    ],
+    [
+      "T1204.001",
+      "SUBCLASS_OF",
+      "T1204"
+    ],
+    [
+      "T1204.002",
+      "SUBCLASS_OF",
+      "T1204"
+    ],
+    [
+      "T1566",
+      "SUBCLASS_OF",
+      "InitialAccessTechnique"
+    ],
+    [
+      "T1566.001",
+      "SUBCLASS_OF",
+      "T1566"
+    ],
+    [
+      "T1566.002",
+      "SUBCLASS_OF",
+      "T1566"
+    ],
+    [
+      "URLAnalysis",
+      "SUBCLASS_OF",
+      "IdentifierAnalysis"
+    ]
+  ]
+}

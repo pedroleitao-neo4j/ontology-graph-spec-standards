@@ -1,0 +1,903 @@
+{
+  "scenario": "One day of production at the Halden plant of Nordcell, a fictional battery cell manufacturer, following an ISA-95 exchange from the ERP to the MES and back: the role-based equipment hierarchy down to a coater and a dryer, the classes, people and anode slurry the area works with, and the process segments that coat and dry an electrode. The MES receives an operations schedule, its request and the equipment, material and personnel each segment needs, and reports the operations performance back, with what each segment actually used and when it ran.",
+  "nodes": {
+    "nordcell": {
+      "node": "Equipment",
+      "properties": {
+        "id": "NORDCELL",
+        "description": [
+          "Nordcell, a fictional battery cell manufacturer"
+        ],
+        "equipmentLevel": "Enterprise",
+        "publishedDate": "2024-01-15T00:00:00Z"
+      }
+    },
+    "halden": {
+      "node": "Equipment",
+      "properties": {
+        "id": "HALDEN",
+        "description": [
+          "The Halden cell plant"
+        ],
+        "equipmentLevel": "Site"
+      }
+    },
+    "coating": {
+      "node": "Equipment",
+      "properties": {
+        "id": "HALDEN-COAT",
+        "description": [
+          "Coating area"
+        ],
+        "equipmentLevel": "Area"
+      }
+    },
+    "line1": {
+      "node": "Equipment",
+      "properties": {
+        "id": "HALDEN-COAT-L1",
+        "description": [
+          "Coating line 1"
+        ],
+        "equipmentLevel": "ProductionLine"
+      }
+    },
+    "coater101": {
+      "node": "Equipment",
+      "properties": {
+        "id": "C-101",
+        "description": [
+          "Slot die coater"
+        ],
+        "equipmentLevel": "WorkUnit"
+      }
+    },
+    "dryer102": {
+      "node": "Equipment",
+      "properties": {
+        "id": "D-102",
+        "description": [
+          "Conveyor dryer"
+        ],
+        "equipmentLevel": "WorkUnit"
+      }
+    },
+    "coaters": {
+      "node": "EquipmentClass",
+      "properties": {
+        "id": "COATERS",
+        "description": [
+          "Slot die coaters"
+        ],
+        "equipmentLevel": "WorkUnit"
+      }
+    },
+    "coaters_maxwidth": {
+      "node": "EquipmentClassProperty",
+      "properties": {
+        "id": "COATERS-MAX-WIDTH",
+        "value": [
+          "1600"
+        ],
+        "valueDataType": [
+          "Numeric"
+        ],
+        "valueUnitOfMeasure": [
+          "mm"
+        ],
+        "valueKey": [
+          "MaxWebWidth"
+        ]
+      }
+    },
+    "c101_speed": {
+      "node": "EquipmentProperty",
+      "properties": {
+        "id": "C-101-SPEED",
+        "value": [
+          "120"
+        ],
+        "valueDataType": [
+          "Numeric"
+        ],
+        "valueUnitOfMeasure": [
+          "m/min"
+        ],
+        "valueKey": [
+          "MaxWebSpeed"
+        ]
+      }
+    },
+    "operators": {
+      "node": "PersonnelClass",
+      "properties": {
+        "id": "COATING-OPERATORS",
+        "description": [
+          "Coating line operators"
+        ]
+      }
+    },
+    "magnus": {
+      "node": "Person",
+      "properties": {
+        "id": "P-2041",
+        "personName": "Magnus Dahl"
+      }
+    },
+    "slurry_class": {
+      "node": "MaterialClass",
+      "properties": {
+        "id": "SLURRY",
+        "description": [
+          "Electrode slurries"
+        ],
+        "assemblyType": "Physical",
+        "assemblyRelationship": "Transient"
+      }
+    },
+    "slurry_def": {
+      "node": "MaterialDefinition",
+      "properties": {
+        "id": "SLR-A12",
+        "description": [
+          "Anode slurry, grade A12"
+        ]
+      }
+    },
+    "slurry_visc": {
+      "node": "MaterialDefinitionProperty",
+      "properties": {
+        "id": "SLR-A12-VISC",
+        "value": [
+          "4200"
+        ],
+        "valueDataType": [
+          "Numeric"
+        ],
+        "valueUnitOfMeasure": [
+          "mPa.s"
+        ],
+        "valueKey": [
+          "Viscosity"
+        ]
+      }
+    },
+    "slurry_lot": {
+      "node": "MaterialLot",
+      "properties": {
+        "id": "LOT-2026-11-07A",
+        "description": [
+          "Anode slurry, grade A12"
+        ],
+        "status": "Available",
+        "disposition": "UnRestricted",
+        "quantity": [
+          "500"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "kg"
+        ]
+      }
+    },
+    "ps_coat": {
+      "node": "ProcessSegment",
+      "properties": {
+        "id": "PS-COAT-CAL",
+        "description": [
+          "Coat the current collector foil and calender it"
+        ],
+        "operationsType": "Production"
+      }
+    },
+    "ps_dry": {
+      "node": "ProcessSegment",
+      "properties": {
+        "id": "PS-DRY",
+        "description": [
+          "Dry the coated electrode"
+        ],
+        "operationsType": "Production"
+      }
+    },
+    "mss_coat": {
+      "node": "MaterialSegmentSpecification",
+      "properties": {
+        "id": "MSS-COAT",
+        "description": [
+          "Anode slurry consumed per batch"
+        ],
+        "materialUse": "Consumed",
+        "quantity": [
+          "300"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "kg"
+        ]
+      }
+    },
+    "ess_coat": {
+      "node": "EquipmentSegmentSpecification",
+      "properties": {
+        "id": "ESS-COAT",
+        "description": [
+          "The coater the segment runs on"
+        ],
+        "equipmentUse": "Primary",
+        "quantity": [
+          "1"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "EA"
+        ]
+      }
+    },
+    "sd_dry": {
+      "node": "SegmentDependency",
+      "properties": {
+        "id": "SD-DRY",
+        "description": [
+          "Drying follows coating"
+        ],
+        "dependency": "AfterEnd"
+      }
+    },
+    "opd": {
+      "node": "OperationsDefinition",
+      "properties": {
+        "id": "OPD-COAT-001",
+        "description": [
+          "Coating operations, standard run"
+        ],
+        "operationsType": "Production"
+      }
+    },
+    "ops": {
+      "node": "OperationsSegment",
+      "properties": {
+        "id": "OPS-COAT",
+        "description": [
+          "Coating operations, standard run"
+        ],
+        "operationsType": "Production",
+        "duration": "PT4H0M0S"
+      }
+    },
+    "schedule": {
+      "node": "OperationsSchedule",
+      "properties": {
+        "id": "SCH-2026-11-10",
+        "description": [
+          "Coating line 1, 10 November 2026"
+        ],
+        "operationsType": "Production",
+        "scheduleState": "Released",
+        "publishedDate": "2026-11-09T16:20:00Z",
+        "startTime": "2026-11-10T06:00:00Z",
+        "endTime": "2026-11-10T14:00:00Z"
+      }
+    },
+    "request": {
+      "node": "OperationsRequest",
+      "properties": {
+        "id": "REQ-2026-11-10-A",
+        "description": [
+          "One batch of A12 electrode"
+        ],
+        "operationsType": "Production",
+        "requestState": "Released",
+        "priority": 1,
+        "startTime": "2026-11-10T06:00:00Z",
+        "endTime": "2026-11-10T14:00:00Z"
+      }
+    },
+    "sr_coat": {
+      "node": "OpSegmentRequirement",
+      "properties": {
+        "id": "SR-2026-11-10-1",
+        "operationsType": "Production",
+        "segmentState": "Completed",
+        "earliestStartTime": "2026-11-10T06:00:00Z",
+        "latestEndTime": "2026-11-10T09:00:00Z",
+        "duration": "PT2H15M0S"
+      }
+    },
+    "sr_dry": {
+      "node": "OpSegmentRequirement",
+      "properties": {
+        "id": "SR-2026-11-10-2",
+        "operationsType": "Production",
+        "segmentState": "Completed",
+        "earliestStartTime": "2026-11-10T08:30:00Z",
+        "latestEndTime": "2026-11-10T12:00:00Z",
+        "duration": "PT2H10M0S"
+      }
+    },
+    "er_coat": {
+      "node": "OpEquipmentRequirement",
+      "properties": {
+        "id": "ER-2026-11-10-1",
+        "equipmentUse": "Primary",
+        "quantity": [
+          "1"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "EA"
+        ]
+      }
+    },
+    "er_dry": {
+      "node": "OpEquipmentRequirement",
+      "properties": {
+        "id": "ER-2026-11-10-2",
+        "equipmentUse": "Primary",
+        "quantity": [
+          "1"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "EA"
+        ]
+      }
+    },
+    "mr_coat": {
+      "node": "OpMaterialRequirement",
+      "properties": {
+        "id": "MR-2026-11-10-1",
+        "materialUse": "Consumed",
+        "quantity": [
+          "300"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "kg"
+        ]
+      }
+    },
+    "pr_coat": {
+      "node": "OpPersonnelRequirement",
+      "properties": {
+        "id": "PR-2026-11-10-1",
+        "personnelUse": "Coating operator",
+        "quantity": [
+          "1"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "EA"
+        ]
+      }
+    },
+    "performance": {
+      "node": "OperationsPerformance",
+      "properties": {
+        "id": "PERF-2026-11-10",
+        "description": [
+          "What coating line 1 made on 10 November 2026"
+        ],
+        "operationsType": "Production",
+        "performanceState": "Completed",
+        "startTime": "2026-11-10T06:00:00Z",
+        "endtime": "2026-11-10T14:00:00Z"
+      }
+    },
+    "response": {
+      "node": "OperationsResponse",
+      "properties": {
+        "id": "RESP-2026-11-10-A",
+        "operationsType": "Production",
+        "responseState": "Completed",
+        "startTime": "2026-11-10T06:00:00Z",
+        "endTime": "2026-11-10T14:00:00Z"
+      }
+    },
+    "sres_coat": {
+      "node": "OpSegmentResponse",
+      "properties": {
+        "id": "SRES-2026-11-10-1",
+        "operationsType": "Production",
+        "segmentState": "Completed",
+        "actualStartTime": "2026-11-10T06:05:00Z",
+        "actualEndTime": "2026-11-10T08:20:00Z"
+      }
+    },
+    "sres_dry": {
+      "node": "OpSegmentResponse",
+      "properties": {
+        "id": "SRES-2026-11-10-2",
+        "operationsType": "Production",
+        "segmentState": "Completed",
+        "actualStartTime": "2026-11-10T08:25:00Z",
+        "actualEndTime": "2026-11-10T10:35:00Z"
+      }
+    },
+    "ea_coat": {
+      "node": "OpEquipmentActual",
+      "properties": {
+        "id": "EA-2026-11-10-1",
+        "equipmentUse": "Primary",
+        "quantity": [
+          "1"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "EA"
+        ]
+      }
+    },
+    "ea_dry": {
+      "node": "OpEquipmentActual",
+      "properties": {
+        "id": "EA-2026-11-10-2",
+        "equipmentUse": "Primary",
+        "quantity": [
+          "1"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "EA"
+        ]
+      }
+    },
+    "ma_coat": {
+      "node": "OpMaterialActual",
+      "properties": {
+        "id": "MA-2026-11-10-1",
+        "materialUse": "Consumed",
+        "quantity": [
+          "296"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "kg"
+        ]
+      }
+    },
+    "pa_coat": {
+      "node": "OpPersonnelActual",
+      "properties": {
+        "id": "PA-2026-11-10-1",
+        "personnelUse": "Coating operator",
+        "quantity": [
+          "1"
+        ],
+        "quantityDataType": [
+          "Quantity"
+        ],
+        "quantityUnitOfMeasure": [
+          "EA"
+        ]
+      }
+    }
+  },
+  "relationships": [
+    [
+      "nordcell",
+      "HAS_EQUIPMENT_CHILD",
+      "halden"
+    ],
+    [
+      "halden",
+      "HAS_EQUIPMENT_CHILD",
+      "coating"
+    ],
+    [
+      "coating",
+      "HAS_EQUIPMENT_CHILD",
+      "line1"
+    ],
+    [
+      "line1",
+      "HAS_EQUIPMENT_CHILD",
+      "coater101"
+    ],
+    [
+      "line1",
+      "HAS_EQUIPMENT_CHILD",
+      "dryer102"
+    ],
+    [
+      "coaters",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "coaters",
+      "HAS_EQUIPMENT_CLASS_PROPERTY",
+      "coaters_maxwidth"
+    ],
+    [
+      "coater101",
+      "HAS_EQUIPMENT_CLASS",
+      "coaters"
+    ],
+    [
+      "coater101",
+      "HAS_EQUIPMENT_PROPERTY",
+      "c101_speed"
+    ],
+    [
+      "operators",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "magnus",
+      "HAS_PERSONNEL_CLASS",
+      "operators"
+    ],
+    [
+      "slurry_class",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "slurry_def",
+      "HAS_MATERIAL_CLASS",
+      "slurry_class"
+    ],
+    [
+      "slurry_def",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "slurry_def",
+      "HAS_MATERIAL_DEFINITION_PROPERTY",
+      "slurry_visc"
+    ],
+    [
+      "slurry_lot",
+      "HAS_MATERIAL_DEFINITION",
+      "slurry_def"
+    ],
+    [
+      "slurry_lot",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "ps_coat",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "ps_dry",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "ps_coat",
+      "HAS_MATERIAL_SEGMENT_SPECIFICATION",
+      "mss_coat"
+    ],
+    [
+      "mss_coat",
+      "HAS_MATERIAL_DEFINITION",
+      "slurry_def"
+    ],
+    [
+      "ps_coat",
+      "HAS_EQUIPMENT_SEGMENT_SPECIFICATION",
+      "ess_coat"
+    ],
+    [
+      "ess_coat",
+      "HAS_EQUIPMENT",
+      "coater101"
+    ],
+    [
+      "ps_dry",
+      "HAS_SEGMENT_DEPENDENCY",
+      "sd_dry"
+    ],
+    [
+      "sd_dry",
+      "HAS_PROCESS_SEGMENT",
+      "ps_coat"
+    ],
+    [
+      "opd",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "opd",
+      "HAS_OPERATIONS_SEGMENT",
+      "ops"
+    ],
+    [
+      "ops",
+      "HAS_HIERARCHY_SCOPE",
+      "line1"
+    ],
+    [
+      "ops",
+      "HAS_PROCESS_SEGMENT",
+      "ps_coat"
+    ],
+    [
+      "ops",
+      "HAS_PROCESS_SEGMENT",
+      "ps_dry"
+    ],
+    [
+      "schedule",
+      "HAS_HIERARCHY_SCOPE",
+      "halden"
+    ],
+    [
+      "schedule",
+      "HAS_OPERATIONS_REQUEST",
+      "request"
+    ],
+    [
+      "request",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "request",
+      "HAS_OPERATIONS_DEFINITION",
+      "opd"
+    ],
+    [
+      "request",
+      "HAS_OPERATIONS_SEGMENT",
+      "ops"
+    ],
+    [
+      "request",
+      "HAS_SEGMENT_REQUIREMENT",
+      "sr_coat"
+    ],
+    [
+      "sr_coat",
+      "HAS_HIERARCHY_SCOPE",
+      "line1"
+    ],
+    [
+      "sr_coat",
+      "HAS_PROCESS_SEGMENT",
+      "ps_coat"
+    ],
+    [
+      "sr_coat",
+      "HAS_OPERATIONS_DEFINITION",
+      "opd"
+    ],
+    [
+      "sr_coat",
+      "HAS_OPERATIONS_SEGMENT",
+      "ops"
+    ],
+    [
+      "sr_coat",
+      "HAS_EQUIPMENT_REQUIREMENT",
+      "er_coat"
+    ],
+    [
+      "sr_coat",
+      "HAS_MATERIAL_REQUIREMENT",
+      "mr_coat"
+    ],
+    [
+      "sr_coat",
+      "HAS_PERSONNEL_REQUIREMENT",
+      "pr_coat"
+    ],
+    [
+      "request",
+      "HAS_SEGMENT_REQUIREMENT",
+      "sr_dry"
+    ],
+    [
+      "sr_dry",
+      "HAS_HIERARCHY_SCOPE",
+      "line1"
+    ],
+    [
+      "sr_dry",
+      "HAS_PROCESS_SEGMENT",
+      "ps_dry"
+    ],
+    [
+      "sr_dry",
+      "HAS_OPERATIONS_DEFINITION",
+      "opd"
+    ],
+    [
+      "sr_dry",
+      "HAS_OPERATIONS_SEGMENT",
+      "ops"
+    ],
+    [
+      "sr_dry",
+      "HAS_EQUIPMENT_REQUIREMENT",
+      "er_dry"
+    ],
+    [
+      "er_coat",
+      "HAS_EQUIPMENT",
+      "coater101"
+    ],
+    [
+      "er_coat",
+      "HAS_HIERARCHY_SCOPE",
+      "coater101"
+    ],
+    [
+      "er_dry",
+      "HAS_EQUIPMENT",
+      "dryer102"
+    ],
+    [
+      "er_dry",
+      "HAS_HIERARCHY_SCOPE",
+      "dryer102"
+    ],
+    [
+      "mr_coat",
+      "HAS_MATERIAL_DEFINITION",
+      "slurry_def"
+    ],
+    [
+      "mr_coat",
+      "HAS_MATERIAL_LOT",
+      "slurry_lot"
+    ],
+    [
+      "mr_coat",
+      "HAS_HIERARCHY_SCOPE",
+      "line1"
+    ],
+    [
+      "pr_coat",
+      "HAS_PERSONNEL_CLASS",
+      "operators"
+    ],
+    [
+      "pr_coat",
+      "HAS_PERSON",
+      "magnus"
+    ],
+    [
+      "pr_coat",
+      "HAS_HIERARCHY_SCOPE",
+      "line1"
+    ],
+    [
+      "performance",
+      "HAS_HIERARCHY_SCOPE",
+      "halden"
+    ],
+    [
+      "performance",
+      "HAS_OPERATIONS_SCHEDULE",
+      "schedule"
+    ],
+    [
+      "performance",
+      "HAS_OPERATIONS_RESPONSE",
+      "response"
+    ],
+    [
+      "response",
+      "HAS_HIERARCHY_SCOPE",
+      "coating"
+    ],
+    [
+      "response",
+      "HAS_OPERATIONS_REQUEST",
+      "request"
+    ],
+    [
+      "response",
+      "HAS_SEGMENT_RESPONSE",
+      "sres_coat"
+    ],
+    [
+      "request",
+      "HAS_REQUESTED_SEGMENT_RESPONSE",
+      "sres_coat"
+    ],
+    [
+      "sres_coat",
+      "HAS_SEGMENT_REQUIREMENT",
+      "sr_coat"
+    ],
+    [
+      "sres_coat",
+      "HAS_PROCESS_SEGMENT",
+      "ps_coat"
+    ],
+    [
+      "sres_coat",
+      "HAS_EQUIPMENT_ACTUAL",
+      "ea_coat"
+    ],
+    [
+      "sres_coat",
+      "HAS_MATERIAL_ACTUAL",
+      "ma_coat"
+    ],
+    [
+      "sres_coat",
+      "HAS_PERSONNEL_ACTUAL",
+      "pa_coat"
+    ],
+    [
+      "response",
+      "HAS_SEGMENT_RESPONSE",
+      "sres_dry"
+    ],
+    [
+      "request",
+      "HAS_REQUESTED_SEGMENT_RESPONSE",
+      "sres_dry"
+    ],
+    [
+      "sres_dry",
+      "HAS_SEGMENT_REQUIREMENT",
+      "sr_dry"
+    ],
+    [
+      "sres_dry",
+      "HAS_PROCESS_SEGMENT",
+      "ps_dry"
+    ],
+    [
+      "sres_dry",
+      "HAS_EQUIPMENT_ACTUAL",
+      "ea_dry"
+    ],
+    [
+      "ea_coat",
+      "HAS_EQUIPMENT",
+      "coater101"
+    ],
+    [
+      "ea_dry",
+      "HAS_EQUIPMENT",
+      "dryer102"
+    ],
+    [
+      "ma_coat",
+      "HAS_MATERIAL_DEFINITION",
+      "slurry_def"
+    ],
+    [
+      "ma_coat",
+      "HAS_MATERIAL_LOT",
+      "slurry_lot"
+    ],
+    [
+      "pa_coat",
+      "HAS_PERSON",
+      "magnus"
+    ]
+  ]
+}

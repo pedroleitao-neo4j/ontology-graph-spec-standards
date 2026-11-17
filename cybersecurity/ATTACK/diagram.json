@@ -1,0 +1,21 @@
+{
+  "source": "the official MITRE ATT&CK 20.1 STIX bundles of the Enterprise, Mobile and ICS domains",
+  "link": "the object's page on attack.mitre.org",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "Behaviour — tactics and techniques", "values": ["Behaviour"]},
+      {"name": "Adversary — groups, campaigns, malware and tools", "values": ["Adversary"]},
+      {"name": "Defence — mitigations, detection strategies, analytics and data components", "values": ["Defence"]},
+      {"name": "Foundation — the ATTACKObject label and ICS assets", "values": ["Foundation"]}
+    ]
+  },
+  "sub": ["stixType", "count", "#properties"],
+  "lines": {
+    "by": "field:derived",
+    "legend": {
+      "main": "STIX relationship object: source to target",
+      "dashed": "embedded reference: kill chain phases, analytic references or log source references"
+    }
+  }
+}

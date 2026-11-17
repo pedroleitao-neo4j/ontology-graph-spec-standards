@@ -1,0 +1,18 @@
+{
+  "source": "the D3FEND 1.6.0 Turtle file published by MITRE",
+  "link": "the D3FEND term",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "Defensive — tactics, techniques and analytics", "values": ["Defensive"]},
+      {"name": "Offensive — ATT&CK, ATLAS and SPARTA, and CWE weaknesses", "values": ["Offensive"]},
+      {"name": "Core — every class; artifacts, events, agents and sensors", "values": ["Core"]},
+      {"name": "Knowledge base — references, controls and mitigations", "values": ["Knowledge base"]}
+    ]
+  },
+  "sub": ["holds", "count", "#properties"],
+  "lines": {
+    "by": "field:definite",
+    "legend": {"main": "definite: x is related to y", "dashed": "possible: x may be related to y (may-…)"}
+  }
+}

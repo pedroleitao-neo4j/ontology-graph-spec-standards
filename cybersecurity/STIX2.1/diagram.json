@@ -1,0 +1,18 @@
+{
+  "source": "the OASIS STIX 2.1 JSON schemas, the STIX validator 3.3.2 relationship table and the STIX 2.1 specification",
+  "link": "the object's section of the specification",
+  "areas": {
+    "field": "category",
+    "groups": [
+      {"name": "STIX Domain Objects (SDOs)", "values": ["SDO"]},
+      {"name": "STIX Cyber-observable Objects (SCOs)", "values": ["SCO"]},
+      {"name": "Sighting (SRO)", "values": ["SRO"]},
+      {"name": "Meta objects: markings, translations, extensions", "values": ["Meta"]}
+    ]
+  },
+  "sub": ["stixType", "abstract", "#properties"],
+  "lines": {
+    "by": "field:relationshipObject",
+    "legend": {"main": "relationship object (SRO): source to target", "dashed": "embedded reference: a _ref or _refs property"}
+  }
+}

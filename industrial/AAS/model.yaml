@@ -1,0 +1,3536 @@
+"schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json"
+"version": "3.2.0"
+"id": "aas-3.2.0"
+"name": "Asset Administration Shell 3.2"
+"description": "The Asset Administration Shell (AAS) metamodel 3.2, specified by the Industrial Digital Twin Association (IDTA) in IDTA-01001 Part 1 and standardised as IEC 63278-1. The AAS is the standardised digital twin of Industrie 4.0: an asset administration shell describes an asset (its kind and identifiers) through submodels, each made of submodel elements (properties, ranges, files, blobs, collections, lists, entities, relationships, operations, capabilities and events), whose semantics are given by concept descriptions and IEC 61360 data specifications, and which point at each other through references. Generated from the RDF ontology and SHACL shapes of the IDTA metamodel schemas (https://github.com/admin-shell-io/aas-specs-metamodel, tag v3.2.0): each class is a node, each attribute of a primitive or enumeration type a property, each attribute of a class type a composition relationship, and each superclass an implied label."
+"nodes":
+  "AbstractLangString":
+    "labels":
+      "identifier": "AbstractLangString"
+    "description": "Strings with language tags."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/datatypes.html#LangStringSet"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the AbstractLangString node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "language":
+        "type": "STRING"
+        "name": "language"
+        "description": "Language tag conforming to BCP 47. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/datatypes.html#LangStringSet"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AbstractLangString/language"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "pattern": "^(([a-zA-Z]{2,3}(-[a-zA-Z]{3}(-[a-zA-Z]{3}){0,2})?|[a-zA-Z]{4}|[a-zA-Z]{5,8})(-[a-zA-Z]{4})?(-([a-zA-Z]{2}|[0-9]{3}))?(-(([a-zA-Z0-9]){5,8}|[0-9]([a-zA-Z0-9]){3}))*(-[0-9A-WY-Za-wy-z](-([a-zA-Z0-9]){2,8})+)*(-[xX](-([a-zA-Z0-9]){1,8})+)?|[xX](-([a-zA-Z0-9]){1,8})+|((en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang)))$"
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Text in the 'language'. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/datatypes.html#LangStringSet"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AbstractLangString/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+    "constraints":
+      "key_AbstractLangString":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_AbstractLangString_key"
+      "exists_AbstractLangString_language":
+        "type": "EXISTS"
+        "properties":
+          - "language"
+        "name": "language_AbstractLangString_exists"
+      "exists_AbstractLangString_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_AbstractLangString_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AbstractLangString"
+        "section": "datatypes"
+        "abstract": true
+  "AdministrativeInformation":
+    "labels":
+      "identifier": "AdministrativeInformation"
+      "implied":
+        - "HasDataSpecification"
+    "description": "Administrative meta-information for an element like version information."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#AdministrativeInformation"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the AdministrativeInformation node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "version":
+        "type": "STRING"
+        "name": "version"
+        "description": "Version of the element."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#AdministrativeInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AdministrativeInformation/version"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 4
+      "revision":
+        "type": "STRING"
+        "name": "revision"
+        "description": "Revision of the element."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#AdministrativeInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AdministrativeInformation/revision"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 4
+      "createdAt":
+        "type": "STRING"
+        "name": "createdAt"
+        "description": "Date of creation."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#AdministrativeInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "pattern": "^-?(([1-9][0-9][0-9][0-9]+)|(0[0-9][0-9][0-9]))-((0[1-9])|(1[0-2]))-((0[1-9])|([12][0-9])|(3[01]))T(((([01][0-9])|(2[0-3])):[0-5][0-9]:([0-5][0-9])(\\.[0-9]+)?)|24:00:00(\\.0+)?)(Z|\\+00:00|-00:00)$"
+      "updatedAt":
+        "type": "STRING"
+        "name": "updatedAt"
+        "description": "Date of update."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#AdministrativeInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "pattern": "^-?(([1-9][0-9][0-9][0-9]+)|(0[0-9][0-9][0-9]))-((0[1-9])|(1[0-2]))-((0[1-9])|([12][0-9])|(3[01]))T(((([01][0-9])|(2[0-3])):[0-5][0-9]:([0-5][0-9])(\\.[0-9]+)?)|24:00:00(\\.0+)?)(Z|\\+00:00|-00:00)$"
+      "templateId":
+        "type": "STRING"
+        "name": "templateId"
+        "description": "Identifier of the template that guided the creation of the element."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#AdministrativeInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_AdministrativeInformation":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_AdministrativeInformation_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AdministrativeInformation"
+        "section": "common"
+  "AnnotatedRelationshipElement":
+    "labels":
+      "identifier": "AnnotatedRelationshipElement"
+      "implied":
+        - "RelationshipElement"
+    "description": "An annotated relationship element is a relationship element that can be annotated with additional data elements."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#AnnotatedRelationshipElement"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the AnnotatedRelationshipElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_AnnotatedRelationshipElement":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_AnnotatedRelationshipElement_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AnnotatedRelationshipElement"
+        "section": "submodel-elements"
+  "AssetAdministrationShell":
+    "labels":
+      "identifier": "AssetAdministrationShell"
+      "implied":
+        - "Identifiable"
+        - "HasDataSpecification"
+    "description": "An asset administration shell."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetAdministrationShell"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the AssetAdministrationShell node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_AssetAdministrationShell":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_AssetAdministrationShell_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AssetAdministrationShell"
+        "section": "core"
+  "AssetInformation":
+    "labels":
+      "identifier": "AssetInformation"
+    "description": "In 'AssetInformation' identifying meta data of the asset that is represented by an AAS is defined."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the AssetInformation node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "assetKind":
+        "type": "STRING"
+        "name": "assetKind"
+        "description": "Denotes whether the Asset is of kind 'Type' or 'Instance', 'Role' or 'Batch'. Multiplicity 1..1. Values of AAS enumeration AssetKind."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AssetInformation/assetKind"
+            "aasType": "AssetKind"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "Batch"
+          - "Instance"
+          - "NotApplicable"
+          - "Role"
+          - "Type"
+      "globalAssetId":
+        "type": "STRING"
+        "name": "globalAssetId"
+        "description": "Global identifier of the asset the AAS is representing."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AssetInformation/globalAssetId"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+      "assetType":
+        "type": "STRING"
+        "name": "assetType"
+        "description": "In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset under consideration as identified by 'globalAssetId'."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/AssetInformation/assetType"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_AssetInformation":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_AssetInformation_key"
+      "exists_AssetInformation_assetKind":
+        "type": "EXISTS"
+        "properties":
+          - "assetKind"
+        "name": "assetKind_AssetInformation_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AssetInformation"
+        "section": "core"
+  "BasicEventElement":
+    "labels":
+      "identifier": "BasicEventElement"
+      "implied":
+        - "EventElement"
+    "description": "A basic event element."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the BasicEventElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "direction":
+        "type": "STRING"
+        "name": "direction"
+        "description": "Direction of event. Multiplicity 1..1. Values of AAS enumeration Direction."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/direction"
+            "aasType": "Direction"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "input"
+          - "output"
+      "state":
+        "type": "STRING"
+        "name": "state"
+        "description": "State of event. Multiplicity 1..1. Values of AAS enumeration StateOfEvent."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/state"
+            "aasType": "StateOfEvent"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "off"
+          - "on"
+      "messageTopic":
+        "type": "STRING"
+        "name": "messageTopic"
+        "description": "Information for the outer message infrastructure for scheduling the event to the respective communication channel."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/messageTopic"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 255
+      "lastUpdate":
+        "type": "STRING"
+        "name": "lastUpdate"
+        "description": "Timestamp in UTC, when the last event was received (input direction) or sent (output direction)."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/lastUpdate"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "pattern": "^-?(([1-9][0-9][0-9][0-9]+)|(0[0-9][0-9][0-9]))-((0[1-9])|(1[0-2]))-((0[1-9])|([12][0-9])|(3[01]))T(((([01][0-9])|(2[0-3])):[0-5][0-9]:([0-5][0-9])(\\.[0-9]+)?)|24:00:00(\\.0+)?)(Z|\\+00:00|-00:00)$"
+      "minInterval":
+        "type": "STRING"
+        "name": "minInterval"
+        "description": "For input direction, reports on the maximum frequency, the software entity behind the respective Referable can handle input events."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/minInterval"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "pattern": "^-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))$"
+      "maxInterval":
+        "type": "STRING"
+        "name": "maxInterval"
+        "description": "For input direction: not applicable."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/maxInterval"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "pattern": "^-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))$"
+    "constraints":
+      "key_BasicEventElement":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_BasicEventElement_key"
+      "exists_BasicEventElement_direction":
+        "type": "EXISTS"
+        "properties":
+          - "direction"
+        "name": "direction_BasicEventElement_exists"
+      "exists_BasicEventElement_state":
+        "type": "EXISTS"
+        "properties":
+          - "state"
+        "name": "state_BasicEventElement_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/BasicEventElement"
+        "section": "submodel-elements"
+  "Blob":
+    "labels":
+      "identifier": "Blob"
+      "implied":
+        - "DataElement"
+    "description": "A 'Blob' is a data element that represents a file that is contained with its source code in the value attribute."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Blob"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Blob node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "The value of the 'Blob' instance of a blob data element."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Blob"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Blob/value"
+            "aasType": "xs:base64Binary"
+            "lower": 0
+            "upper": 1
+      "contentType":
+        "type": "STRING"
+        "name": "contentType"
+        "description": "Content type of the content of the 'Blob'."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Blob"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Blob/contentType"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 128
+    "constraints":
+      "key_Blob":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Blob_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Blob"
+        "section": "submodel-elements"
+  "Capability":
+    "labels":
+      "identifier": "Capability"
+      "implied":
+        - "SubmodelElement"
+    "description": "A capability is the implementation-independent description of the potential of an asset to achieve a certain effect in the physical or virtual world."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Capability"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Capability node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_Capability":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Capability_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Capability"
+        "section": "submodel-elements"
+  "ConceptDescription":
+    "labels":
+      "identifier": "ConceptDescription"
+      "implied":
+        - "Identifiable"
+        - "HasDataSpecification"
+    "description": "The semantics of a property or other elements that may have a semantic description is defined by a concept description."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/concept-description.html#ConceptDescription"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the ConceptDescription node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_ConceptDescription":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_ConceptDescription_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ConceptDescription"
+        "section": "concept-description"
+  "DataElement":
+    "labels":
+      "identifier": "DataElement"
+      "implied":
+        - "SubmodelElement"
+    "description": "A data element is a submodel element that is not further composed out of other submodel elements."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#DataElement"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the DataElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_DataElement":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_DataElement_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataElement"
+        "section": "submodel-elements"
+        "abstract": true
+  "DataSpecificationContent":
+    "labels":
+      "identifier": "DataSpecificationContent"
+    "description": "Data specification content is part of a data specification template and defines which additional attributes shall be added to the element instance that references the data specification template and meta information about the template itself."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/data-specifications.html#DataSpecificationContent"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the DataSpecificationContent node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_DataSpecificationContent":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_DataSpecificationContent_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationContent"
+        "section": "data-specifications"
+        "abstract": true
+  "DataSpecificationIec61360":
+    "labels":
+      "identifier": "DataSpecificationIec61360"
+      "implied":
+        - "DataSpecificationContent"
+    "description": "Content of data specification template for concept descriptions for properties, values and value lists conformant to IEC 61360."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the DataSpecificationIec61360 node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "unit":
+        "type": "STRING"
+        "name": "unit"
+        "description": "Unit."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/unit"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+      "sourceOfDefinition":
+        "type": "STRING"
+        "name": "sourceOfDefinition"
+        "description": "Source of definition."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/sourceOfDefinition"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+      "symbol":
+        "type": "STRING"
+        "name": "symbol"
+        "description": "Symbol."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/symbol"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+      "dataType":
+        "type": "STRING"
+        "name": "dataType"
+        "description": "Data Type. Values of AAS enumeration DataTypeIec61360."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/dataType"
+            "aasType": "DataTypeIec61360"
+            "lower": 0
+            "upper": 1
+        "one_of":
+          - "BLOB"
+          - "BOOLEAN"
+          - "DATE"
+          - "FILE"
+          - "HTML"
+          - "INTEGER_COUNT"
+          - "INTEGER_CURRENCY"
+          - "INTEGER_MEASURE"
+          - "IRDI"
+          - "IRI"
+          - "RATIONAL"
+          - "RATIONAL_MEASURE"
+          - "REAL_COUNT"
+          - "REAL_CURRENCY"
+          - "REAL_MEASURE"
+          - "STRING"
+          - "STRING_TRANSLATABLE"
+          - "TIME"
+          - "TIMESTAMP"
+      "valueFormat":
+        "type": "STRING"
+        "name": "valueFormat"
+        "description": "Value Format."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/valueFormat"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "Value."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/value"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_DataSpecificationIec61360":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_DataSpecificationIec61360_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360"
+        "section": "data-specifications"
+  "DataSpecificationUom":
+    "labels":
+      "identifier": "DataSpecificationUom"
+      "implied":
+        - "DataSpecificationContent"
+    "description": "Content of data specification template for concept descriptions for Units of Measurement."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the DataSpecificationUom node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "symbol":
+        "type": "STRING"
+        "name": "symbol"
+        "description": "Symbol of the unit. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/symbol"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 256
+      "specificUnitId":
+        "type": "STRING"
+        "name": "specificUnitId"
+        "description": "ID of the unit defined by the classification system."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/specificUnitId"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 256
+      "quantityId":
+        "type": "STRING"
+        "name": "quantityId"
+        "description": "ID of the unit's quantity."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/quantityId"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+      "classificationSystem":
+        "type": "STRING"
+        "name": "classificationSystem"
+        "description": "Name of the classification system used for the definition of units and quantities."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/classificationSystem"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 256
+      "classificationSystemVersion":
+        "type": "STRING"
+        "name": "classificationSystemVersion"
+        "description": "Version of the classification system used for the definition of units and quantities."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/classificationSystemVersion"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 256
+    "constraints":
+      "key_DataSpecificationUom":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_DataSpecificationUom_key"
+      "exists_DataSpecificationUom_symbol":
+        "type": "EXISTS"
+        "properties":
+          - "symbol"
+        "name": "symbol_DataSpecificationUom_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom"
+        "section": "data-specifications"
+  "EmbeddedDataSpecification":
+    "labels":
+      "identifier": "EmbeddedDataSpecification"
+    "description": "Embed the content of a data specification."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasDataSpecification"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the EmbeddedDataSpecification node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_EmbeddedDataSpecification":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_EmbeddedDataSpecification_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EmbeddedDataSpecification"
+        "section": "common"
+  "Entity":
+    "labels":
+      "identifier": "Entity"
+      "implied":
+        - "SubmodelElement"
+    "description": "An entity is a submodel element that is used to model entities."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Entity"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Entity node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "entityType":
+        "type": "STRING"
+        "name": "entityType"
+        "description": "Describes whether the entity is a co-managed entity or a self-managed entity. Values of AAS enumeration EntityType."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Entity"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Entity/entityType"
+            "aasType": "EntityType"
+            "lower": 0
+            "upper": 1
+        "one_of":
+          - "CoManagedEntity"
+          - "SelfManagedEntity"
+      "globalAssetId":
+        "type": "STRING"
+        "name": "globalAssetId"
+        "description": "Global identifier of the asset the entity is representing."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Entity"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Entity/globalAssetId"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_Entity":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Entity_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Entity"
+        "section": "submodel-elements"
+  "Environment":
+    "labels":
+      "identifier": "Environment"
+    "description": "Container for the sets of different identifiables."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/environment.html#Environment"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Environment node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_Environment":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Environment_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Environment"
+        "section": "environment"
+  "EventElement":
+    "labels":
+      "identifier": "EventElement"
+      "implied":
+        - "SubmodelElement"
+    "description": "An event element."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventElement"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the EventElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_EventElement":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_EventElement_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EventElement"
+        "section": "submodel-elements"
+        "abstract": true
+  "EventPayload":
+    "labels":
+      "identifier": "EventPayload"
+    "description": "Defines the necessary information of an event instance sent out or received."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the EventPayload node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "topic":
+        "type": "STRING"
+        "name": "topic"
+        "description": "Information for the outer message infrastructure for scheduling the event to the respective communication channel."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/EventPayload/topic"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 255
+      "timeStamp":
+        "type": "STRING"
+        "name": "timeStamp"
+        "description": "Timestamp in UTC, when this event was triggered. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/EventPayload/timeStamp"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "pattern": "^-?(([1-9][0-9][0-9][0-9]+)|(0[0-9][0-9][0-9]))-((0[1-9])|(1[0-2]))-((0[1-9])|([12][0-9])|(3[01]))T(((([01][0-9])|(2[0-3])):[0-5][0-9]:([0-5][0-9])(\\.[0-9]+)?)|24:00:00(\\.0+)?)(Z|\\+00:00|-00:00)$"
+      "payload":
+        "type": "STRING"
+        "name": "payload"
+        "description": "Event specific payload."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/EventPayload/payload"
+            "aasType": "xs:base64Binary"
+            "lower": 0
+            "upper": 1
+    "constraints":
+      "key_EventPayload":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_EventPayload_key"
+      "exists_EventPayload_timeStamp":
+        "type": "EXISTS"
+        "properties":
+          - "timeStamp"
+        "name": "timeStamp_EventPayload_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EventPayload"
+        "section": "submodel-elements"
+  "Extension":
+    "labels":
+      "identifier": "Extension"
+      "implied":
+        - "HasSemantics"
+    "description": "Single extension of an element."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Extension"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Extension node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "name":
+        "type": "STRING"
+        "name": "name"
+        "description": "Name of the extension. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Extension"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Extension/name"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 128
+      "valueType":
+        "type": "STRING"
+        "name": "valueType"
+        "description": "Type of the value of the extension. Values of AAS enumeration DataTypeDefXsd."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Extension"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Extension/valueType"
+            "aasType": "DataTypeDefXsd"
+            "lower": 0
+            "upper": 1
+        "one_of":
+          - "xs:anyURI"
+          - "xs:base64Binary"
+          - "xs:boolean"
+          - "xs:byte"
+          - "xs:date"
+          - "xs:dateTime"
+          - "xs:decimal"
+          - "xs:double"
+          - "xs:duration"
+          - "xs:float"
+          - "xs:gDay"
+          - "xs:gMonth"
+          - "xs:gMonthDay"
+          - "xs:gYear"
+          - "xs:gYearMonth"
+          - "xs:hexBinary"
+          - "xs:int"
+          - "xs:integer"
+          - "xs:long"
+          - "xs:negativeInteger"
+          - "xs:nonNegativeInteger"
+          - "xs:nonPositiveInteger"
+          - "xs:positiveInteger"
+          - "xs:short"
+          - "xs:string"
+          - "xs:time"
+          - "xs:unsignedByte"
+          - "xs:unsignedInt"
+          - "xs:unsignedLong"
+          - "xs:unsignedShort"
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "Value of the extension."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Extension"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Extension/value"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+    "constraints":
+      "key_Extension":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Extension_key"
+      "exists_Extension_name":
+        "type": "EXISTS"
+        "properties":
+          - "name"
+        "name": "name_Extension_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Extension"
+        "section": "common"
+  "File":
+    "labels":
+      "identifier": "File"
+      "implied":
+        - "DataElement"
+    "description": "A File is a data element that represents an address to a file (a locator)."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#File"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the File node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "Path and name of the referenced file (with file extension)."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#File"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/File/value"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+      "contentType":
+        "type": "STRING"
+        "name": "contentType"
+        "description": "Content type of the content of the file."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#File"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/File/contentType"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 128
+    "constraints":
+      "key_File":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_File_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/File"
+        "section": "submodel-elements"
+  "HasDataSpecification":
+    "labels":
+      "identifier": "HasDataSpecification"
+    "description": "Element that can be extended by using data specification templates."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasDataSpecification"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the HasDataSpecification node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_HasDataSpecification":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_HasDataSpecification_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasDataSpecification"
+        "section": "common"
+        "abstract": true
+  "HasExtensions":
+    "labels":
+      "identifier": "HasExtensions"
+    "description": "Element that can be extended by proprietary extensions."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasExtensions"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the HasExtensions node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_HasExtensions":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_HasExtensions_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasExtensions"
+        "section": "common"
+        "abstract": true
+  "HasKind":
+    "labels":
+      "identifier": "HasKind"
+    "description": "An element with a kind is an element that can either represent a template or an instance."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasKind"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the HasKind node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "kind":
+        "type": "STRING"
+        "name": "kind"
+        "description": "Kind of the element: either template or instance. Values of AAS enumeration ModellingKind."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasKind"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/HasKind/kind"
+            "aasType": "ModellingKind"
+            "lower": 0
+            "upper": 1
+        "one_of":
+          - "Instance"
+          - "Template"
+    "constraints":
+      "key_HasKind":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_HasKind_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasKind"
+        "section": "common"
+        "abstract": true
+  "HasSemantics":
+    "labels":
+      "identifier": "HasSemantics"
+    "description": "Element that can have a semantic definition plus some supplemental semantic definitions."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasSemantics"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the HasSemantics node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_HasSemantics":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_HasSemantics_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasSemantics"
+        "section": "common"
+        "abstract": true
+  "Identifiable":
+    "labels":
+      "identifier": "Identifiable"
+      "implied":
+        - "Referable"
+    "description": "An element that has a globally unique identifier."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Identifiable"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Identifiable node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "id":
+        "type": "STRING"
+        "name": "id"
+        "description": "The globally unique identification of the element. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Identifiable"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Identifiable/id"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_Identifiable":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Identifiable_key"
+      "key_Identifiable_id":
+        "type": "KEY"
+        "properties":
+          - "id"
+        "name": "id_Identifiable_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Identifiable"
+        "section": "common"
+        "abstract": true
+  "Key":
+    "labels":
+      "identifier": "Key"
+    "description": "A key is a reference to an element by its ID."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Key"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Key node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "type":
+        "type": "STRING"
+        "name": "type"
+        "description": "Denotes which kind of entity is referenced. Multiplicity 1..1. Values of AAS enumeration KeyTypes."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Key"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Key/type"
+            "aasType": "KeyTypes"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "AnnotatedRelationshipElement"
+          - "AssetAdministrationShell"
+          - "BasicEventElement"
+          - "Blob"
+          - "Capability"
+          - "ConceptDescription"
+          - "DataElement"
+          - "Entity"
+          - "EventElement"
+          - "File"
+          - "FragmentReference"
+          - "GlobalReference"
+          - "Identifiable"
+          - "MultiLanguageProperty"
+          - "Operation"
+          - "Property"
+          - "Range"
+          - "Referable"
+          - "ReferenceElement"
+          - "RelationshipElement"
+          - "Submodel"
+          - "SubmodelElement"
+          - "SubmodelElementCollection"
+          - "SubmodelElementList"
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "The key value, for example an IRDI or an URI. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Key"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Key/value"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_Key":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Key_key"
+      "exists_Key_type":
+        "type": "EXISTS"
+        "properties":
+          - "type"
+        "name": "type_Key_exists"
+      "exists_Key_value":
+        "type": "EXISTS"
+        "properties":
+          - "value"
+        "name": "value_Key_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Key"
+        "section": "referencing"
+  "LangStringDefinitionTypeIec61360":
+    "labels":
+      "identifier": "LangStringDefinitionTypeIec61360"
+      "implied":
+        - "AbstractLangString"
+    "description": "String with length 1023 maximum and minimum 1 characters and with language tags."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DefinitionTypeIec61360"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LangStringDefinitionTypeIec61360 node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DefinitionTypeIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LangStringDefinitionTypeIec61360/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "maxLength": 1023
+    "constraints":
+      "key_LangStringDefinitionTypeIec61360":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LangStringDefinitionTypeIec61360_key"
+      "exists_LangStringDefinitionTypeIec61360_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_LangStringDefinitionTypeIec61360_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LangStringDefinitionTypeIec61360"
+        "section": "data-specifications"
+  "LangStringDefinitionTypeUom":
+    "labels":
+      "identifier": "LangStringDefinitionTypeUom"
+      "implied":
+        - "AbstractLangString"
+    "description": "Definition string with language tag, maximum length 2048 and minimum length 1."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#DefinitionTypeUoM"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LangStringDefinitionTypeUom node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#DefinitionTypeUoM"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LangStringDefinitionTypeUom/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "maxLength": 2048
+    "constraints":
+      "key_LangStringDefinitionTypeUom":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LangStringDefinitionTypeUom_key"
+      "exists_LangStringDefinitionTypeUom_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_LangStringDefinitionTypeUom_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LangStringDefinitionTypeUom"
+        "section": "data-specifications"
+  "LangStringNameType":
+    "labels":
+      "identifier": "LangStringNameType"
+      "implied":
+        - "AbstractLangString"
+    "description": "String with length 128 maximum and minimum 1 characters and with language tags."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/datatypes.html#MultiLanguageNameType"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LangStringNameType node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/datatypes.html#MultiLanguageNameType"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LangStringNameType/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "maxLength": 128
+    "constraints":
+      "key_LangStringNameType":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LangStringNameType_key"
+      "exists_LangStringNameType_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_LangStringNameType_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LangStringNameType"
+        "section": "datatypes"
+  "LangStringPreferredNameTypeIec61360":
+    "labels":
+      "identifier": "LangStringPreferredNameTypeIec61360"
+      "implied":
+        - "AbstractLangString"
+    "description": "String with length 255 maximum and minimum 1 characters and with language tags."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#PreferredNameTypeIec61360"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LangStringPreferredNameTypeIec61360 node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#PreferredNameTypeIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LangStringPreferredNameTypeIec61360/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "maxLength": 255
+    "constraints":
+      "key_LangStringPreferredNameTypeIec61360":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LangStringPreferredNameTypeIec61360_key"
+      "exists_LangStringPreferredNameTypeIec61360_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_LangStringPreferredNameTypeIec61360_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LangStringPreferredNameTypeIec61360"
+        "section": "data-specifications"
+  "LangStringShortNameTypeIec61360":
+    "labels":
+      "identifier": "LangStringShortNameTypeIec61360"
+      "implied":
+        - "AbstractLangString"
+    "description": "String with length 18 maximum and minimum 1 characters and with language tags."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#ShortNameTypeIec61360"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LangStringShortNameTypeIec61360 node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#ShortNameTypeIec61360"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LangStringShortNameTypeIec61360/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "maxLength": 18
+    "constraints":
+      "key_LangStringShortNameTypeIec61360":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LangStringShortNameTypeIec61360_key"
+      "exists_LangStringShortNameTypeIec61360_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_LangStringShortNameTypeIec61360_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LangStringShortNameTypeIec61360"
+        "section": "data-specifications"
+  "LangStringTextType":
+    "labels":
+      "identifier": "LangStringTextType"
+      "implied":
+        - "AbstractLangString"
+    "description": "String with length 1023 maximum and minimum 1 characters and with language tags."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/datatypes.html#MultiLanguageTextType"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LangStringTextType node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/datatypes.html#MultiLanguageTextType"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LangStringTextType/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "maxLength": 1023
+    "constraints":
+      "key_LangStringTextType":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LangStringTextType_key"
+      "exists_LangStringTextType_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_LangStringTextType_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LangStringTextType"
+        "section": "datatypes"
+  "LangStringUom":
+    "labels":
+      "identifier": "LangStringUom"
+      "implied":
+        - "AbstractLangString"
+    "description": "String with language tag, maximum length 256 and minimum length 1."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#LangStringSetUoM"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LangStringUom node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "text":
+        "type": "STRING"
+        "name": "text"
+        "description": "Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#LangStringSetUoM"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LangStringUom/text"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "maxLength": 256
+    "constraints":
+      "key_LangStringUom":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LangStringUom_key"
+      "exists_LangStringUom_text":
+        "type": "EXISTS"
+        "properties":
+          - "text"
+        "name": "text_LangStringUom_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LangStringUom"
+        "section": "data-specifications"
+  "LevelType":
+    "labels":
+      "identifier": "LevelType"
+    "description": "Value represented by up to four variants of a numeric value in a specific role: MIN, NOM, TYP and MAX. True means that the value is available, false means the value is not available."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#LevelType"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the LevelType node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "min":
+        "type": "BOOLEAN"
+        "name": "min"
+        "description": "Minimum of the value. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#LevelType"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LevelType/min"
+            "aasType": "xs:boolean"
+            "lower": 1
+            "upper": 1
+      "nom":
+        "type": "BOOLEAN"
+        "name": "nom"
+        "description": "Nominal value (value as designated). Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#LevelType"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LevelType/nom"
+            "aasType": "xs:boolean"
+            "lower": 1
+            "upper": 1
+      "typ":
+        "type": "BOOLEAN"
+        "name": "typ"
+        "description": "Value as typically present. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#LevelType"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LevelType/typ"
+            "aasType": "xs:boolean"
+            "lower": 1
+            "upper": 1
+      "max":
+        "type": "BOOLEAN"
+        "name": "max"
+        "description": "Maximum of the value. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#LevelType"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/LevelType/max"
+            "aasType": "xs:boolean"
+            "lower": 1
+            "upper": 1
+    "constraints":
+      "key_LevelType":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_LevelType_key"
+      "exists_LevelType_min":
+        "type": "EXISTS"
+        "properties":
+          - "min"
+        "name": "min_LevelType_exists"
+      "exists_LevelType_nom":
+        "type": "EXISTS"
+        "properties":
+          - "nom"
+        "name": "nom_LevelType_exists"
+      "exists_LevelType_typ":
+        "type": "EXISTS"
+        "properties":
+          - "typ"
+        "name": "typ_LevelType_exists"
+      "exists_LevelType_max":
+        "type": "EXISTS"
+        "properties":
+          - "max"
+        "name": "max_LevelType_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/LevelType"
+        "section": "data-specifications"
+  "MultiLanguageProperty":
+    "labels":
+      "identifier": "MultiLanguageProperty"
+      "implied":
+        - "DataElement"
+    "description": "A property is a data element that has a multi-language value."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#MultiLanguageProperty"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the MultiLanguageProperty node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_MultiLanguageProperty":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_MultiLanguageProperty_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/MultiLanguageProperty"
+        "section": "submodel-elements"
+  "Operation":
+    "labels":
+      "identifier": "Operation"
+      "implied":
+        - "SubmodelElement"
+    "description": "An operation is a submodel element with input and output variables."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Operation"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Operation node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_Operation":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Operation_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Operation"
+        "section": "submodel-elements"
+  "OperationVariable":
+    "labels":
+      "identifier": "OperationVariable"
+    "description": "The value of an operation variable is a submodel element that is used as input and/or output variable of an operation."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#OperationVariable"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the OperationVariable node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_OperationVariable":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_OperationVariable_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/OperationVariable"
+        "section": "submodel-elements"
+  "Property":
+    "labels":
+      "identifier": "Property"
+      "implied":
+        - "DataElement"
+    "description": "A property is a data element that has a single value."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Property"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Property node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "valueType":
+        "type": "STRING"
+        "name": "valueType"
+        "description": "Data type of the value. Multiplicity 1..1. Values of AAS enumeration DataTypeDefXsd."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Property"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Property/valueType"
+            "aasType": "DataTypeDefXsd"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "xs:anyURI"
+          - "xs:base64Binary"
+          - "xs:boolean"
+          - "xs:byte"
+          - "xs:date"
+          - "xs:dateTime"
+          - "xs:decimal"
+          - "xs:double"
+          - "xs:duration"
+          - "xs:float"
+          - "xs:gDay"
+          - "xs:gMonth"
+          - "xs:gMonthDay"
+          - "xs:gYear"
+          - "xs:gYearMonth"
+          - "xs:hexBinary"
+          - "xs:int"
+          - "xs:integer"
+          - "xs:long"
+          - "xs:negativeInteger"
+          - "xs:nonNegativeInteger"
+          - "xs:nonPositiveInteger"
+          - "xs:positiveInteger"
+          - "xs:short"
+          - "xs:string"
+          - "xs:time"
+          - "xs:unsignedByte"
+          - "xs:unsignedInt"
+          - "xs:unsignedLong"
+          - "xs:unsignedShort"
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "The value of the property instance."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Property"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Property/value"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+    "constraints":
+      "key_Property":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Property_key"
+      "exists_Property_valueType":
+        "type": "EXISTS"
+        "properties":
+          - "valueType"
+        "name": "valueType_Property_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Property"
+        "section": "submodel-elements"
+  "Qualifiable":
+    "labels":
+      "identifier": "Qualifiable"
+    "description": "The value of a qualifiable element may be further qualified by one or more qualifiers."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifiable"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Qualifiable node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_Qualifiable":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Qualifiable_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Qualifiable"
+        "section": "common"
+        "abstract": true
+  "Qualifier":
+    "labels":
+      "identifier": "Qualifier"
+      "implied":
+        - "HasSemantics"
+    "description": "A qualifier is a type-value-pair that makes additional statements w.r.t. the value of the element."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Qualifier node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "kind":
+        "type": "STRING"
+        "name": "kind"
+        "description": "The qualifier kind describes the kind of the qualifier that is applied to the element. Values of AAS enumeration QualifierKind."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Qualifier/kind"
+            "aasType": "QualifierKind"
+            "lower": 0
+            "upper": 1
+        "one_of":
+          - "ConceptQualifier"
+          - "TemplateQualifier"
+          - "ValueQualifier"
+      "type":
+        "type": "STRING"
+        "name": "type"
+        "description": "The qualifier type describes the type of the qualifier that is applied to the element. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Qualifier/type"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 128
+      "valueType":
+        "type": "STRING"
+        "name": "valueType"
+        "description": "Data type of the qualifier value. Multiplicity 1..1. Values of AAS enumeration DataTypeDefXsd."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Qualifier/valueType"
+            "aasType": "DataTypeDefXsd"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "xs:anyURI"
+          - "xs:base64Binary"
+          - "xs:boolean"
+          - "xs:byte"
+          - "xs:date"
+          - "xs:dateTime"
+          - "xs:decimal"
+          - "xs:double"
+          - "xs:duration"
+          - "xs:float"
+          - "xs:gDay"
+          - "xs:gMonth"
+          - "xs:gMonthDay"
+          - "xs:gYear"
+          - "xs:gYearMonth"
+          - "xs:hexBinary"
+          - "xs:int"
+          - "xs:integer"
+          - "xs:long"
+          - "xs:negativeInteger"
+          - "xs:nonNegativeInteger"
+          - "xs:nonPositiveInteger"
+          - "xs:positiveInteger"
+          - "xs:short"
+          - "xs:string"
+          - "xs:time"
+          - "xs:unsignedByte"
+          - "xs:unsignedInt"
+          - "xs:unsignedLong"
+          - "xs:unsignedShort"
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "The qualifier value is the value of the qualifier."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Qualifier/value"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+    "constraints":
+      "key_Qualifier":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Qualifier_key"
+      "exists_Qualifier_type":
+        "type": "EXISTS"
+        "properties":
+          - "type"
+        "name": "type_Qualifier_exists"
+      "exists_Qualifier_valueType":
+        "type": "EXISTS"
+        "properties":
+          - "valueType"
+        "name": "valueType_Qualifier_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Qualifier"
+        "section": "common"
+  "Range":
+    "labels":
+      "identifier": "Range"
+      "implied":
+        - "DataElement"
+    "description": "A range data element is a data element that defines a range with min and max."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Range"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Range node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "valueType":
+        "type": "STRING"
+        "name": "valueType"
+        "description": "Data type of the min und max. Multiplicity 1..1. Values of AAS enumeration DataTypeDefXsd."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Range"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Range/valueType"
+            "aasType": "DataTypeDefXsd"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "xs:anyURI"
+          - "xs:base64Binary"
+          - "xs:boolean"
+          - "xs:byte"
+          - "xs:date"
+          - "xs:dateTime"
+          - "xs:decimal"
+          - "xs:double"
+          - "xs:duration"
+          - "xs:float"
+          - "xs:gDay"
+          - "xs:gMonth"
+          - "xs:gMonthDay"
+          - "xs:gYear"
+          - "xs:gYearMonth"
+          - "xs:hexBinary"
+          - "xs:int"
+          - "xs:integer"
+          - "xs:long"
+          - "xs:negativeInteger"
+          - "xs:nonNegativeInteger"
+          - "xs:nonPositiveInteger"
+          - "xs:positiveInteger"
+          - "xs:short"
+          - "xs:string"
+          - "xs:time"
+          - "xs:unsignedByte"
+          - "xs:unsignedInt"
+          - "xs:unsignedLong"
+          - "xs:unsignedShort"
+      "min":
+        "type": "STRING"
+        "name": "min"
+        "description": "The minimum value of the range."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Range"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Range/min"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+      "max":
+        "type": "STRING"
+        "name": "max"
+        "description": "The maximum value of the range."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Range"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Range/max"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+    "constraints":
+      "key_Range":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Range_key"
+      "exists_Range_valueType":
+        "type": "EXISTS"
+        "properties":
+          - "valueType"
+        "name": "valueType_Range_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Range"
+        "section": "submodel-elements"
+  "Referable":
+    "labels":
+      "identifier": "Referable"
+      "implied":
+        - "HasExtensions"
+    "description": "An element that is referable by its 'idShort'."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Referable node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "category":
+        "type": "STRING"
+        "name": "category"
+        "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Referable/category"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 128
+      "idShort":
+        "type": "STRING"
+        "name": "idShort"
+        "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Referable/idShort"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 128
+    "constraints":
+      "key_Referable":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Referable_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Referable"
+        "section": "common"
+        "abstract": true
+  "Reference":
+    "labels":
+      "identifier": "Reference"
+    "description": "Reference to either a model element of the same or another AAS or to an external entity."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Reference"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Reference node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "type":
+        "type": "STRING"
+        "name": "type"
+        "description": "Type of the reference. Multiplicity 1..1. Values of AAS enumeration ReferenceTypes."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Reference"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Reference/type"
+            "aasType": "ReferenceTypes"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "ExternalReference"
+          - "ModelReference"
+    "constraints":
+      "key_Reference":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Reference_key"
+      "exists_Reference_type":
+        "type": "EXISTS"
+        "properties":
+          - "type"
+        "name": "type_Reference_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Reference"
+        "section": "referencing"
+  "ReferenceElement":
+    "labels":
+      "identifier": "ReferenceElement"
+      "implied":
+        - "DataElement"
+    "description": "A reference element is a data element that defines a logical reference to another element within the same or another AAS or a reference to an external object or entity."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#ReferenceElement"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the ReferenceElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_ReferenceElement":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_ReferenceElement_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ReferenceElement"
+        "section": "submodel-elements"
+  "RelationshipElement":
+    "labels":
+      "identifier": "RelationshipElement"
+      "implied":
+        - "SubmodelElement"
+    "description": "A relationship element is used to define a relationship between two elements being either referable (model reference) or external (global reference)."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#RelationshipElement"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the RelationshipElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_RelationshipElement":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_RelationshipElement_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/RelationshipElement"
+        "section": "submodel-elements"
+  "Resource":
+    "labels":
+      "identifier": "Resource"
+    "description": "Resource represents an address to a file (a locator). The value is an URI that can represent an absolute or relative path."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#Resource"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Resource node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "path":
+        "type": "STRING"
+        "name": "path"
+        "description": "Path and name of the resource (with file extension). Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#Resource"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Resource/path"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+      "contentType":
+        "type": "STRING"
+        "name": "contentType"
+        "description": "Content type of the content of the file."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#Resource"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/Resource/contentType"
+            "aasType": "xs:string"
+            "lower": 0
+            "upper": 1
+            "minLength": 1
+            "maxLength": 128
+    "constraints":
+      "key_Resource":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Resource_key"
+      "exists_Resource_path":
+        "type": "EXISTS"
+        "properties":
+          - "path"
+        "name": "path_Resource_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Resource"
+        "section": "core"
+  "SpecificAssetId":
+    "labels":
+      "identifier": "SpecificAssetId"
+      "implied":
+        - "HasSemantics"
+    "description": "A specific asset ID describes a generic supplementary identifying attribute of the asset."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#SpecificAssetId"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the SpecificAssetId node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "name":
+        "type": "STRING"
+        "name": "name"
+        "description": "Name of the identifier. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#SpecificAssetId"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/SpecificAssetId/name"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 64
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "The value of the specific asset identifier with the corresponding name. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#SpecificAssetId"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/SpecificAssetId/value"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_SpecificAssetId":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_SpecificAssetId_key"
+      "exists_SpecificAssetId_name":
+        "type": "EXISTS"
+        "properties":
+          - "name"
+        "name": "name_SpecificAssetId_exists"
+      "exists_SpecificAssetId_value":
+        "type": "EXISTS"
+        "properties":
+          - "value"
+        "name": "value_SpecificAssetId_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SpecificAssetId"
+        "section": "core"
+  "Submodel":
+    "labels":
+      "identifier": "Submodel"
+      "implied":
+        - "Identifiable"
+        - "HasKind"
+        - "HasSemantics"
+        - "Qualifiable"
+        - "HasDataSpecification"
+    "description": "A submodel defines a specific aspect of the asset represented by the AAS."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#Submodel"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the Submodel node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_Submodel":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_Submodel_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Submodel"
+        "section": "core"
+  "SubmodelElement":
+    "labels":
+      "identifier": "SubmodelElement"
+      "implied":
+        - "Referable"
+        - "HasSemantics"
+        - "Qualifiable"
+        - "HasDataSpecification"
+    "description": "A submodel element is an element suitable for the description and differentiation of assets."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#SubmodelElement"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the SubmodelElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_SubmodelElement":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_SubmodelElement_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SubmodelElement"
+        "section": "core"
+        "abstract": true
+  "SubmodelElementCollection":
+    "labels":
+      "identifier": "SubmodelElementCollection"
+      "implied":
+        - "SubmodelElement"
+    "description": "A submodel element collection is a kind of struct, i.e. a a logical encapsulation of multiple named values. It has a fixed number of submodel elements."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementCollection"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the SubmodelElementCollection node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_SubmodelElementCollection":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_SubmodelElementCollection_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SubmodelElementCollection"
+        "section": "submodel-elements"
+  "SubmodelElementList":
+    "labels":
+      "identifier": "SubmodelElementList"
+      "implied":
+        - "SubmodelElement"
+    "description": "A submodel element list is an ordered list of submodel elements."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementList"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the SubmodelElementList node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "orderRelevant":
+        "type": "BOOLEAN"
+        "name": "orderRelevant"
+        "description": "Defines whether order in list is relevant. If 'orderRelevant' = False then the list is representing a set or a bag."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementList"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/SubmodelElementList/orderRelevant"
+            "aasType": "xs:boolean"
+            "lower": 0
+            "upper": 1
+      "typeValueListElement":
+        "type": "STRING"
+        "name": "typeValueListElement"
+        "description": "The submodel element type of the submodel elements contained in the list. Multiplicity 1..1. Values of AAS enumeration AasSubmodelElements."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementList"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/SubmodelElementList/typeValueListElement"
+            "aasType": "AasSubmodelElements"
+            "lower": 1
+            "upper": 1
+        "one_of":
+          - "AnnotatedRelationshipElement"
+          - "BasicEventElement"
+          - "Blob"
+          - "Capability"
+          - "DataElement"
+          - "Entity"
+          - "EventElement"
+          - "File"
+          - "MultiLanguageProperty"
+          - "Operation"
+          - "Property"
+          - "Range"
+          - "ReferenceElement"
+          - "RelationshipElement"
+          - "SubmodelElement"
+          - "SubmodelElementCollection"
+          - "SubmodelElementList"
+      "valueTypeListElement":
+        "type": "STRING"
+        "name": "valueTypeListElement"
+        "description": "The value type of the submodel element contained in the list. Values of AAS enumeration DataTypeDefXsd."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementList"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/SubmodelElementList/valueTypeListElement"
+            "aasType": "DataTypeDefXsd"
+            "lower": 0
+            "upper": 1
+        "one_of":
+          - "xs:anyURI"
+          - "xs:base64Binary"
+          - "xs:boolean"
+          - "xs:byte"
+          - "xs:date"
+          - "xs:dateTime"
+          - "xs:decimal"
+          - "xs:double"
+          - "xs:duration"
+          - "xs:float"
+          - "xs:gDay"
+          - "xs:gMonth"
+          - "xs:gMonthDay"
+          - "xs:gYear"
+          - "xs:gYearMonth"
+          - "xs:hexBinary"
+          - "xs:int"
+          - "xs:integer"
+          - "xs:long"
+          - "xs:negativeInteger"
+          - "xs:nonNegativeInteger"
+          - "xs:nonPositiveInteger"
+          - "xs:positiveInteger"
+          - "xs:short"
+          - "xs:string"
+          - "xs:time"
+          - "xs:unsignedByte"
+          - "xs:unsignedInt"
+          - "xs:unsignedLong"
+          - "xs:unsignedShort"
+    "constraints":
+      "key_SubmodelElementList":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_SubmodelElementList_key"
+      "exists_SubmodelElementList_typeValueListElement":
+        "type": "EXISTS"
+        "properties":
+          - "typeValueListElement"
+        "name": "typeValueListElement_SubmodelElementList_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SubmodelElementList"
+        "section": "submodel-elements"
+  "ValueList":
+    "labels":
+      "identifier": "ValueList"
+    "description": "A set of value reference pairs."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#ValueList"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the ValueList node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+    "constraints":
+      "key_ValueList":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_ValueList_key"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ValueList"
+        "section": "data-specifications"
+  "ValueReferencePair":
+    "labels":
+      "identifier": "ValueReferencePair"
+    "description": "A value reference pair within a value list. Each value has a global unique id defining its semantic."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#ValueReferencePair"
+    "properties":
+      "uid":
+        "type": "STRING"
+        "name": "uid"
+        "description": "The identifier of the ValueReferencePair node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position."
+        "extensions":
+          "custom":
+            "addedByOntology": true
+      "value":
+        "type": "STRING"
+        "name": "value"
+        "description": "The value of the referenced concept definition of the value in 'valueId'. Multiplicity 1..1."
+        "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#ValueReferencePair"
+        "extensions":
+          "custom":
+            "iri": "https://admin-shell.io/aas/3/2/ValueReferencePair/value"
+            "aasType": "xs:string"
+            "lower": 1
+            "upper": 1
+            "minLength": 1
+            "maxLength": 2048
+    "constraints":
+      "key_ValueReferencePair":
+        "type": "KEY"
+        "properties":
+          - "uid"
+        "name": "uid_ValueReferencePair_key"
+      "exists_ValueReferencePair_value":
+        "type": "EXISTS"
+        "properties":
+          - "value"
+        "name": "value_ValueReferencePair_exists"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ValueReferencePair"
+        "section": "data-specifications"
+"relationships":
+  "AdministrativeInformation_HAS_CREATOR_Reference":
+    "type": "HAS_CREATOR"
+    "from":
+      "node": "AdministrativeInformation"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "The subject ID of the subject responsible for making the element. Each AdministrativeInformation has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#AdministrativeInformation"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AdministrativeInformation/creator"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "AnnotatedRelationshipElement_HAS_ANNOTATIONS_DataElement":
+    "type": "HAS_ANNOTATIONS"
+    "from":
+      "node": "AnnotatedRelationshipElement"
+    "to":
+      "node": "DataElement"
+      "max_count": 1
+    "description": "A data element that represents an annotation that holds for the relationship between the two elements. Each AnnotatedRelationshipElement has zero or more DataElement. A composition: each DataElement is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#AnnotatedRelationshipElement"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AnnotatedRelationshipElement/annotations"
+        "composition": true
+        "lower": 0
+  "AssetAdministrationShell_HAS_ASSET_INFORMATION_AssetInformation":
+    "type": "HAS_ASSET_INFORMATION"
+    "from":
+      "node": "AssetAdministrationShell"
+      "count": 1
+    "to":
+      "node": "AssetInformation"
+      "max_count": 1
+    "description": "Meta-information about the asset the AAS is representing. Each AssetAdministrationShell has exactly one AssetInformation. A composition: each AssetInformation is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetAdministrationShell"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AssetAdministrationShell/assetInformation"
+        "composition": true
+        "lower": 1
+        "upper": 1
+  "AssetAdministrationShell_HAS_DERIVED_FROM_Reference":
+    "type": "HAS_DERIVED_FROM"
+    "from":
+      "node": "AssetAdministrationShell"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "The reference to the AAS the AAS was derived from. Each AssetAdministrationShell has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetAdministrationShell"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AssetAdministrationShell/derivedFrom"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "AssetAdministrationShell_HAS_SUBMODELS_Reference":
+    "type": "HAS_SUBMODELS"
+    "from":
+      "node": "AssetAdministrationShell"
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "References to submodels of the AAS. Each AssetAdministrationShell has zero or more Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetAdministrationShell"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AssetAdministrationShell/submodels"
+        "composition": true
+        "lower": 0
+  "AssetInformation_HAS_DEFAULT_THUMBNAIL_Resource":
+    "type": "HAS_DEFAULT_THUMBNAIL"
+    "from":
+      "node": "AssetInformation"
+      "max_count": 1
+    "to":
+      "node": "Resource"
+      "max_count": 1
+    "description": "Thumbnail of the asset represented by the Asset Administration Shell. Each AssetInformation has at most one Resource. A composition: each Resource is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AssetInformation/defaultThumbnail"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "AssetInformation_HAS_SPECIFIC_ASSET_IDS_SpecificAssetId":
+    "type": "HAS_SPECIFIC_ASSET_IDS"
+    "from":
+      "node": "AssetInformation"
+    "to":
+      "node": "SpecificAssetId"
+      "max_count": 1
+    "description": "Additional domain-specific, typically proprietary identifier for the asset like e.g., serial number etc. Each AssetInformation has zero or more SpecificAssetId. A composition: each SpecificAssetId is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/AssetInformation/specificAssetIds"
+        "composition": true
+        "lower": 0
+  "BasicEventElement_HAS_MESSAGE_BROKER_Reference":
+    "type": "HAS_MESSAGE_BROKER"
+    "from":
+      "node": "BasicEventElement"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Information, which outer message infrastructure shall handle messages for the 'EventElement'. Refers to a 'Submodel', 'SubmodelElementList', 'SubmodelElementCollection' or 'Entity', which contains 'DataElement''s describing the proprietary specification for the message broker. Each BasicEventElement has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/messageBroker"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "BasicEventElement_HAS_OBSERVED_Reference":
+    "type": "HAS_OBSERVED"
+    "from":
+      "node": "BasicEventElement"
+      "count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the 'Referable', which defines the scope of the event. Can be 'AssetAdministrationShell', 'Submodel', or 'SubmodelElement'. Each BasicEventElement has exactly one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#BasicEventElement"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/BasicEventElement/observed"
+        "composition": true
+        "lower": 1
+        "upper": 1
+  "ConceptDescription_IS_CASE_OF_Reference":
+    "type": "IS_CASE_OF"
+    "from":
+      "node": "ConceptDescription"
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to an external definition the concept is compatible to or was derived from. Each ConceptDescription has zero or more Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/concept-description.html#ConceptDescription"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ConceptDescription/isCaseOf"
+        "composition": true
+        "lower": 0
+  "DataSpecificationIec61360_HAS_DEFINITION_LangStringDefinitionTypeIec61360":
+    "type": "HAS_DEFINITION"
+    "from":
+      "node": "DataSpecificationIec61360"
+    "to":
+      "node": "LangStringDefinitionTypeIec61360"
+      "max_count": 1
+    "description": "Definition in different languages. Each DataSpecificationIec61360 has zero or more LangStringDefinitionTypeIec61360. A composition: each LangStringDefinitionTypeIec61360 is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/definition"
+        "composition": true
+        "lower": 0
+  "DataSpecificationIec61360_HAS_LEVEL_TYPE_LevelType":
+    "type": "HAS_LEVEL_TYPE"
+    "from":
+      "node": "DataSpecificationIec61360"
+      "max_count": 1
+    "to":
+      "node": "LevelType"
+      "max_count": 1
+    "description": "Set of levels. Each DataSpecificationIec61360 has at most one LevelType. A composition: each LevelType is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/levelType"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "DataSpecificationIec61360_HAS_PREFERRED_NAME_LangStringPreferredNameTypeIec61360":
+    "type": "HAS_PREFERRED_NAME"
+    "from":
+      "node": "DataSpecificationIec61360"
+      "min_count": 1
+    "to":
+      "node": "LangStringPreferredNameTypeIec61360"
+      "max_count": 1
+    "description": "Preferred name. Each DataSpecificationIec61360 has one or more LangStringPreferredNameTypeIec61360. A composition: each LangStringPreferredNameTypeIec61360 is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/preferredName"
+        "composition": true
+        "lower": 1
+  "DataSpecificationIec61360_HAS_SHORT_NAME_LangStringShortNameTypeIec61360":
+    "type": "HAS_SHORT_NAME"
+    "from":
+      "node": "DataSpecificationIec61360"
+    "to":
+      "node": "LangStringShortNameTypeIec61360"
+      "max_count": 1
+    "description": "Short name. Each DataSpecificationIec61360 has zero or more LangStringShortNameTypeIec61360. A composition: each LangStringShortNameTypeIec61360 is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/shortName"
+        "composition": true
+        "lower": 0
+  "DataSpecificationIec61360_HAS_UNIT_ID_Reference":
+    "type": "HAS_UNIT_ID"
+    "from":
+      "node": "DataSpecificationIec61360"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Unique unit id. Each DataSpecificationIec61360 has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/unitId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "DataSpecificationIec61360_HAS_VALUE_LIST_ValueList":
+    "type": "HAS_VALUE_LIST"
+    "from":
+      "node": "DataSpecificationIec61360"
+      "max_count": 1
+    "to":
+      "node": "ValueList"
+      "max_count": 1
+    "description": "List of allowed values. Each DataSpecificationIec61360 has at most one ValueList. A composition: each ValueList is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#DataSpecificationIec61360"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationIec61360/valueList"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "DataSpecificationUom_HAS_DEFINITION_LangStringDefinitionTypeUom":
+    "type": "HAS_DEFINITION"
+    "from":
+      "node": "DataSpecificationUom"
+    "to":
+      "node": "LangStringDefinitionTypeUom"
+      "max_count": 1
+    "description": "Definition of the unit in different languages. Each DataSpecificationUom has zero or more LangStringDefinitionTypeUom. A composition: each LangStringDefinitionTypeUom is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/definition"
+        "composition": true
+        "lower": 0
+  "DataSpecificationUom_HAS_PREFERRED_NAME_LangStringUom":
+    "type": "HAS_PREFERRED_NAME"
+    "from":
+      "node": "DataSpecificationUom"
+      "min_count": 1
+    "to":
+      "node": "LangStringUom"
+      "max_count": 1
+    "description": "Preferred name of the unit in different languages as defined by the classification system. Each DataSpecificationUom has one or more LangStringUom. A composition: each LangStringUom is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/preferredName"
+        "composition": true
+        "lower": 1
+  "DataSpecificationUom_HAS_PREFERRED_NAME_QUANTITY_LangStringUom":
+    "type": "HAS_PREFERRED_NAME_QUANTITY"
+    "from":
+      "node": "DataSpecificationUom"
+    "to":
+      "node": "LangStringUom"
+      "max_count": 1
+    "description": "Preferred name of the unit's quantity in different languages. Each DataSpecificationUom has zero or more LangStringUom. A composition: each LangStringUom is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.1/specification.html#_data_specification_unit_of_measurement_template_specification"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/DataSpecificationUom/preferredNameQuantity"
+        "composition": true
+        "lower": 0
+  "EmbeddedDataSpecification_HAS_DATA_SPECIFICATION_Reference":
+    "type": "HAS_DATA_SPECIFICATION"
+    "from":
+      "node": "EmbeddedDataSpecification"
+      "count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the data specification. Each EmbeddedDataSpecification has exactly one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasDataSpecification"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EmbeddedDataSpecification/dataSpecification"
+        "composition": true
+        "lower": 1
+        "upper": 1
+  "EmbeddedDataSpecification_HAS_DATA_SPECIFICATION_CONTENT_DataSpecificationContent":
+    "type": "HAS_DATA_SPECIFICATION_CONTENT"
+    "from":
+      "node": "EmbeddedDataSpecification"
+      "count": 1
+    "to":
+      "node": "DataSpecificationContent"
+      "max_count": 1
+    "description": "Actual content of the data specification. Each EmbeddedDataSpecification has exactly one DataSpecificationContent. A composition: each DataSpecificationContent is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasDataSpecification"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EmbeddedDataSpecification/dataSpecificationContent"
+        "composition": true
+        "lower": 1
+        "upper": 1
+  "Entity_HAS_SPECIFIC_ASSET_IDS_SpecificAssetId":
+    "type": "HAS_SPECIFIC_ASSET_IDS"
+    "from":
+      "node": "Entity"
+    "to":
+      "node": "SpecificAssetId"
+      "max_count": 1
+    "description": "Reference to a specific asset ID representing a supplementary identifier of the asset represented by the Asset Administration Shell. Each Entity has zero or more SpecificAssetId. A composition: each SpecificAssetId is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Entity"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Entity/specificAssetIds"
+        "composition": true
+        "lower": 0
+  "Entity_HAS_STATEMENTS_SubmodelElement":
+    "type": "HAS_STATEMENTS"
+    "from":
+      "node": "Entity"
+    "to":
+      "node": "SubmodelElement"
+      "max_count": 1
+    "description": "Describes statements applicable to the entity by a set of submodel elements, typically with a qualified value. Each Entity has zero or more SubmodelElement. A composition: each SubmodelElement is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Entity"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Entity/statements"
+        "composition": true
+        "lower": 0
+  "Environment_HAS_ASSET_ADMINISTRATION_SHELLS_AssetAdministrationShell":
+    "type": "HAS_ASSET_ADMINISTRATION_SHELLS"
+    "from":
+      "node": "Environment"
+    "to":
+      "node": "AssetAdministrationShell"
+      "max_count": 1
+    "description": "Asset administration shell. Each Environment has zero or more AssetAdministrationShell. A composition: each AssetAdministrationShell is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/environment.html#Environment"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Environment/assetAdministrationShells"
+        "composition": true
+        "lower": 0
+  "Environment_HAS_CONCEPT_DESCRIPTIONS_ConceptDescription":
+    "type": "HAS_CONCEPT_DESCRIPTIONS"
+    "from":
+      "node": "Environment"
+    "to":
+      "node": "ConceptDescription"
+      "max_count": 1
+    "description": "Concept description. Each Environment has zero or more ConceptDescription. A composition: each ConceptDescription is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/environment.html#Environment"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Environment/conceptDescriptions"
+        "composition": true
+        "lower": 0
+  "Environment_HAS_SUBMODELS_Submodel":
+    "type": "HAS_SUBMODELS"
+    "from":
+      "node": "Environment"
+    "to":
+      "node": "Submodel"
+      "max_count": 1
+    "description": "Submodel. Each Environment has zero or more Submodel. A composition: each Submodel is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/environment.html#Environment"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Environment/submodels"
+        "composition": true
+        "lower": 0
+  "EventPayload_HAS_OBSERVABLE_REFERENCE_Reference":
+    "type": "HAS_OBSERVABLE_REFERENCE"
+    "from":
+      "node": "EventPayload"
+      "count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the referable, which defines the scope of the event. Each EventPayload has exactly one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EventPayload/observableReference"
+        "composition": true
+        "lower": 1
+        "upper": 1
+  "EventPayload_HAS_OBSERVABLE_SEMANTIC_ID_Reference":
+    "type": "HAS_OBSERVABLE_SEMANTIC_ID"
+    "from":
+      "node": "EventPayload"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "'semanticId' of the referable which defines the scope of the event, if available. Each EventPayload has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EventPayload/observableSemanticId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "EventPayload_HAS_SOURCE_Reference":
+    "type": "HAS_SOURCE"
+    "from":
+      "node": "EventPayload"
+      "count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the source event element, including identification of 'AssetAdministrationShell', 'Submodel', 'SubmodelElement''s. Each EventPayload has exactly one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EventPayload/source"
+        "composition": true
+        "lower": 1
+        "upper": 1
+  "EventPayload_HAS_SOURCE_SEMANTIC_ID_Reference":
+    "type": "HAS_SOURCE_SEMANTIC_ID"
+    "from":
+      "node": "EventPayload"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "'semanticId' of the source event element, if available. Each EventPayload has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EventPayload/sourceSemanticId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "EventPayload_HAS_SUBJECT_ID_Reference":
+    "type": "HAS_SUBJECT_ID"
+    "from":
+      "node": "EventPayload"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Subject, who/which initiated the creation. Each EventPayload has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#EventPayload"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/EventPayload/subjectId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "Extension_REFERS_TO_Reference":
+    "type": "REFERS_TO"
+    "from":
+      "node": "Extension"
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to an element the extension refers to. Each Extension has zero or more Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Extension"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Extension/refersTo"
+        "composition": true
+        "lower": 0
+  "HasDataSpecification_HAS_EMBEDDED_DATA_SPECIFICATIONS_EmbeddedDataSpecification":
+    "type": "HAS_EMBEDDED_DATA_SPECIFICATIONS"
+    "from":
+      "node": "HasDataSpecification"
+    "to":
+      "node": "EmbeddedDataSpecification"
+      "max_count": 1
+    "description": "Embedded data specification. Each HasDataSpecification has zero or more EmbeddedDataSpecification. A composition: each EmbeddedDataSpecification is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasDataSpecification"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications"
+        "composition": true
+        "lower": 0
+  "HasExtensions_HAS_EXTENSIONS_Extension":
+    "type": "HAS_EXTENSIONS"
+    "from":
+      "node": "HasExtensions"
+    "to":
+      "node": "Extension"
+      "max_count": 1
+    "description": "An extension of the element. Each HasExtensions has zero or more Extension. A composition: each Extension is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasExtensions"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasExtensions/extensions"
+        "composition": true
+        "lower": 0
+  "HasSemantics_HAS_SEMANTIC_ID_Reference":
+    "type": "HAS_SEMANTIC_ID"
+    "from":
+      "node": "HasSemantics"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Identifier of the semantic definition of the element. It is called semantic ID of the element or also main semantic ID of the element. Each HasSemantics has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasSemantics"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasSemantics/semanticId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "HasSemantics_HAS_SUPPLEMENTAL_SEMANTIC_IDS_Reference":
+    "type": "HAS_SUPPLEMENTAL_SEMANTIC_IDS"
+    "from":
+      "node": "HasSemantics"
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Identifier of a supplemental semantic definition of the element. It is called supplemental semantic ID of the element. Each HasSemantics has zero or more Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasSemantics"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds"
+        "composition": true
+        "lower": 0
+  "Identifiable_HAS_ADMINISTRATION_AdministrativeInformation":
+    "type": "HAS_ADMINISTRATION"
+    "from":
+      "node": "Identifiable"
+      "max_count": 1
+    "to":
+      "node": "AdministrativeInformation"
+      "max_count": 1
+    "description": "Administrative information of an identifiable element. Each Identifiable has at most one AdministrativeInformation. A composition: each AdministrativeInformation is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Identifiable"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Identifiable/administration"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "MultiLanguageProperty_HAS_VALUE_LangStringTextType":
+    "type": "HAS_VALUE"
+    "from":
+      "node": "MultiLanguageProperty"
+    "to":
+      "node": "LangStringTextType"
+      "max_count": 1
+    "description": "The value of the property instance. Each MultiLanguageProperty has zero or more LangStringTextType. A composition: each LangStringTextType is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#MultiLanguageProperty"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/MultiLanguageProperty/value"
+        "composition": true
+        "lower": 0
+  "MultiLanguageProperty_HAS_VALUE_ID_Reference":
+    "type": "HAS_VALUE_ID"
+    "from":
+      "node": "MultiLanguageProperty"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the global unique ID of a coded value. Each MultiLanguageProperty has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#MultiLanguageProperty"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/MultiLanguageProperty/valueId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "Operation_HAS_INOUTPUT_VARIABLES_OperationVariable":
+    "type": "HAS_INOUTPUT_VARIABLES"
+    "from":
+      "node": "Operation"
+    "to":
+      "node": "OperationVariable"
+      "max_count": 1
+    "description": "Parameter that is input and output of the operation. Each Operation has zero or more OperationVariable. A composition: each OperationVariable is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Operation"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Operation/inoutputVariables"
+        "composition": true
+        "lower": 0
+  "Operation_HAS_INPUT_VARIABLES_OperationVariable":
+    "type": "HAS_INPUT_VARIABLES"
+    "from":
+      "node": "Operation"
+    "to":
+      "node": "OperationVariable"
+      "max_count": 1
+    "description": "Input parameter of the operation. Each Operation has zero or more OperationVariable. A composition: each OperationVariable is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Operation"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Operation/inputVariables"
+        "composition": true
+        "lower": 0
+  "Operation_HAS_OUTPUT_VARIABLES_OperationVariable":
+    "type": "HAS_OUTPUT_VARIABLES"
+    "from":
+      "node": "Operation"
+    "to":
+      "node": "OperationVariable"
+      "max_count": 1
+    "description": "Output parameter of the operation. Each Operation has zero or more OperationVariable. A composition: each OperationVariable is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Operation"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Operation/outputVariables"
+        "composition": true
+        "lower": 0
+  "OperationVariable_HAS_VALUE_SubmodelElement":
+    "type": "HAS_VALUE"
+    "from":
+      "node": "OperationVariable"
+      "count": 1
+    "to":
+      "node": "SubmodelElement"
+      "max_count": 1
+    "description": "Describes an argument or result of an operation via a submodel element. Each OperationVariable has exactly one SubmodelElement. A composition: each SubmodelElement is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#OperationVariable"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/OperationVariable/value"
+        "composition": true
+        "lower": 1
+        "upper": 1
+  "Property_HAS_VALUE_ID_Reference":
+    "type": "HAS_VALUE_ID"
+    "from":
+      "node": "Property"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the global unique ID of a coded value. Each Property has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Property"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Property/valueId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "Qualifiable_HAS_QUALIFIERS_Qualifier":
+    "type": "HAS_QUALIFIERS"
+    "from":
+      "node": "Qualifiable"
+    "to":
+      "node": "Qualifier"
+      "max_count": 1
+    "description": "Additional qualification of a qualifiable element. Each Qualifiable has zero or more Qualifier. A composition: each Qualifier is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifiable"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Qualifiable/qualifiers"
+        "composition": true
+        "lower": 0
+  "Qualifier_HAS_VALUE_ID_Reference":
+    "type": "HAS_VALUE_ID"
+    "from":
+      "node": "Qualifier"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the global unique ID of a coded value. Each Qualifier has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Qualifier/valueId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "Referable_HAS_DESCRIPTION_LangStringTextType":
+    "type": "HAS_DESCRIPTION"
+    "from":
+      "node": "Referable"
+    "to":
+      "node": "LangStringTextType"
+      "max_count": 1
+    "description": "Description or comments on the element. Each Referable has zero or more LangStringTextType. A composition: each LangStringTextType is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Referable/description"
+        "composition": true
+        "lower": 0
+  "Referable_HAS_DISPLAY_NAME_LangStringNameType":
+    "type": "HAS_DISPLAY_NAME"
+    "from":
+      "node": "Referable"
+    "to":
+      "node": "LangStringNameType"
+      "max_count": 1
+    "description": "Display name. Can be provided in several languages. Each Referable has zero or more LangStringNameType. A composition: each LangStringNameType is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Referable/displayName"
+        "composition": true
+        "lower": 0
+  "Reference_HAS_KEYS_Key":
+    "type": "HAS_KEYS"
+    "from":
+      "node": "Reference"
+      "min_count": 1
+    "to":
+      "node": "Key"
+      "max_count": 1
+    "properties":
+      "index":
+        "type": "INTEGER"
+        "name": "index"
+        "description": "The position of the Key in the Reference's list, from 0. The specification orders this list; a relationship has no order of its own."
+    "description": "Unique references in their name space. Each Reference has one or more Key. A composition: each Key is part of at most one owner. The list is ordered, by the index property."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Reference"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Reference/keys"
+        "composition": true
+        "lower": 1
+        "isOrdered": true
+  "Reference_HAS_REFERRED_SEMANTIC_ID_Reference":
+    "type": "HAS_REFERRED_SEMANTIC_ID"
+    "from":
+      "node": "Reference"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "'semanticId' of the referenced model element ('type' = 'ModelReference'). Each Reference has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Reference"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Reference/referredSemanticId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "ReferenceElement_HAS_VALUE_Reference":
+    "type": "HAS_VALUE"
+    "from":
+      "node": "ReferenceElement"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Global reference to an external object or entity or a logical reference to another element within the same or another AAS (i.e. a model reference to a Referable). Each ReferenceElement has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#ReferenceElement"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ReferenceElement/value"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "RelationshipElement_HAS_FIRST_Reference":
+    "type": "HAS_FIRST"
+    "from":
+      "node": "RelationshipElement"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the first element in the relationship taking the role of the subject. Each RelationshipElement has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#RelationshipElement"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/RelationshipElement/first"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "RelationshipElement_HAS_SECOND_Reference":
+    "type": "HAS_SECOND"
+    "from":
+      "node": "RelationshipElement"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Reference to the second element in the relationship taking the role of the object. Each RelationshipElement has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#RelationshipElement"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/RelationshipElement/second"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "SpecificAssetId_HAS_EXTERNAL_SUBJECT_ID_Reference":
+    "type": "HAS_EXTERNAL_SUBJECT_ID"
+    "from":
+      "node": "SpecificAssetId"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "The (external) subject the key belongs to or has meaning to. Each SpecificAssetId has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#SpecificAssetId"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SpecificAssetId/externalSubjectId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "Submodel_HAS_SUBMODEL_ELEMENTS_SubmodelElement":
+    "type": "HAS_SUBMODEL_ELEMENTS"
+    "from":
+      "node": "Submodel"
+    "to":
+      "node": "SubmodelElement"
+      "max_count": 1
+    "description": "A submodel consists of zero or more submodel elements. Each Submodel has zero or more SubmodelElement. A composition: each SubmodelElement is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#Submodel"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/Submodel/submodelElements"
+        "composition": true
+        "lower": 0
+  "SubmodelElementCollection_HAS_VALUE_SubmodelElement":
+    "type": "HAS_VALUE"
+    "from":
+      "node": "SubmodelElementCollection"
+    "to":
+      "node": "SubmodelElement"
+      "max_count": 1
+    "description": "Submodel element contained in the collection. Each SubmodelElementCollection has zero or more SubmodelElement. A composition: each SubmodelElement is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementCollection"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SubmodelElementCollection/value"
+        "composition": true
+        "lower": 0
+  "SubmodelElementList_HAS_SEMANTIC_ID_LIST_ELEMENT_Reference":
+    "type": "HAS_SEMANTIC_ID_LIST_ELEMENT"
+    "from":
+      "node": "SubmodelElementList"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Semantic ID the submodel elements contained in the list match to. Each SubmodelElementList has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementList"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SubmodelElementList/semanticIdListElement"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "SubmodelElementList_HAS_VALUE_SubmodelElement":
+    "type": "HAS_VALUE"
+    "from":
+      "node": "SubmodelElementList"
+    "to":
+      "node": "SubmodelElement"
+      "max_count": 1
+    "properties":
+      "index":
+        "type": "INTEGER"
+        "name": "index"
+        "description": "The position of the SubmodelElement in the SubmodelElementList's list, from 0. The specification orders this list; a relationship has no order of its own."
+    "description": "Submodel element contained in the list. Each SubmodelElementList has zero or more SubmodelElement. A composition: each SubmodelElement is part of at most one owner. The list is ordered, by the index property."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#SubmodelElementList"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/SubmodelElementList/value"
+        "composition": true
+        "lower": 0
+        "isOrdered": true
+  "ValueList_HAS_VALUE_REFERENCE_PAIRS_ValueReferencePair":
+    "type": "HAS_VALUE_REFERENCE_PAIRS"
+    "from":
+      "node": "ValueList"
+      "min_count": 1
+    "to":
+      "node": "ValueReferencePair"
+      "max_count": 1
+    "description": "A pair of a value together with its global unique id. Each ValueList has one or more ValueReferencePair. A composition: each ValueReferencePair is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#ValueList"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ValueList/valueReferencePairs"
+        "composition": true
+        "lower": 1
+  "ValueReferencePair_HAS_VALUE_ID_Reference":
+    "type": "HAS_VALUE_ID"
+    "from":
+      "node": "ValueReferencePair"
+      "max_count": 1
+    "to":
+      "node": "Reference"
+      "max_count": 1
+    "description": "Global unique id of the value. Each ValueReferencePair has at most one Reference. A composition: each Reference is part of at most one owner."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.2/specification.html#ValueReferencePair"
+    "extensions":
+      "custom":
+        "iri": "https://admin-shell.io/aas/3/2/ValueReferencePair/valueId"
+        "composition": true
+        "lower": 0
+        "upper": 1
+  "Reference_RESOLVES_TO_Referable":
+    "type": "RESOLVES_TO"
+    "from":
+      "node": "Reference"
+      "max_count": 1
+    "to":
+      "node": "Referable"
+    "description": "The element a model reference identifies, resolved from its keys: the Identifiable its first key names, and the Referable the following keys name within it. Not part of the AAS metamodel: added by the ontology, so that references can be followed in the graph. Each Reference has at most one; an external reference, or a model reference to an element outside the graph, has none."
+    "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Reference"
+    "extensions":
+      "custom":
+        "composition": false
+        "addedByOntology": true

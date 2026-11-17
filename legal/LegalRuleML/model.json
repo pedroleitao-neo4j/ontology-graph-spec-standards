@@ -1,0 +1,4205 @@
+{
+  "schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json",
+  "version": "1.0",
+  "id": "legalruleml-1.0",
+  "name": "LegalRuleML 1.0",
+  "description": "The RDFS metamodel of LegalRuleML 1.0, an OASIS Standard of 30 August 2021 published by the OASIS LegalRuleML Technical Committee (https://www.oasis-open.org/committees/legalruleml/). LegalRuleML is a language for legal rules: the deontic specifications, e.g. obligations, prohibitions, permissions, rights and the suborder lists that chain them, that legal sources give rise to; the defeasible rules, strengths and overrides that resolve conflicts between them; and the statements, sources, references, authorities, jurisdictions, actors, roles and times they are stated in, hold for and are applied in. It extends RuleML with features specific to legal norms, guidelines and policies, and is a companion to Akoma Ntoso, which it follows in identifying the documents rules are found in. Generated from the twelve RDFS modules of the Core Specification: each class is a node, each property whose domain and range are classes of the modules a relationship from its domain to its range, each property with a literal range a property of its domain, and each superclass an implied label.",
+  "nodes": {
+    "Actor": {
+      "labels": {
+        "identifier": "Actor"
+      },
+      "description": "An Agent or a Figure.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Actor",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Actor: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Actor": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Actor_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Actor",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Agent": {
+      "labels": {
+        "identifier": "Agent",
+        "implied": [
+          "Actor"
+        ]
+      },
+      "description": "An entity that acts or has the capability to act.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Agent",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Agent: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Agent": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Agent_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Agent",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time",
+          "subClassOf": [
+            "dcterms:Agent"
+          ]
+        }
+      }
+    },
+    "Agents": {
+      "labels": {
+        "identifier": "Agents",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A collection where every member is an Agent.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Agents",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Agents: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Agents": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Agents_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Agents",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Alternative": {
+      "labels": {
+        "identifier": "Alternative",
+        "implied": [
+          "Expression"
+        ]
+      },
+      "description": "A LegalRuleML rendering of one or more Legal Norms.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Alternative",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Alternative: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Alternative": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Alternative_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Alternative",
+          "module": "alternative",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Alternatives": {
+      "labels": {
+        "identifier": "Alternatives",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A mutually exclusive collection where every member is a LegalRuleML rendering of one or more Legal Norms.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Alternatives",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Alternatives: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Alternatives": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Alternatives_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Alternatives",
+          "module": "alternative",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Associable": {
+      "labels": {
+        "identifier": "Associable",
+        "implied": [
+          "Commentable"
+        ]
+      },
+      "description": "An entity that can be applied to other entities.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Associable",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Associable: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Associable": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Associable_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Associable",
+          "module": "context",
+          "area": "Context"
+        }
+      }
+    },
+    "Association": {
+      "labels": {
+        "identifier": "Association",
+        "implied": [
+          "Associator",
+          "Associable"
+        ]
+      },
+      "description": "A partial description of the extension of some relations where each non-target entity is paired with every target entity.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Association",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Association: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Association": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Association_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Association",
+          "module": "context",
+          "area": "Context"
+        }
+      }
+    },
+    "Associations": {
+      "labels": {
+        "identifier": "Associations",
+        "implied": [
+          "Collection",
+          "Associable"
+        ]
+      },
+      "description": "A collection where every member is an Assocation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Associations",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Associations: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Associations": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Associations_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Associations",
+          "module": "context",
+          "area": "Context"
+        }
+      }
+    },
+    "Associator": {
+      "labels": {
+        "identifier": "Associator",
+        "implied": [
+          "Commentable"
+        ]
+      },
+      "description": "An entity that can apply properties to other entities.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Associator",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Associator: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Associator": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Associator_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Associator",
+          "module": "context",
+          "area": "Context"
+        }
+      }
+    },
+    "Atom": {
+      "labels": {
+        "identifier": "Atom",
+        "implied": [
+          "Formula"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Atom",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Atom: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Atom": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Atom_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Atom",
+          "module": "defeasible",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "AtomicFormula": {
+      "labels": {
+        "identifier": "AtomicFormula",
+        "implied": [
+          "LogicalFormula"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#AtomicFormula",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the AtomicFormula: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_AtomicFormula": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_AtomicFormula_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#AtomicFormula",
+          "module": "rulemm",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Author": {
+      "labels": {
+        "identifier": "Author",
+        "implied": [
+          "Role"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Author",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Author: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Author": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Author_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Author",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Authorities": {
+      "labels": {
+        "identifier": "Authorities",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A collection where every member is an Authority.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Authorities",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Authorities: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Authorities": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Authorities_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Authorities",
+          "module": "metadata-jurisdiction-authority",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Authority": {
+      "labels": {
+        "identifier": "Authority",
+        "implied": [
+          "Associable"
+        ]
+      },
+      "description": "A person or organization with the power to create, endorse, or enforce Legal Norms.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Authority",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Authority: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Authority": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Authority_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Authority",
+          "module": "metadata-jurisdiction-authority",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Collectable": {
+      "labels": {
+        "identifier": "Collectable"
+      },
+      "description": "An entity that can be a member of a LegalRuleML collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Collectable",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Collectable: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Collectable": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Collectable_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Collectable",
+          "module": "upper",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Collection": {
+      "labels": {
+        "identifier": "Collection",
+        "implied": [
+          "Commentable"
+        ]
+      },
+      "description": "Collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Collection",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Collection: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Collection": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Collection_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Collection",
+          "module": "upper",
+          "area": "Rules and statements",
+          "subClassOf": [
+            "rdf:List"
+          ]
+        }
+      }
+    },
+    "Collector": {
+      "labels": {
+        "identifier": "Collector",
+        "implied": [
+          "Commentable"
+        ]
+      },
+      "description": "An entity that can have a collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Collector",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Collector: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Collector": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Collector_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Collector",
+          "module": "upper",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Comment": {
+      "labels": {
+        "identifier": "Comment",
+        "implied": [
+          "XMLLiteralWrapper"
+        ]
+      },
+      "description": "A comment, which has no semantic effect.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Comment",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Comment: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Comment": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Comment_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Comment",
+          "module": "upper",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Commentable": {
+      "labels": {
+        "identifier": "Commentable"
+      },
+      "description": "An entity that can have an attached comment.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Commentable",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Commentable: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Commentable": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Commentable_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Commentable",
+          "module": "upper",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Compliance": {
+      "labels": {
+        "identifier": "Compliance",
+        "implied": [
+          "DeonticSpecification"
+        ]
+      },
+      "description": "An indication that an Obligation has been fulfilled or a Prohibition has not been violated.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Compliance",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Compliance: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Compliance": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Compliance_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Compliance",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "ConstitutiveStatement": {
+      "labels": {
+        "identifier": "ConstitutiveStatement",
+        "implied": [
+          "RuleStatement"
+        ]
+      },
+      "description": "A Legal Statement that defines concepts and does not prescribe behaviours.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ConstitutiveStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ConstitutiveStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ConstitutiveStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ConstitutiveStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ConstitutiveStatement",
+          "module": "statement",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Context": {
+      "labels": {
+        "identifier": "Context",
+        "implied": [
+          "Associator"
+        ]
+      },
+      "description": "An application of Associations to their target entities within a Scope.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Context",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Context: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Context": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Context_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Context",
+          "module": "context",
+          "area": "Context"
+        }
+      }
+    },
+    "Creatable": {
+      "labels": {
+        "identifier": "Creatable",
+        "implied": [
+          "Commentable"
+        ]
+      },
+      "description": "An entity that can have a creation date.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Creatable",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Creatable: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Creatable": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Creatable_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Creatable",
+          "module": "upper",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Data": {
+      "labels": {
+        "identifier": "Data",
+        "implied": [
+          "Term"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Data",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Data: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "symbolForData": {
+          "type": "LIST<STRING>",
+          "name": "symbolForData",
+          "description": "A literal that is the symbolic representation of the subject data entity.",
+          "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#symbolForData",
+          "extensions": {
+            "custom": {
+              "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#symbolForData",
+              "module": "rulemm",
+              "subPropertyOf": [
+                "rulemm:wraps"
+              ],
+              "datatypes": [
+                "rdfs:Literal"
+              ]
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Data": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Data_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Data",
+          "module": "rulemm",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "DataWrapper": {
+      "labels": {
+        "identifier": "DataWrapper",
+        "implied": [
+          "RuleMLWrapper"
+        ]
+      },
+      "description": "Data wrapper.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#DataWrapper",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the DataWrapper: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_DataWrapper": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_DataWrapper_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#DataWrapper",
+          "module": "rulemm",
+          "area": "Rules and statements",
+          "subClassOf": [
+            "rulemm:Expression"
+          ]
+        }
+      }
+    },
+    "DefeasibleStrength": {
+      "labels": {
+        "identifier": "DefeasibleStrength",
+        "implied": [
+          "Strength"
+        ]
+      },
+      "description": "An indication that, in the absence of information to the contrary and where the antecedent of a Legal Rule holds, the conclusion of the Legal Rule holds.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DefeasibleStrength",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the DefeasibleStrength: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_DefeasibleStrength": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_DefeasibleStrength_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DefeasibleStrength",
+          "module": "defeasible",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Defeater": {
+      "labels": {
+        "identifier": "Defeater",
+        "implied": [
+          "Strength"
+        ]
+      },
+      "description": "An indication that, in the absence of information to the contrary and where the antecedent of a Legal Rule holds, the opposite of the conclusion of the Legal Rule does not hold.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Defeater",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Defeater: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Defeater": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Defeater_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Defeater",
+          "module": "defeasible",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "DeonticModality": {
+      "labels": {
+        "identifier": "DeonticModality"
+      },
+      "description": "A modality pertaining to Deontic Specifications.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DeonticModality",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the DeonticModality: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_DeonticModality": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_DeonticModality_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DeonticModality",
+          "module": "deontic",
+          "area": "Deontic and defeasible",
+          "subClassOf": [
+            "lrmlmm:Modality"
+          ]
+        }
+      }
+    },
+    "DeonticSpecification": {
+      "labels": {
+        "identifier": "DeonticSpecification",
+        "implied": [
+          "LogicalFormula"
+        ]
+      },
+      "description": "An Obligation, Permission, Prohibition, Right, ....",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DeonticSpecification",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the DeonticSpecification: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_DeonticSpecification": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_DeonticSpecification_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DeonticSpecification",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Editor": {
+      "labels": {
+        "identifier": "Editor",
+        "implied": [
+          "Role"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Editor",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Editor: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Editor": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Editor_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Editor",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Expression": {
+      "labels": {
+        "identifier": "Expression",
+        "implied": [
+          "Commentable"
+        ]
+      },
+      "description": "A rendering of one or more Legal Norms or a fragment of a Legal Norm.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Expression",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Expression: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Expression": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Expression_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Expression",
+          "module": "alternative",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "FactualStatement": {
+      "labels": {
+        "identifier": "FactualStatement",
+        "implied": [
+          "LogicalFormulaStatement"
+        ]
+      },
+      "description": "An expression of fact.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#FactualStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the FactualStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_FactualStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_FactualStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#FactualStatement",
+          "module": "statement",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Figure": {
+      "labels": {
+        "identifier": "Figure",
+        "implied": [
+          "Actor"
+        ]
+      },
+      "description": "An instantiation of a function by an Actor.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Figure",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Figure: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Figure": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Figure_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Figure",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Figures": {
+      "labels": {
+        "identifier": "Figures",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A collection where every member is a Figure.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Figures",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Figures: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Figures": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Figures_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Figures",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Formula": {
+      "labels": {
+        "identifier": "Formula",
+        "implied": [
+          "WellFormedExpression"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Formula",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Formula: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Formula": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Formula_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Formula",
+          "module": "rulemm",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Function": {
+      "labels": {
+        "identifier": "Function"
+      },
+      "description": "Function.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Function",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Function: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Function": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Function_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Function",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time",
+          "subClassOf": [
+            "lrmlmm:Thing"
+          ]
+        }
+      }
+    },
+    "Jurisdiction": {
+      "labels": {
+        "identifier": "Jurisdiction",
+        "implied": [
+          "Associable"
+        ]
+      },
+      "description": "A geographic area or subject-matter over which an Authority applies its legal power.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdiction",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Jurisdiction: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Jurisdiction": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Jurisdiction_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdiction",
+          "module": "metadata-jurisdiction-authority",
+          "area": "Sources, authorities and time",
+          "subClassOf": [
+            "dcterms:Jurisdiction",
+            "frbr:Concept"
+          ]
+        }
+      }
+    },
+    "Jurisdictions": {
+      "labels": {
+        "identifier": "Jurisdictions",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A collection where every member is a Jurisdiction.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdictions",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Jurisdictions: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Jurisdictions": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Jurisdictions_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdictions",
+          "module": "metadata-jurisdiction-authority",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "LegalReference": {
+      "labels": {
+        "identifier": "LegalReference",
+        "implied": [
+          "Reference"
+        ]
+      },
+      "description": "A Reference whose Source is a LegalSource.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalReference",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalReference: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalReference": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LegalReference_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalReference",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "LegalReferences": {
+      "labels": {
+        "identifier": "LegalReferences",
+        "implied": [
+          "References"
+        ]
+      },
+      "description": "A collection where every member is a LegalReference.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalReferences",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalReferences: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalReferences": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LegalReferences_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalReferences",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "LegalRuleMLDocument": {
+      "labels": {
+        "identifier": "LegalRuleMLDocument",
+        "implied": [
+          "Collector",
+          "Creatable"
+        ]
+      },
+      "description": "A formal representation of one or more LegalSources using the LegalRuleML Specifications.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalRuleMLDocument",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalRuleMLDocument: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalRuleMLDocument": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LegalRuleMLDocument_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalRuleMLDocument",
+          "module": "upper",
+          "area": "Rules and statements",
+          "subClassOf": [
+            "frbr:Expression"
+          ]
+        }
+      }
+    },
+    "LegalSource": {
+      "labels": {
+        "identifier": "LegalSource",
+        "implied": [
+          "Source"
+        ]
+      },
+      "description": "A source of one or more Legal Norms formulated in any format and endorsed by an Authority.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalSource",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalSource: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalSource": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LegalSource_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalSource",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "LegalSources": {
+      "labels": {
+        "identifier": "LegalSources",
+        "implied": [
+          "Sources"
+        ]
+      },
+      "description": "A collection where every member is a LegalSource.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalSources",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalSources: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalSources": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LegalSources_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalSources",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "LegalStatus": {
+      "labels": {
+        "identifier": "LegalStatus"
+      },
+      "description": "A standing that can apply to a Legal Norm at a Time, e.g., \"is applicable\", \"is in force\", \"has efficacy\", \"is valid\". One of the 3 values LegalRuleML defines: `Applicable`, `Efficacious` and `InForce`.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalStatus",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalStatus: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers. One of the 3 values LegalRuleML defines, whose IRIs are the allowed values of `uri`: `Applicable`, `Efficacious` and `InForce`.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs",
+          "one_of": [
+            "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Applicable",
+            "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Efficacious",
+            "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#InForce"
+          ]
+        }
+      },
+      "constraints": {
+        "key_LegalStatus": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LegalStatus_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalStatus",
+          "module": "legaltemporal",
+          "area": "Sources, authorities and time",
+          "subClassOf": [
+            "lrmlmm:Standing"
+          ]
+        }
+      }
+    },
+    "LogicalFormula": {
+      "labels": {
+        "identifier": "LogicalFormula",
+        "implied": [
+          "Formula"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#LogicalFormula",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LogicalFormula: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LogicalFormula": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LogicalFormula_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#LogicalFormula",
+          "module": "rulemm",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "LogicalFormulaStatement": {
+      "labels": {
+        "identifier": "LogicalFormulaStatement",
+        "implied": [
+          "Statement"
+        ]
+      },
+      "description": "A statement modelled by a logical formula.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LogicalFormulaStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LogicalFormulaStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LogicalFormulaStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LogicalFormulaStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LogicalFormulaStatement",
+          "module": "statement",
+          "area": "Rules and statements",
+          "disjointWith": [
+            "RuleStatement"
+          ]
+        }
+      }
+    },
+    "MetaFormula": {
+      "labels": {
+        "identifier": "MetaFormula",
+        "implied": [
+          "Formula"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#MetaFormula",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the MetaFormula: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_MetaFormula": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_MetaFormula_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#MetaFormula",
+          "module": "rulemm",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Obligation": {
+      "labels": {
+        "identifier": "Obligation",
+        "implied": [
+          "DeonticSpecification"
+        ]
+      },
+      "description": "A Deontic Specification for a state, an act, or a course of action to which a Bearer is legally bound, and which, if it is not achieved or performed, results in a Violation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Obligation",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Obligation: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Obligation": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Obligation_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Obligation",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Override": {
+      "labels": {
+        "identifier": "Override",
+        "implied": [
+          "Atom"
+        ]
+      },
+      "description": "An indication that a Legal Rule takes precedence over another Legal Rule. The ordered pair of Legal Rules is an instance in a defeasible priority relation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Override",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Override: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Override": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Override_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Override",
+          "module": "defeasible",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "OverrideStatement": {
+      "labels": {
+        "identifier": "OverrideStatement",
+        "implied": [
+          "LogicalFormulaStatement"
+        ]
+      },
+      "description": "A Legal Statement of an Override.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#OverrideStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the OverrideStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_OverrideStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_OverrideStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#OverrideStatement",
+          "module": "statement",
+          "area": "Rules and statements",
+          "disjointWith": [
+            "FactualStatement",
+            "PenaltyStatement",
+            "ReparationStatement"
+          ]
+        }
+      }
+    },
+    "Paraphrase": {
+      "labels": {
+        "identifier": "Paraphrase",
+        "implied": [
+          "XMLLiteralWrapper"
+        ]
+      },
+      "description": "A natural language rendering of a Legal Rule or fragment of it that is an alternative to its Legal Source(s).",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Paraphrase",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Paraphrase: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Paraphrase": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Paraphrase_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Paraphrase",
+          "module": "statement",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "PenaltyStatement": {
+      "labels": {
+        "identifier": "PenaltyStatement",
+        "implied": [
+          "LogicalFormulaStatement"
+        ]
+      },
+      "description": "A Legal Statement of a sanction (e.g. a punishment or a correction).",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PenaltyStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PenaltyStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PenaltyStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PenaltyStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PenaltyStatement",
+          "module": "statement",
+          "area": "Rules and statements",
+          "disjointWith": [
+            "FactualStatement"
+          ]
+        }
+      }
+    },
+    "Permission": {
+      "labels": {
+        "identifier": "Permission",
+        "implied": [
+          "DeonticSpecification"
+        ]
+      },
+      "description": "A Deontic Specification for a state, an act, or a course of action where the Bearer has no Obligation or Prohibition to the contrary. A weak Permission is the absence of the Obligation or Prohibition to the contrary; a strong Permission is an exception or derogation of the Obligation or Prohibition to the contrary.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Permission",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Permission: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Permission": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Permission_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Permission",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "PrescriptiveStatement": {
+      "labels": {
+        "identifier": "PrescriptiveStatement",
+        "implied": [
+          "RuleStatement"
+        ]
+      },
+      "description": "A Legal Statement which prescribes behaviours, e.g. with Permissions, Obligations, or Prohibitions on states, actions, or courses of actions.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PrescriptiveStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PrescriptiveStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PrescriptiveStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement",
+          "module": "statement",
+          "area": "Rules and statements",
+          "disjointWith": [
+            "ConstitutiveStatement"
+          ]
+        }
+      }
+    },
+    "Prohibition": {
+      "labels": {
+        "identifier": "Prohibition",
+        "implied": [
+          "DeonticSpecification"
+        ]
+      },
+      "description": "A Deontic Specification for a state, an act, or a course of action to which a Bearer is legally bound, and which, if it is achieved or performed, results in a Violation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Prohibition",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Prohibition: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Prohibition": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Prohibition_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Prohibition",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Reference": {
+      "labels": {
+        "identifier": "Reference",
+        "implied": [
+          "Collectable"
+        ]
+      },
+      "description": "A pair consisting of an internal ID and an enriched non-IRI identifier, where the non-IRI is paired with some additional information that is sufficient to disambiguate the non-IRI to a unique Source.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Reference",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Reference: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "refID": {
+          "type": "LIST<STRING>",
+          "name": "refID",
+          "description": "The external ID of the Reference.",
+          "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refID",
+          "extensions": {
+            "custom": {
+              "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refID",
+              "module": "source",
+              "datatypes": [
+                "xsd:string"
+              ]
+            }
+          }
+        },
+        "refIDSystemName": {
+          "type": "LIST<STRING>",
+          "name": "refIDSystemName",
+          "description": "The name of the ID system of the Reference (or of References contained by the References collection).",
+          "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refIDSystemName",
+          "extensions": {
+            "custom": {
+              "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refIDSystemName",
+              "module": "source",
+              "datatypes": [
+                "xsd:string"
+              ]
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Reference": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Reference_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Reference",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "References": {
+      "labels": {
+        "identifier": "References",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A collection where every member is a Reference.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#References",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the References: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_References": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_References_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#References",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Reparation": {
+      "labels": {
+        "identifier": "Reparation",
+        "implied": [
+          "Atom"
+        ]
+      },
+      "description": "An indication that a PenaltyStatement is linked with a PrescriptiveStatement. It indicates that a sanction may apply where the PrescriptiveStatement entails a Deontic Specification and when there is a Violation of the Deontic Specification.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Reparation",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Reparation: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Reparation": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Reparation_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Reparation",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "ReparationStatement": {
+      "labels": {
+        "identifier": "ReparationStatement",
+        "implied": [
+          "LogicalFormulaStatement"
+        ]
+      },
+      "description": "A Legal Statement of a Reparation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ReparationStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ReparationStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ReparationStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ReparationStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ReparationStatement",
+          "module": "statement",
+          "area": "Rules and statements",
+          "disjointWith": [
+            "FactualStatement",
+            "PenaltyStatement"
+          ]
+        }
+      }
+    },
+    "Right": {
+      "labels": {
+        "identifier": "Right",
+        "implied": [
+          "DeonticSpecification"
+        ]
+      },
+      "description": "(see also Permission) a Deontic Specification that gives a Permission to a party (the Bearer) and implies there are Obligations or Prohibitions on other parties (the AuxiliaryParty) such that the Bearer can (eventually) exercise the Right.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Right",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Right: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Right": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Right_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Right",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Role": {
+      "labels": {
+        "identifier": "Role"
+      },
+      "description": "A function of or part played by an Actor relative to a LegalRuleML expression.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Role",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Role: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Role": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Role_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Role",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time",
+          "subClassOf": [
+            "lrmlmm:Thing"
+          ]
+        }
+      }
+    },
+    "Roles": {
+      "labels": {
+        "identifier": "Roles",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A collection where every member is a Role.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Roles",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Roles: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Roles": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Roles_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Roles",
+          "module": "metadata-actor",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "RuleMLWrapper": {
+      "labels": {
+        "identifier": "RuleMLWrapper"
+      },
+      "description": "Wrapper.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Wrapper",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the RuleMLWrapper: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_RuleMLWrapper": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_RuleMLWrapper_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Wrapper",
+          "module": "rulemm",
+          "area": "Rules and statements",
+          "lrmlName": "Wrapper"
+        }
+      }
+    },
+    "RuleMLXMLLiteralWrapper": {
+      "labels": {
+        "identifier": "RuleMLXMLLiteralWrapper",
+        "implied": [
+          "RuleMLWrapper"
+        ]
+      },
+      "description": "XML literal wrapper.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#XMLLiteralWrapper",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the RuleMLXMLLiteralWrapper: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_RuleMLXMLLiteralWrapper": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_RuleMLXMLLiteralWrapper_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#XMLLiteralWrapper",
+          "module": "rulemm",
+          "area": "Rules and statements",
+          "lrmlName": "XMLLiteralWrapper"
+        }
+      }
+    },
+    "RuleStatement": {
+      "labels": {
+        "identifier": "RuleStatement",
+        "implied": [
+          "Statement"
+        ]
+      },
+      "description": "A Legal Statement modelled by a Legal Rule.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the RuleStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_RuleStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_RuleStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement",
+          "module": "statement",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Scope": {
+      "labels": {
+        "identifier": "Scope",
+        "implied": [
+          "Expression"
+        ]
+      },
+      "description": "A Statement or Collection of Statements.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Scope",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Scope: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Scope": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Scope_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Scope",
+          "module": "context",
+          "area": "Context"
+        }
+      }
+    },
+    "Source": {
+      "labels": {
+        "identifier": "Source",
+        "implied": [
+          "Associable",
+          "Collectable"
+        ]
+      },
+      "description": "A source formulated in any format.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Source",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Source: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Source": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Source_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Source",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Sources": {
+      "labels": {
+        "identifier": "Sources",
+        "implied": [
+          "Collection",
+          "Collector"
+        ]
+      },
+      "description": "A collection where every member is a Source.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Sources",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Sources: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Sources": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Sources_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Sources",
+          "module": "source",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Statement": {
+      "labels": {
+        "identifier": "Statement",
+        "implied": [
+          "Alternative",
+          "Scope"
+        ]
+      },
+      "description": "A Legal Statement or a FactualStatement.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Statement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Statement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Statement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Statement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Statement",
+          "module": "statement",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Statements": {
+      "labels": {
+        "identifier": "Statements",
+        "implied": [
+          "Alternative",
+          "Collection",
+          "Collector",
+          "Scope"
+        ]
+      },
+      "description": "A collection where every member is a Legal Statement or a FactualStatement.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Statements",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Statements: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Statements": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Statements_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Statements",
+          "module": "statement",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "StatusDevelopment": {
+      "labels": {
+        "identifier": "StatusDevelopment"
+      },
+      "description": "A kind of event (e.g., start, end) that changes the Legal Status of a Legal Norm, e.g. making a Legal Norm in force. One of the 2 values LegalRuleML defines: `Ends` and `Starts`.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#StatusDevelopment",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the StatusDevelopment: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers. One of the 2 values LegalRuleML defines, whose IRIs are the allowed values of `uri`: `Ends` and `Starts`.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs",
+          "one_of": [
+            "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Ends",
+            "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Starts"
+          ]
+        }
+      },
+      "constraints": {
+        "key_StatusDevelopment": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_StatusDevelopment_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#StatusDevelopment",
+          "module": "legaltemporal",
+          "area": "Sources, authorities and time",
+          "subClassOf": [
+            "rulemm:Event"
+          ]
+        }
+      }
+    },
+    "Strength": {
+      "labels": {
+        "identifier": "Strength",
+        "implied": [
+          "Associable"
+        ]
+      },
+      "description": "The quality of a Legal Rule to resist or not to resist a rebuttal.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Strength",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Strength: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Strength": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Strength_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Strength",
+          "module": "defeasible",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "StrictStrength": {
+      "labels": {
+        "identifier": "StrictStrength",
+        "implied": [
+          "Strength"
+        ]
+      },
+      "description": "An indication that where the antecedent of a Legal Rule is indisputable, the conclusion of the Legal Rule is indisputable.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#StrictStrength",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the StrictStrength: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_StrictStrength": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_StrictStrength_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#StrictStrength",
+          "module": "defeasible",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "SuborderList": {
+      "labels": {
+        "identifier": "SuborderList",
+        "implied": [
+          "DeonticSpecification"
+        ]
+      },
+      "description": "A Deontic Specification for a sequence of Deontic Specifications, i.e., Obligations, Prohibitions, Permissions, Rights and/or Suborder Lists. When a SuborderList holds, a Deontic Specification in the SuborderList holds if all Deontic Specifications that precede it in the SuborderList have been violated.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#SuborderList",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the SuborderList: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_SuborderList": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_SuborderList_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#SuborderList",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "Template": {
+      "labels": {
+        "identifier": "Template",
+        "implied": [
+          "XMLLiteralWrapper"
+        ]
+      },
+      "description": "An entity wrapping an XML literal with root element in the RuleML or LegalRuleML namespace.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Template",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Template: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Template": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Template_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Template",
+          "module": "statement",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "TemporalCharacteristic": {
+      "labels": {
+        "identifier": "TemporalCharacteristic",
+        "implied": [
+          "Associable"
+        ]
+      },
+      "description": "A pair of Time with a qualification, which consists of a Legal Status and a Status Development, such that the qualification holds at the Time.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#TemporalCharacteristic",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the TemporalCharacteristic: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_TemporalCharacteristic": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_TemporalCharacteristic_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#TemporalCharacteristic",
+          "module": "legaltemporal",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "TemporalCharacteristics": {
+      "labels": {
+        "identifier": "TemporalCharacteristics",
+        "implied": [
+          "Collection",
+          "Associable"
+        ]
+      },
+      "description": "A collection where every member is a TemporalCharacteristic.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#TemporalCharacteristics",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the TemporalCharacteristics: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_TemporalCharacteristics": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_TemporalCharacteristics_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#TemporalCharacteristics",
+          "module": "legaltemporal",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Term": {
+      "labels": {
+        "identifier": "Term",
+        "implied": [
+          "WellFormedExpression"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Term",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Term: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Term": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Term_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#Term",
+          "module": "rulemm",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "TimeTerm": {
+      "labels": {
+        "identifier": "TimeTerm",
+        "implied": [
+          "Term"
+        ]
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#TimeTerm",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the TimeTerm: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_TimeTerm": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_TimeTerm_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#TimeTerm",
+          "module": "rulemm",
+          "area": "Rules and statements"
+        }
+      }
+    },
+    "Times": {
+      "labels": {
+        "identifier": "Times",
+        "implied": [
+          "Collection"
+        ]
+      },
+      "description": "A collection where every member is a Time.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Times",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Times: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Times": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Times_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Times",
+          "module": "legaltemporal",
+          "area": "Sources, authorities and time"
+        }
+      }
+    },
+    "Violation": {
+      "labels": {
+        "identifier": "Violation",
+        "implied": [
+          "DeonticSpecification"
+        ]
+      },
+      "description": "An indication that an Obligation or Prohibition has been violated.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Violation",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Violation: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Violation": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Violation_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Violation",
+          "module": "deontic",
+          "area": "Deontic and defeasible"
+        }
+      }
+    },
+    "WellFormedExpression": {
+      "labels": {
+        "identifier": "WellFormedExpression"
+      },
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#WellFormedExpression",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the WellFormedExpression: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_WellFormedExpression": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_WellFormedExpression_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#WellFormedExpression",
+          "module": "rulemm",
+          "area": "Rules and statements",
+          "subClassOf": [
+            "rulemm:Thing"
+          ]
+        }
+      }
+    },
+    "Wrapper": {
+      "labels": {
+        "identifier": "Wrapper"
+      },
+      "description": "A conceptual container.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Wrapper",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Wrapper: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Wrapper": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Wrapper_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Wrapper",
+          "module": "wrapper",
+          "area": "Rules and statements",
+          "subClassOf": [
+            "lrmlmm:Thing"
+          ]
+        }
+      }
+    },
+    "XMLLiteralWrapper": {
+      "labels": {
+        "identifier": "XMLLiteralWrapper",
+        "implied": [
+          "Wrapper"
+        ]
+      },
+      "description": "A container for an XMLLiteral.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#XMLLiteralWrapper",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the XMLLiteralWrapper: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "symbol": {
+          "type": "LIST<STRING>",
+          "name": "symbol",
+          "description": "An XML literal that is the symbolic representation of the XMLLiteral wrapper.",
+          "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#symbol",
+          "extensions": {
+            "custom": {
+              "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#symbol",
+              "module": "wrapper",
+              "subPropertyOf": [
+                "wraps"
+              ],
+              "datatypes": [
+                "rdfs:XMLLiteral"
+              ]
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_XMLLiteralWrapper": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_XMLLiteralWrapper_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#XMLLiteralWrapper",
+          "module": "wrapper",
+          "area": "Rules and statements"
+        }
+      }
+    }
+  },
+  "relationships": {
+    "Agents_HAS_AGENT_Agent": {
+      "type": "HAS_AGENT",
+      "from": {
+        "node": "Agents"
+      },
+      "to": {
+        "node": "Agent"
+      },
+      "description": "An Agent in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAgent",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAgent",
+          "module": "metadata-actor",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "Alternatives_FROM_LEGAL_SOURCES_LegalSources": {
+      "type": "FROM_LEGAL_SOURCES",
+      "from": {
+        "node": "Alternatives"
+      },
+      "to": {
+        "node": "LegalSources"
+      },
+      "description": "The LegalSources from which the Alternatives are derived.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#fromLegalSources",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#fromLegalSources",
+          "module": "alternative"
+        }
+      }
+    },
+    "Alternatives_HAS_ALTERNATIVE_Alternative": {
+      "type": "HAS_ALTERNATIVE",
+      "from": {
+        "node": "Alternatives"
+      },
+      "to": {
+        "node": "Alternative"
+      },
+      "description": "An Alternative in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAlternative",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAlternative",
+          "module": "alternative",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "Association_TO_TARGET_Expression": {
+      "type": "TO_TARGET",
+      "from": {
+        "node": "Association"
+      },
+      "to": {
+        "node": "Expression"
+      },
+      "description": "The target to which properties are applied by the Association.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#toTarget",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#toTarget",
+          "module": "context"
+        }
+      }
+    },
+    "Associations_HAS_ASSOCIATION_Association": {
+      "type": "HAS_ASSOCIATION",
+      "from": {
+        "node": "Associations"
+      },
+      "to": {
+        "node": "Association"
+      },
+      "description": "An Association in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAssociation",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAssociation",
+          "module": "context",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "Associator_APPLIES_AUTHORITY_Authority": {
+      "type": "APPLIES_AUTHORITY",
+      "from": {
+        "node": "Associator"
+      },
+      "to": {
+        "node": "Authority"
+      },
+      "description": "An Authority applied by the Context or Association. Its domain is not declared: it comes from its superproperty 'applies'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAuthority",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAuthority",
+          "module": "metadata-jurisdiction-authority",
+          "subPropertyOf": [
+            "applies"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Associator_APPLIES_Associable": {
+      "type": "APPLIES",
+      "from": {
+        "node": "Associator"
+      },
+      "to": {
+        "node": "Associable"
+      },
+      "description": "An entity applied by the associator.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#applies",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#applies",
+          "module": "context"
+        }
+      }
+    },
+    "Associator_APPLIES_JURISDICTION_Jurisdiction": {
+      "type": "APPLIES_JURISDICTION",
+      "from": {
+        "node": "Associator"
+      },
+      "to": {
+        "node": "Jurisdiction"
+      },
+      "description": "A Jurisdiction applied by the Context or Association. Its domain is not declared: it comes from its superproperty 'applies'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesJurisdiction",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesJurisdiction",
+          "module": "metadata-jurisdiction-authority",
+          "subPropertyOf": [
+            "applies"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Associator_APPLIES_SOURCE_Source": {
+      "type": "APPLIES_SOURCE",
+      "from": {
+        "node": "Associator"
+      },
+      "to": {
+        "node": "Source"
+      },
+      "description": "A Source or Reference applied by the Context or Association. Its domain is not declared: it comes from its superproperty 'applies'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesSource",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesSource",
+          "module": "source",
+          "subPropertyOf": [
+            "applies"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Associator_APPLIES_STRENGTH_Strength": {
+      "type": "APPLIES_STRENGTH",
+      "from": {
+        "node": "Associator"
+      },
+      "to": {
+        "node": "Strength"
+      },
+      "description": "A Strength applied by the Context or Association. Its domain is not declared: it comes from its superproperty 'applies'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesStrength",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesStrength",
+          "module": "defeasible",
+          "subPropertyOf": [
+            "applies"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Associator_APPLIES_TEMPORAL_CHARACTERISTICS_TemporalCharacteristics": {
+      "type": "APPLIES_TEMPORAL_CHARACTERISTICS",
+      "from": {
+        "node": "Associator"
+      },
+      "to": {
+        "node": "TemporalCharacteristics"
+      },
+      "description": "A collection of TemporalCharacteristics applied by the Context or Association. Its domain is not declared: it comes from its superproperty 'applies'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesTemporalCharacteristics",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesTemporalCharacteristics",
+          "module": "legaltemporal",
+          "subPropertyOf": [
+            "applies"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Associator_APPLIES_TEMPORAL_CHARACTERISTIC_TemporalCharacteristic": {
+      "type": "APPLIES_TEMPORAL_CHARACTERISTIC",
+      "from": {
+        "node": "Associator"
+      },
+      "to": {
+        "node": "TemporalCharacteristic"
+      },
+      "description": "A TemporalCharacteristic applied by the Context or Association. Its domain is not declared: it comes from its superproperty 'applies'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesTemporalCharacteristic",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesTemporalCharacteristic",
+          "module": "legaltemporal",
+          "subPropertyOf": [
+            "applies"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Authorities_HAS_AUTHORITY_Authority": {
+      "type": "HAS_AUTHORITY",
+      "from": {
+        "node": "Authorities"
+      },
+      "to": {
+        "node": "Authority"
+      },
+      "description": "An authority which is a member of the subject collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAuthority",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAuthority",
+          "module": "metadata-jurisdiction-authority",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "Collection_HAS_MEMBER_Collectable": {
+      "type": "HAS_MEMBER",
+      "from": {
+        "node": "Collection"
+      },
+      "to": {
+        "node": "Collectable"
+      },
+      "description": "An entity in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasMember",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasMember",
+          "module": "upper"
+        }
+      }
+    },
+    "Collector_HAS_COLLECTION_Collection": {
+      "type": "HAS_COLLECTION",
+      "from": {
+        "node": "Collector"
+      },
+      "to": {
+        "node": "Collection"
+      },
+      "description": "A collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasCollection",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasCollection",
+          "module": "upper"
+        }
+      }
+    },
+    "Collector_HAS_LEGAL_SOURCES_LegalSources": {
+      "type": "HAS_LEGAL_SOURCES",
+      "from": {
+        "node": "Collector"
+      },
+      "to": {
+        "node": "LegalSources"
+      },
+      "description": "Ta collection of LegalSources. Its domain is not declared: it comes from 'hasCollection', reached through 'hasSources'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalSources",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalSources",
+          "module": "source",
+          "subPropertyOf": [
+            "hasSources"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Collector_HAS_SOURCES_Sources": {
+      "type": "HAS_SOURCES",
+      "from": {
+        "node": "Collector"
+      },
+      "to": {
+        "node": "Sources"
+      },
+      "description": "Ta collection of LegalSources. Its domain is not declared: it comes from its superproperty 'hasCollection'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasSources",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasSources",
+          "module": "source",
+          "subPropertyOf": [
+            "hasCollection"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Collector_HAS_STATEMENTS_Statements": {
+      "type": "HAS_STATEMENTS",
+      "from": {
+        "node": "Collector"
+      },
+      "to": {
+        "node": "Statements"
+      },
+      "description": "A collection of Legal Statements. Its domain is not declared: it comes from its superproperty 'hasCollection'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStatements",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStatements",
+          "module": "statement",
+          "subPropertyOf": [
+            "hasCollection"
+          ],
+          "inheritedEnds": [
+            "domain"
+          ]
+        }
+      }
+    },
+    "Commentable_HAS_COMMENT_Comment": {
+      "type": "HAS_COMMENT",
+      "from": {
+        "node": "Commentable"
+      },
+      "to": {
+        "node": "Comment"
+      },
+      "description": "A Comment on the parent Node Element.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasComment",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasComment",
+          "module": "upper"
+        }
+      }
+    },
+    "Context_APPLIES_ALTERNATIVES_Alternatives": {
+      "type": "APPLIES_ALTERNATIVES",
+      "from": {
+        "node": "Context"
+      },
+      "to": {
+        "node": "Alternatives"
+      },
+      "description": "A collection of Alternatives applied by the Context.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAlternatives",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAlternatives",
+          "module": "alternative",
+          "subPropertyOf": [
+            "applies"
+          ]
+        }
+      }
+    },
+    "Context_APPLIES_ASSOCIATIONS_Associations": {
+      "type": "APPLIES_ASSOCIATIONS",
+      "from": {
+        "node": "Context"
+      },
+      "to": {
+        "node": "Associations"
+      },
+      "description": "A collection of Associations applied by the Context.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAssociations",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAssociations",
+          "module": "context",
+          "subPropertyOf": [
+            "applies"
+          ]
+        }
+      }
+    },
+    "Context_APPLIES_ASSOCIATION_Association": {
+      "type": "APPLIES_ASSOCIATION",
+      "from": {
+        "node": "Context"
+      },
+      "to": {
+        "node": "Association"
+      },
+      "description": "An Association applied by the Context.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAssociation",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesAssociation",
+          "module": "context",
+          "subPropertyOf": [
+            "applies"
+          ]
+        }
+      }
+    },
+    "Context_IN_SCOPE_Scope": {
+      "type": "IN_SCOPE",
+      "from": {
+        "node": "Context"
+      },
+      "to": {
+        "node": "Scope"
+      },
+      "description": "The Statement or (collection of) Statements that the Context is applied to.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#inScope",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#inScope",
+          "module": "context"
+        }
+      }
+    },
+    "DataWrapper_CONTENT_Data": {
+      "type": "CONTENT",
+      "from": {
+        "node": "DataWrapper"
+      },
+      "to": {
+        "node": "Data"
+      },
+      "description": "An entity wrapped by the subject wrapper.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#content",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/rule-metamodel#content",
+          "module": "rulemm",
+          "subPropertyOf": [
+            "rulemm:wraps"
+          ]
+        }
+      }
+    },
+    "DeonticSpecification_AUXILIARY_PARTY_Term": {
+      "type": "AUXILIARY_PARTY",
+      "from": {
+        "node": "DeonticSpecification"
+      },
+      "to": {
+        "node": "Term"
+      },
+      "description": "A role in a Deontic Specification to which the Deontic Specification is related. Its domain is not declared: it comes from its superproperty 'DeonticRole'. Its range is not declared: it comes from its superproperty 'DeonticRole'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#AuxiliaryParty",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#AuxiliaryParty",
+          "module": "deontic",
+          "subPropertyOf": [
+            "DeonticRole"
+          ],
+          "inheritedEnds": [
+            "domain",
+            "range"
+          ]
+        }
+      }
+    },
+    "DeonticSpecification_BEARER_Term": {
+      "type": "BEARER",
+      "from": {
+        "node": "DeonticSpecification"
+      },
+      "to": {
+        "node": "Term"
+      },
+      "description": "A role in a Deontic Specification to which the Deontic Specification is primarily directed. Its domain is not declared: it comes from its superproperty 'DeonticRole'. Its range is not declared: it comes from its superproperty 'DeonticRole'.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Bearer",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Bearer",
+          "module": "deontic",
+          "subPropertyOf": [
+            "DeonticRole"
+          ],
+          "inheritedEnds": [
+            "domain",
+            "range"
+          ]
+        }
+      }
+    },
+    "DeonticSpecification_DEONTIC_ROLE_Term": {
+      "type": "DEONTIC_ROLE",
+      "from": {
+        "node": "DeonticSpecification"
+      },
+      "to": {
+        "node": "Term"
+      },
+      "description": "A role in a Deontic Specification.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DeonticRole",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#DeonticRole",
+          "module": "deontic"
+        }
+      }
+    },
+    "Expression_HAS_PARAPHRASE_Paraphrase": {
+      "type": "HAS_PARAPHRASE",
+      "from": {
+        "node": "Expression"
+      },
+      "to": {
+        "node": "Paraphrase"
+      },
+      "description": "A Paraphrase of the parent Node Element (e.g. a Legal Rule).",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasParaphrase",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasParaphrase",
+          "module": "statement"
+        }
+      }
+    },
+    "Figure_HAS_ACTOR_Actor": {
+      "type": "HAS_ACTOR",
+      "from": {
+        "node": "Figure"
+      },
+      "to": {
+        "node": "Actor"
+      },
+      "description": "An Actor that has the responsibility to fulfill the function of a Figure.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasActor",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasActor",
+          "module": "metadata-actor"
+        }
+      }
+    },
+    "Figure_HAS_FUNCTION_Function": {
+      "type": "HAS_FUNCTION",
+      "from": {
+        "node": "Figure"
+      },
+      "to": {
+        "node": "Function"
+      },
+      "description": "The function of a Figure.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasFunction",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasFunction",
+          "module": "metadata-actor"
+        }
+      }
+    },
+    "Figures_HAS_FIGURE_Figure": {
+      "type": "HAS_FIGURE",
+      "from": {
+        "node": "Figures"
+      },
+      "to": {
+        "node": "Figure"
+      },
+      "description": "A Figure in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasFigure",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasFigure",
+          "module": "metadata-actor",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "Jurisdictions_HAS_JURISDICTION_Jurisdiction": {
+      "type": "HAS_JURISDICTION",
+      "from": {
+        "node": "Jurisdictions"
+      },
+      "to": {
+        "node": "Jurisdiction"
+      },
+      "description": "A Jurisdiction in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasJurisdiction",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasJurisdiction",
+          "module": "metadata-jurisdiction-authority",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "LegalReferences_HAS_LEGAL_REFERENCE_LegalReference": {
+      "type": "HAS_LEGAL_REFERENCE",
+      "from": {
+        "node": "LegalReferences"
+      },
+      "to": {
+        "node": "LegalReference"
+      },
+      "description": "A LegalReference in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalReference",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalReference",
+          "module": "source",
+          "subPropertyOf": [
+            "hasReference"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_AGENTS_Agents": {
+      "type": "HAS_AGENTS",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Agents"
+      },
+      "description": "A collection of Agents.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAgents",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAgents",
+          "module": "metadata-actor",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_ALTERNATIVES_Alternatives": {
+      "type": "HAS_ALTERNATIVES",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Alternatives"
+      },
+      "description": "A collection of Alternatives.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAlternatives",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAlternatives",
+          "module": "alternative",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_ASSOCIATIONS_Associations": {
+      "type": "HAS_ASSOCIATIONS",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Associations"
+      },
+      "description": "A collection of Associations.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAssociations",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAssociations",
+          "module": "context",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_AUTHORITIES_Authorities": {
+      "type": "HAS_AUTHORITIES",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Authorities"
+      },
+      "description": "A collection of authorities associated with the subject LegalRuleML document.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAuthorities",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasAuthorities",
+          "module": "metadata-jurisdiction-authority",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_CONTEXT_Context": {
+      "type": "HAS_CONTEXT",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Context"
+      },
+      "description": "A Context described in the LegalRuleML document.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasContext",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasContext",
+          "module": "context"
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_FIGURES_Figures": {
+      "type": "HAS_FIGURES",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Figures"
+      },
+      "description": "A collection of Figures.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasFigures",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasFigures",
+          "module": "metadata-actor",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_JURISDICTIONS_Jurisdictions": {
+      "type": "HAS_JURISDICTIONS",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Jurisdictions"
+      },
+      "description": "A collection of Jurisdictions.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasJurisdictions",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasJurisdictions",
+          "module": "metadata-jurisdiction-authority",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_LEGAL_REFERENCES_LegalReferences": {
+      "type": "HAS_LEGAL_REFERENCES",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "LegalReferences"
+      },
+      "description": "A collection of LegalReferences.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalReferences",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalReferences",
+          "module": "source",
+          "subPropertyOf": [
+            "hasReferences"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_REFERENCES_References": {
+      "type": "HAS_REFERENCES",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "References"
+      },
+      "description": "A collection of References.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasReferences",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasReferences",
+          "module": "source",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_ROLES_Roles": {
+      "type": "HAS_ROLES",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Roles"
+      },
+      "description": "A collection of Roles.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasRoles",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasRoles",
+          "module": "metadata-actor",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_TEMPORAL_CHARACTERISTICS_TemporalCharacteristics": {
+      "type": "HAS_TEMPORAL_CHARACTERISTICS",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "TemporalCharacteristics"
+      },
+      "description": "A collection of TemporalCharacteristics.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTemporalCharacteristics",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTemporalCharacteristics",
+          "module": "legaltemporal",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalRuleMLDocument_HAS_TIMES_Times": {
+      "type": "HAS_TIMES",
+      "from": {
+        "node": "LegalRuleMLDocument"
+      },
+      "to": {
+        "node": "Times"
+      },
+      "description": "A collection of Times.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTimes",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTimes",
+          "module": "legaltemporal",
+          "subPropertyOf": [
+            "hasCollection"
+          ]
+        }
+      }
+    },
+    "LegalSources_HAS_LEGAL_SOURCE_LegalSource": {
+      "type": "HAS_LEGAL_SOURCE",
+      "from": {
+        "node": "LegalSources"
+      },
+      "to": {
+        "node": "LegalSource"
+      },
+      "description": "A LegalSource in the collection of LegalSources.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalSource",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasLegalSource",
+          "module": "source",
+          "subPropertyOf": [
+            "hasSource"
+          ]
+        }
+      }
+    },
+    "Override_OVER_Statement": {
+      "type": "OVER",
+      "from": {
+        "node": "Override"
+      },
+      "to": {
+        "node": "Statement"
+      },
+      "description": "The Legal Rule with higher priority.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#over",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#over",
+          "module": "defeasible"
+        }
+      }
+    },
+    "Override_UNDER_Statement": {
+      "type": "UNDER",
+      "from": {
+        "node": "Override"
+      },
+      "to": {
+        "node": "Statement"
+      },
+      "description": "The Legal Rule with lower priority.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#under",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#under",
+          "module": "defeasible"
+        }
+      }
+    },
+    "Reference_REFERS_TO_Source": {
+      "type": "REFERS_TO",
+      "from": {
+        "node": "Reference"
+      },
+      "to": {
+        "node": "Source"
+      },
+      "description": "The internal ID of the Reference.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refersTo",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refersTo",
+          "module": "source"
+        }
+      }
+    },
+    "Reference_REF_ID_SYSTEM_SOURCE_Source": {
+      "type": "REF_ID_SYSTEM_SOURCE",
+      "from": {
+        "node": "Reference"
+      },
+      "to": {
+        "node": "Source"
+      },
+      "description": "The IRI source of the ID system of the Reference (or of References contained by the References collection).",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refIDSystemSource",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#refIDSystemSource",
+          "module": "source"
+        }
+      }
+    },
+    "References_HAS_REFERENCE_Reference": {
+      "type": "HAS_REFERENCE",
+      "from": {
+        "node": "References"
+      },
+      "to": {
+        "node": "Reference"
+      },
+      "description": "A Reference in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasReference",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasReference",
+          "module": "source",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "Reparation_APPLIES_PENALTY_PenaltyStatement": {
+      "type": "APPLIES_PENALTY",
+      "from": {
+        "node": "Reparation"
+      },
+      "to": {
+        "node": "PenaltyStatement"
+      },
+      "description": "The PenaltyStatement that is linked to a LegalRule in a Reparation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesPenalty",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#appliesPenalty",
+          "module": "deontic"
+        }
+      }
+    },
+    "Reparation_TO_PRESCRIPTIVE_STATEMENT_PrescriptiveStatement": {
+      "type": "TO_PRESCRIPTIVE_STATEMENT",
+      "from": {
+        "node": "Reparation"
+      },
+      "to": {
+        "node": "PrescriptiveStatement"
+      },
+      "description": "Athe PrescriptiveStatement that is linked to a PenaltyStatement in a Reparation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#toPrescriptiveStatement",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#toPrescriptiveStatement",
+          "module": "deontic"
+        }
+      }
+    },
+    "Role_FILLED_BY_Actor": {
+      "type": "FILLED_BY",
+      "from": {
+        "node": "Role"
+      },
+      "to": {
+        "node": "Actor"
+      },
+      "description": "An Actor that fills the Role.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#filledBy",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#filledBy",
+          "module": "metadata-actor"
+        }
+      }
+    },
+    "Role_FOR_EXPRESSION_Expression": {
+      "type": "FOR_EXPRESSION",
+      "from": {
+        "node": "Role"
+      },
+      "to": {
+        "node": "Expression"
+      },
+      "description": "A LegalRuleML expression for which the Role is responsible (e.g., the expression was created or endorsed by the role).",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#forExpression",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#forExpression",
+          "module": "metadata-actor"
+        }
+      }
+    },
+    "Roles_HAS_ROLE_Role": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "Roles"
+      },
+      "to": {
+        "node": "Role"
+      },
+      "description": "A Role in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasRole",
+          "module": "metadata-actor",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "Sources_HAS_SOURCE_Source": {
+      "type": "HAS_SOURCE",
+      "from": {
+        "node": "Sources"
+      },
+      "to": {
+        "node": "Source"
+      },
+      "description": "A Source in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasSource",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasSource",
+          "module": "source",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "Statement_HAS_STRENGTH_Strength": {
+      "type": "HAS_STRENGTH",
+      "from": {
+        "node": "Statement"
+      },
+      "to": {
+        "node": "Strength"
+      },
+      "description": "The Strength of the Legal Rule.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStrength",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStrength",
+          "module": "defeasible"
+        }
+      }
+    },
+    "Statement_HAS_TEMPLATE_Template": {
+      "type": "HAS_TEMPLATE",
+      "from": {
+        "node": "Statement"
+      },
+      "to": {
+        "node": "Template"
+      },
+      "description": "The template of a Legal Statement.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTemplate",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTemplate",
+          "module": "statement"
+        }
+      }
+    },
+    "Statements_HAS_QUALIFICATION_Formula": {
+      "type": "HAS_QUALIFICATION",
+      "from": {
+        "node": "Statements"
+      },
+      "to": {
+        "node": "Formula"
+      },
+      "description": "A qualification (e.g. an Override) of the Statements.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasQualification",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasQualification",
+          "module": "defeasible"
+        }
+      }
+    },
+    "Statements_HAS_STATEMENT_Statement": {
+      "type": "HAS_STATEMENT",
+      "from": {
+        "node": "Statements"
+      },
+      "to": {
+        "node": "Statement"
+      },
+      "description": "A Legal Statement in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStatement",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStatement",
+          "module": "statement",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    },
+    "TemporalCharacteristic_FOR_STATUS_LegalStatus": {
+      "type": "FOR_STATUS",
+      "from": {
+        "node": "TemporalCharacteristic"
+      },
+      "to": {
+        "node": "LegalStatus"
+      },
+      "description": "The Legal Status of the qualification in a TemporalCharacteristic.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#forStatus",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#forStatus",
+          "module": "legaltemporal"
+        }
+      }
+    },
+    "TemporalCharacteristic_HAS_STATUS_DEVELOPMENT_StatusDevelopment": {
+      "type": "HAS_STATUS_DEVELOPMENT",
+      "from": {
+        "node": "TemporalCharacteristic"
+      },
+      "to": {
+        "node": "StatusDevelopment"
+      },
+      "description": "The Status Development of the qualification in a TemporalCharacteristic.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStatusDevelopment",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasStatusDevelopment",
+          "module": "legaltemporal"
+        }
+      }
+    },
+    "TemporalCharacteristics_HAS_TEMPORAL_CHARACTERISTIC_TemporalCharacteristic": {
+      "type": "HAS_TEMPORAL_CHARACTERISTIC",
+      "from": {
+        "node": "TemporalCharacteristics"
+      },
+      "to": {
+        "node": "TemporalCharacteristic"
+      },
+      "description": "A TemporalCharacteristic in the collection.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTemporalCharacteristic",
+      "extensions": {
+        "custom": {
+          "iri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#hasTemporalCharacteristic",
+          "module": "legaltemporal",
+          "subPropertyOf": [
+            "hasMember"
+          ]
+        }
+      }
+    }
+  }
+}

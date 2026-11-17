@@ -1,0 +1,18 @@
+{
+  "source": "the CAEX 3.0 XML schema (GitHub AutomationML/AMLEngine2.1) and the AutomationML Edition 2.1 base and Part 2 role class libraries",
+  "link": "the schema declaration or library download",
+  "areas": {
+    "field": "kind",
+    "groups": [
+      {"name": "CAEX file: libraries, hierarchies and header information", "values": ["Document"]},
+      {"name": "CAEX objects: classes, instances, interfaces, links and attributes", "values": ["Model"]},
+      {"name": "AutomationML role classes, carried by InternalElements", "values": ["RoleClass"]},
+      {"name": "AutomationML interface classes and attribute types", "values": ["InterfaceClass", "AttributeType"]}
+    ]
+  },
+  "sub": ["xsdType", "library", "abstract", "#properties"],
+  "lines": {
+    "by": "field:composition",
+    "legend": {"main": "composition: element to the elements it contains", "dashed": "reference: a path or ID to the object it refers to"}
+  }
+}

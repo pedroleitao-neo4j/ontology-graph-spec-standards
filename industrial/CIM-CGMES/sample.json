@@ -1,0 +1,1684 @@
+{
+  "scenario": "A small part of the grid model of Northgrid, a fictional transmission system operator, as merged from the CGMES equipment, topology, steady state hypothesis, state variables, short circuit and geographical location profiles. An 85 km 400 kV line runs from Brookfield power station, where a 650 MVA generator feeds the grid through a 21/400 kV step-up transformer, to Ashby substation, where a 400/220 kV autotransformer with an on-load tap changer supplies a 220 kV load. The data has the substations, voltage levels, busbars, breakers, terminals, connectivity and topological nodes, current limits on the line, and the power flow solution: bus voltages and the flows at each terminal.",
+  "nodes": {
+    "rgn": {
+      "node": "GeographicalRegion",
+      "properties": {
+        "rdfId": "_f5d9fa41-4e66-5539-9112-30e7a8bcb59c",
+        "mRID": "f5d9fa41-4e66-5539-9112-30e7a8bcb59c",
+        "name": "Northland",
+        "description": "Control area of Northgrid, a fictional transmission system operator"
+      }
+    },
+    "subrgn": {
+      "node": "SubGeographicalRegion",
+      "properties": {
+        "rdfId": "_47d6bb11-72fb-5f13-b8fc-0bb423784cdf",
+        "mRID": "47d6bb11-72fb-5f13-b8fc-0bb423784cdf",
+        "name": "North-East"
+      }
+    },
+    "bv400": {
+      "node": "BaseVoltage",
+      "properties": {
+        "rdfId": "_5c8a39f3-e660-5922-81e3-e84a843df42f",
+        "mRID": "5c8a39f3-e660-5922-81e3-e84a843df42f",
+        "name": "400 kV",
+        "nominalVoltage": 400.0
+      }
+    },
+    "bv220": {
+      "node": "BaseVoltage",
+      "properties": {
+        "rdfId": "_592cb6e5-7e13-53d8-88b9-bad25a2f2e3b",
+        "mRID": "592cb6e5-7e13-53d8-88b9-bad25a2f2e3b",
+        "name": "220 kV",
+        "nominalVoltage": 220.0
+      }
+    },
+    "bv21": {
+      "node": "BaseVoltage",
+      "properties": {
+        "rdfId": "_b074d71f-9859-5f3b-9687-8c1b06fc35a5",
+        "mRID": "b074d71f-9859-5f3b-9687-8c1b06fc35a5",
+        "name": "21 kV",
+        "nominalVoltage": 21.0
+      }
+    },
+    "ashby": {
+      "node": "Substation",
+      "properties": {
+        "rdfId": "_117a0177-9f30-5a24-a987-153fc430ab97",
+        "mRID": "117a0177-9f30-5a24-a987-153fc430ab97",
+        "name": "Ashby",
+        "shortName": "ASH"
+      }
+    },
+    "brook": {
+      "node": "Substation",
+      "properties": {
+        "rdfId": "_ffff0358-5a3d-5319-92ef-8a199dcaa93f",
+        "mRID": "ffff0358-5a3d-5319-92ef-8a199dcaa93f",
+        "name": "Brookfield",
+        "shortName": "BRF",
+        "description": "Substation of the Brookfield power station"
+      }
+    },
+    "vl_a400": {
+      "node": "VoltageLevel",
+      "properties": {
+        "rdfId": "_2c0281fe-d0aa-59ae-ba55-ee449f42afe2",
+        "mRID": "2c0281fe-d0aa-59ae-ba55-ee449f42afe2",
+        "name": "Ashby 400 kV",
+        "lowVoltageLimit": 380.0,
+        "highVoltageLimit": 420.0
+      }
+    },
+    "vl_a220": {
+      "node": "VoltageLevel",
+      "properties": {
+        "rdfId": "_3815c060-019f-5239-8cd3-2b90b38a4d4a",
+        "mRID": "3815c060-019f-5239-8cd3-2b90b38a4d4a",
+        "name": "Ashby 220 kV",
+        "lowVoltageLimit": 198.0,
+        "highVoltageLimit": 245.0
+      }
+    },
+    "vl_b400": {
+      "node": "VoltageLevel",
+      "properties": {
+        "rdfId": "_312eb74a-640e-5766-a339-0dfc5fcd0de1",
+        "mRID": "312eb74a-640e-5766-a339-0dfc5fcd0de1",
+        "name": "Brookfield 400 kV",
+        "lowVoltageLimit": 380.0,
+        "highVoltageLimit": 420.0
+      }
+    },
+    "vl_b21": {
+      "node": "VoltageLevel",
+      "properties": {
+        "rdfId": "_5702b42d-4467-5b24-87c8-2acbca4bb5ee",
+        "mRID": "5702b42d-4467-5b24-87c8-2acbca4bb5ee",
+        "name": "Brookfield 21 kV",
+        "lowVoltageLimit": 19.95,
+        "highVoltageLimit": 22.05
+      }
+    },
+    "tn_a400": {
+      "node": "TopologicalNode",
+      "properties": {
+        "rdfId": "_c6d561b8-3e35-5ae4-9e5c-dce813df9fd3",
+        "mRID": "c6d561b8-3e35-5ae4-9e5c-dce813df9fd3",
+        "name": "ASHBY4"
+      }
+    },
+    "tn_a220": {
+      "node": "TopologicalNode",
+      "properties": {
+        "rdfId": "_88d3f210-9c3f-5620-a0fd-30fbd5dd441a",
+        "mRID": "88d3f210-9c3f-5620-a0fd-30fbd5dd441a",
+        "name": "ASHBY2"
+      }
+    },
+    "tn_b400": {
+      "node": "TopologicalNode",
+      "properties": {
+        "rdfId": "_20fb3680-eee7-5a1c-a9af-f1db032d4ea5",
+        "mRID": "20fb3680-eee7-5a1c-a9af-f1db032d4ea5",
+        "name": "BROOKF4"
+      }
+    },
+    "tn_b21": {
+      "node": "TopologicalNode",
+      "properties": {
+        "rdfId": "_466896eb-3257-5ebc-a92d-9a8907dc2be2",
+        "mRID": "466896eb-3257-5ebc-a92d-9a8907dc2be2",
+        "name": "BROOKFG1"
+      }
+    },
+    "cn_a400_bb": {
+      "node": "ConnectivityNode",
+      "properties": {
+        "rdfId": "_a7218b42-2a17-5712-8349-b9e311744a35",
+        "mRID": "a7218b42-2a17-5712-8349-b9e311744a35",
+        "name": "CN A400 BB"
+      }
+    },
+    "cn_a400_l1": {
+      "node": "ConnectivityNode",
+      "properties": {
+        "rdfId": "_e7dd1d70-b773-518b-97bb-53fa6402a252",
+        "mRID": "e7dd1d70-b773-518b-97bb-53fa6402a252",
+        "name": "CN A400 L1"
+      }
+    },
+    "cn_a220_bb": {
+      "node": "ConnectivityNode",
+      "properties": {
+        "rdfId": "_79054aca-4fbf-5f3a-b278-294bd3ebbbe3",
+        "mRID": "79054aca-4fbf-5f3a-b278-294bd3ebbbe3",
+        "name": "CN A220 BB"
+      }
+    },
+    "cn_a220_ld": {
+      "node": "ConnectivityNode",
+      "properties": {
+        "rdfId": "_5cb03ec7-4ec5-58b2-97cd-e252abc1eb60",
+        "mRID": "5cb03ec7-4ec5-58b2-97cd-e252abc1eb60",
+        "name": "CN A220 LD"
+      }
+    },
+    "cn_b400_bb": {
+      "node": "ConnectivityNode",
+      "properties": {
+        "rdfId": "_947e6af1-24b4-59d9-b2b9-eadbcb145823",
+        "mRID": "947e6af1-24b4-59d9-b2b9-eadbcb145823",
+        "name": "CN B400 BB"
+      }
+    },
+    "cn_b400_l1": {
+      "node": "ConnectivityNode",
+      "properties": {
+        "rdfId": "_e15febe1-1377-5c08-80ff-cdb9b130f5b1",
+        "mRID": "e15febe1-1377-5c08-80ff-cdb9b130f5b1",
+        "name": "CN B400 L1"
+      }
+    },
+    "cn_b21": {
+      "node": "ConnectivityNode",
+      "properties": {
+        "rdfId": "_be9f4166-b6de-508f-95a9-104354796b0b",
+        "mRID": "be9f4166-b6de-508f-95a9-104354796b0b",
+        "name": "CN B21"
+      }
+    },
+    "island": {
+      "node": "TopologicalIsland",
+      "properties": {
+        "rdfId": "_3f9dd2ef-1350-5096-927d-c4aa9a2f23f1",
+        "mRID": "3f9dd2ef-1350-5096-927d-c4aa9a2f23f1",
+        "name": "Northland main island"
+      }
+    },
+    "bb_a400": {
+      "node": "BusbarSection",
+      "properties": {
+        "rdfId": "_53d753e0-22df-5d6d-ba03-ebceaab52800",
+        "mRID": "53d753e0-22df-5d6d-ba03-ebceaab52800",
+        "name": "Ashby 400 kV busbar 1",
+        "ipMax": 63.0,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t_bb_a400_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_93cb88b0-6eeb-5f5e-9e83-ae4de61c3511",
+        "mRID": "93cb88b0-6eeb-5f5e-9e83-ae4de61c3511",
+        "name": "Ashby 400 kV busbar 1 T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "bb_a220": {
+      "node": "BusbarSection",
+      "properties": {
+        "rdfId": "_114f81a2-2332-5ec1-b1ce-e470eecee7b9",
+        "mRID": "114f81a2-2332-5ec1-b1ce-e470eecee7b9",
+        "name": "Ashby 220 kV busbar 1",
+        "ipMax": 50.0,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t_bb_a220_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_7f690087-8b93-5164-ab3c-195d52201e49",
+        "mRID": "7f690087-8b93-5164-ab3c-195d52201e49",
+        "name": "Ashby 220 kV busbar 1 T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "bb_b400": {
+      "node": "BusbarSection",
+      "properties": {
+        "rdfId": "_257bea12-87c0-5a40-ae16-275c8b4e4ad6",
+        "mRID": "257bea12-87c0-5a40-ae16-275c8b4e4ad6",
+        "name": "Brookfield 400 kV busbar 1",
+        "ipMax": 63.0,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t_bb_b400_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_41a77617-7d8b-5e35-a168-fa67b38c97dd",
+        "mRID": "41a77617-7d8b-5e35-a168-fa67b38c97dd",
+        "name": "Brookfield 400 kV busbar 1 T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "brk_a_l1": {
+      "node": "Breaker",
+      "properties": {
+        "rdfId": "_84d9c73f-d696-5987-8c28-2326e0f8df2c",
+        "mRID": "84d9c73f-d696-5987-8c28-2326e0f8df2c",
+        "name": "ASH 400 L1 breaker",
+        "ratedCurrent": 4000.0,
+        "retained": true,
+        "open": false,
+        "normalOpen": false,
+        "locked": false,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "brk_b_l1": {
+      "node": "Breaker",
+      "properties": {
+        "rdfId": "_919c41c7-d438-575f-a321-cfd4ec9532af",
+        "mRID": "919c41c7-d438-575f-a321-cfd4ec9532af",
+        "name": "BRF 400 L1 breaker",
+        "ratedCurrent": 4000.0,
+        "retained": true,
+        "open": false,
+        "normalOpen": false,
+        "locked": false,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "dis_a_ld": {
+      "node": "Disconnector",
+      "properties": {
+        "rdfId": "_4731e3e8-10bc-547d-90de-5e1c594dac90",
+        "mRID": "4731e3e8-10bc-547d-90de-5e1c594dac90",
+        "name": "ASH 220 load disconnector",
+        "ratedCurrent": 2500.0,
+        "retained": false,
+        "open": false,
+        "normalOpen": false,
+        "locked": false,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t_brk_a_l1_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_5e1c9e5c-a0bf-5730-830c-c07daa3d2278",
+        "mRID": "5e1c9e5c-a0bf-5730-830c-c07daa3d2278",
+        "name": "ASH 400 L1 breaker T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "t_brk_a_l1_2": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_43fca4aa-9a79-55bc-a446-79e1630b69a1",
+        "mRID": "43fca4aa-9a79-55bc-a446-79e1630b69a1",
+        "name": "ASH 400 L1 breaker T2",
+        "sequenceNumber": 2,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "t_brk_b_l1_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_9a8c8ab5-21a0-58af-a468-9e70eda9644d",
+        "mRID": "9a8c8ab5-21a0-58af-a468-9e70eda9644d",
+        "name": "BRF 400 L1 breaker T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "t_brk_b_l1_2": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_f9bd9f73-d1fc-53f3-b610-55ecf2afe8f9",
+        "mRID": "f9bd9f73-d1fc-53f3-b610-55ecf2afe8f9",
+        "name": "BRF 400 L1 breaker T2",
+        "sequenceNumber": 2,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "t_dis_a_ld_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_e8354b15-dd5b-57ff-82b1-6691bc9335a0",
+        "mRID": "e8354b15-dd5b-57ff-82b1-6691bc9335a0",
+        "name": "ASH 220 load disconnector T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "t_dis_a_ld_2": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_75f05ff9-71d2-5f7a-bf40-576023e4fa35",
+        "mRID": "75f05ff9-71d2-5f7a-bf40-576023e4fa35",
+        "name": "ASH 220 load disconnector T2",
+        "sequenceNumber": 2,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "line1": {
+      "node": "Line",
+      "properties": {
+        "rdfId": "_89bcd7fa-b2ec-5a82-af14-28e3a7f727b6",
+        "mRID": "89bcd7fa-b2ec-5a82-af14-28e3a7f727b6",
+        "name": "Ashby - Brookfield 1",
+        "energyIdentCodeEic": "10T-NG-ASH-BRF1"
+      }
+    },
+    "acls1": {
+      "node": "ACLineSegment",
+      "properties": {
+        "rdfId": "_73574807-be00-5037-b47d-646242419240",
+        "mRID": "73574807-be00-5037-b47d-646242419240",
+        "name": "Ashby - Brookfield 1",
+        "length": 85.0,
+        "r": 2.55,
+        "x": 27.2,
+        "bch": 0.000306,
+        "gch": 0.0,
+        "r0": 7.65,
+        "x0": 81.6,
+        "b0ch": 0.000187,
+        "g0ch": 0.0,
+        "shortCircuitEndTemperature": 160.0,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t_acls1_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_ca731c27-5aa5-5fe5-8947-596b51435979",
+        "mRID": "ca731c27-5aa5-5fe5-8947-596b51435979",
+        "name": "Ashby - Brookfield 1 T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_acls1_1": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_9b397171-24bb-524d-9603-ae5d808c106c",
+        "p": -492.0,
+        "q": -38.5
+      }
+    },
+    "t_acls1_2": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_c8f199bf-5574-56e1-a07f-b125f75332e7",
+        "mRID": "c8f199bf-5574-56e1-a07f-b125f75332e7",
+        "name": "Ashby - Brookfield 1 T2",
+        "sequenceNumber": 2,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_acls1_2": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_127b1c8f-f7b8-5f6d-8e17-5894d5b1c8ae",
+        "p": 498.5,
+        "q": 61.2
+      }
+    },
+    "olt_patl": {
+      "node": "OperationalLimitType",
+      "properties": {
+        "rdfId": "_86137936-0d64-5982-a8a9-bf094d055dee",
+        "mRID": "86137936-0d64-5982-a8a9-bf094d055dee",
+        "name": "PATL",
+        "kind": "patl",
+        "direction": "absoluteValue",
+        "isInfiniteDuration": true
+      }
+    },
+    "olt_tatl": {
+      "node": "OperationalLimitType",
+      "properties": {
+        "rdfId": "_8a10d58a-8e68-5de1-8640-f8da7da5f45b",
+        "mRID": "8a10d58a-8e68-5de1-8640-f8da7da5f45b",
+        "name": "TATL 1200",
+        "kind": "tatl",
+        "direction": "absoluteValue",
+        "isInfiniteDuration": false,
+        "acceptableDuration": 1200.0
+      }
+    },
+    "ols_l1": {
+      "node": "OperationalLimitSet",
+      "properties": {
+        "rdfId": "_355dae44-f901-5ec5-9ec8-0ec361d20168",
+        "mRID": "355dae44-f901-5ec5-9ec8-0ec361d20168",
+        "name": "Ashby - Brookfield 1 at Ashby"
+      }
+    },
+    "cl_patl": {
+      "node": "CurrentLimit",
+      "properties": {
+        "rdfId": "_291f1253-f75d-5db8-a8e4-b174d19481fc",
+        "mRID": "291f1253-f75d-5db8-a8e4-b174d19481fc",
+        "name": "PATL",
+        "value": 2000.0,
+        "normalValue": 2000.0
+      }
+    },
+    "cl_tatl": {
+      "node": "CurrentLimit",
+      "properties": {
+        "rdfId": "_e33a7157-2526-5cd2-b073-12874cd9c172",
+        "mRID": "e33a7157-2526-5cd2-b073-12874cd9c172",
+        "name": "TATL 20 min",
+        "value": 2400.0,
+        "normalValue": 2400.0
+      }
+    },
+    "t1": {
+      "node": "PowerTransformer",
+      "properties": {
+        "rdfId": "_2354254b-5781-5860-8384-c7446a25e389",
+        "mRID": "2354254b-5781-5860-8384-c7446a25e389",
+        "name": "ASH T1",
+        "isPartOfGeneratorUnit": false,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t1_e1": {
+      "node": "PowerTransformerEnd",
+      "properties": {
+        "rdfId": "_1b7169ab-e623-5eb9-86de-3af74d30e270",
+        "mRID": "1b7169ab-e623-5eb9-86de-3af74d30e270",
+        "name": "ASH T1 end 1",
+        "endNumber": 1,
+        "grounded": true,
+        "ratedU": 400.0,
+        "ratedS": 500.0,
+        "r": 0.32,
+        "x": 38.4,
+        "b": 1.5e-06,
+        "g": 1e-07,
+        "r0": 0.32,
+        "x0": 36.5,
+        "b0": 0.0,
+        "g0": 0.0,
+        "connectionKind": "Yn",
+        "phaseAngleClock": 0
+      }
+    },
+    "t_t1_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_69d2970d-9235-539e-a169-a6d784be02a1",
+        "mRID": "69d2970d-9235-539e-a169-a6d784be02a1",
+        "name": "ASH T1 T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_t1_1": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_046ce744-81c4-577e-8f50-1c07f788ba73",
+        "p": 492.0,
+        "q": 64.0
+      }
+    },
+    "t1_e2": {
+      "node": "PowerTransformerEnd",
+      "properties": {
+        "rdfId": "_d314299a-360c-5207-a5fd-fee582995e37",
+        "mRID": "d314299a-360c-5207-a5fd-fee582995e37",
+        "name": "ASH T1 end 2",
+        "endNumber": 2,
+        "grounded": true,
+        "ratedU": 220.0,
+        "ratedS": 500.0,
+        "r": 0.0,
+        "x": 0.0,
+        "b": 0.0,
+        "g": 0.0,
+        "r0": 0.0,
+        "x0": 0.0,
+        "b0": 0.0,
+        "g0": 0.0,
+        "connectionKind": "Yn",
+        "phaseAngleClock": 0
+      }
+    },
+    "t_t1_2": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_deecd438-3fc1-59a6-a87f-2161e1e9b89b",
+        "mRID": "deecd438-3fc1-59a6-a87f-2161e1e9b89b",
+        "name": "ASH T1 T2",
+        "sequenceNumber": 2,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_t1_2": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_4063e20c-6ea8-59e8-8f03-63c3c950438d",
+        "p": -491.0,
+        "q": -95.0
+      }
+    },
+    "t2": {
+      "node": "PowerTransformer",
+      "properties": {
+        "rdfId": "_a11ef738-b975-5cb3-8ad2-23b1e39acd92",
+        "mRID": "a11ef738-b975-5cb3-8ad2-23b1e39acd92",
+        "name": "BRF GSU 1",
+        "isPartOfGeneratorUnit": true,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t2_e1": {
+      "node": "PowerTransformerEnd",
+      "properties": {
+        "rdfId": "_a8c3acd5-f44f-5cdc-8962-43246b42705c",
+        "mRID": "a8c3acd5-f44f-5cdc-8962-43246b42705c",
+        "name": "BRF GSU 1 end 1",
+        "endNumber": 1,
+        "grounded": true,
+        "ratedU": 410.0,
+        "ratedS": 650.0,
+        "r": 0.4,
+        "x": 36.2,
+        "b": 1.2e-06,
+        "g": 1e-07,
+        "r0": 0.4,
+        "x0": 34.0,
+        "b0": 0.0,
+        "g0": 0.0,
+        "connectionKind": "Yn",
+        "phaseAngleClock": 0
+      }
+    },
+    "t_t2_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_58c7bd80-7c62-558f-acff-8b4135c200d7",
+        "mRID": "58c7bd80-7c62-558f-acff-8b4135c200d7",
+        "name": "BRF GSU 1 T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_t2_1": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_0da2743a-b540-5bea-8823-1aec6816d982",
+        "p": -498.5,
+        "q": -61.2
+      }
+    },
+    "t2_e2": {
+      "node": "PowerTransformerEnd",
+      "properties": {
+        "rdfId": "_c1374fd0-1263-5940-84fb-4432a8b2fb54",
+        "mRID": "c1374fd0-1263-5940-84fb-4432a8b2fb54",
+        "name": "BRF GSU 1 end 2",
+        "endNumber": 2,
+        "grounded": false,
+        "ratedU": 21.0,
+        "ratedS": 650.0,
+        "r": 0.0,
+        "x": 0.0,
+        "b": 0.0,
+        "g": 0.0,
+        "r0": 0.0,
+        "x0": 0.0,
+        "b0": 0.0,
+        "g0": 0.0,
+        "connectionKind": "D",
+        "phaseAngleClock": 11
+      }
+    },
+    "t_t2_2": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_bcc22dd7-dee5-57ee-818f-29252ac187e5",
+        "mRID": "bcc22dd7-dee5-57ee-818f-29252ac187e5",
+        "name": "BRF GSU 1 T2",
+        "sequenceNumber": 2,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_t2_2": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_18925925-92f5-5196-af2e-66df1d762957",
+        "p": 500.0,
+        "q": 120.0
+      }
+    },
+    "rtc_t1": {
+      "node": "RatioTapChanger",
+      "properties": {
+        "rdfId": "_31add3ef-0b15-5822-bc16-d50803dbe785",
+        "mRID": "31add3ef-0b15-5822-bc16-d50803dbe785",
+        "name": "ASH T1 tap changer",
+        "lowStep": 1,
+        "highStep": 33,
+        "neutralStep": 17,
+        "normalStep": 17,
+        "step": 17.0,
+        "neutralU": 400.0,
+        "stepVoltageIncrement": 0.625,
+        "ltcFlag": true,
+        "controlEnabled": true
+      }
+    },
+    "tcc_t1": {
+      "node": "TapChangerControl",
+      "properties": {
+        "rdfId": "_48d70352-1d24-5e00-a3f0-320bfd214943",
+        "mRID": "48d70352-1d24-5e00-a3f0-320bfd214943",
+        "name": "ASH T1 voltage control",
+        "mode": "voltage",
+        "targetValue": 225.0,
+        "targetValueUnitMultiplier": "k",
+        "targetDeadband": 2.5,
+        "discrete": true,
+        "enabled": true
+      }
+    },
+    "gu1": {
+      "node": "ThermalGeneratingUnit",
+      "properties": {
+        "rdfId": "_1adf3034-9dd2-56ef-a334-ad45e3629e82",
+        "mRID": "1adf3034-9dd2-56ef-a334-ad45e3629e82",
+        "name": "Brookfield unit 1",
+        "maxOperatingP": 600.0,
+        "minOperatingP": 250.0,
+        "nominalP": 585.0,
+        "normalPF": 1.0,
+        "genControlSource": "offAGC",
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "sm1": {
+      "node": "SynchronousMachine",
+      "properties": {
+        "rdfId": "_0788cf3b-b673-54a8-b864-0b31140d3c5a",
+        "mRID": "0788cf3b-b673-54a8-b864-0b31140d3c5a",
+        "name": "Brookfield G1",
+        "ratedS": 650.0,
+        "ratedU": 21.0,
+        "ratedPowerFactor": 0.9,
+        "p": -500.0,
+        "q": -120.0,
+        "maxQ": 300.0,
+        "minQ": -200.0,
+        "type": "generatorOrCondenser",
+        "operatingMode": "generator",
+        "referencePriority": 1,
+        "controlEnabled": true,
+        "earthing": false,
+        "r": 0.0025,
+        "r0": 0.0025,
+        "r2": 0.02,
+        "x0": 0.1,
+        "x2": 0.2,
+        "satDirectSubtransX": 0.2,
+        "satDirectTransX": 0.3,
+        "satDirectSyncX": 2.0,
+        "shortCircuitRotorType": "turboSeries1",
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t_sm1_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_62bf702e-f112-5745-ab2f-58f0527cfe40",
+        "mRID": "62bf702e-f112-5745-ab2f-58f0527cfe40",
+        "name": "Brookfield G1 T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_sm1_1": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_0b87c799-9575-57db-a50a-4a528b84b9e5",
+        "p": -500.0,
+        "q": -120.0
+      }
+    },
+    "la": {
+      "node": "LoadArea",
+      "properties": {
+        "rdfId": "_b013cdcd-fd25-5847-a266-9ced7c427726",
+        "mRID": "b013cdcd-fd25-5847-a266-9ced7c427726",
+        "name": "Northland load"
+      }
+    },
+    "sla": {
+      "node": "SubLoadArea",
+      "properties": {
+        "rdfId": "_5f8eaad0-1a8f-533a-bc39-a268182757eb",
+        "mRID": "5f8eaad0-1a8f-533a-bc39-a268182757eb",
+        "name": "North-East load"
+      }
+    },
+    "clg": {
+      "node": "ConformLoadGroup",
+      "properties": {
+        "rdfId": "_e2b3a378-3017-5660-90ae-32c94857e948",
+        "mRID": "e2b3a378-3017-5660-90ae-32c94857e948",
+        "name": "North-East conform loads"
+      }
+    },
+    "lrc": {
+      "node": "LoadResponseCharacteristic",
+      "properties": {
+        "rdfId": "_74309dcb-c908-58c5-9bb3-b0e9202cf364",
+        "mRID": "74309dcb-c908-58c5-9bb3-b0e9202cf364",
+        "name": "Constant power",
+        "exponentModel": false,
+        "pConstantPower": 1.0,
+        "pConstantCurrent": 0.0,
+        "pConstantImpedance": 0.0,
+        "qConstantPower": 1.0,
+        "qConstantCurrent": 0.0,
+        "qConstantImpedance": 0.0
+      }
+    },
+    "ld1": {
+      "node": "ConformLoad",
+      "properties": {
+        "rdfId": "_f1566fb0-08a4-5fde-9459-ea7b6988ebb0",
+        "mRID": "f1566fb0-08a4-5fde-9459-ea7b6988ebb0",
+        "name": "Ashby 220 kV grid supply",
+        "p": 491.0,
+        "q": 95.0,
+        "inService": true,
+        "normallyInService": true,
+        "aggregate": false
+      }
+    },
+    "t_ld1_1": {
+      "node": "Terminal",
+      "properties": {
+        "rdfId": "_38f3fe0d-b281-536b-a1fa-90e3d9423265",
+        "mRID": "38f3fe0d-b281-536b-a1fa-90e3d9423265",
+        "name": "Ashby 220 kV grid supply T1",
+        "sequenceNumber": 1,
+        "connected": true,
+        "phases": "ABC"
+      }
+    },
+    "sv_t_ld1_1": {
+      "node": "SvPowerFlow",
+      "properties": {
+        "rdfId": "_726444df-f9f7-51ff-902f-f0480e65b237",
+        "p": 491.0,
+        "q": 95.0
+      }
+    },
+    "svv_b21": {
+      "node": "SvVoltage",
+      "properties": {
+        "rdfId": "_902fcdd1-46fe-5641-aba3-f765cac7b3f9",
+        "v": 21.3,
+        "angle": 0.0
+      }
+    },
+    "svv_b400": {
+      "node": "SvVoltage",
+      "properties": {
+        "rdfId": "_f70b8cc0-a378-5145-980d-9f18779f9ce9",
+        "v": 409.6,
+        "angle": -3.1
+      }
+    },
+    "svv_a400": {
+      "node": "SvVoltage",
+      "properties": {
+        "rdfId": "_cc63ba4c-77ab-5ea9-b315-fd7ab897cbe7",
+        "v": 402.8,
+        "angle": -9.4
+      }
+    },
+    "svv_a220": {
+      "node": "SvVoltage",
+      "properties": {
+        "rdfId": "_ca54d6d2-16b1-5702-9470-55cb2fad59bf",
+        "v": 224.1,
+        "angle": -12.7
+      }
+    },
+    "crs": {
+      "node": "CoordinateSystem",
+      "properties": {
+        "rdfId": "_29ba488d-df3f-57e2-933a-0b72ef7ccf08",
+        "mRID": "29ba488d-df3f-57e2-933a-0b72ef7ccf08",
+        "name": "WGS 84",
+        "crsUrn": "urn:ogc:def:crs:EPSG::4326"
+      }
+    },
+    "loc_ashby": {
+      "node": "Location",
+      "properties": {
+        "rdfId": "_a0235e51-163f-5790-ae21-c10b3b526a0d",
+        "mRID": "a0235e51-163f-5790-ae21-c10b3b526a0d",
+        "name": "Ashby substation",
+        "mainAddress": "Ashby Lane, Northland"
+      }
+    },
+    "pp_ashby": {
+      "node": "PositionPoint",
+      "properties": {
+        "rdfId": "_97d7ed4e-7f99-59dd-92a8-8a46b082c21e",
+        "xPosition": "-1.4723",
+        "yPosition": "54.9061",
+        "sequenceNumber": 1
+      }
+    }
+  },
+  "relationships": [
+    [
+      "subrgn",
+      "HAS_REGION",
+      "rgn"
+    ],
+    [
+      "ashby",
+      "HAS_REGION",
+      "subrgn"
+    ],
+    [
+      "brook",
+      "HAS_REGION",
+      "subrgn"
+    ],
+    [
+      "vl_a400",
+      "HAS_SUBSTATION",
+      "ashby"
+    ],
+    [
+      "vl_a400",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "vl_a220",
+      "HAS_SUBSTATION",
+      "ashby"
+    ],
+    [
+      "vl_a220",
+      "HAS_BASE_VOLTAGE",
+      "bv220"
+    ],
+    [
+      "vl_b400",
+      "HAS_SUBSTATION",
+      "brook"
+    ],
+    [
+      "vl_b400",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "vl_b21",
+      "HAS_SUBSTATION",
+      "brook"
+    ],
+    [
+      "vl_b21",
+      "HAS_BASE_VOLTAGE",
+      "bv21"
+    ],
+    [
+      "tn_a400",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_a400"
+    ],
+    [
+      "tn_a400",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "tn_a220",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_a220"
+    ],
+    [
+      "tn_a220",
+      "HAS_BASE_VOLTAGE",
+      "bv220"
+    ],
+    [
+      "tn_b400",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_b400"
+    ],
+    [
+      "tn_b400",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "tn_b21",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_b21"
+    ],
+    [
+      "tn_b21",
+      "HAS_BASE_VOLTAGE",
+      "bv21"
+    ],
+    [
+      "cn_a400_bb",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_a400"
+    ],
+    [
+      "cn_a400_bb",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "cn_a400_l1",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_a400"
+    ],
+    [
+      "cn_a400_l1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "cn_a220_bb",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_a220"
+    ],
+    [
+      "cn_a220_bb",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "cn_a220_ld",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_a220"
+    ],
+    [
+      "cn_a220_ld",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "cn_b400_bb",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_b400"
+    ],
+    [
+      "cn_b400_bb",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "cn_b400_l1",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_b400"
+    ],
+    [
+      "cn_b400_l1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "cn_b21",
+      "HAS_CONNECTIVITY_NODE_CONTAINER",
+      "vl_b21"
+    ],
+    [
+      "cn_b21",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b21"
+    ],
+    [
+      "island",
+      "HAS_ANGLE_REF_TOPOLOGICAL_NODE",
+      "tn_b21"
+    ],
+    [
+      "island",
+      "HAS_TOPOLOGICAL_NODES",
+      "tn_a400"
+    ],
+    [
+      "island",
+      "HAS_TOPOLOGICAL_NODES",
+      "tn_a220"
+    ],
+    [
+      "island",
+      "HAS_TOPOLOGICAL_NODES",
+      "tn_b400"
+    ],
+    [
+      "island",
+      "HAS_TOPOLOGICAL_NODES",
+      "tn_b21"
+    ],
+    [
+      "bb_a400",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_a400"
+    ],
+    [
+      "bb_a400",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "t_bb_a400_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "bb_a400"
+    ],
+    [
+      "t_bb_a400_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a400_bb"
+    ],
+    [
+      "t_bb_a400_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "bb_a220",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_a220"
+    ],
+    [
+      "bb_a220",
+      "HAS_BASE_VOLTAGE",
+      "bv220"
+    ],
+    [
+      "t_bb_a220_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "bb_a220"
+    ],
+    [
+      "t_bb_a220_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a220_bb"
+    ],
+    [
+      "t_bb_a220_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "bb_b400",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_b400"
+    ],
+    [
+      "bb_b400",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "t_bb_b400_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "bb_b400"
+    ],
+    [
+      "t_bb_b400_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_b400_bb"
+    ],
+    [
+      "t_bb_b400_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "brk_a_l1",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_a400"
+    ],
+    [
+      "brk_a_l1",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "t_brk_a_l1_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "brk_a_l1"
+    ],
+    [
+      "t_brk_a_l1_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a400_bb"
+    ],
+    [
+      "t_brk_a_l1_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "t_brk_a_l1_2",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "brk_a_l1"
+    ],
+    [
+      "t_brk_a_l1_2",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a400_l1"
+    ],
+    [
+      "t_brk_a_l1_2",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "brk_b_l1",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_b400"
+    ],
+    [
+      "brk_b_l1",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "t_brk_b_l1_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "brk_b_l1"
+    ],
+    [
+      "t_brk_b_l1_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_b400_bb"
+    ],
+    [
+      "t_brk_b_l1_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "t_brk_b_l1_2",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "brk_b_l1"
+    ],
+    [
+      "t_brk_b_l1_2",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_b400_l1"
+    ],
+    [
+      "t_brk_b_l1_2",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "dis_a_ld",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_a220"
+    ],
+    [
+      "dis_a_ld",
+      "HAS_BASE_VOLTAGE",
+      "bv220"
+    ],
+    [
+      "t_dis_a_ld_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "dis_a_ld"
+    ],
+    [
+      "t_dis_a_ld_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a220_bb"
+    ],
+    [
+      "t_dis_a_ld_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "t_dis_a_ld_2",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "dis_a_ld"
+    ],
+    [
+      "t_dis_a_ld_2",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a220_ld"
+    ],
+    [
+      "t_dis_a_ld_2",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "line1",
+      "HAS_REGION",
+      "subrgn"
+    ],
+    [
+      "acls1",
+      "HAS_EQUIPMENT_CONTAINER",
+      "line1"
+    ],
+    [
+      "acls1",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "t_acls1_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "acls1"
+    ],
+    [
+      "t_acls1_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a400_l1"
+    ],
+    [
+      "t_acls1_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "sv_t_acls1_1",
+      "HAS_TERMINAL",
+      "t_acls1_1"
+    ],
+    [
+      "t_acls1_2",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "acls1"
+    ],
+    [
+      "t_acls1_2",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_b400_l1"
+    ],
+    [
+      "t_acls1_2",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "sv_t_acls1_2",
+      "HAS_TERMINAL",
+      "t_acls1_2"
+    ],
+    [
+      "ols_l1",
+      "HAS_TERMINAL",
+      "t_acls1_1"
+    ],
+    [
+      "ols_l1",
+      "HAS_EQUIPMENT",
+      "acls1"
+    ],
+    [
+      "cl_patl",
+      "HAS_OPERATIONAL_LIMIT_SET",
+      "ols_l1"
+    ],
+    [
+      "cl_patl",
+      "HAS_OPERATIONAL_LIMIT_TYPE",
+      "olt_patl"
+    ],
+    [
+      "cl_tatl",
+      "HAS_OPERATIONAL_LIMIT_SET",
+      "ols_l1"
+    ],
+    [
+      "cl_tatl",
+      "HAS_OPERATIONAL_LIMIT_TYPE",
+      "olt_tatl"
+    ],
+    [
+      "t1",
+      "HAS_EQUIPMENT_CONTAINER",
+      "ashby"
+    ],
+    [
+      "t1_e1",
+      "HAS_POWER_TRANSFORMER",
+      "t1"
+    ],
+    [
+      "t1_e1",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "t_t1_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "t1"
+    ],
+    [
+      "t_t1_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a400_bb"
+    ],
+    [
+      "t_t1_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "sv_t_t1_1",
+      "HAS_TERMINAL",
+      "t_t1_1"
+    ],
+    [
+      "t1_e1",
+      "HAS_TERMINAL",
+      "t_t1_1"
+    ],
+    [
+      "t1_e2",
+      "HAS_POWER_TRANSFORMER",
+      "t1"
+    ],
+    [
+      "t1_e2",
+      "HAS_BASE_VOLTAGE",
+      "bv220"
+    ],
+    [
+      "t_t1_2",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "t1"
+    ],
+    [
+      "t_t1_2",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a220_bb"
+    ],
+    [
+      "t_t1_2",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "sv_t_t1_2",
+      "HAS_TERMINAL",
+      "t_t1_2"
+    ],
+    [
+      "t1_e2",
+      "HAS_TERMINAL",
+      "t_t1_2"
+    ],
+    [
+      "t2",
+      "HAS_EQUIPMENT_CONTAINER",
+      "brook"
+    ],
+    [
+      "t2_e1",
+      "HAS_POWER_TRANSFORMER",
+      "t2"
+    ],
+    [
+      "t2_e1",
+      "HAS_BASE_VOLTAGE",
+      "bv400"
+    ],
+    [
+      "t_t2_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "t2"
+    ],
+    [
+      "t_t2_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_b400_bb"
+    ],
+    [
+      "t_t2_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "sv_t_t2_1",
+      "HAS_TERMINAL",
+      "t_t2_1"
+    ],
+    [
+      "t2_e1",
+      "HAS_TERMINAL",
+      "t_t2_1"
+    ],
+    [
+      "t2_e2",
+      "HAS_POWER_TRANSFORMER",
+      "t2"
+    ],
+    [
+      "t2_e2",
+      "HAS_BASE_VOLTAGE",
+      "bv21"
+    ],
+    [
+      "t_t2_2",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "t2"
+    ],
+    [
+      "t_t2_2",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_b21"
+    ],
+    [
+      "t_t2_2",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b21"
+    ],
+    [
+      "sv_t_t2_2",
+      "HAS_TERMINAL",
+      "t_t2_2"
+    ],
+    [
+      "t2_e2",
+      "HAS_TERMINAL",
+      "t_t2_2"
+    ],
+    [
+      "rtc_t1",
+      "HAS_TRANSFORMER_END",
+      "t1_e1"
+    ],
+    [
+      "tcc_t1",
+      "HAS_TERMINAL",
+      "t_t1_2"
+    ],
+    [
+      "rtc_t1",
+      "HAS_TAP_CHANGER_CONTROL",
+      "tcc_t1"
+    ],
+    [
+      "gu1",
+      "HAS_EQUIPMENT_CONTAINER",
+      "brook"
+    ],
+    [
+      "sm1",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_b21"
+    ],
+    [
+      "sm1",
+      "HAS_BASE_VOLTAGE",
+      "bv21"
+    ],
+    [
+      "sm1",
+      "HAS_GENERATING_UNIT",
+      "gu1"
+    ],
+    [
+      "t_sm1_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "sm1"
+    ],
+    [
+      "t_sm1_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_b21"
+    ],
+    [
+      "t_sm1_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b21"
+    ],
+    [
+      "sv_t_sm1_1",
+      "HAS_TERMINAL",
+      "t_sm1_1"
+    ],
+    [
+      "sla",
+      "HAS_LOAD_AREA",
+      "la"
+    ],
+    [
+      "clg",
+      "HAS_SUB_LOAD_AREA",
+      "sla"
+    ],
+    [
+      "ld1",
+      "HAS_EQUIPMENT_CONTAINER",
+      "vl_a220"
+    ],
+    [
+      "ld1",
+      "HAS_BASE_VOLTAGE",
+      "bv220"
+    ],
+    [
+      "ld1",
+      "HAS_LOAD_GROUP",
+      "clg"
+    ],
+    [
+      "ld1",
+      "HAS_LOAD_RESPONSE",
+      "lrc"
+    ],
+    [
+      "t_ld1_1",
+      "HAS_CONDUCTING_EQUIPMENT",
+      "ld1"
+    ],
+    [
+      "t_ld1_1",
+      "HAS_CONNECTIVITY_NODE",
+      "cn_a220_ld"
+    ],
+    [
+      "t_ld1_1",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "sv_t_ld1_1",
+      "HAS_TERMINAL",
+      "t_ld1_1"
+    ],
+    [
+      "svv_b21",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b21"
+    ],
+    [
+      "svv_b400",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_b400"
+    ],
+    [
+      "svv_a400",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a400"
+    ],
+    [
+      "svv_a220",
+      "HAS_TOPOLOGICAL_NODE",
+      "tn_a220"
+    ],
+    [
+      "loc_ashby",
+      "HAS_COORDINATE_SYSTEM",
+      "crs"
+    ],
+    [
+      "loc_ashby",
+      "HAS_POWER_SYSTEM_RESOURCES",
+      "ashby"
+    ],
+    [
+      "pp_ashby",
+      "HAS_LOCATION",
+      "loc_ashby"
+    ]
+  ]
+}

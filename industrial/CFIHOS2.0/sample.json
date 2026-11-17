@@ -1,0 +1,1762 @@
+{
+  "scenario": "An engineering contractor's handover of the condensate export pumps at the fictional Kestrel Gas Processing Plant. Tags P-2001A/B and their motors sit in a process unit and area of the plant, classed by the CFIHOS reference data and fulfilled by serialised equipment of a manufacturer's model parts. The purchase order that bought them, the spare parts interchangeability record for their mechanical seals, and an as-built vendor data sheet with its revision, references and transmittal complete the handover. Codes such as the CFIHOS unique codes are illustrative.",
+  "nodes": {
+    "no": {
+      "node": "IsoCountry",
+      "properties": {
+        "isoCountryCode": "NO",
+        "isoCountryName": "Norway"
+      }
+    },
+    "gb": {
+      "node": "IsoCountry",
+      "properties": {
+        "isoCountryCode": "GB",
+        "isoCountryName": "United Kingdom"
+      }
+    },
+    "eur": {
+      "node": "IsoCurrency",
+      "properties": {
+        "isoCurrencyCode": "EUR",
+        "isoCurrencyName": "Euro"
+      }
+    },
+    "en": {
+      "node": "IsoLanguage",
+      "properties": {
+        "isoLanguageCode": "en",
+        "isoLanguageName": "English"
+      }
+    },
+    "si": {
+      "node": "MeasurementSystem",
+      "properties": {
+        "measurementSystemCode": "SI",
+        "measurementSystemName": "International System of Units"
+      }
+    },
+    "dim-flow": {
+      "node": "UnitOfMeasureDimension",
+      "properties": {
+        "unitOfMeasureDimensionCode": "L3T-1",
+        "unitOfMeasureDimensionName": "volume flow rate",
+        "cfihosUniqueCode": "CFIHOS-60000021"
+      }
+    },
+    "dim-power": {
+      "node": "UnitOfMeasureDimension",
+      "properties": {
+        "unitOfMeasureDimensionCode": "L2MT-3",
+        "unitOfMeasureDimensionName": "power",
+        "cfihosUniqueCode": "CFIHOS-60000034"
+      }
+    },
+    "dim-time": {
+      "node": "UnitOfMeasureDimension",
+      "properties": {
+        "unitOfMeasureDimensionCode": "T",
+        "unitOfMeasureDimensionName": "time",
+        "cfihosUniqueCode": "CFIHOS-60000002"
+      }
+    },
+    "dim-none": {
+      "node": "UnitOfMeasureDimension",
+      "properties": {
+        "unitOfMeasureDimensionCode": "1",
+        "unitOfMeasureDimensionName": "dimensionless",
+        "cfihosUniqueCode": "CFIHOS-60000001"
+      }
+    },
+    "uom-m3h": {
+      "node": "UnitOfMeasure",
+      "properties": {
+        "unitOfMeasureName": "cubic metre per hour",
+        "unitOfMeasureSymbol": "m3/h",
+        "unitOfMeasureDimensionCode": "L3T-1",
+        "measurementSystemCode": "SI",
+        "cfihosUniqueCode": "CFIHOS-70000412"
+      }
+    },
+    "uom-kw": {
+      "node": "UnitOfMeasure",
+      "properties": {
+        "unitOfMeasureName": "kilowatt",
+        "unitOfMeasureSymbol": "kW",
+        "unitOfMeasureDimensionCode": "L2MT-3",
+        "measurementSystemCode": "SI",
+        "cfihosUniqueCode": "CFIHOS-70000233"
+      }
+    },
+    "uom-week": {
+      "node": "UnitOfMeasure",
+      "properties": {
+        "unitOfMeasureName": "week",
+        "unitOfMeasureSymbol": "wk",
+        "unitOfMeasureDimensionCode": "T",
+        "measurementSystemCode": "SI",
+        "cfihosUniqueCode": "CFIHOS-70000561"
+      }
+    },
+    "uom-each": {
+      "node": "UnitOfMeasure",
+      "properties": {
+        "unitOfMeasureName": "each",
+        "unitOfMeasureSymbol": "ea",
+        "unitOfMeasureDimensionCode": "1",
+        "measurementSystemCode": "SI",
+        "cfihosUniqueCode": "CFIHOS-70000102"
+      }
+    },
+    "dt-num": {
+      "node": "DataType",
+      "properties": {
+        "dataTypeCode": "NUM",
+        "dataTypeName": "numeric"
+      }
+    },
+    "prop-flow": {
+      "node": "QuantitativeProperty",
+      "properties": {
+        "propertyName": "rated volume flow rate",
+        "propertyDefinition": "The volume flow rate at the rated operating point of the pump.",
+        "propertyDataType": "NUM",
+        "cfihosUniqueCode": "CFIHOS-40000512",
+        "unitOfMeasureDimensionCode": "L3T-1"
+      }
+    },
+    "prop-power": {
+      "node": "QuantitativeProperty",
+      "properties": {
+        "propertyName": "rated power",
+        "propertyDefinition": "The power output a driver is designed to deliver continuously.",
+        "propertyDataType": "NUM",
+        "cfihosUniqueCode": "CFIHOS-40000488",
+        "unitOfMeasureDimensionCode": "L2MT-3"
+      }
+    },
+    "cls-pump": {
+      "node": [
+        "TagClass",
+        "EquipmentClass",
+        "NonAbstractTagOrEquipmentClass"
+      ],
+      "properties": {
+        "tagOrEquipmentClassName": "centrifugal pump",
+        "tagOrEquipmentClassDefinition": "A pump that moves fluid by the centrifugal force of a rotating impeller.",
+        "tagClassIndicator": true,
+        "equipmentClassIndicator": true,
+        "abstractClassIndicator": false,
+        "cfihosUniqueCode": "CFIHOS-30000311",
+        "tagClassName": "centrifugal pump",
+        "equipmentExpectedToBeInstalledIndicator": true,
+        "equipmentClassName": "centrifugal pump",
+        "sparePartInformationRequiredIndicator": true
+      }
+    },
+    "cls-motor": {
+      "node": [
+        "TagClass",
+        "EquipmentClass",
+        "NonAbstractTagOrEquipmentClass"
+      ],
+      "properties": {
+        "tagOrEquipmentClassName": "electric motor",
+        "tagOrEquipmentClassDefinition": "A machine that converts electrical energy into mechanical rotation.",
+        "tagClassIndicator": true,
+        "equipmentClassIndicator": true,
+        "abstractClassIndicator": false,
+        "cfihosUniqueCode": "CFIHOS-30000142",
+        "tagClassName": "electric motor",
+        "equipmentExpectedToBeInstalledIndicator": true,
+        "equipmentClassName": "electric motor",
+        "sparePartInformationRequiredIndicator": true
+      }
+    },
+    "cls-seal": {
+      "node": [
+        "EquipmentClass",
+        "NonAbstractTagOrEquipmentClass"
+      ],
+      "properties": {
+        "tagOrEquipmentClassName": "mechanical seal",
+        "tagOrEquipmentClassDefinition": "A seal that prevents leakage along a rotating shaft through two lapped faces.",
+        "tagClassIndicator": false,
+        "equipmentClassIndicator": true,
+        "abstractClassIndicator": false,
+        "cfihosUniqueCode": "CFIHOS-30000287",
+        "equipmentClassName": "mechanical seal",
+        "sparePartInformationRequiredIndicator": true
+      }
+    },
+    "cls-pump-map": {
+      "node": "TagClassEquipmentClassRelationship",
+      "properties": {
+        "tagClassName": "centrifugal pump",
+        "equipmentClassName": "centrifugal pump"
+      }
+    },
+    "cls-motor-map": {
+      "node": "TagClassEquipmentClassRelationship",
+      "properties": {
+        "tagClassName": "electric motor",
+        "equipmentClassName": "electric motor"
+      }
+    },
+    "cls-pump-prop-flow": {
+      "node": [
+        "TagClassProperty",
+        "EquipmentClassProperty"
+      ],
+      "properties": {
+        "tagOrEquipmentClassName": "centrifugal pump",
+        "tagClassName": "centrifugal pump",
+        "equipmentClassName": "centrifugal pump",
+        "propertyName": "rated volume flow rate",
+        "propertyIsRelevantForTagIndicator": true,
+        "propertyRelevantForEquipmentIndicator": true,
+        "propertyRelevantForModelPartIndicator": true,
+        "cfihosUniqueCode": "CFIHOS-50001201"
+      }
+    },
+    "cls-motor-prop-power": {
+      "node": [
+        "TagClassProperty",
+        "EquipmentClassProperty"
+      ],
+      "properties": {
+        "tagOrEquipmentClassName": "electric motor",
+        "tagClassName": "electric motor",
+        "equipmentClassName": "electric motor",
+        "propertyName": "rated power",
+        "propertyIsRelevantForTagIndicator": true,
+        "propertyRelevantForEquipmentIndicator": true,
+        "propertyRelevantForModelPartIndicator": true,
+        "cfihosUniqueCode": "CFIHOS-50000876"
+      }
+    },
+    "co-op": {
+      "node": "Company",
+      "properties": {
+        "companyName": "Kestrel Energy",
+        "manufacturerIndicator": false,
+        "supplierIndicator": false,
+        "companyContactPerson": "Ingrid Solberg",
+        "companyAddressLine1": "Havnegata 12, 4006 Stavanger",
+        "isoCountryCode": "NO",
+        "companyEmailAddress": "handover@kestrel-energy.example"
+      }
+    },
+    "co-epc": {
+      "node": "Company",
+      "properties": {
+        "companyName": "Brightwater Engineering",
+        "manufacturerIndicator": false,
+        "supplierIndicator": false,
+        "companyContactPerson": "Tom Ashworth",
+        "companyAddressLine1": "1 Dock Road, Aberdeen AB11 5DD",
+        "isoCountryCode": "GB",
+        "companyEmailAddress": "documents@brightwater.example"
+      }
+    },
+    "co-mfr": {
+      "node": "Company",
+      "properties": {
+        "companyName": "Halvorsen Pumps",
+        "manufacturerIndicator": true,
+        "supplierIndicator": true,
+        "companyContactPerson": "Kari Nygaard",
+        "companyAddressLine1": "Industriveien 7, 3045 Drammen",
+        "isoCountryCode": "NO",
+        "companyEmailAddress": "orders@halvorsen-pumps.example"
+      }
+    },
+    "site": {
+      "node": "Site",
+      "properties": {
+        "siteCode": "KGS",
+        "siteName": "Kestrel Gas Site",
+        "measurementSystemCode": "SI"
+      }
+    },
+    "plant": {
+      "node": "Plant",
+      "properties": {
+        "plantCode": "KGP",
+        "plantName": "Kestrel Gas Processing Plant",
+        "siteCode": "KGS",
+        "isoLanguageCode": "en",
+        "measurementSystemCode": "SI"
+      }
+    },
+    "pu20": {
+      "node": "ProcessUnit",
+      "properties": {
+        "plantCode": "KGP",
+        "processUnitCode": "20",
+        "processUnitName": "Condensate stabilisation and export"
+      }
+    },
+    "a20": {
+      "node": "Area",
+      "properties": {
+        "plantCode": "KGP",
+        "areaCode": "A20",
+        "areaName": "Process module 20"
+      }
+    },
+    "es-afc": {
+      "node": "EngineeringStatus",
+      "properties": {
+        "engineeringStatusCode": "AFC",
+        "engineeringStatusDescription": "Approved for construction"
+      }
+    },
+    "es-asb": {
+      "node": "EngineeringStatus",
+      "properties": {
+        "engineeringStatusCode": "ASB",
+        "engineeringStatusDescription": "As built"
+      }
+    },
+    "project": {
+      "node": "Project",
+      "properties": {
+        "projectCode": "KGP-EXP",
+        "projectName": "Kestrel condensate export upgrade"
+      }
+    },
+    "tag-P-2001A": {
+      "node": "Tag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "P-2001A",
+        "tagDescription": "Condensate export pump A",
+        "processUnitCode": "20",
+        "areaCode": "A20",
+        "tagClassName": "centrifugal pump",
+        "tagStatus": "ASB",
+        "designedByCompanyName": "Brightwater Engineering",
+        "productionCriticalItemIndicator": true,
+        "safetyCriticalItemIndicator": false,
+        "tagRequisitionNumber": "KGP-REQ-20-001"
+      }
+    },
+    "tag-P-2001B": {
+      "node": "Tag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "P-2001B",
+        "tagDescription": "Condensate export pump B",
+        "processUnitCode": "20",
+        "areaCode": "A20",
+        "tagClassName": "centrifugal pump",
+        "tagStatus": "ASB",
+        "designedByCompanyName": "Brightwater Engineering",
+        "productionCriticalItemIndicator": true,
+        "safetyCriticalItemIndicator": false,
+        "tagRequisitionNumber": "KGP-REQ-20-001"
+      }
+    },
+    "tag-PM-2001A": {
+      "node": "Tag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "PM-2001A",
+        "tagDescription": "Condensate export pump A motor",
+        "processUnitCode": "20",
+        "areaCode": "A20",
+        "tagClassName": "electric motor",
+        "tagStatus": "ASB",
+        "designedByCompanyName": "Brightwater Engineering",
+        "productionCriticalItemIndicator": true,
+        "safetyCriticalItemIndicator": false,
+        "tagRequisitionNumber": "KGP-REQ-20-001",
+        "parentTagName": "P-2001A"
+      }
+    },
+    "tag-PM-2001B": {
+      "node": "Tag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "PM-2001B",
+        "tagDescription": "Condensate export pump B motor",
+        "processUnitCode": "20",
+        "areaCode": "A20",
+        "tagClassName": "electric motor",
+        "tagStatus": "ASB",
+        "designedByCompanyName": "Brightwater Engineering",
+        "productionCriticalItemIndicator": true,
+        "safetyCriticalItemIndicator": false,
+        "tagRequisitionNumber": "KGP-REQ-20-001",
+        "parentTagName": "P-2001B"
+      }
+    },
+    "conn-p2001a-pm2001a": {
+      "node": "TagPhysicalConnection",
+      "properties": {
+        "fromPlantCode": "KGP",
+        "fromTagName": "PM-2001A",
+        "toPlantCode": "KGP",
+        "toTagName": "P-2001A"
+      }
+    },
+    "alias-p2001a": {
+      "node": "TagAlias",
+      "properties": {
+        "plantCode": "KGP",
+        "tagAliasName": "20-PA-001A",
+        "tagName": "P-2001A"
+      }
+    },
+    "tp-p2001a": {
+      "node": "TagProperty",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "P-2001A",
+        "propertyName": "rated volume flow rate",
+        "tagPropertyValue": "120",
+        "tagPropertyMarginRatio": 1.1,
+        "unitOfMeasureName": "cubic metre per hour"
+      }
+    },
+    "mt-eq": {
+      "node": "ModelPartType",
+      "properties": {
+        "modelPartType": "EQUIPMENT",
+        "modelPartTypeDescription": "A model of a complete equipment item"
+      }
+    },
+    "mt-sp": {
+      "node": "ModelPartType",
+      "properties": {
+        "modelPartType": "SPARE PART",
+        "modelPartTypeDescription": "A model of a part held as a spare"
+      }
+    },
+    "mp-pump": {
+      "node": "EquipmentModelPart",
+      "properties": {
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HPX 80-250",
+        "modelPartDescription": "Horizontal end-suction centrifugal pump, API 610 OH2, 80 mm discharge, 250 mm impeller",
+        "equipmentClassName": "centrifugal pump",
+        "modelPartType": "EQUIPMENT"
+      }
+    },
+    "mp-motor": {
+      "node": "EquipmentModelPart",
+      "properties": {
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HM 315L-2",
+        "modelPartDescription": "Three-phase induction motor, 90 kW, 2-pole, Ex d",
+        "equipmentClassName": "electric motor",
+        "modelPartType": "EQUIPMENT"
+      }
+    },
+    "mp-seal": {
+      "node": "SparePart",
+      "properties": {
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HS-55 cartridge",
+        "modelPartDescription": "Single cartridge mechanical seal, 55 mm shaft, SiC/SiC faces",
+        "equipmentClassName": "mechanical seal",
+        "modelPartType": "SPARE PART",
+        "shelfLife": 260.0,
+        "shelfLifeUnitOfMeasureName": "week",
+        "drawingPositionNumber": 433
+      }
+    },
+    "mpp-motor-power": {
+      "node": "ModelPartProperty",
+      "properties": {
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HM 315L-2",
+        "propertyName": "rated power",
+        "modelPartPropertyValue": "90",
+        "unitOfMeasureName": "kilowatt"
+      }
+    },
+    "sel-P-2001A": {
+      "node": "SelectableModelPartForTag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "P-2001A",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HPX 80-250"
+      }
+    },
+    "sel-P-2001B": {
+      "node": "SelectableModelPartForTag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "P-2001B",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HPX 80-250"
+      }
+    },
+    "sel-PM-2001A": {
+      "node": "SelectableModelPartForTag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "PM-2001A",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HM 315L-2"
+      }
+    },
+    "sel-PM-2001B": {
+      "node": "SelectableModelPartForTag",
+      "properties": {
+        "plantCode": "KGP",
+        "tagName": "PM-2001B",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HM 315L-2"
+      }
+    },
+    "po": {
+      "node": "PurchaseOrder",
+      "properties": {
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderDate": "2025-02-10",
+        "purchaseOrderDescription": "Condensate export pump packages",
+        "purchaseOrderReceiverCompanyName": "Halvorsen Pumps",
+        "projectCode": "KGP-EXP"
+      }
+    },
+    "poi-10": {
+      "node": "PurchaseOrderItemForTag",
+      "properties": {
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10,
+        "purchaseOrderItemDescription": "Pump package P-2001A/B, pump with motor on common baseplate",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HPX 80-250",
+        "purchaseOrderItemInitialExpectedDeliveryDate": "2025-09-15",
+        "purchaseOrderItemLatestRevisedDeliveryDate": "2025-10-06",
+        "purchaseOrderItemQuantity": 2.0,
+        "unitOfMeasureName": "each"
+      }
+    },
+    "poi-20": {
+      "node": "PurchaseOrderItemForModelPart",
+      "properties": {
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 20,
+        "purchaseOrderItemDescription": "Commissioning spare mechanical seals",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HS-55 cartridge",
+        "purchaseOrderItemQuantity": 2.0,
+        "unitOfMeasureName": "each"
+      }
+    },
+    "poit-P-2001A": {
+      "node": "PurchaseOrderItemTag",
+      "properties": {
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10,
+        "plantCode": "KGP",
+        "tagName": "P-2001A"
+      }
+    },
+    "poit-P-2001B": {
+      "node": "PurchaseOrderItemTag",
+      "properties": {
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10,
+        "plantCode": "KGP",
+        "tagName": "P-2001B"
+      }
+    },
+    "ev-fat": {
+      "node": "EventType",
+      "properties": {
+        "eventTypeCode": "FT",
+        "eventTypeName": "Factory acceptance test"
+      }
+    },
+    "poi-10-fat": {
+      "node": "PurchaseOrderItemExpectedEvent",
+      "properties": {
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10,
+        "eventTypeCode": "FT",
+        "purchaseOrderItemEventOriginalEstimatedDate": "2025-08-25",
+        "purchaseOrderItemEventLatestRevisedDate": "2025-09-12"
+      }
+    },
+    "eq-EQ-100231": {
+      "node": "Equipment",
+      "properties": {
+        "equipmentCode": "EQ-100231",
+        "plantCode": "KGP",
+        "tagName": "P-2001A",
+        "equipmentClassName": "centrifugal pump",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HPX 80-250",
+        "equipmentManufacturerSerialNumber": "HP-24-48213",
+        "vendorCompanyName": "Halvorsen Pumps",
+        "equipmentActualInstallationDate": "2025-11-20",
+        "equipmentWarrantyEndDate": "2027-11-20",
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10,
+        "equipmentPrice": 184500.0,
+        "isoCurrencyCode": "EUR"
+      }
+    },
+    "eq-EQ-100232": {
+      "node": "Equipment",
+      "properties": {
+        "equipmentCode": "EQ-100232",
+        "plantCode": "KGP",
+        "tagName": "P-2001B",
+        "equipmentClassName": "centrifugal pump",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HPX 80-250",
+        "equipmentManufacturerSerialNumber": "HP-24-48214",
+        "vendorCompanyName": "Halvorsen Pumps",
+        "equipmentActualInstallationDate": "2025-11-20",
+        "equipmentWarrantyEndDate": "2027-11-20",
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10,
+        "equipmentPrice": 184500.0,
+        "isoCurrencyCode": "EUR"
+      }
+    },
+    "eq-EQ-100233": {
+      "node": "Equipment",
+      "properties": {
+        "equipmentCode": "EQ-100233",
+        "plantCode": "KGP",
+        "tagName": "PM-2001A",
+        "equipmentClassName": "electric motor",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HM 315L-2",
+        "equipmentManufacturerSerialNumber": "HM-24-77105",
+        "vendorCompanyName": "Halvorsen Pumps",
+        "equipmentActualInstallationDate": "2025-11-20",
+        "equipmentWarrantyEndDate": "2027-11-20",
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10
+      }
+    },
+    "eq-EQ-100234": {
+      "node": "Equipment",
+      "properties": {
+        "equipmentCode": "EQ-100234",
+        "plantCode": "KGP",
+        "tagName": "PM-2001B",
+        "equipmentClassName": "electric motor",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HM 315L-2",
+        "equipmentManufacturerSerialNumber": "HM-24-77106",
+        "vendorCompanyName": "Halvorsen Pumps",
+        "equipmentActualInstallationDate": "2025-11-20",
+        "equipmentWarrantyEndDate": "2027-11-20",
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "purchaseOrderItemNumber": 10
+      }
+    },
+    "ep-eq231-flow": {
+      "node": "EquipmentProperty",
+      "properties": {
+        "equipmentCode": "EQ-100231",
+        "propertyName": "rated volume flow rate",
+        "equipmentPropertyValue": "121.5",
+        "unitOfMeasureName": "cubic metre per hour"
+      }
+    },
+    "spir": {
+      "node": "SparePartInterchangeabilityRecord",
+      "properties": {
+        "spirReference": "SPIR-0042",
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345",
+        "spirContactPerson": "Kari Nygaard",
+        "commercialConditions": "Prices valid 12 months, FCA Drammen"
+      }
+    },
+    "spir-eq": {
+      "node": "SparePartInterchangeabilityRecordEquipment",
+      "properties": {
+        "spirReference": "SPIR-0042",
+        "equipmentDescription": "Condensate export pump P-2001A",
+        "plantCode": "KGP",
+        "tagName": "P-2001A",
+        "numberOfUnitsProcured": 2,
+        "numberOfPartsPerUnit": 1
+      }
+    },
+    "spir-adv": {
+      "node": "SparePartInterchangeabilityRecordAdvice",
+      "properties": {
+        "spirReference": "SPIR-0042",
+        "modelPartName": "HS-55 cartridge",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "numberOfCommissioningSpares": 2,
+        "numberOfInitialSpares": 1,
+        "numberOfNormalOperatingSpares": 2,
+        "spirModelPartType": "SPARE PART"
+      }
+    },
+    "spir-com": {
+      "node": "SparePartInterchangeabilityRecordCommercialDetails",
+      "properties": {
+        "spirReference": "SPIR-0042",
+        "modelPartName": "HS-55 cartridge",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "purchaseQuantityUnitOfMeasureName": "each",
+        "quotedPrice": 6850.0,
+        "quotedPriceIsoCurrencyCode": "EUR",
+        "quotedDeliveryTime": 12,
+        "quotedDeliveryTimeUnitOfMeasureName": "week"
+      }
+    },
+    "disc-m": {
+      "node": "Discipline",
+      "properties": {
+        "disciplineCode": "M",
+        "disciplineName": "Mechanical",
+        "disciplineDescription": "Rotating and static mechanical equipment",
+        "cfihosUniqueCode": "CFIHOS-20000013"
+      }
+    },
+    "dtc": {
+      "node": "DocumentTypeClassification",
+      "properties": {
+        "documentTypeClassificationCode": "DATA",
+        "documentTypeClassificationDescription": "Data sheets and lists"
+      }
+    },
+    "dt-ds": {
+      "node": "DocumentType",
+      "properties": {
+        "documentTypeShortCode": "DS",
+        "documentTypeName": "Data sheet",
+        "documentTypeDescription": "A document recording the design, performance and construction data of an item",
+        "cfihosUniqueCode": "CFIHOS-10000108",
+        "documentTypeClassification": "DATA"
+      }
+    },
+    "asset-eq": {
+      "node": "AssetType",
+      "properties": {
+        "assetTypeCode": "EQ",
+        "assetTypeDescription": "Equipment"
+      }
+    },
+    "rep-doc": {
+      "node": "DocumentRepresentationType",
+      "properties": {
+        "documentationRepresentationTypeCode": "DOC",
+        "documentationRepresentationTypeDescription": "Document"
+      }
+    },
+    "nfd": {
+      "node": "NativeFileDeliveryTiming",
+      "properties": {
+        "nativeFileDeliveryTimingCode": "FINAL",
+        "nativeFileDeliveryTimingDescription": "With the final revision"
+      }
+    },
+    "rt-r": {
+      "node": "DocumentReviewType",
+      "properties": {
+        "documentReviewTypeCode": "R",
+        "documentReviewTypeDescription": "Review and comment"
+      }
+    },
+    "ddt": {
+      "node": "DisciplineDocumentType",
+      "properties": {
+        "disciplineCode": "M",
+        "documentTypeShortCode": "DS",
+        "disciplineDocumentTypeShortCode": "MDS",
+        "assetTypeReference": "EQ",
+        "representationType": "DOC",
+        "reviewType": "R",
+        "nativeDocumentFormat": "XLSX",
+        "nativeFileDeliveryTiming": "FINAL",
+        "authenticatedRecordFormat": "PDF",
+        "hardcopyDocumentRequired": false,
+        "translatedDocumentRequired": false,
+        "cfihosUniqueCode": "CFIHOS-10000412"
+      }
+    },
+    "hev": {
+      "node": "HandoverEvent",
+      "properties": {
+        "handoverEventName": "Mechanical completion",
+        "handoverEventReportingSequenceNumber": 3
+      }
+    },
+    "ddt-hev": {
+      "node": "DisciplineDocumentTypeHandoverRequirement",
+      "properties": {
+        "disciplineCode": "M",
+        "documentTypeShortCode": "DS",
+        "handoverEventName": "Mechanical completion"
+      }
+    },
+    "doc": {
+      "node": "VendorDocument",
+      "properties": {
+        "documentNumber": "KGP-HAL-20-MDS-0001",
+        "documentTitle": "Data sheet, condensate export pumps P-2001A/B",
+        "disciplineDocumentTypeShortCode": "MDS",
+        "documentReviewType": "R",
+        "plannedFinalRevisionDate": "2025-12-15",
+        "actualFinalRevisionDate": "2025-12-11"
+      }
+    },
+    "ds-asb": {
+      "node": "DocumentStatus",
+      "properties": {
+        "documentStatusCode": "ASB",
+        "documentStatusDescription": "As built"
+      }
+    },
+    "sm-el": {
+      "node": "StorageMedia",
+      "properties": {
+        "storageMediaCode": "ELECTRONIC"
+      }
+    },
+    "rfi": {
+      "node": "ReasonForIssue",
+      "properties": {
+        "reasonForIssueCode": "AB",
+        "reasonForIssueDescription": "Issued as built"
+      }
+    },
+    "rev": {
+      "node": "DocumentRevision",
+      "properties": {
+        "documentNumber": "KGP-HAL-20-MDS-0001",
+        "documentRevisionCode": "02",
+        "documentRevisionDate": "2025-12-11",
+        "documentRevisionAuthor": "Kari Nygaard",
+        "documentRevisionApprover": "Tom Ashworth",
+        "documentRevisionFileName": "KGP-HAL-20-MDS-0001_02.pdf",
+        "documentStatusCode": "ASB",
+        "isoLanguageCode": "en",
+        "plantCode": "KGP",
+        "originatorCompany": "Halvorsen Pumps",
+        "projectCode": "KGP-EXP",
+        "transmittalNumber": "BWE-KGP-TR-0917",
+        "storageMedia": "ELECTRONIC",
+        "regulatoryRequiredIndicator": false,
+        "documentRevisionRecipient": "Kestrel Energy",
+        "actualAsBuiltDate": "2025-12-11"
+      }
+    },
+    "rev-native": {
+      "node": "AdditionalFile",
+      "properties": {
+        "documentNumber": "KGP-HAL-20-MDS-0001",
+        "documentRevisionCode": "02",
+        "fileTitle": "Native data sheet",
+        "fileName": "KGP-HAL-20-MDS-0001_02.xlsx",
+        "storageMedia": "ELECTRONIC"
+      }
+    },
+    "ref-P-2001A": {
+      "node": "DocumentRevisionTagReference",
+      "properties": {
+        "documentNumber": "KGP-HAL-20-MDS-0001",
+        "documentRevisionCode": "02",
+        "plantCode": "KGP",
+        "tagName": "P-2001A"
+      }
+    },
+    "ref-P-2001B": {
+      "node": "DocumentRevisionTagReference",
+      "properties": {
+        "documentNumber": "KGP-HAL-20-MDS-0001",
+        "documentRevisionCode": "02",
+        "plantCode": "KGP",
+        "tagName": "P-2001B"
+      }
+    },
+    "ref-mp": {
+      "node": "DocumentRevisionModelPartReference",
+      "properties": {
+        "documentNumber": "KGP-HAL-20-MDS-0001",
+        "documentRevisionCode": "02",
+        "manufacturerCompanyName": "Halvorsen Pumps",
+        "modelPartName": "HPX 80-250"
+      }
+    },
+    "ref-po": {
+      "node": "DocumentRevisionPurchaseOrderReference",
+      "properties": {
+        "documentNumber": "KGP-HAL-20-MDS-0001",
+        "documentRevisionCode": "02",
+        "purchaseOrderIssuerCompanyName": "Brightwater Engineering",
+        "purchaseOrderNumber": "4500012345"
+      }
+    },
+    "tr": {
+      "node": "Transmittal",
+      "properties": {
+        "sendingCompanyName": "Brightwater Engineering",
+        "projectCode": "KGP-EXP",
+        "transmittalNumber": "BWE-KGP-TR-0917",
+        "numberOfMedia": 1,
+        "transmittalSendDate": "2025-12-12",
+        "reasonForIssue": "AB"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "dim-flow",
+      "INCLUDES",
+      "uom-m3h"
+    ],
+    [
+      "si",
+      "INCLUDES",
+      "uom-m3h"
+    ],
+    [
+      "dim-power",
+      "INCLUDES",
+      "uom-kw"
+    ],
+    [
+      "si",
+      "INCLUDES",
+      "uom-kw"
+    ],
+    [
+      "dim-time",
+      "INCLUDES",
+      "uom-week"
+    ],
+    [
+      "si",
+      "INCLUDES",
+      "uom-week"
+    ],
+    [
+      "dim-none",
+      "INCLUDES",
+      "uom-each"
+    ],
+    [
+      "si",
+      "INCLUDES",
+      "uom-each"
+    ],
+    [
+      "dt-num",
+      "CLASSIFIES_THE_TYPE_OF_VALUES_OF",
+      "prop-flow"
+    ],
+    [
+      "dim-flow",
+      "IS_THE_DIMENSION_OF",
+      "prop-flow"
+    ],
+    [
+      "dim-flow",
+      "QUALIFIES_THE_DIMENSION_IN_WHICH_CAN_BE_MEASURED",
+      "prop-flow"
+    ],
+    [
+      "dt-num",
+      "CLASSIFIES_THE_TYPE_OF_VALUES_OF",
+      "prop-power"
+    ],
+    [
+      "dim-power",
+      "IS_THE_DIMENSION_OF",
+      "prop-power"
+    ],
+    [
+      "dim-power",
+      "QUALIFIES_THE_DIMENSION_IN_WHICH_CAN_BE_MEASURED",
+      "prop-power"
+    ],
+    [
+      "cls-pump",
+      "IS_IMPLEMENTED_BY",
+      "cls-pump-map"
+    ],
+    [
+      "cls-pump",
+      "IMPLEMENTS",
+      "cls-pump-map"
+    ],
+    [
+      "cls-motor",
+      "IS_IMPLEMENTED_BY",
+      "cls-motor-map"
+    ],
+    [
+      "cls-motor",
+      "IMPLEMENTS",
+      "cls-motor-map"
+    ],
+    [
+      "cls-pump",
+      "HAS",
+      "cls-pump-prop-flow"
+    ],
+    [
+      "prop-flow",
+      "IS_PRESENT_IN",
+      "cls-pump-prop-flow"
+    ],
+    [
+      "uom-m3h",
+      "IS_THE_SI_UNIT_OF_MEASURE_NAME_PRESCRIBED_FOR",
+      "cls-pump-prop-flow"
+    ],
+    [
+      "cls-motor",
+      "HAS",
+      "cls-motor-prop-power"
+    ],
+    [
+      "prop-power",
+      "IS_PRESENT_IN",
+      "cls-motor-prop-power"
+    ],
+    [
+      "uom-kw",
+      "IS_THE_SI_UNIT_OF_MEASURE_NAME_PRESCRIBED_FOR",
+      "cls-motor-prop-power"
+    ],
+    [
+      "no",
+      "HOSTS",
+      "co-op"
+    ],
+    [
+      "gb",
+      "HOSTS",
+      "co-epc"
+    ],
+    [
+      "no",
+      "HOSTS",
+      "co-mfr"
+    ],
+    [
+      "si",
+      "IS_USED_BY_DEFAULT_AT",
+      "site"
+    ],
+    [
+      "site",
+      "INCLUDES",
+      "plant"
+    ],
+    [
+      "en",
+      "IS_THE_LANGUAGE_USED_BY_DEFAULT_FOR_PROJECTS_AT",
+      "plant"
+    ],
+    [
+      "si",
+      "IS_THE_SYSTEM_USED_BY_DEFAULTS_FOR_PROJECTS_AT",
+      "plant"
+    ],
+    [
+      "plant",
+      "IS_FUNCTIONALLY_DIVIDED_IN",
+      "pu20"
+    ],
+    [
+      "plant",
+      "IS_GEOGRAPHICALLY_DIVIDED_IN",
+      "a20"
+    ],
+    [
+      "pu20",
+      "IS_FUNCTIONALLY_DIVIDED_IN",
+      "tag-P-2001A"
+    ],
+    [
+      "a20",
+      "LOCATES",
+      "tag-P-2001A"
+    ],
+    [
+      "cls-pump",
+      "DEFINES_THE_FUNCTION_DELIVERED_BY",
+      "tag-P-2001A"
+    ],
+    [
+      "es-asb",
+      "CLASSIFIES",
+      "tag-P-2001A"
+    ],
+    [
+      "co-epc",
+      "DESIGNS",
+      "tag-P-2001A"
+    ],
+    [
+      "pu20",
+      "IS_FUNCTIONALLY_DIVIDED_IN",
+      "tag-P-2001B"
+    ],
+    [
+      "a20",
+      "LOCATES",
+      "tag-P-2001B"
+    ],
+    [
+      "cls-pump",
+      "DEFINES_THE_FUNCTION_DELIVERED_BY",
+      "tag-P-2001B"
+    ],
+    [
+      "es-asb",
+      "CLASSIFIES",
+      "tag-P-2001B"
+    ],
+    [
+      "co-epc",
+      "DESIGNS",
+      "tag-P-2001B"
+    ],
+    [
+      "pu20",
+      "IS_FUNCTIONALLY_DIVIDED_IN",
+      "tag-PM-2001A"
+    ],
+    [
+      "a20",
+      "LOCATES",
+      "tag-PM-2001A"
+    ],
+    [
+      "cls-motor",
+      "DEFINES_THE_FUNCTION_DELIVERED_BY",
+      "tag-PM-2001A"
+    ],
+    [
+      "es-asb",
+      "CLASSIFIES",
+      "tag-PM-2001A"
+    ],
+    [
+      "co-epc",
+      "DESIGNS",
+      "tag-PM-2001A"
+    ],
+    [
+      "tag-P-2001A",
+      "IS_FUNCTIONALLY_DIVIDED_IN",
+      "tag-PM-2001A"
+    ],
+    [
+      "pu20",
+      "IS_FUNCTIONALLY_DIVIDED_IN",
+      "tag-PM-2001B"
+    ],
+    [
+      "a20",
+      "LOCATES",
+      "tag-PM-2001B"
+    ],
+    [
+      "cls-motor",
+      "DEFINES_THE_FUNCTION_DELIVERED_BY",
+      "tag-PM-2001B"
+    ],
+    [
+      "es-asb",
+      "CLASSIFIES",
+      "tag-PM-2001B"
+    ],
+    [
+      "co-epc",
+      "DESIGNS",
+      "tag-PM-2001B"
+    ],
+    [
+      "tag-P-2001B",
+      "IS_FUNCTIONALLY_DIVIDED_IN",
+      "tag-PM-2001B"
+    ],
+    [
+      "tag-PM-2001A",
+      "IS_THE_ORIGIN_OF",
+      "conn-p2001a-pm2001a"
+    ],
+    [
+      "tag-P-2001A",
+      "IS_THE_END_OF",
+      "conn-p2001a-pm2001a"
+    ],
+    [
+      "tag-P-2001A",
+      "IS_ALTERNATIVELY_NAMED",
+      "alias-p2001a"
+    ],
+    [
+      "tag-P-2001A",
+      "HAS",
+      "tp-p2001a"
+    ],
+    [
+      "prop-flow",
+      "IS_PRESENT_IN",
+      "tp-p2001a"
+    ],
+    [
+      "uom-m3h",
+      "QUALIFIES",
+      "tp-p2001a"
+    ],
+    [
+      "cls-pump",
+      "DEFINES_THE_PHYSICAL_COMPOSITION_OF",
+      "mp-pump"
+    ],
+    [
+      "co-mfr",
+      "MAKES",
+      "mp-pump"
+    ],
+    [
+      "mt-eq",
+      "PROVIDES",
+      "mp-pump"
+    ],
+    [
+      "cls-motor",
+      "DEFINES_THE_PHYSICAL_COMPOSITION_OF",
+      "mp-motor"
+    ],
+    [
+      "co-mfr",
+      "MAKES",
+      "mp-motor"
+    ],
+    [
+      "mt-eq",
+      "PROVIDES",
+      "mp-motor"
+    ],
+    [
+      "cls-seal",
+      "DEFINES_THE_PHYSICAL_COMPOSITION_OF",
+      "mp-seal"
+    ],
+    [
+      "co-mfr",
+      "MAKES",
+      "mp-seal"
+    ],
+    [
+      "mt-sp",
+      "PROVIDES",
+      "mp-seal"
+    ],
+    [
+      "uom-week",
+      "QUALIFIES_THE_VALUE_OF",
+      "mp-seal"
+    ],
+    [
+      "mp-motor",
+      "HAS",
+      "mpp-motor-power"
+    ],
+    [
+      "prop-power",
+      "IS_PRESENT_IN",
+      "mpp-motor-power"
+    ],
+    [
+      "uom-kw",
+      "QUALIFIES",
+      "mpp-motor-power"
+    ],
+    [
+      "mp-pump",
+      "MEETS_THE_CRITERIA_TO_BE",
+      "sel-P-2001A"
+    ],
+    [
+      "tag-P-2001A",
+      "CAN_BE_IMPLEMENTED_BY",
+      "sel-P-2001A"
+    ],
+    [
+      "mp-pump",
+      "IS_SELECTED_FOR",
+      "tag-P-2001A"
+    ],
+    [
+      "mp-pump",
+      "MEETS_THE_CRITERIA_TO_BE",
+      "sel-P-2001B"
+    ],
+    [
+      "tag-P-2001B",
+      "CAN_BE_IMPLEMENTED_BY",
+      "sel-P-2001B"
+    ],
+    [
+      "mp-pump",
+      "IS_SELECTED_FOR",
+      "tag-P-2001B"
+    ],
+    [
+      "mp-motor",
+      "MEETS_THE_CRITERIA_TO_BE",
+      "sel-PM-2001A"
+    ],
+    [
+      "tag-PM-2001A",
+      "CAN_BE_IMPLEMENTED_BY",
+      "sel-PM-2001A"
+    ],
+    [
+      "mp-motor",
+      "IS_SELECTED_FOR",
+      "tag-PM-2001A"
+    ],
+    [
+      "mp-motor",
+      "MEETS_THE_CRITERIA_TO_BE",
+      "sel-PM-2001B"
+    ],
+    [
+      "tag-PM-2001B",
+      "CAN_BE_IMPLEMENTED_BY",
+      "sel-PM-2001B"
+    ],
+    [
+      "mp-motor",
+      "IS_SELECTED_FOR",
+      "tag-PM-2001B"
+    ],
+    [
+      "co-epc",
+      "ISSUES",
+      "po"
+    ],
+    [
+      "co-mfr",
+      "RECEIVES",
+      "po"
+    ],
+    [
+      "project",
+      "IS_THE_REASON_FOR",
+      "po"
+    ],
+    [
+      "po",
+      "INCLUDES",
+      "poi-10"
+    ],
+    [
+      "po",
+      "INCLUDES",
+      "poi-20"
+    ],
+    [
+      "uom-each",
+      "QUALIFIES_THE_QUANTITY_OF",
+      "poi-10"
+    ],
+    [
+      "uom-each",
+      "QUALIFIES_THE_QUANTITY_OF",
+      "poi-20"
+    ],
+    [
+      "mp-pump",
+      "IS_SPECIFIED_IN",
+      "poi-10"
+    ],
+    [
+      "mp-seal",
+      "IS_SPECIFIED_IN",
+      "poi-20"
+    ],
+    [
+      "mp-seal",
+      "IS_ORDERED_IN",
+      "poi-20"
+    ],
+    [
+      "poi-10",
+      "INCLUDES",
+      "poit-P-2001A"
+    ],
+    [
+      "poi-10",
+      "COVERS",
+      "poit-P-2001A"
+    ],
+    [
+      "tag-P-2001A",
+      "HAS_ITS_ACQUISITION_COVERED_BY",
+      "poit-P-2001A"
+    ],
+    [
+      "poi-10",
+      "INCLUDES",
+      "poit-P-2001B"
+    ],
+    [
+      "poi-10",
+      "COVERS",
+      "poit-P-2001B"
+    ],
+    [
+      "tag-P-2001B",
+      "HAS_ITS_ACQUISITION_COVERED_BY",
+      "poit-P-2001B"
+    ],
+    [
+      "poi-10",
+      "IS_SUBJECT_TO",
+      "poi-10-fat"
+    ],
+    [
+      "ev-fat",
+      "IS_OCCURRING_FOR",
+      "poi-10-fat"
+    ],
+    [
+      "tag-P-2001A",
+      "IS_FULFILLED_BY",
+      "eq-EQ-100231"
+    ],
+    [
+      "cls-pump",
+      "DEFINES_THE_PHYSICAL_COMPOSITION_OF",
+      "eq-EQ-100231"
+    ],
+    [
+      "mp-pump",
+      "IS_THE_MODEL_OF",
+      "eq-EQ-100231"
+    ],
+    [
+      "co-mfr",
+      "SELLS",
+      "eq-EQ-100231"
+    ],
+    [
+      "eur",
+      "QUALIFIES_THE_PRICE_OF",
+      "eq-EQ-100231"
+    ],
+    [
+      "tag-P-2001B",
+      "IS_FULFILLED_BY",
+      "eq-EQ-100232"
+    ],
+    [
+      "cls-pump",
+      "DEFINES_THE_PHYSICAL_COMPOSITION_OF",
+      "eq-EQ-100232"
+    ],
+    [
+      "mp-pump",
+      "IS_THE_MODEL_OF",
+      "eq-EQ-100232"
+    ],
+    [
+      "co-mfr",
+      "SELLS",
+      "eq-EQ-100232"
+    ],
+    [
+      "eur",
+      "QUALIFIES_THE_PRICE_OF",
+      "eq-EQ-100232"
+    ],
+    [
+      "tag-PM-2001A",
+      "IS_FULFILLED_BY",
+      "eq-EQ-100233"
+    ],
+    [
+      "cls-motor",
+      "DEFINES_THE_PHYSICAL_COMPOSITION_OF",
+      "eq-EQ-100233"
+    ],
+    [
+      "mp-motor",
+      "IS_THE_MODEL_OF",
+      "eq-EQ-100233"
+    ],
+    [
+      "co-mfr",
+      "SELLS",
+      "eq-EQ-100233"
+    ],
+    [
+      "tag-PM-2001B",
+      "IS_FULFILLED_BY",
+      "eq-EQ-100234"
+    ],
+    [
+      "cls-motor",
+      "DEFINES_THE_PHYSICAL_COMPOSITION_OF",
+      "eq-EQ-100234"
+    ],
+    [
+      "mp-motor",
+      "IS_THE_MODEL_OF",
+      "eq-EQ-100234"
+    ],
+    [
+      "co-mfr",
+      "SELLS",
+      "eq-EQ-100234"
+    ],
+    [
+      "poi-10",
+      "RESULTS_IN_THE_RECEIPT_OF",
+      "eq-EQ-100231"
+    ],
+    [
+      "eq-EQ-100231",
+      "HAS",
+      "ep-eq231-flow"
+    ],
+    [
+      "prop-flow",
+      "IS_PRESENT_IN",
+      "ep-eq231-flow"
+    ],
+    [
+      "uom-m3h",
+      "QUALIFIES",
+      "ep-eq231-flow"
+    ],
+    [
+      "po",
+      "ISSUES",
+      "spir"
+    ],
+    [
+      "spir",
+      "HAS",
+      "spir-eq"
+    ],
+    [
+      "tag-P-2001A",
+      "IS_FULFILLED_BY",
+      "spir-eq"
+    ],
+    [
+      "spir",
+      "IS_PART_OF_SPIR",
+      "spir-adv"
+    ],
+    [
+      "mp-seal",
+      "FOR_THE_PART",
+      "spir-adv"
+    ],
+    [
+      "mt-sp",
+      "IS_OF_THE_MODEL_PART_TYPE",
+      "spir-adv"
+    ],
+    [
+      "spir",
+      "IS_PART_OF_SPIR",
+      "spir-com"
+    ],
+    [
+      "mp-seal",
+      "FOR_THE_PART",
+      "spir-com"
+    ],
+    [
+      "eur",
+      "QUALIFIES_THE_PRICE_OF",
+      "spir-com"
+    ],
+    [
+      "uom-each",
+      "QUALIFIES",
+      "spir-com"
+    ],
+    [
+      "dtc",
+      "CLASSIFIES",
+      "dt-ds"
+    ],
+    [
+      "disc-m",
+      "IS_USED_BY",
+      "ddt"
+    ],
+    [
+      "dt-ds",
+      "IS_USED_FOR",
+      "ddt"
+    ],
+    [
+      "asset-eq",
+      "IS_THE_REFERENCE_FOR",
+      "ddt"
+    ],
+    [
+      "rep-doc",
+      "CLASSIFIES",
+      "ddt"
+    ],
+    [
+      "nfd",
+      "IS_REQUIRED_FOR",
+      "ddt"
+    ],
+    [
+      "rt-r",
+      "IS_REQUIRED_FOR",
+      "ddt"
+    ],
+    [
+      "ddt",
+      "IS_SUBJECT_TO",
+      "ddt-hev"
+    ],
+    [
+      "hev",
+      "SPECIFIES_THE_TIMING_OF",
+      "ddt-hev"
+    ],
+    [
+      "ddt",
+      "CLASSIFIES",
+      "doc"
+    ],
+    [
+      "rt-r",
+      "APPLIES_TO",
+      "doc"
+    ],
+    [
+      "doc",
+      "IS_SUBJECT_TO",
+      "rev"
+    ],
+    [
+      "plant",
+      "HAS",
+      "rev"
+    ],
+    [
+      "co-mfr",
+      "GENERATES",
+      "rev"
+    ],
+    [
+      "ds-asb",
+      "QUALIFIES",
+      "rev"
+    ],
+    [
+      "en",
+      "IS_ACTUALLY_USED_FOR",
+      "rev"
+    ],
+    [
+      "sm-el",
+      "QUALIFIES_HOW_IS_STORED",
+      "rev"
+    ],
+    [
+      "project",
+      "DELIVERS",
+      "rev"
+    ],
+    [
+      "rev",
+      "IS_COMPLEMENTED_BY",
+      "rev-native"
+    ],
+    [
+      "sm-el",
+      "QUALIFIES_HOW_IS_STORED",
+      "rev-native"
+    ],
+    [
+      "rev",
+      "INCLUDES_REFERENCES_TO",
+      "ref-P-2001A"
+    ],
+    [
+      "tag-P-2001A",
+      "IS_REFERENCED_BY",
+      "ref-P-2001A"
+    ],
+    [
+      "rev",
+      "INCLUDES_REFERENCES_TO",
+      "ref-P-2001B"
+    ],
+    [
+      "tag-P-2001B",
+      "IS_REFERENCED_BY",
+      "ref-P-2001B"
+    ],
+    [
+      "rev",
+      "INCLUDES_REFERENCES_TO",
+      "ref-mp"
+    ],
+    [
+      "mp-pump",
+      "IS_REFERENCED_BY",
+      "ref-mp"
+    ],
+    [
+      "rev",
+      "INCLUDES_REFERENCES_TO",
+      "ref-po"
+    ],
+    [
+      "po",
+      "IS_REFERENCED_BY",
+      "ref-po"
+    ],
+    [
+      "co-epc",
+      "SENDS",
+      "tr"
+    ],
+    [
+      "project",
+      "IS_THE_CONTEXT_FOR",
+      "tr"
+    ],
+    [
+      "rfi",
+      "EXPLAINS",
+      "tr"
+    ],
+    [
+      "tr",
+      "INCLUDES",
+      "rev"
+    ]
+  ]
+}

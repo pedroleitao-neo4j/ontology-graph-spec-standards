@@ -1,0 +1,1358 @@
+{
+  "scenario": "A fictional amending act, the Consumer Protection (Amendment) Act, 2024 of a fictional jurisdiction (country code zz, which ISO 3166 leaves to users), with its FRBR identification, publication, lifecycle, references, classification and the structure of its preamble and body down to articles, paragraphs and the people, terms and dates their text refers to. An article of the Act substitutes an article of the principal act, the Consumer Protection Act, 2012: the Act's analysis records it as an active textual modification with its source, destination and period, and the principal act, kept as a document of its own, records the same change as a passive modification.",
+  "nodes": {
+    "root": {
+      "node": "AkomaNtoso",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@"
+      }
+    },
+    "act": {
+      "node": "Act",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@",
+        "name": "Consumer Protection (Amendment) Act, 2024",
+        "contains": "singleVersion"
+      }
+    },
+    "meta": {
+      "node": "Meta",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!meta"
+      }
+    },
+    "identification": {
+      "node": "Identification",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!identification",
+        "source": "#a1"
+      }
+    },
+    "work": {
+      "node": "FRBRWork",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!identification!work",
+        "frbrThis": "/akn/zz/act/2024/7/!main",
+        "frbrUri": [
+          "/akn/zz/act/2024/7"
+        ],
+        "frbrDate": [
+          "2024-03-12"
+        ],
+        "frbrDateName": [
+          "Enactment date"
+        ],
+        "frbrCountry": "zz",
+        "frbrNumber": [
+          "7"
+        ],
+        "frbrName": [
+          "Consumer Protection (Amendment) Act"
+        ],
+        "frbrPrescriptive": true,
+        "frbrAuthoritative": true
+      }
+    },
+    "expression": {
+      "node": "FRBRExpression",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!identification!expression",
+        "frbrThis": "/akn/zz/act/2024/7/eng@/!main",
+        "frbrUri": [
+          "/akn/zz/act/2024/7/eng@"
+        ],
+        "frbrDate": [
+          "2024-03-12"
+        ],
+        "frbrDateName": [
+          "Enactment date"
+        ],
+        "frbrVersionNumber": "1",
+        "frbrLanguage": [
+          "eng"
+        ],
+        "frbrAuthoritative": true
+      }
+    },
+    "manifestation": {
+      "node": "FRBRManifestation",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!identification!manifestation",
+        "frbrThis": "/akn/zz/act/2024/7/eng@/!main.xml",
+        "frbrUri": [
+          "/akn/zz/act/2024/7/eng@.akn"
+        ],
+        "frbrDate": [
+          "2024-03-15"
+        ],
+        "frbrDateName": [
+          "Publication date"
+        ],
+        "frbrFormat": "application/akn+xml"
+      }
+    },
+    "frbrAuthor": {
+      "node": "FRBRAuthor",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!identification!work!author_0",
+        "href": "#TLC1",
+        "as": "drafting legislature"
+      }
+    },
+    "publisher": {
+      "node": "TLCOrganization",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#TLC1",
+        "eId": "TLC1",
+        "href": "https://example.org/ontology/agent/ZZ_NationalCouncilForLawReporting",
+        "showAs": "National Council for Law Reporting"
+      }
+    },
+    "parliament": {
+      "node": "TLCOrganization",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#TLC2",
+        "eId": "TLC2",
+        "href": "https://example.org/ontology/agent/ZZ_NationalAssembly",
+        "showAs": "The National Assembly"
+      }
+    },
+    "speaker": {
+      "node": "TLCPerson",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#TLC3",
+        "eId": "TLC3",
+        "href": "https://example.org/ontology/person/ZZ_Speaker2024",
+        "showAs": "The Speaker of the National Assembly"
+      }
+    },
+    "conceptConsumer": {
+      "node": "TLCConcept",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#TLC4",
+        "eId": "TLC4",
+        "href": "https://example.org/ontology/concept/consumerProtection",
+        "showAs": "consumer protection"
+      }
+    },
+    "conceptContract": {
+      "node": "TLCConcept",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#TLC5",
+        "eId": "TLC5",
+        "href": "https://example.org/ontology/concept/unfairContractTerm",
+        "showAs": "unfair contract term"
+      }
+    },
+    "eventEnactment": {
+      "node": "TLCEvent",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#TLC6",
+        "eId": "TLC6",
+        "href": "https://example.org/ontology/event/e_2589",
+        "showAs": "Assent of the President, 12 March 2024"
+      }
+    },
+    "roleAuthor": {
+      "node": "TLCRole",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#role_1",
+        "eId": "role_1",
+        "href": "https://example.org/ontology/role/author",
+        "showAs": "author"
+      }
+    },
+    "roleDraftsman": {
+      "node": "TLCRole",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#role_2",
+        "eId": "role_2",
+        "href": "https://example.org/ontology/role/draftsman",
+        "showAs": "draftsman"
+      }
+    },
+    "publication": {
+      "node": "Publication",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!publication",
+        "eId": "publication",
+        "date": "2024-03-15",
+        "showAs": "Official Gazette",
+        "name": "Gazette Notice No. 1234",
+        "number": "1234"
+      }
+    },
+    "lifecycle": {
+      "node": "Lifecycle",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!lifecycle",
+        "source": "#a1"
+      }
+    },
+    "eventRef1": {
+      "node": "EventRef",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!ev1",
+        "eId": "ev1",
+        "date": "2024-03-05",
+        "type": "generation",
+        "source": "#a1",
+        "refersTo": [
+          "#TLC6"
+        ],
+        "originatingExpression": true
+      }
+    },
+    "eventRef2": {
+      "node": "EventRef",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!ev2",
+        "eId": "ev2",
+        "date": "2024-03-12",
+        "type": "generation",
+        "source": "#a1",
+        "refersTo": [
+          "#TLC6"
+        ]
+      }
+    },
+    "references": {
+      "node": "References",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!references",
+        "source": "#a1"
+      }
+    },
+    "analysis": {
+      "node": "Analysis",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!analysis",
+        "source": "#a1"
+      }
+    },
+    "activeModifications": {
+      "node": "ActiveModifications",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!activeModifications"
+      }
+    },
+    "temporalData": {
+      "node": "TemporalData",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!temporalData",
+        "source": "#a1"
+      }
+    },
+    "temporalGroup": {
+      "node": "TemporalGroup",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!tg_1",
+        "eId": "tg_1"
+      }
+    },
+    "timeInterval": {
+      "node": "TimeInterval",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!ti_1",
+        "eId": "ti_1",
+        "refersTo": [
+          "#cmi_1"
+        ],
+        "start": "2024-04-01",
+        "end": "2025-03-31",
+        "duration": "P1Y"
+      }
+    },
+    "preamble": {
+      "node": "Preamble",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble"
+      }
+    },
+    "formula": {
+      "node": "Formula",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!formula_1",
+        "name": "enacting formula"
+      }
+    },
+    "docTitle": {
+      "node": "DocTitle",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!docTitle_1",
+        "eId": "docTitle_1"
+      }
+    },
+    "docNumber": {
+      "node": "DocNumber",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!docNumber_1",
+        "eId": "docNumber_1"
+      }
+    },
+    "docDate": {
+      "node": "DocDate",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!docDate_1",
+        "eId": "docDate_1",
+        "date": "2024-03-12"
+      }
+    },
+    "docProponent": {
+      "node": "DocProponent",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!docProponent_1",
+        "eId": "docProponent_1",
+        "as": "author"
+      }
+    },
+    "recitals": {
+      "node": "Recitals",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!recitals_1",
+        "eId": "recitals_1"
+      }
+    },
+    "recital1": {
+      "node": "Recital",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!recitals_1!rec_1",
+        "eId": "rec_1",
+        "num": [
+          "(1)"
+        ]
+      }
+    },
+    "recital2": {
+      "node": "Recital",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!preamble!recitals_1!rec_2",
+        "eId": "rec_2",
+        "num": [
+          "(2)"
+        ]
+      }
+    },
+    "body": {
+      "node": "Body",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body"
+      }
+    },
+    "chapter1": {
+      "node": "Chapter",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1",
+        "eId": "chp_1",
+        "num": [
+          "CHAPTER 1"
+        ],
+        "heading": [
+          "PRELIMINARY"
+        ]
+      }
+    },
+    "article1": {
+      "node": "Article",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_1",
+        "eId": "art_1",
+        "num": [
+          "1."
+        ],
+        "heading": [
+          "Short title and commencement"
+        ]
+      }
+    },
+    "article1Paragraph1": {
+      "node": "Paragraph",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_1!para_1",
+        "eId": "para_1",
+        "num": [
+          "1."
+        ]
+      }
+    },
+    "article1Content": {
+      "node": "Content",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_1!para_1!content_1",
+        "eId": "content_1"
+      }
+    },
+    "article1Person": {
+      "node": "Person",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_1!para_1!content_1!per_1",
+        "eId": "per_1",
+        "refersTo": [
+          "#TLC3"
+        ]
+      }
+    },
+    "article1Date": {
+      "node": "Date",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_1!para_1!content_1!dt_1",
+        "eId": "dt_1",
+        "date": "2024-04-01"
+      }
+    },
+    "article2": {
+      "node": "Article",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_2",
+        "eId": "art_2",
+        "num": [
+          "2."
+        ],
+        "heading": [
+          "Interpretation"
+        ]
+      }
+    },
+    "article2Content": {
+      "node": "Content",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_2!content_1",
+        "eId": "content_1"
+      }
+    },
+    "article2Def": {
+      "node": "Def",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_2!content_1!def_1",
+        "eId": "def_1"
+      }
+    },
+    "article2Term": {
+      "node": "Term",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_2!content_1!def_1!trm_1",
+        "eId": "trm_1",
+        "refersTo": [
+          "#TLC4"
+        ]
+      }
+    },
+    "article2Ref": {
+      "node": "Ref",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_1!art_2!content_1!ref_1",
+        "eId": "ref_1",
+        "href": "https://example.org/akn/zz/act/2012/12/eng@"
+      }
+    },
+    "chapter2": {
+      "node": "Chapter",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2",
+        "eId": "chp_2",
+        "num": [
+          "CHAPTER 2"
+        ],
+        "heading": [
+          "AMENDMENTS TO THE CONSUMER PROTECTION ACT"
+        ]
+      }
+    },
+    "article5": {
+      "node": "Article",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5",
+        "eId": "art_5",
+        "num": [
+          "5."
+        ],
+        "heading": [
+          "Substitution of section 3 of the principal Act"
+        ]
+      }
+    },
+    "article5Content": {
+      "node": "Content",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1",
+        "eId": "content_1"
+      }
+    },
+    "article5Term": {
+      "node": "Term",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!trm_1",
+        "eId": "trm_1",
+        "refersTo": [
+          "#TLC5"
+        ]
+      }
+    },
+    "mod1": {
+      "node": "TextualMod",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1",
+        "eId": "mod_1",
+        "type": "substitution"
+      }
+    },
+    "quotedStructure": {
+      "node": "QuotedStructure",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1!qstr_1",
+        "eId": "qstr_1",
+        "startQuote": "«",
+        "endQuote": "»"
+      }
+    },
+    "modDestination": {
+      "node": "Destination",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1!dst_1",
+        "eId": "dst_1",
+        "href": "https://example.org/akn/zz/act/2012/12/eng@!body!chp_1!art_3",
+        "pos": "inside"
+      }
+    },
+    "modSource": {
+      "node": "Source",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1!src_1",
+        "eId": "src_1",
+        "href": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5",
+        "pos": "before"
+      }
+    },
+    "modOld": {
+      "node": "Old",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1!qstr_1!old_1",
+        "eId": "old_1",
+        "href": "https://example.org/akn/zz/act/2012/12/eng@!body!chp_1!art_3!content_1"
+      }
+    },
+    "modNew": {
+      "node": "New",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1!qstr_1!new_1",
+        "eId": "new_1",
+        "href": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1!qstr_1"
+      }
+    },
+    "amendedAct": {
+      "node": "Act",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@",
+        "name": "Consumer Protection Act, 2012",
+        "contains": "multipleVersions"
+      }
+    },
+    "amendedMeta": {
+      "node": "Meta",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!meta"
+      }
+    },
+    "amendedAnalysis": {
+      "node": "Analysis",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!analysis",
+        "source": "#a1"
+      }
+    },
+    "passiveModifications": {
+      "node": "PassiveModifications",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!passiveModifications"
+      }
+    },
+    "passiveMod1": {
+      "node": "TextualMod",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!pm_1",
+        "eId": "pm_1",
+        "type": "substitution"
+      }
+    },
+    "passiveSource": {
+      "node": "Source",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!pm_1!src_1",
+        "eId": "src_1",
+        "href": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5",
+        "pos": "before"
+      }
+    },
+    "passiveDestination": {
+      "node": "Destination",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!pm_1!dst_1",
+        "eId": "dst_1",
+        "href": "https://example.org/akn/zz/act/2012/12/eng@!body!chp_1!art_3",
+        "pos": "inside"
+      }
+    },
+    "amendedArticle3": {
+      "node": "Article",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!body!chp_1!art_3",
+        "eId": "art_3",
+        "num": [
+          "3."
+        ],
+        "heading": [
+          "Unfair contract terms"
+        ]
+      }
+    },
+    "amendedReferences": {
+      "node": "References",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!references",
+        "source": "#a1"
+      }
+    },
+    "amendedActiveRef": {
+      "node": "ActiveRef",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@#ref_1",
+        "eId": "ref_1",
+        "href": "https://example.org/akn/zz/act/2024/7/eng@",
+        "showAs": "Consumer Protection (Amendment) Act, 2024"
+      }
+    },
+    "classification": {
+      "node": "Classification",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!classification",
+        "source": "#a1"
+      }
+    },
+    "keyword1": {
+      "node": "Keyword",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!classification!kw_1",
+        "eId": "kw_1",
+        "value": "CONSUMER",
+        "showAs": "consumer",
+        "dictionary": "https://example.org/ontology/thesaurus/legal-thesaurus"
+      }
+    },
+    "article5Mod": {
+      "node": "Mod",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!body!chp_2!art_5!content_1!mod_1",
+        "eId": "mod_1",
+        "for": "#art_3"
+      }
+    },
+    "expressionAuthor": {
+      "node": "FRBRAuthor",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!identification!expression!author_0",
+        "href": "#TLC1",
+        "as": "publisher"
+      }
+    },
+    "manifestationAuthor": {
+      "node": "FRBRAuthor",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@!identification!manifestation!author_0",
+        "href": "#TLC1",
+        "as": "publisher"
+      }
+    },
+    "thesaurus": {
+      "node": "TLCReference",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2024/7/eng@#TLC7",
+        "eId": "TLC7",
+        "href": "https://example.org/ontology/thesaurus/legal-thesaurus",
+        "showAs": "Legal thesaurus",
+        "name": "thesaurus"
+      }
+    },
+    "amendedRoot": {
+      "node": "AkomaNtoso",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@"
+      }
+    },
+    "amendedIdentification": {
+      "node": "Identification",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!identification",
+        "source": "#a1"
+      }
+    },
+    "amendedWork": {
+      "node": "FRBRWork",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!identification!work",
+        "frbrThis": "/akn/zz/act/2012/12/!main",
+        "frbrUri": [
+          "/akn/zz/act/2012/12"
+        ],
+        "frbrDate": [
+          "2012-12-14"
+        ],
+        "frbrDateName": [
+          "Enactment date"
+        ],
+        "frbrCountry": "zz",
+        "frbrNumber": [
+          "12"
+        ],
+        "frbrName": [
+          "Consumer Protection Act"
+        ],
+        "frbrPrescriptive": true
+      }
+    },
+    "amendedExpression": {
+      "node": "FRBRExpression",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!identification!expression",
+        "frbrThis": "/akn/zz/act/2012/12/eng@2024-04-01/!main",
+        "frbrUri": [
+          "/akn/zz/act/2012/12/eng@2024-04-01"
+        ],
+        "frbrDate": [
+          "2024-04-01"
+        ],
+        "frbrDateName": [
+          "Consolidation date"
+        ],
+        "frbrVersionNumber": "3",
+        "frbrLanguage": [
+          "eng"
+        ]
+      }
+    },
+    "amendedManifestation": {
+      "node": "FRBRManifestation",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!identification!manifestation",
+        "frbrThis": "/akn/zz/act/2012/12/eng@2024-04-01/!main.xml",
+        "frbrUri": [
+          "/akn/zz/act/2012/12/eng@2024-04-01.akn"
+        ],
+        "frbrDate": [
+          "2024-04-02"
+        ],
+        "frbrDateName": [
+          "XML markup"
+        ],
+        "frbrFormat": "application/akn+xml"
+      }
+    },
+    "amendedWorkAuthor": {
+      "node": "FRBRAuthor",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!identification!work!author_0",
+        "href": "#TLC1",
+        "as": "publisher"
+      }
+    },
+    "amendedExpressionAuthor": {
+      "node": "FRBRAuthor",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!identification!expression!author_0",
+        "href": "#TLC1",
+        "as": "publisher"
+      }
+    },
+    "amendedManifestationAuthor": {
+      "node": "FRBRAuthor",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!identification!manifestation!author_0",
+        "href": "#TLC1",
+        "as": "publisher"
+      }
+    },
+    "amendedBody": {
+      "node": "Body",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!body"
+      }
+    },
+    "amendedChapter1": {
+      "node": "Chapter",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!body!chp_1",
+        "eId": "chp_1",
+        "num": [
+          "CHAPTER 1"
+        ],
+        "heading": [
+          "CONSUMER RIGHTS"
+        ]
+      }
+    },
+    "amendedArticle3Content": {
+      "node": "Content",
+      "properties": {
+        "uri": "https://example.org/akn/zz/act/2012/12/eng@!body!chp_1!art_3!content_1",
+        "eId": "content_1",
+        "status": "edited"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "root",
+      "HAS_DOCUMENT",
+      "act"
+    ],
+    [
+      "act",
+      "HAS_META",
+      "meta"
+    ],
+    [
+      "meta",
+      "HAS_IDENTIFICATION",
+      "identification"
+    ],
+    [
+      "identification",
+      "HAS_FRBR_LEVEL",
+      "work"
+    ],
+    [
+      "identification",
+      "HAS_FRBR_LEVEL",
+      "expression"
+    ],
+    [
+      "identification",
+      "HAS_FRBR_LEVEL",
+      "manifestation"
+    ],
+    [
+      "work",
+      "HAS_FRBR_AUTHOR",
+      "frbrAuthor"
+    ],
+    [
+      "frbrAuthor",
+      "LINKS_TO",
+      "publisher"
+    ],
+    [
+      "frbrAuthor",
+      "AS",
+      "roleDraftsman"
+    ],
+    [
+      "identification",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "meta",
+      "HAS_PUBLICATION",
+      "publication"
+    ],
+    [
+      "meta",
+      "HAS_LIFECYCLE",
+      "lifecycle"
+    ],
+    [
+      "lifecycle",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "lifecycle",
+      "HAS_EVENT_REF",
+      "eventRef1"
+    ],
+    [
+      "lifecycle",
+      "HAS_EVENT_REF",
+      "eventRef2"
+    ],
+    [
+      "eventRef1",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "eventRef2",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "eventRef1",
+      "REFERS_TO",
+      "eventEnactment"
+    ],
+    [
+      "meta",
+      "HAS_REFERENCES",
+      "references"
+    ],
+    [
+      "references",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "publisher"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "parliament"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "speaker"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "conceptConsumer"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "conceptContract"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "eventEnactment"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "roleAuthor"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "roleDraftsman"
+    ],
+    [
+      "meta",
+      "HAS_ANALYSIS",
+      "analysis"
+    ],
+    [
+      "analysis",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "analysis",
+      "HAS_ACTIVE_MODIFICATIONS",
+      "activeModifications"
+    ],
+    [
+      "activeModifications",
+      "HAS_MODIFICATION",
+      "mod1"
+    ],
+    [
+      "mod1",
+      "REFERS_TO",
+      "conceptContract"
+    ],
+    [
+      "mod1",
+      "HAS_SOURCE",
+      "modSource"
+    ],
+    [
+      "mod1",
+      "HAS_DESTINATION",
+      "modDestination"
+    ],
+    [
+      "mod1",
+      "HAS_OLD",
+      "modOld"
+    ],
+    [
+      "mod1",
+      "HAS_NEW",
+      "modNew"
+    ],
+    [
+      "mod1",
+      "PERIOD",
+      "temporalGroup"
+    ],
+    [
+      "meta",
+      "HAS_TEMPORAL_DATA",
+      "temporalData"
+    ],
+    [
+      "temporalData",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "temporalData",
+      "HAS_TEMPORAL_GROUP",
+      "temporalGroup"
+    ],
+    [
+      "temporalGroup",
+      "HAS_TIME_INTERVAL",
+      "timeInterval"
+    ],
+    [
+      "meta",
+      "HAS_CLASSIFICATION",
+      "classification"
+    ],
+    [
+      "classification",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "classification",
+      "HAS_KEYWORD",
+      "keyword1"
+    ],
+    [
+      "act",
+      "HAS_PREAMBLE",
+      "preamble"
+    ],
+    [
+      "preamble",
+      "HAS_FORMULA",
+      "formula"
+    ],
+    [
+      "formula",
+      "HAS_INLINE_ELEMENT",
+      "docTitle"
+    ],
+    [
+      "formula",
+      "HAS_INLINE_ELEMENT",
+      "docNumber"
+    ],
+    [
+      "formula",
+      "HAS_INLINE_ELEMENT",
+      "docDate"
+    ],
+    [
+      "formula",
+      "HAS_INLINE_ELEMENT",
+      "docProponent"
+    ],
+    [
+      "docProponent",
+      "AS",
+      "roleAuthor"
+    ],
+    [
+      "preamble",
+      "HAS_RECITALS",
+      "recitals"
+    ],
+    [
+      "recitals",
+      "HAS_RECITAL",
+      "recital1"
+    ],
+    [
+      "recitals",
+      "HAS_RECITAL",
+      "recital2"
+    ],
+    [
+      "act",
+      "HAS_BODY",
+      "body"
+    ],
+    [
+      "body",
+      "HAS_HIERARCHY",
+      "chapter1"
+    ],
+    [
+      "chapter1",
+      "HAS_HIERARCHY",
+      "article1"
+    ],
+    [
+      "article1",
+      "HAS_HIERARCHY",
+      "article1Paragraph1"
+    ],
+    [
+      "article1Paragraph1",
+      "HAS_CONTENT",
+      "article1Content"
+    ],
+    [
+      "article1Content",
+      "HAS_INLINE_ELEMENT",
+      "article1Person"
+    ],
+    [
+      "article1Person",
+      "REFERS_TO",
+      "speaker"
+    ],
+    [
+      "article1Content",
+      "HAS_INLINE_ELEMENT",
+      "article1Date"
+    ],
+    [
+      "chapter1",
+      "HAS_HIERARCHY",
+      "article2"
+    ],
+    [
+      "article2",
+      "HAS_CONTENT",
+      "article2Content"
+    ],
+    [
+      "article2Content",
+      "HAS_INLINE_ELEMENT",
+      "article2Def"
+    ],
+    [
+      "article2Def",
+      "HAS_INLINE_ELEMENT",
+      "article2Term"
+    ],
+    [
+      "article2Term",
+      "REFERS_TO",
+      "conceptConsumer"
+    ],
+    [
+      "article2Content",
+      "HAS_INLINE_ELEMENT",
+      "article2Ref"
+    ],
+    [
+      "body",
+      "HAS_HIERARCHY",
+      "chapter2"
+    ],
+    [
+      "chapter2",
+      "HAS_HIERARCHY",
+      "article5"
+    ],
+    [
+      "article5",
+      "HAS_CONTENT",
+      "article5Content"
+    ],
+    [
+      "article5Content",
+      "HAS_INLINE_ELEMENT",
+      "article5Term"
+    ],
+    [
+      "article5Term",
+      "REFERS_TO",
+      "conceptContract"
+    ],
+    [
+      "amendedAct",
+      "HAS_META",
+      "amendedMeta"
+    ],
+    [
+      "amendedMeta",
+      "HAS_ANALYSIS",
+      "amendedAnalysis"
+    ],
+    [
+      "amendedAnalysis",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "amendedAnalysis",
+      "HAS_PASSIVE_MODIFICATIONS",
+      "passiveModifications"
+    ],
+    [
+      "passiveModifications",
+      "HAS_MODIFICATION",
+      "passiveMod1"
+    ],
+    [
+      "passiveMod1",
+      "HAS_SOURCE",
+      "passiveSource"
+    ],
+    [
+      "passiveMod1",
+      "HAS_DESTINATION",
+      "passiveDestination"
+    ],
+    [
+      "passiveMod1",
+      "PERIOD",
+      "temporalGroup"
+    ],
+    [
+      "amendedMeta",
+      "HAS_REFERENCES",
+      "amendedReferences"
+    ],
+    [
+      "amendedReferences",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "amendedReferences",
+      "HAS_DOC_REF",
+      "amendedActiveRef"
+    ],
+    [
+      "article5Content",
+      "HAS_INLINE_ELEMENT",
+      "article5Mod"
+    ],
+    [
+      "article5Mod",
+      "HAS_QUOTED_STRUCTURE",
+      "quotedStructure"
+    ],
+    [
+      "expression",
+      "HAS_FRBR_AUTHOR",
+      "expressionAuthor"
+    ],
+    [
+      "expressionAuthor",
+      "LINKS_TO",
+      "publisher"
+    ],
+    [
+      "manifestation",
+      "HAS_FRBR_AUTHOR",
+      "manifestationAuthor"
+    ],
+    [
+      "manifestationAuthor",
+      "LINKS_TO",
+      "publisher"
+    ],
+    [
+      "references",
+      "HAS_TLC",
+      "thesaurus"
+    ],
+    [
+      "keyword1",
+      "DICTIONARY",
+      "thesaurus"
+    ],
+    [
+      "timeInterval",
+      "REFERS_TO",
+      "eventEnactment"
+    ],
+    [
+      "timeInterval",
+      "START",
+      "eventRef2"
+    ],
+    [
+      "amendedWork",
+      "HAS_FRBR_AUTHOR",
+      "amendedWorkAuthor"
+    ],
+    [
+      "amendedWorkAuthor",
+      "LINKS_TO",
+      "publisher"
+    ],
+    [
+      "amendedIdentification",
+      "HAS_FRBR_LEVEL",
+      "amendedWork"
+    ],
+    [
+      "amendedExpression",
+      "HAS_FRBR_AUTHOR",
+      "amendedExpressionAuthor"
+    ],
+    [
+      "amendedExpressionAuthor",
+      "LINKS_TO",
+      "publisher"
+    ],
+    [
+      "amendedIdentification",
+      "HAS_FRBR_LEVEL",
+      "amendedExpression"
+    ],
+    [
+      "amendedManifestation",
+      "HAS_FRBR_AUTHOR",
+      "amendedManifestationAuthor"
+    ],
+    [
+      "amendedManifestationAuthor",
+      "LINKS_TO",
+      "publisher"
+    ],
+    [
+      "amendedIdentification",
+      "HAS_FRBR_LEVEL",
+      "amendedManifestation"
+    ],
+    [
+      "amendedRoot",
+      "HAS_DOCUMENT",
+      "amendedAct"
+    ],
+    [
+      "amendedMeta",
+      "HAS_IDENTIFICATION",
+      "amendedIdentification"
+    ],
+    [
+      "amendedIdentification",
+      "SOURCE",
+      "publisher"
+    ],
+    [
+      "amendedAct",
+      "HAS_BODY",
+      "amendedBody"
+    ],
+    [
+      "amendedBody",
+      "HAS_HIERARCHY",
+      "amendedChapter1"
+    ],
+    [
+      "amendedChapter1",
+      "HAS_HIERARCHY",
+      "amendedArticle3"
+    ],
+    [
+      "amendedArticle3",
+      "HAS_CONTENT",
+      "amendedArticle3Content"
+    ]
+  ]
+}

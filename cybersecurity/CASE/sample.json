@@ -1,0 +1,804 @@
+{
+  "scenario": "Operation Kestrel, a police investigation into an engineer suspected of leaking their employer's gearbox designs. A search warrant and the employer's consent authorise the investigation; the investigator seizes the suspect's laptop and phone and hands them to a forensic examiner, and each investigative action records its performer, what it acted on and what it produced, with the provenance records that carry the exhibits' chain of custody. Action lifecycles group the examiner's acquisitions and analysis, including a failed first phone extraction, and the suspect's own actions as the examination reconstructed them.",
+  "nodes": {
+    "investigation": {
+      "node": "Investigation",
+      "properties": {
+        "uri": "kb:investigation-27ae544d-df6f-5281-b8ff-8cec25c1800d",
+        "name": "Operation Kestrel",
+        "investigationForm": "case",
+        "investigationStatus": "Open",
+        "focus": [
+          "Theft of trade secrets",
+          "Unauthorised disclosure of confidential designs"
+        ],
+        "startTime": "2026-03-02T09:00:00Z",
+        "description": [
+          "Suspected leak of Halden Precision Engineering's GBX-400 gearbox designs by an employee."
+        ]
+      }
+    },
+    "warrant": {
+      "node": "Authorization",
+      "properties": {
+        "uri": "kb:authorization-18269f5b-5d45-54b8-9e30-deeec9af4c6f",
+        "name": "Search warrant for the suspect's home",
+        "authorizationType": "Search warrant (PACE 1984, section 8)",
+        "authorizationIdentifier": [
+          "CVP-SW-2026-0311"
+        ],
+        "startTime": "2026-03-08T10:30:00Z",
+        "endTime": "2026-06-08T10:30:00Z"
+      }
+    },
+    "consent": {
+      "node": "Authorization",
+      "properties": {
+        "uri": "kb:authorization-4e22470e-d093-538f-be82-1427330e6f2b",
+        "name": "Employer's consent to examine the company laptop",
+        "authorizationType": "Owner consent",
+        "authorizationIdentifier": [
+          "HPE-LEGAL-2026-014"
+        ],
+        "startTime": "2026-03-05T14:00:00Z"
+      }
+    },
+    "investigator": {
+      "node": "Investigator",
+      "properties": {
+        "uri": "kb:investigator-40935b6a-638f-5559-a605-c4cc13f2872e",
+        "name": "DC Alex Morgan, officer in the case"
+      }
+    },
+    "examiner": {
+      "node": "Examiner",
+      "properties": {
+        "uri": "kb:examiner-2b14933e-76a3-5dde-b709-28897ba65aad",
+        "name": "Sam Okafor, digital forensic examiner"
+      }
+    },
+    "subject": {
+      "node": "Subject",
+      "properties": {
+        "uri": "kb:subject-81cb49b3-5536-5a25-8362-c5955c3326b5",
+        "name": "Jordan Pike, the suspect"
+      }
+    },
+    "attorney": {
+      "node": "Attorney",
+      "properties": {
+        "uri": "kb:attorney-7e3e3feb-eff5-5b27-891e-1db3e8b48bd3",
+        "name": "Priya Shah, Crown Prosecution Service lawyer"
+      }
+    },
+    "laptop": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-ec703583-8c11-5381-8c41-42649cebb2d7",
+        "name": "Dell Latitude 7440 laptop, serial 7XK2Q93"
+      }
+    },
+    "phone": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-a293be1b-4a77-5e25-a52c-55ecb4e5048d",
+        "name": "Samsung Galaxy S23 phone, IMEI 356789104567893"
+      }
+    },
+    "image": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-eb7c8fe7-d028-5561-bbe5-a254c78b3d8d",
+        "name": "E01 image of the laptop disk, HPE-LT-0427.E01"
+      }
+    },
+    "extraction": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-8d81f6cd-ca06-56e5-8e65-853b94d5164b",
+        "name": "UFED full file system extraction of the phone"
+      }
+    },
+    "ufed_log": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-c636bbb6-5464-50c2-84f7-0736b9afe419",
+        "name": "UFED error log of the failed extraction"
+      }
+    },
+    "archive": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-4dfae10d-0066-5736-af5c-2984c3d6c85e",
+        "name": "Q3-gearbox-designs.zip"
+      }
+    },
+    "email": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-f15adbcb-fd15-5676-b6fa-a45f5d544c6d",
+        "name": "Email of 27 February 2026 sending the archive to a personal address"
+      }
+    },
+    "report": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-3b861c4d-5069-5b74-8aaf-d8af95d93adf",
+        "name": "Forensic examination report NDF-2026-0112"
+      }
+    },
+    "ftk": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-36573453-4d06-5633-adee-f9298a291e53",
+        "name": "FTK Imager 4.7.1"
+      }
+    },
+    "ufed": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-74e8fb2f-a242-5192-a1c0-53a5c392c11f",
+        "name": "Cellebrite UFED 4PC 7.69"
+      }
+    },
+    "autopsy": {
+      "node": "UcoObject",
+      "properties": {
+        "uri": "kb:ucoobject-165463bc-b697-51a9-a588-6471799be761",
+        "name": "Autopsy 4.21.0"
+      }
+    },
+    "subject_lifecycle": {
+      "node": "SubjectActionLifecycle",
+      "properties": {
+        "uri": "kb:subjectactionlifecycle-c891fb01-5613-5dde-bc84-fccd77528429",
+        "name": "The suspect's exfiltration of the designs",
+        "startTime": [
+          "2026-02-27T17:58:31Z"
+        ],
+        "endTime": [
+          "2026-02-27T18:09:40Z"
+        ]
+      }
+    },
+    "zip_designs": {
+      "node": "Action",
+      "properties": {
+        "uri": "kb:action-fe9b7891-14fc-5875-b2a7-88fe09ca16dd",
+        "name": "Compress the design files into an archive",
+        "startTime": "2026-02-27T17:58:31Z",
+        "endTime": "2026-02-27T17:58:44Z",
+        "actionStatus": "Success"
+      }
+    },
+    "send_email": {
+      "node": "Action",
+      "properties": {
+        "uri": "kb:action-e11ab71a-5869-5516-9b16-5e59394c9e64",
+        "name": "Email the archive to a personal address",
+        "startTime": "2026-02-27T18:04:12Z",
+        "endTime": "2026-02-27T18:04:12Z",
+        "actionStatus": "Success"
+      }
+    },
+    "apply_warrant": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-352ee63e-c7fc-50cb-b607-c0dfe1a41d27",
+        "name": "Apply for a search warrant",
+        "startTime": "2026-03-08T09:00:00Z",
+        "endTime": "2026-03-08T10:30:00Z",
+        "actionStatus": "Success"
+      }
+    },
+    "pr_laptop": {
+      "node": "ProvenanceRecord",
+      "properties": {
+        "uri": "kb:provenancerecord-ad1f6298-e061-5a71-901a-fe63a02c6992",
+        "name": "Exhibit AM/1: the laptop",
+        "exhibitNumber": "AM/1",
+        "rootExhibitNumber": [
+          "AM/1"
+        ]
+      }
+    },
+    "pr_phone": {
+      "node": "ProvenanceRecord",
+      "properties": {
+        "uri": "kb:provenancerecord-6273b55b-7d13-5fa6-9741-8fbf549a213f",
+        "name": "Exhibit AM/2: the phone",
+        "exhibitNumber": "AM/2",
+        "rootExhibitNumber": [
+          "AM/2"
+        ]
+      }
+    },
+    "seize": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-fff3bab2-0461-5204-9f69-3e14ee2d5610",
+        "name": "Search the suspect's home and seize devices",
+        "startTime": "2026-03-09T07:05:00Z",
+        "endTime": "2026-03-09T09:40:00Z",
+        "actionStatus": "Success"
+      }
+    },
+    "pr_transfer": {
+      "node": "ProvenanceRecord",
+      "properties": {
+        "uri": "kb:provenancerecord-4a505b37-915d-5311-aa48-72f0590bb75b",
+        "name": "Exhibits AM/1 and AM/2 received at the forensic laboratory",
+        "exhibitNumber": "AM/1-2",
+        "rootExhibitNumber": [
+          "AM/1",
+          "AM/2"
+        ]
+      }
+    },
+    "transfer": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-270085d3-521b-5d7f-a6d7-409d066321b6",
+        "name": "Hand the exhibits to the forensic laboratory",
+        "startTime": "2026-03-09T13:15:00Z",
+        "endTime": "2026-03-09T13:30:00Z",
+        "actionStatus": "Success"
+      }
+    },
+    "pr_image": {
+      "node": "ProvenanceRecord",
+      "properties": {
+        "uri": "kb:provenancerecord-9642f0bc-01f1-548d-9616-68b93bd04708",
+        "name": "Exhibit AM/1/1: image of the laptop disk",
+        "exhibitNumber": "AM/1/1",
+        "rootExhibitNumber": [
+          "AM/1"
+        ]
+      }
+    },
+    "acquire_laptop": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-c9d40b31-cf43-5ea6-94bf-f119e3debbde",
+        "name": "Image the laptop disk",
+        "startTime": "2026-03-10T09:15:00Z",
+        "endTime": "2026-03-10T11:42:07Z",
+        "actionStatus": "Success"
+      }
+    },
+    "acquire_phone_1": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-38965107-e727-584c-837b-9da8f39ed3c7",
+        "name": "Extract the phone (first attempt)",
+        "startTime": "2026-03-11T09:30:00Z",
+        "endTime": "2026-03-11T09:52:00Z",
+        "actionStatus": "Fail"
+      }
+    },
+    "pr_extraction": {
+      "node": "ProvenanceRecord",
+      "properties": {
+        "uri": "kb:provenancerecord-506ebecc-2d47-566e-a286-983f96c4d336",
+        "name": "Exhibit AM/2/1: extraction of the phone",
+        "exhibitNumber": "AM/2/1",
+        "rootExhibitNumber": [
+          "AM/2"
+        ]
+      }
+    },
+    "acquire_phone_2": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-0870be48-1fa4-5257-b698-b4e94d55b533",
+        "name": "Extract the phone",
+        "startTime": "2026-03-11T13:02:00Z",
+        "endTime": "2026-03-11T15:20:00Z",
+        "actionStatus": "Success"
+      }
+    },
+    "analyse": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-01fefc43-786c-5b19-81f1-e10b7f416be5",
+        "name": "Examine the laptop image and phone extraction",
+        "startTime": "2026-03-12T08:30:00Z",
+        "endTime": "2026-03-13T16:45:00Z",
+        "actionStatus": "Success"
+      }
+    },
+    "review": {
+      "node": "InvestigativeAction",
+      "properties": {
+        "uri": "kb:investigativeaction-e51a5c8b-143e-5de3-be4a-e3a0c53333e2",
+        "name": "Review the evidence for a charging decision",
+        "startTime": "2026-03-20T10:00:00Z",
+        "endTime": "2026-03-20T12:00:00Z",
+        "actionStatus": "Complete/Finish"
+      }
+    },
+    "examiner_lifecycle": {
+      "node": "ExaminerActionLifecycle",
+      "properties": {
+        "uri": "kb:examineractionlifecycle-d8a12037-0335-5165-abdc-5ebe8d199289",
+        "name": "The laboratory's examination of exhibits AM/1 and AM/2",
+        "startTime": [
+          "2026-03-10T09:15:00Z"
+        ],
+        "endTime": [
+          "2026-03-13T16:45:00Z"
+        ],
+        "actionCount": [
+          4
+        ]
+      }
+    }
+  },
+  "relationships": [
+    [
+      "investigation",
+      "RELEVANT_AUTHORIZATION",
+      "warrant"
+    ],
+    [
+      "investigation",
+      "RELEVANT_AUTHORIZATION",
+      "consent"
+    ],
+    [
+      "subject_lifecycle",
+      "PERFORMER",
+      "subject"
+    ],
+    [
+      "zip_designs",
+      "PERFORMER",
+      "subject"
+    ],
+    [
+      "zip_designs",
+      "OBJECT",
+      "laptop"
+    ],
+    [
+      "zip_designs",
+      "RESULT",
+      "archive"
+    ],
+    [
+      "send_email",
+      "PERFORMER",
+      "subject"
+    ],
+    [
+      "send_email",
+      "OBJECT",
+      "archive"
+    ],
+    [
+      "send_email",
+      "RESULT",
+      "email"
+    ],
+    [
+      "subject_lifecycle",
+      "SUBACTION",
+      "zip_designs"
+    ],
+    [
+      "subject_lifecycle",
+      "SUBACTION",
+      "send_email"
+    ],
+    [
+      "apply_warrant",
+      "PERFORMER",
+      "investigator"
+    ],
+    [
+      "apply_warrant",
+      "RESULT",
+      "warrant"
+    ],
+    [
+      "pr_laptop",
+      "OBJECT",
+      "laptop"
+    ],
+    [
+      "pr_phone",
+      "OBJECT",
+      "phone"
+    ],
+    [
+      "seize",
+      "PERFORMER",
+      "investigator"
+    ],
+    [
+      "seize",
+      "OBJECT",
+      "warrant"
+    ],
+    [
+      "seize",
+      "RESULT",
+      "laptop"
+    ],
+    [
+      "seize",
+      "RESULT",
+      "phone"
+    ],
+    [
+      "seize",
+      "RESULT",
+      "pr_laptop"
+    ],
+    [
+      "seize",
+      "RESULT",
+      "pr_phone"
+    ],
+    [
+      "seize",
+      "WAS_INFORMED_BY",
+      "apply_warrant"
+    ],
+    [
+      "pr_transfer",
+      "OBJECT",
+      "laptop"
+    ],
+    [
+      "pr_transfer",
+      "OBJECT",
+      "phone"
+    ],
+    [
+      "transfer",
+      "PERFORMER",
+      "investigator"
+    ],
+    [
+      "transfer",
+      "OBJECT",
+      "pr_laptop"
+    ],
+    [
+      "transfer",
+      "OBJECT",
+      "pr_phone"
+    ],
+    [
+      "transfer",
+      "RESULT",
+      "pr_transfer"
+    ],
+    [
+      "transfer",
+      "WAS_INFORMED_BY",
+      "seize"
+    ],
+    [
+      "transfer",
+      "PARTICIPANT",
+      "examiner"
+    ],
+    [
+      "pr_image",
+      "OBJECT",
+      "image"
+    ],
+    [
+      "acquire_laptop",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "acquire_laptop",
+      "OBJECT",
+      "laptop"
+    ],
+    [
+      "acquire_laptop",
+      "OBJECT",
+      "pr_transfer"
+    ],
+    [
+      "acquire_laptop",
+      "RESULT",
+      "image"
+    ],
+    [
+      "acquire_laptop",
+      "RESULT",
+      "pr_image"
+    ],
+    [
+      "acquire_laptop",
+      "INSTRUMENT",
+      "ftk"
+    ],
+    [
+      "acquire_laptop",
+      "WAS_INFORMED_BY",
+      "transfer"
+    ],
+    [
+      "acquire_phone_1",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "acquire_phone_1",
+      "OBJECT",
+      "phone"
+    ],
+    [
+      "acquire_phone_1",
+      "OBJECT",
+      "pr_transfer"
+    ],
+    [
+      "acquire_phone_1",
+      "INSTRUMENT",
+      "ufed"
+    ],
+    [
+      "acquire_phone_1",
+      "WAS_INFORMED_BY",
+      "transfer"
+    ],
+    [
+      "acquire_phone_1",
+      "ERROR",
+      "ufed_log"
+    ],
+    [
+      "pr_extraction",
+      "OBJECT",
+      "extraction"
+    ],
+    [
+      "acquire_phone_2",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "acquire_phone_2",
+      "OBJECT",
+      "phone"
+    ],
+    [
+      "acquire_phone_2",
+      "OBJECT",
+      "pr_transfer"
+    ],
+    [
+      "acquire_phone_2",
+      "RESULT",
+      "extraction"
+    ],
+    [
+      "acquire_phone_2",
+      "RESULT",
+      "pr_extraction"
+    ],
+    [
+      "acquire_phone_2",
+      "INSTRUMENT",
+      "ufed"
+    ],
+    [
+      "acquire_phone_2",
+      "WAS_INFORMED_BY",
+      "acquire_phone_1"
+    ],
+    [
+      "analyse",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "analyse",
+      "OBJECT",
+      "image"
+    ],
+    [
+      "analyse",
+      "OBJECT",
+      "extraction"
+    ],
+    [
+      "analyse",
+      "OBJECT",
+      "pr_image"
+    ],
+    [
+      "analyse",
+      "OBJECT",
+      "pr_extraction"
+    ],
+    [
+      "analyse",
+      "RESULT",
+      "archive"
+    ],
+    [
+      "analyse",
+      "RESULT",
+      "email"
+    ],
+    [
+      "analyse",
+      "RESULT",
+      "report"
+    ],
+    [
+      "analyse",
+      "INSTRUMENT",
+      "autopsy"
+    ],
+    [
+      "analyse",
+      "WAS_INFORMED_BY",
+      "acquire_laptop"
+    ],
+    [
+      "analyse",
+      "WAS_INFORMED_BY",
+      "acquire_phone_2"
+    ],
+    [
+      "review",
+      "PERFORMER",
+      "attorney"
+    ],
+    [
+      "review",
+      "OBJECT",
+      "report"
+    ],
+    [
+      "review",
+      "WAS_INFORMED_BY",
+      "analyse"
+    ],
+    [
+      "examiner_lifecycle",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "examiner_lifecycle",
+      "SUBACTION",
+      "acquire_laptop"
+    ],
+    [
+      "examiner_lifecycle",
+      "SUBACTION",
+      "acquire_phone_1"
+    ],
+    [
+      "examiner_lifecycle",
+      "SUBACTION",
+      "acquire_phone_2"
+    ],
+    [
+      "examiner_lifecycle",
+      "SUBACTION",
+      "analyse"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "warrant"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "consent"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "apply_warrant"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "seize"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "transfer"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "acquire_laptop"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "acquire_phone_1"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "acquire_phone_2"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "analyse"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "review"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "examiner_lifecycle"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "subject_lifecycle"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "pr_laptop"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "pr_phone"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "pr_transfer"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "pr_image"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "pr_extraction"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "investigator"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "examiner"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "subject"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "attorney"
+    ],
+    [
+      "investigation",
+      "OBJECT",
+      "report"
+    ]
+  ]
+}

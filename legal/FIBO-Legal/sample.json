@@ -1,0 +1,890 @@
+{
+  "scenario": "A written bilateral master services agreement between two fictional Delaware corporations, Northwind Analytics, Inc. as the supplier and principal party and Contoso Freight Corporation as the customer and counterparty, governed by Delaware law. The data has the contract's parties and their roles, its contractual elements (definitions, commitments, a termination provision and a condition precedent), the rights and obligations it confers, its dates and term, and the document recording it. Around it are the corporations, with their names, file numbers, addresses and legal capacities, the officers who sign for them, and the jurisdiction they're organised in, where the Delaware General Corporation Law is in force and confers a stockholder's right to inspect a corporation's books and records.",
+  "nodes": {
+    "usa": {
+      "node": "Country",
+      "properties": {
+        "isIndependent": true,
+        "hasTextualName": [
+          "United States of America"
+        ],
+        "uri": "https://example.com/msa-2024/usa"
+      }
+    },
+    "delaware": {
+      "node": "FederalState",
+      "properties": {
+        "hasTextualName": [
+          "Delaware"
+        ],
+        "uri": "https://example.com/msa-2024/delaware"
+      }
+    },
+    "wilmington": {
+      "node": "Municipality",
+      "properties": {
+        "hasTextualName": [
+          "Wilmington"
+        ],
+        "uri": "https://example.com/msa-2024/wilmington"
+      }
+    },
+    "kindState": {
+      "node": "GeographicRegionKind",
+      "properties": {
+        "uri": "https://example.com/msa-2024/kindState"
+      }
+    },
+    "kindMunicipality": {
+      "node": "GeographicRegionKind",
+      "properties": {
+        "uri": "https://example.com/msa-2024/kindMunicipality"
+      }
+    },
+    "jurDelaware": {
+      "node": "Jurisdiction",
+      "properties": {
+        "uri": "https://example.com/msa-2024/jurDelaware"
+      }
+    },
+    "dgcl": {
+      "node": "StatuteLaw",
+      "properties": {
+        "uri": "https://example.com/msa-2024/dgcl"
+      }
+    },
+    "inspectionRight": {
+      "node": "LegalRight",
+      "properties": {
+        "uri": "https://example.com/msa-2024/inspectionRight"
+      }
+    },
+    "inspectionObligation": {
+      "node": "LegalObligation",
+      "properties": {
+        "uri": "https://example.com/msa-2024/inspectionObligation"
+      }
+    },
+    "liabilityNorthwind": {
+      "node": "LiabilityCapacity",
+      "properties": {
+        "uri": "https://example.com/msa-2024/liabilityNorthwind"
+      }
+    },
+    "liabilityContoso": {
+      "node": "LiabilityCapacity",
+      "properties": {
+        "uri": "https://example.com/msa-2024/liabilityContoso"
+      }
+    },
+    "northwind": {
+      "node": "LegalEntity",
+      "properties": {
+        "uri": "https://example.com/msa-2024/northwind"
+      }
+    },
+    "northwindName": {
+      "node": "OrganizationName",
+      "properties": {
+        "hasTextValue": [
+          "Northwind Analytics, Inc."
+        ],
+        "uri": "https://example.com/msa-2024/northwindName"
+      }
+    },
+    "northwindFileNumber": {
+      "node": "OrganizationIdentifier",
+      "properties": {
+        "hasTextValue": [
+          "7300001"
+        ],
+        "uri": "https://example.com/msa-2024/northwindFileNumber"
+      }
+    },
+    "northwindAddress": {
+      "node": "ConventionalStreetAddress",
+      "properties": {
+        "hasAddressLine1": "1000 N. King Street",
+        "hasCityName": "Wilmington",
+        "hasPostalCode": "19801",
+        "uri": "https://example.com/msa-2024/northwindAddress"
+      }
+    },
+    "northwindPremises": {
+      "node": "PhysicalLocation",
+      "properties": {
+        "uri": "https://example.com/msa-2024/northwindPremises"
+      }
+    },
+    "contoso": {
+      "node": "LegalEntity",
+      "properties": {
+        "uri": "https://example.com/msa-2024/contoso"
+      }
+    },
+    "contosoName": {
+      "node": "OrganizationName",
+      "properties": {
+        "hasTextValue": [
+          "Contoso Freight Corporation"
+        ],
+        "uri": "https://example.com/msa-2024/contosoName"
+      }
+    },
+    "contosoFileNumber": {
+      "node": "OrganizationIdentifier",
+      "properties": {
+        "hasTextValue": [
+          "7300002"
+        ],
+        "uri": "https://example.com/msa-2024/contosoFileNumber"
+      }
+    },
+    "contosoAddress": {
+      "node": "ConventionalStreetAddress",
+      "properties": {
+        "hasAddressLine1": "500 Delaware Avenue",
+        "hasCityName": "Wilmington",
+        "hasPostalCode": "19801",
+        "uri": "https://example.com/msa-2024/contosoAddress"
+      }
+    },
+    "contosoPremises": {
+      "node": "PhysicalLocation",
+      "properties": {
+        "uri": "https://example.com/msa-2024/contosoPremises"
+      }
+    },
+    "delawareFileNumbers": {
+      "node": "OrganizationIdentificationScheme",
+      "properties": {
+        "uri": "https://example.com/msa-2024/delawareFileNumbers"
+      }
+    },
+    "usPostalAddressing": {
+      "node": "PhysicalAddressingScheme",
+      "properties": {
+        "uri": "https://example.com/msa-2024/usPostalAddressing"
+      }
+    },
+    "maria": {
+      "node": "Person",
+      "properties": {
+        "hasGender": "female",
+        "uri": "https://example.com/msa-2024/maria"
+      }
+    },
+    "mariaName": {
+      "node": "PersonName",
+      "properties": {
+        "hasFullLegalName": [
+          "Maria Chen"
+        ],
+        "hasSurname": [
+          "Chen"
+        ],
+        "hasTextValue": [
+          "Maria Chen"
+        ],
+        "uri": "https://example.com/msa-2024/mariaName"
+      }
+    },
+    "mariaBirth": {
+      "node": "DateOfBirth",
+      "properties": {
+        "hasDateValue": "1979-06-14",
+        "uri": "https://example.com/msa-2024/mariaBirth"
+      }
+    },
+    "mariaBirthPlace": {
+      "node": "PlaceOfBirth",
+      "properties": {
+        "uri": "https://example.com/msa-2024/mariaBirthPlace"
+      }
+    },
+    "mariaSignatory": {
+      "node": "SignatoryCapacity",
+      "properties": {
+        "uri": "https://example.com/msa-2024/mariaSignatory"
+      }
+    },
+    "david": {
+      "node": "Person",
+      "properties": {
+        "hasGender": "male",
+        "uri": "https://example.com/msa-2024/david"
+      }
+    },
+    "davidName": {
+      "node": "PersonName",
+      "properties": {
+        "hasFullLegalName": [
+          "David Okafor"
+        ],
+        "hasSurname": [
+          "Okafor"
+        ],
+        "hasTextValue": [
+          "David Okafor"
+        ],
+        "uri": "https://example.com/msa-2024/davidName"
+      }
+    },
+    "davidBirth": {
+      "node": "DateOfBirth",
+      "properties": {
+        "hasDateValue": "1983-02-02",
+        "uri": "https://example.com/msa-2024/davidBirth"
+      }
+    },
+    "davidBirthPlace": {
+      "node": "PlaceOfBirth",
+      "properties": {
+        "uri": "https://example.com/msa-2024/davidBirthPlace"
+      }
+    },
+    "davidSignatory": {
+      "node": "SignatoryCapacity",
+      "properties": {
+        "uri": "https://example.com/msa-2024/davidSignatory"
+      }
+    },
+    "msa": {
+      "node": "BilateralContract",
+      "properties": {
+        "isAssignable": false,
+        "uri": "https://example.com/msa-2024/msa"
+      }
+    },
+    "supplier": {
+      "node": "ContractPrincipal",
+      "properties": {
+        "uri": "https://example.com/msa-2024/supplier"
+      }
+    },
+    "customer": {
+      "node": "Counterparty",
+      "properties": {
+        "uri": "https://example.com/msa-2024/customer"
+      }
+    },
+    "executionDate": {
+      "node": "ExplicitDate",
+      "properties": {
+        "hasDateValue": "2024-09-30",
+        "uri": "https://example.com/msa-2024/executionDate"
+      }
+    },
+    "effectiveDate": {
+      "node": "ExplicitDate",
+      "properties": {
+        "hasDateValue": "2024-10-01",
+        "uri": "https://example.com/msa-2024/effectiveDate"
+      }
+    },
+    "term": {
+      "node": "ExplicitDuration",
+      "properties": {
+        "hasDurationValue": "P3Y",
+        "uri": "https://example.com/msa-2024/term"
+      }
+    },
+    "definitions": {
+      "node": "ContractualDefinition",
+      "properties": {
+        "hasLegalDescription": [
+          "'Services' means the freight analytics services described in Schedule A, and 'Fees' the amounts set out in Schedule B."
+        ],
+        "uri": "https://example.com/msa-2024/definitions"
+      }
+    },
+    "serviceCommitment": {
+      "node": "ContractualCommitment",
+      "properties": {
+        "hasLegalDescription": [
+          "The Supplier shall provide the Services to the Customer at the service levels in Schedule C."
+        ],
+        "uri": "https://example.com/msa-2024/serviceCommitment"
+      }
+    },
+    "paymentCommitment": {
+      "node": "ContractualCommitment",
+      "properties": {
+        "hasLegalDescription": [
+          "The Customer shall pay each undisputed invoice within thirty days of receipt."
+        ],
+        "uri": "https://example.com/msa-2024/paymentCommitment"
+      }
+    },
+    "termination": {
+      "node": "TerminationProvision",
+      "properties": {
+        "hasLegalDescription": [
+          "Either party may terminate this Agreement on ninety days' written notice."
+        ],
+        "uri": "https://example.com/msa-2024/termination"
+      }
+    },
+    "conditionPrecedent": {
+      "node": "ConditionPrecedent",
+      "properties": {
+        "hasLegalDescription": [
+          "The Supplier's obligations begin once the Customer has delivered the data access credentials in Schedule D."
+        ],
+        "uri": "https://example.com/msa-2024/conditionPrecedent"
+      }
+    },
+    "serviceObligation": {
+      "node": "ContractualObligation",
+      "properties": {
+        "uri": "https://example.com/msa-2024/serviceObligation"
+      }
+    },
+    "paymentObligation": {
+      "node": "ContractualObligation",
+      "properties": {
+        "uri": "https://example.com/msa-2024/paymentObligation"
+      }
+    },
+    "serviceRight": {
+      "node": "ContractualRight",
+      "properties": {
+        "uri": "https://example.com/msa-2024/serviceRight"
+      }
+    },
+    "paymentRight": {
+      "node": "ContractualRight",
+      "properties": {
+        "uri": "https://example.com/msa-2024/paymentRight"
+      }
+    },
+    "msaDocument": {
+      "node": "ContractDocument",
+      "properties": {
+        "uri": "https://example.com/msa-2024/msaDocument"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "kindState",
+      "CLASSIFIES",
+      "delaware"
+    ],
+    [
+      "kindMunicipality",
+      "CLASSIFIES",
+      "wilmington"
+    ],
+    [
+      "delaware",
+      "HAS_PART",
+      "wilmington"
+    ],
+    [
+      "usa",
+      "HAS_PART",
+      "delaware"
+    ],
+    [
+      "jurDelaware",
+      "HAS_REACH",
+      "delaware"
+    ],
+    [
+      "jurDelaware",
+      "HAS_IN_FORCE",
+      "dgcl"
+    ],
+    [
+      "dgcl",
+      "CONFERS",
+      "inspectionRight"
+    ],
+    [
+      "dgcl",
+      "MANDATES",
+      "inspectionObligation"
+    ],
+    [
+      "inspectionRight",
+      "IMPLIES",
+      "inspectionObligation"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "inspectionRight"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "inspectionObligation"
+    ],
+    [
+      "dgcl",
+      "CONFERS",
+      "liabilityNorthwind"
+    ],
+    [
+      "dgcl",
+      "CONFERS",
+      "liabilityContoso"
+    ],
+    [
+      "northwind",
+      "HAS_NAME",
+      "northwindName"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "northwindName"
+    ],
+    [
+      "northwind",
+      "IS_ORGANIZED_IN",
+      "jurDelaware"
+    ],
+    [
+      "northwind",
+      "IS_RECOGNIZED_IN",
+      "jurDelaware"
+    ],
+    [
+      "northwind",
+      "IS_DOMICILED_IN",
+      "delaware"
+    ],
+    [
+      "northwindFileNumber",
+      "IDENTIFIES",
+      "northwind"
+    ],
+    [
+      "delawareFileNumbers",
+      "HAS_MEMBER",
+      "northwindFileNumber"
+    ],
+    [
+      "northwindFileNumber",
+      "COMPLIES_WITH",
+      "delawareFileNumbers"
+    ],
+    [
+      "northwind",
+      "HAS_ADDRESS",
+      "northwindAddress"
+    ],
+    [
+      "northwindAddress",
+      "HAS_COUNTRY",
+      "usa"
+    ],
+    [
+      "northwindAddress",
+      "HAS_SUBDIVISION",
+      "delaware"
+    ],
+    [
+      "northwindAddress",
+      "HAS_MUNICIPALITY",
+      "wilmington"
+    ],
+    [
+      "northwindAddress",
+      "IS_INDEX_TO",
+      "northwindPremises"
+    ],
+    [
+      "usPostalAddressing",
+      "DEFINES",
+      "northwindAddress"
+    ],
+    [
+      "northwindName",
+      "DENOTES",
+      "northwind"
+    ],
+    [
+      "northwindFileNumber",
+      "DENOTES",
+      "northwind"
+    ],
+    [
+      "northwind",
+      "HAS_CAPACITY",
+      "liabilityNorthwind"
+    ],
+    [
+      "liabilityNorthwind",
+      "IS_CONFERRED_ON",
+      "northwind"
+    ],
+    [
+      "contoso",
+      "HAS_NAME",
+      "contosoName"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "contosoName"
+    ],
+    [
+      "contoso",
+      "IS_ORGANIZED_IN",
+      "jurDelaware"
+    ],
+    [
+      "contoso",
+      "IS_RECOGNIZED_IN",
+      "jurDelaware"
+    ],
+    [
+      "contoso",
+      "IS_DOMICILED_IN",
+      "delaware"
+    ],
+    [
+      "contosoFileNumber",
+      "IDENTIFIES",
+      "contoso"
+    ],
+    [
+      "delawareFileNumbers",
+      "HAS_MEMBER",
+      "contosoFileNumber"
+    ],
+    [
+      "contosoFileNumber",
+      "COMPLIES_WITH",
+      "delawareFileNumbers"
+    ],
+    [
+      "contoso",
+      "HAS_ADDRESS",
+      "contosoAddress"
+    ],
+    [
+      "contosoAddress",
+      "HAS_COUNTRY",
+      "usa"
+    ],
+    [
+      "contosoAddress",
+      "HAS_SUBDIVISION",
+      "delaware"
+    ],
+    [
+      "contosoAddress",
+      "HAS_MUNICIPALITY",
+      "wilmington"
+    ],
+    [
+      "contosoAddress",
+      "IS_INDEX_TO",
+      "contosoPremises"
+    ],
+    [
+      "usPostalAddressing",
+      "DEFINES",
+      "contosoAddress"
+    ],
+    [
+      "contosoName",
+      "DENOTES",
+      "contoso"
+    ],
+    [
+      "contosoFileNumber",
+      "DENOTES",
+      "contoso"
+    ],
+    [
+      "contoso",
+      "HAS_CAPACITY",
+      "liabilityContoso"
+    ],
+    [
+      "liabilityContoso",
+      "IS_CONFERRED_ON",
+      "contoso"
+    ],
+    [
+      "maria",
+      "HAS_NAME",
+      "mariaName"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "mariaName"
+    ],
+    [
+      "mariaName",
+      "DENOTES",
+      "maria"
+    ],
+    [
+      "maria",
+      "HAS_DATE_OF_BIRTH",
+      "mariaBirth"
+    ],
+    [
+      "maria",
+      "HAS_PLACE_OF_BIRTH",
+      "mariaBirthPlace"
+    ],
+    [
+      "maria",
+      "HAS_CITIZENSHIP",
+      "usa"
+    ],
+    [
+      "maria",
+      "HAS_CAPACITY",
+      "mariaSignatory"
+    ],
+    [
+      "mariaSignatory",
+      "IS_CONFERRED_ON",
+      "maria"
+    ],
+    [
+      "david",
+      "HAS_NAME",
+      "davidName"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "davidName"
+    ],
+    [
+      "davidName",
+      "DENOTES",
+      "david"
+    ],
+    [
+      "david",
+      "HAS_DATE_OF_BIRTH",
+      "davidBirth"
+    ],
+    [
+      "david",
+      "HAS_PLACE_OF_BIRTH",
+      "davidBirthPlace"
+    ],
+    [
+      "david",
+      "HAS_CITIZENSHIP",
+      "usa"
+    ],
+    [
+      "david",
+      "HAS_CAPACITY",
+      "davidSignatory"
+    ],
+    [
+      "davidSignatory",
+      "IS_CONFERRED_ON",
+      "david"
+    ],
+    [
+      "northwind",
+      "HAS_MEMBER",
+      "maria"
+    ],
+    [
+      "contoso",
+      "HAS_MEMBER",
+      "david"
+    ],
+    [
+      "northwind",
+      "PLAYS_ROLE",
+      "supplier"
+    ],
+    [
+      "contoso",
+      "PLAYS_ROLE",
+      "customer"
+    ],
+    [
+      "msa",
+      "HAS_PARTY_ROLE",
+      "supplier"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACT_PARTY",
+      "supplier"
+    ],
+    [
+      "msa",
+      "HAS_PARTY_ROLE",
+      "customer"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACT_PARTY",
+      "customer"
+    ],
+    [
+      "msa",
+      "HAS_PRINCIPAL_PARTY",
+      "supplier"
+    ],
+    [
+      "msa",
+      "HAS_COUNTERPARTY",
+      "customer"
+    ],
+    [
+      "msa",
+      "HAS_SUBJECT_ROLE",
+      "supplier"
+    ],
+    [
+      "msa",
+      "HAS_GOVERNING_JURISDICTION",
+      "jurDelaware"
+    ],
+    [
+      "msa",
+      "IS_RECOGNIZED_IN",
+      "jurDelaware"
+    ],
+    [
+      "msa",
+      "HAS_EXECUTION_DATE",
+      "executionDate"
+    ],
+    [
+      "msa",
+      "HAS_EFFECTIVE_DATE",
+      "effectiveDate"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACT_DURATION",
+      "term"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACTUAL_ELEMENT",
+      "definitions"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACTUAL_ELEMENT",
+      "serviceCommitment"
+    ],
+    [
+      "msa",
+      "MANDATES",
+      "serviceCommitment"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACTUAL_ELEMENT",
+      "paymentCommitment"
+    ],
+    [
+      "msa",
+      "MANDATES",
+      "paymentCommitment"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACTUAL_ELEMENT",
+      "termination"
+    ],
+    [
+      "msa",
+      "MANDATES",
+      "termination"
+    ],
+    [
+      "msa",
+      "HAS_CONTRACTUAL_ELEMENT",
+      "conditionPrecedent"
+    ],
+    [
+      "conditionPrecedent",
+      "IS_PREDICATED_ON",
+      "serviceCommitment"
+    ],
+    [
+      "msa",
+      "CONFERS",
+      "serviceObligation"
+    ],
+    [
+      "msa",
+      "CONFERS",
+      "paymentObligation"
+    ],
+    [
+      "msa",
+      "CONFERS",
+      "serviceRight"
+    ],
+    [
+      "msa",
+      "CONFERS",
+      "paymentRight"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "serviceObligation"
+    ],
+    [
+      "jurDelaware",
+      "APPLIES_TO",
+      "paymentObligation"
+    ],
+    [
+      "serviceRight",
+      "IMPLIES",
+      "serviceObligation"
+    ],
+    [
+      "paymentRight",
+      "IMPLIES",
+      "paymentObligation"
+    ],
+    [
+      "serviceObligation",
+      "IS_CONFERRED_ON",
+      "northwind"
+    ],
+    [
+      "serviceRight",
+      "IS_CONFERRED_ON",
+      "contoso"
+    ],
+    [
+      "paymentObligation",
+      "IS_CONFERRED_ON",
+      "contoso"
+    ],
+    [
+      "paymentRight",
+      "IS_CONFERRED_ON",
+      "northwind"
+    ],
+    [
+      "msaDocument",
+      "RECORDS",
+      "msa"
+    ],
+    [
+      "msaDocument",
+      "IS_EVIDENCE_FOR",
+      "msa"
+    ]
+  ]
+}

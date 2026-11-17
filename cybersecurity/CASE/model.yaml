@@ -1,0 +1,871 @@
+"schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json"
+"version": "1.5.0"
+"id": "case-1.5.0"
+"name": "CASE 1.5.0"
+"description": "The Cyber-investigation Analysis Standard Expression (CASE) 1.5.0, published by the CASE Community (https://caseontology.org/) under the Linux Foundation's Cyber Domain Ontology project. CASE is the investigation profile of the Unified Cyber Ontology (UCO): it adds what a cyber investigation records around UCO's observables and actions, namely the investigation itself and its authorizations, the investigative actions performed and the actions they were informed by, provenance records that track exhibits through their chain of custody, and the roles of the people involved (investigator, examiner, attorney, subject). Generated from the 1.5.0 release Turtle files of CASE (https://github.com/casework/CASE, tag 1.5.0) and UCO 1.5.0, which CASE imports: each CASE class is a node, along with the UCO classes CASE classes extend or point at, each SHACL property shape a property or, for an object-valued property, a relationship, and each superclass an implied label."
+"nodes":
+  "Action":
+    "labels":
+      "identifier": "Action"
+      "implied":
+        - "UcoObject"
+    "description": "An action is something that may be done or performed."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/Action"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Action: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+      "actionCount":
+        "type": "INTEGER"
+        "name": "actionCount"
+        "description": "The number of times that the action was performed."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/actionCount"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/actionCount"
+            "datatypes":
+              - "nonNegativeInteger"
+            "maxCount": 1
+      "actionStatus":
+        "type": "STRING"
+        "name": "actionStatus"
+        "description": "The current state of the action. Suggested values, from the open vocabulary ActionStatusTypeVocab: `Complete/Finish`, `Error`, `Fail`, `Ongoing`, `Pending`, `Success`, `Unknown`."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/actionStatus"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/actionStatus"
+            "datatypes":
+              - "string"
+            "vocabulary": "ActionStatusTypeVocab"
+            "suggestedValues":
+              - "Complete/Finish"
+              - "Error"
+              - "Fail"
+              - "Ongoing"
+              - "Pending"
+              - "Success"
+              - "Unknown"
+            "maxCount": 1
+      "endTime":
+        "type": "ZONED DATETIME"
+        "name": "endTime"
+        "description": "The time at which performance of the action ended."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/endTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/endTime"
+            "datatypes":
+              - "dateTime"
+            "maxCount": 1
+      "startTime":
+        "type": "ZONED DATETIME"
+        "name": "startTime"
+        "description": "The time at which performance of the action began."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/startTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/startTime"
+            "datatypes":
+              - "dateTime"
+            "maxCount": 1
+    "constraints":
+      "key_Action":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Action_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/Action"
+        "ontology": "UCO"
+        "namespace": "action"
+        "disjointWith":
+          - "Event"
+  "ActionLifecycle":
+    "labels":
+      "identifier": "ActionLifecycle"
+      "implied":
+        - "Action"
+    "description": "An action lifecycle is an action pattern consisting of an ordered set of multiple actions or subordinate action lifecycles."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/ActionLifecycle"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the ActionLifecycle: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+      "actionCount":
+        "type": "LIST<INTEGER>"
+        "name": "actionCount"
+        "description": "The number of times that the action was performed."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/actionCount"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/actionCount"
+            "datatypes":
+              - "nonNegativeInteger"
+      "actionStatus":
+        "type": "LIST<STRING>"
+        "name": "actionStatus"
+        "description": "The current state of the action."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/actionStatus"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/actionStatus"
+            "vocabulary": "ActionStatusTypeVocab"
+      "endTime":
+        "type": "LIST<ZONED DATETIME>"
+        "name": "endTime"
+        "description": "The time at which performance of the action ended."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/endTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/endTime"
+            "datatypes":
+              - "dateTime"
+      "startTime":
+        "type": "LIST<ZONED DATETIME>"
+        "name": "startTime"
+        "description": "The time at which performance of the action began."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/action/startTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/action/startTime"
+            "datatypes":
+              - "dateTime"
+    "constraints":
+      "key_ActionLifecycle":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_ActionLifecycle_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/ActionLifecycle"
+        "ontology": "UCO"
+        "namespace": "action"
+  "Attorney":
+    "labels":
+      "identifier": "Attorney"
+      "implied":
+        - "Role"
+    "description": "Attorney is a role involved in preparing, interpreting, and applying law."
+    "reference": "https://ontology.caseontology.org/case/investigation/Attorney"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Attorney: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_Attorney":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Attorney_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/Attorney"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "Authorization":
+    "labels":
+      "identifier": "Authorization"
+      "implied":
+        - "UcoObject"
+    "description": "An authorization is a grouping of characteristics unique to some form of authoritative permission identified for investigative action."
+    "reference": "https://ontology.caseontology.org/case/investigation/Authorization"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Authorization: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+      "authorizationIdentifier":
+        "type": "LIST<STRING>"
+        "name": "authorizationIdentifier"
+        "description": "The identifier for a particular authorization (e.g. warrant number)."
+        "reference": "https://ontology.caseontology.org/case/investigation/authorizationIdentifier"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.caseontology.org/case/investigation/authorizationIdentifier"
+            "datatypes":
+              - "string"
+      "authorizationType":
+        "type": "STRING"
+        "name": "authorizationType"
+        "description": "A label categorizing a type of authorization (e.g. warrant)."
+        "reference": "https://ontology.caseontology.org/case/investigation/authorizationType"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.caseontology.org/case/investigation/authorizationType"
+            "datatypes":
+              - "string"
+            "maxCount": 1
+      "endTime":
+        "type": "ZONED DATETIME"
+        "name": "endTime"
+        "description": "The ending time of a time range."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/endTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/endTime"
+            "datatypes":
+              - "dateTime"
+            "maxCount": 1
+      "startTime":
+        "type": "ZONED DATETIME"
+        "name": "startTime"
+        "description": "The initial time of a time range."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/startTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/startTime"
+            "datatypes":
+              - "dateTime"
+            "maxCount": 1
+    "constraints":
+      "key_Authorization":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Authorization_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/Authorization"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "Compilation":
+    "labels":
+      "identifier": "Compilation"
+      "implied":
+        - "UcoObject"
+    "description": "A compilation is a grouping of things."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/core/Compilation"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Compilation: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_Compilation":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Compilation_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/core/Compilation"
+        "ontology": "UCO"
+        "namespace": "core"
+  "ContextualCompilation":
+    "labels":
+      "identifier": "ContextualCompilation"
+      "implied":
+        - "Compilation"
+    "description": "A contextual compilation is a grouping of things sharing some context (e.g., a set of network connections observed on a given day, all accounts associated with a given person)."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/core/ContextualCompilation"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the ContextualCompilation: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_ContextualCompilation":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_ContextualCompilation_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/core/ContextualCompilation"
+        "ontology": "UCO"
+        "namespace": "core"
+  "Examiner":
+    "labels":
+      "identifier": "Examiner"
+      "implied":
+        - "Role"
+    "description": "Examiner is a role involved in providing scientific evaluations of evidence that are used to aid law enforcement investigations and court cases."
+    "reference": "https://ontology.caseontology.org/case/investigation/Examiner"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Examiner: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_Examiner":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Examiner_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/Examiner"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "ExaminerActionLifecycle":
+    "labels":
+      "identifier": "ExaminerActionLifecycle"
+      "implied":
+        - "ActionLifecycle"
+    "description": "An examiner action lifecycle is an action pattern consisting of an ordered set of actions or subordinate action-lifecycles performed by an entity acting in a role involved in providing scientific evaluations of evidence that is used to aid law enforcement investigations and court cases."
+    "reference": "https://ontology.caseontology.org/case/investigation/ExaminerActionLifecycle"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the ExaminerActionLifecycle: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_ExaminerActionLifecycle":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_ExaminerActionLifecycle_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/ExaminerActionLifecycle"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "Investigation":
+    "labels":
+      "identifier": "Investigation"
+      "implied":
+        - "ContextualCompilation"
+    "description": "An investigation is a grouping of characteristics unique to an exploration of the facts involved in a cyber-relevant set of suspicious activity."
+    "reference": "https://ontology.caseontology.org/case/investigation/Investigation"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Investigation: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+      "endTime":
+        "type": "ZONED DATETIME"
+        "name": "endTime"
+        "description": "The ending time of a time range."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/endTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/endTime"
+            "datatypes":
+              - "dateTime"
+            "maxCount": 1
+      "focus":
+        "type": "LIST<STRING>"
+        "name": "focus"
+        "description": "Specifies the topical focus of an investigation."
+        "reference": "https://ontology.caseontology.org/case/investigation/focus"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.caseontology.org/case/investigation/focus"
+            "datatypes":
+              - "string"
+      "investigationForm":
+        "type": "STRING"
+        "name": "investigationForm"
+        "description": "A label categorizing a type of investigation (case, incident, suspicious-activity, etc.). Suggested values, from the open vocabulary InvestigationFormVocab: `case`, `incident`, `suspicious-activity`."
+        "reference": "https://ontology.caseontology.org/case/investigation/investigationForm"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.caseontology.org/case/investigation/investigationForm"
+            "datatypes":
+              - "string"
+            "vocabulary": "InvestigationFormVocab"
+            "suggestedValues":
+              - "case"
+              - "incident"
+              - "suspicious-activity"
+            "maxCount": 1
+      "investigationStatus":
+        "type": "STRING"
+        "name": "investigationStatus"
+        "description": "A label characterizing the status of an investigation (open, closed, etc.)."
+        "reference": "https://ontology.caseontology.org/case/investigation/investigationStatus"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.caseontology.org/case/investigation/investigationStatus"
+            "datatypes":
+              - "string"
+            "maxCount": 1
+      "startTime":
+        "type": "ZONED DATETIME"
+        "name": "startTime"
+        "description": "The initial time of a time range."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/startTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/startTime"
+            "datatypes":
+              - "dateTime"
+            "maxCount": 1
+    "constraints":
+      "key_Investigation":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Investigation_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/Investigation"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "InvestigativeAction":
+    "labels":
+      "identifier": "InvestigativeAction"
+      "implied":
+        - "Action"
+    "description": "An investigative action is something that may be done or performed within the context of an investigation, typically to examine or analyze evidence or other data."
+    "reference": "https://ontology.caseontology.org/case/investigation/InvestigativeAction"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the InvestigativeAction: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_InvestigativeAction":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_InvestigativeAction_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/InvestigativeAction"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "Investigator":
+    "labels":
+      "identifier": "Investigator"
+      "implied":
+        - "Role"
+    "description": "Investigator is a role involved in coordinating an investigation."
+    "reference": "https://ontology.caseontology.org/case/investigation/Investigator"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Investigator: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_Investigator":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Investigator_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/Investigator"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "ProvenanceRecord":
+    "labels":
+      "identifier": "ProvenanceRecord"
+      "implied":
+        - "ContextualCompilation"
+    "description": "A provenance record is a grouping of characteristics unique to the provenantial (chronology of the ownership, custody or location) connection between an investigative action and a set of observations (items and/or actions) or interpretations that result from it."
+    "reference": "https://ontology.caseontology.org/case/investigation/ProvenanceRecord"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the ProvenanceRecord: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+      "exhibitNumber":
+        "type": "STRING"
+        "name": "exhibitNumber"
+        "description": "The exhibit number specifies an identifier assigned to a set of objects, unique within the scope of an investigation."
+        "reference": "https://ontology.caseontology.org/case/investigation/exhibitNumber"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.caseontology.org/case/investigation/exhibitNumber"
+            "datatypes":
+              - "string"
+            "maxCount": 1
+      "rootExhibitNumber":
+        "type": "LIST<STRING>"
+        "name": "rootExhibitNumber"
+        "description": "The root exhibit number specifies a unique identifier assigned to a set of objects at the start of their treatment as part of an investigation. When found on a provenance record that comes after initial investigative treatment, the root exhibit number is a reference to the initial provenance record."
+        "reference": "https://ontology.caseontology.org/case/investigation/rootExhibitNumber"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.caseontology.org/case/investigation/rootExhibitNumber"
+            "datatypes":
+              - "string"
+    "constraints":
+      "key_ProvenanceRecord":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_ProvenanceRecord_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/ProvenanceRecord"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "Role":
+    "labels":
+      "identifier": "Role"
+      "implied":
+        - "UcoObject"
+    "description": "A role is a usual or customary function based on contextual perspective."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/role/Role"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Role: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_Role":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Role_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/role/Role"
+        "ontology": "UCO"
+        "namespace": "role"
+  "Subject":
+    "labels":
+      "identifier": "Subject"
+      "implied":
+        - "Role"
+    "description": "Subject is a role whose conduct is within the scope of an investigation."
+    "reference": "https://ontology.caseontology.org/case/investigation/Subject"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Subject: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_Subject":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_Subject_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/Subject"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "SubjectActionLifecycle":
+    "labels":
+      "identifier": "SubjectActionLifecycle"
+      "implied":
+        - "ActionLifecycle"
+    "description": "A subject action lifecycle is an action pattern consisting of an ordered set of multiple actions or subordinate action-lifecycles performed by an entity acting in a role whose conduct may be within the scope of an investigation."
+    "reference": "https://ontology.caseontology.org/case/investigation/SubjectActionLifecycle"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the SubjectActionLifecycle: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_SubjectActionLifecycle":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_SubjectActionLifecycle_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/SubjectActionLifecycle"
+        "ontology": "CASE"
+        "namespace": "investigation"
+  "UcoObject":
+    "labels":
+      "identifier": "UcoObject"
+      "implied":
+        - "UcoThing"
+    "description": "A UCO object is a representation of a fundamental concept either directly inherent to the cyber domain or indirectly related to the cyber domain and necessary for contextually characterizing cyber domain concepts and relationships. Within the Unified Cyber Ontology (UCO) structure this is the base class acting as a consistent, unifying and interoperable foundation for all explicit and inter-relatable content objects."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/core/UcoObject"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the UcoObject: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+      "description":
+        "type": "LIST<STRING>"
+        "name": "description"
+        "description": "A description of a particular concept characterization."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/description"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/description"
+            "datatypes":
+              - "string"
+      "modifiedTime":
+        "type": "LIST<ZONED DATETIME>"
+        "name": "modifiedTime"
+        "description": "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/modifiedTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/modifiedTime"
+            "datatypes":
+              - "dateTime"
+      "name":
+        "type": "STRING"
+        "name": "name"
+        "description": "The name of a particular concept characterization."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/name"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/name"
+            "datatypes":
+              - "string"
+            "maxCount": 1
+      "objectCreatedTime":
+        "type": "ZONED DATETIME"
+        "name": "objectCreatedTime"
+        "description": "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/objectCreatedTime"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/objectCreatedTime"
+            "datatypes":
+              - "dateTime"
+            "maxCount": 1
+      "objectStatus":
+        "type": "STRING"
+        "name": "objectStatus"
+        "description": "The current state of formality and acceptance for a UCO object."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/objectStatus"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/objectStatus"
+            "datatypes":
+              - "string"
+            "vocabulary": "ObjectStatusVocab"
+            "maxCount": 1
+        "one_of":
+          - "Draft"
+          - "Final"
+          - "Deprecated"
+      "specVersion":
+        "type": "STRING"
+        "name": "specVersion"
+        "description": "The version of UCO ontology or subontology specification used to characterize a concept."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/specVersion"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/specVersion"
+            "datatypes":
+              - "string"
+            "maxCount": 1
+      "tag":
+        "type": "LIST<STRING>"
+        "name": "tag"
+        "description": "A generic tag/label."
+        "reference": "https://ontology.unifiedcyberontology.org/uco/core/tag"
+        "extensions":
+          "custom":
+            "iri": "https://ontology.unifiedcyberontology.org/uco/core/tag"
+            "datatypes":
+              - "string"
+    "constraints":
+      "key_UcoObject":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_UcoObject_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/core/UcoObject"
+        "ontology": "UCO"
+        "namespace": "core"
+  "UcoThing":
+    "labels":
+      "identifier": "UcoThing"
+    "description": "UcoThing is the top-level class for individuals within UCO."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/core/UcoThing"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the UcoThing: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_UcoThing":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_UcoThing_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/core/UcoThing"
+        "ontology": "UCO"
+        "namespace": "core"
+  "VictimActionLifecycle":
+    "labels":
+      "identifier": "VictimActionLifecycle"
+      "implied":
+        - "ActionLifecycle"
+    "description": "A victim action lifecycle is an action pattern consisting of an ordered set of multiple actions or subordinate action-lifecycles performed by an entity acting in a role characterized by its potential to be harmed as a result of a crime, accident, or other event or action."
+    "reference": "https://ontology.caseontology.org/case/investigation/VictimActionLifecycle"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the VictimActionLifecycle: its IRI, the @id of the object in UCO JSON-LD. Unique within a data set; objects that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/json-ld11/#node-identifiers"
+    "constraints":
+      "key_VictimActionLifecycle":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "uri_VictimActionLifecycle_key"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/VictimActionLifecycle"
+        "ontology": "CASE"
+        "namespace": "investigation"
+"relationships":
+  "Action_ENVIRONMENT_UcoObject":
+    "type": "ENVIRONMENT"
+    "from":
+      "node": "Action"
+      "max_count": 1
+    "to":
+      "node": "UcoObject"
+    "description": "The environment wherein an action occurs. Each Action has at most one UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/environment"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/environment"
+        "maxCount": 1
+  "Action_ERROR_UcoObject":
+    "type": "ERROR"
+    "from":
+      "node": "Action"
+    "to":
+      "node": "UcoObject"
+    "description": "A characterization of the differences between the expected and the actual performance of the action. Each Action has zero or more UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/error"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/error"
+  "Action_INSTRUMENT_UcoObject":
+    "type": "INSTRUMENT"
+    "from":
+      "node": "Action"
+    "to":
+      "node": "UcoObject"
+    "description": "The things used to perform an action. Each Action has zero or more UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/instrument"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/instrument"
+  "Action_OBJECT_UcoObject":
+    "type": "OBJECT"
+    "from":
+      "node": "Action"
+    "to":
+      "node": "UcoObject"
+    "description": "The things that the action is performed on/against. Each Action has zero or more UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/object"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/object"
+  "Action_PARTICIPANT_UcoObject":
+    "type": "PARTICIPANT"
+    "from":
+      "node": "Action"
+    "to":
+      "node": "UcoObject"
+    "description": "The supporting (non-primary) performers of an action. Each Action has zero or more UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/participant"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/participant"
+  "Action_PERFORMER_UcoObject":
+    "type": "PERFORMER"
+    "from":
+      "node": "Action"
+      "max_count": 1
+    "to":
+      "node": "UcoObject"
+    "description": "The primary performer of an action. Each Action has at most one UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/performer"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/performer"
+        "maxCount": 1
+  "Action_RESULT_UcoObject":
+    "type": "RESULT"
+    "from":
+      "node": "Action"
+    "to":
+      "node": "UcoObject"
+    "description": "The things resulting from performing an action. Each Action has zero or more UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/result"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/result"
+  "Action_SUBACTION_Action":
+    "type": "SUBACTION"
+    "from":
+      "node": "Action"
+    "to":
+      "node": "Action"
+    "description": "References to other actions that make up part of a larger more complex action. Each Action has zero or more Action."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/subaction"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/subaction"
+  "ActionLifecycle_ERROR_UcoObject":
+    "type": "ERROR"
+    "from":
+      "node": "ActionLifecycle"
+    "to":
+      "node": "UcoObject"
+    "description": "A characterization of the differences between the expected and the actual performance of the action. Each ActionLifecycle has between 0 and 0 UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/action/error"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/action/error"
+  "ContextualCompilation_OBJECT_UcoObject":
+    "type": "OBJECT"
+    "from":
+      "node": "ContextualCompilation"
+    "to":
+      "node": "UcoObject"
+    "description": "Specifies one or more UcoObjects. Each ContextualCompilation has zero or more UcoObject."
+    "reference": "https://ontology.unifiedcyberontology.org/uco/core/object"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.unifiedcyberontology.org/uco/core/object"
+  "Investigation_RELEVANT_AUTHORIZATION_Authorization":
+    "type": "RELEVANT_AUTHORIZATION"
+    "from":
+      "node": "Investigation"
+    "to":
+      "node": "Authorization"
+    "description": "Specifies an authorization relevant to a particular investigation. Each Investigation has zero or more Authorization."
+    "reference": "https://ontology.caseontology.org/case/investigation/relevantAuthorization"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/relevantAuthorization"
+        "blankNodes": true
+  "InvestigativeAction_WAS_INFORMED_BY_InvestigativeAction":
+    "type": "WAS_INFORMED_BY"
+    "from":
+      "node": "InvestigativeAction"
+    "to":
+      "node": "InvestigativeAction"
+    "description": "A re-implementation of the wasInformedBy property in W3C PROV-O, where an entity is exchanged by two activities, 'one activity using the entity generated by the other'. [Ref: https://www.w3.org/TR/prov-o/#wasInformedBy]. Each InvestigativeAction has zero or more InvestigativeAction."
+    "reference": "https://ontology.caseontology.org/case/investigation/wasInformedBy"
+    "extensions":
+      "custom":
+        "iri": "https://ontology.caseontology.org/case/investigation/wasInformedBy"
+        "blankNodes": true

@@ -1,0 +1,22 @@
+{
+  "source": "the ODRL Version 2.2 RDF vocabulary published by the W3C",
+  "link": "the term IRI",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "Policies and rules", "values": ["Policies and rules"]},
+      {"name": "Assets and parties", "values": ["Assets and parties"]},
+      {"name": "Constraints and operands", "values": ["Constraints and operands"]},
+      {"name": "Actions and the root", "values": ["Actions", "Thing"]}
+    ]
+  },
+  "sub": ["area", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

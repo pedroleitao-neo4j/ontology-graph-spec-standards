@@ -1,0 +1,1131 @@
+{
+  "scenario": "A P&ID extract of the fictional Kestrel Gas Processing Plant, exchanged between engineering tools in the DEXPI format. Condensate line 20-113 runs from the feed drum PV-2010 through export pump P-2001A, its discharge valve GV-2001 and flow element FE-2001 to an off-page connector. The flow control loop L20.001 senses the segment with an orifice measuring system, conveys the signal to controller FIC-2010 and actuates globe valve FV-2001 through a fail-close actuator. Duty and standby pumps, with their motors and impellers, sit in the plant's breakdown from enterprise to section, area, system and train.",
+  "nodes": {
+    "KGP-M": {
+      "node": "PlantModel",
+      "properties": {
+        "id": "KGP-M"
+      }
+    },
+    "KGP-MD": {
+      "node": "PlantMetaData",
+      "properties": {
+        "id": "KGP-MD",
+        "creatorName": "B. Lund",
+        "checkerName": "H. Moe",
+        "approverName": "I. Solberg",
+        "creationDateRepresentation": "2025-06-02",
+        "drawingName": "Condensate export, P&ID",
+        "drawingNumber": "KGP-PID-1120",
+        "fileName": "KGP_PID_1120.xml",
+        "lastModificationDateRepresentation": "2025-11-28",
+        "projectName": "Condensate export upgrade",
+        "projectNumber": "P26.041",
+        "revisionNumber": "R1.1",
+        "sheetNumber": "2a",
+        "totalNumberOfSheets": 4,
+        "siteName": "Troms Field Site",
+        "enterpriseName": "Kestrel Energy",
+        "processPlantName": "Kestrel Gas Processing Plant",
+        "plantSectionIdentificationCode": "20",
+        "plantSectionName": "Condensate stabilisation and export",
+        "plantAreaIdentificationCode": "F4",
+        "plantAreaName": "Area F4",
+        "plantSystemIdentificationCode": "X123",
+        "plantSystemName": "Condensate export system",
+        "plantTrainIdentificationCode": "T456",
+        "plantTrainName": "Train T456",
+        "processPlantIdentificationCode": "KGP",
+        "siteIdentificationCode": "TFS",
+        "enterpriseIdentificationCode": "KE"
+      }
+    },
+    "KE": {
+      "node": "Enterprise",
+      "properties": {
+        "id": "KE",
+        "enterpriseIdentificationCode": "KE",
+        "enterpriseName": "Kestrel Energy"
+      }
+    },
+    "TFS": {
+      "node": "Site",
+      "properties": {
+        "id": "TFS",
+        "siteIdentificationCode": "TFS",
+        "siteName": "Troms Field Site"
+      }
+    },
+    "ABC": {
+      "node": "ProcessPlant",
+      "properties": {
+        "id": "ABC",
+        "processPlantIdentificationCode": "KGP",
+        "processPlantName": "Kestrel Gas Processing Plant"
+      }
+    },
+    "S20": {
+      "node": "PlantSection",
+      "properties": {
+        "id": "S20",
+        "plantSectionIdentificationCode": "20",
+        "plantSectionName": "Condensate stabilisation and export"
+      }
+    },
+    "F4": {
+      "node": "PlantArea",
+      "properties": {
+        "id": "F4",
+        "plantAreaIdentificationCode": "F4",
+        "plantAreaName": "Area F4"
+      }
+    },
+    "X123": {
+      "node": "PlantSystem",
+      "properties": {
+        "id": "X123",
+        "plantSystemIdentificationCode": "X123",
+        "plantSystemName": "Condensate export system"
+      }
+    },
+    "T456": {
+      "node": "PlantTrain",
+      "properties": {
+        "id": "T456",
+        "plantTrainIdentificationCode": "T456",
+        "plantTrainName": "Train T456"
+      }
+    },
+    "PV-2010": {
+      "node": "PressureVessel",
+      "properties": {
+        "id": "PV-2010",
+        "tagName": "PV-2010",
+        "tagNamePrefix": "PV",
+        "tagNameSequenceNumber": "2010",
+        "equipmentDescription": "en: condensate stabiliser feed drum",
+        "nominalCapacityVolume": "7.2 MetreCubed",
+        "cylinderLength": "2 Metre"
+      }
+    },
+    "P-2001A": {
+      "node": "CentrifugalPump",
+      "properties": {
+        "id": "P-2001A",
+        "tagName": "P-2001A",
+        "tagNamePrefix": "P",
+        "tagNameSequenceNumber": "2001",
+        "tagNameSuffix": "A",
+        "equipmentDescription": "en: horizontal end-suction centrifugal pump, API 610 OH2",
+        "designVolumeFlowRate": "120 MetreCubedPerHour",
+        "designPressureHead": "18 Metre",
+        "differentialPressure": "4.8 Bar",
+        "designRotationalSpeed": "2950 ReciprocalMinute",
+        "designShaftPower": "90 Kilowatt"
+      }
+    },
+    "P-2001A-M": {
+      "node": "AlternatingCurrentMotorAsComponent",
+      "properties": {
+        "id": "P-2001A-M",
+        "subTagName": "ST1",
+        "nominalPower": "90 Kilowatt",
+        "nominalRotationalFrequency": "2950 ReciprocalMinute",
+        "alternatingCurrentFrequency": "50 Hertz",
+        "nominalVoltage": "400 Volt"
+      }
+    },
+    "P-2001A-IM": {
+      "node": "Impeller",
+      "properties": {
+        "id": "P-2001A-IM",
+        "diameter": "25 Centimetre",
+        "materialOfConstructionCode": "1.4308",
+        "stageIdentifier": "s1"
+      }
+    },
+    "P-2001B": {
+      "node": "CentrifugalPump",
+      "properties": {
+        "id": "P-2001B",
+        "tagName": "P-2001B",
+        "tagNamePrefix": "P",
+        "tagNameSequenceNumber": "2001",
+        "tagNameSuffix": "B",
+        "equipmentDescription": "en: horizontal end-suction centrifugal pump, API 610 OH2",
+        "designVolumeFlowRate": "120 MetreCubedPerHour",
+        "designPressureHead": "18 Metre",
+        "differentialPressure": "4.8 Bar",
+        "designRotationalSpeed": "2950 ReciprocalMinute",
+        "designShaftPower": "90 Kilowatt"
+      }
+    },
+    "P-2001B-M": {
+      "node": "AlternatingCurrentMotorAsComponent",
+      "properties": {
+        "id": "P-2001B-M",
+        "subTagName": "ST1",
+        "nominalPower": "90 Kilowatt",
+        "nominalRotationalFrequency": "2950 ReciprocalMinute",
+        "alternatingCurrentFrequency": "50 Hertz",
+        "nominalVoltage": "400 Volt"
+      }
+    },
+    "P-2001B-IM": {
+      "node": "Impeller",
+      "properties": {
+        "id": "P-2001B-IM",
+        "diameter": "25 Centimetre",
+        "materialOfConstructionCode": "1.4308",
+        "stageIdentifier": "s1"
+      }
+    },
+    "FIC-1": {
+      "node": "InstrumentationLoopFunction",
+      "properties": {
+        "id": "FIC-1",
+        "instrumentationLoopFunctionNumber": "L20.001"
+      }
+    },
+    "L20-113": {
+      "node": "PipingNetworkSystem",
+      "properties": {
+        "id": "L20-113",
+        "lineNumber": "20-113",
+        "fluidCode": "CS",
+        "pipingClassCode": "75HB13",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80",
+        "jacketedPipe": "unjacketedPipe",
+        "onHold": "notOnHold",
+        "heatTracingType": "noHeatTracingSystem"
+      }
+    },
+    "N1": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N1",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N2": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N2",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N3": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N3",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N4": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N4",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N5": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N5",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N6": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N6",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N7": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N7",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N8": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N8",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N9": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N9",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "N10": {
+      "node": "PipingNode",
+      "properties": {
+        "id": "N10",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80"
+      }
+    },
+    "PV-2010-N1": {
+      "node": "ProcessNozzle",
+      "properties": {
+        "id": "PV-2010-N1",
+        "subTagName": "N1",
+        "nominalPressureRepresentation": "PN 16",
+        "nominalPressureTypeRepresentation": "PN",
+        "nominalPressureNumericalValueRepresentation": "16",
+        "nominalPressureStandard": "en1333Pn16Artefact"
+      }
+    },
+    "PV-2010-N2": {
+      "node": "ProcessNozzle",
+      "properties": {
+        "id": "PV-2010-N2",
+        "subTagName": "N2",
+        "nominalPressureRepresentation": "PN 16",
+        "nominalPressureTypeRepresentation": "PN",
+        "nominalPressureNumericalValueRepresentation": "16",
+        "nominalPressureStandard": "en1333Pn16Artefact"
+      }
+    },
+    "P-2001A-S": {
+      "node": "ProcessNozzle",
+      "properties": {
+        "id": "P-2001A-S",
+        "subTagName": "S",
+        "nominalPressureRepresentation": "PN 16",
+        "nominalPressureTypeRepresentation": "PN",
+        "nominalPressureNumericalValueRepresentation": "16",
+        "nominalPressureStandard": "en1333Pn16Artefact"
+      }
+    },
+    "P-2001A-D": {
+      "node": "ProcessNozzle",
+      "properties": {
+        "id": "P-2001A-D",
+        "subTagName": "D",
+        "nominalPressureRepresentation": "PN 16",
+        "nominalPressureTypeRepresentation": "PN",
+        "nominalPressureNumericalValueRepresentation": "16",
+        "nominalPressureStandard": "en1333Pn16Artefact"
+      }
+    },
+    "L20-113-S1": {
+      "node": "PipingNetworkSegment",
+      "properties": {
+        "id": "L20-113-S1",
+        "fluidCode": "CS",
+        "pipingClassCode": "75HB13",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80",
+        "flowDirection": "singleFlowPipingNetworkSegment",
+        "segmentNumber": "S1",
+        "slope": "unslopedPipingNetworkSegment",
+        "siphon": "noSiphon",
+        "primarySecondaryPipingNetworkSegment": "primaryPipingNetworkSegment"
+      }
+    },
+    "GV-2001": {
+      "node": "GateValve",
+      "properties": {
+        "id": "GV-2001",
+        "pipingComponentNumber": "1",
+        "pipingComponentName": "gate valve DN 80",
+        "pipingClassCode": "75HB13",
+        "fluidCode": "CS",
+        "pipingClassArtefact": "pipingClassArtefact",
+        "numberOfPorts": "twoPortValve",
+        "operation": "continuousOperation",
+        "insulationType": "Q",
+        "insulationThickness": "40 Millimetre"
+      }
+    },
+    "FE-2001": {
+      "node": "VolumeFlowMeasuringElement",
+      "properties": {
+        "id": "FE-2001",
+        "pipingComponentNumber": "2",
+        "pipingComponentName": "orifice plate DN 80",
+        "fluidCode": "CS",
+        "pipingClassArtefact": "pipingClassArtefact",
+        "insulationType": "Q",
+        "insulationThickness": "40 Millimetre"
+      }
+    },
+    "OFF-113": {
+      "node": "FlowOutPipeOffPageConnector",
+      "properties": {
+        "id": "OFF-113",
+        "pipeConnectorNumber": "113",
+        "pipeConnectorDescription": "en: to condensate export metering, drawing KGP-PID-1120 sheet 2b"
+      }
+    },
+    "REF-113": {
+      "node": "PipeOffPageConnectorReferenceByNumber",
+      "properties": {
+        "id": "REF-113",
+        "referencedConnectorNumber": "113",
+        "referencedDrawingNumber": "KGP-PID-1120 2b"
+      }
+    },
+    "L20-113-S2": {
+      "node": "PipingNetworkSegment",
+      "properties": {
+        "id": "L20-113-S2",
+        "fluidCode": "CS",
+        "pipingClassCode": "75HB13",
+        "nominalDiameterRepresentation": "DN 80",
+        "nominalDiameterTypeRepresentation": "DN",
+        "nominalDiameterNumericalValueRepresentation": "80",
+        "nominalDiameterStandard": "din2448ObjectDn80",
+        "flowDirection": "singleFlowPipingNetworkSegment",
+        "segmentNumber": "S2",
+        "slope": "unslopedPipingNetworkSegment",
+        "siphon": "noSiphon",
+        "primarySecondaryPipingNetworkSegment": "primaryPipingNetworkSegment",
+        "operatingTemperature": "40 DegreeCelsius"
+      }
+    },
+    "L20-113-S1-P1": {
+      "node": "Pipe",
+      "properties": {
+        "id": "L20-113-S1-P1"
+      }
+    },
+    "L20-113-S2-P1": {
+      "node": "Pipe",
+      "properties": {
+        "id": "L20-113-S2-P1"
+      }
+    },
+    "L20-113-S2-P2": {
+      "node": "Pipe",
+      "properties": {
+        "id": "L20-113-S2-P2"
+      }
+    },
+    "L20-113-S2-C1": {
+      "node": "DirectPipingConnection",
+      "properties": {
+        "id": "L20-113-S2-C1"
+      }
+    },
+    "L20-113-S2-P3": {
+      "node": "Pipe",
+      "properties": {
+        "id": "L20-113-S2-P3"
+      }
+    },
+    "FIC-2010": {
+      "node": "ProcessInstrumentationFunction",
+      "properties": {
+        "id": "FIC-2010",
+        "processInstrumentationFunctionNumber": "F20.001",
+        "processInstrumentationFunctionCategory": "F",
+        "processInstrumentationFunctions": "FIC",
+        "location": "field",
+        "vendorCompanyName": "Yokogawa",
+        "gmpRelevance": "nonGmpRelevantFunction",
+        "guaranteedSupplyFunction": "nonGuaranteedSupplyFunction",
+        "qualityRelevance": "nonQualityRelevantFunction"
+      }
+    },
+    "FT-2001": {
+      "node": "ProcessSignalGeneratingFunction",
+      "properties": {
+        "id": "FT-2001",
+        "processSignalGeneratingFunctionNumber": "F20.001-1",
+        "sensorType": "orifice"
+      }
+    },
+    "MS-FE0001": {
+      "node": "MeasuringSystem",
+      "properties": {
+        "id": "MS-FE0001",
+        "measuringSystemNumber": "FE0001",
+        "typicalInformation": "F4"
+      }
+    },
+    "MER-1": {
+      "node": "InlineMeasuringElementReference",
+      "properties": {
+        "id": "MER-1",
+        "subTagName": "ST1"
+      }
+    },
+    "FT-TR": {
+      "node": "Transmitter",
+      "properties": {
+        "id": "FT-TR",
+        "deviceTypeName": "flow transmitter",
+        "subTagName": "ST1"
+      }
+    },
+    "SIG-1": {
+      "node": "SignalConveyingFunction",
+      "properties": {
+        "id": "SIG-1",
+        "signalConveyingType": "electricalSignalConveying",
+        "signalPointNumber": "2",
+        "signalProcessControlFunctions": "SA"
+      }
+    },
+    "FY-2001": {
+      "node": "ActuatingFunction",
+      "properties": {
+        "id": "FY-2001",
+        "actuatingFunctionNumber": "F20.001-2"
+      }
+    },
+    "AS-FT0001": {
+      "node": "ActuatingSystem",
+      "properties": {
+        "id": "AS-FT0001",
+        "actuatingSystemNumber": "FT0001",
+        "typicalInformation": "F4"
+      }
+    },
+    "FV-2001": {
+      "node": "GlobeValve",
+      "properties": {
+        "id": "FV-2001",
+        "pipingComponentNumber": "3",
+        "pipingComponentName": "globe valve DN 80",
+        "pipingClassCode": "75HB13",
+        "fluidCode": "CS",
+        "pipingClassArtefact": "pipingClassArtefact",
+        "numberOfPorts": "twoPortValve",
+        "operation": "continuousOperation",
+        "insulationType": "Q",
+        "insulationThickness": "40 Millimetre"
+      }
+    },
+    "OVR-1": {
+      "node": "OperatedValveReference",
+      "properties": {
+        "id": "OVR-1",
+        "subTagName": "ST1"
+      }
+    },
+    "CA-1": {
+      "node": "ControlledActuator",
+      "properties": {
+        "id": "CA-1",
+        "deviceTypeName": "pneumatic diaphragm actuator",
+        "subTagName": "ST1",
+        "failAction": "failClose",
+        "failActionRepresentation": "F.C."
+      }
+    },
+    "SIG-2": {
+      "node": "SignalConveyingFunction",
+      "properties": {
+        "id": "SIG-2",
+        "signalConveyingType": "electricalSignalConveying",
+        "signalPointNumber": "3",
+        "signalProcessControlFunctions": "SA"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "KGP-M",
+      "HAS_META_DATA",
+      "KGP-MD"
+    ],
+    [
+      "KGP-M",
+      "HAS_PLANT_STRUCTURE_ITEMS",
+      "KE"
+    ],
+    [
+      "KGP-M",
+      "HAS_PLANT_STRUCTURE_ITEMS",
+      "TFS"
+    ],
+    [
+      "KGP-M",
+      "HAS_PLANT_STRUCTURE_ITEMS",
+      "ABC"
+    ],
+    [
+      "KGP-M",
+      "HAS_PLANT_STRUCTURE_ITEMS",
+      "S20"
+    ],
+    [
+      "KGP-M",
+      "HAS_PLANT_STRUCTURE_ITEMS",
+      "F4"
+    ],
+    [
+      "KGP-M",
+      "HAS_PLANT_STRUCTURE_ITEMS",
+      "X123"
+    ],
+    [
+      "KGP-M",
+      "HAS_PLANT_STRUCTURE_ITEMS",
+      "T456"
+    ],
+    [
+      "TFS",
+      "HAS_PARENT_STRUCTURE",
+      "KE"
+    ],
+    [
+      "ABC",
+      "HAS_PARENT_STRUCTURE",
+      "TFS"
+    ],
+    [
+      "S20",
+      "HAS_PARENT_STRUCTURE",
+      "ABC"
+    ],
+    [
+      "P-2001A",
+      "HAS_MOTORS",
+      "P-2001A-M"
+    ],
+    [
+      "P-2001A",
+      "HAS_IMPELLERS",
+      "P-2001A-IM"
+    ],
+    [
+      "KGP-M",
+      "HAS_TAGGED_PLANT_ITEMS",
+      "P-2001A"
+    ],
+    [
+      "P-2001A",
+      "HAS_PLANT_AREA",
+      "F4"
+    ],
+    [
+      "P-2001A",
+      "HAS_PLANT_SYSTEM",
+      "X123"
+    ],
+    [
+      "P-2001A",
+      "HAS_PLANT_TRAIN",
+      "T456"
+    ],
+    [
+      "P-2001A",
+      "HAS_PARENT_STRUCTURE",
+      "S20"
+    ],
+    [
+      "P-2001B",
+      "HAS_MOTORS",
+      "P-2001B-M"
+    ],
+    [
+      "P-2001B",
+      "HAS_IMPELLERS",
+      "P-2001B-IM"
+    ],
+    [
+      "KGP-M",
+      "HAS_TAGGED_PLANT_ITEMS",
+      "P-2001B"
+    ],
+    [
+      "P-2001B",
+      "HAS_PLANT_AREA",
+      "F4"
+    ],
+    [
+      "P-2001B",
+      "HAS_PLANT_SYSTEM",
+      "X123"
+    ],
+    [
+      "P-2001B",
+      "HAS_PLANT_TRAIN",
+      "T456"
+    ],
+    [
+      "P-2001B",
+      "HAS_PARENT_STRUCTURE",
+      "S20"
+    ],
+    [
+      "KGP-M",
+      "HAS_TAGGED_PLANT_ITEMS",
+      "PV-2010"
+    ],
+    [
+      "PV-2010",
+      "HAS_PLANT_AREA",
+      "F4"
+    ],
+    [
+      "PV-2010",
+      "HAS_PLANT_SYSTEM",
+      "X123"
+    ],
+    [
+      "PV-2010",
+      "HAS_PLANT_TRAIN",
+      "T456"
+    ],
+    [
+      "PV-2010",
+      "HAS_PARENT_STRUCTURE",
+      "S20"
+    ],
+    [
+      "KGP-M",
+      "HAS_INSTRUMENTATION_LOOP_FUNCTIONS",
+      "FIC-1"
+    ],
+    [
+      "KGP-M",
+      "HAS_PIPING_NETWORK_SYSTEMS",
+      "L20-113"
+    ],
+    [
+      "PV-2010",
+      "HAS_NOZZLES",
+      "PV-2010-N1"
+    ],
+    [
+      "PV-2010",
+      "HAS_NOZZLES",
+      "PV-2010-N2"
+    ],
+    [
+      "PV-2010-N1",
+      "HAS_NODES",
+      "N1"
+    ],
+    [
+      "P-2001A",
+      "HAS_NOZZLES",
+      "P-2001A-S"
+    ],
+    [
+      "P-2001A",
+      "HAS_NOZZLES",
+      "P-2001A-D"
+    ],
+    [
+      "P-2001A-S",
+      "HAS_NODES",
+      "N2"
+    ],
+    [
+      "P-2001A-D",
+      "HAS_NODES",
+      "N3"
+    ],
+    [
+      "L20-113",
+      "HAS_SEGMENTS",
+      "L20-113-S1"
+    ],
+    [
+      "L20-113-S1",
+      "HAS_SOURCE_ITEM",
+      "PV-2010-N1"
+    ],
+    [
+      "L20-113-S1",
+      "HAS_SOURCE_NODE",
+      "N1"
+    ],
+    [
+      "L20-113-S1",
+      "HAS_TARGET_ITEM",
+      "P-2001A-S"
+    ],
+    [
+      "L20-113-S1",
+      "HAS_TARGET_NODE",
+      "N2"
+    ],
+    [
+      "GV-2001",
+      "HAS_NODES",
+      "N4"
+    ],
+    [
+      "GV-2001",
+      "HAS_NODES",
+      "N5"
+    ],
+    [
+      "FE-2001",
+      "HAS_NODES",
+      "N6"
+    ],
+    [
+      "FE-2001",
+      "HAS_NODES",
+      "N7"
+    ],
+    [
+      "OFF-113",
+      "HAS_NODES",
+      "N10"
+    ],
+    [
+      "OFF-113",
+      "HAS_CONNECTOR_REFERENCE",
+      "REF-113"
+    ],
+    [
+      "L20-113",
+      "HAS_SEGMENTS",
+      "L20-113-S2"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_SOURCE_ITEM",
+      "P-2001A-D"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_SOURCE_NODE",
+      "N3"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_TARGET_ITEM",
+      "OFF-113"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_TARGET_NODE",
+      "N10"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_ITEMS",
+      "GV-2001"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_ITEMS",
+      "FE-2001"
+    ],
+    [
+      "L20-113-S1",
+      "HAS_CONNECTIONS",
+      "L20-113-S1-P1"
+    ],
+    [
+      "L20-113-S1-P1",
+      "HAS_SOURCE_ITEM",
+      "PV-2010-N1"
+    ],
+    [
+      "L20-113-S1-P1",
+      "HAS_SOURCE_NODE",
+      "N1"
+    ],
+    [
+      "L20-113-S1-P1",
+      "HAS_TARGET_ITEM",
+      "P-2001A-S"
+    ],
+    [
+      "L20-113-S1-P1",
+      "HAS_TARGET_NODE",
+      "N2"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_CONNECTIONS",
+      "L20-113-S2-P1"
+    ],
+    [
+      "L20-113-S2-P1",
+      "HAS_SOURCE_ITEM",
+      "P-2001A-D"
+    ],
+    [
+      "L20-113-S2-P1",
+      "HAS_SOURCE_NODE",
+      "N3"
+    ],
+    [
+      "L20-113-S2-P1",
+      "HAS_TARGET_ITEM",
+      "GV-2001"
+    ],
+    [
+      "L20-113-S2-P1",
+      "HAS_TARGET_NODE",
+      "N4"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_CONNECTIONS",
+      "L20-113-S2-P2"
+    ],
+    [
+      "L20-113-S2-P2",
+      "HAS_SOURCE_ITEM",
+      "GV-2001"
+    ],
+    [
+      "L20-113-S2-P2",
+      "HAS_SOURCE_NODE",
+      "N5"
+    ],
+    [
+      "L20-113-S2-P2",
+      "HAS_TARGET_ITEM",
+      "FE-2001"
+    ],
+    [
+      "L20-113-S2-P2",
+      "HAS_TARGET_NODE",
+      "N6"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_CONNECTIONS",
+      "L20-113-S2-C1"
+    ],
+    [
+      "L20-113-S2-C1",
+      "HAS_SOURCE_ITEM",
+      "FE-2001"
+    ],
+    [
+      "L20-113-S2-C1",
+      "HAS_SOURCE_NODE",
+      "N7"
+    ],
+    [
+      "L20-113-S2-C1",
+      "HAS_TARGET_ITEM",
+      "FV-2001"
+    ],
+    [
+      "L20-113-S2-C1",
+      "HAS_TARGET_NODE",
+      "N8"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_CONNECTIONS",
+      "L20-113-S2-P3"
+    ],
+    [
+      "L20-113-S2-P3",
+      "HAS_SOURCE_ITEM",
+      "FV-2001"
+    ],
+    [
+      "L20-113-S2-P3",
+      "HAS_SOURCE_NODE",
+      "N9"
+    ],
+    [
+      "L20-113-S2-P3",
+      "HAS_TARGET_ITEM",
+      "OFF-113"
+    ],
+    [
+      "L20-113-S2-P3",
+      "HAS_TARGET_NODE",
+      "N10"
+    ],
+    [
+      "FIC-1",
+      "HAS_PROCESS_INSTRUMENTATION_FUNCTIONS",
+      "FIC-2010"
+    ],
+    [
+      "KGP-M",
+      "HAS_PROCESS_INSTRUMENTATION_FUNCTIONS",
+      "FIC-2010"
+    ],
+    [
+      "FIC-2010",
+      "HAS_PLANT_AREA",
+      "F4"
+    ],
+    [
+      "FIC-2010",
+      "HAS_PLANT_SYSTEM",
+      "X123"
+    ],
+    [
+      "FIC-2010",
+      "HAS_PLANT_TRAIN",
+      "T456"
+    ],
+    [
+      "FIC-2010",
+      "HAS_PARENT_STRUCTURE",
+      "S20"
+    ],
+    [
+      "FIC-2010",
+      "HAS_PROCESS_SIGNAL_GENERATING_FUNCTIONS",
+      "FT-2001"
+    ],
+    [
+      "FT-2001",
+      "HAS_SYSTEMS",
+      "MS-FE0001"
+    ],
+    [
+      "KGP-M",
+      "HAS_MEASURING_SYSTEMS",
+      "MS-FE0001"
+    ],
+    [
+      "MS-FE0001",
+      "HAS_MEASURING_ELEMENT",
+      "MER-1"
+    ],
+    [
+      "MER-1",
+      "HAS_INLINE_MEASURING_ELEMENT",
+      "FE-2001"
+    ],
+    [
+      "FT-2001",
+      "HAS_SENSING_LOCATION",
+      "L20-113-S2"
+    ],
+    [
+      "MS-FE0001",
+      "HAS_TRANSMITTER",
+      "FT-TR"
+    ],
+    [
+      "FIC-2010",
+      "HAS_SIGNAL_CONVEYING_FUNCTIONS",
+      "SIG-1"
+    ],
+    [
+      "SIG-1",
+      "HAS_SOURCE",
+      "FT-2001"
+    ],
+    [
+      "SIG-1",
+      "HAS_TARGET",
+      "FIC-2010"
+    ],
+    [
+      "FIC-2010",
+      "HAS_ACTUATING_FUNCTIONS",
+      "FY-2001"
+    ],
+    [
+      "FY-2001",
+      "HAS_SYSTEMS",
+      "AS-FT0001"
+    ],
+    [
+      "KGP-M",
+      "HAS_ACTUATING_SYSTEMS",
+      "AS-FT0001"
+    ],
+    [
+      "FY-2001",
+      "HAS_ACTUATING_LOCATION",
+      "L20-113-S2"
+    ],
+    [
+      "FV-2001",
+      "HAS_NODES",
+      "N8"
+    ],
+    [
+      "FV-2001",
+      "HAS_NODES",
+      "N9"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_ITEMS",
+      "FV-2001"
+    ],
+    [
+      "L20-113-S2",
+      "HAS_ITEMS",
+      "OFF-113"
+    ],
+    [
+      "AS-FT0001",
+      "HAS_OPERATED_VALVE_REFERENCE",
+      "OVR-1"
+    ],
+    [
+      "OVR-1",
+      "HAS_VALVE",
+      "FV-2001"
+    ],
+    [
+      "AS-FT0001",
+      "HAS_CONTROLLED_ACTUATOR",
+      "CA-1"
+    ],
+    [
+      "FIC-2010",
+      "HAS_SIGNAL_CONVEYING_FUNCTIONS",
+      "SIG-2"
+    ],
+    [
+      "SIG-2",
+      "HAS_SOURCE",
+      "FIC-2010"
+    ],
+    [
+      "SIG-2",
+      "HAS_TARGET",
+      "FY-2001"
+    ]
+  ]
+}

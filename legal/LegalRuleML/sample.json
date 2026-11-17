@@ -1,0 +1,1071 @@
+{
+  "scenario": "A LegalRuleML document modelling four sections of a fictional Residential Tenancies (Example) Act 2024 of Victoria. A strict rule obliges the tenant to pay rent on time, repaired by a late fee penalty; a defeasible rule obliges the landlord to give 28 days' notice to vacate, with two alternative readings, and is overridden by a defeasible rule permitting 14 days' notice where the premises are unfit; a further rule prohibits the landlord from entering without notice. Associations tie each statement to its section, the enacting authority, the jurisdiction and its in-force date, and the agents, figures and roles of the tenancy and of the drafting are recorded beside them.",
+  "nodes": {
+    "inForce": {
+      "node": "LegalStatus",
+      "properties": {
+        "uri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#InForce"
+      }
+    },
+    "starts": {
+      "node": "StatusDevelopment",
+      "properties": {
+        "uri": "http://docs.oasis-open.org/legalruleml/ns/v1.0/vocab#Starts"
+      }
+    },
+    "strict": {
+      "node": "StrictStrength",
+      "properties": {
+        "uri": "http://example.com/rta2024#strict"
+      }
+    },
+    "defeasible": {
+      "node": "DefeasibleStrength",
+      "properties": {
+        "uri": "http://example.com/rta2024#defeasible"
+      }
+    },
+    "parliament": {
+      "node": "Agent",
+      "properties": {
+        "uri": "http://example.com/rta2024#parliament"
+      }
+    },
+    "draftingOffice": {
+      "node": "Agent",
+      "properties": {
+        "uri": "http://example.com/rta2024#draftingOffice"
+      }
+    },
+    "janeDoe": {
+      "node": "Agent",
+      "properties": {
+        "uri": "http://example.com/rta2024#janeDoe"
+      }
+    },
+    "acmeLettings": {
+      "node": "Agent",
+      "properties": {
+        "uri": "http://example.com/rta2024#acmeLettings"
+      }
+    },
+    "agents": {
+      "node": "Agents",
+      "properties": {
+        "uri": "http://example.com/rta2024#agents"
+      }
+    },
+    "tenantFn": {
+      "node": "Function",
+      "properties": {
+        "uri": "http://example.com/rta2024#tenantFn"
+      }
+    },
+    "landlordFn": {
+      "node": "Function",
+      "properties": {
+        "uri": "http://example.com/rta2024#landlordFn"
+      }
+    },
+    "tenantFigure": {
+      "node": "Figure",
+      "properties": {
+        "uri": "http://example.com/rta2024#tenantFigure"
+      }
+    },
+    "landlordFigure": {
+      "node": "Figure",
+      "properties": {
+        "uri": "http://example.com/rta2024#landlordFigure"
+      }
+    },
+    "figures": {
+      "node": "Figures",
+      "properties": {
+        "uri": "http://example.com/rta2024#figures"
+      }
+    },
+    "author": {
+      "node": "Author",
+      "properties": {
+        "uri": "http://example.com/rta2024#author"
+      }
+    },
+    "editor": {
+      "node": "Editor",
+      "properties": {
+        "uri": "http://example.com/rta2024#editor"
+      }
+    },
+    "roles": {
+      "node": "Roles",
+      "properties": {
+        "uri": "http://example.com/rta2024#roles"
+      }
+    },
+    "parliamentAuthority": {
+      "node": "Authority",
+      "properties": {
+        "uri": "http://example.com/rta2024#parliamentAuthority"
+      }
+    },
+    "authorities": {
+      "node": "Authorities",
+      "properties": {
+        "uri": "http://example.com/rta2024#authorities"
+      }
+    },
+    "victoria": {
+      "node": "Jurisdiction",
+      "properties": {
+        "uri": "http://example.com/rta2024#victoria"
+      }
+    },
+    "jurisdictions": {
+      "node": "Jurisdictions",
+      "properties": {
+        "uri": "http://example.com/rta2024#jurisdictions"
+      }
+    },
+    "s30": {
+      "node": "LegalSource",
+      "properties": {
+        "uri": "http://example.com/rta2024#source-s30"
+      }
+    },
+    "s91": {
+      "node": "LegalSource",
+      "properties": {
+        "uri": "http://example.com/rta2024#source-s91"
+      }
+    },
+    "s92": {
+      "node": "LegalSource",
+      "properties": {
+        "uri": "http://example.com/rta2024#source-s92"
+      }
+    },
+    "s95": {
+      "node": "LegalSource",
+      "properties": {
+        "uri": "http://example.com/rta2024#source-s95"
+      }
+    },
+    "sources": {
+      "node": "LegalSources",
+      "properties": {
+        "uri": "http://example.com/rta2024#sources"
+      }
+    },
+    "refSystem": {
+      "node": "Source",
+      "properties": {
+        "uri": "http://example.com/rta2024#source-act"
+      }
+    },
+    "refs30": {
+      "node": "LegalReference",
+      "properties": {
+        "uri": "http://example.com/rta2024#refs30",
+        "refID": [
+          "Residential Tenancies (Example) Act 2024, s 30"
+        ],
+        "refIDSystemName": [
+          "Example Statute Book"
+        ]
+      }
+    },
+    "refs91": {
+      "node": "LegalReference",
+      "properties": {
+        "uri": "http://example.com/rta2024#refs91",
+        "refID": [
+          "Residential Tenancies (Example) Act 2024, s 91"
+        ],
+        "refIDSystemName": [
+          "Example Statute Book"
+        ]
+      }
+    },
+    "refs92": {
+      "node": "LegalReference",
+      "properties": {
+        "uri": "http://example.com/rta2024#refs92",
+        "refID": [
+          "Residential Tenancies (Example) Act 2024, s 92"
+        ],
+        "refIDSystemName": [
+          "Example Statute Book"
+        ]
+      }
+    },
+    "refs95": {
+      "node": "LegalReference",
+      "properties": {
+        "uri": "http://example.com/rta2024#refs95",
+        "refID": [
+          "Residential Tenancies (Example) Act 2024, s 95"
+        ],
+        "refIDSystemName": [
+          "Example Statute Book"
+        ]
+      }
+    },
+    "references": {
+      "node": "LegalReferences",
+      "properties": {
+        "uri": "http://example.com/rta2024#references"
+      }
+    },
+    "times": {
+      "node": "Times",
+      "properties": {
+        "uri": "http://example.com/rta2024#times"
+      }
+    },
+    "inForceFromCommencement": {
+      "node": "TemporalCharacteristic",
+      "properties": {
+        "uri": "http://example.com/rta2024#inForceFromCommencement"
+      }
+    },
+    "temporal": {
+      "node": "TemporalCharacteristics",
+      "properties": {
+        "uri": "http://example.com/rta2024#temporal"
+      }
+    },
+    "tenant": {
+      "node": "Data",
+      "properties": {
+        "uri": "http://example.com/rta2024#tenant",
+        "symbolForData": [
+          "tenant"
+        ]
+      }
+    },
+    "landlord": {
+      "node": "Data",
+      "properties": {
+        "uri": "http://example.com/rta2024#landlord",
+        "symbolForData": [
+          "landlord"
+        ]
+      }
+    },
+    "rent": {
+      "node": "Data",
+      "properties": {
+        "uri": "http://example.com/rta2024#rent",
+        "symbolForData": [
+          "rent"
+        ]
+      }
+    },
+    "dueDate": {
+      "node": "Data",
+      "properties": {
+        "uri": "http://example.com/rta2024#dueDate",
+        "symbolForData": [
+          "dueDate"
+        ]
+      }
+    },
+    "noticePeriod": {
+      "node": "Data",
+      "properties": {
+        "uri": "http://example.com/rta2024#noticePeriod",
+        "symbolForData": [
+          "noticePeriod"
+        ]
+      }
+    },
+    "payRent": {
+      "node": "PrescriptiveStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#payRent"
+      }
+    },
+    "notice28": {
+      "node": "PrescriptiveStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#notice28"
+      }
+    },
+    "notice14": {
+      "node": "PrescriptiveStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#notice14"
+      }
+    },
+    "noEntry": {
+      "node": "PrescriptiveStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#noEntry"
+      }
+    },
+    "lateFee": {
+      "node": "PenaltyStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#lateFee"
+      }
+    },
+    "definesRent": {
+      "node": "ConstitutiveStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#definesRent"
+      }
+    },
+    "rentLate": {
+      "node": "FactualStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#rentLate"
+      }
+    },
+    "notice14Prevails": {
+      "node": "OverrideStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#notice14Prevails"
+      }
+    },
+    "lateFeeRepairs": {
+      "node": "ReparationStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#lateFeeRepairs"
+      }
+    },
+    "statements": {
+      "node": "Statements",
+      "properties": {
+        "uri": "http://example.com/rta2024#statements"
+      }
+    },
+    "rentObligation": {
+      "node": "Obligation",
+      "properties": {
+        "uri": "http://example.com/rta2024#rentObligation"
+      }
+    },
+    "noticeObligation": {
+      "node": "Obligation",
+      "properties": {
+        "uri": "http://example.com/rta2024#noticeObligation"
+      }
+    },
+    "shortNotice": {
+      "node": "Permission",
+      "properties": {
+        "uri": "http://example.com/rta2024#shortNotice"
+      }
+    },
+    "entryProhibition": {
+      "node": "Prohibition",
+      "properties": {
+        "uri": "http://example.com/rta2024#entryProhibition"
+      }
+    },
+    "quietEnjoyment": {
+      "node": "Right",
+      "properties": {
+        "uri": "http://example.com/rta2024#quietEnjoyment"
+      }
+    },
+    "rentViolation": {
+      "node": "Violation",
+      "properties": {
+        "uri": "http://example.com/rta2024#rentViolation"
+      }
+    },
+    "feeCompliance": {
+      "node": "Compliance",
+      "properties": {
+        "uri": "http://example.com/rta2024#feeCompliance"
+      }
+    },
+    "override": {
+      "node": "Override",
+      "properties": {
+        "uri": "http://example.com/rta2024#override"
+      }
+    },
+    "reparation": {
+      "node": "Reparation",
+      "properties": {
+        "uri": "http://example.com/rta2024#reparation"
+      }
+    },
+    "noticeInterpretations": {
+      "node": "Alternatives",
+      "properties": {
+        "uri": "http://example.com/rta2024#noticeInterpretations"
+      }
+    },
+    "notice28Business": {
+      "node": "PrescriptiveStatement",
+      "properties": {
+        "uri": "http://example.com/rta2024#notice28Business"
+      }
+    },
+    "assocRent": {
+      "node": "Association",
+      "properties": {
+        "uri": "http://example.com/rta2024#assocRent"
+      }
+    },
+    "assocNotice": {
+      "node": "Association",
+      "properties": {
+        "uri": "http://example.com/rta2024#assocNotice"
+      }
+    },
+    "assocShortNotice": {
+      "node": "Association",
+      "properties": {
+        "uri": "http://example.com/rta2024#assocShortNotice"
+      }
+    },
+    "assocEntry": {
+      "node": "Association",
+      "properties": {
+        "uri": "http://example.com/rta2024#assocEntry"
+      }
+    },
+    "associations": {
+      "node": "Associations",
+      "properties": {
+        "uri": "http://example.com/rta2024#associations"
+      }
+    },
+    "context": {
+      "node": "Context",
+      "properties": {
+        "uri": "http://example.com/rta2024#context"
+      }
+    },
+    "rentParaphrase": {
+      "node": "Paraphrase",
+      "properties": {
+        "uri": "http://example.com/rta2024#rentParaphrase",
+        "symbol": [
+          "The tenant must pay the rent to the landlord on or before the day it falls due."
+        ]
+      }
+    },
+    "noticeComment": {
+      "node": "Comment",
+      "properties": {
+        "uri": "http://example.com/rta2024#noticeComment",
+        "symbol": [
+          "Section 92 shortens the notice period where the premises are unfit for habitation."
+        ]
+      }
+    },
+    "noticeTemplate": {
+      "node": "Template",
+      "properties": {
+        "uri": "http://example.com/rta2024#noticeTemplate",
+        "symbol": [
+          "The landlord must give the tenant at least {noticePeriod} days' notice to vacate."
+        ]
+      }
+    },
+    "document": {
+      "node": "LegalRuleMLDocument",
+      "properties": {
+        "uri": "http://example.com/rta2024#document"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "agents",
+      "HAS_AGENT",
+      "parliament"
+    ],
+    [
+      "agents",
+      "HAS_AGENT",
+      "draftingOffice"
+    ],
+    [
+      "agents",
+      "HAS_AGENT",
+      "janeDoe"
+    ],
+    [
+      "agents",
+      "HAS_AGENT",
+      "acmeLettings"
+    ],
+    [
+      "tenantFigure",
+      "HAS_ACTOR",
+      "janeDoe"
+    ],
+    [
+      "tenantFigure",
+      "HAS_FUNCTION",
+      "tenantFn"
+    ],
+    [
+      "landlordFigure",
+      "HAS_ACTOR",
+      "acmeLettings"
+    ],
+    [
+      "landlordFigure",
+      "HAS_FUNCTION",
+      "landlordFn"
+    ],
+    [
+      "figures",
+      "HAS_FIGURE",
+      "tenantFigure"
+    ],
+    [
+      "figures",
+      "HAS_FIGURE",
+      "landlordFigure"
+    ],
+    [
+      "author",
+      "FILLED_BY",
+      "draftingOffice"
+    ],
+    [
+      "editor",
+      "FILLED_BY",
+      "draftingOffice"
+    ],
+    [
+      "roles",
+      "HAS_ROLE",
+      "author"
+    ],
+    [
+      "roles",
+      "HAS_ROLE",
+      "editor"
+    ],
+    [
+      "authorities",
+      "HAS_AUTHORITY",
+      "parliamentAuthority"
+    ],
+    [
+      "jurisdictions",
+      "HAS_JURISDICTION",
+      "victoria"
+    ],
+    [
+      "sources",
+      "HAS_LEGAL_SOURCE",
+      "s30"
+    ],
+    [
+      "sources",
+      "HAS_LEGAL_SOURCE",
+      "s91"
+    ],
+    [
+      "sources",
+      "HAS_LEGAL_SOURCE",
+      "s92"
+    ],
+    [
+      "sources",
+      "HAS_LEGAL_SOURCE",
+      "s95"
+    ],
+    [
+      "refs30",
+      "REFERS_TO",
+      "s30"
+    ],
+    [
+      "refs30",
+      "REF_ID_SYSTEM_SOURCE",
+      "refSystem"
+    ],
+    [
+      "refs91",
+      "REFERS_TO",
+      "s91"
+    ],
+    [
+      "refs91",
+      "REF_ID_SYSTEM_SOURCE",
+      "refSystem"
+    ],
+    [
+      "refs92",
+      "REFERS_TO",
+      "s92"
+    ],
+    [
+      "refs92",
+      "REF_ID_SYSTEM_SOURCE",
+      "refSystem"
+    ],
+    [
+      "refs95",
+      "REFERS_TO",
+      "s95"
+    ],
+    [
+      "refs95",
+      "REF_ID_SYSTEM_SOURCE",
+      "refSystem"
+    ],
+    [
+      "references",
+      "HAS_LEGAL_REFERENCE",
+      "refs30"
+    ],
+    [
+      "references",
+      "HAS_LEGAL_REFERENCE",
+      "refs91"
+    ],
+    [
+      "references",
+      "HAS_LEGAL_REFERENCE",
+      "refs92"
+    ],
+    [
+      "references",
+      "HAS_LEGAL_REFERENCE",
+      "refs95"
+    ],
+    [
+      "inForceFromCommencement",
+      "FOR_STATUS",
+      "inForce"
+    ],
+    [
+      "inForceFromCommencement",
+      "HAS_STATUS_DEVELOPMENT",
+      "starts"
+    ],
+    [
+      "temporal",
+      "HAS_TEMPORAL_CHARACTERISTIC",
+      "inForceFromCommencement"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "payRent"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "notice28"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "notice14"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "noEntry"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "lateFee"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "definesRent"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "rentLate"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "notice14Prevails"
+    ],
+    [
+      "statements",
+      "HAS_STATEMENT",
+      "lateFeeRepairs"
+    ],
+    [
+      "payRent",
+      "HAS_STRENGTH",
+      "strict"
+    ],
+    [
+      "noEntry",
+      "HAS_STRENGTH",
+      "strict"
+    ],
+    [
+      "lateFee",
+      "HAS_STRENGTH",
+      "strict"
+    ],
+    [
+      "notice28",
+      "HAS_STRENGTH",
+      "defeasible"
+    ],
+    [
+      "notice14",
+      "HAS_STRENGTH",
+      "defeasible"
+    ],
+    [
+      "author",
+      "FOR_EXPRESSION",
+      "payRent"
+    ],
+    [
+      "editor",
+      "FOR_EXPRESSION",
+      "notice14"
+    ],
+    [
+      "rentObligation",
+      "BEARER",
+      "tenant"
+    ],
+    [
+      "rentObligation",
+      "AUXILIARY_PARTY",
+      "landlord"
+    ],
+    [
+      "noticeObligation",
+      "BEARER",
+      "landlord"
+    ],
+    [
+      "noticeObligation",
+      "AUXILIARY_PARTY",
+      "tenant"
+    ],
+    [
+      "shortNotice",
+      "BEARER",
+      "landlord"
+    ],
+    [
+      "shortNotice",
+      "AUXILIARY_PARTY",
+      "tenant"
+    ],
+    [
+      "entryProhibition",
+      "BEARER",
+      "landlord"
+    ],
+    [
+      "quietEnjoyment",
+      "BEARER",
+      "tenant"
+    ],
+    [
+      "quietEnjoyment",
+      "AUXILIARY_PARTY",
+      "landlord"
+    ],
+    [
+      "rentViolation",
+      "BEARER",
+      "tenant"
+    ],
+    [
+      "feeCompliance",
+      "BEARER",
+      "tenant"
+    ],
+    [
+      "statements",
+      "HAS_QUALIFICATION",
+      "quietEnjoyment"
+    ],
+    [
+      "override",
+      "OVER",
+      "notice14"
+    ],
+    [
+      "override",
+      "UNDER",
+      "notice28"
+    ],
+    [
+      "reparation",
+      "TO_PRESCRIPTIVE_STATEMENT",
+      "payRent"
+    ],
+    [
+      "reparation",
+      "APPLIES_PENALTY",
+      "lateFee"
+    ],
+    [
+      "noticeInterpretations",
+      "FROM_LEGAL_SOURCES",
+      "sources"
+    ],
+    [
+      "notice28Business",
+      "HAS_STRENGTH",
+      "defeasible"
+    ],
+    [
+      "noticeInterpretations",
+      "HAS_ALTERNATIVE",
+      "notice28"
+    ],
+    [
+      "noticeInterpretations",
+      "HAS_ALTERNATIVE",
+      "notice28Business"
+    ],
+    [
+      "assocRent",
+      "APPLIES_SOURCE",
+      "s30"
+    ],
+    [
+      "assocRent",
+      "APPLIES_AUTHORITY",
+      "parliamentAuthority"
+    ],
+    [
+      "assocRent",
+      "APPLIES_JURISDICTION",
+      "victoria"
+    ],
+    [
+      "assocRent",
+      "APPLIES_TEMPORAL_CHARACTERISTICS",
+      "temporal"
+    ],
+    [
+      "assocRent",
+      "TO_TARGET",
+      "payRent"
+    ],
+    [
+      "assocRent",
+      "TO_TARGET",
+      "lateFee"
+    ],
+    [
+      "assocRent",
+      "TO_TARGET",
+      "definesRent"
+    ],
+    [
+      "assocNotice",
+      "APPLIES_SOURCE",
+      "s91"
+    ],
+    [
+      "assocNotice",
+      "APPLIES_AUTHORITY",
+      "parliamentAuthority"
+    ],
+    [
+      "assocNotice",
+      "APPLIES_JURISDICTION",
+      "victoria"
+    ],
+    [
+      "assocNotice",
+      "APPLIES_TEMPORAL_CHARACTERISTICS",
+      "temporal"
+    ],
+    [
+      "assocNotice",
+      "TO_TARGET",
+      "notice28"
+    ],
+    [
+      "assocNotice",
+      "TO_TARGET",
+      "notice28Business"
+    ],
+    [
+      "assocShortNotice",
+      "APPLIES_SOURCE",
+      "s92"
+    ],
+    [
+      "assocShortNotice",
+      "APPLIES_AUTHORITY",
+      "parliamentAuthority"
+    ],
+    [
+      "assocShortNotice",
+      "APPLIES_JURISDICTION",
+      "victoria"
+    ],
+    [
+      "assocShortNotice",
+      "APPLIES_TEMPORAL_CHARACTERISTICS",
+      "temporal"
+    ],
+    [
+      "assocShortNotice",
+      "TO_TARGET",
+      "notice14"
+    ],
+    [
+      "assocEntry",
+      "APPLIES_SOURCE",
+      "s95"
+    ],
+    [
+      "assocEntry",
+      "APPLIES_AUTHORITY",
+      "parliamentAuthority"
+    ],
+    [
+      "assocEntry",
+      "APPLIES_JURISDICTION",
+      "victoria"
+    ],
+    [
+      "assocEntry",
+      "APPLIES_TEMPORAL_CHARACTERISTICS",
+      "temporal"
+    ],
+    [
+      "assocEntry",
+      "TO_TARGET",
+      "noEntry"
+    ],
+    [
+      "assocNotice",
+      "APPLIES_STRENGTH",
+      "defeasible"
+    ],
+    [
+      "associations",
+      "HAS_ASSOCIATION",
+      "assocRent"
+    ],
+    [
+      "associations",
+      "HAS_ASSOCIATION",
+      "assocNotice"
+    ],
+    [
+      "associations",
+      "HAS_ASSOCIATION",
+      "assocShortNotice"
+    ],
+    [
+      "associations",
+      "HAS_ASSOCIATION",
+      "assocEntry"
+    ],
+    [
+      "context",
+      "IN_SCOPE",
+      "statements"
+    ],
+    [
+      "context",
+      "APPLIES_ASSOCIATIONS",
+      "associations"
+    ],
+    [
+      "context",
+      "APPLIES_ALTERNATIVES",
+      "noticeInterpretations"
+    ],
+    [
+      "payRent",
+      "HAS_PARAPHRASE",
+      "rentParaphrase"
+    ],
+    [
+      "notice14",
+      "HAS_COMMENT",
+      "noticeComment"
+    ],
+    [
+      "notice28",
+      "HAS_TEMPLATE",
+      "noticeTemplate"
+    ],
+    [
+      "document",
+      "HAS_AGENTS",
+      "agents"
+    ],
+    [
+      "document",
+      "HAS_FIGURES",
+      "figures"
+    ],
+    [
+      "document",
+      "HAS_ROLES",
+      "roles"
+    ],
+    [
+      "document",
+      "HAS_AUTHORITIES",
+      "authorities"
+    ],
+    [
+      "document",
+      "HAS_JURISDICTIONS",
+      "jurisdictions"
+    ],
+    [
+      "document",
+      "HAS_LEGAL_SOURCES",
+      "sources"
+    ],
+    [
+      "document",
+      "HAS_LEGAL_REFERENCES",
+      "references"
+    ],
+    [
+      "document",
+      "HAS_TIMES",
+      "times"
+    ],
+    [
+      "document",
+      "HAS_TEMPORAL_CHARACTERISTICS",
+      "temporal"
+    ],
+    [
+      "document",
+      "HAS_STATEMENTS",
+      "statements"
+    ],
+    [
+      "document",
+      "HAS_ASSOCIATIONS",
+      "associations"
+    ],
+    [
+      "document",
+      "HAS_ALTERNATIVES",
+      "noticeInterpretations"
+    ],
+    [
+      "document",
+      "HAS_CONTEXT",
+      "context"
+    ]
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "source": "the CASE 1.5.0 and UCO 1.5.0 release Turtle files (GitHub casework/CASE and ucoProject/UCO, tag 1.5.0)",
+  "link": "the term's page in the CASE or UCO documentation",
+  "areas": {
+    "field": "ontology",
+    "groups": [
+      {"name": "CASE — investigations, investigative actions, provenance and roles", "values": ["CASE"]},
+      {"name": "UCO — the classes CASE extends or points at", "values": ["UCO"]}
+    ]
+  },
+  "sub": ["namespace", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

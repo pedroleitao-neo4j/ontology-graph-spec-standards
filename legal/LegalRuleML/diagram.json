@@ -1,0 +1,22 @@
+{
+  "source": "the LegalRuleML Core Specification Version 1.0 RDFS modules published by OASIS",
+  "link": "the term IRI",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "Rules and statements", "values": ["Rules and statements"]},
+      {"name": "Deontic and defeasible", "values": ["Deontic and defeasible"]},
+      {"name": "Sources, authorities and time", "values": ["Sources, authorities and time"]},
+      {"name": "Context", "values": ["Context"]}
+    ]
+  },
+  "sub": ["module", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

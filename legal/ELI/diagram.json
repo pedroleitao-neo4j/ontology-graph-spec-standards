@@ -1,0 +1,22 @@
+{
+  "source": "the ELI 1.4 ontology (eli.owl) published by the Publications Office of the EU",
+  "link": "the term IRI",
+  "areas": {
+    "field": "level",
+    "groups": [
+      {"name": "Work — legal resources and their subdivisions", "values": ["Work"]},
+      {"name": "Expression — legal expressions: language versions", "values": ["Expression"]},
+      {"name": "Manifestation — formats", "values": ["Manifestation"]},
+      {"name": "Agents and concepts from authority tables", "values": ["Agent", "Concept"]}
+    ]
+  },
+  "sub": ["level", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has exactly one",
+      "dashed": "functional: every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

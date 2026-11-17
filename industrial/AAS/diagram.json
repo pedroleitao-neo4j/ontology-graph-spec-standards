@@ -1,0 +1,18 @@
+{
+  "source": "the AAS metamodel 3.2 RDF ontology and SHACL shapes (GitHub admin-shell-io/aas-specs-metamodel, tag v3.2.0)",
+  "link": "the class in the AAS specification",
+  "areas": {
+    "field": "section",
+    "groups": [
+      {"name": "Core — shells, assets, submodels and concept descriptions", "values": ["core", "environment", "concept-description"]},
+      {"name": "Submodel elements", "values": ["submodel-elements"]},
+      {"name": "Common attributes, references and language strings", "values": ["common", "referencing", "datatypes"]},
+      {"name": "Data specifications (IEC 61360 and units of measure)", "values": ["data-specifications"]}
+    ]
+  },
+  "sub": ["section", "abstract", "#properties"],
+  "lines": {
+    "by": "field:composition",
+    "legend": {"main": "composition: owner to its parts", "dashed": "a model reference resolved to its element"}
+  }
+}

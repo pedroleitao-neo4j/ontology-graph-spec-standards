@@ -1,0 +1,17 @@
+{
+  "source": "the DEXPI specification 2.0.1 model sources (GitLab dexpi/Specification, tag V2.0.1)",
+  "link": "the specification page",
+  "areas": {
+    "field": "module",
+    "groups": [
+      {"name": "Core — data types, quantities and diagrams", "values": ["Core"]},
+      {"name": "Plant — structure, equipment, piping and instrumentation", "values": ["Plant"]},
+      {"name": "Process — steps, connections and materials", "values": ["Process"]}
+    ]
+  },
+  "sub": ["abstract", "package", "#properties"],
+  "lines": {
+    "by": "field:composition",
+    "legend": {"main": "composition: owner to its parts", "dashed": "reference: object to another"}
+  }
+}

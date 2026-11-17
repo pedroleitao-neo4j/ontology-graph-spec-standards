@@ -1,0 +1,1270 @@
+{
+  "scenario": "A digital forensics lab acquires the laptop and phone of an engineer suspected of leaking a company's gearbox designs. FTK Imager, behind a write blocker, images the laptop's disk, and UFED extracts the phone; Autopsy then finds a ZIP archive of the designs, the email that sent it to a personal address, a file-sharing upload page and an SMS about it. Each acquisition and analysis records its performer, instruments, inputs and results, observables carry their properties in facets, and hashes and containment relationships tie them together.",
+  "nodes": {
+    "examiner": {
+      "node": "Person",
+      "properties": {
+        "uri": "kb:person-3e26dba4-ce25-5e8d-97b1-870a4725af36",
+        "name": "Sam Okafor"
+      }
+    },
+    "examiner_SimpleNameFacet": {
+      "node": "SimpleNameFacet",
+      "properties": {
+        "uri": "kb:simplenamefacet-9c70ffa5-0e03-582b-974b-f03f70cc1b8d",
+        "givenName": [
+          "Sam"
+        ],
+        "familyName": [
+          "Okafor"
+        ]
+      }
+    },
+    "suspect": {
+      "node": "Person",
+      "properties": {
+        "uri": "kb:person-57826760-6984-5d97-bacd-0059e0aa086b",
+        "name": "Jordan Pike"
+      }
+    },
+    "suspect_SimpleNameFacet": {
+      "node": "SimpleNameFacet",
+      "properties": {
+        "uri": "kb:simplenamefacet-5af799f5-1fff-59bf-9ae7-e4822489ac5d",
+        "givenName": [
+          "Jordan"
+        ],
+        "familyName": [
+          "Pike"
+        ]
+      }
+    },
+    "lab": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-12178428-7c44-5819-abaf-799de9f0ff57",
+        "name": "Northgate Digital Forensics Ltd"
+      }
+    },
+    "employer": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-9d69d962-f7e9-533a-9d8b-7a3b2e25fc3e",
+        "name": "Halden Precision Engineering Ltd"
+      }
+    },
+    "lab_site": {
+      "node": "Location",
+      "properties": {
+        "uri": "kb:location-8e07827e-c897-581a-926f-3fb0a565be1b",
+        "name": "Northgate Digital Forensics laboratory"
+      }
+    },
+    "lab_site_SimpleAddressFacet": {
+      "node": "SimpleAddressFacet",
+      "properties": {
+        "uri": "kb:simpleaddressfacet-b84f93fe-b8f8-5cb3-be03-2242a753b9f7",
+        "addressType": "work",
+        "street": "14 Example Road",
+        "locality": "Leeds",
+        "postalCode": "LS1 4AA",
+        "country": "United Kingdom"
+      }
+    },
+    "vendor_exterro": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-46f7254e-5584-5ca7-995a-0ef270e20f92",
+        "name": "Exterro"
+      }
+    },
+    "vendor_cellebrite": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-7bdb0258-9d22-5922-a288-4a7344c9a03f",
+        "name": "Cellebrite"
+      }
+    },
+    "vendor_basis": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-7337c511-87a2-5a36-8efa-fb2c7a3d2657",
+        "name": "Basis Technology"
+      }
+    },
+    "vendor_dell": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-4fbdf9bd-31ca-5183-933e-9b3b07e4bc46",
+        "name": "Dell"
+      }
+    },
+    "vendor_samsung": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-c6cc00f9-723e-5454-ab01-a3afc4ea12c4",
+        "name": "Samsung"
+      }
+    },
+    "vendor_opentext": {
+      "node": "Organization",
+      "properties": {
+        "uri": "kb:organization-df39ab37-b616-52a5-8575-1b111ccf512c",
+        "name": "OpenText"
+      }
+    },
+    "ftk": {
+      "node": "Tool",
+      "properties": {
+        "uri": "kb:tool-ccf186eb-7943-561a-9f7e-2050fda8c085",
+        "name": "FTK Imager",
+        "version": "4.7.1",
+        "toolType": "Acquisition"
+      }
+    },
+    "ufed": {
+      "node": "Tool",
+      "properties": {
+        "uri": "kb:tool-a5212ec0-2e81-5129-b745-e2d8bb7ce26d",
+        "name": "UFED 4PC",
+        "version": "7.69",
+        "toolType": "Acquisition"
+      }
+    },
+    "autopsy": {
+      "node": "AnalyticTool",
+      "properties": {
+        "uri": "kb:analytictool-004d52bb-a66b-5bed-8e1d-82d6da200d1a",
+        "name": "Autopsy",
+        "version": "4.21.0",
+        "toolType": "Analysis"
+      }
+    },
+    "blocker": {
+      "node": "WriteBlocker",
+      "properties": {
+        "uri": "kb:writeblocker-05f9355b-0be5-591e-95dd-7c0d70209e51",
+        "name": "Tableau T35u forensic bridge"
+      }
+    },
+    "blocker_DeviceFacet": {
+      "node": "DeviceFacet",
+      "properties": {
+        "uri": "kb:devicefacet-5692bf25-5fe9-5f45-8cb5-a6119d524904",
+        "model": "T35u",
+        "serialNumber": "000ECC10TEST0001"
+      }
+    },
+    "laptop": {
+      "node": "Laptop",
+      "properties": {
+        "uri": "kb:laptop-960ad60a-baa3-5684-9c86-a2820ba8757d",
+        "name": "Company laptop HPE-LT-0427",
+        "description": [
+          "Latitude 7440 issued to the suspect"
+        ]
+      }
+    },
+    "laptop_DeviceFacet": {
+      "node": "DeviceFacet",
+      "properties": {
+        "uri": "kb:devicefacet-1ce59b52-769b-50a9-86ea-380b46f50ce0",
+        "model": "Latitude 7440",
+        "serialNumber": "7XK2Q93",
+        "deviceType": "Laptop"
+      }
+    },
+    "disk": {
+      "node": "Disk",
+      "properties": {
+        "uri": "kb:disk-a5505a3e-c27b-54c1-8986-9e4a67106704",
+        "name": "Internal NVMe SSD"
+      }
+    },
+    "disk_DiskFacet": {
+      "node": "DiskFacet",
+      "properties": {
+        "uri": "kb:diskfacet-3ad58ec7-f228-5618-bd09-3c739e5245b2",
+        "diskType": "Fixed",
+        "diskSize": 512110190592
+      }
+    },
+    "disk_DeviceFacet": {
+      "node": "DeviceFacet",
+      "properties": {
+        "uri": "kb:devicefacet-561f4ea2-3a1a-5508-9885-76c16ef9d4f8",
+        "model": "PM9A1 MZVL2512HCJQ",
+        "serialNumber": "S64KNX0T512345"
+      }
+    },
+    "partition": {
+      "node": "DiskPartition",
+      "properties": {
+        "uri": "kb:diskpartition-f56e26a7-7def-588b-9b5d-29d0884959b5",
+        "name": "Windows (C:)"
+      }
+    },
+    "partition_DiskPartitionFacet": {
+      "node": "DiskPartitionFacet",
+      "properties": {
+        "uri": "kb:diskpartitionfacet-4b1df7d8-fadf-55d4-bd9a-296a78dccf17",
+        "diskPartitionType": "NTFS",
+        "mountPoint": "C:\\",
+        "partitionID": "3",
+        "partitionOffset": 1048576000,
+        "partitionLength": 510522769408,
+        "totalSpace": 510522769408,
+        "spaceUsed": 187904819200
+      }
+    },
+    "rel_disk_in_laptop": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-fe11a148-e03b-5757-bcc1-ebb76ee6a3f3",
+        "kindOfRelationship": "Contained_Within",
+        "isDirectional": true
+      }
+    },
+    "rel_partition_in_disk": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-43819916-5c93-5781-be96-f80cacf7e5ec",
+        "kindOfRelationship": "Contained_Within",
+        "isDirectional": true
+      }
+    },
+    "image": {
+      "node": "Image",
+      "properties": {
+        "uri": "kb:image-98e051fe-0363-515c-ba30-0bfc31126d97",
+        "name": "HPE-LT-0427 disk image"
+      }
+    },
+    "image_ImageFacet": {
+      "node": "ImageFacet",
+      "properties": {
+        "uri": "kb:imagefacet-9aee8d34-123f-5e40-b507-d89a37784c7a",
+        "imageType": "EnCase Evidence File (E01)"
+      }
+    },
+    "image_FileFacet": {
+      "node": "FileFacet",
+      "properties": {
+        "uri": "kb:filefacet-de5871c5-eaa8-56bc-8953-e0dab28cef8d",
+        "fileName": [
+          "HPE-LT-0427.E01"
+        ],
+        "filePath": [
+          "E:\\Evidence\\NDF-2026-0112\\HPE-LT-0427.E01"
+        ],
+        "extension": "E01",
+        "sizeInBytes": 96412983296,
+        "observableCreatedTime": "2026-03-10T11:42:07Z"
+      }
+    },
+    "image_ContentDataFacet": {
+      "node": "ContentDataFacet",
+      "properties": {
+        "uri": "kb:contentdatafacet-be078aa4-6981-5b0d-b464-edcfb3ad740f",
+        "sizeInBytes": 512110190592,
+        "mimeType": [
+          "application/octet-stream"
+        ]
+      }
+    },
+    "image_ContentDataFacet_MD5": {
+      "node": "Hash",
+      "properties": {
+        "uri": "kb:hash-3b522d66-76b7-54a3-971f-38220feb5dec",
+        "hashMethod": "MD5",
+        "hashValue": "e965891443daadc200acf4291036c423"
+      }
+    },
+    "image_ContentDataFacet_SHA256": {
+      "node": "Hash",
+      "properties": {
+        "uri": "kb:hash-691df04e-3032-5b1b-885a-d8bfe1cf0835",
+        "hashMethod": "SHA256",
+        "hashValue": "8be69a37923f62c256c0a1733dfd06102cecd4f29e69af80c61c613fa1c67215"
+      }
+    },
+    "zip": {
+      "node": "ArchiveFile",
+      "properties": {
+        "uri": "kb:archivefile-93520b40-f036-5b92-bed7-f315a7deab4f",
+        "name": "Q3-gearbox-designs.zip"
+      }
+    },
+    "zip_FileFacet": {
+      "node": "FileFacet",
+      "properties": {
+        "uri": "kb:filefacet-1787642c-1286-5a66-8f94-ec86ca6b1062",
+        "fileName": [
+          "Q3-gearbox-designs.zip"
+        ],
+        "filePath": [
+          "C:\\Users\\jpike\\Documents\\Q3-gearbox-designs.zip"
+        ],
+        "extension": "zip",
+        "sizeInBytes": 48211347,
+        "observableCreatedTime": "2026-02-27T17:58:31Z",
+        "modifiedTime": "2026-02-27T17:58:44Z",
+        "accessedTime": "2026-02-27T18:03:12Z",
+        "allocationStatus": "Allocated"
+      }
+    },
+    "zip_ArchiveFileFacet": {
+      "node": "ArchiveFileFacet",
+      "properties": {
+        "uri": "kb:archivefilefacet-86011a86-886a-58b8-9d27-02b1133402c2",
+        "archiveType": "zip"
+      }
+    },
+    "zip_ContentDataFacet": {
+      "node": "ContentDataFacet",
+      "properties": {
+        "uri": "kb:contentdatafacet-81d336e3-ca19-5607-ac5e-af8cccc90bc2",
+        "sizeInBytes": 48211347,
+        "mimeType": [
+          "application/zip"
+        ],
+        "magicNumber": "504B0304"
+      }
+    },
+    "zip_ContentDataFacet_MD5": {
+      "node": "Hash",
+      "properties": {
+        "uri": "kb:hash-a0d5e779-0f37-567c-b566-f991151352a6",
+        "hashMethod": "MD5",
+        "hashValue": "237eb09db959a5caebf0d70663c66762"
+      }
+    },
+    "zip_ContentDataFacet_SHA256": {
+      "node": "Hash",
+      "properties": {
+        "uri": "kb:hash-e79b1f84-f2af-57dc-ba00-521c3ed57029",
+        "hashMethod": "SHA256",
+        "hashValue": "817e9a56cbac2807083e85dcfa18568be4325ab4358b990f3cb38f2fd0854a0f"
+      }
+    },
+    "cad": {
+      "node": "File",
+      "properties": {
+        "uri": "kb:file-19168b3e-ee0c-52e4-a91a-4ca73206e709",
+        "name": "GBX-400-housing.step"
+      }
+    },
+    "cad_FileFacet": {
+      "node": "FileFacet",
+      "properties": {
+        "uri": "kb:filefacet-10620ecb-ab71-5e35-9345-c5d1c36fd15b",
+        "fileName": [
+          "GBX-400-housing.step"
+        ],
+        "filePath": [
+          "C:\\Users\\jpike\\Documents\\Designs\\GBX-400-housing.step"
+        ],
+        "extension": "step",
+        "sizeInBytes": 21733904,
+        "observableCreatedTime": "2025-11-04T09:12:55Z",
+        "allocationStatus": "Allocated"
+      }
+    },
+    "cad_ContentDataFacet": {
+      "node": "ContentDataFacet",
+      "properties": {
+        "uri": "kb:contentdatafacet-5004b2b2-7802-549d-a89b-cb107f85d9c6",
+        "sizeInBytes": 21733904,
+        "mimeType": [
+          "model/step"
+        ]
+      }
+    },
+    "cad_ContentDataFacet_SHA256": {
+      "node": "Hash",
+      "properties": {
+        "uri": "kb:hash-39cf7856-0f5a-54af-b0fa-2f9166264548",
+        "hashMethod": "SHA256",
+        "hashValue": "7c40db39a124b85a2d09e5ca978a6d598a474be4e91f06146bfafd98ba463e5c"
+      }
+    },
+    "rel_zip_on_partition": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-85271bf6-7130-5347-a697-7c65cda4f549",
+        "kindOfRelationship": "Contained_Within",
+        "isDirectional": true
+      }
+    },
+    "rel_cad_on_partition": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-1581ff25-b36f-5500-ad1e-55bd86a4859c",
+        "kindOfRelationship": "Contained_Within",
+        "isDirectional": true
+      }
+    },
+    "rel_cad_in_zip": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-59a213c0-6ba3-53e4-b611-09c39a55c5a4",
+        "kindOfRelationship": "Contained_Within",
+        "isDirectional": true
+      }
+    },
+    "work_address": {
+      "node": "EmailAddress",
+      "properties": {
+        "uri": "kb:emailaddress-b9dcd8fc-3e49-56aa-8608-5d3cd80055ab",
+        "name": "jordan.pike@halden.example.com"
+      }
+    },
+    "work_address_EmailAddressFacet": {
+      "node": "EmailAddressFacet",
+      "properties": {
+        "uri": "kb:emailaddressfacet-0d5f4e67-5f87-5817-b491-d0b83b4be2bd",
+        "addressValue": "jordan.pike@halden.example.com",
+        "displayName": "Jordan Pike"
+      }
+    },
+    "personal_address": {
+      "node": "EmailAddress",
+      "properties": {
+        "uri": "kb:emailaddress-d000bc7a-5907-5afc-992e-71b1eeb3db95",
+        "name": "jp.workshop@mail.example.net"
+      }
+    },
+    "personal_address_EmailAddressFacet": {
+      "node": "EmailAddressFacet",
+      "properties": {
+        "uri": "kb:emailaddressfacet-e560545e-956b-52fd-a2f9-8132fa7c311b",
+        "addressValue": "jp.workshop@mail.example.net"
+      }
+    },
+    "work_account": {
+      "node": "EmailAccount",
+      "properties": {
+        "uri": "kb:emailaccount-5142e795-8aa1-58d1-9bb9-9fcfca100f43",
+        "name": "Jordan Pike's work mailbox"
+      }
+    },
+    "work_account_EmailAccountFacet": {
+      "node": "EmailAccountFacet",
+      "properties": {
+        "uri": "kb:emailaccountfacet-d83561de-103d-58bd-8ac5-e7372babb62d"
+      }
+    },
+    "work_account_AccountFacet": {
+      "node": "AccountFacet",
+      "properties": {
+        "uri": "kb:accountfacet-f6ad6988-6fee-5be0-9b20-82e5b8f89f48",
+        "accountIdentifier": "jordan.pike",
+        "isActive": true
+      }
+    },
+    "outlook": {
+      "node": "Application",
+      "properties": {
+        "uri": "kb:application-b934f6c3-ac3a-56c7-8d07-fa582eed5f8c",
+        "name": "Microsoft Outlook"
+      }
+    },
+    "outlook_ApplicationFacet": {
+      "node": "ApplicationFacet",
+      "properties": {
+        "uri": "kb:applicationfacet-af64f619-3196-5f42-9dee-d371c373102f",
+        "applicationIdentifier": "OUTLOOK.EXE",
+        "version": "16.0.17328.20142"
+      }
+    },
+    "email": {
+      "node": "EmailMessage",
+      "properties": {
+        "uri": "kb:emailmessage-3633b2ca-e16b-58f8-b691-e9c540443ac5",
+        "name": "Email with the design archive"
+      }
+    },
+    "email_EmailMessageFacet": {
+      "node": "EmailMessageFacet",
+      "properties": {
+        "uri": "kb:emailmessagefacet-4958280b-546b-5ac2-880c-6a62d22c6b16",
+        "subject": "holiday photos",
+        "messageID": "<20260227180412.4F2A1@halden.example.com>",
+        "sentTime": "2026-02-27T18:04:12Z",
+        "isMultipart": true,
+        "contentType": "multipart/mixed",
+        "xMailer": "Microsoft Outlook 16.0"
+      }
+    },
+    "rel_zip_attached": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-6ecd152b-9c4e-5955-99ff-60bfa1ae68aa",
+        "kindOfRelationship": "Attached_To",
+        "isDirectional": true
+      }
+    },
+    "domain": {
+      "node": "DomainName",
+      "properties": {
+        "uri": "kb:domainname-c4d06ce1-cf89-57eb-b95a-9d81bd2d34c9",
+        "name": "files.example.org"
+      }
+    },
+    "domain_DomainNameFacet": {
+      "node": "DomainNameFacet",
+      "properties": {
+        "uri": "kb:domainnamefacet-dc49b9a4-b391-5faf-b434-0a5065f40070",
+        "value": "files.example.org",
+        "isTLD": false
+      }
+    },
+    "url": {
+      "node": "URL",
+      "properties": {
+        "uri": "kb:url-08251b13-e85f-5fd1-9069-e3fc6e317955",
+        "name": "Upload page"
+      }
+    },
+    "url_URLFacet": {
+      "node": "URLFacet",
+      "properties": {
+        "uri": "kb:urlfacet-b52813ff-c242-5849-bfbf-feaaf3781376",
+        "fullValue": "https://files.example.org/upload?folder=gbx",
+        "scheme": "https",
+        "path": "/upload",
+        "query": "folder=gbx",
+        "port": 443
+      }
+    },
+    "phone": {
+      "node": "AndroidPhone",
+      "properties": {
+        "uri": "kb:androidphone-58d02acb-951f-500a-b46d-e6a1e64155d4",
+        "name": "Suspect's Galaxy S23"
+      }
+    },
+    "phone_DeviceFacet": {
+      "node": "DeviceFacet",
+      "properties": {
+        "uri": "kb:devicefacet-7d0aef06-a39b-517d-89f7-f4a3519a9151",
+        "model": "SM-S911B",
+        "serialNumber": "R5CW30ABCDE"
+      }
+    },
+    "phone_MobileDeviceFacet": {
+      "node": "MobileDeviceFacet",
+      "properties": {
+        "uri": "kb:mobiledevicefacet-99a7990a-b3ad-546d-9394-f5c8fe99f31a",
+        "IMEI": [
+          "356789104567893"
+        ],
+        "storageCapacityInBytes": 256000000000,
+        "network": "EE"
+      }
+    },
+    "phone_AndroidDeviceFacet": {
+      "node": "AndroidDeviceFacet",
+      "properties": {
+        "uri": "kb:androiddevicefacet-34d78c1c-1a13-5f4c-b44c-10e26206e527",
+        "androidVersion": "14",
+        "androidID": "3f8a2c61d0b94e7a",
+        "isADBRootEnabled": false
+      }
+    },
+    "sim": {
+      "node": "SIMCard",
+      "properties": {
+        "uri": "kb:simcard-902c6de1-6490-58a5-bebf-848d505b1b05",
+        "name": "Phone SIM"
+      }
+    },
+    "sim_SIMCardFacet": {
+      "node": "SIMCardFacet",
+      "properties": {
+        "uri": "kb:simcardfacet-91f8db24-965a-54d1-86bd-818d888e0341",
+        "ICCID": "8944110068345678901",
+        "IMSI": "234300012345678",
+        "SIMForm": "Nano SIM",
+        "SIMType": "USIM"
+      }
+    },
+    "rel_sim_in_phone": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-bc9c898d-bd56-5b4d-a040-a3c539baadc8",
+        "kindOfRelationship": "Contained_Within",
+        "isDirectional": true
+      }
+    },
+    "phone_number": {
+      "node": "PhoneAccount",
+      "properties": {
+        "uri": "kb:phoneaccount-e1dc41d4-5f6e-58cb-8d15-945c5ad8542c",
+        "name": "+44 7700 900123"
+      }
+    },
+    "phone_number_PhoneAccountFacet": {
+      "node": "PhoneAccountFacet",
+      "properties": {
+        "uri": "kb:phoneaccountfacet-736847b6-ee78-52e2-a639-6e2d02d274ee",
+        "phoneNumber": "+447700900123"
+      }
+    },
+    "contact_number": {
+      "node": "PhoneAccount",
+      "properties": {
+        "uri": "kb:phoneaccount-8fb05b19-07b1-5739-9a9c-8201c5d8fa19",
+        "name": "+44 7700 900456"
+      }
+    },
+    "contact_number_PhoneAccountFacet": {
+      "node": "PhoneAccountFacet",
+      "properties": {
+        "uri": "kb:phoneaccountfacet-fcac468e-487a-5ba4-847b-5e9ac9020a1c",
+        "phoneNumber": "+447700900456"
+      }
+    },
+    "sms": {
+      "node": "SMSMessage",
+      "properties": {
+        "uri": "kb:smsmessage-95f9add4-fe63-5a8d-924f-5383c0a66017",
+        "name": "SMS about the files"
+      }
+    },
+    "sms_MessageFacet": {
+      "node": "MessageFacet",
+      "properties": {
+        "uri": "kb:messagefacet-3ff01e7f-da9b-588a-aab7-7c062d793800",
+        "messageText": "Sent the gearbox files to the other address. Delete this.",
+        "sentTime": "2026-02-27T18:09:40Z",
+        "messageType": "SMS"
+      }
+    },
+    "sms_SMSMessageFacet": {
+      "node": "SMSMessageFacet",
+      "properties": {
+        "uri": "kb:smsmessagefacet-ff7edccc-7e7d-5b91-84e8-95a2feab0bb7",
+        "isRead": true
+      }
+    },
+    "rel_sms_on_phone": {
+      "node": "ObservableRelationship",
+      "properties": {
+        "uri": "kb:observablerelationship-fb8ddac0-121a-5ebd-8c84-14ebac08ba1a",
+        "kindOfRelationship": "Contained_Within",
+        "isDirectional": true
+      }
+    },
+    "phone_extraction": {
+      "node": "File",
+      "properties": {
+        "uri": "kb:file-dd6ec488-9a27-545b-9154-098d4f412611",
+        "name": "UFED extraction of the phone"
+      }
+    },
+    "phone_extraction_FileFacet": {
+      "node": "FileFacet",
+      "properties": {
+        "uri": "kb:filefacet-378b5672-6738-5543-9393-67cb54178006",
+        "fileName": [
+          "Galaxy-S23-FFS.zip"
+        ],
+        "extension": "zip",
+        "sizeInBytes": 61872941056,
+        "observableCreatedTime": "2026-03-11T15:20:00Z"
+      }
+    },
+    "phone_extraction_ContentDataFacet": {
+      "node": "ContentDataFacet",
+      "properties": {
+        "uri": "kb:contentdatafacet-9b5bb2e7-d850-5fa9-93d5-a8d4e404489e",
+        "sizeInBytes": 61872941056
+      }
+    },
+    "phone_extraction_ContentDataFacet_SHA256": {
+      "node": "Hash",
+      "properties": {
+        "uri": "kb:hash-46eb38c3-6d51-5bc8-b70c-8967bb6ed997",
+        "hashMethod": "SHA256",
+        "hashValue": "13da63104bbc5e693d99999e7613c10ef6178120170825f93769b438d92c939b"
+      }
+    },
+    "acquire_disk": {
+      "node": "Action",
+      "properties": {
+        "uri": "kb:action-043823a3-6b4b-51c1-8cb7-a05ebbc4ee6c",
+        "name": "Acquire the laptop disk",
+        "actionStatus": "Success",
+        "startTime": "2026-03-10T09:15:00Z",
+        "endTime": "2026-03-10T11:42:07Z"
+      }
+    },
+    "acquire_phone": {
+      "node": "Action",
+      "properties": {
+        "uri": "kb:action-dabcd695-5c21-56eb-9dc0-670f4e06b8d5",
+        "name": "Extract the phone",
+        "actionStatus": "Success",
+        "startTime": "2026-03-11T13:02:00Z",
+        "endTime": "2026-03-11T15:20:00Z"
+      }
+    },
+    "analyse": {
+      "node": "Analysis",
+      "properties": {
+        "uri": "kb:analysis-8f470420-0883-56c8-90a1-df782f827ccf",
+        "name": "Analyse the laptop image",
+        "actionStatus": "Success",
+        "startTime": "2026-03-12T08:30:00Z",
+        "endTime": "2026-03-13T16:45:00Z"
+      }
+    },
+    "finding": {
+      "node": "Annotation",
+      "properties": {
+        "uri": "kb:annotation-e05f6a78-e9d7-5c4e-ae50-129b75040083",
+        "name": "Exfiltration finding",
+        "statement": [
+          "The archive holding the GBX-400 design was emailed to a personal address four minutes after it was created."
+        ]
+      }
+    },
+    "bundle": {
+      "node": "Bundle",
+      "properties": {
+        "uri": "kb:bundle-e6f4e3c5-6a9e-5bc8-ace4-e737017d1b80",
+        "name": "NDF-2026-0112 evidence bundle",
+        "specVersion": "UCO 1.5.0",
+        "objectCreatedTime": "2026-03-14T10:00:00Z"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "examiner",
+      "HAS_FACET",
+      "examiner_SimpleNameFacet"
+    ],
+    [
+      "suspect",
+      "HAS_FACET",
+      "suspect_SimpleNameFacet"
+    ],
+    [
+      "lab_site",
+      "HAS_FACET",
+      "lab_site_SimpleAddressFacet"
+    ],
+    [
+      "ftk",
+      "CREATOR",
+      "vendor_exterro"
+    ],
+    [
+      "ufed",
+      "CREATOR",
+      "vendor_cellebrite"
+    ],
+    [
+      "autopsy",
+      "CREATOR",
+      "vendor_basis"
+    ],
+    [
+      "blocker",
+      "HAS_FACET",
+      "blocker_DeviceFacet"
+    ],
+    [
+      "blocker_DeviceFacet",
+      "MANUFACTURER",
+      "vendor_opentext"
+    ],
+    [
+      "laptop",
+      "HAS_FACET",
+      "laptop_DeviceFacet"
+    ],
+    [
+      "laptop_DeviceFacet",
+      "MANUFACTURER",
+      "vendor_dell"
+    ],
+    [
+      "disk",
+      "HAS_FACET",
+      "disk_DiskFacet"
+    ],
+    [
+      "disk",
+      "HAS_FACET",
+      "disk_DeviceFacet"
+    ],
+    [
+      "disk_DeviceFacet",
+      "MANUFACTURER",
+      "vendor_samsung"
+    ],
+    [
+      "partition",
+      "HAS_FACET",
+      "partition_DiskPartitionFacet"
+    ],
+    [
+      "disk_DiskFacet",
+      "PARTITION",
+      "partition"
+    ],
+    [
+      "rel_disk_in_laptop",
+      "SOURCE",
+      "disk"
+    ],
+    [
+      "rel_disk_in_laptop",
+      "TARGET",
+      "laptop"
+    ],
+    [
+      "rel_partition_in_disk",
+      "SOURCE",
+      "partition"
+    ],
+    [
+      "rel_partition_in_disk",
+      "TARGET",
+      "disk"
+    ],
+    [
+      "image",
+      "HAS_FACET",
+      "image_ImageFacet"
+    ],
+    [
+      "image",
+      "HAS_FACET",
+      "image_FileFacet"
+    ],
+    [
+      "image",
+      "HAS_FACET",
+      "image_ContentDataFacet"
+    ],
+    [
+      "image_ContentDataFacet",
+      "HASH",
+      "image_ContentDataFacet_MD5"
+    ],
+    [
+      "image_ContentDataFacet",
+      "HASH",
+      "image_ContentDataFacet_SHA256"
+    ],
+    [
+      "zip",
+      "HAS_FACET",
+      "zip_FileFacet"
+    ],
+    [
+      "zip",
+      "HAS_FACET",
+      "zip_ArchiveFileFacet"
+    ],
+    [
+      "zip",
+      "HAS_FACET",
+      "zip_ContentDataFacet"
+    ],
+    [
+      "zip_ContentDataFacet",
+      "HASH",
+      "zip_ContentDataFacet_MD5"
+    ],
+    [
+      "zip_ContentDataFacet",
+      "HASH",
+      "zip_ContentDataFacet_SHA256"
+    ],
+    [
+      "cad",
+      "HAS_FACET",
+      "cad_FileFacet"
+    ],
+    [
+      "cad",
+      "HAS_FACET",
+      "cad_ContentDataFacet"
+    ],
+    [
+      "cad_ContentDataFacet",
+      "HASH",
+      "cad_ContentDataFacet_SHA256"
+    ],
+    [
+      "rel_zip_on_partition",
+      "SOURCE",
+      "zip"
+    ],
+    [
+      "rel_zip_on_partition",
+      "TARGET",
+      "partition"
+    ],
+    [
+      "rel_cad_on_partition",
+      "SOURCE",
+      "cad"
+    ],
+    [
+      "rel_cad_on_partition",
+      "TARGET",
+      "partition"
+    ],
+    [
+      "rel_cad_in_zip",
+      "SOURCE",
+      "cad"
+    ],
+    [
+      "rel_cad_in_zip",
+      "TARGET",
+      "zip"
+    ],
+    [
+      "work_address",
+      "HAS_FACET",
+      "work_address_EmailAddressFacet"
+    ],
+    [
+      "personal_address",
+      "HAS_FACET",
+      "personal_address_EmailAddressFacet"
+    ],
+    [
+      "work_account",
+      "HAS_FACET",
+      "work_account_EmailAccountFacet"
+    ],
+    [
+      "work_account_EmailAccountFacet",
+      "EMAIL_ADDRESS",
+      "work_address"
+    ],
+    [
+      "work_account",
+      "HAS_FACET",
+      "work_account_AccountFacet"
+    ],
+    [
+      "work_account_AccountFacet",
+      "OWNER",
+      "suspect"
+    ],
+    [
+      "work_account_AccountFacet",
+      "ACCOUNT_ISSUER",
+      "employer"
+    ],
+    [
+      "outlook",
+      "HAS_FACET",
+      "outlook_ApplicationFacet"
+    ],
+    [
+      "email",
+      "HAS_FACET",
+      "email_EmailMessageFacet"
+    ],
+    [
+      "email_EmailMessageFacet",
+      "FROM",
+      "work_address"
+    ],
+    [
+      "email_EmailMessageFacet",
+      "TO",
+      "personal_address"
+    ],
+    [
+      "email_EmailMessageFacet",
+      "APPLICATION",
+      "outlook"
+    ],
+    [
+      "rel_zip_attached",
+      "SOURCE",
+      "zip"
+    ],
+    [
+      "rel_zip_attached",
+      "TARGET",
+      "email"
+    ],
+    [
+      "domain",
+      "HAS_FACET",
+      "domain_DomainNameFacet"
+    ],
+    [
+      "url",
+      "HAS_FACET",
+      "url_URLFacet"
+    ],
+    [
+      "url_URLFacet",
+      "HOST",
+      "domain"
+    ],
+    [
+      "phone",
+      "HAS_FACET",
+      "phone_DeviceFacet"
+    ],
+    [
+      "phone_DeviceFacet",
+      "MANUFACTURER",
+      "vendor_samsung"
+    ],
+    [
+      "phone",
+      "HAS_FACET",
+      "phone_MobileDeviceFacet"
+    ],
+    [
+      "phone",
+      "HAS_FACET",
+      "phone_AndroidDeviceFacet"
+    ],
+    [
+      "sim",
+      "HAS_FACET",
+      "sim_SIMCardFacet"
+    ],
+    [
+      "rel_sim_in_phone",
+      "SOURCE",
+      "sim"
+    ],
+    [
+      "rel_sim_in_phone",
+      "TARGET",
+      "phone"
+    ],
+    [
+      "phone_number",
+      "HAS_FACET",
+      "phone_number_PhoneAccountFacet"
+    ],
+    [
+      "contact_number",
+      "HAS_FACET",
+      "contact_number_PhoneAccountFacet"
+    ],
+    [
+      "sms",
+      "HAS_FACET",
+      "sms_MessageFacet"
+    ],
+    [
+      "sms_MessageFacet",
+      "FROM",
+      "phone_number"
+    ],
+    [
+      "sms_MessageFacet",
+      "TO",
+      "contact_number"
+    ],
+    [
+      "sms",
+      "HAS_FACET",
+      "sms_SMSMessageFacet"
+    ],
+    [
+      "rel_sms_on_phone",
+      "SOURCE",
+      "sms"
+    ],
+    [
+      "rel_sms_on_phone",
+      "TARGET",
+      "phone"
+    ],
+    [
+      "phone_extraction",
+      "HAS_FACET",
+      "phone_extraction_FileFacet"
+    ],
+    [
+      "phone_extraction",
+      "HAS_FACET",
+      "phone_extraction_ContentDataFacet"
+    ],
+    [
+      "phone_extraction_ContentDataFacet",
+      "HASH",
+      "phone_extraction_ContentDataFacet_SHA256"
+    ],
+    [
+      "acquire_disk",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "acquire_disk",
+      "INSTRUMENT",
+      "ftk"
+    ],
+    [
+      "acquire_disk",
+      "INSTRUMENT",
+      "blocker"
+    ],
+    [
+      "acquire_disk",
+      "OBJECT",
+      "disk"
+    ],
+    [
+      "acquire_disk",
+      "RESULT",
+      "image"
+    ],
+    [
+      "acquire_disk",
+      "LOCATION",
+      "lab_site"
+    ],
+    [
+      "acquire_phone",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "acquire_phone",
+      "INSTRUMENT",
+      "ufed"
+    ],
+    [
+      "acquire_phone",
+      "OBJECT",
+      "phone"
+    ],
+    [
+      "acquire_phone",
+      "RESULT",
+      "phone_extraction"
+    ],
+    [
+      "acquire_phone",
+      "LOCATION",
+      "lab_site"
+    ],
+    [
+      "analyse",
+      "PERFORMER",
+      "examiner"
+    ],
+    [
+      "analyse",
+      "INSTRUMENT",
+      "autopsy"
+    ],
+    [
+      "analyse",
+      "OBJECT",
+      "image"
+    ],
+    [
+      "analyse",
+      "RESULT",
+      "zip"
+    ],
+    [
+      "analyse",
+      "RESULT",
+      "cad"
+    ],
+    [
+      "analyse",
+      "RESULT",
+      "email"
+    ],
+    [
+      "analyse",
+      "RESULT",
+      "url"
+    ],
+    [
+      "finding",
+      "OBJECT",
+      "zip"
+    ],
+    [
+      "finding",
+      "OBJECT",
+      "email"
+    ],
+    [
+      "finding",
+      "CREATED_BY",
+      "examiner"
+    ],
+    [
+      "bundle",
+      "CREATED_BY",
+      "lab"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "laptop"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "disk"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "image"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "zip"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "email"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "phone"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "acquire_disk"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "acquire_phone"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "analyse"
+    ],
+    [
+      "bundle",
+      "OBJECT",
+      "finding"
+    ]
+  ]
+}

@@ -1,0 +1,3182 @@
+{
+  "schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json",
+  "version": "4.2",
+  "id": "ido-4.2",
+  "name": "ISO 23726-3 (IDO) 4.2",
+  "description": "The Industrial Data Ontology (IDO), published as ISO 23726-3 by the POSC Caesar Association (https://www.posccaesar.org/). IDO is a W3C OWL 2 ontology for industrial data in all life-cycle phases of industrial assets and processes, and the OWL rendering of the ISO 15926-2 data model, previously deployed as ISO TR 15926-14 (https://rds.posccaesar.org/ontology/lis14/). It provides the top-level vocabulary for building reference data libraries (RDLs) and asset models: the objects a plant is made of (physical, informational and organisational) and their parts, connections and locations; the activities that take place in it and the temporal regions they occupy; the qualities and potentials those objects bear, and the datums and units of measure that quantify them; and the 'implements' relation that pairs a designed asset with its actual counterpart. Generated from the IDO 4.2 FDIS Turtle file: each owl:Class is a node, each object property a relationship from its domain to its range (one direction per inverse pair), each datatype property a property, and each superclass an implied label.",
+  "nodes": {
+    "Activity": {
+      "labels": {
+        "identifier": "Activity",
+        "implied": [
+          "Temporal"
+        ]
+      },
+      "description": "A temporal entity in which one or more physical objects participate. Renders ISO 15926-2:2003 'activity'. e.g. `A pumping, an inspection, a report writing, a fastening (the activity of a bolt in holding two pieces together)`. An 'activity' may have temporal gaps. For example, intermittent operation of a heater over a week may be represented by a single 'activity' individual; it will occupy a non-connected 'interval region'. The details of each connected activity part (“singular activities”) may be modelled by relating the activity to 'interval' individuals.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Activity",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Activity individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Activity": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Activity_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Activity",
+          "root": "Temporal",
+          "iso15926": "ISO 15926-2:2003 'activity'",
+          "disjointWith": [
+            "SpatiotemporalRegion",
+            "TemporalRegion"
+          ],
+          "seeAlso": [
+            "obo:BFO_0000015",
+            "dol:accomplishment",
+            "dol:process",
+            "prov:Activity"
+          ]
+        }
+      }
+    },
+    "ActivityProfile": {
+      "labels": {
+        "identifier": "ActivityProfile",
+        "implied": [
+          "Activity"
+        ]
+      },
+      "description": "An activity obtained by \"selective abstraction\" to just that part of an activity that consists in varying or maintaining a specified 'quality' of a participant. e.g. `An 'activity profile' of an 'activity' involving rotating equipment, instantiating a class \"100 revolutions per minute\"`. An 'activity profile' is a part of an 'activity', a \"selective abstraction\" (using a term from the BFO reference guide) made according to a quality of interest to the process. Typically, we will select a physical quantity such as pressure or temperature, and refer to the \"pressure profile\" of the activity. By means of the relation 'profile quantity datum', the activity profile can be related to a set of 'quantity datum' individuals, to which aggregation can be applied, giving a basis for classification. The name \"ActivityProfile\" has been chosen because lis:Activity corresponds to BFO's 'process'.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/ActivityProfile",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ActivityProfile individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ActivityProfile": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ActivityProfile_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/ActivityProfile",
+          "root": "Temporal"
+        }
+      }
+    },
+    "Actual": {
+      "labels": {
+        "identifier": "Actual"
+      },
+      "description": "An entity that is a concrete implementation of a 'specified' entity. e.g. `A serial-numbered artefact installed at a tag, a function of a concrete artefact, a run or execution of a designed process, an industrial facility \"as built\"`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Actual",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Actual individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Actual": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Actual_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Actual",
+          "root": "Actual",
+          "disjointWith": [
+            "Specified"
+          ]
+        }
+      }
+    },
+    "Capability": {
+      "labels": {
+        "identifier": "Capability",
+        "implied": [
+          "Disposition"
+        ]
+      },
+      "description": "A disposition which when realized serves a positive or desired outcome. e.g. `The capability of a motor to generate power, of a pump to generate head and flow. The capability to use a hammer as a paperweight, which is not its primary capability (function)`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Capability",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Capability individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Capability": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Capability_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Capability",
+          "root": "Dependent",
+          "seeAlso": [
+            "obo:MF_0000043",
+            "obo:NCIT_C74979",
+            "obo:SIO_000112",
+            "lis:hasCapability"
+          ]
+        }
+      }
+    },
+    "MateriallyClassifiedObject": {
+      "labels": {
+        "identifier": "MateriallyClassifiedObject",
+        "implied": [
+          "PhysicalObject"
+        ]
+      },
+      "aliases": [
+        "Compound"
+      ],
+      "description": "A physical object with a defined material composition. Renders ISO 15926-2:2003 'class_of_compound'. e.g. `Types of material composition, such as 316 stainless steel, reinforced concrete, and carbon monoxide`. Natural kinds are expressly not to be classified as 'compound'. The class 'compound' is only to be used to classify amounts of matter, with non-semantic auxiliaries used to refer to chemical composition. The semantics of natural kinds such as \"helium\", \"steel\", or \"hydrocarbon\" is out of scope for IDO. A typical RDL includes classes that categorise individuals according to material composition. This class is suitable as the top node of such a taxonomy. Renamed class. Checked materially in Oxford English Dictionary.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Compound",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the MateriallyClassifiedObject individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_MateriallyClassifiedObject": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_MateriallyClassifiedObject_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Compound",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'class_of_compound'"
+        }
+      }
+    },
+    "Dependent": {
+      "labels": {
+        "identifier": "Dependent"
+      },
+      "aliases": [
+        "Dependent Entity"
+      ],
+      "description": "An entity that is an inherent quality or realizable potential of an object. Renders ISO 15926-2:2003 'property', 'functional_physical_object'. e.g. `The colour of a surface, the temperature of a medium, a technical contact role, the storage-space role of a room`. Any 'object' will be the bearer of various 'dependent' entities, but any 'temporal' entity has only an indirect relationship to 'dependent's. This is in line with BFO. The class Dependent is closely related to \"specifically dependent continuant\" in BFO (BFO_0000020). A common need is to relate a measure based on a 'physical quantity' to an 'activity', like average speed to a transport activity. This may not be implemented with an 'average speed' entity that is dependent on the transport. For a suitable representation pattern, see the class 'activity profile' and related resources. A \"shortcut\" approach may use the relation 'has participant quality quantified as'.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Dependent",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Dependent individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Dependent": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Dependent_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Dependent",
+          "root": "Dependent",
+          "iso15926": "ISO 15926-2:2003 'property', 'functional_physical_object'",
+          "disjointWith": [
+            "Object",
+            "Temporal"
+          ],
+          "seeAlso": [
+            "lis:ActivityProfile",
+            "lis:hasParticipantQualityQuantifiedAs"
+          ]
+        }
+      }
+    },
+    "Disposition": {
+      "labels": {
+        "identifier": "Disposition",
+        "implied": [
+          "Potential"
+        ]
+      },
+      "description": "A potential whose realization is dependent on an object's structure. e.g. `The disposition of a steel bar to corrode, the disposition of a gasket to leak. The disposition to overflow a memory buffer`. An object may not lose a disposition without undergoing physical change.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Disposition",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Disposition individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Disposition": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Disposition_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Disposition",
+          "root": "Dependent",
+          "seeAlso": [
+            "lis:hasDisposition"
+          ]
+        }
+      }
+    },
+    "Event": {
+      "labels": {
+        "identifier": "Event",
+        "implied": [
+          "Activity"
+        ]
+      },
+      "description": "An 'activity' that occurs at one or more specific points in time. Renders ISO 15926-2:2003 'event'. e.g. `The beginning of a lifting operation, the end of a measurement activity, the midpoint between beginning and end of an activity`. An 'event' doesn't need to be temporally connected. For example, several instances of switching on a heater over a week may be represented by a single 'event' individual; it will occupy a non-singular 'instant region'. The details of a singular event part may be modelled by relating the event to 'instant' individuals. Event is close in meaning to BFO's 'process boundary', and to DOLCE's 'achievement'. 'event' is a subclass of 'activity': an occurrence in which physical objects participate. What distinguishes an event is the restriction that its temporal extent is an instant region rather than an interval. The term 'event' and the subclass placement are inherited from ISO 15926-2.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Event",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Event individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Event": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Event_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Event",
+          "root": "Temporal",
+          "iso15926": "ISO 15926-2:2003 'event'",
+          "seeAlso": [
+            "obo:BFO_0000035",
+            "lis:hasParticipant",
+            "dol:achievement"
+          ]
+        }
+      }
+    },
+    "Feature": {
+      "labels": {
+        "identifier": "Feature",
+        "implied": [
+          "PhysicalObject"
+        ]
+      },
+      "description": "An arranged part that bears a material quality on which a disposition of the object depends. Renders ISO 15926-2:2003 'class_of_feature'. e.g. `A flange face, a connection port (terminal), the inside surface of a pump, a painted area of a manifold, a bolt threading`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Feature",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Feature individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Feature": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Feature_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Feature",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'class_of_feature'",
+          "seeAlso": [
+            "obo:BFO_0000024",
+            "dol:relevant-part"
+          ]
+        }
+      }
+    },
+    "Function": {
+      "labels": {
+        "identifier": "Function",
+        "implied": [
+          "Capability"
+        ]
+      },
+      "description": "A capability that meets a design requirement. Renders ISO 15926-2:2003 'functional_physical_object'. e.g. `The function of a motor to apply a specified torque to a shaft`. The typical 'function' of a hammer is realized when the hammer participates as the tool in a successful nail-driving activity. If the hammer has multiple functions, such as extracting nails using a claw or shaping objects with a ball, each function should be represented with a distinct individual.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Function",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Function individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Function": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Function_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Function",
+          "root": "Dependent",
+          "iso15926": "ISO 15926-2:2003 'functional_physical_object'",
+          "seeAlso": [
+            "lis:hasFunction"
+          ]
+        }
+      }
+    },
+    "FunctionalObject": {
+      "labels": {
+        "identifier": "FunctionalObject",
+        "implied": [
+          "Object"
+        ]
+      },
+      "description": "An 'Object' that provides a required 'Function'. Renders ISO 15926-2:2003 'functional_physical_object'. e.g. `A password is concretized when it is entered, and it allows the computer to be unlocked. The password participates in the unlocking process through its concretization`. A \"tag\", when included in an IDO asset model, should in general have a type that is subclass of both 'functional object' and 'physical artefact'. Artefact types tend to be described primarily in terms of 'function'; for example, the \"minimal\" definition of a pump would be, \"a physical artefact, the function of which is to pump (to be the active participant in a pumping activity)\". This kind of definition places no restriction on physical make-up and is suitable for a subclass of 'functional object'. Note that the activity type of 'pumping' is here a precursor to the definition of the physical object type 'pump'. A taxonomy of pump classes should extend from a class 'pump' defined solely in terms of function, as above.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/FunctionalObject",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the FunctionalObject individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_FunctionalObject": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_FunctionalObject_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/FunctionalObject",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'functional_physical_object'"
+        }
+      }
+    },
+    "InanimatePhysicalObject": {
+      "labels": {
+        "identifier": "InanimatePhysicalObject",
+        "implied": [
+          "PhysicalObject"
+        ]
+      },
+      "description": "A 'physical object' that is not living. Renders ISO 15926-2:2003 'class_of_inanimate_physical_object'. e.g. `A tool, a building, a vehicle, an instrument, a parking lot`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/InanimatePhysicalObject",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the InanimatePhysicalObject individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_InanimatePhysicalObject": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_InanimatePhysicalObject_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/InanimatePhysicalObject",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'class_of_inanimate_physical_object'"
+        }
+      }
+    },
+    "InformationObject": {
+      "labels": {
+        "identifier": "InformationObject",
+        "implied": [
+          "Object"
+        ]
+      },
+      "description": "An object that captures information about something. Renders ISO 15926-2:2003 'class_of_information_object'. e.g. `A report, a drawing, a P&ID diagram, a purchase order, a certificate, a database, a database record, a measurement datum, a unit of measure, an identifier, an algorithm, a programming language`. The BFO class 'generically dependent continuant' represents the notion of a pattern that exists in at least one copy, e.g., \"the sequence of this protein molecule\". This is more general than 'information object', and not at present included in IDO. 'information object' is a subclass, with the added condition that the pattern 'is about' something.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the InformationObject individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_InformationObject": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_InformationObject_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'class_of_information_object'",
+          "disjointWith": [
+            "Location",
+            "Organization",
+            "PhysicalObject"
+          ],
+          "seeAlso": [
+            "obo:BFO_0000031",
+            "obo:IAO_0000030"
+          ]
+        }
+      }
+    },
+    "Instant": {
+      "labels": {
+        "identifier": "Instant",
+        "implied": [
+          "InstantRegion"
+        ]
+      },
+      "description": "An instant region with no proper parts. Renders ISO 15926-2:2003 'point_in_time'. e.g. `The moment a valve is closed, the time of a measurement as use for time-stamping, the moment an activity starts`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Instant",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Instant individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Instant": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Instant_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Instant",
+          "root": "Temporal",
+          "iso15926": "ISO 15926-2:2003 'point_in_time'",
+          "seeAlso": [
+            "time:Instant"
+          ]
+        }
+      }
+    },
+    "InstantRegion": {
+      "labels": {
+        "identifier": "InstantRegion",
+        "implied": [
+          "TemporalRegion"
+        ]
+      },
+      "description": "A temporal region whose only parts are one or more points in time. e.g. `The moment a valve is closed, the instants of a series of measurements`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/InstantRegion",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the InstantRegion individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_InstantRegion": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_InstantRegion_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/InstantRegion",
+          "root": "Temporal",
+          "seeAlso": [
+            "obo:BFO_0000148"
+          ]
+        }
+      }
+    },
+    "Interest": {
+      "labels": {
+        "identifier": "Interest",
+        "implied": [
+          "Potential"
+        ]
+      },
+      "description": "A potential, the realization of which is of value for the bearer. e.g. `A plan to act, an approval of a survey`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Interest",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Interest individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Interest": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Interest_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Interest",
+          "root": "Dependent"
+        }
+      }
+    },
+    "Interval": {
+      "labels": {
+        "identifier": "Interval",
+        "implied": [
+          "IntervalRegion"
+        ]
+      },
+      "description": "A continuous period of time. Renders ISO 15926-2:2003 'period_in_time'. e.g. `The time an instrument has been in operation, the time during which a measurement was made`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Interval",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Interval individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Interval": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Interval_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Interval",
+          "root": "Temporal",
+          "iso15926": "ISO 15926-2:2003 'period_in_time'",
+          "seeAlso": [
+            "obo:BFO_0000202",
+            "dol:time-interval",
+            "time:Interval"
+          ]
+        }
+      }
+    },
+    "IntervalRegion": {
+      "labels": {
+        "identifier": "IntervalRegion",
+        "implied": [
+          "TemporalRegion"
+        ]
+      },
+      "description": "A temporal region whose only parts are one or more intervals in time. e.g. `Intermittent times of operation of a heater, maintenance periods at a plant, times that a milling machine is run, The Saturdays of 2011, the construction period for a plant modification`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/IntervalRegion",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the IntervalRegion individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_IntervalRegion": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_IntervalRegion_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/IntervalRegion",
+          "root": "Temporal",
+          "seeAlso": [
+            "obo:BFO_0000038"
+          ]
+        }
+      }
+    },
+    "LineInSpace": {
+      "labels": {
+        "identifier": "LineInSpace",
+        "implied": [
+          "SpatialLocation"
+        ]
+      },
+      "description": "A spatial location consisting of one or more lines. e.g. `A line connecting two points with coordinates relative to the frame of reference, the path of a flexible pipe at 12:00 AM`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/LineInSpace",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LineInSpace individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LineInSpace": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_LineInSpace_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/LineInSpace",
+          "root": "Object"
+        }
+      }
+    },
+    "Location": {
+      "labels": {
+        "identifier": "Location",
+        "implied": [
+          "Object"
+        ]
+      },
+      "description": "An object that is a region in space. Renders ISO 15926-2:2003 'spatial_location'. e.g. `An outdoor plant area, an opening in a wall, the space inside an enclosure`. IDO is an anthropocentric ontology in the sense that it disregards complexities of the deep theories of the physical sciences that have only negligible impact at the standard industrial scale. For example, this means ignoring cosmological effects on the average industry and adopting a geocentric model of the universe where there exists a commonly agreed upon stationary earthly “spatial reference system”.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Location",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Location individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Location": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Location_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Location",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'spatial_location'",
+          "disjointWith": [
+            "Organization",
+            "PhysicalObject"
+          ],
+          "seeAlso": [
+            "dol:space-region"
+          ]
+        }
+      }
+    },
+    "MaterialCompositionQuality": {
+      "labels": {
+        "identifier": "MaterialCompositionQuality",
+        "implied": [
+          "Quality"
+        ]
+      },
+      "description": "A quality that can be characterised in terms of chemical or material properties. e.g. `The steel grade of a cast-iron component, the plastic type of a wire sheathing`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/MaterialCompositionQuality",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the MaterialCompositionQuality individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_MaterialCompositionQuality": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_MaterialCompositionQuality_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/MaterialCompositionQuality",
+          "root": "Dependent"
+        }
+      }
+    },
+    "Object": {
+      "labels": {
+        "identifier": "Object"
+      },
+      "description": "An entity that is not dependent on other entities for existence, and which persists through time. Renders ISO 15926-2:2003 'possible_individual'. e.g. `A process plant, a compressor, a wire, a person, an operator, a database record, an industry standard, a manual document, a site`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Object",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Object individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "qualityQuantityValue": {
+          "type": "ANY",
+          "name": "qualityQuantityValue",
+          "description": "If x has 'quality quantity value' y, then x is an 'object', and y is a literal value that quantifies a quality of x. e.g. `Mass in kilograms, pressure in barg`. This relation is suitable as the top node in a taxonomy of \"shortcut\" relations that combine quality and unit of measure into a single, simple data property. When introducing shortcut properties as subproperties, annotations should be provided to explain the intended quantity type, any quantification type (e.g., measured, nominal, etc.), and unit of measure.",
+          "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/qualityQuantityValue",
+          "extensions": {
+            "custom": {
+              "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/qualityQuantityValue"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Object": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Object_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Object",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'possible_individual'",
+          "disjointWith": [
+            "Temporal"
+          ],
+          "seeAlso": [
+            "obo:BFO_0000004",
+            "dol:endurant"
+          ]
+        }
+      }
+    },
+    "Organism": {
+      "labels": {
+        "identifier": "Organism",
+        "implied": [
+          "PhysicalObject"
+        ]
+      },
+      "description": "A physical object that is living. Renders ISO 15926-2:2003 'class_of_organism'. e.g. `Animal, plant, fungus, bacterium`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Organism",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Organism individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Organism": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Organism_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Organism",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'class_of_organism'"
+        }
+      }
+    },
+    "Organization": {
+      "labels": {
+        "identifier": "Organization",
+        "implied": [
+          "Object"
+        ]
+      },
+      "description": "An object comprising one or more persons who identify by some name and pursue a common set of plans and objectives. Renders ISO 15926-2:2003 'class_of_organization'. e.g. `A standards body, a service team, a workgroup, a company`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Organization",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Organization individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Organization": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Organization_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Organization",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'class_of_organization'",
+          "disjointWith": [
+            "PhysicalObject"
+          ]
+        }
+      }
+    },
+    "Person": {
+      "labels": {
+        "identifier": "Person",
+        "implied": [
+          "Organism"
+        ]
+      },
+      "description": "An organism that is a human. Renders ISO 15926-2:2003 'class_of_person'. e.g. `A human being`. In an RDL, subclasses of 'person' will typically require 'role' restrictions to be considered fully explicit. For example, 'maintenance engineer' will be a subclass of 'person', as every engineer is a person. To capture what a maintenance engineer does, a role restriction can say that any member is the bearer of an engineering role, and what the role amounts to will be represented by the kinds of activities that count as realizations of the role.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Person",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Person individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Person": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Person_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Person",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'class_of_person'"
+        }
+      }
+    },
+    "Phase": {
+      "labels": {
+        "identifier": "Phase",
+        "implied": [
+          "PhysicalObject"
+        ]
+      },
+      "description": "A physical object with a distinct and homogeneous form. Renders ISO 15926-2:2003 'phase'. e.g. `Solid object, liquid object, gaseous object`. An RDL can include classes that categorise individuals according to material phase. This class is suitable as the top node of such a taxonomy. Definition from Oxford English Dictionary.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Phase",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Phase individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Phase": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Phase_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Phase",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'phase'"
+        }
+      }
+    },
+    "PhaseQuality": {
+      "labels": {
+        "identifier": "PhaseQuality",
+        "implied": [
+          "Quality"
+        ]
+      },
+      "description": "A 'quality' that can be characterised in terms of material phase. e.g. `The liquid quality of an amount of molten steel, the solid quality of a steel gasket`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/PhaseQuality",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PhaseQuality individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PhaseQuality": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PhaseQuality_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/PhaseQuality",
+          "root": "Dependent"
+        }
+      }
+    },
+    "PhysicalArtefact": {
+      "labels": {
+        "identifier": "PhysicalArtefact",
+        "implied": [
+          "PhysicalObject"
+        ]
+      },
+      "description": "A 'physical object' that has been created as the result of deliberate activity. e.g. `a pressure transmitter, a process plant, a wrench, a computer`. A typical RDL includes classes that represent industrial item types, such as equipment, devices, assemblies, buildings, and products, among other elements. This class is suitable as the top node in a taxonomy of such classes. The superclass of 'physical artefact' is not 'inanimate physical object', in order to allow for artificially made organisms.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalArtefact",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PhysicalArtefact individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PhysicalArtefact": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PhysicalArtefact_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalArtefact",
+          "root": "Object"
+        }
+      }
+    },
+    "PhysicalObject": {
+      "labels": {
+        "identifier": "PhysicalObject",
+        "implied": [
+          "Object"
+        ]
+      },
+      "description": "An object that occupies space and possesses mass. Renders ISO 15926-2:2003 'physical_object'. e.g. `A wall, a fluid stream, a welder, a printed manual, a seafloor`. Installed software is considered a physical object.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalObject",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PhysicalObject individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PhysicalObject": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PhysicalObject_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalObject",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'physical_object'",
+          "seeAlso": [
+            "obo:BFO_0000040",
+            "dol:physical-object"
+          ]
+        }
+      }
+    },
+    "PhysicalQuantity": {
+      "labels": {
+        "identifier": "PhysicalQuantity",
+        "implied": [
+          "Quality"
+        ]
+      },
+      "description": "A quality that can be quantified by measurement. Renders ISO 15926-2:2003 'property'. e.g. `The mass of a bar of steel, the temperature of a medium, the inner diameter of a pipe, the lift height of a crane, the head (lift height) of a pump`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PhysicalQuantity individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PhysicalQuantity": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PhysicalQuantity_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity",
+          "root": "Dependent",
+          "iso15926": "ISO 15926-2:2003 'property'",
+          "seeAlso": [
+            "obo:PATO_0001018",
+            "qudt:QuantityKind",
+            "dol:physical-quality",
+            "om:Quantity",
+            "ssn:ObservableProperty"
+          ]
+        }
+      }
+    },
+    "PlaneInSpace": {
+      "labels": {
+        "identifier": "PlaneInSpace",
+        "implied": [
+          "SpatialLocation"
+        ]
+      },
+      "description": "A spatial location that is a two-dimensional plane. e.g. `The midway horizontal plane of a volume given by coordinates, the plane of a moving work platform at 12:00`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/PlaneInSpace",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PlaneInSpace individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PlaneInSpace": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PlaneInSpace_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/PlaneInSpace",
+          "root": "Object"
+        }
+      }
+    },
+    "PointInSpace": {
+      "labels": {
+        "identifier": "PointInSpace",
+        "implied": [
+          "SpatialLocation"
+        ]
+      },
+      "description": "A spatial location that has zero dimension with no proper parts. e.g. `The location of a probe at a given point in time`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/PointInSpace",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PointInSpace individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PointInSpace": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_PointInSpace_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/PointInSpace",
+          "root": "Object"
+        }
+      }
+    },
+    "Potential": {
+      "labels": {
+        "identifier": "Potential",
+        "implied": [
+          "Dependent"
+        ]
+      },
+      "aliases": [
+        "Realizable Entity"
+      ],
+      "description": "A dependent entity that can potentially be realised through participation in an activity. e.g. `The sealing function of a gasket, the disposition of a steel bar to corrode`. Use OWL property chains to enforce constraints on how the bearer needs to participate in order for an activity to count as a realization.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Potential",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Potential individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Potential": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Potential_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Potential",
+          "root": "Dependent",
+          "disjointWith": [
+            "Quality"
+          ]
+        }
+      }
+    },
+    "Quality": {
+      "labels": {
+        "identifier": "Quality",
+        "implied": [
+          "Dependent"
+        ]
+      },
+      "description": "A dependent entity that is present any time its bearer exists. Renders ISO 15926-2:2003 'property'. e.g. `The temperature of a fluid stream, the tensile strength of a bolt, the length of a pipeline, the colour of a surface coating, the familiarity of a specialist with a modification procedure, the quality of a window of being open or closed`. The class Quality and its subclass PhysicalQuantity are inspired by corresponding classes included in the DOLCE and BFO upper ontologies. Qualities are in general subject to change over the lifetime of the bearer. The main IDO device for representing quality changes is through 'datum' individuals: see lis:qualityQuantifiedAs. Qualities should only be used for root properties such as voltage, pressure, etc. Where there are variants such as nominal, rated, actual voltage, modellers should use lis:Quality for voltage and use a subclass of lis:QualityDatum for the moderator (\"nominal\", etc.).",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Quality",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Quality individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Quality": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Quality_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Quality",
+          "root": "Dependent",
+          "iso15926": "ISO 15926-2:2003 'property'",
+          "seeAlso": [
+            "obo:BFO_0000019",
+            "obo:PATO_0000001",
+            "obo:PATO_0001241",
+            "dol:quality",
+            "ssn:ActuatableProperty",
+            "ssn:Property"
+          ]
+        }
+      }
+    },
+    "QualityDatum": {
+      "labels": {
+        "identifier": "QualityDatum",
+        "implied": [
+          "InformationObject"
+        ]
+      },
+      "description": "An information object that quantifies a quality. e.g. `10 volts, high (of pressure), low (of temperature), category 3 (as used to rate the strength 'quality' of a storm), 3 MB (a file size), qualifications, grades`. Introduce subclasses of 'quality datum' in RDL to distinguish categories of data, such as nominal versus measured values. This class is inspired by the class \"measurement datum\" of the Information Artifact Ontology (IAO). The change of wording from \"measurement\" to \"quality\" is intended to support cases where measurement is not involved, such as with nominal values. Quantification may be on nominal, ordinal, and other scales. This class may be used for data that don't fit the restriction to \"single unit, single number\" of 'scalar quantity datum', including data employing vectors instead of numbers, and conventional categories like \"high\" and \"medium\".",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/QualityDatum",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the QualityDatum individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "datumValue": {
+          "type": "ANY",
+          "name": "datumValue",
+          "description": "If x 'datum value' y, then x is a 'quality datum', and y is the literal value of x. e.g. `The measured datum \"55 degrees Celsius\" has \"55\" as literal value`. A literal value is uninterpreted. Provide a unit of measure, or other category, for a 'quality datum' to be interpretable. For numeric non-integer values, the recommended data type is xsd:float.",
+          "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/datumValue",
+          "extensions": {
+            "custom": {
+              "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/datumValue",
+              "functional": true,
+              "seeAlso": [
+                "obo:IAO_0000004",
+                "qudt:numericValue",
+                "om:hasNumericalValue",
+                "ssn:hasSimpleResult"
+              ]
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_QualityDatum": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_QualityDatum_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/QualityDatum",
+          "root": "Object",
+          "seeAlso": [
+            "obo:IAO_0000109",
+            "lis:TemporalDatum"
+          ]
+        }
+      }
+    },
+    "Role": {
+      "labels": {
+        "identifier": "Role",
+        "implied": [
+          "Potential"
+        ]
+      },
+      "description": "A potential that is assigned to an object. Renders ISO 15926-2:2003 'role', 'role_and_domain'. e.g. `The role an individual person takes in a work situation, such as a manager. A student role`. This class is intended to serve the same purpose as the ISO 15926-2:2003 'role' entity type, as well as the same-named BFO class (BFO_0000023). As with any 'potential', the existence of a role is dependent on its bearer. A particular meeting room's role may therefore not be transferred to a different room; a different role individual with similar classification would be needed.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Role",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Role individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Role": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Role_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Role",
+          "root": "Dependent",
+          "iso15926": "ISO 15926-2:2003 'role', 'role_and_domain'",
+          "seeAlso": [
+            "lis:hasRole"
+          ]
+        }
+      }
+    },
+    "ScalarQuantityDatum": {
+      "labels": {
+        "identifier": "ScalarQuantityDatum",
+        "implied": [
+          "QualityDatum"
+        ]
+      },
+      "description": "A quality datum that quantifies a physical quantity with a numeric value and a scale. e.g. `10 kilograms, 220 volt`. A scalar quantity datum has a unique unit of measure and a unique numeric value. This class is inspired by the class \"scalar measurement datum\" of the Information Artifact Ontology. Every ScalarQuantityDatum has a 'datum value': the property is declared on QualityDatum.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/ScalarQuantityDatum",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ScalarQuantityDatum individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ScalarQuantityDatum": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ScalarQuantityDatum_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/ScalarQuantityDatum",
+          "root": "Object",
+          "seeAlso": [
+            "obo:IAO_0000032",
+            "qudt:QuantityValue",
+            "om:Measure"
+          ]
+        }
+      }
+    },
+    "Scale": {
+      "labels": {
+        "identifier": "Scale",
+        "implied": [
+          "UnitOfMeasure"
+        ]
+      },
+      "description": "A unit of measure that, when paired with a number, unambiguously describes the magnitude of a physical quantity. Renders ISO 15926-2:2003 'scale'. e.g. `centimetre, kilogram per minute, degree Celsius, lunar distance, kilo-lines of code`. Arguably, IDO conflates the notions of \"unit of measure\" and \"scale\" in an unhealthy way. While a unit of measure is a definite magnitude, a scale arises from fixing a number range to express multiples of the unit of measure. One may argue that a unit of measure has an implicit scale, obtained by multiplying the unit by any number; this will then allow for undefined or meaningless expressions like \"minus 10 Kelvin\". 'scale' corresponds to the common sense notion of unit of measure which unambiguously defines the magnitude of the measure. OWL data ranges can capture the acceptable numerical range for a scale. For instance, the 'datum value' of any 'quality datum' that has Celsius as 'datum uom' can be limited to the range from -273.15 upwards to infinity.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Scale",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Scale individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Scale": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Scale_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Scale",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'scale'",
+          "seeAlso": [
+            "qudt:Scale",
+            "om:Scale"
+          ]
+        }
+      }
+    },
+    "ShapeQuality": {
+      "labels": {
+        "identifier": "ShapeQuality",
+        "implied": [
+          "Quality"
+        ]
+      },
+      "description": "A quality that can be characterised in terms of geometry. e.g. `The flat shape of a surface feature, the cylindrical shape of a piece of pipe`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/ShapeQuality",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ShapeQuality individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ShapeQuality": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ShapeQuality_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/ShapeQuality",
+          "root": "Dependent"
+        }
+      }
+    },
+    "Site": {
+      "labels": {
+        "identifier": "Site",
+        "implied": [
+          "Location"
+        ]
+      },
+      "description": "A location determined in relation to one or more physical objects. Renders ISO 15926-2:2003 'spatial_location'. e.g. `A flight deck, the inside of a manifold, the hold of a ship, a centre of gravity, an outside area`. Locations such as countries and cities are also considered sites. The position of a 'site' follows the position of the 'physical object' by which it is demarcated. This class is inspired by the BFO class 'site'. The utility of a 'site' may be represented by assigning one or more 'role's, such as 'front desk role', 'storage space role', or 'entryway role'.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Site",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Site individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Site": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Site_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Site",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'spatial_location'",
+          "disjointWith": [
+            "SpatialLocation"
+          ],
+          "seeAlso": [
+            "obo:BFO_0000029",
+            "lis:siteDeterminedBy"
+          ]
+        }
+      }
+    },
+    "SpatialLocation": {
+      "labels": {
+        "identifier": "SpatialLocation",
+        "implied": [
+          "Location"
+        ]
+      },
+      "description": "A location defined relative to a spatial reference system. Renders ISO 15926-2:2003 'spatial_location'. e.g. `The cube-shaped region extending 1 metre in each direction from origo, the line extending 10 metres from origo along the z axis, two points with coordinates on a two-dimensional plane; the location of a container at 10:00 AM`. The position of a 'spatial location' is fixed (relative to the frame of reference); it is not dependent on changing positions of 'physical object's. As with 'spatiotemporal region', a spatial location need not be connected; for example, a location may consist in several cube-shaped regions. The subclasses 'point in space', 'line in space', 'plane in space', and 'volume in space' are all defined as singular: for example, a 'point in space' individual may not have multiple points as parts. This, in contrast to the analogous BFO classes 'one-dimensional spatial region', etc., which are all defined as plural, allowing for disconnected parts.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/SpatialLocation",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the SpatialLocation individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_SpatialLocation": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_SpatialLocation_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/SpatialLocation",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'spatial_location'",
+          "seeAlso": [
+            "obo:BFO_0000006"
+          ]
+        }
+      }
+    },
+    "SpatiotemporalRegion": {
+      "labels": {
+        "identifier": "SpatiotemporalRegion",
+        "implied": [
+          "Temporal"
+        ]
+      },
+      "description": "A temporal entity that extends in space and time. e.g. `The spatiotemporal region occupied by the fluid contents of a vessel over a period of time, the spatiotemporal region occupied by a pipeline inspection device (pig) during an inspection`. An 'activity' occupies a 'spatiotemporal region'. Note that the spatiotemporal region may have temporal gaps.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/SpatiotemporalRegion",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the SpatiotemporalRegion individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_SpatiotemporalRegion": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_SpatiotemporalRegion_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/SpatiotemporalRegion",
+          "root": "Temporal",
+          "disjointWith": [
+            "TemporalRegion"
+          ],
+          "seeAlso": [
+            "obo:BFO_0000011",
+            "dol:spatio-temporal-region"
+          ]
+        }
+      }
+    },
+    "Specified": {
+      "labels": {
+        "identifier": "Specified"
+      },
+      "description": "An entity that is part of an engineering specification. e.g. `A \"tag\" individual, a function of a tag, an activity as characterised in process design`. A 'specified' entity is typically an individual that represents the asset as designed, with restrictions that capture requirements. A 'specified' individual may be matched with an individual representing an 'actual' individual. Naming for the according relations may include: 'installed as' for physical objects, and 'executed as' for activities. This class is not intended to be used directly, but only for serving as the domain of 'implements' and similar relations. The disjointness axiom serves to block iterated chains of 'implements', etc., relationships.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Specified",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Specified individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Specified": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Specified_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Specified",
+          "root": "Specified",
+          "seeAlso": [
+            "lis:Actual"
+          ]
+        }
+      }
+    },
+    "Stream": {
+      "labels": {
+        "identifier": "Stream",
+        "implied": [
+          "InanimatePhysicalObject"
+        ]
+      },
+      "description": "An inanimate physical object consisting of energy or homogeneous parts that flow through a system. Renders ISO 15926-2:2003 'stream'. e.g. `A stream of fluid in a pipeline, electricity in an electrical wire, ore moving on a conveyor belt`. The class 'stream' is intended to be used for flows of material or energy, in accordance with conventional use. There is an abundance of cases where use of the term \"stream\" can be called into question, as in, is a stream of electricity really moving; how many cars are needed to participate before it is properly called a \"flow\" of cars; while a flow of sand is a stream, maybe a succession of rolling rocks would not qualify.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Stream",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Stream individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Stream": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Stream_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Stream",
+          "root": "Object",
+          "iso15926": "ISO 15926-2:2003 'stream'"
+        }
+      }
+    },
+    "System": {
+      "labels": {
+        "identifier": "System",
+        "implied": [
+          "FunctionalObject"
+        ]
+      },
+      "description": "A 'functional object' with one or more functional parts whose functions contribute to its function. e.g. `An electrical network, an HVAC system, a pumping system, a compressor`. Most industrial assets are both 'system' and 'inanimate physical object'. When modelling, e.g., a pump system, that system will be an 'inanimate physical object', with the pump part related to the pump system by 'has functional part'. The domain and range restrictions on 'has functional part' then imply that the pump system has type 'system', and the pump has type 'functional object'.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/System",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the System individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_System": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_System_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/System",
+          "root": "Object",
+          "seeAlso": [
+            "lis:functionalPartOf",
+            "ssn:System"
+          ]
+        }
+      }
+    },
+    "Temporal": {
+      "labels": {
+        "identifier": "Temporal"
+      },
+      "aliases": [
+        "Temporal Entity"
+      ],
+      "description": "An entity that is part of time or takes place in time. e.g. `A moment in time, a period of time, an activity or process, a beginning, a closing event`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/Temporal",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Temporal individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Temporal": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Temporal_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/Temporal",
+          "root": "Temporal",
+          "seeAlso": [
+            "obo:BFO_0000003",
+            "dol:perdurant"
+          ]
+        }
+      }
+    },
+    "TemporalDatum": {
+      "labels": {
+        "identifier": "TemporalDatum",
+        "implied": [
+          "InformationObject"
+        ]
+      },
+      "description": "An information object that quantifies a temporal region. e.g. `An observed duration of 20 hours for a well drilling activity, an estimated lag of 5 minutes between two process steps, a calculated elapsed time of 3 days for a maintenance campaign`. 'temporal datum' is the temporal counterpart of 'quality datum'. Where a 'quality datum' quantifies a 'quality' of an object, a 'temporal datum' quantifies a 'temporal region' associated with an activity. Multiple temporal datums may be assigned to the same temporal region, for example representing observed, estimated, and calculated duration values. Introduce subclasses of 'temporal datum' in RDL to distinguish categories of temporal data, such as observed versus estimated duration.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/TemporalDatum",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the TemporalDatum individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "temporalValue": {
+          "type": "ANY",
+          "name": "temporalValue",
+          "description": "If x 'temporal value' y, then x is a 'temporal datum', and y is the literal value of x. e.g. `The temporal datum \"20 hours observed duration\" has \"PT20H\"^^xsd:duration as temporal value; the temporal datum \"start time\" has \"2026-03-15T08:00:00Z\"^^xsd:dateTime as temporal value`. Suitable data types include xsd:duration for durations, xsd:dateTime for time stamps, and xsd:date for calendar dates.",
+          "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/temporalValue",
+          "extensions": {
+            "custom": {
+              "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/temporalValue"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_TemporalDatum": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_TemporalDatum_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/TemporalDatum",
+          "root": "Object",
+          "seeAlso": [
+            "lis:QualityDatum"
+          ]
+        }
+      }
+    },
+    "TemporalRegion": {
+      "labels": {
+        "identifier": "TemporalRegion",
+        "implied": [
+          "Temporal"
+        ]
+      },
+      "description": "A temporal entity that extends only in time. e.g. `The moment a valve is closed, upstart time for a motor, the length of time that a bolt has been installed, intervals between maintenance`. A 'temporal region' plays a role analogous to that of a quantity: it is an entity to which multiple temporal datums may be assigned, such as 'observed', 'estimated', or 'calculated' duration values. This avoids treating time as a physical quality of an object while preserving a modelling style parallel to the quantity--datum pattern in IDO.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/TemporalRegion",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the TemporalRegion individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_TemporalRegion": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_TemporalRegion_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/TemporalRegion",
+          "root": "Temporal",
+          "seeAlso": [
+            "obo:BFO_0000008",
+            "dol:temporal-region"
+          ]
+        }
+      }
+    },
+    "UnitOfMeasure": {
+      "labels": {
+        "identifier": "UnitOfMeasure",
+        "implied": [
+          "InformationObject"
+        ]
+      },
+      "description": "An information object that defines the magnitude of a 'quality', adopted by convention or by law. e.g. `carton, cup, temperature degree, instances of scales`. 'unit of measure' may be used when there is ambiguity about the scale of the measure.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/UnitOfMeasure",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the UnitOfMeasure individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_UnitOfMeasure": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_UnitOfMeasure_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/UnitOfMeasure",
+          "root": "Object",
+          "seeAlso": [
+            "obo:UO_0000000",
+            "om:Unit"
+          ]
+        }
+      }
+    },
+    "VolumeInSpace": {
+      "labels": {
+        "identifier": "VolumeInSpace",
+        "implied": [
+          "SpatialLocation"
+        ]
+      },
+      "description": "A spatial location that is a three-dimensional volume. e.g. `A volume designated for 3D engineering at a point in time, a box-shaped volume determined by coordinates in a 3D frame of reference; the extent of a gas leak at 12:00`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/VolumeInSpace",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the VolumeInSpace individual: its IRI in IDO data. Unique within a data set; individuals that are blank nodes in IDO are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_VolumeInSpace": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_VolumeInSpace_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "http://rds.posccaesar.org/ontology/lis14/rdl/VolumeInSpace",
+          "root": "Object"
+        }
+      }
+    }
+  },
+  "relationships": {
+    "Temporal_BEFORE_Temporal": {
+      "type": "BEFORE",
+      "from": {
+        "node": "Temporal"
+      },
+      "to": {
+        "node": "Temporal"
+      },
+      "description": "If x is 'before' y, then x ends no later than the start of y. The inverse IDO relation is 'after'. Renders ISO 15926-2:2003 'class_of_temporal_sequence'. e.g. `The cooling stage takes place before separation`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/before",
+      "extensions": {
+        "custom": {
+          "inverseOf": "after",
+          "subPropertyOf": [
+            "occursRelativeTo"
+          ],
+          "iso15926": "ISO 15926-2:2003 'class_of_temporal_sequence'"
+        }
+      }
+    },
+    "Activity_CONCRETIZES_InformationObject": {
+      "type": "CONCRETIZES",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "InformationObject"
+      },
+      "description": "If x 'concretizes' y, then y is an 'information object', and x is a 'physical object' copy of y, or an 'activity' performance of y. The inverse IDO relation is 'concretized by'. e.g. `A report is produced as paper copies, a spreadsheet document is shown on a computer screen, a plan is carried out, a device operates according to a functional specification, a software program is executed`. Inspired by BFO's \"concretizes\". The constraints on 'concretizes' in IDO closely matches that employed in BFO-ISO (obo:BFO_0000059), and not the RO or the IAO (obo:RO_0000059). There are two main, and very different, uses of 'concretizes' for an information object y. (1) The information object is made concrete in printed or electronic copies. Each copy will have patterns of ink or configurations of electrons that map to y: a quality of appropriate similarity. (2) The information object is made concrete by a performance according to the specification given by y.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/concretizes",
+      "extensions": {
+        "custom": {
+          "inverseOf": "concretizedBy",
+          "unionEnds": true
+        }
+      }
+    },
+    "PhysicalObject_CONCRETIZES_InformationObject": {
+      "type": "CONCRETIZES",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "InformationObject"
+      },
+      "description": "If x 'concretizes' y, then y is an 'information object', and x is a 'physical object' copy of y, or an 'activity' performance of y. The inverse IDO relation is 'concretized by'. e.g. `A report is produced as paper copies, a spreadsheet document is shown on a computer screen, a plan is carried out, a device operates according to a functional specification, a software program is executed`. Inspired by BFO's \"concretizes\". The constraints on 'concretizes' in IDO closely matches that employed in BFO-ISO (obo:BFO_0000059), and not the RO or the IAO (obo:RO_0000059). There are two main, and very different, uses of 'concretizes' for an information object y. (1) The information object is made concrete in printed or electronic copies. Each copy will have patterns of ink or configurations of electrons that map to y: a quality of appropriate similarity. (2) The information object is made concrete by a performance according to the specification given by y.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/concretizes",
+      "extensions": {
+        "custom": {
+          "inverseOf": "concretizedBy",
+          "unionEnds": true
+        }
+      }
+    },
+    "PhysicalObject_CONNECTED_TO_PhysicalObject": {
+      "type": "CONNECTED_TO",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x is 'connected to' y, then there is a physical connection between x and y. Symmetric: x 'connected to' y if and only if y 'connected to' x. Renders ISO 15926-2:2003 'connection_of_individual'. e.g. `A three-pin electrical plug is connected to a three-pin socket, two flanges are connected with bolts and a gasket, a gas compressor is indirectly connected to a gearbox assembly (via a coupling)`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/connectedTo",
+      "extensions": {
+        "custom": {
+          "symmetric": true,
+          "iso15926": "ISO 15926-2:2003 'connection_of_individual'"
+        }
+      }
+    },
+    "Activity_CONSUMES_Object": {
+      "type": "CONSUMES",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Object"
+      },
+      "description": "If x 'consumes' y, then x is an 'activity', y is an 'object', and x takes y out of being. The inverse IDO relation is 'consumed by'. Renders ISO 15926-2:2003 'class_of_cause_of_ending_of_class_of_individual'. e.g. `A combustion activity consumes fuel, a welding activity consumes a filler rod, a chemical reaction consumes a reagent, a manufacturing activity consumes raw material`. 'consumes' is the dual of 'creates': where 'creates' marks an activity as the cause of an object's beginning, 'consumes' marks an activity as the cause of an object's ending. Consumption here may mean transformation, utilisation, or exhaustion of the consumed object. Together with 'creates', 'consumes' enables continuity of material or energy to be represented across system or activity boundaries: if an upstream activity creates an object and a downstream activity consumes it, the shared object expresses the flow between the two activities. Use this relation to express that an activity takes an object out of being.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/consumes",
+      "extensions": {
+        "custom": {
+          "inverseOf": "consumedBy",
+          "subPropertyOf": [
+            "hasPassiveParticipant"
+          ],
+          "iso15926": "ISO 15926-2:2003 'class_of_cause_of_ending_of_class_of_individual'"
+        }
+      }
+    },
+    "Location_CONTAINS_Location": {
+      "type": "CONTAINS",
+      "from": {
+        "node": "Location"
+      },
+      "to": {
+        "node": "Location"
+      },
+      "description": "If x 'contains' y, then x and y are both 'physical object' or 'location', and y is located entirely within x. The inverse IDO relation is 'contained by'. Renders ISO 15926-2:2003 'containment_of_individual'. e.g. `An instrument is contained in an enclosure, a pump contains an impeller, a device is contained by a volume of inert gas, a pipeline contains a pipeline inspection gauge (pig), a tank contains fluid, a building contains rooms`. This relation is intended to be used where an object x is located inside another object y, without implying that x is a part of y. While a 'location' cannot be a part of a 'physical object' or vice versa, they may be contained by each other.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/contains",
+      "extensions": {
+        "custom": {
+          "inverseOf": "containedBy",
+          "subPropertyOf": [
+            "locatedRelativeTo"
+          ],
+          "iso15926": "ISO 15926-2:2003 'containment_of_individual'",
+          "unionEnds": true
+        }
+      }
+    },
+    "Location_CONTAINS_PhysicalObject": {
+      "type": "CONTAINS",
+      "from": {
+        "node": "Location"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x 'contains' y, then x and y are both 'physical object' or 'location', and y is located entirely within x. The inverse IDO relation is 'contained by'. Renders ISO 15926-2:2003 'containment_of_individual'. e.g. `An instrument is contained in an enclosure, a pump contains an impeller, a device is contained by a volume of inert gas, a pipeline contains a pipeline inspection gauge (pig), a tank contains fluid, a building contains rooms`. This relation is intended to be used where an object x is located inside another object y, without implying that x is a part of y. While a 'location' cannot be a part of a 'physical object' or vice versa, they may be contained by each other.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/contains",
+      "extensions": {
+        "custom": {
+          "inverseOf": "containedBy",
+          "subPropertyOf": [
+            "locatedRelativeTo"
+          ],
+          "iso15926": "ISO 15926-2:2003 'containment_of_individual'",
+          "unionEnds": true
+        }
+      }
+    },
+    "PhysicalObject_CONTAINS_Location": {
+      "type": "CONTAINS",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "Location"
+      },
+      "description": "If x 'contains' y, then x and y are both 'physical object' or 'location', and y is located entirely within x. The inverse IDO relation is 'contained by'. Renders ISO 15926-2:2003 'containment_of_individual'. e.g. `An instrument is contained in an enclosure, a pump contains an impeller, a device is contained by a volume of inert gas, a pipeline contains a pipeline inspection gauge (pig), a tank contains fluid, a building contains rooms`. This relation is intended to be used where an object x is located inside another object y, without implying that x is a part of y. While a 'location' cannot be a part of a 'physical object' or vice versa, they may be contained by each other.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/contains",
+      "extensions": {
+        "custom": {
+          "inverseOf": "containedBy",
+          "subPropertyOf": [
+            "locatedRelativeTo"
+          ],
+          "iso15926": "ISO 15926-2:2003 'containment_of_individual'",
+          "unionEnds": true
+        }
+      }
+    },
+    "PhysicalObject_CONTAINS_PhysicalObject": {
+      "type": "CONTAINS",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x 'contains' y, then x and y are both 'physical object' or 'location', and y is located entirely within x. The inverse IDO relation is 'contained by'. Renders ISO 15926-2:2003 'containment_of_individual'. e.g. `An instrument is contained in an enclosure, a pump contains an impeller, a device is contained by a volume of inert gas, a pipeline contains a pipeline inspection gauge (pig), a tank contains fluid, a building contains rooms`. This relation is intended to be used where an object x is located inside another object y, without implying that x is a part of y. While a 'location' cannot be a part of a 'physical object' or vice versa, they may be contained by each other.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/contains",
+      "extensions": {
+        "custom": {
+          "inverseOf": "containedBy",
+          "subPropertyOf": [
+            "locatedRelativeTo"
+          ],
+          "iso15926": "ISO 15926-2:2003 'containment_of_individual'",
+          "unionEnds": true
+        }
+      }
+    },
+    "Activity_CREATES_Object": {
+      "type": "CREATES",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Object"
+      },
+      "description": "If x 'creates' y, then x is an 'activity', y is an 'object', and x brings y into being. The inverse IDO relation is 'created by'. Renders ISO 15926-2:2003 'class_of_cause_of_beginning_of_class_of_individual'. e.g. `A manufacturing activity produces a car, a welding activity produces a piping spool, a measurement activity produces a performance log`. Use this relation to express that an activity brings an object into being.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/creates",
+      "extensions": {
+        "custom": {
+          "inverseOf": "createdBy",
+          "subPropertyOf": [
+            "hasPassiveParticipant"
+          ],
+          "iso15926": "ISO 15926-2:2003 'class_of_cause_of_beginning_of_class_of_individual'"
+        }
+      }
+    },
+    "QualityDatum_DATUM_UOM_UnitOfMeasure": {
+      "type": "DATUM_UOM",
+      "from": {
+        "node": "QualityDatum",
+        "max_count": 1
+      },
+      "to": {
+        "node": "UnitOfMeasure"
+      },
+      "description": "If x 'has datum uom' y, then x is a 'quality datum' for which any 'datum value' is interpreted by the 'unit of measure' y. The inverse IDO relation is 'uom of datum'. e.g. `The measured datum \"55 degrees Celsius\" has Celsius as unit of measure`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/datumUOM",
+      "extensions": {
+        "custom": {
+          "inverseOf": "uomOfDatum",
+          "subPropertyOf": [
+            "hasContentPart"
+          ],
+          "functional": true
+        }
+      }
+    },
+    "PhysicalObject_DIRECTLY_CONNECTED_TO_PhysicalObject": {
+      "type": "DIRECTLY_CONNECTED_TO",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x is 'directly connected to' y, then x is 'connected to' y, and any material present between x and y directly serves to maintain the connection. Symmetric: x 'directly connected to' y if and only if y 'directly connected to' x. Renders ISO 15926-2:2003 'direct_connection'. e.g. `An electrical plug is connected to a socket, a tag plate is welded to a pressure vessel`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/directlyConnectedTo",
+      "extensions": {
+        "custom": {
+          "subPropertyOf": [
+            "connectedTo"
+          ],
+          "symmetric": true,
+          "iso15926": "ISO 15926-2:2003 'direct_connection'"
+        }
+      }
+    },
+    "Activity_HAS_ACTIVE_PARTICIPANT_Object": {
+      "type": "HAS_ACTIVE_PARTICIPANT",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Object"
+      },
+      "description": "If x 'has active participant' y, then y is an active participant in x. The inverse IDO relation is 'active participant in'. e.g. `A hammer is the tool in a nail-driving activity, a pressure transmitter outputs data in a monitoring activity, a maintenance engineer replaces an instrument in a repair activity, a light sensor controls the level of illumination`. With OWL property chains, the right kind of participation can be secured for activities that count as realizations of 'potential' individuals. As in, a pump's primary function is realized in pumping activities, but only provided the pump is actually doing the pumping, acting as an \"agent\" or \"subject\".",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasActiveParticipant",
+      "extensions": {
+        "custom": {
+          "inverseOf": "activeParticipantIn",
+          "subPropertyOf": [
+            "hasParticipant"
+          ]
+        }
+      }
+    },
+    "Activity_HAS_ACTIVITY_BOUND_Event": {
+      "type": "HAS_ACTIVITY_BOUND",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Event"
+      },
+      "description": "If x 'has activity bound' y, then x 'has activity part' y, and y is an 'event'. The inverse IDO relation is 'activity bound of'. Renders ISO 15926-2:2003 'temporal_bounding'. e.g. `The moment an electrical connection is broken, the time that a fluid reaches a set temperature`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasActivityBound",
+      "extensions": {
+        "custom": {
+          "inverseOf": "activityBoundOf",
+          "subPropertyOf": [
+            "hasActivityPart"
+          ],
+          "iso15926": "ISO 15926-2:2003 'temporal_bounding'"
+        }
+      }
+    },
+    "Activity_HAS_ACTIVITY_PART_Activity": {
+      "type": "HAS_ACTIVITY_PART",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Activity"
+      },
+      "description": "If x 'has activity part' y, then x and y are activities, and x 'has temporal part' y. The inverse IDO relation is 'activity part of'. Renders ISO 15926-2:2003 'temporal_whole_part'. e.g. `The startup period of a chemical process, the inspection part of a maintenance activity, the moment a software program terminates execution`. Parts of activities may be determined by a range of criteria, including temporal restrictions (to sub-periods), spatial restrictions (parts that occupy sub-volumes of space), by the engagement of participants (temporal or spatial parts where one or more participants are active), and \"selective abstraction\" to profiles (parts determined by that which affects variation in selected qualities).",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasActivityPart",
+      "extensions": {
+        "custom": {
+          "inverseOf": "activityPartOf",
+          "subPropertyOf": [
+            "hasTemporalPart"
+          ],
+          "iso15926": "ISO 15926-2:2003 'temporal_whole_part'"
+        }
+      }
+    },
+    "Activity_HAS_ACTIVITY_PROFILE_ActivityProfile": {
+      "type": "HAS_ACTIVITY_PROFILE",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "ActivityProfile"
+      },
+      "description": "If x 'has activity profile' y, then x 'has activity part' y, and y is determined by selective abstraction to that part of x that effects variation in some quality of a participant in x. The inverse IDO relation is 'activity profile of'. e.g. `A pipeline transport activity has a \"profile\" part which is the variation in fluid pressure`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasActivityProfile",
+      "extensions": {
+        "custom": {
+          "inverseOf": "activityProfileOf",
+          "subPropertyOf": [
+            "hasActivityPart"
+          ]
+        }
+      }
+    },
+    "PhysicalObject_HAS_ARRANGED_PART_PhysicalObject": {
+      "type": "HAS_ARRANGED_PART",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x 'has arranged part' y, then y is a part of x with a boundary determined in relation to other parts of x. The inverse IDO relation is 'arranged part of'. Renders ISO 15926-2:2003 'arrangement_of_individual'. e.g. `The upper half of a pressure vessel, the mid-section of a bridge. The buildings on a campus, arranged as parts`. The parts do not have to be connected to each other. They may be separable or non-separable.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasArrangedPart",
+      "extensions": {
+        "custom": {
+          "inverseOf": "arrangedPartOf",
+          "subPropertyOf": [
+            "hasPart"
+          ],
+          "iso15926": "ISO 15926-2:2003 'arrangement_of_individual'"
+        }
+      }
+    },
+    "PhysicalObject_HAS_ASSEMBLED_PART_PhysicalObject": {
+      "type": "HAS_ASSEMBLED_PART",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x 'has assembled part' y, then y is a connected 'arranged part' of x. The inverse IDO relation is 'assembled part of'. Renders ISO 15926-2:2003 'assembly_of_individual'. e.g. `A pipe bend welded into a piping spool, the protective sheath on an electrical cable, a door-handle in a door, a storey of a building`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasAssembledPart",
+      "extensions": {
+        "custom": {
+          "inverseOf": "assembledPartOf",
+          "subPropertyOf": [
+            "hasArrangedPart"
+          ],
+          "iso15926": "ISO 15926-2:2003 'assembly_of_individual'"
+        }
+      }
+    },
+    "Activity_HAS_BEGINNING_Event": {
+      "type": "HAS_BEGINNING",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Event"
+      },
+      "description": "If x 'has beginning' y, then y is an 'event' which 'has temporal extent' some 'instant' which is the first instant of the temporal extent of x. The inverse IDO relation is 'begins'. Renders ISO 15926-2:2003 'beginning'. e.g. `The event that light is switched on, the start of filling a tank`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasBeginning",
+      "extensions": {
+        "custom": {
+          "inverseOf": "begins",
+          "subPropertyOf": [
+            "hasActivityBound"
+          ],
+          "iso15926": "ISO 15926-2:2003 'beginning'"
+        }
+      }
+    },
+    "Object_HAS_CAPABILITY_Capability": {
+      "type": "HAS_CAPABILITY",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "Capability"
+      },
+      "description": "x 'has capability' y if and only if x 'has potential' y, and y is a 'capability'. The inverse IDO relation is 'capability of'. e.g. `A pressure sensor has the capability of being a level sensor, a wall has the capability of noise insulation`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasCapability",
+      "extensions": {
+        "custom": {
+          "inverseOf": "capabilityOf",
+          "subPropertyOf": [
+            "hasDisposition"
+          ]
+        }
+      }
+    },
+    "InformationObject_HAS_CONTENT_PART_InformationObject": {
+      "type": "HAS_CONTENT_PART",
+      "from": {
+        "node": "InformationObject"
+      },
+      "to": {
+        "node": "InformationObject"
+      },
+      "description": "If x 'has content part' y, then x and y are information objects, and x 'has part' y. The inverse IDO relation is 'content part of'. e.g. `A part of a document such as a chapter, section or figure`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasContentPart",
+      "extensions": {
+        "custom": {
+          "inverseOf": "contentPartOf",
+          "subPropertyOf": [
+            "hasPart"
+          ]
+        }
+      }
+    },
+    "Object_HAS_DISPOSITION_Disposition": {
+      "type": "HAS_DISPOSITION",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "Disposition"
+      },
+      "description": "x 'has disposition' y if and only if x 'has potential' y, and y is a 'disposition'. The inverse IDO relation is 'disposition of'. e.g. `A bolted joint has a disposition to come loose, a motor has a disposition to vibrate, a steel bar has a disposition to rust, a vessel has a disposition to leak, a volatile gas has a disposition to flow upwards`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasDisposition",
+      "extensions": {
+        "custom": {
+          "inverseOf": "dispositionOf",
+          "subPropertyOf": [
+            "hasPotential"
+          ]
+        }
+      }
+    },
+    "Activity_HAS_ENDING_Event": {
+      "type": "HAS_ENDING",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Event"
+      },
+      "description": "If x 'has ending' y, then y is an 'event' which 'has temporal extent' some 'instant' which is the last instant of the temporal extent of x. The inverse IDO relation is 'ends'. Renders ISO 15926-2:2003 'ending'. e.g. `The event that light is switched off, the end of filling a tank`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasEnding",
+      "extensions": {
+        "custom": {
+          "inverseOf": "ends",
+          "subPropertyOf": [
+            "hasActivityBound"
+          ],
+          "iso15926": "ISO 15926-2:2003 'ending'"
+        }
+      }
+    },
+    "PhysicalObject_HAS_FEATURE_Feature": {
+      "type": "HAS_FEATURE",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "Feature"
+      },
+      "description": "If x 'has feature' y, then y is an arranged part of x that bears a material quality on which a disposition of x depends. The inverse IDO relation is 'feature of'. Renders ISO 15926-2:2003 'feature_whole_part'. e.g. `A flange face: the flat surface geometry grounds a sealing function; A bolt thread: the helical surface geometry grounds a fastening function; An optical lens surface: the curvature grounds a light-focusing capability; A mirror surface: the smoothness and reflectivity ground an optical reflection function; A sponge or absorber body: the porosity grounds a fluid-absorption disposition`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasFeature",
+      "extensions": {
+        "custom": {
+          "inverseOf": "featureOf",
+          "subPropertyOf": [
+            "hasArrangedPart"
+          ],
+          "iso15926": "ISO 15926-2:2003 'feature_whole_part'"
+        }
+      }
+    },
+    "Object_HAS_FUNCTION_Function": {
+      "type": "HAS_FUNCTION",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "Function"
+      },
+      "description": "x 'has function' y if and only if x 'has potential' y, and y is a 'function'. The inverse IDO relation is 'function of'. Renders ISO 15926-2:2003 'functional_physical_object'. e.g. `A pump has the function of moving fluids, a door has the function of an explosion barrier`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasFunction",
+      "extensions": {
+        "custom": {
+          "inverseOf": "functionOf",
+          "subPropertyOf": [
+            "hasCapability"
+          ],
+          "iso15926": "ISO 15926-2:2003 'functional_physical_object'"
+        }
+      }
+    },
+    "System_HAS_FUNCTIONAL_PART_FunctionalObject": {
+      "type": "HAS_FUNCTIONAL_PART",
+      "from": {
+        "node": "System"
+      },
+      "to": {
+        "node": "FunctionalObject"
+      },
+      "description": "If x 'has functional part' y, then x is a 'system' of which y is a part, and y has one or more functions that contribute to the function of x. The inverse IDO relation is 'functional part of'. e.g. `A separation system has a cooling system as functional part`. 'has functional part' is used to represent the functional break-down of a system. Where x is a functional part of a system y, the realisation of one or more functions of x contributes to the performance of y. 'has functional part' provides a compact way of modeling that is not expressive enough to model multiple functional breakdowns. Note that modeling 'has part' directly between Function/Disposition instances gives a higher flexibility and precision, in particular when objects have multiple functions or dispositions. If 'has part' relationship is modeled between Function/Disposition instances, 'has functional part' can be inferred between the objects that are bearers of the respective functions/dispositions if the corresponding rules are implemented.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasFunctionalPart",
+      "extensions": {
+        "custom": {
+          "inverseOf": "functionalPartOf",
+          "subPropertyOf": [
+            "hasPart"
+          ]
+        }
+      }
+    },
+    "Organism_HAS_INTEREST_Interest": {
+      "type": "HAS_INTEREST",
+      "from": {
+        "node": "Organism"
+      },
+      "to": {
+        "node": "Interest"
+      },
+      "description": "x 'has interest' y if and only if x is an 'organization' or 'organism', x 'has potential' y, and y is an 'interest'. The inverse IDO relation is 'interest of'. Renders ISO 15926-2:2003 'lifecycle_stage'. e.g. `An intention to start a process, a plan to modify a plant, an approval of a certification`. Note, the use of \"potential\" in the definition does not imply \"not actual\", only \"not necessarily actual\".",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasInterest",
+      "extensions": {
+        "custom": {
+          "inverseOf": "interestOf",
+          "subPropertyOf": [
+            "hasPotential"
+          ],
+          "iso15926": "ISO 15926-2:2003 'lifecycle_stage'",
+          "unionEnds": true
+        }
+      }
+    },
+    "Organization_HAS_INTEREST_Interest": {
+      "type": "HAS_INTEREST",
+      "from": {
+        "node": "Organization"
+      },
+      "to": {
+        "node": "Interest"
+      },
+      "description": "x 'has interest' y if and only if x is an 'organization' or 'organism', x 'has potential' y, and y is an 'interest'. The inverse IDO relation is 'interest of'. Renders ISO 15926-2:2003 'lifecycle_stage'. e.g. `An intention to start a process, a plan to modify a plant, an approval of a certification`. Note, the use of \"potential\" in the definition does not imply \"not actual\", only \"not necessarily actual\".",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasInterest",
+      "extensions": {
+        "custom": {
+          "inverseOf": "interestOf",
+          "subPropertyOf": [
+            "hasPotential"
+          ],
+          "iso15926": "ISO 15926-2:2003 'lifecycle_stage'",
+          "unionEnds": true
+        }
+      }
+    },
+    "PhysicalObject_HAS_MATERIAL_PART_MateriallyClassifiedObject": {
+      "type": "HAS_MATERIAL_PART",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "MateriallyClassifiedObject"
+      },
+      "description": "If x 'has material part' y, then x is a 'physical object', and y is a maximal part of x that has a certain 'material composition quality'. The inverse IDO relation is 'material part of'. e.g. `A laptop cover has aluminium and plastic material parts`. An RDL can include parthood relations that identify parts by their materials, supporting recyclability efforts and similar use cases. This relation is suitable as the top node of a taxonomy of such relations. These include \"reinforced with material\" or \"has a matrix with material\" which cannot be aligned with lis:hasAssembledPart or lis:hasArrangedPart.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasMaterialPart",
+      "extensions": {
+        "custom": {
+          "inverseOf": "materialPartOf",
+          "subPropertyOf": [
+            "hasPart"
+          ]
+        }
+      }
+    },
+    "Activity_HAS_PARTICIPANT_Object": {
+      "type": "HAS_PARTICIPANT",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Object"
+      },
+      "description": "If x 'has participant' y, then x is an 'activity', and y is an 'object' that participates in x. The inverse IDO relation is 'participant in'. Renders ISO 15926-2:2003 'participation'. e.g. `A pump participates in (a) pumping (activity), an electric transformer participates in voltage conversion, a stream of water participates in dilution, a bolt participates in a connection`. A property chain axiom secures that a participant in part of an activity participates in the activity as a whole. A property chain axiom secures that when a realizable (a 'disposition' or 'role') is 'realized in' an activity, the activity has the bearer as a participant. A property chain axiom secures that when an activity has a 'profile quantity datum', the bearer of the quantity is a participant in the activity.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasParticipant",
+      "extensions": {
+        "custom": {
+          "inverseOf": "participantIn",
+          "propertyChains": [
+            [
+              "hasActivityPart",
+              "hasParticipant"
+            ],
+            [
+              "profileOfQuality",
+              "qualityOf"
+            ],
+            [
+              "realizes",
+              "potentialOf"
+            ]
+          ],
+          "iso15926": "ISO 15926-2:2003 'participation'"
+        }
+      }
+    },
+    "Activity_HAS_PARTICIPANT_QUALITY_QUANTIFIED_AS_QualityDatum": {
+      "type": "HAS_PARTICIPANT_QUALITY_QUANTIFIED_AS",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "QualityDatum"
+      },
+      "description": "If x 'has participant quality quantified as' y, then x is an 'activity', y is a 'quality datum', and at a time within (inclusive) the duration of x, y 'quantifies quality' a 'quality' of a participant in x. The inverse IDO relation is 'quantifies quality of participant in'. e.g. `Pressure of a stream during a pumping activity, the voltage provided to a motor during a test run`. This relation is suitable as the top node in a taxonomy of relations that assign aggregate datums to activities.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasParticipantQualityQuantifiedAs",
+      "extensions": {
+        "custom": {
+          "inverseOf": "quantifiesQualityOfParticipantIn",
+          "subPropertyOf": [
+            "representedIn"
+          ]
+        }
+      }
+    },
+    "Activity_HAS_PASSIVE_PARTICIPANT_Object": {
+      "type": "HAS_PASSIVE_PARTICIPANT",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Object"
+      },
+      "description": "If x 'has passive participant' y, then y is a passive participant in x. The inverse IDO relation is 'passive participant in'. e.g. `A metal plate is perforated in a drilling activity, a volume of liquid is heated in a heat transmission activity, a loading ramp is the location of an offloading activity, a fluid medium is pumped, a piece of metal is shaped, a stream of data is filtered`. With OWL property chains, the right kind of participation can be secured for activities that count as realizations of 'potential' individuals. As in, a bolt is a passive participant in a bolt-driving activity, where its disposition to enter a threaded hole is realized (distinct from the bolt's function, which is realized in a subsequent activity of holding pieces together).",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasPassiveParticipant",
+      "extensions": {
+        "custom": {
+          "inverseOf": "passiveParticipantIn",
+          "subPropertyOf": [
+            "hasParticipant"
+          ]
+        }
+      }
+    },
+    "PhysicalObject_HAS_PHYSICAL_QUANTITY_PhysicalQuantity": {
+      "type": "HAS_PHYSICAL_QUANTITY",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "PhysicalQuantity"
+      },
+      "description": "x 'has physical quantity' y if and only if x 'has quality' y, and y is a 'physical quantity'. The inverse IDO relation is 'physical quantity of'. e.g. `A section of pipe has length, a crane has lifting power, a flange has inner diameter`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasPhysicalQuantity",
+      "extensions": {
+        "custom": {
+          "inverseOf": "physicalQuantityOf",
+          "subPropertyOf": [
+            "hasQuality"
+          ]
+        }
+      }
+    },
+    "Object_HAS_POTENTIAL_Potential": {
+      "type": "HAS_POTENTIAL",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "Potential"
+      },
+      "description": "If x 'has potential' y, then x is an 'object', and y is a 'potential' that is dependent on x. The inverse IDO relation is 'potential of'. e.g. `Having a role, function, obligation, or plan (intention to act)`. The pre-defined types of 'potential' entities in IDO are 'role', 'disposition', and 'interest'. If other kinds are needed for use case, then 'has potential' is a suitable superrelation for the corresponding bearer relations.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasPotential",
+      "extensions": {
+        "custom": {
+          "inverseOf": "potentialOf"
+        }
+      }
+    },
+    "Activity_HAS_PRIMARY_PARTICIPANT_Object": {
+      "type": "HAS_PRIMARY_PARTICIPANT",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "Object"
+      },
+      "description": "If x 'has primary participant' y, then x is a realization of a disposition or role of y that is essential to the identification of x. The inverse IDO relation is 'primary participant in'. e.g. `A pump is the performer in a pumping activity, a thermometer is the performer in a temperature measurement`. Assume p is a pump, a an activity that realizes the function fp of p, and no subactivity x of a realizes fp (except for subactivities determined solely by restriction to a temporal sub-interval). For instance, the subactivity of the motor that drives the impeller realizes a function of the motor, but this is not by itself a realization of the function of the pump as a whole, hence the motor is not a 'primary participant'.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasPrimaryParticipant",
+      "extensions": {
+        "custom": {
+          "inverseOf": "primaryParticipantIn",
+          "subPropertyOf": [
+            "hasParticipant"
+          ]
+        }
+      }
+    },
+    "Object_HAS_QUALITY_Quality": {
+      "type": "HAS_QUALITY",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "Quality"
+      },
+      "description": "If x 'has quality' y, then x is an 'object', and y is a 'quality' that is dependent on x. The inverse IDO relation is 'quality of'. e.g. `A motor has rated output power, a lightbulb has luminance, an amount of liquid has mass, a bar of metal has chemical composition, a document has readability`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasQuality",
+      "extensions": {
+        "custom": {
+          "inverseOf": "qualityOf"
+        }
+      }
+    },
+    "Object_HAS_QUALITY_QUANTIFIED_AS_QualityDatum": {
+      "type": "HAS_QUALITY_QUANTIFIED_AS",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "QualityDatum"
+      },
+      "description": "If x 'has quality quantified as' y, then x is an 'object', and y is a 'quality datum' that 'quantifies quality' a 'quality' of x. The inverse IDO relation is 'quantifies quality of'. e.g. `The GeoSPARQL object property geo:hasLength relates (spatial) objects to datums that provide length with number and unit of measure. lis:hasQualityQuantifiedAs is suitable as a superproperty in an alignment with GeoSPARQL data that includes geo:hasLength relationships`. This relation is suitable as the top node in a taxonomy of \"shortcut\" relations that relate objects directly to quality datums, leaving the quality implicit.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasQualityQuantifiedAs",
+      "extensions": {
+        "custom": {
+          "inverseOf": "quantifiesQualityOf",
+          "subPropertyOf": [
+            "representedIn"
+          ],
+          "propertyChains": [
+            [
+              "hasQuality",
+              "qualityQuantifiedAs"
+            ]
+          ]
+        }
+      }
+    },
+    "Object_HAS_ROLE_Role": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "Role"
+      },
+      "description": "x 'has role' y if and only if x 'has potential' y, and y is a 'role'. The inverse IDO relation is 'role of'. Renders ISO 15926-2:2003 'role'. e.g. `An window has the role of a ventilation opening, a room has the role of a storage space, a gas sensor has the role of a leak detector, a person has the role of inspector`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasRole",
+      "extensions": {
+        "custom": {
+          "inverseOf": "roleOf",
+          "subPropertyOf": [
+            "hasPotential"
+          ],
+          "iso15926": "ISO 15926-2:2003 'role'"
+        }
+      }
+    },
+    "Location_HAS_SPATIAL_EXTENT_SpatialLocation": {
+      "type": "HAS_SPATIAL_EXTENT",
+      "from": {
+        "node": "Location"
+      },
+      "to": {
+        "node": "SpatialLocation"
+      },
+      "description": "If x 'has spatial extent' y, then x is a 'physical object', and y is the 'spatial location' determined as the extension in space of x. The inverse IDO relation is 'spatial extent of'. e.g. `The volume occupied by an process skid, the volume occupied by a volume of flammable gas`. The site of an object will occupy different spatial locations over time if the location and size of the object changes.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasSpatialExtent",
+      "extensions": {
+        "custom": {
+          "inverseOf": "spatialExtentOf",
+          "subPropertyOf": [
+            "locatedRelativeTo"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "PhysicalObject_HAS_SPATIAL_EXTENT_SpatialLocation": {
+      "type": "HAS_SPATIAL_EXTENT",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "SpatialLocation"
+      },
+      "description": "If x 'has spatial extent' y, then x is a 'physical object', and y is the 'spatial location' determined as the extension in space of x. The inverse IDO relation is 'spatial extent of'. e.g. `The volume occupied by an process skid, the volume occupied by a volume of flammable gas`. The site of an object will occupy different spatial locations over time if the location and size of the object changes.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasSpatialExtent",
+      "extensions": {
+        "custom": {
+          "inverseOf": "spatialExtentOf",
+          "subPropertyOf": [
+            "locatedRelativeTo"
+          ],
+          "unionEnds": true
+        }
+      }
+    },
+    "Activity_HAS_SPATIOTEMPORAL_EXTENT_SpatiotemporalRegion": {
+      "type": "HAS_SPATIOTEMPORAL_EXTENT",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "SpatiotemporalRegion"
+      },
+      "description": "If x 'has spatiotemporal extent' y, then x is an activity, and y is a spatiotemporal region which is the spatiotemporal extent of x. The inverse IDO relation is 'spatiotemporal extent of'. e.g. `A pipeline pig occupies the spatiotemporal region which is its trajectory (adopted from BFO-ISO)`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasSpatiotemporalExtent",
+      "extensions": {
+        "custom": {
+          "inverseOf": "spatiotemporalExtentOf",
+          "subPropertyOf": [
+            "occursRelativeTo"
+          ]
+        }
+      }
+    },
+    "Location_HAS_SUB_LOCATION_Location": {
+      "type": "HAS_SUB_LOCATION",
+      "from": {
+        "node": "Location"
+      },
+      "to": {
+        "node": "Location"
+      },
+      "description": "If x 'has sublocation' y, then x and y are locations, and x 'has part' y. The inverse IDO relation is 'sub location of'. e.g. `The landing area is a sublocation of the helicopter deck`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasSubLocation",
+      "extensions": {
+        "custom": {
+          "inverseOf": "subLocationOf",
+          "subPropertyOf": [
+            "contains",
+            "hasPart"
+          ]
+        }
+      }
+    },
+    "Activity_HAS_TEMPORAL_EXTENT_TemporalRegion": {
+      "type": "HAS_TEMPORAL_EXTENT",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "TemporalRegion"
+      },
+      "description": "If x 'has temporal extent' y, then x is a 'temporal' entity, and y is a temporal region which is the temporal extent of x. The inverse IDO relation is 'temporal extent of'. e.g. `A well drilling activity takes place in a 20-hour interval, a control system is switched on at 10:00 AM`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasTemporalExtent",
+      "extensions": {
+        "custom": {
+          "inverseOf": "temporalExtentOf",
+          "subPropertyOf": [
+            "hasTemporalRegion"
+          ]
+        }
+      }
+    },
+    "Temporal_HAS_TEMPORAL_PART_Temporal": {
+      "type": "HAS_TEMPORAL_PART",
+      "from": {
+        "node": "Temporal"
+      },
+      "to": {
+        "node": "Temporal"
+      },
+      "description": "If x 'has temporal part' y, then x and y are temporal entities, and y is a part of x. The inverse IDO relation is 'temporal part of'. e.g. `A specific day is a temporal part of a specific week`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasTemporalPart",
+      "extensions": {
+        "custom": {
+          "inverseOf": "temporalPartOf",
+          "subPropertyOf": [
+            "hasPart"
+          ]
+        }
+      }
+    },
+    "Activity_HAS_TEMPORAL_REGION_TemporalRegion": {
+      "type": "HAS_TEMPORAL_REGION",
+      "from": {
+        "node": "Activity"
+      },
+      "to": {
+        "node": "TemporalRegion"
+      },
+      "description": "If x 'has temporal region' y, then x is an 'activity', and y is a 'temporal region' associated with x. The inverse IDO relation is 'temporal region of'. e.g. `A maintenance activity has a temporal region representing the total planned outage window, and another temporal region representing the actual hands-on work period`. Use this relation to associate an activity with any temporal region of interest, not only its maximal temporal extent. For example, an activity may be related to a temporal region representing a lag, a lead time, or a partial interval. The sub-property 'has temporal extent' is reserved for the maximal temporal extension of the activity.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasTemporalRegion",
+      "extensions": {
+        "custom": {
+          "inverseOf": "temporalRegionOf",
+          "subPropertyOf": [
+            "occursRelativeTo"
+          ]
+        }
+      }
+    },
+    "Actual_IMPLEMENTS_Specified": {
+      "type": "IMPLEMENTS",
+      "from": {
+        "node": "Actual"
+      },
+      "to": {
+        "node": "Specified"
+      },
+      "description": "If x 'implements' y, then x is an 'actual' entity, y is a 'specified' entity, and x is asserted to correspond to y as its concrete realization for a given period of time or in a given analytical context. The inverse IDO relation is 'implemented by'. e.g. `In a design study, candidate compressor models from different vendors are each asserted to implement the specified compressor C-201, to evaluate which candidates satisfy the design requirements`. 'implements' records that a concrete individual (classified as 'actual') corresponds to an individual in the asset specification (classified as 'specified'). This correspondence may be physical — as when a serial-numbered artefact is installed at a tag position — or analytical, as when a candidate object is evaluated against a specification in a design simulation. Because OWL DL lacks temporal indexing, the relation is defined atemporally: it does not encode when or whether a physical installation occurred.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/implements",
+      "extensions": {
+        "custom": {
+          "inverseOf": "implementedBy"
+        }
+      }
+    },
+    "Object_LOCATED_RELATIVE_TO_Object": {
+      "type": "LOCATED_RELATIVE_TO",
+      "from": {
+        "node": "Object"
+      },
+      "to": {
+        "node": "Object"
+      },
+      "description": "If x is 'located relative to' y, then x and y are 'object's with location in space. Symmetric: x 'located relative to' y if and only if y 'located relative to' x. Renders ISO 15926-2:2003 'relative_location'. e.g. `An outlet is below an inlet, a door is inside an opening, a motor is inside an enclosure`. This relation is \"abstract\" (in the object-orientation sense of the word) in that it serves only as a parent relation to specialized relations of relative location.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/locatedRelativeTo",
+      "extensions": {
+        "custom": {
+          "symmetric": true,
+          "iso15926": "ISO 15926-2:2003 'relative_location'"
+        }
+      }
+    },
+    "Temporal_OCCURS_RELATIVE_TO_Temporal": {
+      "type": "OCCURS_RELATIVE_TO",
+      "from": {
+        "node": "Temporal"
+      },
+      "to": {
+        "node": "Temporal"
+      },
+      "description": "If x 'occurs relative to' y, then x and y are 'temporal' entities, with temporal location. Symmetric: x 'occurs relative to' y if and only if y 'occurs relative to' x. Renders ISO 15926-2:2003 'temporal_sequence'. e.g. `A vessel is emptied before inspection, a valve is opened before draining of a pipeline, firmware is installed before the equipment begins to operate`. This relation is suitable as the top node in a taxonomy of relations of relative temporal location.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/occursRelativeTo",
+      "extensions": {
+        "custom": {
+          "symmetric": true,
+          "iso15926": "ISO 15926-2:2003 'temporal_sequence'"
+        }
+      }
+    },
+    "ActivityProfile_PROFILE_OF_QUALITY_Quality": {
+      "type": "PROFILE_OF_QUALITY",
+      "from": {
+        "node": "ActivityProfile"
+      },
+      "to": {
+        "node": "Quality"
+      },
+      "description": "x is a 'profile of quality' y if and only if x is an 'activity profile' that varies only in the 'quality' y. The inverse IDO relation is 'quality profiled in'. e.g. `A temperature activity profile of a heating process represents just that part of the process which is a variation in temperature`. 'profile of quality' should be considered a functional property (i.e., an 'activity profile' is a profile of only a single 'quality'). However, in OWL, an object property with property chain restrictions may not be combined with cardinality restrictions. Correct cardinalities must therefore be maintained with rules external to the ontology. A property chain axiom ensures that a quantity datum individual associated with an activity profile by 'profile quantity datum' quantifies a quality which defines the activity profile by 'profile of quality'.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/profileOfQuality",
+      "extensions": {
+        "custom": {
+          "inverseOf": "qualityProfiledIn",
+          "propertyChains": [
+            [
+              "profileQuantityDatum",
+              "quantifiesQuality"
+            ]
+          ]
+        }
+      }
+    },
+    "ActivityProfile_PROFILE_QUANTITY_DATUM_QualityDatum": {
+      "type": "PROFILE_QUANTITY_DATUM",
+      "from": {
+        "node": "ActivityProfile"
+      },
+      "to": {
+        "node": "QualityDatum"
+      },
+      "description": "If x has 'profile quantity datum' y, then x is an 'activity profile', and x 'has participant quality quantified as' y. The inverse IDO relation is 'quantity datum of profile'. e.g. `The pressure of a liquid is measured at 10, 11, and 12 bar at different points of time during a transport activity`. Assume y is an 'activity profile', obtained from some containing activity z by selective abstraction on a quality q of a participant in z. Then, relate y by 'profile quantity datum' to magnitudes of q that are recorded during the execution of y. Intuitively, 'profile quantity datum' should only point to quantity data recorded while the activity is taking place. This can not be enforced with OWL restrictions on the relation (it would require a \"diamond\" pattern). However, with a suitable date or time data property value restriction, an individual activity can constrain related quantity data.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/profileQuantityDatum",
+      "extensions": {
+        "custom": {
+          "inverseOf": "quantityDatumOfProfile",
+          "subPropertyOf": [
+            "hasParticipantQualityQuantifiedAs"
+          ]
+        }
+      }
+    },
+    "Quality_QUALITY_QUANTIFIED_AS_QualityDatum": {
+      "type": "QUALITY_QUANTIFIED_AS",
+      "from": {
+        "node": "Quality"
+      },
+      "to": {
+        "node": "QualityDatum"
+      },
+      "description": "If x is a 'quality quantified as' y, then x is an 'quality' that is 'represented in' the 'quality datum' y. The inverse IDO relation is 'quantifies quality'. Renders ISO 15926-2:2003 'property_quantification'. e.g. `The nominal outer diameter of a pipe is 324 mm, the measured temperature of a boiler is 150 degrees Celsius, the colour of a surface is 'red'`. The range of 'quality quantified as' is 'quality datum', which includes data that do not follow the \"unit of measure with value\" pattern. Examples are colours and chemical composition categories.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/qualityQuantifiedAs",
+      "extensions": {
+        "custom": {
+          "inverseOf": "quantifiesQuality",
+          "subPropertyOf": [
+            "representedIn"
+          ],
+          "iso15926": "ISO 15926-2:2003 'property_quantification'"
+        }
+      }
+    },
+    "Potential_REALIZED_IN_Activity": {
+      "type": "REALIZED_IN",
+      "from": {
+        "node": "Potential"
+      },
+      "to": {
+        "node": "Activity"
+      },
+      "description": "If x is 'realized in' y, then x is a 'potential', and y is an 'activity' that successfully realizes x. The inverse IDO relation is 'realizes'. e.g. `A pump realizes its function in a pumping (activity), a bolt realizes its function in a connection, a software monitoring application realizes its function in streaming sensor data`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/realizedIn",
+      "extensions": {
+        "custom": {
+          "inverseOf": "realizes"
+        }
+      }
+    },
+    "PhysicalObject_RESIDES_IN_Site": {
+      "type": "RESIDES_IN",
+      "from": {
+        "node": "PhysicalObject"
+      },
+      "to": {
+        "node": "Site"
+      },
+      "description": "If x 'resides in' y, then x is a 'physical object', y is a 'location', and x is located entirely within y. The inverse IDO relation is 'has resident'. Renders ISO 15926-2:2003 'relative_location'. e.g. `An engine is located in a machine room; a pressure vessel is located in an outdoors plant area`. This relation may be used where an object x is located in a site y, defined in terms of boundaries of a physical object, that may change its location over time.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/residesIn",
+      "extensions": {
+        "custom": {
+          "inverseOf": "hasResident",
+          "subPropertyOf": [
+            "containedBy"
+          ],
+          "iso15926": "ISO 15926-2:2003 'relative_location'"
+        }
+      }
+    },
+    "Site_SITE_DETERMINED_BY_PhysicalObject": {
+      "type": "SITE_DETERMINED_BY",
+      "from": {
+        "node": "Site"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x is 'site determined by' y, then x is a 'site' and y is a 'physical object' that demarcates or otherwise determines x. The inverse IDO relation is 'determines site'. e.g. `The interior of a ship's hold is a site determined by the hull of the ship; a room is a site determined by the walls, floor, and ceiling that enclose it`. Physical objects that demarcate sites can include aggregate or non-contiguous physical objects, as customarily modelled in IDO using the object property 'has arranged part'.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/siteDeterminedBy",
+      "extensions": {
+        "custom": {
+          "inverseOf": "determinesSite",
+          "subPropertyOf": [
+            "locatedRelativeTo"
+          ]
+        }
+      }
+    },
+    "Site_SITE_INSIDE_OF_PhysicalObject": {
+      "type": "SITE_INSIDE_OF",
+      "from": {
+        "node": "Site"
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "If x 'site inside of' y, then x is a 'site', y is a 'physical object', and a part of y 'determines site' x such that the spatial extent of x is a sublocation of the spatial extent of y. The inverse IDO relation is 'has site inside'. Renders ISO 15926-2:2003 'relative_location'. e.g. `A compartment space is inside a cabinet; an indoor site is inside a building`. This relation may be used where a site represents a space defined relative to the boundaries of a physical object, such as a compartment, room, or enclosed area.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/siteInsideOf",
+      "extensions": {
+        "custom": {
+          "inverseOf": "hasSiteInside",
+          "subPropertyOf": [
+            "containedBy"
+          ],
+          "iso15926": "ISO 15926-2:2003 'relative_location'"
+        }
+      }
+    },
+    "Site_SITE_OF_Activity": {
+      "type": "SITE_OF",
+      "from": {
+        "node": "Site"
+      },
+      "to": {
+        "node": "Activity"
+      },
+      "description": "If x 'site of' y, then x is a 'site', y is an 'activity', and y takes place entirely within x. The inverse IDO relation is 'occurs in'. e.g. `Mixing takes place within a vessel, transport takes place in a pipeline`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/siteOf",
+      "extensions": {
+        "custom": {
+          "inverseOf": "occursIn"
+        }
+      }
+    },
+    "TemporalRegion_TEMPORAL_REGION_QUANTIFIED_AS_TemporalDatum": {
+      "type": "TEMPORAL_REGION_QUANTIFIED_AS",
+      "from": {
+        "node": "TemporalRegion"
+      },
+      "to": {
+        "node": "TemporalDatum"
+      },
+      "description": "If x is 'temporal region quantified as' y, then x is a 'temporal region' that is represented in the 'temporal datum' y. The inverse IDO relation is 'quantifies temporal region'. e.g. `A 20-hour interval associated with a well drilling activity is quantified as a temporal datum of \"20 hours (observed)\" and another of \"18 hours (estimated)\"`. Multiple temporal datums may quantify the same temporal region, for example an observed duration value and an estimated duration value.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/temporalRegionQuantifiedAs",
+      "extensions": {
+        "custom": {
+          "inverseOf": "quantifiesTemporalRegion",
+          "subPropertyOf": [
+            "representedIn"
+          ]
+        }
+      }
+    },
+    "Activity_HAS_PARTICIPANT_PhysicalObject": {
+      "type": "HAS_PARTICIPANT",
+      "from": {
+        "node": "Activity",
+        "min_count": 1
+      },
+      "to": {
+        "node": "PhysicalObject"
+      },
+      "description": "Every Activity has at least one 'has participant' that is a PhysicalObject. Renders ISO 15926-2:2003 'participation'. e.g. `A pump participates in (a) pumping (activity), an electric transformer participates in voltage conversion, a stream of water participates in dilution, a bolt participates in a connection`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasParticipant",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom",
+          "iso15926": "ISO 15926-2:2003 'participation'"
+        }
+      }
+    },
+    "ActivityProfile_PROFILE_OF_QUALITY_Quality_2": {
+      "type": "PROFILE_OF_QUALITY",
+      "from": {
+        "node": "ActivityProfile",
+        "min_count": 1
+      },
+      "to": {
+        "node": "Quality"
+      },
+      "description": "Every ActivityProfile has at least one 'profile of quality' that is a Quality. e.g. `A temperature activity profile of a heating process represents just that part of the process which is a variation in temperature`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/profileOfQuality",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    },
+    "MateriallyClassifiedObject_HAS_QUALITY_MaterialCompositionQuality": {
+      "type": "HAS_QUALITY",
+      "from": {
+        "node": "MateriallyClassifiedObject",
+        "min_count": 1
+      },
+      "to": {
+        "node": "MaterialCompositionQuality"
+      },
+      "description": "Every MateriallyClassifiedObject has at least one 'has quality' that is a MaterialCompositionQuality. e.g. `A motor has rated output power, a lightbulb has luminance, an amount of liquid has mass, a bar of metal has chemical composition, a document has readability`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasQuality",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    },
+    "Event_HAS_TEMPORAL_EXTENT_InstantRegion": {
+      "type": "HAS_TEMPORAL_EXTENT",
+      "from": {
+        "node": "Event"
+      },
+      "to": {
+        "node": "InstantRegion"
+      },
+      "description": "Every 'has temporal extent' of an Event is an InstantRegion. e.g. `A well drilling activity takes place in a 20-hour interval, a control system is switched on at 10:00 AM`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasTemporalExtent",
+      "extensions": {
+        "custom": {
+          "restriction": "allValuesFrom"
+        }
+      }
+    },
+    "FunctionalObject_HAS_FUNCTION_Function": {
+      "type": "HAS_FUNCTION",
+      "from": {
+        "node": "FunctionalObject",
+        "min_count": 1
+      },
+      "to": {
+        "node": "Function"
+      },
+      "description": "Every FunctionalObject has at least one 'has function' that is a Function. Renders ISO 15926-2:2003 'functional_physical_object'. e.g. `A pump has the function of moving fluids, a door has the function of an explosion barrier`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasFunction",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom",
+          "iso15926": "ISO 15926-2:2003 'functional_physical_object'"
+        }
+      }
+    },
+    "Phase_HAS_QUALITY_PhaseQuality": {
+      "type": "HAS_QUALITY",
+      "from": {
+        "node": "Phase",
+        "min_count": 1
+      },
+      "to": {
+        "node": "PhaseQuality"
+      },
+      "description": "Every Phase has at least one 'has quality' that is a PhaseQuality. e.g. `A motor has rated output power, a lightbulb has luminance, an amount of liquid has mass, a bar of metal has chemical composition, a document has readability`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasQuality",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    },
+    "QualityDatum_QUANTIFIES_QUALITY_Quality": {
+      "type": "QUANTIFIES_QUALITY",
+      "from": {
+        "node": "QualityDatum",
+        "min_count": 1
+      },
+      "to": {
+        "node": "Quality"
+      },
+      "description": "Every QualityDatum has at least one 'quantifies quality' that is a Quality.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/quantifiesQuality",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    },
+    "ScalarQuantityDatum_DATUM_UOM_UnitOfMeasure": {
+      "type": "DATUM_UOM",
+      "from": {
+        "node": "ScalarQuantityDatum",
+        "count": 1
+      },
+      "to": {
+        "node": "UnitOfMeasure"
+      },
+      "description": "Every ScalarQuantityDatum has exactly one 'datum UOM' that is a UnitOfMeasure. e.g. `The measured datum \"55 degrees Celsius\" has Celsius as unit of measure`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/datumUOM",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    },
+    "ScalarQuantityDatum_QUANTIFIES_QUALITY_PhysicalQuantity": {
+      "type": "QUANTIFIES_QUALITY",
+      "from": {
+        "node": "ScalarQuantityDatum",
+        "min_count": 1
+      },
+      "to": {
+        "node": "PhysicalQuantity"
+      },
+      "description": "Every ScalarQuantityDatum has at least one 'quantifies quality' that is a PhysicalQuantity.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/quantifiesQuality",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    },
+    "System_HAS_FUNCTIONAL_PART_FunctionalObject_2": {
+      "type": "HAS_FUNCTIONAL_PART",
+      "from": {
+        "node": "System",
+        "min_count": 1
+      },
+      "to": {
+        "node": "FunctionalObject"
+      },
+      "description": "Every System has at least one 'has functional part' that is a FunctionalObject. e.g. `A separation system has a cooling system as functional part`.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/hasFunctionalPart",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    },
+    "TemporalDatum_QUANTIFIES_TEMPORAL_REGION_TemporalRegion": {
+      "type": "QUANTIFIES_TEMPORAL_REGION",
+      "from": {
+        "node": "TemporalDatum",
+        "min_count": 1
+      },
+      "to": {
+        "node": "TemporalRegion"
+      },
+      "description": "Every TemporalDatum has at least one 'quantifies temporal region' that is a TemporalRegion.",
+      "reference": "http://rds.posccaesar.org/ontology/lis14/rdl/quantifiesTemporalRegion",
+      "extensions": {
+        "custom": {
+          "restriction": "someValuesFrom"
+        }
+      }
+    }
+  }
+}

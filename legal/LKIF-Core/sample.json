@@ -1,0 +1,688 @@
+{
+  "scenario": "A fictional residential tenancy, read through LKIF Core's legal and commonsense layers. A member of a legislative body introduces a bill, and the body enacts a statute bearing three norms: an obligation on landlords to keep a dwelling in repair, a permission for tenants to withhold rent once they have given notice of disrepair, and a prohibition on evicting without a court order; the behaviours the norms qualify are compared as obliged, allowed and disallowed. A landlord and a tenant play their roles in the context of a lease, which bears the tenant's obligation to pay rent and which the tenant promised; the tenant's written notice, borne by a letter, leads to the landlord's repairs. Each action has its actor, requirement, result and the moment it took up, and the moments are ordered in time.",
+  "nodes": {
+    "parliament": {
+      "node": "LegislativeBody",
+      "properties": {
+        "uri": "https://example.org/tenancy/parliament"
+      }
+    },
+    "member": {
+      "node": "NaturalPerson",
+      "properties": {
+        "uri": "https://example.org/tenancy/member"
+      }
+    },
+    "landlord": {
+      "node": "NaturalPerson",
+      "properties": {
+        "uri": "https://example.org/tenancy/landlord"
+      }
+    },
+    "tenant": {
+      "node": "NaturalPerson",
+      "properties": {
+        "uri": "https://example.org/tenancy/tenant"
+      }
+    },
+    "act": {
+      "node": "Statute",
+      "properties": {
+        "uri": "https://example.org/tenancy/act"
+      }
+    },
+    "actText": {
+      "node": "LegalExpression",
+      "properties": {
+        "uri": "https://example.org/tenancy/actText"
+      }
+    },
+    "repairDuty": {
+      "node": "Obligation",
+      "properties": {
+        "uri": "https://example.org/tenancy/repairDuty"
+      }
+    },
+    "withholdPermission": {
+      "node": "Permission",
+      "properties": {
+        "uri": "https://example.org/tenancy/withholdPermission"
+      }
+    },
+    "evictionProhibition": {
+      "node": "Prohibition",
+      "properties": {
+        "uri": "https://example.org/tenancy/evictionProhibition"
+      }
+    },
+    "repairing": {
+      "node": "Obliged",
+      "properties": {
+        "uri": "https://example.org/tenancy/repairing"
+      }
+    },
+    "withholding": {
+      "node": "StrictlyAllowed",
+      "properties": {
+        "uri": "https://example.org/tenancy/withholding"
+      }
+    },
+    "evictingWithoutOrder": {
+      "node": "Disallowed",
+      "properties": {
+        "uri": "https://example.org/tenancy/evictingWithoutOrder"
+      }
+    },
+    "lease": {
+      "node": "Contract",
+      "properties": {
+        "uri": "https://example.org/tenancy/lease"
+      }
+    },
+    "leaseTerms": {
+      "node": "Expression",
+      "properties": {
+        "uri": "https://example.org/tenancy/leaseTerms"
+      }
+    },
+    "rentDuty": {
+      "node": "Obligation",
+      "properties": {
+        "uri": "https://example.org/tenancy/rentDuty"
+      }
+    },
+    "payingRent": {
+      "node": "Obliged",
+      "properties": {
+        "uri": "https://example.org/tenancy/payingRent"
+      }
+    },
+    "landlordRole": {
+      "node": "SocialLegalRole",
+      "properties": {
+        "uri": "https://example.org/tenancy/landlordRole"
+      }
+    },
+    "tenantRole": {
+      "node": "SocialLegalRole",
+      "properties": {
+        "uri": "https://example.org/tenancy/tenantRole"
+      }
+    },
+    "bill": {
+      "node": "StatementInWriting",
+      "properties": {
+        "uri": "https://example.org/tenancy/bill"
+      }
+    },
+    "billIntroduction": {
+      "node": "SpeechAct",
+      "properties": {
+        "uri": "https://example.org/tenancy/billIntroduction"
+      }
+    },
+    "introductionDay": {
+      "node": "Moment",
+      "properties": {
+        "uri": "https://example.org/tenancy/introductionDay"
+      }
+    },
+    "promulgation": {
+      "node": "Declaration",
+      "properties": {
+        "uri": "https://example.org/tenancy/promulgation"
+      }
+    },
+    "enactment": {
+      "node": "ActOfLaw",
+      "properties": {
+        "uri": "https://example.org/tenancy/enactment"
+      }
+    },
+    "enactmentDay": {
+      "node": "Moment",
+      "properties": {
+        "uri": "https://example.org/tenancy/enactmentDay"
+      }
+    },
+    "noticeLetter": {
+      "node": "Document",
+      "properties": {
+        "uri": "https://example.org/tenancy/noticeLetter"
+      }
+    },
+    "noticeText": {
+      "node": "Expression",
+      "properties": {
+        "uri": "https://example.org/tenancy/noticeText"
+      }
+    },
+    "notice": {
+      "node": "StatementInWriting",
+      "properties": {
+        "uri": "https://example.org/tenancy/notice"
+      }
+    },
+    "noticeGiving": {
+      "node": "SpeechAct",
+      "properties": {
+        "uri": "https://example.org/tenancy/noticeGiving"
+      }
+    },
+    "noticeDay": {
+      "node": "Moment",
+      "properties": {
+        "uri": "https://example.org/tenancy/noticeDay"
+      }
+    },
+    "rentPromise": {
+      "node": "Promise",
+      "properties": {
+        "uri": "https://example.org/tenancy/rentPromise"
+      }
+    },
+    "dwelling": {
+      "node": "PhysicalObject",
+      "properties": {
+        "uri": "https://example.org/tenancy/dwelling"
+      }
+    },
+    "repairs": {
+      "node": "Action",
+      "properties": {
+        "uri": "https://example.org/tenancy/repairs"
+      }
+    },
+    "repairDay": {
+      "node": "Moment",
+      "properties": {
+        "uri": "https://example.org/tenancy/repairDay"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "parliament",
+      "MEMBER",
+      "member"
+    ],
+    [
+      "act",
+      "BEARS",
+      "repairDuty"
+    ],
+    [
+      "parliament",
+      "HOLDS",
+      "repairDuty"
+    ],
+    [
+      "act",
+      "BEARS",
+      "withholdPermission"
+    ],
+    [
+      "parliament",
+      "HOLDS",
+      "withholdPermission"
+    ],
+    [
+      "act",
+      "BEARS",
+      "evictionProhibition"
+    ],
+    [
+      "parliament",
+      "HOLDS",
+      "evictionProhibition"
+    ],
+    [
+      "act",
+      "BEARS",
+      "actText"
+    ],
+    [
+      "parliament",
+      "HOLDS",
+      "actText"
+    ],
+    [
+      "repairDuty",
+      "ALLOWS",
+      "repairing"
+    ],
+    [
+      "repairDuty",
+      "QUALIFIES",
+      "repairing"
+    ],
+    [
+      "withholdPermission",
+      "ALLOWS",
+      "withholding"
+    ],
+    [
+      "withholdPermission",
+      "QUALIFIES",
+      "withholding"
+    ],
+    [
+      "evictionProhibition",
+      "DISALLOWS",
+      "evictingWithoutOrder"
+    ],
+    [
+      "evictionProhibition",
+      "ALLOWS",
+      "repairing"
+    ],
+    [
+      "evictionProhibition",
+      "QUALIFIES",
+      "evictingWithoutOrder"
+    ],
+    [
+      "lease",
+      "BEARS",
+      "rentDuty"
+    ],
+    [
+      "lease",
+      "BEARS",
+      "leaseTerms"
+    ],
+    [
+      "rentDuty",
+      "ALLOWS",
+      "payingRent"
+    ],
+    [
+      "rentDuty",
+      "QUALIFIES",
+      "payingRent"
+    ],
+    [
+      "landlord",
+      "HOLDS",
+      "rentDuty"
+    ],
+    [
+      "landlord",
+      "HOLDS",
+      "leaseTerms"
+    ],
+    [
+      "tenant",
+      "HOLDS",
+      "leaseTerms"
+    ],
+    [
+      "repairing",
+      "NORMATIVELY_EQUIVALENT_OR_BETTER",
+      "payingRent"
+    ],
+    [
+      "payingRent",
+      "NORMATIVELY_EQUIVALENT_OR_BETTER",
+      "repairing"
+    ],
+    [
+      "repairing",
+      "NORMATIVELY_EQUIVALENT_OR_BETTER",
+      "withholding"
+    ],
+    [
+      "repairing",
+      "NORMATIVELY_COMPARABLE",
+      "withholding"
+    ],
+    [
+      "repairing",
+      "QUALITATIVELY_COMPARABLE",
+      "withholding"
+    ],
+    [
+      "withholding",
+      "NORMATIVELY_COMPARABLE",
+      "repairing"
+    ],
+    [
+      "withholding",
+      "QUALITATIVELY_COMPARABLE",
+      "repairing"
+    ],
+    [
+      "payingRent",
+      "NORMATIVELY_COMPARABLE",
+      "repairing"
+    ],
+    [
+      "payingRent",
+      "QUALITATIVELY_COMPARABLE",
+      "repairing"
+    ],
+    [
+      "evictingWithoutOrder",
+      "NORMATIVELY_COMPARABLE",
+      "repairing"
+    ],
+    [
+      "evictingWithoutOrder",
+      "QUALITATIVELY_COMPARABLE",
+      "repairing"
+    ],
+    [
+      "evictingWithoutOrder",
+      "NORMATIVELY_STRICTLY_BETTER",
+      "withholding"
+    ],
+    [
+      "evictingWithoutOrder",
+      "NORMATIVELY_STRICTLY_BETTER",
+      "repairing"
+    ],
+    [
+      "evictingWithoutOrder",
+      "NORMATIVELY_STRICTLY_BETTER",
+      "payingRent"
+    ],
+    [
+      "landlord",
+      "PLAYS",
+      "landlordRole"
+    ],
+    [
+      "landlordRole",
+      "CONTEXT",
+      "lease"
+    ],
+    [
+      "landlordRole",
+      "IMPOSED_ON",
+      "landlord"
+    ],
+    [
+      "tenant",
+      "PLAYS",
+      "tenantRole"
+    ],
+    [
+      "tenantRole",
+      "CONTEXT",
+      "lease"
+    ],
+    [
+      "tenantRole",
+      "IMPOSED_ON",
+      "tenant"
+    ],
+    [
+      "bill",
+      "STATES",
+      "actText"
+    ],
+    [
+      "bill",
+      "TOWARDS",
+      "actText"
+    ],
+    [
+      "member",
+      "UTTERS",
+      "bill"
+    ],
+    [
+      "member",
+      "HOLDS",
+      "bill"
+    ],
+    [
+      "bill",
+      "ADDRESSEE",
+      "parliament"
+    ],
+    [
+      "bill",
+      "AUTHOR",
+      "member"
+    ],
+    [
+      "billIntroduction",
+      "ACTOR",
+      "member"
+    ],
+    [
+      "billIntroduction",
+      "REQUIREMENT",
+      "parliament"
+    ],
+    [
+      "billIntroduction",
+      "RESULT",
+      "bill"
+    ],
+    [
+      "billIntroduction",
+      "RESOURCE",
+      "introductionDay"
+    ],
+    [
+      "billIntroduction",
+      "CREATION",
+      "bill"
+    ],
+    [
+      "promulgation",
+      "STATES",
+      "actText"
+    ],
+    [
+      "promulgation",
+      "TOWARDS",
+      "actText"
+    ],
+    [
+      "parliament",
+      "UTTERS",
+      "promulgation"
+    ],
+    [
+      "parliament",
+      "HOLDS",
+      "promulgation"
+    ],
+    [
+      "promulgation",
+      "ADDRESSEE",
+      "landlord"
+    ],
+    [
+      "promulgation",
+      "ADDRESSEE",
+      "tenant"
+    ],
+    [
+      "promulgation",
+      "DECLARES",
+      "actText"
+    ],
+    [
+      "promulgation",
+      "AUTHOR",
+      "parliament"
+    ],
+    [
+      "enactment",
+      "ACTOR",
+      "parliament"
+    ],
+    [
+      "enactment",
+      "REQUIREMENT",
+      "bill"
+    ],
+    [
+      "enactment",
+      "RESULT",
+      "act"
+    ],
+    [
+      "enactment",
+      "RESOURCE",
+      "enactmentDay"
+    ],
+    [
+      "enactment",
+      "CREATION",
+      "promulgation"
+    ],
+    [
+      "enactment",
+      "CREATION",
+      "act"
+    ],
+    [
+      "noticeLetter",
+      "BEARS",
+      "noticeText"
+    ],
+    [
+      "tenant",
+      "HOLDS",
+      "noticeText"
+    ],
+    [
+      "notice",
+      "STATES",
+      "noticeText"
+    ],
+    [
+      "notice",
+      "TOWARDS",
+      "noticeText"
+    ],
+    [
+      "tenant",
+      "UTTERS",
+      "notice"
+    ],
+    [
+      "tenant",
+      "HOLDS",
+      "notice"
+    ],
+    [
+      "notice",
+      "ADDRESSEE",
+      "landlord"
+    ],
+    [
+      "notice",
+      "AUTHOR",
+      "tenant"
+    ],
+    [
+      "noticeGiving",
+      "ACTOR",
+      "tenant"
+    ],
+    [
+      "noticeGiving",
+      "REQUIREMENT",
+      "withholdPermission"
+    ],
+    [
+      "noticeGiving",
+      "RESULT",
+      "notice"
+    ],
+    [
+      "noticeGiving",
+      "RESOURCE",
+      "noticeDay"
+    ],
+    [
+      "noticeGiving",
+      "CREATION",
+      "notice"
+    ],
+    [
+      "noticeGiving",
+      "CREATION",
+      "noticeLetter"
+    ],
+    [
+      "rentPromise",
+      "STATES",
+      "leaseTerms"
+    ],
+    [
+      "rentPromise",
+      "TOWARDS",
+      "leaseTerms"
+    ],
+    [
+      "tenant",
+      "UTTERS",
+      "rentPromise"
+    ],
+    [
+      "tenant",
+      "HOLDS",
+      "rentPromise"
+    ],
+    [
+      "rentPromise",
+      "ADDRESSEE",
+      "landlord"
+    ],
+    [
+      "rentPromise",
+      "PROMISES",
+      "leaseTerms"
+    ],
+    [
+      "repairs",
+      "ACTOR",
+      "landlord"
+    ],
+    [
+      "repairs",
+      "REQUIREMENT",
+      "notice"
+    ],
+    [
+      "repairs",
+      "RESULT",
+      "dwelling"
+    ],
+    [
+      "repairs",
+      "RESOURCE",
+      "repairDay"
+    ],
+    [
+      "repairs",
+      "PARTICIPANT",
+      "dwelling"
+    ],
+    [
+      "noticeDay",
+      "AFTER",
+      "enactmentDay"
+    ],
+    [
+      "enactmentDay",
+      "AFTER",
+      "introductionDay"
+    ],
+    [
+      "repairDay",
+      "AFTER",
+      "noticeDay"
+    ]
+  ],
+  "open": {
+    "TemporalOccurrence_IMMEDIATELY_AFTER_TemporalOccurrence": "LKIF time is serial, so every moment has one immediately before and one immediately after it; the sample covers a finite stretch of time, so its first and last moments have no neighbour on one side."
+  }
+}

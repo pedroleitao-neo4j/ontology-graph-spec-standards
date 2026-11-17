@@ -1,0 +1,18 @@
+{
+  "source": "the OASIS Akoma Ntoso Version 1.0 XML schema (akomantoso30.xsd)",
+  "link": "the element's page in the Akoma Ntoso specification",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "Documents, their parts and components", "values": ["Document"]},
+      {"name": "Metadata: identification, lifecycle, analysis and references", "values": ["Metadata"]},
+      {"name": "Structure: hierarchy, preambles, debates, judgments and amendments", "values": ["Structure"]},
+      {"name": "References: top-level classes, document references and inline elements", "values": ["Reference"]}
+    ]
+  },
+  "sub": ["xsdType", "abstract", "#properties"],
+  "lines": {
+    "by": "field:composition",
+    "legend": {"main": "composition: element to the elements it contains", "dashed": "reference: an attribute to the element whose eId it gives"}
+  }
+}

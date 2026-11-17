@@ -1,0 +1,723 @@
+{
+  "scenario": "Condensate export pump P-2001A at the fictional Nordvik gas terminal. The export system's two pump functions (duty P-2001A and standby P-2001B) are implemented by physical pumps, serial numbers 48213 and 48214, installed in process module 20. The installed pump has assembled parts, a duplex stainless steel casing and rated and measured quantities with their units on its datasheet. Its installation, timed by start and end events, is followed by a mechanical seal replacement whose performance test realises the pumping function.",
+  "nodes": {
+    "site-nordvik": {
+      "node": "Site",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/site-nordvik"
+      }
+    },
+    "site-module-20": {
+      "node": "Site",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/site-module-20"
+      }
+    },
+    "volume-module-20": {
+      "node": "VolumeInSpace",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/volume-module-20"
+      }
+    },
+    "system-20": {
+      "node": "System",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/system-20"
+      }
+    },
+    "function-condensate-export": {
+      "node": "Function",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/function-condensate-export"
+      }
+    },
+    "tag-P-2001A": {
+      "node": [
+        "FunctionalObject",
+        "Specified"
+      ],
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/tag-P-2001A"
+      }
+    },
+    "function-P-2001A": {
+      "node": "Function",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/function-P-2001A"
+      }
+    },
+    "tag-P-2001B": {
+      "node": [
+        "FunctionalObject",
+        "Specified"
+      ],
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/tag-P-2001B"
+      }
+    },
+    "function-P-2001B": {
+      "node": "Function",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/function-P-2001B"
+      }
+    },
+    "role-standby": {
+      "node": "Role",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/role-standby"
+      }
+    },
+    "role-duty": {
+      "node": "Role",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/role-duty"
+      }
+    },
+    "pump-sn-48213": {
+      "node": [
+        "PhysicalArtefact",
+        "Actual"
+      ],
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213"
+      }
+    },
+    "pump-sn-48214": {
+      "node": [
+        "PhysicalArtefact",
+        "Actual"
+      ],
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48214"
+      }
+    },
+    "pump-sn-48213-casing": {
+      "node": "PhysicalArtefact",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213-casing"
+      }
+    },
+    "pump-sn-48213-impeller": {
+      "node": "PhysicalArtefact",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213-impeller"
+      }
+    },
+    "pump-sn-48213-mechanical-seal": {
+      "node": "PhysicalArtefact",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213-mechanical-seal"
+      }
+    },
+    "pump-sn-48213-motor": {
+      "node": "PhysicalArtefact",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213-motor"
+      }
+    },
+    "pump-sn-48213-casing-material": {
+      "node": "MateriallyClassifiedObject",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213-casing-material"
+      }
+    },
+    "quality-duplex-ss": {
+      "node": "MaterialCompositionQuality",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/quality-duplex-ss"
+      }
+    },
+    "pump-sn-48213-discharge-nozzle": {
+      "node": "Feature",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213-discharge-nozzle"
+      }
+    },
+    "line-20-PL-0412": {
+      "node": "PhysicalArtefact",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/line-20-PL-0412"
+      }
+    },
+    "stream-condensate": {
+      "node": "Stream",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/stream-condensate"
+      }
+    },
+    "phase-condensate-liquid": {
+      "node": "Phase",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/phase-condensate-liquid"
+      }
+    },
+    "quality-liquid": {
+      "node": "PhaseQuality",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/quality-liquid"
+      }
+    },
+    "uom-m3-per-h": {
+      "node": "UnitOfMeasure",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/uom-m3-per-h"
+      }
+    },
+    "uom-bar": {
+      "node": "UnitOfMeasure",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/uom-bar"
+      }
+    },
+    "uom-kW": {
+      "node": "UnitOfMeasure",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/uom-kW"
+      }
+    },
+    "quantity-rated-flow-48213": {
+      "node": "PhysicalQuantity",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/quantity-rated-flow-48213"
+      }
+    },
+    "datum-rated-flow-48213": {
+      "node": "ScalarQuantityDatum",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/datum-rated-flow-48213",
+        "datumValue": 120.0
+      }
+    },
+    "quantity-differential-head-48213": {
+      "node": "PhysicalQuantity",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/quantity-differential-head-48213"
+      }
+    },
+    "datum-differential-head-48213": {
+      "node": "ScalarQuantityDatum",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/datum-differential-head-48213",
+        "datumValue": 18.5
+      }
+    },
+    "quantity-motor-power-48213": {
+      "node": "PhysicalQuantity",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/quantity-motor-power-48213"
+      }
+    },
+    "datum-motor-power-48213": {
+      "node": "ScalarQuantityDatum",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/datum-motor-power-48213",
+        "datumValue": 90.0
+      }
+    },
+    "quantity-measured-flow-48213": {
+      "node": "PhysicalQuantity",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/quantity-measured-flow-48213"
+      }
+    },
+    "datum-measured-flow-48213": {
+      "node": "ScalarQuantityDatum",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/datum-measured-flow-48213",
+        "datumValue": 117.4
+      }
+    },
+    "datasheet-P-2001A": {
+      "node": "InformationObject",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/datasheet-P-2001A"
+      }
+    },
+    "datasheet-P-2001A-print": {
+      "node": "PhysicalArtefact",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/datasheet-P-2001A-print"
+      }
+    },
+    "org-nordvik-gas": {
+      "node": "Organization",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/org-nordvik-gas"
+      }
+    },
+    "org-fjord-mechanical": {
+      "node": "Organization",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/org-fjord-mechanical"
+      }
+    },
+    "person-technician-1": {
+      "node": "Person",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/person-technician-1"
+      }
+    },
+    "interest-production-uptime": {
+      "node": "Interest",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/interest-production-uptime"
+      }
+    },
+    "activity-install-48213": {
+      "node": "Activity",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/activity-install-48213"
+      }
+    },
+    "event-install-start": {
+      "node": "Event",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/event-install-start"
+      }
+    },
+    "instant-install-start": {
+      "node": "Instant",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/instant-install-start"
+      }
+    },
+    "time-install-start": {
+      "node": "TemporalDatum",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/time-install-start",
+        "temporalValue": "2026-03-14T08:00:00Z"
+      }
+    },
+    "event-install-end": {
+      "node": "Event",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/event-install-end"
+      }
+    },
+    "instant-install-end": {
+      "node": "Instant",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/instant-install-end"
+      }
+    },
+    "time-install-end": {
+      "node": "TemporalDatum",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/time-install-end",
+        "temporalValue": "2026-03-16T17:30:00Z"
+      }
+    },
+    "interval-install": {
+      "node": "Interval",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/interval-install"
+      }
+    },
+    "activity-performance-test": {
+      "node": "Activity",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/activity-performance-test"
+      }
+    },
+    "profile-test-flow": {
+      "node": "ActivityProfile",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/profile-test-flow"
+      }
+    },
+    "activity-seal-replacement": {
+      "node": "Activity",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/activity-seal-replacement"
+      }
+    },
+    "pump-sn-48213-mechanical-seal-new": {
+      "node": "PhysicalArtefact",
+      "properties": {
+        "uri": "https://data.nordvik-gas.example/asset/pump-sn-48213-mechanical-seal-new"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "site-nordvik",
+      "HAS_SUB_LOCATION",
+      "site-module-20"
+    ],
+    [
+      "site-module-20",
+      "HAS_SPATIAL_EXTENT",
+      "volume-module-20"
+    ],
+    [
+      "system-20",
+      "HAS_FUNCTION",
+      "function-condensate-export"
+    ],
+    [
+      "system-20",
+      "HAS_FUNCTIONAL_PART",
+      "tag-P-2001A"
+    ],
+    [
+      "tag-P-2001A",
+      "HAS_FUNCTION",
+      "function-P-2001A"
+    ],
+    [
+      "system-20",
+      "HAS_FUNCTIONAL_PART",
+      "tag-P-2001B"
+    ],
+    [
+      "tag-P-2001B",
+      "HAS_FUNCTION",
+      "function-P-2001B"
+    ],
+    [
+      "tag-P-2001B",
+      "HAS_ROLE",
+      "role-standby"
+    ],
+    [
+      "tag-P-2001A",
+      "HAS_ROLE",
+      "role-duty"
+    ],
+    [
+      "pump-sn-48213",
+      "IMPLEMENTS",
+      "tag-P-2001A"
+    ],
+    [
+      "pump-sn-48214",
+      "IMPLEMENTS",
+      "tag-P-2001B"
+    ],
+    [
+      "pump-sn-48213",
+      "RESIDES_IN",
+      "site-module-20"
+    ],
+    [
+      "pump-sn-48214",
+      "RESIDES_IN",
+      "site-module-20"
+    ],
+    [
+      "pump-sn-48213",
+      "HAS_ASSEMBLED_PART",
+      "pump-sn-48213-casing"
+    ],
+    [
+      "pump-sn-48213",
+      "HAS_ASSEMBLED_PART",
+      "pump-sn-48213-impeller"
+    ],
+    [
+      "pump-sn-48213",
+      "HAS_ASSEMBLED_PART",
+      "pump-sn-48213-mechanical-seal"
+    ],
+    [
+      "pump-sn-48213",
+      "HAS_ASSEMBLED_PART",
+      "pump-sn-48213-motor"
+    ],
+    [
+      "pump-sn-48213-casing",
+      "HAS_MATERIAL_PART",
+      "pump-sn-48213-casing-material"
+    ],
+    [
+      "pump-sn-48213-casing-material",
+      "HAS_QUALITY",
+      "quality-duplex-ss"
+    ],
+    [
+      "pump-sn-48213-casing",
+      "HAS_FEATURE",
+      "pump-sn-48213-discharge-nozzle"
+    ],
+    [
+      "pump-sn-48213-discharge-nozzle",
+      "DIRECTLY_CONNECTED_TO",
+      "line-20-PL-0412"
+    ],
+    [
+      "pump-sn-48213",
+      "CONNECTED_TO",
+      "line-20-PL-0412"
+    ],
+    [
+      "line-20-PL-0412",
+      "CONTAINS",
+      "stream-condensate"
+    ],
+    [
+      "stream-condensate",
+      "CONTAINS",
+      "phase-condensate-liquid"
+    ],
+    [
+      "phase-condensate-liquid",
+      "HAS_QUALITY",
+      "quality-liquid"
+    ],
+    [
+      "pump-sn-48213",
+      "HAS_PHYSICAL_QUANTITY",
+      "quantity-rated-flow-48213"
+    ],
+    [
+      "datum-rated-flow-48213",
+      "QUANTIFIES_QUALITY",
+      "quantity-rated-flow-48213"
+    ],
+    [
+      "quantity-rated-flow-48213",
+      "QUALITY_QUANTIFIED_AS",
+      "datum-rated-flow-48213"
+    ],
+    [
+      "datum-rated-flow-48213",
+      "DATUM_UOM",
+      "uom-m3-per-h"
+    ],
+    [
+      "pump-sn-48213",
+      "HAS_PHYSICAL_QUANTITY",
+      "quantity-differential-head-48213"
+    ],
+    [
+      "datum-differential-head-48213",
+      "QUANTIFIES_QUALITY",
+      "quantity-differential-head-48213"
+    ],
+    [
+      "quantity-differential-head-48213",
+      "QUALITY_QUANTIFIED_AS",
+      "datum-differential-head-48213"
+    ],
+    [
+      "datum-differential-head-48213",
+      "DATUM_UOM",
+      "uom-bar"
+    ],
+    [
+      "pump-sn-48213-motor",
+      "HAS_PHYSICAL_QUANTITY",
+      "quantity-motor-power-48213"
+    ],
+    [
+      "datum-motor-power-48213",
+      "QUANTIFIES_QUALITY",
+      "quantity-motor-power-48213"
+    ],
+    [
+      "quantity-motor-power-48213",
+      "QUALITY_QUANTIFIED_AS",
+      "datum-motor-power-48213"
+    ],
+    [
+      "datum-motor-power-48213",
+      "DATUM_UOM",
+      "uom-kW"
+    ],
+    [
+      "pump-sn-48213",
+      "HAS_PHYSICAL_QUANTITY",
+      "quantity-measured-flow-48213"
+    ],
+    [
+      "datum-measured-flow-48213",
+      "QUANTIFIES_QUALITY",
+      "quantity-measured-flow-48213"
+    ],
+    [
+      "quantity-measured-flow-48213",
+      "QUALITY_QUANTIFIED_AS",
+      "datum-measured-flow-48213"
+    ],
+    [
+      "datum-measured-flow-48213",
+      "DATUM_UOM",
+      "uom-m3-per-h"
+    ],
+    [
+      "datasheet-P-2001A",
+      "HAS_CONTENT_PART",
+      "datum-rated-flow-48213"
+    ],
+    [
+      "datasheet-P-2001A",
+      "HAS_CONTENT_PART",
+      "datum-differential-head-48213"
+    ],
+    [
+      "datasheet-P-2001A",
+      "HAS_CONTENT_PART",
+      "datum-motor-power-48213"
+    ],
+    [
+      "datasheet-P-2001A-print",
+      "CONCRETIZES",
+      "datasheet-P-2001A"
+    ],
+    [
+      "org-nordvik-gas",
+      "HAS_INTEREST",
+      "interest-production-uptime"
+    ],
+    [
+      "activity-install-48213",
+      "HAS_PARTICIPANT",
+      "pump-sn-48213"
+    ],
+    [
+      "activity-install-48213",
+      "HAS_PASSIVE_PARTICIPANT",
+      "pump-sn-48213"
+    ],
+    [
+      "activity-install-48213",
+      "HAS_ACTIVE_PARTICIPANT",
+      "org-fjord-mechanical"
+    ],
+    [
+      "activity-install-48213",
+      "HAS_ACTIVE_PARTICIPANT",
+      "person-technician-1"
+    ],
+    [
+      "site-module-20",
+      "SITE_OF",
+      "activity-install-48213"
+    ],
+    [
+      "event-install-start",
+      "HAS_PARTICIPANT",
+      "pump-sn-48213"
+    ],
+    [
+      "event-install-start",
+      "HAS_TEMPORAL_EXTENT",
+      "instant-install-start"
+    ],
+    [
+      "instant-install-start",
+      "TEMPORAL_REGION_QUANTIFIED_AS",
+      "time-install-start"
+    ],
+    [
+      "time-install-start",
+      "QUANTIFIES_TEMPORAL_REGION",
+      "instant-install-start"
+    ],
+    [
+      "event-install-end",
+      "HAS_PARTICIPANT",
+      "pump-sn-48213"
+    ],
+    [
+      "event-install-end",
+      "HAS_TEMPORAL_EXTENT",
+      "instant-install-end"
+    ],
+    [
+      "instant-install-end",
+      "TEMPORAL_REGION_QUANTIFIED_AS",
+      "time-install-end"
+    ],
+    [
+      "time-install-end",
+      "QUANTIFIES_TEMPORAL_REGION",
+      "instant-install-end"
+    ],
+    [
+      "activity-install-48213",
+      "HAS_BEGINNING",
+      "event-install-start"
+    ],
+    [
+      "activity-install-48213",
+      "HAS_ENDING",
+      "event-install-end"
+    ],
+    [
+      "activity-install-48213",
+      "HAS_TEMPORAL_EXTENT",
+      "interval-install"
+    ],
+    [
+      "instant-install-start",
+      "BEFORE",
+      "instant-install-end"
+    ],
+    [
+      "activity-performance-test",
+      "HAS_PARTICIPANT",
+      "pump-sn-48213"
+    ],
+    [
+      "activity-performance-test",
+      "HAS_ACTIVE_PARTICIPANT",
+      "person-technician-1"
+    ],
+    [
+      "function-P-2001A",
+      "REALIZED_IN",
+      "activity-performance-test"
+    ],
+    [
+      "activity-install-48213",
+      "BEFORE",
+      "activity-performance-test"
+    ],
+    [
+      "activity-performance-test",
+      "HAS_PARTICIPANT_QUALITY_QUANTIFIED_AS",
+      "datum-measured-flow-48213"
+    ],
+    [
+      "activity-performance-test",
+      "HAS_ACTIVITY_PROFILE",
+      "profile-test-flow"
+    ],
+    [
+      "profile-test-flow",
+      "HAS_PARTICIPANT",
+      "pump-sn-48213"
+    ],
+    [
+      "profile-test-flow",
+      "PROFILE_OF_QUALITY",
+      "quantity-measured-flow-48213"
+    ],
+    [
+      "profile-test-flow",
+      "PROFILE_QUANTITY_DATUM",
+      "datum-measured-flow-48213"
+    ],
+    [
+      "activity-seal-replacement",
+      "HAS_PARTICIPANT",
+      "pump-sn-48213"
+    ],
+    [
+      "activity-seal-replacement",
+      "CONSUMES",
+      "pump-sn-48213-mechanical-seal"
+    ],
+    [
+      "activity-seal-replacement",
+      "HAS_ACTIVE_PARTICIPANT",
+      "org-fjord-mechanical"
+    ],
+    [
+      "activity-seal-replacement",
+      "HAS_ACTIVITY_PART",
+      "activity-performance-test"
+    ]
+  ]
+}

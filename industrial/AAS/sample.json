@@ -1,0 +1,1921 @@
+{
+ "scenario": "The digital twin of a synchronous servo motor, serial number 2407-00381, from Halden Antriebe GmbH, a fictional drive maker: an asset administration shell with its asset information and specific asset IDs, and two submodels following the IDTA templates, Digital Nameplate and Technical Data. Their elements, among them multi-language properties, a list of markings, collections and a range, carry semantic IDs pointing at ECLASS IRDIs, the templates' IRIs or the maker's concept descriptions, which define rated torque and degree of protection by IEC 61360 data specifications and the newton metre by a unit of measure data specification.",
+ "nodes": {
+  "env": {
+   "node": "Environment",
+   "properties": {
+    "uid": "urn:example:halden-antriebe:aasx:HSM-140-30-2407-00381"
+   }
+  },
+  "shell": {
+   "node": "AssetAdministrationShell",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381",
+    "id": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381",
+    "idShort": "HSM_140_30_SN2407_00381"
+   }
+  },
+  "shell_description_en": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#description/en",
+    "language": "en",
+    "text": "Digital twin of a Halden HSM 140 synchronous servo motor"
+   }
+  },
+  "shell_description_de": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#description/de",
+    "language": "de",
+    "text": "Digitaler Zwilling eines Halden HSM 140 Synchron-Servomotors"
+   }
+  },
+  "shellAdmin": {
+   "node": "AdministrativeInformation",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#administration",
+    "version": "1",
+    "revision": "0",
+    "createdAt": "2024-07-18T10:12:00Z",
+    "updatedAt": "2025-02-03T08:45:00Z"
+   }
+  },
+  "shellAdmin_HAS_CREATOR": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#administration#HAS_CREATOR",
+    "type": "ExternalReference"
+   }
+  },
+  "shellAdmin_HAS_CREATOR_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#administration#HAS_CREATOR/key0",
+    "type": "GlobalReference",
+    "value": "https://halden-antriebe.example/ids/org/digital-services"
+   }
+  },
+  "shell_HAS_DERIVED_FROM": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#HAS_DERIVED_FROM",
+    "type": "ModelReference"
+   }
+  },
+  "shell_HAS_DERIVED_FROM_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#HAS_DERIVED_FROM/key0",
+    "type": "AssetAdministrationShell",
+    "value": "https://halden-antriebe.example/ids/aas/type/HSM-140-30"
+   }
+  },
+  "assetInfo": {
+   "node": "AssetInformation",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation",
+    "assetKind": "Instance",
+    "globalAssetId": "https://halden-antriebe.example/ids/asset/HSM-140-30/2407-00381",
+    "assetType": "https://halden-antriebe.example/ids/asset/type/HSM-140-30"
+   }
+  },
+  "thumbnail": {
+   "node": "Resource",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation/defaultThumbnail",
+    "path": "/aasx/files/HSM-140-30.png",
+    "contentType": "image/png"
+   }
+  },
+  "specificAssetId0": {
+   "node": "SpecificAssetId",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation/specificAssetIds/0",
+    "name": "SerialNumber",
+    "value": "2407-00381"
+   }
+  },
+  "specificAssetId0_HAS_EXTERNAL_SUBJECT_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation/specificAssetIds/0#HAS_EXTERNAL_SUBJECT_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "specificAssetId0_HAS_EXTERNAL_SUBJECT_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation/specificAssetIds/0#HAS_EXTERNAL_SUBJECT_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://halden-antriebe.example"
+   }
+  },
+  "specificAssetId1": {
+   "node": "SpecificAssetId",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation/specificAssetIds/1",
+    "name": "PartNumber",
+    "value": "HSM-140-30-B-K24"
+   }
+  },
+  "specificAssetId1_HAS_EXTERNAL_SUBJECT_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation/specificAssetIds/1#HAS_EXTERNAL_SUBJECT_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "specificAssetId1_HAS_EXTERNAL_SUBJECT_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#assetInformation/specificAssetIds/1#HAS_EXTERNAL_SUBJECT_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://halden-antriebe.example"
+   }
+  },
+  "nameplate": {
+   "node": "Submodel",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate",
+    "id": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate",
+    "idShort": "Nameplate",
+    "kind": "Instance"
+   }
+  },
+  "techData": {
+   "node": "Submodel",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData",
+    "id": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData",
+    "idShort": "TechnicalData",
+    "kind": "Instance"
+   }
+  },
+  "shell_ref_nameplate": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#submodels/https://halden-antriebe.example/ids/sm/2407-00381/Nameplate",
+    "type": "ModelReference"
+   }
+  },
+  "shell_ref_nameplate_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#submodels/https://halden-antriebe.example/ids/sm/2407-00381/Nameplate/key0",
+    "type": "Submodel",
+    "value": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate"
+   }
+  },
+  "shell_ref_techData": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#submodels/https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData",
+    "type": "ModelReference"
+   }
+  },
+  "shell_ref_techData_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381#submodels/https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData/key0",
+    "type": "Submodel",
+    "value": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData"
+   }
+  },
+  "nameplate_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "nameplate_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/idta/nameplate/2/0/Nameplate"
+   }
+  },
+  "techData_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "techData_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/ZVEI/TechnicalData/Submodel/1/2"
+   }
+  },
+  "nameplateAdmin": {
+   "node": "AdministrativeInformation",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#administration",
+    "version": "1",
+    "revision": "0",
+    "templateId": "https://admin-shell.io/idta/nameplate/2/0/Nameplate"
+   }
+  },
+  "techDataAdmin": {
+   "node": "AdministrativeInformation",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#administration",
+    "version": "1",
+    "revision": "0",
+    "templateId": "https://admin-shell.io/ZVEI/TechnicalData/Submodel/1/2"
+   }
+  },
+  "uriOfProduct": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#URIOfTheProduct",
+    "idShort": "URIOfTheProduct",
+    "valueType": "xs:string",
+    "value": "https://halden-antriebe.example/products/HSM-140-30"
+   }
+  },
+  "uriOfProduct_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#URIOfTheProduct#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "uriOfProduct_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#URIOfTheProduct#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "0112/2///61987#ABN590#002"
+   }
+  },
+  "manufacturerName": {
+   "node": "MultiLanguageProperty",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerName",
+    "idShort": "ManufacturerName"
+   }
+  },
+  "manufacturerName_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerName#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "manufacturerName_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerName#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "0173-1#02-AAO677#002"
+   }
+  },
+  "manufacturerName_value_en": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerName#value/en",
+    "language": "en",
+    "text": "Halden Antriebe GmbH"
+   }
+  },
+  "productDesignation": {
+   "node": "MultiLanguageProperty",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerProductDesignation",
+    "idShort": "ManufacturerProductDesignation"
+   }
+  },
+  "productDesignation_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerProductDesignation#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "productDesignation_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerProductDesignation#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "0173-1#02-AAW338#001"
+   }
+  },
+  "productDesignation_value_en": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerProductDesignation#value/en",
+    "language": "en",
+    "text": "Synchronous servo motor HSM 140, 30 Nm"
+   }
+  },
+  "productDesignation_value_de": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#ManufacturerProductDesignation#value/de",
+    "language": "de",
+    "text": "Synchron-Servomotor HSM 140, 30 Nm"
+   }
+  },
+  "serialNumber": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#SerialNumber",
+    "idShort": "SerialNumber",
+    "valueType": "xs:string",
+    "value": "2407-00381"
+   }
+  },
+  "serialNumber_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#SerialNumber#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "serialNumber_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#SerialNumber#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "0173-1#02-AAM556#002"
+   }
+  },
+  "yearOfConstruction": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#YearOfConstruction",
+    "idShort": "YearOfConstruction",
+    "valueType": "xs:string",
+    "value": "2024"
+   }
+  },
+  "yearOfConstruction_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#YearOfConstruction#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "yearOfConstruction_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#YearOfConstruction#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "0173-1#02-AAP906#001"
+   }
+  },
+  "dateOfManufacture": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#DateOfManufacture",
+    "idShort": "DateOfManufacture",
+    "valueType": "xs:date",
+    "value": "2024-07-15"
+   }
+  },
+  "dateOfManufacture_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#DateOfManufacture#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "dateOfManufacture_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#DateOfManufacture#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "0173-1#02-AAR972#002"
+   }
+  },
+  "address": {
+   "node": "SubmodelElementCollection",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation",
+    "idShort": "AddressInformation"
+   }
+  },
+  "address_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "address_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/zvei/nameplate/1/0/ContactInformations/AddressInformation"
+   }
+  },
+  "street": {
+   "node": "MultiLanguageProperty",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.Street",
+    "idShort": "Street"
+   }
+  },
+  "street_value_de": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.Street#value/de",
+    "language": "de",
+    "text": "Werkstraße 12"
+   }
+  },
+  "zipcode": {
+   "node": "MultiLanguageProperty",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.Zipcode",
+    "idShort": "Zipcode"
+   }
+  },
+  "zipcode_value_de": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.Zipcode#value/de",
+    "language": "de",
+    "text": "37000"
+   }
+  },
+  "city": {
+   "node": "MultiLanguageProperty",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.CityTown",
+    "idShort": "CityTown"
+   }
+  },
+  "city_value_de": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.CityTown#value/de",
+    "language": "de",
+    "text": "Halden"
+   }
+  },
+  "country": {
+   "node": "MultiLanguageProperty",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.NationalCode",
+    "idShort": "NationalCode"
+   }
+  },
+  "country_value_en": {
+   "node": "LangStringTextType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#AddressInformation.NationalCode#value/en",
+    "language": "en",
+    "text": "DE"
+   }
+  },
+  "markings": {
+   "node": "SubmodelElementList",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings",
+    "idShort": "Markings",
+    "orderRelevant": false,
+    "typeValueListElement": "SubmodelElementCollection"
+   }
+  },
+  "markings_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "markings_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/zvei/nameplate/1/0/Nameplate/Markings"
+   }
+  },
+  "markings_HAS_SEMANTIC_ID_LIST_ELEMENT": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings#HAS_SEMANTIC_ID_LIST_ELEMENT",
+    "type": "ExternalReference"
+   }
+  },
+  "markings_HAS_SEMANTIC_ID_LIST_ELEMENT_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings#HAS_SEMANTIC_ID_LIST_ELEMENT/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/zvei/nameplate/1/0/Nameplate/Markings/Marking"
+   }
+  },
+  "marking0": {
+   "node": "SubmodelElementCollection",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings[0]"
+   }
+  },
+  "markingName0": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings[0].MarkingName",
+    "idShort": "MarkingName",
+    "valueType": "xs:string",
+    "value": "CE"
+   }
+  },
+  "markingFile0": {
+   "node": "File",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings[0].MarkingFile",
+    "idShort": "MarkingFile",
+    "value": "/aasx/files/ce.svg",
+    "contentType": "image/svg+xml"
+   }
+  },
+  "marking1": {
+   "node": "SubmodelElementCollection",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings[1]"
+   }
+  },
+  "markingName1": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings[1].MarkingName",
+    "idShort": "MarkingName",
+    "valueType": "xs:string",
+    "value": "UKCA"
+   }
+  },
+  "markingFile1": {
+   "node": "File",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/Nameplate#Markings[1].MarkingFile",
+    "idShort": "MarkingFile",
+    "value": "/aasx/files/ukca.svg",
+    "contentType": "image/svg+xml"
+   }
+  },
+  "general": {
+   "node": "SubmodelElementCollection",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation",
+    "idShort": "GeneralInformation"
+   }
+  },
+  "general_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "general_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/ZVEI/TechnicalData/GeneralInformation/1/1"
+   }
+  },
+  "tdManufacturerName": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation.ManufacturerName",
+    "idShort": "ManufacturerName",
+    "valueType": "xs:string",
+    "value": "Halden Antriebe GmbH"
+   }
+  },
+  "tdManufacturerName_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation.ManufacturerName#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "tdManufacturerName_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation.ManufacturerName#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "0173-1#02-AAO677#002"
+   }
+  },
+  "tdLogo": {
+   "node": "File",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation.ManufacturerLogo",
+    "idShort": "ManufacturerLogo",
+    "value": "/aasx/files/halden-logo.png",
+    "contentType": "image/png"
+   }
+  },
+  "tdImage": {
+   "node": "File",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#GeneralInformation.ProductImage",
+    "idShort": "ProductImage",
+    "value": "/aasx/files/HSM-140-30.png",
+    "contentType": "image/png"
+   }
+  },
+  "techProps": {
+   "node": "SubmodelElementCollection",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties",
+    "idShort": "TechnicalProperties"
+   }
+  },
+  "techProps_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties#HAS_SEMANTIC_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "techProps_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties#HAS_SEMANTIC_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/ZVEI/TechnicalData/TechnicalProperties/1/1"
+   }
+  },
+  "ratedTorque": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedTorque",
+    "idShort": "RatedTorque",
+    "valueType": "xs:double",
+    "value": "30.0"
+   }
+  },
+  "ratedTorque_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedTorque#HAS_SEMANTIC_ID",
+    "type": "ModelReference"
+   }
+  },
+  "ratedTorque_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedTorque#HAS_SEMANTIC_ID/key0",
+    "type": "ConceptDescription",
+    "value": "https://halden-antriebe.example/ids/cd/RatedTorque"
+   }
+  },
+  "ratedSpeed": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedSpeed",
+    "idShort": "RatedSpeed",
+    "valueType": "xs:double",
+    "value": "3000"
+   }
+  },
+  "ratedSpeed_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedSpeed#HAS_SEMANTIC_ID",
+    "type": "ModelReference"
+   }
+  },
+  "ratedSpeed_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedSpeed#HAS_SEMANTIC_ID/key0",
+    "type": "ConceptDescription",
+    "value": "https://halden-antriebe.example/ids/cd/RatedSpeed"
+   }
+  },
+  "ratedPower": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedPower",
+    "idShort": "RatedPower",
+    "valueType": "xs:double",
+    "value": "9.4"
+   }
+  },
+  "ratedPower_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedPower#HAS_SEMANTIC_ID",
+    "type": "ModelReference"
+   }
+  },
+  "ratedPower_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedPower#HAS_SEMANTIC_ID/key0",
+    "type": "ConceptDescription",
+    "value": "https://halden-antriebe.example/ids/cd/RatedPower"
+   }
+  },
+  "protectionClass": {
+   "node": "Property",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.DegreeOfProtection",
+    "idShort": "DegreeOfProtection",
+    "valueType": "xs:string",
+    "value": "IP65"
+   }
+  },
+  "protectionClass_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.DegreeOfProtection#HAS_SEMANTIC_ID",
+    "type": "ModelReference"
+   }
+  },
+  "protectionClass_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.DegreeOfProtection#HAS_SEMANTIC_ID/key0",
+    "type": "ConceptDescription",
+    "value": "https://halden-antriebe.example/ids/cd/DegreeOfProtection"
+   }
+  },
+  "ambientTemp": {
+   "node": "Range",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.AmbientTemperature",
+    "idShort": "AmbientTemperature",
+    "valueType": "xs:double",
+    "min": "0",
+    "max": "40"
+   }
+  },
+  "ambientTemp_HAS_SEMANTIC_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.AmbientTemperature#HAS_SEMANTIC_ID",
+    "type": "ModelReference"
+   }
+  },
+  "ambientTemp_HAS_SEMANTIC_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.AmbientTemperature#HAS_SEMANTIC_ID/key0",
+    "type": "ConceptDescription",
+    "value": "https://halden-antriebe.example/ids/cd/AmbientTemperature"
+   }
+  },
+  "qualTested": {
+   "node": "Qualifier",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/sm/2407-00381/TechnicalData#TechnicalProperties.RatedTorque/qualifiers/0",
+    "kind": "ValueQualifier",
+    "type": "ExpressionSemantic",
+    "valueType": "xs:string",
+    "value": "Requirement"
+   }
+  },
+  "cdRatedTorque": {
+   "node": "ConceptDescription",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque",
+    "id": "https://halden-antriebe.example/ids/cd/RatedTorque",
+    "idShort": "RatedTorque",
+    "category": "PROPERTY"
+   }
+  },
+  "cdRatedTorqueEds": {
+   "node": "EmbeddedDataSpecification",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0"
+   }
+  },
+  "cdRatedTorqueEds_HAS_DATA_SPECIFICATION": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0#HAS_DATA_SPECIFICATION",
+    "type": "ExternalReference"
+   }
+  },
+  "cdRatedTorqueEds_HAS_DATA_SPECIFICATION_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0#HAS_DATA_SPECIFICATION/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3"
+   }
+  },
+  "cdRatedTorqueIec": {
+   "node": "DataSpecificationIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content",
+    "dataType": "REAL_MEASURE",
+    "sourceOfDefinition": "Halden Antriebe GmbH",
+    "unit": "N·m",
+    "symbol": "N·m"
+   }
+  },
+  "cdRatedTorqueIec_preferredName_en": {
+   "node": "LangStringPreferredNameTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content#preferredName/en",
+    "language": "en",
+    "text": "rated torque"
+   }
+  },
+  "cdRatedTorqueIec_preferredName_de": {
+   "node": "LangStringPreferredNameTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content#preferredName/de",
+    "language": "de",
+    "text": "Bemessungsdrehmoment"
+   }
+  },
+  "cdRatedTorqueIec_shortName_en": {
+   "node": "LangStringShortNameTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content#shortName/en",
+    "language": "en",
+    "text": "M_N"
+   }
+  },
+  "cdRatedTorqueIec_definition_en": {
+   "node": "LangStringDefinitionTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content#definition/en",
+    "language": "en",
+    "text": "Torque the motor delivers continuously at rated speed"
+   }
+  },
+  "cdRatedTorqueIec_definition_de": {
+   "node": "LangStringDefinitionTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content#definition/de",
+    "language": "de",
+    "text": "Drehmoment, das der Motor bei Bemessungsdrehzahl dauerhaft abgibt"
+   }
+  },
+  "cdRatedTorqueIec_HAS_UNIT_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content#HAS_UNIT_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "cdRatedTorqueIec_HAS_UNIT_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#embeddedDataSpecifications/0/content#HAS_UNIT_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://halden-antriebe.example/ids/unit/Nm"
+   }
+  },
+  "cdRatedTorqueLevel": {
+   "node": "LevelType",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/RatedTorque#levelType",
+    "min": false,
+    "nom": true,
+    "typ": false,
+    "max": false
+   }
+  },
+  "cdDegreeOfProtection": {
+   "node": "ConceptDescription",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection",
+    "id": "https://halden-antriebe.example/ids/cd/DegreeOfProtection",
+    "idShort": "DegreeOfProtection",
+    "category": "PROPERTY"
+   }
+  },
+  "cdDegreeOfProtectionEds": {
+   "node": "EmbeddedDataSpecification",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0"
+   }
+  },
+  "cdDegreeOfProtectionEds_HAS_DATA_SPECIFICATION": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0#HAS_DATA_SPECIFICATION",
+    "type": "ExternalReference"
+   }
+  },
+  "cdDegreeOfProtectionEds_HAS_DATA_SPECIFICATION_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0#HAS_DATA_SPECIFICATION/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3"
+   }
+  },
+  "cdDegreeOfProtectionIec": {
+   "node": "DataSpecificationIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0/content",
+    "dataType": "STRING",
+    "sourceOfDefinition": "Halden Antriebe GmbH"
+   }
+  },
+  "cdDegreeOfProtectionIec_preferredName_en": {
+   "node": "LangStringPreferredNameTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0/content#preferredName/en",
+    "language": "en",
+    "text": "degree of protection"
+   }
+  },
+  "cdDegreeOfProtectionIec_preferredName_de": {
+   "node": "LangStringPreferredNameTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0/content#preferredName/de",
+    "language": "de",
+    "text": "Schutzart"
+   }
+  },
+  "cdDegreeOfProtectionIec_shortName_en": {
+   "node": "LangStringShortNameTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0/content#shortName/en",
+    "language": "en",
+    "text": "IP"
+   }
+  },
+  "cdDegreeOfProtectionIec_definition_en": {
+   "node": "LangStringDefinitionTypeIec61360",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#embeddedDataSpecifications/0/content#definition/en",
+    "language": "en",
+    "text": "Degree of protection of the enclosure according to IEC 60529"
+   }
+  },
+  "cdDegreeOfProtectionValues": {
+   "node": "ValueList",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList"
+   }
+  },
+  "cdDegreeOfProtectionValue0": {
+   "node": "ValueReferencePair",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/0",
+    "value": "IP54"
+   }
+  },
+  "cdDegreeOfProtectionValue0_HAS_VALUE_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/0#HAS_VALUE_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "cdDegreeOfProtectionValue0_HAS_VALUE_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/0#HAS_VALUE_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://halden-antriebe.example/ids/cd/DegreeOfProtection/values/IP54"
+   }
+  },
+  "cdDegreeOfProtectionValue1": {
+   "node": "ValueReferencePair",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/1",
+    "value": "IP65"
+   }
+  },
+  "cdDegreeOfProtectionValue1_HAS_VALUE_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/1#HAS_VALUE_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "cdDegreeOfProtectionValue1_HAS_VALUE_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/1#HAS_VALUE_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://halden-antriebe.example/ids/cd/DegreeOfProtection/values/IP65"
+   }
+  },
+  "cdDegreeOfProtectionValue2": {
+   "node": "ValueReferencePair",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/2",
+    "value": "IP67"
+   }
+  },
+  "cdDegreeOfProtectionValue2_HAS_VALUE_ID": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/2#HAS_VALUE_ID",
+    "type": "ExternalReference"
+   }
+  },
+  "cdDegreeOfProtectionValue2_HAS_VALUE_ID_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/DegreeOfProtection#valueList/2#HAS_VALUE_ID/key0",
+    "type": "GlobalReference",
+    "value": "https://halden-antriebe.example/ids/cd/DegreeOfProtection/values/IP67"
+   }
+  },
+  "cdNewtonMetre": {
+   "node": "ConceptDescription",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre",
+    "id": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre",
+    "idShort": "NewtonMetre",
+    "category": "UNIT"
+   }
+  },
+  "uomEds": {
+   "node": "EmbeddedDataSpecification",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0"
+   }
+  },
+  "uomEds_HAS_DATA_SPECIFICATION": {
+   "node": "Reference",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0#HAS_DATA_SPECIFICATION",
+    "type": "ExternalReference"
+   }
+  },
+  "uomEds_HAS_DATA_SPECIFICATION_k0": {
+   "node": "Key",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0#HAS_DATA_SPECIFICATION/key0",
+    "type": "GlobalReference",
+    "value": "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationUoM/3"
+   }
+  },
+  "uom": {
+   "node": "DataSpecificationUom",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0/content",
+    "symbol": "N·m",
+    "classificationSystem": "UNECE Recommendation 20",
+    "specificUnitId": "NU"
+   }
+  },
+  "uom_preferredName_en": {
+   "node": "LangStringUom",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0/content#preferredName/en",
+    "language": "en",
+    "text": "newton metre"
+   }
+  },
+  "uom_preferredName_de": {
+   "node": "LangStringUom",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0/content#preferredName/de",
+    "language": "de",
+    "text": "Newtonmeter"
+   }
+  },
+  "uom_preferredNameQuantity_en": {
+   "node": "LangStringUom",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0/content#preferredNameQuantity/en",
+    "language": "en",
+    "text": "torque"
+   }
+  },
+  "uom_definition_en": {
+   "node": "LangStringDefinitionTypeUom",
+   "properties": {
+    "uid": "https://halden-antriebe.example/ids/cd/unit/NewtonMetre#embeddedDataSpecifications/0/content#definition/en",
+    "language": "en",
+    "text": "Moment of a force of one newton about a point one metre away"
+   }
+  }
+ },
+ "relationships": [
+  [
+   "env",
+   "HAS_ASSET_ADMINISTRATION_SHELLS",
+   "shell"
+  ],
+  [
+   "shell",
+   "HAS_DESCRIPTION",
+   "shell_description_en"
+  ],
+  [
+   "shell",
+   "HAS_DESCRIPTION",
+   "shell_description_de"
+  ],
+  [
+   "shell",
+   "HAS_ADMINISTRATION",
+   "shellAdmin"
+  ],
+  [
+   "shellAdmin",
+   "HAS_CREATOR",
+   "shellAdmin_HAS_CREATOR"
+  ],
+  [
+   "shellAdmin_HAS_CREATOR",
+   "HAS_KEYS",
+   "shellAdmin_HAS_CREATOR_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "shell",
+   "HAS_DERIVED_FROM",
+   "shell_HAS_DERIVED_FROM"
+  ],
+  [
+   "shell_HAS_DERIVED_FROM",
+   "HAS_KEYS",
+   "shell_HAS_DERIVED_FROM_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "shell",
+   "HAS_ASSET_INFORMATION",
+   "assetInfo"
+  ],
+  [
+   "assetInfo",
+   "HAS_DEFAULT_THUMBNAIL",
+   "thumbnail"
+  ],
+  [
+   "assetInfo",
+   "HAS_SPECIFIC_ASSET_IDS",
+   "specificAssetId0"
+  ],
+  [
+   "specificAssetId0",
+   "HAS_EXTERNAL_SUBJECT_ID",
+   "specificAssetId0_HAS_EXTERNAL_SUBJECT_ID"
+  ],
+  [
+   "specificAssetId0_HAS_EXTERNAL_SUBJECT_ID",
+   "HAS_KEYS",
+   "specificAssetId0_HAS_EXTERNAL_SUBJECT_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "assetInfo",
+   "HAS_SPECIFIC_ASSET_IDS",
+   "specificAssetId1"
+  ],
+  [
+   "specificAssetId1",
+   "HAS_EXTERNAL_SUBJECT_ID",
+   "specificAssetId1_HAS_EXTERNAL_SUBJECT_ID"
+  ],
+  [
+   "specificAssetId1_HAS_EXTERNAL_SUBJECT_ID",
+   "HAS_KEYS",
+   "specificAssetId1_HAS_EXTERNAL_SUBJECT_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "env",
+   "HAS_SUBMODELS",
+   "nameplate"
+  ],
+  [
+   "shell",
+   "HAS_SUBMODELS",
+   "shell_ref_nameplate"
+  ],
+  [
+   "shell_ref_nameplate",
+   "HAS_KEYS",
+   "shell_ref_nameplate_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "shell_ref_nameplate",
+   "RESOLVES_TO",
+   "nameplate"
+  ],
+  [
+   "env",
+   "HAS_SUBMODELS",
+   "techData"
+  ],
+  [
+   "shell",
+   "HAS_SUBMODELS",
+   "shell_ref_techData"
+  ],
+  [
+   "shell_ref_techData",
+   "HAS_KEYS",
+   "shell_ref_techData_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "shell_ref_techData",
+   "RESOLVES_TO",
+   "techData"
+  ],
+  [
+   "nameplate",
+   "HAS_SEMANTIC_ID",
+   "nameplate_HAS_SEMANTIC_ID"
+  ],
+  [
+   "nameplate_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "nameplate_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "techData",
+   "HAS_SEMANTIC_ID",
+   "techData_HAS_SEMANTIC_ID"
+  ],
+  [
+   "techData_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "techData_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "nameplate",
+   "HAS_ADMINISTRATION",
+   "nameplateAdmin"
+  ],
+  [
+   "techData",
+   "HAS_ADMINISTRATION",
+   "techDataAdmin"
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "uriOfProduct"
+  ],
+  [
+   "uriOfProduct",
+   "HAS_SEMANTIC_ID",
+   "uriOfProduct_HAS_SEMANTIC_ID"
+  ],
+  [
+   "uriOfProduct_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "uriOfProduct_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "manufacturerName"
+  ],
+  [
+   "manufacturerName",
+   "HAS_SEMANTIC_ID",
+   "manufacturerName_HAS_SEMANTIC_ID"
+  ],
+  [
+   "manufacturerName_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "manufacturerName_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "manufacturerName",
+   "HAS_VALUE",
+   "manufacturerName_value_en"
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "productDesignation"
+  ],
+  [
+   "productDesignation",
+   "HAS_SEMANTIC_ID",
+   "productDesignation_HAS_SEMANTIC_ID"
+  ],
+  [
+   "productDesignation_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "productDesignation_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "productDesignation",
+   "HAS_VALUE",
+   "productDesignation_value_en"
+  ],
+  [
+   "productDesignation",
+   "HAS_VALUE",
+   "productDesignation_value_de"
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "serialNumber"
+  ],
+  [
+   "serialNumber",
+   "HAS_SEMANTIC_ID",
+   "serialNumber_HAS_SEMANTIC_ID"
+  ],
+  [
+   "serialNumber_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "serialNumber_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "yearOfConstruction"
+  ],
+  [
+   "yearOfConstruction",
+   "HAS_SEMANTIC_ID",
+   "yearOfConstruction_HAS_SEMANTIC_ID"
+  ],
+  [
+   "yearOfConstruction_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "yearOfConstruction_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "dateOfManufacture"
+  ],
+  [
+   "dateOfManufacture",
+   "HAS_SEMANTIC_ID",
+   "dateOfManufacture_HAS_SEMANTIC_ID"
+  ],
+  [
+   "dateOfManufacture_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "dateOfManufacture_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "address"
+  ],
+  [
+   "address",
+   "HAS_SEMANTIC_ID",
+   "address_HAS_SEMANTIC_ID"
+  ],
+  [
+   "address_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "address_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "address",
+   "HAS_VALUE",
+   "street"
+  ],
+  [
+   "street",
+   "HAS_VALUE",
+   "street_value_de"
+  ],
+  [
+   "address",
+   "HAS_VALUE",
+   "zipcode"
+  ],
+  [
+   "zipcode",
+   "HAS_VALUE",
+   "zipcode_value_de"
+  ],
+  [
+   "address",
+   "HAS_VALUE",
+   "city"
+  ],
+  [
+   "city",
+   "HAS_VALUE",
+   "city_value_de"
+  ],
+  [
+   "address",
+   "HAS_VALUE",
+   "country"
+  ],
+  [
+   "country",
+   "HAS_VALUE",
+   "country_value_en"
+  ],
+  [
+   "nameplate",
+   "HAS_SUBMODEL_ELEMENTS",
+   "markings"
+  ],
+  [
+   "markings",
+   "HAS_SEMANTIC_ID",
+   "markings_HAS_SEMANTIC_ID"
+  ],
+  [
+   "markings_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "markings_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "markings",
+   "HAS_SEMANTIC_ID_LIST_ELEMENT",
+   "markings_HAS_SEMANTIC_ID_LIST_ELEMENT"
+  ],
+  [
+   "markings_HAS_SEMANTIC_ID_LIST_ELEMENT",
+   "HAS_KEYS",
+   "markings_HAS_SEMANTIC_ID_LIST_ELEMENT_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "markings",
+   "HAS_VALUE",
+   "marking0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "marking0",
+   "HAS_VALUE",
+   "markingName0"
+  ],
+  [
+   "marking0",
+   "HAS_VALUE",
+   "markingFile0"
+  ],
+  [
+   "markings",
+   "HAS_VALUE",
+   "marking1",
+   {
+    "index": 1
+   }
+  ],
+  [
+   "marking1",
+   "HAS_VALUE",
+   "markingName1"
+  ],
+  [
+   "marking1",
+   "HAS_VALUE",
+   "markingFile1"
+  ],
+  [
+   "techData",
+   "HAS_SUBMODEL_ELEMENTS",
+   "general"
+  ],
+  [
+   "general",
+   "HAS_SEMANTIC_ID",
+   "general_HAS_SEMANTIC_ID"
+  ],
+  [
+   "general_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "general_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "general",
+   "HAS_VALUE",
+   "tdManufacturerName"
+  ],
+  [
+   "tdManufacturerName",
+   "HAS_SEMANTIC_ID",
+   "tdManufacturerName_HAS_SEMANTIC_ID"
+  ],
+  [
+   "tdManufacturerName_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "tdManufacturerName_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "general",
+   "HAS_VALUE",
+   "tdLogo"
+  ],
+  [
+   "general",
+   "HAS_VALUE",
+   "tdImage"
+  ],
+  [
+   "techData",
+   "HAS_SUBMODEL_ELEMENTS",
+   "techProps"
+  ],
+  [
+   "techProps",
+   "HAS_SEMANTIC_ID",
+   "techProps_HAS_SEMANTIC_ID"
+  ],
+  [
+   "techProps_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "techProps_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "techProps",
+   "HAS_VALUE",
+   "ratedTorque"
+  ],
+  [
+   "ratedTorque",
+   "HAS_SEMANTIC_ID",
+   "ratedTorque_HAS_SEMANTIC_ID"
+  ],
+  [
+   "ratedTorque_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "ratedTorque_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "ratedTorque_HAS_SEMANTIC_ID",
+   "RESOLVES_TO",
+   "cdRatedTorque"
+  ],
+  [
+   "techProps",
+   "HAS_VALUE",
+   "ratedSpeed"
+  ],
+  [
+   "ratedSpeed",
+   "HAS_SEMANTIC_ID",
+   "ratedSpeed_HAS_SEMANTIC_ID"
+  ],
+  [
+   "ratedSpeed_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "ratedSpeed_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "techProps",
+   "HAS_VALUE",
+   "ratedPower"
+  ],
+  [
+   "ratedPower",
+   "HAS_SEMANTIC_ID",
+   "ratedPower_HAS_SEMANTIC_ID"
+  ],
+  [
+   "ratedPower_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "ratedPower_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "techProps",
+   "HAS_VALUE",
+   "protectionClass"
+  ],
+  [
+   "protectionClass",
+   "HAS_SEMANTIC_ID",
+   "protectionClass_HAS_SEMANTIC_ID"
+  ],
+  [
+   "protectionClass_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "protectionClass_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "protectionClass_HAS_SEMANTIC_ID",
+   "RESOLVES_TO",
+   "cdDegreeOfProtection"
+  ],
+  [
+   "techProps",
+   "HAS_VALUE",
+   "ambientTemp"
+  ],
+  [
+   "ambientTemp",
+   "HAS_SEMANTIC_ID",
+   "ambientTemp_HAS_SEMANTIC_ID"
+  ],
+  [
+   "ambientTemp_HAS_SEMANTIC_ID",
+   "HAS_KEYS",
+   "ambientTemp_HAS_SEMANTIC_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "ratedTorque",
+   "HAS_QUALIFIERS",
+   "qualTested"
+  ],
+  [
+   "env",
+   "HAS_CONCEPT_DESCRIPTIONS",
+   "cdRatedTorque"
+  ],
+  [
+   "cdRatedTorque",
+   "HAS_EMBEDDED_DATA_SPECIFICATIONS",
+   "cdRatedTorqueEds"
+  ],
+  [
+   "cdRatedTorqueEds",
+   "HAS_DATA_SPECIFICATION",
+   "cdRatedTorqueEds_HAS_DATA_SPECIFICATION"
+  ],
+  [
+   "cdRatedTorqueEds_HAS_DATA_SPECIFICATION",
+   "HAS_KEYS",
+   "cdRatedTorqueEds_HAS_DATA_SPECIFICATION_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "cdRatedTorqueEds",
+   "HAS_DATA_SPECIFICATION_CONTENT",
+   "cdRatedTorqueIec"
+  ],
+  [
+   "cdRatedTorqueIec",
+   "HAS_PREFERRED_NAME",
+   "cdRatedTorqueIec_preferredName_en"
+  ],
+  [
+   "cdRatedTorqueIec",
+   "HAS_PREFERRED_NAME",
+   "cdRatedTorqueIec_preferredName_de"
+  ],
+  [
+   "cdRatedTorqueIec",
+   "HAS_SHORT_NAME",
+   "cdRatedTorqueIec_shortName_en"
+  ],
+  [
+   "cdRatedTorqueIec",
+   "HAS_DEFINITION",
+   "cdRatedTorqueIec_definition_en"
+  ],
+  [
+   "cdRatedTorqueIec",
+   "HAS_DEFINITION",
+   "cdRatedTorqueIec_definition_de"
+  ],
+  [
+   "cdRatedTorqueIec",
+   "HAS_UNIT_ID",
+   "cdRatedTorqueIec_HAS_UNIT_ID"
+  ],
+  [
+   "cdRatedTorqueIec_HAS_UNIT_ID",
+   "HAS_KEYS",
+   "cdRatedTorqueIec_HAS_UNIT_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "cdRatedTorqueIec",
+   "HAS_LEVEL_TYPE",
+   "cdRatedTorqueLevel"
+  ],
+  [
+   "env",
+   "HAS_CONCEPT_DESCRIPTIONS",
+   "cdDegreeOfProtection"
+  ],
+  [
+   "cdDegreeOfProtection",
+   "HAS_EMBEDDED_DATA_SPECIFICATIONS",
+   "cdDegreeOfProtectionEds"
+  ],
+  [
+   "cdDegreeOfProtectionEds",
+   "HAS_DATA_SPECIFICATION",
+   "cdDegreeOfProtectionEds_HAS_DATA_SPECIFICATION"
+  ],
+  [
+   "cdDegreeOfProtectionEds_HAS_DATA_SPECIFICATION",
+   "HAS_KEYS",
+   "cdDegreeOfProtectionEds_HAS_DATA_SPECIFICATION_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "cdDegreeOfProtectionEds",
+   "HAS_DATA_SPECIFICATION_CONTENT",
+   "cdDegreeOfProtectionIec"
+  ],
+  [
+   "cdDegreeOfProtectionIec",
+   "HAS_PREFERRED_NAME",
+   "cdDegreeOfProtectionIec_preferredName_en"
+  ],
+  [
+   "cdDegreeOfProtectionIec",
+   "HAS_PREFERRED_NAME",
+   "cdDegreeOfProtectionIec_preferredName_de"
+  ],
+  [
+   "cdDegreeOfProtectionIec",
+   "HAS_SHORT_NAME",
+   "cdDegreeOfProtectionIec_shortName_en"
+  ],
+  [
+   "cdDegreeOfProtectionIec",
+   "HAS_DEFINITION",
+   "cdDegreeOfProtectionIec_definition_en"
+  ],
+  [
+   "cdDegreeOfProtectionIec",
+   "HAS_VALUE_LIST",
+   "cdDegreeOfProtectionValues"
+  ],
+  [
+   "cdDegreeOfProtectionValues",
+   "HAS_VALUE_REFERENCE_PAIRS",
+   "cdDegreeOfProtectionValue0"
+  ],
+  [
+   "cdDegreeOfProtectionValue0",
+   "HAS_VALUE_ID",
+   "cdDegreeOfProtectionValue0_HAS_VALUE_ID"
+  ],
+  [
+   "cdDegreeOfProtectionValue0_HAS_VALUE_ID",
+   "HAS_KEYS",
+   "cdDegreeOfProtectionValue0_HAS_VALUE_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "cdDegreeOfProtectionValues",
+   "HAS_VALUE_REFERENCE_PAIRS",
+   "cdDegreeOfProtectionValue1"
+  ],
+  [
+   "cdDegreeOfProtectionValue1",
+   "HAS_VALUE_ID",
+   "cdDegreeOfProtectionValue1_HAS_VALUE_ID"
+  ],
+  [
+   "cdDegreeOfProtectionValue1_HAS_VALUE_ID",
+   "HAS_KEYS",
+   "cdDegreeOfProtectionValue1_HAS_VALUE_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "cdDegreeOfProtectionValues",
+   "HAS_VALUE_REFERENCE_PAIRS",
+   "cdDegreeOfProtectionValue2"
+  ],
+  [
+   "cdDegreeOfProtectionValue2",
+   "HAS_VALUE_ID",
+   "cdDegreeOfProtectionValue2_HAS_VALUE_ID"
+  ],
+  [
+   "cdDegreeOfProtectionValue2_HAS_VALUE_ID",
+   "HAS_KEYS",
+   "cdDegreeOfProtectionValue2_HAS_VALUE_ID_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "env",
+   "HAS_CONCEPT_DESCRIPTIONS",
+   "cdNewtonMetre"
+  ],
+  [
+   "cdNewtonMetre",
+   "HAS_EMBEDDED_DATA_SPECIFICATIONS",
+   "uomEds"
+  ],
+  [
+   "uomEds",
+   "HAS_DATA_SPECIFICATION",
+   "uomEds_HAS_DATA_SPECIFICATION"
+  ],
+  [
+   "uomEds_HAS_DATA_SPECIFICATION",
+   "HAS_KEYS",
+   "uomEds_HAS_DATA_SPECIFICATION_k0",
+   {
+    "index": 0
+   }
+  ],
+  [
+   "uomEds",
+   "HAS_DATA_SPECIFICATION_CONTENT",
+   "uom"
+  ],
+  [
+   "uom",
+   "HAS_PREFERRED_NAME",
+   "uom_preferredName_en"
+  ],
+  [
+   "uom",
+   "HAS_PREFERRED_NAME",
+   "uom_preferredName_de"
+  ],
+  [
+   "uom",
+   "HAS_PREFERRED_NAME_QUANTITY",
+   "uom_preferredNameQuantity_en"
+  ],
+  [
+   "uom",
+   "HAS_DEFINITION",
+   "uom_definition_en"
+  ]
+ ]
+}
