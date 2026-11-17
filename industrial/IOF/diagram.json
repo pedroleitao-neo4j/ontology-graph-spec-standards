@@ -1,0 +1,22 @@
+{
+  "source": "the IOF ontology repository at Release_202603, entry modules Core, Supply Chain and Maintenance, with the BFO 2020 they import",
+  "link": "the term IRI",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "BFO top level", "values": ["BFO top level"]},
+      {"name": "Core", "values": ["Core"]},
+      {"name": "Supply chain", "values": ["Supply chain"]},
+      {"name": "Maintenance", "values": ["Maintenance"]}
+    ]
+  },
+  "sub": ["module", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "functional: every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

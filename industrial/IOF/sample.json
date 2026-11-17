@@ -1,0 +1,1272 @@
+{
+  "scenario": "A centrifugal pump made to order by a fictional pump maker, Ridgeline Pumps, for a bottling company, Harbor Bottling, shipped by a carrier, Coastline Freight, and repaired after its bearing fails in service. The data has the three business organizations, the manufacturer, supplier, customer, buyer, consignor, consignee and transportation service provider roles they play, their business functions and identifiers, and the people who work for them; the factory and its make-to-order capability, realized in the pump's production, whose assembly takes in the bearing; the purchase order and the supply relationship it prescribes; the shipment, prepared under a shipment plan with an advance shipment notice and a bill of lading, carried by truck from Ridgeline's dock to Harbor's, with timestamped departure and arrival, and received; and, in service, the pump's required function, the bearing's disposition to fail, the failure event that puts the pump in a failed state, the failure mode code that describes it, and the work order and maintenance activity, prescribed by a corrective maintenance strategy, in which a qualified technician replaces the bearing.",
+  "nodes": {
+    "ridgeline": {
+      "node": [
+        "Manufacturer",
+        "Supplier",
+        "Consignor",
+        "BusinessOrganization"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgeline"
+      }
+    },
+    "harbor": {
+      "node": [
+        "Customer",
+        "Buyer",
+        "Consignee",
+        "BusinessOrganization"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harbor"
+      }
+    },
+    "coastline": {
+      "node": [
+        "Carrier",
+        "BusinessOrganization"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/coastline"
+      }
+    },
+    "ridgelineManufacturerRole": {
+      "node": "ManufacturerRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineManufacturerRole"
+      }
+    },
+    "ridgelineSupplierRole": {
+      "node": "SupplierRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineSupplierRole"
+      }
+    },
+    "ridgelineConsignorRole": {
+      "node": "ConsignorRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineConsignorRole"
+      }
+    },
+    "harborCustomerRole": {
+      "node": "CustomerRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborCustomerRole"
+      }
+    },
+    "harborBuyerRole": {
+      "node": "BuyerRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborBuyerRole"
+      }
+    },
+    "harborConsigneeRole": {
+      "node": "ConsigneeRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborConsigneeRole"
+      }
+    },
+    "coastlineTransportRole": {
+      "node": "TransportationServiceProviderRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/coastlineTransportRole"
+      }
+    },
+    "ridgelineFunction": {
+      "node": "BusinessFunction",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineFunction"
+      }
+    },
+    "ridgelineObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineObjective"
+      }
+    },
+    "ridgelineLei": {
+      "node": "OrganizationIdentifier",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineLei"
+      }
+    },
+    "harborFunction": {
+      "node": "BusinessFunction",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborFunction"
+      }
+    },
+    "harborObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborObjective"
+      }
+    },
+    "harborLei": {
+      "node": "OrganizationIdentifier",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborLei"
+      }
+    },
+    "coastlineFunction": {
+      "node": "BusinessFunction",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/coastlineFunction"
+      }
+    },
+    "coastlineObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/coastlineObjective"
+      }
+    },
+    "coastlineLei": {
+      "node": "OrganizationIdentifier",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/coastlineLei"
+      }
+    },
+    "dana": {
+      "node": [
+        "Person",
+        "Agent"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/dana"
+      }
+    },
+    "danaEmployeeRole": {
+      "node": "AgentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/danaEmployeeRole"
+      }
+    },
+    "priya": {
+      "node": [
+        "Person",
+        "Agent"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/priya"
+      }
+    },
+    "priyaEmployeeRole": {
+      "node": "AgentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/priyaEmployeeRole"
+      }
+    },
+    "luis": {
+      "node": [
+        "QualifiedMaintenancePerson",
+        "Agent"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/luis"
+      }
+    },
+    "luisEmployeeRole": {
+      "node": "AgentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/luisEmployeeRole"
+      }
+    },
+    "sam": {
+      "node": [
+        "Person",
+        "Agent"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/sam"
+      }
+    },
+    "samEmployeeRole": {
+      "node": "AgentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/samEmployeeRole"
+      }
+    },
+    "ridgelineSite": {
+      "node": "GeospatialSite",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineSite"
+      }
+    },
+    "ridgelineDock": {
+      "node": "ShipFromLocation",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineDock"
+      }
+    },
+    "ridgelineDockRole": {
+      "node": "ShipFromLocationRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/ridgelineDockRole"
+      }
+    },
+    "harborDock": {
+      "node": "ShipToLocation",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborDock"
+      }
+    },
+    "harborDockRole": {
+      "node": "ShipToLocationRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborDockRole"
+      }
+    },
+    "harborDockGln": {
+      "node": "GlobalLocationNumber",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/harborDockGln"
+      }
+    },
+    "plant": {
+      "node": "Factory",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/plant"
+      }
+    },
+    "plantFunction": {
+      "node": "DesignedFunction",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/plantFunction"
+      }
+    },
+    "plantDesign": {
+      "node": "DesignSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/plantDesign"
+      }
+    },
+    "makeToOrder": {
+      "node": "MakeToOrderProductionCapability",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/makeToOrder"
+      }
+    },
+    "routing": {
+      "node": "PlanSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/routing"
+      }
+    },
+    "routingSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/routingSteps"
+      }
+    },
+    "routingObjective": {
+      "node": "OutputObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/routingObjective"
+      }
+    },
+    "production": {
+      "node": "ProductProductionProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/production"
+      }
+    },
+    "productionInterval": {
+      "node": "TemporalInterval",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/productionInterval"
+      }
+    },
+    "assembly": {
+      "node": "ManufacturingProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/assembly"
+      }
+    },
+    "bearing": {
+      "node": "MaterialComponent",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/bearing"
+      }
+    },
+    "bearingRole": {
+      "node": "MaterialComponentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/bearingRole"
+      }
+    },
+    "pump": {
+      "node": [
+        "MaterialProduct",
+        "PieceOfEquipment",
+        "MaintainableMaterialItem"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pump"
+      }
+    },
+    "pumpProductRole": {
+      "node": "MaterialProductRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pumpProductRole"
+      }
+    },
+    "pumpEquipmentRole": {
+      "node": "EquipmentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pumpEquipmentRole"
+      }
+    },
+    "pumpMaintainableRole": {
+      "node": "MaintainableMaterialItemRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pumpMaintainableRole"
+      }
+    },
+    "po": {
+      "node": "PurchaseOrder",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/po"
+      }
+    },
+    "poObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/poObjective"
+      }
+    },
+    "supply": {
+      "node": "SupplyRelationship",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/supply"
+      }
+    },
+    "shipmentPlan": {
+      "node": "ShipmentPlanSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/shipmentPlan"
+      }
+    },
+    "shipmentSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/shipmentSteps"
+      }
+    },
+    "shipmentObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/shipmentObjective"
+      }
+    },
+    "preparation": {
+      "node": "ShipmentPreparationProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/preparation"
+      }
+    },
+    "shipment": {
+      "node": "Shipment",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/shipment"
+      }
+    },
+    "shipmentRole": {
+      "node": "ShipmentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/shipmentRole"
+      }
+    },
+    "asn": {
+      "node": "AdvanceShipmentNotice",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/asn"
+      }
+    },
+    "truck": {
+      "node": "PieceOfTransportEquipment",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/truck"
+      }
+    },
+    "truckFunction": {
+      "node": "DesignedFunction",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/truckFunction"
+      }
+    },
+    "truckDesign": {
+      "node": "DesignSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/truckDesign"
+      }
+    },
+    "truckRole": {
+      "node": "TransportEquipmentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/truckRole"
+      }
+    },
+    "transport": {
+      "node": "TransportProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/transport"
+      }
+    },
+    "departure": {
+      "node": "DepartureProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/departure"
+      }
+    },
+    "arrival": {
+      "node": "ArrivalProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/arrival"
+      }
+    },
+    "departureInstant": {
+      "node": "TemporalInstant",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/departureInstant"
+      }
+    },
+    "arrivalInstant": {
+      "node": "TemporalInstant",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/arrivalInstant"
+      }
+    },
+    "departureTime": {
+      "node": "TemporalInstantValueExpression",
+      "properties": {
+        "hasDateTimeInstantValue": [
+          "2026-03-09T07:30:00-05:00"
+        ],
+        "uri": "https://example.com/pump-cp200/departureTime"
+      }
+    },
+    "arrivalTime": {
+      "node": "TemporalInstantValueExpression",
+      "properties": {
+        "hasDateTimeInstantValue": [
+          "2026-03-11T14:10:00-05:00"
+        ],
+        "uri": "https://example.com/pump-cp200/arrivalTime"
+      }
+    },
+    "bol": {
+      "node": "BillOfLading",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/bol"
+      }
+    },
+    "bolTerms": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/bolTerms"
+      }
+    },
+    "bolCargo": {
+      "node": "DescriptiveInformationContentEntity",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/bolCargo"
+      }
+    },
+    "receiving": {
+      "node": "ReceivingProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/receiving"
+      }
+    },
+    "pumpingFunction": {
+      "node": "RequiredFunction",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pumpingFunction"
+      }
+    },
+    "pumping": {
+      "node": "FunctioningProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pumping"
+      }
+    },
+    "operating": {
+      "node": "OperatingState",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/operating"
+      }
+    },
+    "bearingWear": {
+      "node": "DispositionToFail",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/bearingWear"
+      }
+    },
+    "wearProcess": {
+      "node": "FailureProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/wearProcess"
+      }
+    },
+    "seizure": {
+      "node": "FailureEvent",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/seizure"
+      }
+    },
+    "failed": {
+      "node": "FailedState",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/failed"
+      }
+    },
+    "brgCode": {
+      "node": "FailureModeCode",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/brgCode"
+      }
+    },
+    "strategy": {
+      "node": "MaintenanceStrategy",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/strategy"
+      }
+    },
+    "strategySteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/strategySteps"
+      }
+    },
+    "strategyObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/strategyObjective"
+      }
+    },
+    "workOrder": {
+      "node": "MaintenanceWorkOrderRecord",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/workOrder"
+      }
+    },
+    "repair": {
+      "node": "MaintenanceActivity",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/repair"
+      }
+    },
+    "qualification": {
+      "node": "QualificationSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/qualification"
+      }
+    },
+    "replacementBearing": {
+      "node": "MaterialComponent",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/replacementBearing"
+      }
+    },
+    "replacementBearingRole": {
+      "node": "MaterialComponentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/replacementBearingRole"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "ridgeline",
+      "HAS_ROLE",
+      "ridgelineManufacturerRole"
+    ],
+    [
+      "ridgeline",
+      "HAS_ROLE",
+      "ridgelineSupplierRole"
+    ],
+    [
+      "ridgeline",
+      "HAS_ROLE",
+      "ridgelineConsignorRole"
+    ],
+    [
+      "harbor",
+      "HAS_ROLE",
+      "harborCustomerRole"
+    ],
+    [
+      "harbor",
+      "HAS_ROLE",
+      "harborBuyerRole"
+    ],
+    [
+      "harbor",
+      "HAS_ROLE",
+      "harborConsigneeRole"
+    ],
+    [
+      "coastline",
+      "HAS_ROLE",
+      "coastlineTransportRole"
+    ],
+    [
+      "ridgeline",
+      "HAS_FUNCTION",
+      "ridgelineFunction"
+    ],
+    [
+      "ridgelineFunction",
+      "INHERES_IN",
+      "ridgeline"
+    ],
+    [
+      "ridgelineObjective",
+      "PRESCRIBES",
+      "ridgelineFunction"
+    ],
+    [
+      "ridgelineLei",
+      "DENOTES",
+      "ridgeline"
+    ],
+    [
+      "ridgelineLei",
+      "DESIGNATES",
+      "ridgeline"
+    ],
+    [
+      "harbor",
+      "HAS_FUNCTION",
+      "harborFunction"
+    ],
+    [
+      "harborFunction",
+      "INHERES_IN",
+      "harbor"
+    ],
+    [
+      "harborObjective",
+      "PRESCRIBES",
+      "harborFunction"
+    ],
+    [
+      "harborLei",
+      "DENOTES",
+      "harbor"
+    ],
+    [
+      "harborLei",
+      "DESIGNATES",
+      "harbor"
+    ],
+    [
+      "coastline",
+      "HAS_FUNCTION",
+      "coastlineFunction"
+    ],
+    [
+      "coastlineFunction",
+      "INHERES_IN",
+      "coastline"
+    ],
+    [
+      "coastlineObjective",
+      "PRESCRIBES",
+      "coastlineFunction"
+    ],
+    [
+      "coastlineLei",
+      "DENOTES",
+      "coastline"
+    ],
+    [
+      "coastlineLei",
+      "DESIGNATES",
+      "coastline"
+    ],
+    [
+      "dana",
+      "HAS_ROLE",
+      "danaEmployeeRole"
+    ],
+    [
+      "ridgeline",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "dana"
+    ],
+    [
+      "ridgeline",
+      "HAS_MEMBER_PART_AT_ALL_TIMES",
+      "dana"
+    ],
+    [
+      "priya",
+      "HAS_ROLE",
+      "priyaEmployeeRole"
+    ],
+    [
+      "harbor",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "priya"
+    ],
+    [
+      "harbor",
+      "HAS_MEMBER_PART_AT_ALL_TIMES",
+      "priya"
+    ],
+    [
+      "luis",
+      "HAS_ROLE",
+      "luisEmployeeRole"
+    ],
+    [
+      "harbor",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "luis"
+    ],
+    [
+      "harbor",
+      "HAS_MEMBER_PART_AT_ALL_TIMES",
+      "luis"
+    ],
+    [
+      "sam",
+      "HAS_ROLE",
+      "samEmployeeRole"
+    ],
+    [
+      "coastline",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "sam"
+    ],
+    [
+      "coastline",
+      "HAS_MEMBER_PART_AT_ALL_TIMES",
+      "sam"
+    ],
+    [
+      "dana",
+      "ACTS_ON_BEHALF_OF_AT_SOME_TIME",
+      "ridgeline"
+    ],
+    [
+      "priya",
+      "ACTS_ON_BEHALF_OF_AT_SOME_TIME",
+      "harbor"
+    ],
+    [
+      "luis",
+      "ACTS_ON_BEHALF_OF_AT_SOME_TIME",
+      "harbor"
+    ],
+    [
+      "sam",
+      "ACTS_ON_BEHALF_OF_AT_SOME_TIME",
+      "coastline"
+    ],
+    [
+      "ridgelineDock",
+      "HAS_ROLE",
+      "ridgelineDockRole"
+    ],
+    [
+      "harborDock",
+      "HAS_ROLE",
+      "harborDockRole"
+    ],
+    [
+      "harborDockGln",
+      "DENOTES",
+      "harborDock"
+    ],
+    [
+      "harborDockGln",
+      "DESIGNATES",
+      "harborDock"
+    ],
+    [
+      "ridgelineSite",
+      "HAS_CONTINUANT_PART_AT_SOME_TIME",
+      "ridgelineDock"
+    ],
+    [
+      "plant",
+      "LOCATED_IN_AT_ALL_TIMES",
+      "ridgelineSite"
+    ],
+    [
+      "plantFunction",
+      "INHERES_IN",
+      "plant"
+    ],
+    [
+      "plantDesign",
+      "PRESCRIBES",
+      "plantFunction"
+    ],
+    [
+      "plant",
+      "HAS_CAPABILITY",
+      "makeToOrder"
+    ],
+    [
+      "ridgeline",
+      "OWNS",
+      "plant"
+    ],
+    [
+      "routing",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "routingSteps"
+    ],
+    [
+      "routing",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "routingObjective"
+    ],
+    [
+      "makeToOrder",
+      "HAS_REALIZATION",
+      "production"
+    ],
+    [
+      "production",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "ridgeline"
+    ],
+    [
+      "production",
+      "HAS_OCCURRENT_PART",
+      "assembly"
+    ],
+    [
+      "production",
+      "OCCUPIES_TEMPORAL_REGION",
+      "productionInterval"
+    ],
+    [
+      "production",
+      "HAS_SPECIFIED_OUTPUT",
+      "pump"
+    ],
+    [
+      "routing",
+      "PRESCRIBES",
+      "production"
+    ],
+    [
+      "routing",
+      "PRESCRIBES",
+      "assembly"
+    ],
+    [
+      "assembly",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "dana"
+    ],
+    [
+      "assembly",
+      "HAS_INPUT",
+      "bearing"
+    ],
+    [
+      "assembly",
+      "HAS_OUTPUT",
+      "pump"
+    ],
+    [
+      "bearing",
+      "HAS_ROLE",
+      "bearingRole"
+    ],
+    [
+      "bearing",
+      "COMPONENT_PART_OF_AT_ALL_TIMES",
+      "pump"
+    ],
+    [
+      "pump",
+      "HAS_ROLE",
+      "pumpProductRole"
+    ],
+    [
+      "pump",
+      "HAS_ROLE",
+      "pumpEquipmentRole"
+    ],
+    [
+      "pump",
+      "HAS_ROLE",
+      "pumpMaintainableRole"
+    ],
+    [
+      "po",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "poObjective"
+    ],
+    [
+      "po",
+      "IS_ABOUT",
+      "pump"
+    ],
+    [
+      "po",
+      "PRESCRIBES",
+      "supply"
+    ],
+    [
+      "supply",
+      "SPECIFICALLY_DEPENDS_ON",
+      "harborCustomerRole"
+    ],
+    [
+      "supply",
+      "SPECIFICALLY_DEPENDS_ON",
+      "ridgelineSupplierRole"
+    ],
+    [
+      "shipmentPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "shipmentSteps"
+    ],
+    [
+      "shipmentPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "shipmentObjective"
+    ],
+    [
+      "preparation",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "ridgeline"
+    ],
+    [
+      "preparation",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "pump"
+    ],
+    [
+      "preparation",
+      "HAS_SPECIFIED_OUTPUT",
+      "shipment"
+    ],
+    [
+      "preparation",
+      "HAS_OUTPUT",
+      "asn"
+    ],
+    [
+      "shipmentPlan",
+      "PRESCRIBES",
+      "preparation"
+    ],
+    [
+      "shipment",
+      "HAS_ROLE",
+      "shipmentRole"
+    ],
+    [
+      "shipment",
+      "HAS_CONTINUANT_PART_AT_SOME_TIME",
+      "pump"
+    ],
+    [
+      "asn",
+      "IS_ABOUT",
+      "shipment"
+    ],
+    [
+      "asn",
+      "IS_ABOUT",
+      "harbor"
+    ],
+    [
+      "truckFunction",
+      "INHERES_IN",
+      "truck"
+    ],
+    [
+      "truckDesign",
+      "PRESCRIBES",
+      "truckFunction"
+    ],
+    [
+      "truck",
+      "HAS_ROLE",
+      "truckRole"
+    ],
+    [
+      "coastline",
+      "OWNS",
+      "truck"
+    ],
+    [
+      "shipmentPlan",
+      "PRESCRIBES",
+      "transport"
+    ],
+    [
+      "shipmentPlan",
+      "PRESCRIBES",
+      "departure"
+    ],
+    [
+      "shipmentPlan",
+      "PRESCRIBES",
+      "arrival"
+    ],
+    [
+      "transport",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "shipment"
+    ],
+    [
+      "transport",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "truck"
+    ],
+    [
+      "transport",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "sam"
+    ],
+    [
+      "transport",
+      "HAS_OCCURRENT_PART",
+      "departure"
+    ],
+    [
+      "transport",
+      "HAS_OCCURRENT_PART",
+      "arrival"
+    ],
+    [
+      "transport",
+      "STARTS_AT",
+      "ridgelineDock"
+    ],
+    [
+      "transport",
+      "ENDS_AT",
+      "harborDock"
+    ],
+    [
+      "departure",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "shipment"
+    ],
+    [
+      "departure",
+      "OCCUPIES_TEMPORAL_REGION",
+      "departureInstant"
+    ],
+    [
+      "departureInstant",
+      "HAS_VALUE_EXPRESSION_AT_ALL_TIMES",
+      "departureTime"
+    ],
+    [
+      "departureInstant",
+      "HAS_VALUE_EXPRESSION_AT_SOME_TIME",
+      "departureTime"
+    ],
+    [
+      "arrival",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "shipment"
+    ],
+    [
+      "arrival",
+      "OCCUPIES_TEMPORAL_REGION",
+      "arrivalInstant"
+    ],
+    [
+      "arrivalInstant",
+      "HAS_VALUE_EXPRESSION_AT_ALL_TIMES",
+      "arrivalTime"
+    ],
+    [
+      "arrivalInstant",
+      "HAS_VALUE_EXPRESSION_AT_SOME_TIME",
+      "arrivalTime"
+    ],
+    [
+      "bol",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "bolTerms"
+    ],
+    [
+      "bol",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "bolCargo"
+    ],
+    [
+      "bolCargo",
+      "DESCRIBES",
+      "shipment"
+    ],
+    [
+      "shipmentPlan",
+      "PRESCRIBES",
+      "receiving"
+    ],
+    [
+      "receiving",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "harbor"
+    ],
+    [
+      "receiving",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "harborConsigneeRole"
+    ],
+    [
+      "receiving",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "shipment"
+    ],
+    [
+      "arrival",
+      "PRECEDES",
+      "receiving"
+    ],
+    [
+      "pump",
+      "HAS_FUNCTION",
+      "pumpingFunction"
+    ],
+    [
+      "pumpingFunction",
+      "HAS_REALIZATION",
+      "pumping"
+    ],
+    [
+      "pumping",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "pumpingFunction"
+    ],
+    [
+      "pumping",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "pump"
+    ],
+    [
+      "pump",
+      "HAS_MATERIAL_STATE",
+      "operating"
+    ],
+    [
+      "pump",
+      "HAS_MATERIAL_STATE",
+      "failed"
+    ],
+    [
+      "operating",
+      "PRECEDES",
+      "failed"
+    ],
+    [
+      "bearingWear",
+      "INHERES_IN",
+      "bearing"
+    ],
+    [
+      "bearingWear",
+      "HAS_REALIZATION",
+      "wearProcess"
+    ],
+    [
+      "wearProcess",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "bearing"
+    ],
+    [
+      "seizure",
+      "INITIATES",
+      "failed"
+    ],
+    [
+      "failed",
+      "HAS_PARTICIPANT_AT_ALL_TIMES",
+      "pump"
+    ],
+    [
+      "priya",
+      "RECOGNIZES_AT_SOME_TIME",
+      "seizure"
+    ],
+    [
+      "brgCode",
+      "DESCRIBES",
+      "bearingWear"
+    ],
+    [
+      "strategy",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "strategySteps"
+    ],
+    [
+      "strategy",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "strategyObjective"
+    ],
+    [
+      "strategy",
+      "PRESCRIBES",
+      "repair"
+    ],
+    [
+      "workOrder",
+      "DESCRIBES",
+      "repair"
+    ],
+    [
+      "workOrder",
+      "IS_ABOUT",
+      "pump"
+    ],
+    [
+      "repair",
+      "HAS_INPUT",
+      "workOrder"
+    ],
+    [
+      "repair",
+      "HAS_INPUT",
+      "pump"
+    ],
+    [
+      "repair",
+      "HAS_INPUT",
+      "replacementBearing"
+    ],
+    [
+      "repair",
+      "HAS_PARTICIPANT_AT_ALL_TIMES",
+      "pump"
+    ],
+    [
+      "repair",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "luis"
+    ],
+    [
+      "replacementBearing",
+      "HAS_ROLE",
+      "replacementBearingRole"
+    ],
+    [
+      "luis",
+      "SATISFIES_REQUIREMENT",
+      "qualification"
+    ],
+    [
+      "qualification",
+      "IS_ABOUT",
+      "strategyObjective"
+    ]
+  ]
+}
