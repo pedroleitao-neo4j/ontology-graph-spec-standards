@@ -1,0 +1,22 @@
+{
+  "source": "the IOF ontology repository at Release_202603, entry modules the thirteen production Biopharma modules, with the IOF Core, Supply Chain, Certification and BFO 2020 classes they need",
+  "link": "the term IRI",
+  "areas": {
+    "field": "area",
+    "groups": [
+      {"name": "BFO and IOF Core, Supply Chain and Certification, and the reference ontology candidates", "values": ["BFO and IOF Core"]},
+      {"name": "Materials and molecular entities", "values": ["Materials and molecular entities"]},
+      {"name": "Equipment, organization and recipes", "values": ["Equipment, organization and recipes"]},
+      {"name": "Processes, parameters and control", "values": ["Processes, parameters and control"]}
+    ]
+  },
+  "sub": ["module", "#properties"],
+  "lines": {
+    "by": "from",
+    "legend": {
+      "main": "required: every source has one or more",
+      "dashed": "functional: every source has at most one",
+      "thin": "otherwise unconstrained"
+    }
+  }
+}

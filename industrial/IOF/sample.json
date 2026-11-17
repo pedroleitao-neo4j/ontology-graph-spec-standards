@@ -1,5 +1,5 @@
 {
-  "scenario": "A centrifugal pump made to order by a fictional pump maker, Ridgeline Pumps, for a bottling company, Harbor Bottling, shipped by a carrier, Coastline Freight, and repaired after its bearing fails in service. The data has the three business organizations, the manufacturer, supplier, customer, buyer, consignor, consignee and transportation service provider roles they play, their business functions and identifiers, and the people who work for them; the factory and its make-to-order capability, realized in the pump's production, whose assembly takes in the bearing; the purchase order and the supply relationship it prescribes; the shipment, prepared under a shipment plan with an advance shipment notice and a bill of lading, carried by truck from Ridgeline's dock to Harbor's, with timestamped departure and arrival, and received; and, in service, the pump's required function, the bearing's disposition to fail, the failure event that puts the pump in a failed state, the failure mode code that describes it, and the work order and maintenance activity, prescribed by a corrective maintenance strategy, in which a qualified technician replaces the bearing.",
+  "scenario": "A centrifugal pump planned and made to order by a fictional pump maker, Ridgeline Pumps, for a bottling company, Harbor Bottling, shipped by a carrier, Coastline Freight, and repaired after its bearing fails in service. The data has the three business organizations, the manufacturer, supplier, customer, buyer, consignor, consignee and transportation service provider roles they play, their business functions and identifiers, and the people who work for them; the factory and its make-to-order capability, realized in the pump's production; the production plan, with the production order for the pump and the process plan that routes it, under which an operator assembles the bearing into the pump at a press in a manufacturing operation and its process step; the purchase order and the supply relationship it prescribes; the shipment, prepared under a shipment plan with an advance shipment notice and a bill of lading, carried by truck from Ridgeline's dock to Harbor's, with timestamped departure and arrival, and received; and, in service, the pump's required function, the bearing's disposition to fail, the failure event that puts the pump in a failed state, the failure mode code that describes it, and the work order and maintenance activity, prescribed by a corrective maintenance strategy, in which a qualified technician replaces the bearing; and the pump's certification by a fictional certifying body, Keystone Conformity, whose inspector attests to its performance in a test against a pump standard before the body grants it a certificate.",
   "nodes": {
     "ridgeline": {
       "node": [
@@ -89,7 +89,10 @@
     "ridgelineLei": {
       "node": "OrganizationIdentifier",
       "properties": {
-        "uri": "https://example.com/pump-cp200/ridgelineLei"
+        "uri": "https://example.com/pump-cp200/ridgelineLei",
+        "hasTextValue": [
+          "5493001RIDGELINE0042"
+        ]
       }
     },
     "harborFunction": {
@@ -107,7 +110,10 @@
     "harborLei": {
       "node": "OrganizationIdentifier",
       "properties": {
-        "uri": "https://example.com/pump-cp200/harborLei"
+        "uri": "https://example.com/pump-cp200/harborLei",
+        "hasTextValue": [
+          "5493002HARBORBOTL017"
+        ]
       }
     },
     "coastlineFunction": {
@@ -125,11 +131,15 @@
     "coastlineLei": {
       "node": "OrganizationIdentifier",
       "properties": {
-        "uri": "https://example.com/pump-cp200/coastlineLei"
+        "uri": "https://example.com/pump-cp200/coastlineLei",
+        "hasTextValue": [
+          "5493003COASTLINEF088"
+        ]
       }
     },
     "dana": {
       "node": [
+        "Operator",
         "Person",
         "Agent"
       ],
@@ -141,6 +151,12 @@
       "node": "AgentRole",
       "properties": {
         "uri": "https://example.com/pump-cp200/danaEmployeeRole"
+      }
+    },
+    "danaOperatorRole": {
+      "node": "OperatorRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/danaOperatorRole"
       }
     },
     "priya": {
@@ -221,7 +237,10 @@
     "harborDockGln": {
       "node": "GlobalLocationNumber",
       "properties": {
-        "uri": "https://example.com/pump-cp200/harborDockGln"
+        "uri": "https://example.com/pump-cp200/harborDockGln",
+        "hasTextValue": [
+          "0614141000418"
+        ]
       }
     },
     "plant": {
@@ -249,7 +268,7 @@
       }
     },
     "routing": {
-      "node": "PlanSpecification",
+      "node": "ProcessPlan",
       "properties": {
         "uri": "https://example.com/pump-cp200/routing"
       }
@@ -264,6 +283,72 @@
       "node": "OutputObjectiveSpecification",
       "properties": {
         "uri": "https://example.com/pump-cp200/routingObjective"
+      }
+    },
+    "productionPlan": {
+      "node": "ProductionPlan",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/productionPlan"
+      }
+    },
+    "productionPlanSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/productionPlanSteps"
+      }
+    },
+    "productionPlanObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/productionPlanObjective"
+      }
+    },
+    "productionOrder": {
+      "node": "ProductionOrder",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/productionOrder"
+      }
+    },
+    "pumpSpec": {
+      "node": "MaterialProductSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pumpSpec"
+      }
+    },
+    "assemblyOperation": {
+      "node": "ManufacturingOperation",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/assemblyOperation"
+      }
+    },
+    "pressStep": {
+      "node": "ProcessStep",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pressStep"
+      }
+    },
+    "press": {
+      "node": "ProductionMachine",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/press"
+      }
+    },
+    "pressRole": {
+      "node": "EquipmentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pressRole"
+      }
+    },
+    "pressFunction": {
+      "node": "DesignedFunction",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pressFunction"
+      }
+    },
+    "pressDesign": {
+      "node": "DesignSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pressDesign"
       }
     },
     "production": {
@@ -575,6 +660,100 @@
       "properties": {
         "uri": "https://example.com/pump-cp200/replacementBearingRole"
       }
+    },
+    "keystone": {
+      "node": [
+        "CertifyingBody",
+        "Organization"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/keystone"
+      }
+    },
+    "keystoneRole": {
+      "node": "CertifyingBodyRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/keystoneRole"
+      }
+    },
+    "keystoneFunction": {
+      "node": "Function",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/keystoneFunction"
+      }
+    },
+    "keystoneId": {
+      "node": "OrganizationIdentifier",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/keystoneId",
+        "hasTextValue": [
+          "5493004KEYSTONECNF21"
+        ]
+      }
+    },
+    "mei": {
+      "node": [
+        "AttestingAgent",
+        "Person",
+        "Agent"
+      ],
+      "properties": {
+        "uri": "https://example.com/pump-cp200/mei"
+      }
+    },
+    "meiRole": {
+      "node": "AttestingAgentRole",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/meiRole"
+      }
+    },
+    "certScheme": {
+      "node": "PlanSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/certScheme"
+      }
+    },
+    "certSchemeSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/certSchemeSteps"
+      }
+    },
+    "certSchemeObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/certSchemeObjective"
+      }
+    },
+    "pumpStandard": {
+      "node": "RequirementSpecification",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/pumpStandard"
+      }
+    },
+    "attestation": {
+      "node": "AttestingProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/attestation"
+      }
+    },
+    "performanceTest": {
+      "node": "MeasurementProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/performanceTest"
+      }
+    },
+    "granting": {
+      "node": "CertificateGrantingProcess",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/granting"
+      }
+    },
+    "certificate": {
+      "node": "Certificate",
+      "properties": {
+        "uri": "https://example.com/pump-cp200/certificate"
+      }
     }
   },
   "relationships": [
@@ -692,6 +871,11 @@
       "dana",
       "HAS_ROLE",
       "danaEmployeeRole"
+    ],
+    [
+      "dana",
+      "HAS_ROLE",
+      "danaOperatorRole"
     ],
     [
       "ridgeline",
@@ -829,6 +1013,56 @@
       "routingObjective"
     ],
     [
+      "routing",
+      "HAS_PROPER_CONTINUANT_PART_AT_ALL_TIMES",
+      "routingObjective"
+    ],
+    [
+      "routing",
+      "PROPER_CONTINUANT_PART_OF_AT_ALL_TIMES",
+      "productionPlan"
+    ],
+    [
+      "productionPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "productionPlanSteps"
+    ],
+    [
+      "productionPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "productionPlanObjective"
+    ],
+    [
+      "productionPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "productionOrder"
+    ],
+    [
+      "productionPlan",
+      "HAS_PROPER_CONTINUANT_PART_AT_ALL_TIMES",
+      "productionOrder"
+    ],
+    [
+      "productionOrder",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "pumpSpec"
+    ],
+    [
+      "productionOrder",
+      "IS_ABOUT",
+      "po"
+    ],
+    [
+      "pumpSpec",
+      "PRESCRIBES",
+      "pump"
+    ],
+    [
+      "productionPlan",
+      "PRESCRIBES",
+      "production"
+    ],
+    [
       "makeToOrder",
       "HAS_REALIZATION",
       "production"
@@ -877,6 +1111,81 @@
       "assembly",
       "HAS_OUTPUT",
       "pump"
+    ],
+    [
+      "routing",
+      "PRESCRIBES",
+      "assemblyOperation"
+    ],
+    [
+      "production",
+      "HAS_OCCURRENT_PART",
+      "assemblyOperation"
+    ],
+    [
+      "assemblyOperation",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "bearing"
+    ],
+    [
+      "assemblyOperation",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "dana"
+    ],
+    [
+      "assemblyOperation",
+      "HAS_PROPER_OCCURRENT_PART",
+      "pressStep"
+    ],
+    [
+      "assemblyOperation",
+      "HAS_OCCURRENT_PART",
+      "assembly"
+    ],
+    [
+      "pressStep",
+      "HAS_PROPER_OCCURRENT_PART",
+      "assembly"
+    ],
+    [
+      "pressStep",
+      "HAS_OCCURRENT_PART",
+      "assembly"
+    ],
+    [
+      "pressStep",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "press"
+    ],
+    [
+      "press",
+      "HAS_ROLE",
+      "pressRole"
+    ],
+    [
+      "pressFunction",
+      "INHERES_IN",
+      "press"
+    ],
+    [
+      "pressDesign",
+      "PRESCRIBES",
+      "pressFunction"
+    ],
+    [
+      "routing",
+      "PRESCRIBES",
+      "pressStep"
+    ],
+    [
+      "pressStep",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "dana"
+    ],
+    [
+      "ridgeline",
+      "OWNS",
+      "press"
     ],
     [
       "bearing",
@@ -1267,6 +1576,146 @@
       "qualification",
       "IS_ABOUT",
       "strategyObjective"
+    ],
+    [
+      "keystone",
+      "HAS_ROLE",
+      "keystoneRole"
+    ],
+    [
+      "keystone",
+      "HAS_FUNCTION",
+      "keystoneFunction"
+    ],
+    [
+      "keystoneFunction",
+      "INHERES_IN",
+      "keystone"
+    ],
+    [
+      "keystoneId",
+      "DENOTES",
+      "keystone"
+    ],
+    [
+      "keystoneId",
+      "DESIGNATES",
+      "keystone"
+    ],
+    [
+      "mei",
+      "HAS_ROLE",
+      "meiRole"
+    ],
+    [
+      "keystone",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "mei"
+    ],
+    [
+      "keystone",
+      "HAS_MEMBER_PART_AT_ALL_TIMES",
+      "mei"
+    ],
+    [
+      "mei",
+      "ACTS_ON_BEHALF_OF_AT_SOME_TIME",
+      "keystone"
+    ],
+    [
+      "certScheme",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "certSchemeSteps"
+    ],
+    [
+      "certScheme",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "certSchemeObjective"
+    ],
+    [
+      "certScheme",
+      "PRESCRIBES",
+      "attestation"
+    ],
+    [
+      "certScheme",
+      "PRESCRIBES",
+      "granting"
+    ],
+    [
+      "certScheme",
+      "PRESCRIBES",
+      "performanceTest"
+    ],
+    [
+      "pumpStandard",
+      "IS_ABOUT",
+      "certSchemeObjective"
+    ],
+    [
+      "attestation",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "mei"
+    ],
+    [
+      "attestation",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "pump"
+    ],
+    [
+      "attestation",
+      "HAS_PROPER_OCCURRENT_PART",
+      "performanceTest"
+    ],
+    [
+      "attestation",
+      "HAS_OCCURRENT_PART",
+      "performanceTest"
+    ],
+    [
+      "attestation",
+      "PRECEDES",
+      "granting"
+    ],
+    [
+      "attestation",
+      "ATTESTS_TO",
+      "certificate"
+    ],
+    [
+      "performanceTest",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "pump"
+    ],
+    [
+      "granting",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "keystone"
+    ],
+    [
+      "granting",
+      "HAS_SPECIFIED_OUTPUT",
+      "certificate"
+    ],
+    [
+      "certificate",
+      "CERTIFICATE_GRANTED_BY",
+      "keystone"
+    ],
+    [
+      "certificate",
+      "SATISFIES_REQUIREMENT",
+      "pumpStandard"
+    ],
+    [
+      "certificate",
+      "IS_ABOUT",
+      "pump"
+    ],
+    [
+      "pump",
+      "HAS_CERTIFICATE",
+      "certificate"
     ]
   ]
 }

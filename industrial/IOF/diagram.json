@@ -1,13 +1,13 @@
 {
-  "source": "the IOF ontology repository at Release_202603, entry modules Core, Supply Chain and Maintenance, with the BFO 2020 they import",
+  "source": "the IOF ontology repository at Release_202603, entry modules Core, Supply Chain, Maintenance, Certification and Production Planning, with the BFO 2020 they import",
   "link": "the term IRI",
   "areas": {
     "field": "area",
     "groups": [
       {"name": "BFO top level", "values": ["BFO top level"]},
       {"name": "Core", "values": ["Core"]},
-      {"name": "Supply chain", "values": ["Supply chain"]},
-      {"name": "Maintenance", "values": ["Maintenance"]}
+      {"name": "Supply chain and certification", "values": ["Supply chain", "Certification"]},
+      {"name": "Production planning and maintenance", "values": ["Production planning", "Maintenance"]}
     ]
   },
   "sub": ["module", "#properties"],

@@ -1,0 +1,1555 @@
+{
+  "scenario": "Batch AB101-24-017 of a fictional monoclonal antibody, AB-101, made by a fictional biologics company, Aldermoor Biologics, at its Kilbride site. The data has the company as an enterprise, with a manufacturing operator; the site, its upstream area, the production process cell and its bioreactor unit, which holds a 2,000 L production bioreactor with its vessel, functions and capabilities, and a pH probe; the master recipe, and the batch's control recipe with its procedure, unit procedure, operation and feed phase; a working cell bank and the CHO cell line it holds; the production culture medium, classified by its supplier's catalog number, and its lot, whose certificate of analysis is granted after the supplier's quality control testing; the batch run, designated by its batch identifier, with its seed train, whose cell culture expansion proliferates the cells, the fed-batch production culture, the harvest and the Protein A capture step; the control strategy, with culture pH as a critical process parameter, set to 7.00 within a normal operating range of 6.90 to 7.10, and high molecular weight content as a critical quality attribute with a specification limit of 2.0 %; and the daily offline monitoring of viable cell density, which samples the culture and counts its cells.",
+  "nodes": {
+    "aldermoor": {
+      "node": [
+        "Enterprise",
+        "BusinessOrganization"
+      ],
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/aldermoor"
+      }
+    },
+    "aldermoorFunction": {
+      "node": "BusinessFunction",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/aldermoorFunction"
+      }
+    },
+    "aldermoorObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/aldermoorObjective"
+      }
+    },
+    "aldermoorLei": {
+      "node": "OrganizationIdentifier",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/aldermoorLei"
+      }
+    },
+    "ines": {
+      "node": [
+        "ManufacturingOperator",
+        "Person"
+      ],
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/ines"
+      }
+    },
+    "inesEmployeeRole": {
+      "node": "AgentRole",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/inesEmployeeRole"
+      }
+    },
+    "inesOperatorRole": {
+      "node": "ManufacturingOperatorRole",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/inesOperatorRole"
+      }
+    },
+    "kilbride": {
+      "node": "PhysicalSite",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/kilbride"
+      }
+    },
+    "upstreamArea": {
+      "node": "PhysicalArea",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/upstreamArea"
+      }
+    },
+    "productionCell": {
+      "node": "ProcessCell",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/productionCell"
+      }
+    },
+    "bioreactorUnit": {
+      "node": [
+        "ProductionUnit",
+        "PhysicalUnit"
+      ],
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/bioreactorUnit"
+      }
+    },
+    "cultivationCapability": {
+      "node": "BioproductionEnvironmentCapability",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/cultivationCapability"
+      }
+    },
+    "br2000": {
+      "node": "ProductionBioreactor",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/br2000"
+      }
+    },
+    "br2000Role": {
+      "node": "ProductionBioreactorRole",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/br2000Role"
+      }
+    },
+    "br2000Vessel": {
+      "node": "BioreactorVessel",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/br2000Vessel"
+      }
+    },
+    "br2000VesselFunction": {
+      "node": [
+        "CellCultureHoldingFunction",
+        "DesignedFunction"
+      ],
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/br2000VesselFunction"
+      }
+    },
+    "br2000Containment": {
+      "node": "MaterialContainmentFunction",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/br2000Containment"
+      }
+    },
+    "br2000Function": {
+      "node": [
+        "CultivationEnvironmentFunction",
+        "DesignedFunction"
+      ],
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/br2000Function"
+      }
+    },
+    "br2000Design": {
+      "node": "DesignSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/br2000Design"
+      }
+    },
+    "phProbe": {
+      "node": "PieceOfEquipment",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/phProbe"
+      }
+    },
+    "phProbeRole": {
+      "node": "EquipmentRole",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/phProbeRole"
+      }
+    },
+    "phProbeFunction": {
+      "node": "DesignedFunction",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/phProbeFunction"
+      }
+    },
+    "phProbeDesign": {
+      "node": "DesignSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/phProbeDesign"
+      }
+    },
+    "kilbrideLayout": {
+      "node": "DesignSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/kilbrideLayout"
+      }
+    },
+    "masterRecipe": {
+      "node": "MasterRecipe",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/masterRecipe"
+      }
+    },
+    "masterRecipeSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/masterRecipeSteps"
+      }
+    },
+    "masterRecipeObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/masterRecipeObjective"
+      }
+    },
+    "controlRecipe": {
+      "node": "ControlRecipe",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/controlRecipe"
+      }
+    },
+    "controlRecipeSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/controlRecipeSteps"
+      }
+    },
+    "controlRecipeObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/controlRecipeObjective"
+      }
+    },
+    "batchId": {
+      "node": "BatchRunIdentification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/batchId",
+        "hasTextValue": [
+          "AB101-24-017"
+        ]
+      }
+    },
+    "procedure": {
+      "node": "RecipeProcedure",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/procedure"
+      }
+    },
+    "procedureSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/procedureSteps"
+      }
+    },
+    "procedureObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/procedureObjective"
+      }
+    },
+    "unitProcedure": {
+      "node": "RecipeUnitProcedure",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/unitProcedure"
+      }
+    },
+    "unitProcedureSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/unitProcedureSteps"
+      }
+    },
+    "unitProcedureObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/unitProcedureObjective"
+      }
+    },
+    "operation": {
+      "node": "RecipeOperation",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/operation"
+      }
+    },
+    "operationSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/operationSteps"
+      }
+    },
+    "operationObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/operationObjective"
+      }
+    },
+    "feedPhase": {
+      "node": "RecipePhase",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/feedPhase"
+      }
+    },
+    "feedPhaseSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/feedPhaseSteps"
+      }
+    },
+    "feedPhaseObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/feedPhaseObjective"
+      }
+    },
+    "wcb": {
+      "node": "WorkingCellBank",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/wcb"
+      }
+    },
+    "choLine": {
+      "node": "CellLine",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/choLine"
+      }
+    },
+    "choCell": {
+      "node": "CulturedCell",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/choCell"
+      }
+    },
+    "medium": {
+      "node": [
+        "ProductionCultureMedium",
+        "MaterialProduct"
+      ],
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/medium"
+      }
+    },
+    "mediumProductRole": {
+      "node": "MaterialProductRole",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumProductRole"
+      }
+    },
+    "mediumDesign": {
+      "node": "DesignSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumDesign"
+      }
+    },
+    "mediumRequirement": {
+      "node": "RequirementSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumRequirement"
+      }
+    },
+    "mediumObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumObjective"
+      }
+    },
+    "mediumLot": {
+      "node": "Lot",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumLot"
+      }
+    },
+    "mediumLotRole": {
+      "node": "LotRole",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumLotRole"
+      }
+    },
+    "mediumLotId": {
+      "node": "LotIdentifier",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumLotId",
+        "hasTextValue": [
+          "PCM-88213"
+        ]
+      }
+    },
+    "mediumBioFunction": {
+      "node": "BioproductionSupportingFunction",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumBioFunction"
+      }
+    },
+    "mediumSpecialFunction": {
+      "node": "SpecializedCultureMediumFunction",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/mediumSpecialFunction"
+      }
+    },
+    "glucose": {
+      "node": "ChemicalSubstanceMaterial",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/glucose"
+      }
+    },
+    "glucoseMolecule": {
+      "node": "Monosaccharide",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/glucoseMolecule"
+      }
+    },
+    "seedCulture": {
+      "node": "CellCulture",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/seedCulture"
+      }
+    },
+    "productionCulture": {
+      "node": "CellCulture",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/productionCulture"
+      }
+    },
+    "batchRun": {
+      "node": "BatchRun",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/batchRun"
+      }
+    },
+    "seedTrain": {
+      "node": "SeedTrain",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/seedTrain"
+      }
+    },
+    "expansion": {
+      "node": "CellCultureExpansionProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/expansion"
+      }
+    },
+    "proliferation": {
+      "node": "CellPopulationProliferation",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/proliferation"
+      }
+    },
+    "productionRun": {
+      "node": "ProductionCultureProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/productionRun"
+      }
+    },
+    "fedBatch": {
+      "node": "FedBatchProcessOperatingMode",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/fedBatch"
+      }
+    },
+    "harvest": {
+      "node": "HarvestingProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/harvest"
+      }
+    },
+    "harvestedFluid": {
+      "node": "ProcessIntermediateMaterial",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/harvestedFluid"
+      }
+    },
+    "harvestedFluidRole": {
+      "node": "ProcessIntermediateMaterialRole",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/harvestedFluidRole"
+      }
+    },
+    "capture": {
+      "node": "CaptureStep",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/capture"
+      }
+    },
+    "proteinAResin": {
+      "node": "ProteinAChromatographyMedium",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/proteinAResin"
+      }
+    },
+    "proteinABinding": {
+      "node": "ProteinBindingCapability",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/proteinABinding"
+      }
+    },
+    "ab101": {
+      "node": "Antibody",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/ab101"
+      }
+    },
+    "ab101Chain": {
+      "node": "Polypeptide",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/ab101Chain"
+      }
+    },
+    "controlStrategy": {
+      "node": "ControlStrategy",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/controlStrategy"
+      }
+    },
+    "controlStrategySteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/controlStrategySteps"
+      }
+    },
+    "controlStrategyObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/controlStrategyObjective"
+      }
+    },
+    "phSpec": {
+      "node": "CriticalProcessParameterSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/phSpec"
+      }
+    },
+    "culturePh": {
+      "node": [
+        "PH",
+        "CriticalProcessParameter"
+      ],
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/culturePh"
+      }
+    },
+    "phSetpoint": {
+      "node": "SetpointValueExpression",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/phSetpoint",
+        "hasSimpleExpressionValue": [
+          "7.00"
+        ]
+      }
+    },
+    "phRange": {
+      "node": "NormalOperatingRangeValueExpression",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/phRange",
+        "hasSimpleExpressionValue": [
+          "6.90",
+          "7.10"
+        ]
+      }
+    },
+    "hmwSpec": {
+      "node": "CriticalQualityAttributeSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/hmwSpec"
+      }
+    },
+    "hmwContent": {
+      "node": "CriticalQualityAttribute",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/hmwContent"
+      }
+    },
+    "hmwCriteria": {
+      "node": "AcceptanceCriteria",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/hmwCriteria"
+      }
+    },
+    "hmwLimit": {
+      "node": "SpecificationLimitValueExpression",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/hmwLimit",
+        "hasSimpleExpressionValue": [
+          "2.0 %"
+        ]
+      }
+    },
+    "monitoringPlan": {
+      "node": "MonitoringPlan",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/monitoringPlan"
+      }
+    },
+    "monitoringPlanSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/monitoringPlanSteps"
+      }
+    },
+    "monitoringPlanObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/monitoringPlanObjective"
+      }
+    },
+    "samplingPlan": {
+      "node": "MaterialSamplingPlan",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/samplingPlan"
+      }
+    },
+    "samplingPlanSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/samplingPlanSteps"
+      }
+    },
+    "samplingPlanObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/samplingPlanObjective"
+      }
+    },
+    "dailyCount": {
+      "node": "OfflineMonitoringProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/dailyCount"
+      }
+    },
+    "sampling": {
+      "node": "MaterialSamplingProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/sampling"
+      }
+    },
+    "sample": {
+      "node": "MaterialSample",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/sample"
+      }
+    },
+    "cellCount": {
+      "node": "MeasurementProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/cellCount"
+      }
+    },
+    "vcd": {
+      "node": "ViableCellDensity",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/vcd"
+      }
+    },
+    "vcdValue": {
+      "node": "ValueExpression",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/vcdValue",
+        "hasSimpleExpressionValue": [
+          "18.4e6 cells/mL"
+        ]
+      }
+    },
+    "coa": {
+      "node": "CertificateOfAnalysis",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/coa"
+      }
+    },
+    "supplierQcPlan": {
+      "node": "PlanSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/supplierQcPlan"
+      }
+    },
+    "supplierQcPlanSteps": {
+      "node": "ActionSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/supplierQcPlanSteps"
+      }
+    },
+    "supplierQcPlanObjective": {
+      "node": "ObjectiveSpecification",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/supplierQcPlanObjective"
+      }
+    },
+    "supplierQc": {
+      "node": "AttestingProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/supplierQc"
+      }
+    },
+    "supplierAssay": {
+      "node": "MeasurementProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/supplierAssay"
+      }
+    },
+    "coaGranting": {
+      "node": "CertificateGrantingProcess",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/coaGranting"
+      }
+    },
+    "catalogNumber": {
+      "node": "CatalogNumber",
+      "properties": {
+        "uri": "https://example.com/mab-batch-24017/catalogNumber",
+        "hasTextValue": [
+          "PCM-CD-500L"
+        ]
+      }
+    }
+  },
+  "relationships": [
+    [
+      "aldermoor",
+      "HAS_FUNCTION",
+      "aldermoorFunction"
+    ],
+    [
+      "aldermoorFunction",
+      "INHERES_IN",
+      "aldermoor"
+    ],
+    [
+      "aldermoorObjective",
+      "PRESCRIBES",
+      "aldermoorFunction"
+    ],
+    [
+      "aldermoorLei",
+      "DENOTES",
+      "aldermoor"
+    ],
+    [
+      "aldermoorLei",
+      "DESIGNATES",
+      "aldermoor"
+    ],
+    [
+      "aldermoor",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "ines"
+    ],
+    [
+      "aldermoor",
+      "HAS_MEMBER_PART_AT_ALL_TIMES",
+      "ines"
+    ],
+    [
+      "ines",
+      "HAS_ROLE",
+      "inesEmployeeRole"
+    ],
+    [
+      "ines",
+      "HAS_ROLE",
+      "inesOperatorRole"
+    ],
+    [
+      "ines",
+      "ACTS_ON_BEHALF_OF_AT_SOME_TIME",
+      "aldermoor"
+    ],
+    [
+      "kilbride",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "upstreamArea"
+    ],
+    [
+      "upstreamArea",
+      "MEMBER_PART_OF_AT_ALL_TIMES",
+      "kilbride"
+    ],
+    [
+      "upstreamArea",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "productionCell"
+    ],
+    [
+      "productionCell",
+      "HAS_MEMBER_PART_AT_ALL_TIMES",
+      "bioreactorUnit"
+    ],
+    [
+      "bioreactorUnit",
+      "MEMBER_PART_OF_AT_ALL_TIMES",
+      "productionCell"
+    ],
+    [
+      "productionCell",
+      "HAS_CAPABILITY",
+      "cultivationCapability"
+    ],
+    [
+      "aldermoor",
+      "OWNS",
+      "kilbride"
+    ],
+    [
+      "br2000",
+      "HAS_ROLE",
+      "br2000Role"
+    ],
+    [
+      "br2000",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "br2000Vessel"
+    ],
+    [
+      "br2000Vessel",
+      "HAS_FUNCTION",
+      "br2000VesselFunction"
+    ],
+    [
+      "br2000VesselFunction",
+      "INHERES_IN",
+      "br2000Vessel"
+    ],
+    [
+      "br2000",
+      "HAS_FUNCTION",
+      "br2000Function"
+    ],
+    [
+      "br2000Function",
+      "INHERES_IN",
+      "br2000"
+    ],
+    [
+      "br2000Design",
+      "PRESCRIBES",
+      "br2000Function"
+    ],
+    [
+      "bioreactorUnit",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "br2000"
+    ],
+    [
+      "br2000",
+      "HAS_CAPABILITY",
+      "br2000Function"
+    ],
+    [
+      "br2000",
+      "HAS_CAPABILITY",
+      "cultivationCapability"
+    ],
+    [
+      "bioreactorUnit",
+      "HAS_CAPABILITY",
+      "cultivationCapability"
+    ],
+    [
+      "br2000Vessel",
+      "HAS_CAPABILITY",
+      "br2000VesselFunction"
+    ],
+    [
+      "br2000Design",
+      "PRESCRIBES",
+      "br2000VesselFunction"
+    ],
+    [
+      "br2000Vessel",
+      "HAS_FUNCTION",
+      "br2000Containment"
+    ],
+    [
+      "br2000Containment",
+      "INHERES_IN",
+      "br2000Vessel"
+    ],
+    [
+      "br2000Vessel",
+      "HAS_CAPABILITY",
+      "br2000Containment"
+    ],
+    [
+      "phProbe",
+      "HAS_ROLE",
+      "phProbeRole"
+    ],
+    [
+      "phProbeFunction",
+      "INHERES_IN",
+      "phProbe"
+    ],
+    [
+      "phProbeDesign",
+      "PRESCRIBES",
+      "phProbeFunction"
+    ],
+    [
+      "br2000",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "phProbe"
+    ],
+    [
+      "kilbrideLayout",
+      "PRESCRIBES",
+      "kilbride"
+    ],
+    [
+      "masterRecipe",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "masterRecipeSteps"
+    ],
+    [
+      "masterRecipe",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "masterRecipeObjective"
+    ],
+    [
+      "controlRecipe",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "controlRecipeSteps"
+    ],
+    [
+      "controlRecipe",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "controlRecipeObjective"
+    ],
+    [
+      "procedure",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "procedureSteps"
+    ],
+    [
+      "procedure",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "procedureObjective"
+    ],
+    [
+      "unitProcedure",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "unitProcedureSteps"
+    ],
+    [
+      "unitProcedure",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "unitProcedureObjective"
+    ],
+    [
+      "operation",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "operationSteps"
+    ],
+    [
+      "operation",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "operationObjective"
+    ],
+    [
+      "feedPhase",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "feedPhaseSteps"
+    ],
+    [
+      "feedPhase",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "feedPhaseObjective"
+    ],
+    [
+      "controlRecipe",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "batchId"
+    ],
+    [
+      "controlRecipe",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "procedure"
+    ],
+    [
+      "procedure",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "unitProcedure"
+    ],
+    [
+      "unitProcedure",
+      "CONTINUANT_PART_OF_AT_ALL_TIMES",
+      "procedure"
+    ],
+    [
+      "unitProcedure",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "operation"
+    ],
+    [
+      "operation",
+      "CONTINUANT_PART_OF_AT_ALL_TIMES",
+      "unitProcedure"
+    ],
+    [
+      "operation",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "feedPhase"
+    ],
+    [
+      "feedPhase",
+      "CONTINUANT_PART_OF_AT_ALL_TIMES",
+      "operation"
+    ],
+    [
+      "choLine",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "choCell"
+    ],
+    [
+      "wcb",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "choCell"
+    ],
+    [
+      "medium",
+      "HAS_FUNCTION",
+      "mediumBioFunction"
+    ],
+    [
+      "medium",
+      "HAS_FUNCTION",
+      "mediumSpecialFunction"
+    ],
+    [
+      "medium",
+      "IS_MADE_OF_AT_ALL_TIMES",
+      "glucose"
+    ],
+    [
+      "glucose",
+      "IS_MADE_OF_AT_ALL_TIMES",
+      "glucoseMolecule"
+    ],
+    [
+      "medium",
+      "HAS_ROLE",
+      "mediumProductRole"
+    ],
+    [
+      "mediumBioFunction",
+      "INHERES_IN",
+      "medium"
+    ],
+    [
+      "mediumSpecialFunction",
+      "INHERES_IN",
+      "medium"
+    ],
+    [
+      "mediumDesign",
+      "PRESCRIBES",
+      "mediumBioFunction"
+    ],
+    [
+      "mediumDesign",
+      "PRESCRIBES",
+      "mediumSpecialFunction"
+    ],
+    [
+      "mediumBioFunction",
+      "SATISFIES_REQUIREMENT",
+      "mediumRequirement"
+    ],
+    [
+      "mediumSpecialFunction",
+      "SATISFIES_REQUIREMENT",
+      "mediumRequirement"
+    ],
+    [
+      "mediumRequirement",
+      "IS_ABOUT",
+      "mediumObjective"
+    ],
+    [
+      "mediumLotId",
+      "DENOTES",
+      "mediumLot"
+    ],
+    [
+      "mediumLot",
+      "HAS_ROLE",
+      "mediumLotRole"
+    ],
+    [
+      "mediumLotId",
+      "DESIGNATES",
+      "mediumLot"
+    ],
+    [
+      "mediumLot",
+      "HAS_MEMBER_PART_AT_SOME_TIME",
+      "medium"
+    ],
+    [
+      "seedCulture",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "choLine"
+    ],
+    [
+      "seedCulture",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "medium"
+    ],
+    [
+      "productionCulture",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "choLine"
+    ],
+    [
+      "productionCulture",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "medium"
+    ],
+    [
+      "batchId",
+      "DESIGNATES",
+      "batchRun"
+    ],
+    [
+      "batchId",
+      "DENOTES",
+      "batchRun"
+    ],
+    [
+      "batchRun",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "phProbe"
+    ],
+    [
+      "controlRecipe",
+      "PRESCRIBES",
+      "batchRun"
+    ],
+    [
+      "batchRun",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "br2000"
+    ],
+    [
+      "batchRun",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "ines"
+    ],
+    [
+      "batchRun",
+      "HAS_INPUT",
+      "medium"
+    ],
+    [
+      "batchRun",
+      "HAS_OCCURRENT_PART",
+      "seedTrain"
+    ],
+    [
+      "batchRun",
+      "HAS_OCCURRENT_PART",
+      "productionRun"
+    ],
+    [
+      "batchRun",
+      "HAS_OCCURRENT_PART",
+      "harvest"
+    ],
+    [
+      "batchRun",
+      "HAS_OCCURRENT_PART",
+      "capture"
+    ],
+    [
+      "procedure",
+      "PRESCRIBES",
+      "batchRun"
+    ],
+    [
+      "unitProcedure",
+      "PRESCRIBES",
+      "productionRun"
+    ],
+    [
+      "operation",
+      "PRESCRIBES",
+      "productionRun"
+    ],
+    [
+      "feedPhase",
+      "PRESCRIBES",
+      "productionRun"
+    ],
+    [
+      "masterRecipe",
+      "PRESCRIBES",
+      "seedTrain"
+    ],
+    [
+      "masterRecipe",
+      "PRESCRIBES",
+      "expansion"
+    ],
+    [
+      "masterRecipe",
+      "PRESCRIBES",
+      "harvest"
+    ],
+    [
+      "masterRecipe",
+      "PRESCRIBES",
+      "capture"
+    ],
+    [
+      "seedTrain",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "ines"
+    ],
+    [
+      "seedTrain",
+      "HAS_INPUT",
+      "wcb"
+    ],
+    [
+      "seedTrain",
+      "HAS_INPUT",
+      "seedCulture"
+    ],
+    [
+      "seedTrain",
+      "HAS_SPECIFIED_OUTPUT",
+      "productionCulture"
+    ],
+    [
+      "seedTrain",
+      "HAS_OCCURRENT_PART",
+      "expansion"
+    ],
+    [
+      "expansion",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "seedCulture"
+    ],
+    [
+      "expansion",
+      "HAS_OCCURRENT_PART",
+      "proliferation"
+    ],
+    [
+      "proliferation",
+      "HAS_PARTICIPANT_AT_ALL_TIMES",
+      "choLine"
+    ],
+    [
+      "seedTrain",
+      "PRECEDES",
+      "productionRun"
+    ],
+    [
+      "productionRun",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "ines"
+    ],
+    [
+      "productionRun",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "br2000"
+    ],
+    [
+      "productionRun",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "productionCulture"
+    ],
+    [
+      "productionRun",
+      "HAS_INPUT",
+      "medium"
+    ],
+    [
+      "productionRun",
+      "HAS_PROCESS_CHARACTERISTIC",
+      "fedBatch"
+    ],
+    [
+      "productionRun",
+      "HAS_SPECIFIED_OUTPUT",
+      "harvestedFluid"
+    ],
+    [
+      "harvestedFluid",
+      "HAS_ROLE",
+      "harvestedFluidRole"
+    ],
+    [
+      "harvestedFluid",
+      "HAS_CONTINUANT_PART_AT_SOME_TIME",
+      "ab101"
+    ],
+    [
+      "ab101",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "ab101Chain"
+    ],
+    [
+      "harvest",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "ines"
+    ],
+    [
+      "harvest",
+      "HAS_INPUT",
+      "harvestedFluid"
+    ],
+    [
+      "capture",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "ines"
+    ],
+    [
+      "capture",
+      "HAS_INPUT",
+      "harvestedFluid"
+    ],
+    [
+      "capture",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "proteinAResin"
+    ],
+    [
+      "proteinAResin",
+      "HAS_CAPABILITY",
+      "proteinABinding"
+    ],
+    [
+      "controlStrategy",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "controlStrategySteps"
+    ],
+    [
+      "controlStrategy",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "controlStrategyObjective"
+    ],
+    [
+      "controlStrategy",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "phSpec"
+    ],
+    [
+      "phSpec",
+      "CONTINUANT_PART_OF_AT_ALL_TIMES",
+      "controlStrategy"
+    ],
+    [
+      "controlStrategy",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "hmwSpec"
+    ],
+    [
+      "phSpec",
+      "PRESCRIBES",
+      "culturePh"
+    ],
+    [
+      "phSpec",
+      "IS_ABOUT",
+      "hmwSpec"
+    ],
+    [
+      "productionCulture",
+      "HAS_QUALITY",
+      "culturePh"
+    ],
+    [
+      "productionRun",
+      "HAS_PROCESS_PARAMETER",
+      "culturePh"
+    ],
+    [
+      "phRange",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "phSetpoint"
+    ],
+    [
+      "culturePh",
+      "HAS_VALUE_EXPRESSION_AT_SOME_TIME",
+      "phSetpoint"
+    ],
+    [
+      "culturePh",
+      "HAS_VALUE_EXPRESSION_AT_SOME_TIME",
+      "phRange"
+    ],
+    [
+      "hmwSpec",
+      "PRESCRIBES",
+      "hmwContent"
+    ],
+    [
+      "hmwCriteria",
+      "IS_ABOUT",
+      "controlStrategyObjective"
+    ],
+    [
+      "hmwLimit",
+      "CONTINUANT_PART_OF_AT_ALL_TIMES",
+      "hmwCriteria"
+    ],
+    [
+      "hmwLimit",
+      "IS_UPPER_SIDE_LIMIT_VALUE_EXPRESSION_OF_AT_SOME_TIME",
+      "hmwContent"
+    ],
+    [
+      "hmwContent",
+      "HAS_VALUE_EXPRESSION_AT_SOME_TIME",
+      "hmwLimit"
+    ],
+    [
+      "monitoringPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "monitoringPlanSteps"
+    ],
+    [
+      "monitoringPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "monitoringPlanObjective"
+    ],
+    [
+      "samplingPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "samplingPlanSteps"
+    ],
+    [
+      "samplingPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "samplingPlanObjective"
+    ],
+    [
+      "monitoringPlan",
+      "PRESCRIBES",
+      "dailyCount"
+    ],
+    [
+      "monitoringPlan",
+      "PRESCRIBES",
+      "cellCount"
+    ],
+    [
+      "cellCount",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "phProbe"
+    ],
+    [
+      "samplingPlan",
+      "PRESCRIBES",
+      "sampling"
+    ],
+    [
+      "productionRun",
+      "HAS_OCCURRENT_PART",
+      "dailyCount"
+    ],
+    [
+      "dailyCount",
+      "HAS_OCCURRENT_PART",
+      "sampling"
+    ],
+    [
+      "dailyCount",
+      "HAS_OCCURRENT_PART",
+      "cellCount"
+    ],
+    [
+      "sampling",
+      "HAS_INPUT",
+      "productionCulture"
+    ],
+    [
+      "sampling",
+      "HAS_SPECIFIED_OUTPUT",
+      "sample"
+    ],
+    [
+      "sampling",
+      "PRECEDES",
+      "cellCount"
+    ],
+    [
+      "cellCount",
+      "HAS_INPUT",
+      "sample"
+    ],
+    [
+      "productionCulture",
+      "HAS_QUALITY",
+      "vcd"
+    ],
+    [
+      "dailyCount",
+      "HAS_MONITORED_ATTRIBUTE",
+      "vcd"
+    ],
+    [
+      "vcd",
+      "HAS_VALUE_EXPRESSION_AT_SOME_TIME",
+      "vcdValue"
+    ],
+    [
+      "supplierQcPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "supplierQcPlanSteps"
+    ],
+    [
+      "supplierQcPlan",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "supplierQcPlanObjective"
+    ],
+    [
+      "mediumLot",
+      "HAS_CERTIFICATE",
+      "coa"
+    ],
+    [
+      "coa",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "mediumRequirement"
+    ],
+    [
+      "coa",
+      "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "mediumLotId"
+    ],
+    [
+      "coa",
+      "SATISFIES_REQUIREMENT",
+      "mediumRequirement"
+    ],
+    [
+      "supplierQcPlan",
+      "PRESCRIBES",
+      "supplierQc"
+    ],
+    [
+      "supplierQcPlan",
+      "PRESCRIBES",
+      "coaGranting"
+    ],
+    [
+      "supplierQcPlan",
+      "PRESCRIBES",
+      "supplierAssay"
+    ],
+    [
+      "supplierQc",
+      "HAS_PROPER_OCCURRENT_PART",
+      "supplierAssay"
+    ],
+    [
+      "supplierQc",
+      "HAS_OCCURRENT_PART",
+      "supplierAssay"
+    ],
+    [
+      "supplierAssay",
+      "HAS_PARTICIPANT_AT_SOME_TIME",
+      "medium"
+    ],
+    [
+      "supplierQc",
+      "PRECEDES",
+      "coaGranting"
+    ],
+    [
+      "supplierQc",
+      "ATTESTS_TO",
+      "coa"
+    ],
+    [
+      "coaGranting",
+      "HAS_SPECIFIED_OUTPUT",
+      "coa"
+    ],
+    [
+      "catalogNumber",
+      "CLASSIFIES",
+      "medium"
+    ],
+    [
+      "catalogNumber",
+      "DENOTES",
+      "medium"
+    ]
+  ]
+}

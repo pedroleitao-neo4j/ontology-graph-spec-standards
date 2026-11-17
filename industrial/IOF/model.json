@@ -2,8 +2,8 @@
   "schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json",
   "version": "202603",
   "id": "iof-202603",
-  "name": "IOF Core, Supply Chain and Maintenance",
-  "description": "The Core, Supply Chain and Maintenance ontologies of the Industrial Ontologies Foundry (IOF), developed by the IOF under the Open Applications Group (https://spec.industrialontologies.org) and licensed under MIT, from Release 202603. Core holds the notions common to manufacturing: agents and the roles they play, products, materials, equipment and engineered systems, planned and manufacturing processes, capabilities and functions, and the plans, specifications, identifiers and measurements that describe them. Supply Chain adds suppliers, buyers, carriers and distributors, the sourcing, shipping, storage and logistics processes between them, and the shipments, lots and locations they handle; Maintenance adds failures, failure modes and maintenance states, and the maintenance activities and work orders that answer them. Both are built on the Basic Formal Ontology (BFO 2020), which the closure of their owl:imports adds: each class is a node, each object property a relationship from its domain to its range (one direction per inverse pair), each datatype property a property, each class restriction a count, and each superclass an implied label.",
+  "name": "IOF Core, Supply Chain, Maintenance, Certification and Production Planning",
+  "description": "The Core, Supply Chain, Maintenance, Certification and Production Planning ontologies of the Industrial Ontologies Foundry (IOF), developed by the IOF under the Open Applications Group (https://spec.industrialontologies.org) and licensed under MIT, from Release 202603. Core holds the notions common to manufacturing: agents and the roles they play, products, materials, equipment and engineered systems, planned and manufacturing processes, capabilities and functions, and the plans, specifications, identifiers and measurements that describe them. Supply Chain adds suppliers, buyers, carriers and distributors, the sourcing, shipping, storage and logistics processes between them, and the shipments, lots and locations they handle; Maintenance adds failures, failure modes and maintenance states, and the maintenance activities and work orders that answer them; Certification adds certifying bodies, attesting agents and processes, and the certificates they grant; Production Planning adds production plans and orders, process plans, operations and process steps, and the machines, tools and operators that carry them out. All are built on the Basic Formal Ontology (BFO 2020), which the closure of their owl:imports adds: each class is a node, each object property a relationship from its domain to its range (one direction per inverse pair), each datatype property a property, each class restriction a count, and each superclass an implied label.",
   "nodes": {
     "ActionSpecification": {
       "labels": {
@@ -138,6 +138,40 @@
           "iri": "https://spec.industrialontologies.org/ontology/construct/AgentRole",
           "module": "Core",
           "area": "Core"
+        }
+      }
+    },
+    "AgentialCapability": {
+      "labels": {
+        "identifier": "AgentialCapability",
+        "implied": [
+          "Capability"
+        ]
+      },
+      "description": "Capability that is borne by an agent.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/AgentialCapability",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the AgentialCapability individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_AgentialCapability": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_AgentialCapability_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/AgentialCapability",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
         }
       }
     },
@@ -376,6 +410,108 @@
           "iri": "https://spec.industrialontologies.org/ontology/construct/AssemblyProcess",
           "module": "Core",
           "area": "Core"
+        }
+      }
+    },
+    "AttestingAgent": {
+      "labels": {
+        "identifier": "AttestingAgent",
+        "implied": [
+          "Agent"
+        ]
+      },
+      "description": "Agent that has an attesting agent role.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/AttestingAgent",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the AttestingAgent individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_AttestingAgent": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_AttestingAgent_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/AttestingAgent",
+          "module": "Certification",
+          "area": "Certification"
+        }
+      }
+    },
+    "AttestingAgentRole": {
+      "labels": {
+        "identifier": "AttestingAgentRole",
+        "implied": [
+          "AgentRole"
+        ]
+      },
+      "description": "Agent role held by an agent acting on behalf of some certifying body when it participates in an attesting process.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/AttestingAgentRole",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the AttestingAgentRole individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_AttestingAgentRole": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_AttestingAgentRole_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/AttestingAgentRole",
+          "module": "Certification",
+          "area": "Certification"
+        }
+      }
+    },
+    "AttestingProcess": {
+      "labels": {
+        "identifier": "AttestingProcess",
+        "implied": [
+          "PlannedProcess"
+        ]
+      },
+      "description": "Planned process to determine the value of one or more qualities, capabilities, and/or process characteristics of an entity of interest in order to verify that they satisfy some requirement specification prescribed by some standard.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/AttestingProcess",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the AttestingProcess individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_AttestingProcess": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_AttestingProcess_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/AttestingProcess",
+          "module": "Certification",
+          "area": "Certification"
         }
       }
     },
@@ -753,6 +889,142 @@
         }
       }
     },
+    "Certificate": {
+      "labels": {
+        "identifier": "Certificate",
+        "implied": [
+          "InformationContentEntity"
+        ]
+      },
+      "description": "Information content entity that can serve as proof that one or more attesting processes took place to verify that one or more entities satisfy certain requirement specifications.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/Certificate",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Certificate individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Certificate": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Certificate_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/Certificate",
+          "module": "Certification",
+          "area": "Certification"
+        }
+      }
+    },
+    "CertificateGrantingProcess": {
+      "labels": {
+        "identifier": "CertificateGrantingProcess",
+        "implied": [
+          "PlannedProcess"
+        ]
+      },
+      "description": "Planned process of granting a certificate for an entity of interest, preceded by the attestation of that entity.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/CertificateGrantingProcess",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the CertificateGrantingProcess individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_CertificateGrantingProcess": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_CertificateGrantingProcess_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/CertificateGrantingProcess",
+          "module": "Certification",
+          "area": "Certification"
+        }
+      }
+    },
+    "CertifyingBody": {
+      "labels": {
+        "identifier": "CertifyingBody",
+        "implied": [
+          "Organization"
+        ]
+      },
+      "description": "Organization that has a certifying body role.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/CertifyingBody",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the CertifyingBody individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_CertifyingBody": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_CertifyingBody_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/CertifyingBody",
+          "module": "Certification",
+          "area": "Certification"
+        }
+      }
+    },
+    "CertifyingBodyRole": {
+      "labels": {
+        "identifier": "CertifyingBodyRole",
+        "implied": [
+          "Role"
+        ]
+      },
+      "description": "Role held by an organization that participates in some certificate granting process.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/CertifyingBodyRole",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the CertifyingBodyRole individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_CertifyingBodyRole": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_CertifyingBodyRole_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/CertifyingBodyRole",
+          "module": "Certification",
+          "area": "Certification"
+        }
+      }
+    },
     "Change": {
       "labels": {
         "identifier": "Change",
@@ -784,6 +1056,40 @@
           "iri": "https://spec.industrialontologies.org/ontology/construct/Change",
           "module": "SupplyChain",
           "area": "Supply chain"
+        }
+      }
+    },
+    "ChangeoverProcess": {
+      "labels": {
+        "identifier": "ChangeoverProcess",
+        "implied": [
+          "ManufacturingEnterpriseProcess"
+        ]
+      },
+      "description": "Planned process that prepares a production resource to produce a different product or perform a different manufacturing operation.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ChangeoverProcess",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ChangeoverProcess individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ChangeoverProcess": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ChangeoverProcess_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ChangeoverProcess",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
         }
       }
     },
@@ -1989,6 +2295,21 @@
           "name": "uri",
           "description": "The identifier of the Entity individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
           "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "hasTextValue": {
+          "type": "LIST<STRING>",
+          "name": "hasTextValue",
+          "description": "Relationship between an information entity and a string representation.",
+          "reference": "https://spec.industrialontologies.org/ontology/construct/hasTextValue",
+          "extensions": {
+            "custom": {
+              "iri": "https://spec.industrialontologies.org/ontology/construct/hasTextValue",
+              "module": "SupplyChain",
+              "datatypes": [
+                "xsd:string"
+              ]
+            }
+          }
         }
       },
       "constraints": {
@@ -3306,6 +3627,40 @@
         }
       }
     },
+    "InspectionPlan": {
+      "labels": {
+        "identifier": "InspectionPlan",
+        "implied": [
+          "PlanSpecification"
+        ]
+      },
+      "description": "Plan specification that prescribes how products are to be inspected, including the required resources and inspection sequence.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/InspectionPlan",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the InspectionPlan individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_InspectionPlan": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_InspectionPlan_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/InspectionPlan",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "IntegratedCarrierBusinessOrganization": {
       "labels": {
         "identifier": "IntegratedCarrierBusinessOrganization",
@@ -3816,6 +4171,40 @@
         }
       }
     },
+    "Machine": {
+      "labels": {
+        "identifier": "Machine",
+        "implied": [
+          "MaterialArtifact"
+        ]
+      },
+      "description": "Material artifact that uses controlled mechanical, electrical, or fluid power to transform energy or material while performing a process.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/Machine",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Machine individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Machine": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Machine_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/Machine",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "MaintainableMaterialItem": {
       "labels": {
         "identifier": "MaintainableMaterialItem",
@@ -4191,6 +4580,74 @@
         }
       }
     },
+    "ManufacturingEnterpriseProcess": {
+      "labels": {
+        "identifier": "ManufacturingEnterpriseProcess",
+        "implied": [
+          "BusinessProcess"
+        ]
+      },
+      "description": "Business process that consists of at least one manufacturing process.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ManufacturingEnterpriseProcess",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ManufacturingEnterpriseProcess individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ManufacturingEnterpriseProcess": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ManufacturingEnterpriseProcess_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ManufacturingEnterpriseProcess",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
+    "ManufacturingOperation": {
+      "labels": {
+        "identifier": "ManufacturingOperation",
+        "implied": [
+          "ManufacturingEnterpriseProcess"
+        ]
+      },
+      "description": "Manufacturing enterprise process composed of process steps from the same product production process, with at least one manufacturing resource used in every step.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ManufacturingOperation",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ManufacturingOperation individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ManufacturingOperation": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ManufacturingOperation_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ManufacturingOperation",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "ManufacturingProcess": {
       "labels": {
         "identifier": "ManufacturingProcess",
@@ -4531,6 +4988,40 @@
         }
       }
     },
+    "MaterialHandlingPlan": {
+      "labels": {
+        "identifier": "MaterialHandlingPlan",
+        "implied": [
+          "PlanSpecification"
+        ]
+      },
+      "description": "Plan specification containing instructions that prescribe the movement of material between production machines.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/MaterialHandlingPlan",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the MaterialHandlingPlan individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_MaterialHandlingPlan": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_MaterialHandlingPlan_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/MaterialHandlingPlan",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "MaterialLocationChangeProcess": {
       "labels": {
         "identifier": "MaterialLocationChangeProcess",
@@ -4630,6 +5121,40 @@
           "iri": "https://spec.industrialontologies.org/ontology/construct/MaterialProductRole",
           "module": "Core",
           "area": "Core"
+        }
+      }
+    },
+    "MaterialProductSpecification": {
+      "labels": {
+        "identifier": "MaterialProductSpecification",
+        "implied": [
+          "DesignSpecification"
+        ]
+      },
+      "description": "Design specification that prescribes a material product.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/MaterialProductSpecification",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the MaterialProductSpecification individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_MaterialProductSpecification": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_MaterialProductSpecification_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/MaterialProductSpecification",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
         }
       }
     },
@@ -5285,6 +5810,108 @@
         }
       }
     },
+    "OperationSpecification": {
+      "labels": {
+        "identifier": "OperationSpecification",
+        "implied": [
+          "ActionSpecification"
+        ]
+      },
+      "description": "Action specification that prescribes a manufacturing operation and includes specifications for its process steps.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/OperationSpecification",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the OperationSpecification individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_OperationSpecification": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_OperationSpecification_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/OperationSpecification",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
+    "Operator": {
+      "labels": {
+        "identifier": "Operator",
+        "implied": [
+          "Agent"
+        ]
+      },
+      "description": "Agent which has an operator role.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/Operator",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Operator individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Operator": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Operator_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/Operator",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
+    "OperatorRole": {
+      "labels": {
+        "identifier": "OperatorRole",
+        "implied": [
+          "AgentRole"
+        ]
+      },
+      "description": "Role held by an agent when it possesses a skill that enables a capability of one or more pieces of equipment.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/OperatorRole",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the OperatorRole individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_OperatorRole": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_OperatorRole_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/OperatorRole",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "Organization": {
       "labels": {
         "identifier": "Organization",
@@ -5898,6 +6525,40 @@
         }
       }
     },
+    "ProcessPlan": {
+      "labels": {
+        "identifier": "ProcessPlan",
+        "implied": [
+          "PlanSpecification"
+        ]
+      },
+      "description": "Plan specification that prescribes a product production process and includes specifications for its operations or process steps.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProcessPlan",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProcessPlan individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProcessPlan": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProcessPlan_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProcessPlan",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "ProcessProfile": {
       "labels": {
         "identifier": "ProcessProfile",
@@ -5935,6 +6596,74 @@
         }
       }
     },
+    "ProcessStep": {
+      "labels": {
+        "identifier": "ProcessStep",
+        "implied": [
+          "ManufacturingEnterpriseProcess"
+        ]
+      },
+      "description": "Manufacturing enterprise process within a manufacturing operation that contains one manufacturing process and no smaller process steps.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProcessStep",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProcessStep individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProcessStep": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProcessStep_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProcessStep",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
+    "ProcessStepSpecification": {
+      "labels": {
+        "identifier": "ProcessStepSpecification",
+        "implied": [
+          "ActionSpecification"
+        ]
+      },
+      "description": "Action specification that prescribes some process step.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProcessStepSpecification",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProcessStepSpecification individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProcessStepSpecification": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProcessStepSpecification_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProcessStepSpecification",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "ProcuringBusinessProcess": {
       "labels": {
         "identifier": "ProcuringBusinessProcess",
@@ -5966,6 +6695,40 @@
           "iri": "https://spec.industrialontologies.org/ontology/construct/ProcuringBusinessProcess",
           "module": "Core",
           "area": "Core"
+        }
+      }
+    },
+    "ProductInspectionProcess": {
+      "labels": {
+        "identifier": "ProductInspectionProcess",
+        "implied": [
+          "BusinessProcess"
+        ]
+      },
+      "description": "Business process that evaluates a product during or after production against specified requirements.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProductInspectionProcess",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProductInspectionProcess individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProductInspectionProcess": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProductInspectionProcess_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProductInspectionProcess",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
         }
       }
     },
@@ -6034,6 +6797,142 @@
           "iri": "https://spec.industrialontologies.org/ontology/construct/ProductionCapability",
           "module": "SupplyChain",
           "area": "Supply chain"
+        }
+      }
+    },
+    "ProductionMachine": {
+      "labels": {
+        "identifier": "ProductionMachine",
+        "implied": [
+          "Machine"
+        ]
+      },
+      "description": "Machine used as equipment in a manufacturing process.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProductionMachine",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProductionMachine individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProductionMachine": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProductionMachine_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProductionMachine",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
+    "ProductionOrder": {
+      "labels": {
+        "identifier": "ProductionOrder",
+        "implied": [
+          "ObjectiveSpecification"
+        ]
+      },
+      "description": "Objective specification stating the product and quantity to be produced and any applicable release, completion, or delivery requirements.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProductionOrder",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProductionOrder individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProductionOrder": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProductionOrder_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProductionOrder",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
+    "ProductionPlan": {
+      "labels": {
+        "identifier": "ProductionPlan",
+        "implied": [
+          "PlanSpecification"
+        ]
+      },
+      "description": "Plan specification that contains a set of production orders and prescribes how they are to be fulfilled.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProductionPlan",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProductionPlan individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProductionPlan": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProductionPlan_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProductionPlan",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
+    "ProductionTool": {
+      "labels": {
+        "identifier": "ProductionTool",
+        "implied": [
+          "Tool"
+        ]
+      },
+      "description": "Tool designed to be held, guided or affixed to enable execution of a manufacturing process.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/ProductionTool",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the ProductionTool individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_ProductionTool": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_ProductionTool_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/ProductionTool",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
         }
       }
     },
@@ -8206,6 +9105,40 @@
         }
       }
     },
+    "Tool": {
+      "labels": {
+        "identifier": "Tool",
+        "implied": [
+          "MaterialArtifact"
+        ]
+      },
+      "description": "Material artifact designed to be held, guided, or attached to help a person, machine, or mechanism perform a task.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/Tool",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Tool individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Tool": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_Tool_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/Tool",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "Traceability": {
       "labels": {
         "identifier": "Traceability",
@@ -8867,6 +9800,40 @@
         }
       }
     },
+    "WorkInProgressTransferProcess": {
+      "labels": {
+        "identifier": "WorkInProgressTransferProcess",
+        "implied": [
+          "MaterialLocationChangeProcess"
+        ]
+      },
+      "description": "Material location change process in which work in progress moves between production machines.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/WorkInProgressTransferProcess",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the WorkInProgressTransferProcess individual: its IRI in IOF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_WorkInProgressTransferProcess": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "uri_WorkInProgressTransferProcess_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/WorkInProgressTransferProcess",
+          "module": "ProductionPlanning",
+          "area": "Production planning"
+        }
+      }
+    },
     "ZeroDimensionalSpatialRegion": {
       "labels": {
         "identifier": "ZeroDimensionalSpatialRegion",
@@ -9499,6 +10466,28 @@
         }
       }
     },
+    "ManufacturingOperation_HAS_PARTICIPANT_AT_SOME_TIME_MaterialEntity": {
+      "type": "HAS_PARTICIPANT_AT_SOME_TIME",
+      "from": {
+        "node": "ManufacturingOperation",
+        "min_count": 1
+      },
+      "to": {
+        "node": "MaterialEntity"
+      },
+      "description": "P has participant c at some time =Def for some time t (p is a process, c is a continuant, and c participates in p some way at t). Its inverse is 'participates in at some time'. Every ManufacturingOperation has one or more 'has participant at some time' that is a MaterialEntity.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000057",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000057",
+          "module": "BFO",
+          "inverseOf": "participates in at some time",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
     "ManufacturingProcess_HAS_PARTICIPANT_AT_SOME_TIME_Agent": {
       "type": "HAS_PARTICIPANT_AT_SOME_TIME",
       "from": {
@@ -9965,6 +10954,28 @@
         }
       }
     },
+    "WorkInProgressTransferProcess_HAS_PARTICIPANT_AT_SOME_TIME_MaterialEntity": {
+      "type": "HAS_PARTICIPANT_AT_SOME_TIME",
+      "from": {
+        "node": "WorkInProgressTransferProcess",
+        "min_count": 1
+      },
+      "to": {
+        "node": "MaterialEntity"
+      },
+      "description": "P has participant c at some time =Def for some time t (p is a process, c is a continuant, and c participates in p some way at t). Its inverse is 'participates in at some time'. Every WorkInProgressTransferProcess has one or more 'has participant at some time' that is a MaterialEntity.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000057",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000057",
+          "module": "BFO",
+          "inverseOf": "participates in at some time",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
     "ComputingProcess_CONCRETIZES_AT_SOME_TIME_GenericallyDependentContinuant": {
       "type": "CONCRETIZES_AT_SOME_TIME",
       "from": {
@@ -10042,6 +11053,29 @@
           "restrictions": [
             "someValuesFrom"
           ]
+        }
+      }
+    },
+    "AttestingProcess_PRECEDES_CertificateGrantingProcess": {
+      "type": "PRECEDES",
+      "from": {
+        "node": "AttestingProcess"
+      },
+      "to": {
+        "node": "CertificateGrantingProcess",
+        "min_count": 1
+      },
+      "description": "Comes before (something) in time. Its inverse is 'preceded by'. Transitive. Every CertificateGrantingProcess has one or more 'preceded by' that is an AttestingProcess.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000063",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000063",
+          "module": "BFO",
+          "inverseOf": "preceded by",
+          "restrictions": [
+            "someValuesFrom"
+          ],
+          "transitive": true
         }
       }
     },
@@ -10373,6 +11407,30 @@
         }
       }
     },
+    "ProductionOrder_HAS_CONTINUANT_PART_AT_ALL_TIMES_MaterialProductSpecification": {
+      "type": "HAS_CONTINUANT_PART_AT_ALL_TIMES",
+      "from": {
+        "node": "ProductionOrder",
+        "min_count": 1
+      },
+      "to": {
+        "node": "MaterialProductSpecification"
+      },
+      "description": "B has continuant part c at all times =Def for all times t, b exists at t implies (b and c are continuants & b is a part of c at t). Every ProductionOrder has one or more 'has continuant part at all times' that is a MaterialProductSpecification.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000110",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000110",
+          "module": "BFO",
+          "subPropertyOf": [
+            "has continuant part at some time"
+          ],
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
     "SupplyChainPlanSpecification_HAS_CONTINUANT_PART_AT_ALL_TIMES_SupplyChainObjectiveSpecification": {
       "type": "HAS_CONTINUANT_PART_AT_ALL_TIMES",
       "from": {
@@ -10414,6 +11472,56 @@
           "subPropertyOf": [
             "has continuant part at all times",
             "has proper continuant part at some time"
+          ]
+        }
+      }
+    },
+    "ProcessPlan_HAS_PROPER_CONTINUANT_PART_AT_ALL_TIMES_ObjectiveSpecification": {
+      "type": "HAS_PROPER_CONTINUANT_PART_AT_ALL_TIMES",
+      "from": {
+        "node": "ProcessPlan",
+        "min_count": 1
+      },
+      "to": {
+        "node": "ObjectiveSpecification"
+      },
+      "description": "B has proper continuant part c at all times =Def c proper continuant part of b at all times. Every ProcessPlan has one or more 'has proper continuant part at all times' that is an ObjectiveSpecification.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000111",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000111",
+          "module": "BFO",
+          "subPropertyOf": [
+            "has continuant part at all times",
+            "has proper continuant part at some time"
+          ],
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "ProductionPlan_HAS_PROPER_CONTINUANT_PART_AT_ALL_TIMES_ProductionOrder": {
+      "type": "HAS_PROPER_CONTINUANT_PART_AT_ALL_TIMES",
+      "from": {
+        "node": "ProductionPlan",
+        "min_count": 1
+      },
+      "to": {
+        "node": "ProductionOrder"
+      },
+      "description": "B has proper continuant part c at all times =Def c proper continuant part of b at all times. Every ProductionPlan has one or more 'has proper continuant part at all times' that is a ProductionOrder.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000111",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000111",
+          "module": "BFO",
+          "subPropertyOf": [
+            "has continuant part at all times",
+            "has proper continuant part at some time"
+          ],
+          "restrictions": [
+            "someValuesFrom"
           ]
         }
       }
@@ -10768,6 +11876,29 @@
         "node": "TransportProcess"
       },
       "description": "(Elucidation) b has occurrent part c means: c is a part of b & b and c are occurrents. Its inverse is 'occurrent part of'. Transitive. Every LogisticsService has a 'has occurrent part' that is one of FreightForwardingProcess, PackagingProcess, TransportProcess.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000117",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000117",
+          "module": "BFO",
+          "inverseOf": "occurrent part of",
+          "restrictions": [
+            "someValuesFrom"
+          ],
+          "transitive": true
+        }
+      }
+    },
+    "ManufacturingEnterpriseProcess_HAS_OCCURRENT_PART_ManufacturingProcess": {
+      "type": "HAS_OCCURRENT_PART",
+      "from": {
+        "node": "ManufacturingEnterpriseProcess",
+        "min_count": 1
+      },
+      "to": {
+        "node": "ManufacturingProcess"
+      },
+      "description": "(Elucidation) b has occurrent part c means: c is a part of b & b and c are occurrents. Its inverse is 'occurrent part of'. Transitive. Every ManufacturingEnterpriseProcess has one or more 'has occurrent part' that is a ManufacturingProcess.",
       "reference": "http://purl.obolibrary.org/obo/BFO_0000117",
       "extensions": {
         "custom": {
@@ -11270,6 +12401,56 @@
         }
       }
     },
+    "AttestingProcess_HAS_PROPER_OCCURRENT_PART_MeasurementProcess": {
+      "type": "HAS_PROPER_OCCURRENT_PART",
+      "from": {
+        "node": "AttestingProcess",
+        "min_count": 1
+      },
+      "to": {
+        "node": "MeasurementProcess"
+      },
+      "description": "B has proper occurrent part c =Def b has occurrent part c & b and c are not identical. Its inverse is 'proper occurrent part of'. Every AttestingProcess has one or more 'has proper occurrent part' that is a MeasurementProcess.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000118",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000118",
+          "module": "BFO",
+          "subPropertyOf": [
+            "has occurrent part"
+          ],
+          "inverseOf": "proper occurrent part of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "ManufacturingOperation_HAS_PROPER_OCCURRENT_PART_ProcessStep": {
+      "type": "HAS_PROPER_OCCURRENT_PART",
+      "from": {
+        "node": "ManufacturingOperation",
+        "min_count": 1
+      },
+      "to": {
+        "node": "ProcessStep"
+      },
+      "description": "B has proper occurrent part c =Def b has occurrent part c & b and c are not identical. Its inverse is 'proper occurrent part of'. Every ManufacturingOperation has one or more 'has proper occurrent part' that is a ProcessStep.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000118",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000118",
+          "module": "BFO",
+          "subPropertyOf": [
+            "has occurrent part"
+          ],
+          "inverseOf": "proper occurrent part of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
     "Occurrent_HAS_PROPER_OCCURRENT_PART_Occurrent": {
       "type": "HAS_PROPER_OCCURRENT_PART",
       "from": {
@@ -11288,6 +12469,31 @@
             "has occurrent part"
           ],
           "inverseOf": "proper occurrent part of"
+        }
+      }
+    },
+    "ProcessStep_HAS_PROPER_OCCURRENT_PART_ManufacturingProcess": {
+      "type": "HAS_PROPER_OCCURRENT_PART",
+      "from": {
+        "node": "ProcessStep",
+        "min_count": 1
+      },
+      "to": {
+        "node": "ManufacturingProcess"
+      },
+      "description": "B has proper occurrent part c =Def b has occurrent part c & b and c are not identical. Its inverse is 'proper occurrent part of'. Every ProcessStep has one or more 'has proper occurrent part' that is a ManufacturingProcess.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000118",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000118",
+          "module": "BFO",
+          "subPropertyOf": [
+            "has occurrent part"
+          ],
+          "inverseOf": "proper occurrent part of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
         }
       }
     },
@@ -11530,6 +12736,32 @@
           "subPropertyOf": [
             "proper continuant part of at some time",
             "continuant part of at all times"
+          ],
+          "transitive": true
+        }
+      }
+    },
+    "ProcessPlan_PROPER_CONTINUANT_PART_OF_AT_ALL_TIMES_ProductionPlan": {
+      "type": "PROPER_CONTINUANT_PART_OF_AT_ALL_TIMES",
+      "from": {
+        "node": "ProcessPlan",
+        "min_count": 1
+      },
+      "to": {
+        "node": "ProductionPlan"
+      },
+      "description": "B proper continuant part of c at all times =Def for all times t, b exists at t implies (b continuant part of c at t & not (c proper continuant part of b at t)). Transitive. Every ProcessPlan has one or more 'proper continuant part of at all times' that is a ProductionPlan.",
+      "reference": "http://purl.obolibrary.org/obo/BFO_0000137",
+      "extensions": {
+        "custom": {
+          "iri": "http://purl.obolibrary.org/obo/BFO_0000137",
+          "module": "BFO",
+          "subPropertyOf": [
+            "proper continuant part of at some time",
+            "continuant part of at all times"
+          ],
+          "restrictions": [
+            "someValuesFrom"
           ],
           "transitive": true
         }
@@ -13372,6 +14604,23 @@
         }
       }
     },
+    "AttestingProcess_ATTESTS_TO_Certificate": {
+      "type": "ATTESTS_TO",
+      "from": {
+        "node": "AttestingProcess"
+      },
+      "to": {
+        "node": "Certificate"
+      },
+      "description": "Relationship from an attesting process to a certificate.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/attestsTo",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/attestsTo",
+          "module": "Certification"
+        }
+      }
+    },
     "Process_BEFORE_Process": {
       "type": "BEFORE",
       "from": {
@@ -13546,6 +14795,23 @@
         "custom": {
           "iri": "https://spec.industrialontologies.org/ontology/construct/causes",
           "module": "Core"
+        }
+      }
+    },
+    "Certificate_CERTIFICATE_GRANTED_BY_CertifyingBody": {
+      "type": "CERTIFICATE_GRANTED_BY",
+      "from": {
+        "node": "Certificate"
+      },
+      "to": {
+        "node": "CertifyingBody"
+      },
+      "description": "Relationship from a certificate to a certifying body that holds when the certifying body issues the certificate as a specified output of some certificate granting process.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/certificateGrantedBy",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/certificateGrantedBy",
+          "module": "Certification"
         }
       }
     },
@@ -14193,6 +15459,24 @@
         }
       }
     },
+    "Capability_ENABLES_Capability": {
+      "type": "ENABLES",
+      "from": {
+        "node": "Capability"
+      },
+      "to": {
+        "node": "Capability"
+      },
+      "description": "A capability enables another capability only if realization of the first capability implies realization of the second capability. Its inverse is 'enabled by'.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/enables",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/enables",
+          "module": "ProductionPlanning",
+          "inverseOf": "enabled by"
+        }
+      }
+    },
     "Process_ENDS_AT_Site": {
       "type": "ENDS_AT",
       "from": {
@@ -14251,6 +15535,31 @@
             "has participant at some time"
           ],
           "inverseOf": "agent in"
+        }
+      }
+    },
+    "Agent_HAS_CAPABILITY_AgentialCapability": {
+      "type": "HAS_CAPABILITY",
+      "from": {
+        "node": "Agent"
+      },
+      "to": {
+        "node": "AgentialCapability",
+        "min_count": 1
+      },
+      "description": "Relation from an independent continuant (the bearer) to a capability, in which the capability specifically depends on the bearer for its existence. Its inverse is 'capability of'. Every AgentialCapability has one or more 'capability of' that is an Agent.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasCapability",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasCapability",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "capability of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
         }
       }
     },
@@ -14490,6 +15799,28 @@
             "bearer of"
           ],
           "inverseOf": "capability of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "Entity_HAS_CERTIFICATE_Certificate": {
+      "type": "HAS_CERTIFICATE",
+      "from": {
+        "node": "Entity"
+      },
+      "to": {
+        "node": "Certificate",
+        "min_count": 1
+      },
+      "description": "Relationship from an entity to a certificate that holds when the certificate has been granted by a certifying body that has participated in a certificate granting process. Its inverse is 'certifies'. Every Certificate has one or more 'certifies' that is an Entity.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasCertificate",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasCertificate",
+          "module": "Certification",
+          "inverseOf": "certifies",
           "restrictions": [
             "someValuesFrom"
           ]
@@ -15271,6 +16602,56 @@
         }
       }
     },
+    "Agent_HAS_ROLE_AttestingAgentRole": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "Agent"
+      },
+      "to": {
+        "node": "AttestingAgentRole",
+        "min_count": 1
+      },
+      "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every AttestingAgentRole has one or more 'role of' that is an Agent.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "role of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "Agent_HAS_ROLE_OperatorRole": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "Agent"
+      },
+      "to": {
+        "node": "OperatorRole",
+        "min_count": 1
+      },
+      "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every OperatorRole has one or more 'role of' that is an Agent.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "role of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
     "Agent_HAS_ROLE_SupplyChainAgentRole": {
       "type": "HAS_ROLE",
       "from": {
@@ -15281,6 +16662,31 @@
         "min_count": 1
       },
       "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every SupplyChainAgentRole has one or more 'role of' that is an Agent.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "role of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "AttestingAgent_HAS_ROLE_AttestingAgentRole": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "AttestingAgent",
+        "min_count": 1
+      },
+      "to": {
+        "node": "AttestingAgentRole"
+      },
+      "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every AttestingAgent has one or more 'has role' that is an AttestingAgentRole.",
       "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
       "extensions": {
         "custom": {
@@ -15380,6 +16786,31 @@
         "node": "TransportationServiceProviderRole"
       },
       "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every Carrier has one or more 'has role' that is a TransportationServiceProviderRole.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "role of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "CertifyingBody_HAS_ROLE_CertifyingBodyRole": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "CertifyingBody",
+        "min_count": 1
+      },
+      "to": {
+        "node": "CertifyingBodyRole"
+      },
+      "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every CertifyingBody has one or more 'has role' that is a CertifyingBodyRole.",
       "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
       "extensions": {
         "custom": {
@@ -16664,6 +18095,31 @@
         }
       }
     },
+    "Operator_HAS_ROLE_OperatorRole": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "Operator",
+        "min_count": 1
+      },
+      "to": {
+        "node": "OperatorRole"
+      },
+      "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every Operator has one or more 'has role' that is an OperatorRole.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "role of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
     "Organization_HAS_ROLE_CustomerRole": {
       "type": "HAS_ROLE",
       "from": {
@@ -16796,6 +18252,56 @@
         "node": "TransportEquipmentRole"
       },
       "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every PieceOfTransportEquipment has one or more 'has role' that is a TransportEquipmentRole.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "role of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "ProductionMachine_HAS_ROLE_EquipmentRole": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "ProductionMachine",
+        "min_count": 1
+      },
+      "to": {
+        "node": "EquipmentRole"
+      },
+      "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every ProductionMachine has one or more 'has role' that is an EquipmentRole.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasRole",
+          "module": "Core",
+          "subPropertyOf": [
+            "bearer of"
+          ],
+          "inverseOf": "role of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "ProductionTool_HAS_ROLE_EquipmentRole": {
+      "type": "HAS_ROLE",
+      "from": {
+        "node": "ProductionTool",
+        "min_count": 1
+      },
+      "to": {
+        "node": "EquipmentRole"
+      },
+      "description": "Relation from an independent continuant (the bearer) to a role, in which the role specifically depends on the bearer for its existence. Its inverse is 'role of'. Every ProductionTool has one or more 'has role' that is an EquipmentRole.",
       "reference": "https://spec.industrialontologies.org/ontology/construct/hasRole",
       "extensions": {
         "custom": {
@@ -17121,6 +18627,32 @@
         "node": "Assembly"
       },
       "description": "Relation from a planned process to someone or something physical or digital (continuant) that is produced or modified in the planned process as prescribed by an objective. Its inverse is 'is specified output of'. Every AssemblyProcess has one or more 'has specified output' that is an Assembly.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/hasSpecifiedOutput",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/hasSpecifiedOutput",
+          "module": "Core",
+          "subPropertyOf": [
+            "has output"
+          ],
+          "inverseOf": "is specified output of",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "CertificateGrantingProcess_HAS_SPECIFIED_OUTPUT_Certificate": {
+      "type": "HAS_SPECIFIED_OUTPUT",
+      "from": {
+        "node": "CertificateGrantingProcess",
+        "min_count": 1
+      },
+      "to": {
+        "node": "Certificate",
+        "min_count": 1
+      },
+      "description": "Relation from a planned process to someone or something physical or digital (continuant) that is produced or modified in the planned process as prescribed by an objective. Its inverse is 'is specified output of'. Every Certificate has one or more 'is specified output of' that is a CertificateGrantingProcess. Every CertificateGrantingProcess has one or more 'has specified output' that is a Certificate.",
       "reference": "https://spec.industrialontologies.org/ontology/construct/hasSpecifiedOutput",
       "extensions": {
         "custom": {
@@ -18789,6 +20321,30 @@
         }
       }
     },
+    "MaterialProductSpecification_PRESCRIBES_MaterialProduct": {
+      "type": "PRESCRIBES",
+      "from": {
+        "node": "MaterialProductSpecification"
+      },
+      "to": {
+        "node": "MaterialProduct"
+      },
+      "description": "Relation from an information content entity to an entity such that the information content entity serves as a collection of rules or guide for the entity if the entity is something that unfolds in time (occurrent), or as a model if the entity is someone or something physical or digital (continuant). Its inverse is 'prescribed by'. Every 'prescribes' of a MaterialProductSpecification is a MaterialProduct.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/prescribes",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/prescribes",
+          "module": "Core",
+          "subPropertyOf": [
+            "is about"
+          ],
+          "inverseOf": "prescribed by",
+          "restrictions": [
+            "allValuesFrom"
+          ]
+        }
+      }
+    },
     "MaterialStateSpecification_PRESCRIBES_MaterialState": {
       "type": "PRESCRIBES",
       "from": {
@@ -18911,6 +20467,31 @@
         }
       }
     },
+    "PlanSpecification_PRESCRIBES_AttestingProcess": {
+      "type": "PRESCRIBES",
+      "from": {
+        "node": "PlanSpecification"
+      },
+      "to": {
+        "node": "AttestingProcess",
+        "min_count": 1
+      },
+      "description": "Relation from an information content entity to an entity such that the information content entity serves as a collection of rules or guide for the entity if the entity is something that unfolds in time (occurrent), or as a model if the entity is someone or something physical or digital (continuant). Its inverse is 'prescribed by'. Every AttestingProcess has one or more 'prescribed by' that is a PlanSpecification.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/prescribes",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/prescribes",
+          "module": "Core",
+          "subPropertyOf": [
+            "is about"
+          ],
+          "inverseOf": "prescribed by",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
     "PlanSpecification_PRESCRIBES_BusinessProcess": {
       "type": "PRESCRIBES",
       "from": {
@@ -18921,6 +20502,31 @@
         "min_count": 1
       },
       "description": "Relation from an information content entity to an entity such that the information content entity serves as a collection of rules or guide for the entity if the entity is something that unfolds in time (occurrent), or as a model if the entity is someone or something physical or digital (continuant). Its inverse is 'prescribed by'. Every BusinessProcess has one or more 'prescribed by' that is a PlanSpecification.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/prescribes",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/prescribes",
+          "module": "Core",
+          "subPropertyOf": [
+            "is about"
+          ],
+          "inverseOf": "prescribed by",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "PlanSpecification_PRESCRIBES_CertificateGrantingProcess": {
+      "type": "PRESCRIBES",
+      "from": {
+        "node": "PlanSpecification"
+      },
+      "to": {
+        "node": "CertificateGrantingProcess",
+        "min_count": 1
+      },
+      "description": "Relation from an information content entity to an entity such that the information content entity serves as a collection of rules or guide for the entity if the entity is something that unfolds in time (occurrent), or as a model if the entity is someone or something physical or digital (continuant). Its inverse is 'prescribed by'. Every CertificateGrantingProcess has one or more 'prescribed by' that is a PlanSpecification.",
       "reference": "https://spec.industrialontologies.org/ontology/construct/prescribes",
       "extensions": {
         "custom": {
@@ -19045,6 +20651,28 @@
           "iri": "https://spec.industrialontologies.org/ontology/construct/recognizesAtSomeTime",
           "module": "Core",
           "inverseOf": "recognized by at some time",
+          "restrictions": [
+            "someValuesFrom"
+          ]
+        }
+      }
+    },
+    "Certificate_SATISFIES_REQUIREMENT_RequirementSpecification": {
+      "type": "SATISFIES_REQUIREMENT",
+      "from": {
+        "node": "Certificate",
+        "min_count": 1
+      },
+      "to": {
+        "node": "RequirementSpecification"
+      },
+      "description": "Relation from an entity to a requirement specification that the entity conforms to. Its inverse is 'requirement satisfied by'. Every Certificate has one or more 'satisfies requirement' that is a RequirementSpecification.",
+      "reference": "https://spec.industrialontologies.org/ontology/construct/satisfiesRequirement",
+      "extensions": {
+        "custom": {
+          "iri": "https://spec.industrialontologies.org/ontology/construct/satisfiesRequirement",
+          "module": "Core",
+          "inverseOf": "requirement satisfied by",
           "restrictions": [
             "someValuesFrom"
           ]

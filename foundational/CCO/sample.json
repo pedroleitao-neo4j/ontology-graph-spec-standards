@@ -1,0 +1,788 @@
+{
+  "scenario": "The arrival of a fictional container vessel, the Saltmarsh Trader, at the berth of a fictional port, Eastmere, on 2 October 2026. The data has the vessel's owner, a commercial organization, Larkspur Shipping, with its legal name, commercial role and capability, and the act of ownership that realizes it; the Eastmere port authority, a government organization within the council's government, delimited by its district; the vessel's master, who is employed by Larkspur, and a deckhand, who make up the crew, and a port officer, each an agent and organization member with a capability and roles; the vessel, with its proper name painted on the hull, its IMO number, and its length, measured in metres, CCO's Meter Measurement Unit; the port, on the shore, and the berth, whose spatial region is designated by coordinates recorded in WGS 84 latitude and longitude; the cargo voyage, whose arrival at the berth the master carries out in an operator role, in an interval within the day, week, month, year and decade, with the date recorded in the logbook; and the arrival report the master sends the port authority.",
+  "nodes": {
+    "larkspur": {
+      "node": [
+        "CommercialOrganization",
+        "Agent"
+      ],
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/larkspur"
+      }
+    },
+    "larkspurCommercialRole": {
+      "node": "CommercialRole",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/larkspurCommercialRole"
+      }
+    },
+    "larkspurName": {
+      "node": "LegalName",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/larkspurName"
+      }
+    },
+    "larkspurRegister": {
+      "node": "InformationBearingEntity",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/larkspurRegister"
+      }
+    },
+    "eastmereCouncil": {
+      "node": "Government",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/eastmereCouncil"
+      }
+    },
+    "portAuthority": {
+      "node": [
+        "GovernmentOrganization",
+        "Agent"
+      ],
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/portAuthority"
+      }
+    },
+    "eastmereDistrict": {
+      "node": "DelimitingDomain",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/eastmereDistrict"
+      }
+    },
+    "mara": {
+      "node": [
+        "Person",
+        "Agent",
+        "OrganizationMember"
+      ],
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/mara"
+      }
+    },
+    "maraOccupation": {
+      "node": "OccupationRole",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/maraOccupation"
+      }
+    },
+    "maraMembership": {
+      "node": "OrganizationMemberRole",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/maraMembership"
+      }
+    },
+    "maraOperator": {
+      "node": "OperatorRole",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/maraOperator"
+      }
+    },
+    "tomas": {
+      "node": [
+        "Person",
+        "Agent",
+        "OrganizationMember"
+      ],
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/tomas"
+      }
+    },
+    "tomasMembership": {
+      "node": "OrganizationMemberRole",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/tomasMembership"
+      }
+    },
+    "ewan": {
+      "node": [
+        "Person",
+        "Agent",
+        "OrganizationMember"
+      ],
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/ewan"
+      }
+    },
+    "ewanMembership": {
+      "node": "OrganizationMemberRole",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/ewanMembership"
+      }
+    },
+    "ewanOccupation": {
+      "node": "OccupationRole",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/ewanOccupation"
+      }
+    },
+    "employment": {
+      "node": "ActOfEmploymentByAnOrganization",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/employment"
+      }
+    },
+    "larkspurCapability": {
+      "node": "OrganizationCapability",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/larkspurCapability"
+      }
+    },
+    "portAuthorityCapability": {
+      "node": "OrganizationCapability",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/portAuthorityCapability"
+      }
+    },
+    "maraCapability": {
+      "node": "AgentCapability",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/maraCapability"
+      }
+    },
+    "tomasCapability": {
+      "node": "AgentCapability",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/tomasCapability"
+      }
+    },
+    "ewanCapability": {
+      "node": "AgentCapability",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/ewanCapability"
+      }
+    },
+    "crew": {
+      "node": "Crew",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/crew"
+      }
+    },
+    "vessel": {
+      "node": "Watercraft",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/vessel"
+      }
+    },
+    "vesselName": {
+      "node": "ProperName",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/vesselName"
+      }
+    },
+    "hullLettering": {
+      "node": "InformationBearingEntity",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/hullLettering"
+      }
+    },
+    "imoNumber": {
+      "node": "ArtifactIdentifier",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/imoNumber"
+      }
+    },
+    "certificateOfRegistry": {
+      "node": "InformationBearingEntity",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/certificateOfRegistry"
+      }
+    },
+    "vesselLength": {
+      "node": "Length",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/vesselLength"
+      }
+    },
+    "lengthMeasurement": {
+      "node": "RatioMeasurementInformationContentEntity",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/lengthMeasurement"
+      }
+    },
+    "lengthRecord": {
+      "node": "InformationBearingEntity",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/lengthRecord"
+      }
+    },
+    "metre": {
+      "node": "MeasurementUnitOfLength",
+      "properties": {
+        "uri": "https://www.commoncoreontologies.org/ont00001683"
+      }
+    },
+    "ownership": {
+      "node": "ActOfOwnership",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/ownership"
+      }
+    },
+    "port": {
+      "node": "Port",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/port"
+      }
+    },
+    "eastmereShore": {
+      "node": "PortionOfGeosphere",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/eastmereShore"
+      }
+    },
+    "berth": {
+      "node": "GeospatialLocation",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/berth"
+      }
+    },
+    "berthRegion": {
+      "node": "ThreeDimensionalSpatialRegion",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/berthRegion"
+      }
+    },
+    "berthCoordinates": {
+      "node": "InformationBearingEntity",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/berthCoordinates",
+        "hasLatitudeValue": [
+          50.8975
+        ],
+        "hasLongitudeValue": [
+          -1.4021
+        ]
+      }
+    },
+    "berthCoordinateRecord": {
+      "node": "SpatialRegionIdentifier",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/berthCoordinateRecord"
+      }
+    },
+    "wgs84": {
+      "node": "GeospatialCoordinateReferenceSystem",
+      "properties": {
+        "uri": "https://www.commoncoreontologies.org/ont00001630"
+      }
+    },
+    "voyage": {
+      "node": "ActOfCargoTransportation",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/voyage"
+      }
+    },
+    "arrival": {
+      "node": "ActOfArrival",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrival"
+      }
+    },
+    "arrivalTime": {
+      "node": "TemporalInterval",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrivalTime"
+      }
+    },
+    "arrivalDay": {
+      "node": "Day",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrivalDay"
+      }
+    },
+    "arrivalWeek": {
+      "node": "Week",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrivalWeek"
+      }
+    },
+    "arrivalMonth": {
+      "node": "Month",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrivalMonth"
+      }
+    },
+    "arrivalYear": {
+      "node": "Year",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrivalYear"
+      }
+    },
+    "arrivalDecade": {
+      "node": "Decade",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrivalDecade"
+      }
+    },
+    "arrivalDate": {
+      "node": "DateIdentifier",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/arrivalDate"
+      }
+    },
+    "logbook": {
+      "node": "InformationBearingEntity",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/logbook",
+        "hasDateValue": [
+          "2026-10-02"
+        ]
+      }
+    },
+    "report": {
+      "node": "Report",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/report"
+      }
+    },
+    "reportCopy": {
+      "node": "MaterialCopyOfAReport",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/reportCopy"
+      }
+    },
+    "reportPaper": {
+      "node": "InformationMediumArtifact",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/reportPaper"
+      }
+    },
+    "reporting": {
+      "node": "ActOfReporting",
+      "properties": {
+        "uri": "https://example.com/saltmarsh-trader/reporting"
+      }
+    }
+  },
+  "relationships": [
+    [
+      "larkspurCommercialRole",
+      "INHERES_IN",
+      "larkspur"
+    ],
+    [
+      "larkspurName",
+      "DESIGNATES",
+      "larkspur"
+    ],
+    [
+      "larkspurName",
+      "IS_ABOUT",
+      "larkspur"
+    ],
+    [
+      "larkspurName",
+      "GENERICALLY_DEPENDS_ON",
+      "larkspurRegister"
+    ],
+    [
+      "eastmereCouncil",
+      "HAS_CONTINUANT_PART",
+      "portAuthority"
+    ],
+    [
+      "eastmereCouncil",
+      "HAS_MEMBER_PART",
+      "portAuthority"
+    ],
+    [
+      "eastmereDistrict",
+      "DELIMITS",
+      "eastmereCouncil"
+    ],
+    [
+      "maraOccupation",
+      "INHERES_IN",
+      "mara"
+    ],
+    [
+      "maraMembership",
+      "INHERES_IN",
+      "mara"
+    ],
+    [
+      "maraOperator",
+      "INHERES_IN",
+      "mara"
+    ],
+    [
+      "tomasMembership",
+      "INHERES_IN",
+      "tomas"
+    ],
+    [
+      "ewanMembership",
+      "INHERES_IN",
+      "ewan"
+    ],
+    [
+      "ewanOccupation",
+      "INHERES_IN",
+      "ewan"
+    ],
+    [
+      "larkspur",
+      "HAS_MEMBER_PART",
+      "mara"
+    ],
+    [
+      "larkspur",
+      "HAS_MEMBER_PART",
+      "tomas"
+    ],
+    [
+      "portAuthority",
+      "HAS_MEMBER_PART",
+      "ewan"
+    ],
+    [
+      "larkspur",
+      "HAS_AFFILIATE",
+      "mara"
+    ],
+    [
+      "larkspur",
+      "HAS_AFFILIATE",
+      "tomas"
+    ],
+    [
+      "portAuthority",
+      "HAS_AFFILIATE",
+      "ewan"
+    ],
+    [
+      "employment",
+      "HAS_AGENT",
+      "larkspur"
+    ],
+    [
+      "employment",
+      "HAS_PARTICIPANT",
+      "mara"
+    ],
+    [
+      "maraMembership",
+      "HAS_REALIZATION",
+      "employment"
+    ],
+    [
+      "larkspurCapability",
+      "INHERES_IN",
+      "larkspur"
+    ],
+    [
+      "portAuthorityCapability",
+      "INHERES_IN",
+      "portAuthority"
+    ],
+    [
+      "maraCapability",
+      "INHERES_IN",
+      "mara"
+    ],
+    [
+      "tomasCapability",
+      "INHERES_IN",
+      "tomas"
+    ],
+    [
+      "ewanCapability",
+      "INHERES_IN",
+      "ewan"
+    ],
+    [
+      "larkspur",
+      "HAS_CAPABILITY",
+      "larkspurCapability"
+    ],
+    [
+      "portAuthority",
+      "HAS_CAPABILITY",
+      "portAuthorityCapability"
+    ],
+    [
+      "crew",
+      "HAS_MEMBER_PART",
+      "mara"
+    ],
+    [
+      "crew",
+      "HAS_MEMBER_PART",
+      "tomas"
+    ],
+    [
+      "crew",
+      "HAS_CONTINUANT_PART",
+      "mara"
+    ],
+    [
+      "crew",
+      "HAS_CONTINUANT_PART",
+      "tomas"
+    ],
+    [
+      "vesselName",
+      "DESIGNATES",
+      "vessel"
+    ],
+    [
+      "vesselName",
+      "IS_ABOUT",
+      "vessel"
+    ],
+    [
+      "vesselName",
+      "GENERICALLY_DEPENDS_ON",
+      "hullLettering"
+    ],
+    [
+      "vessel",
+      "HAS_CONTINUANT_PART",
+      "hullLettering"
+    ],
+    [
+      "imoNumber",
+      "DESIGNATES",
+      "vessel"
+    ],
+    [
+      "imoNumber",
+      "IS_ABOUT",
+      "vessel"
+    ],
+    [
+      "imoNumber",
+      "GENERICALLY_DEPENDS_ON",
+      "certificateOfRegistry"
+    ],
+    [
+      "vesselLength",
+      "INHERES_IN",
+      "vessel"
+    ],
+    [
+      "lengthMeasurement",
+      "IS_A_MEASUREMENT_OF",
+      "vesselLength"
+    ],
+    [
+      "lengthMeasurement",
+      "IS_A_RATIO_MEASUREMENT_OF",
+      "vesselLength"
+    ],
+    [
+      "lengthMeasurement",
+      "DESCRIBES",
+      "vesselLength"
+    ],
+    [
+      "lengthMeasurement",
+      "IS_ABOUT",
+      "vesselLength"
+    ],
+    [
+      "lengthMeasurement",
+      "GENERICALLY_DEPENDS_ON",
+      "lengthRecord"
+    ],
+    [
+      "lengthRecord",
+      "USES_MEASUREMENT_UNIT",
+      "metre"
+    ],
+    [
+      "metre",
+      "IS_ABOUT",
+      "vesselLength"
+    ],
+    [
+      "metre",
+      "DESCRIBES",
+      "vesselLength"
+    ],
+    [
+      "ownership",
+      "HAS_AGENT",
+      "larkspur"
+    ],
+    [
+      "ownership",
+      "HAS_OBJECT",
+      "vessel"
+    ],
+    [
+      "larkspurCommercialRole",
+      "HAS_REALIZATION",
+      "ownership"
+    ],
+    [
+      "port",
+      "LOCATED_IN",
+      "eastmereShore"
+    ],
+    [
+      "berth",
+      "OCCUPIES_SPATIAL_REGION",
+      "berthRegion"
+    ],
+    [
+      "berthCoordinateRecord",
+      "DESIGNATES",
+      "berthRegion"
+    ],
+    [
+      "berthCoordinateRecord",
+      "IS_ABOUT",
+      "berthRegion"
+    ],
+    [
+      "berthCoordinateRecord",
+      "GENERICALLY_DEPENDS_ON",
+      "berthCoordinates"
+    ],
+    [
+      "berthCoordinates",
+      "USES_GEOSPATIAL_COORDINATE_REFERENCE_SYSTEM",
+      "wgs84"
+    ],
+    [
+      "wgs84",
+      "IS_ABOUT",
+      "berthRegion"
+    ],
+    [
+      "wgs84",
+      "DESCRIBES",
+      "berthRegion"
+    ],
+    [
+      "voyage",
+      "HAS_AGENT",
+      "larkspur"
+    ],
+    [
+      "voyage",
+      "HAS_PARTICIPANT",
+      "vessel"
+    ],
+    [
+      "voyage",
+      "HAS_PARTICIPANT",
+      "crew"
+    ],
+    [
+      "voyage",
+      "HAS_OCCURRENT_PART",
+      "arrival"
+    ],
+    [
+      "maraOperator",
+      "HAS_REALIZATION",
+      "voyage"
+    ],
+    [
+      "arrival",
+      "HAS_AGENT",
+      "mara"
+    ],
+    [
+      "arrival",
+      "HAS_PARTICIPANT",
+      "vessel"
+    ],
+    [
+      "arrival",
+      "OCCURS_AT",
+      "berth"
+    ],
+    [
+      "maraOperator",
+      "HAS_REALIZATION",
+      "arrival"
+    ],
+    [
+      "arrival",
+      "OCCUPIES_TEMPORAL_REGION",
+      "arrivalTime"
+    ],
+    [
+      "arrivalDay",
+      "HAS_INSIDE_INTERVAL",
+      "arrivalTime"
+    ],
+    [
+      "arrivalWeek",
+      "HAS_INSIDE_INTERVAL",
+      "arrivalDay"
+    ],
+    [
+      "arrivalMonth",
+      "HAS_INSIDE_INTERVAL",
+      "arrivalWeek"
+    ],
+    [
+      "arrivalYear",
+      "HAS_INSIDE_INTERVAL",
+      "arrivalMonth"
+    ],
+    [
+      "arrivalDecade",
+      "HAS_INSIDE_INTERVAL",
+      "arrivalYear"
+    ],
+    [
+      "arrivalDate",
+      "DESIGNATES",
+      "arrivalDay"
+    ],
+    [
+      "arrivalDate",
+      "IS_ABOUT",
+      "arrivalDay"
+    ],
+    [
+      "arrivalDate",
+      "GENERICALLY_DEPENDS_ON",
+      "logbook"
+    ],
+    [
+      "report",
+      "IS_ABOUT",
+      "arrival"
+    ],
+    [
+      "report",
+      "GENERICALLY_DEPENDS_ON",
+      "reportCopy"
+    ],
+    [
+      "reportPaper",
+      "HAS_CONTINUANT_PART",
+      "reportCopy"
+    ],
+    [
+      "reporting",
+      "HAS_SENDER",
+      "mara"
+    ],
+    [
+      "reporting",
+      "HAS_RECIPIENT",
+      "portAuthority"
+    ],
+    [
+      "reporting",
+      "HAS_OUTPUT",
+      "report"
+    ],
+    [
+      "maraOccupation",
+      "HAS_REALIZATION",
+      "reporting"
+    ],
+    [
+      "arrival",
+      "PRECEDES",
+      "reporting"
+    ]
+  ]
+}

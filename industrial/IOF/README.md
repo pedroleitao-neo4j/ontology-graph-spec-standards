@@ -1,14 +1,14 @@
-# IOF Core, Supply Chain and Maintenance (Industrial Ontologies Foundry)
+# IOF Core, Supply Chain, Maintenance, Certification and Production Planning (Industrial Ontologies Foundry)
 
-An ontology for three of the reference ontologies of the [Industrial Ontologies Foundry](https://www.industrialontologies.org)
+An ontology for five of the reference ontologies of the [Industrial Ontologies Foundry](https://www.industrialontologies.org)
 (IOF), the effort under the Open Applications Group (OAGi) to build a suite of interoperable ontologies for
 manufacturing and the industry around it. The ontologies are licensed under
 [MIT](https://opensource.org/licenses/MIT). They're written in OWL on top of the
 [Basic Formal Ontology](https://basic-formal-ontology.org) (BFO 2020, ISO/IEC 21838-2), so every IOF class sits
 under a BFO category: a material entity, a role, a function, a process, an information content entity and so on.
 
-Of the domains the IOF publishes at production maturity, this subset takes the core and the two that have been
-released longest:
+This subset takes the core and the four domains that build on it alone, or on it and each other, without
+pulling in a domain library of their own:
 
 - **Core**: the notions common to every manufacturing domain: agents, persons and organizations and the roles
   they play; material products, components, raw materials and pieces of equipment; engineered systems and
@@ -22,10 +22,21 @@ released longest:
 - **Maintenance**: maintainable items and their required functions; dispositions to fail, failure processes,
   failure events and their effects; operating, degraded and failed states; failure mode codes; and maintenance
   strategies, activities, work order records and qualified maintenance people (`maintenance/Maintenance`)
+- **Certification**: certifying bodies and attesting agents and their roles; attesting processes, which
+  include measurements and precede the granting of a certificate; and certificates, which are granted by a
+  certifying body, satisfy a requirement and attest to what they're about (`certification/Certification`)
+- **Production Planning**: production plans, made of production orders and process plans; material product,
+  operation and process step specifications; inspection and material handling plans; manufacturing
+  operations, process steps, changeovers, inspections and work-in-progress transfers; and the machines,
+  production tools, operators and agential capabilities that carry them out
+  (`productionplanning/ProductionPlanning`)
 
 Their imports add BFO 2020, from the copy the IOF keeps in its repository, and the IOF annotation vocabulary.
-The release's other production domains, Biopharma and Certification, and the domains still in development,
-Production Planning and Product Service System, are left out.
+The release's other production domain, Biopharma, has an ontology of its own in
+[`../IOF-Biopharma`](../IOF-Biopharma). The other domain still in development, Product Service System, with its
+Sensor module, is left out: both its modules are marked provisional. Production Planning is also listed among the
+domains in development, with no production `AboutIOFProd` file, but its module is annotated as released and it
+imports only Core, so it's included.
 
 | File | Contents |
 |---|---|
@@ -33,7 +44,7 @@ Production Planning and Product Service System, are left out.
 | [`generate.py`](generate.py) | Generates both files from the IOF repository at Release 202603 |
 | [`model.svg`](model.svg) | A diagram of the ontology |
 | [`diagram.json`](diagram.json) | How the diagram colours cards and draws arrows |
-| [`sample.json`](sample.json) | Sample data: a pump made to order, shipped, and repaired after its bearing fails |
+| [`sample.json`](sample.json) | Sample data: a pump planned and made to order, certified, shipped, and repaired after its bearing fails |
 | [`model.cypher`](model.cypher) | A Cypher script creating the model's constraints and loading the sample data |
 | [`../../visualise.py`](../../visualise.py) | Generates the diagram (shared by every standard) from `model.json`, checking that `model.yaml` matches it |
 | [`../../cypher.py`](../../cypher.py) | Generates `model.cypher` (shared by every standard) from `model.json` and `sample.json` |
@@ -44,9 +55,9 @@ The model is generated from commit
 [`0c5af08`](https://github.com/iofoundry/ontology/tree/0c5af080dba16489db1b5c7a432a34222524c6e9) (4 September
 2026) of the [IOF ontology repository](https://github.com/iofoundry/ontology), the commit of the
 [`Release_202603`](https://github.com/iofoundry/ontology/releases/tag/Release_202603) tag, whose version IRIs
-are `https://spec.industrialontologies.org/ontology/202603/...`. `generate.py` starts from the three entry
-modules above and follows their `owl:imports`, which gives five modules: Core, Supply Chain, Maintenance, BFO
-2020 and the annotation vocabulary.
+are `https://spec.industrialontologies.org/ontology/202603/...`. `generate.py` starts from the five entry
+modules above and follows their `owl:imports`, which gives seven modules: Core, Supply Chain, Maintenance,
+Certification, Production Planning, BFO 2020 and the annotation vocabulary.
 
 Each import is resolved to a file through the release's own XML catalog, `catalog-v001.xml`, the one Protégé
 uses, which maps both the unversioned and the versioned IRI of each module, and BFO's IRI, to its file in the
@@ -64,13 +75,15 @@ a report of every construct it had to drop, so nothing is left out silently.
 
 ### What the modules cover
 
-The 261 nodes split by area, which follows the module a class is declared in:
+The 289 nodes split by area, which follows the module a class is declared in:
 
 - 36 nodes of the BFO top level, from `Entity` down to `MaterialEntity`, `Role`, `Function`, `Process` and
   `TemporalInstant`
 - 91 nodes of Core
 - 114 nodes of Supply Chain
 - 20 nodes of Maintenance
+- 7 nodes of Certification
+- 21 nodes of Production Planning
 
 ## Diagram
 
@@ -82,12 +95,13 @@ relationship type wherever the name fits without overlapping a card or another n
 relationships placed first. Dotted arrows point from a subclass to the superclass whose label it also carries.
 
 Cards are coloured by area, which each card also prints, alongside its module (e.g. `SupplyChain`) and its
-number of properties:
+number of properties. The diagram has four colours, so the five IOF areas share them by where they sit in the
+life of a product:
 
 - BFO top level
 - Core
-- Supply chain
-- Maintenance
+- Supply chain and certification
+- Production planning and maintenance
 
 Opened in a browser, hovering a card or arrow shows its name and description, and each card links to its
 term IRI, which the IOF's [specification site](https://spec.industrialontologies.org) and the OBO Foundry
@@ -99,20 +113,25 @@ python3 ../../visualise.py .   # from this folder; or ../../visualise.py alone t
 
 ## Sample data
 
-`sample.json` and `model.cypher` follow a centrifugal pump from order to repair, between three fictional
-companies: Ridgeline Pumps, which makes it to order, Harbor Bottling, which buys it, and Coastline Freight, which
-carries it. The data has the companies as business organizations, the manufacturer, supplier, consignor,
-customer, buyer, consignee and transportation service provider roles they play, their business functions and
-organization identifiers, and the people who work for them. Ridgeline's factory has a make-to-order production
-capability, realized in the pump's production, whose assembly takes in a bearing as a component. A purchase order
-prescribes the supply relationship between the supplier's and the customer's roles. The shipment is prepared under
-a shipment plan, with an advance shipment notice and a bill of lading, carried by truck from Ridgeline's dock to
-Harbor's, whose global location number designates it, with a departure and an arrival timestamped through
-temporal instant value expressions, and received. In service the pump has a required function, realized in its
-functioning; the bearing has a disposition to fail, realized in a failure process; a failure event, recognized by
-an operator, initiates the pump's failed state after its operating state; a failure mode code describes the
-disposition; and a work order describes the maintenance activity, prescribed by a corrective maintenance strategy,
-in which a qualified technician replaces the bearing.
+`sample.json` and `model.cypher` follow a centrifugal pump from order to repair, between four fictional
+organizations: Ridgeline Pumps, which makes it to order, Harbor Bottling, which buys it, Coastline Freight, which
+carries it, and Keystone Conformity, which certifies it. The data has the companies as business organizations,
+the manufacturer, supplier, consignor, customer, buyer, consignee and transportation service provider roles they
+play, their business functions and organization identifiers, and the people who work for them. Ridgeline's
+factory has a make-to-order production capability, realized in the pump's production. A production plan holds
+the production order for the pump, whose material product specification prescribes it, and the process plan that
+routes it; under the process plan an operator assembles a bearing into the pump at a production machine, in a
+manufacturing operation and its process step. A purchase order prescribes the supply relationship between the
+supplier's and the customer's roles. Keystone, a certifying body, certifies the pump: its inspector, an attesting
+agent, attests to the pump's performance in a test, a measurement process, against a pump standard, and the
+attestation precedes the granting process, whose output is a certificate granted by Keystone, satisfying the
+standard and held by the pump. The shipment is prepared under a shipment plan, with an advance shipment notice and
+a bill of lading, carried by truck from Ridgeline's dock to Harbor's, whose global location number designates it,
+with a departure and an arrival timestamped through temporal instant value expressions, and received. In service
+the pump has a required function, realized in its functioning; the bearing has a disposition to fail, realized in
+a failure process; a failure event, recognized by one of Harbor's staff, initiates the pump's failed state after
+its operating state; a failure mode code describes the disposition; and a work order describes the maintenance
+activity, prescribed by a corrective maintenance strategy, in which a qualified technician replaces the bearing.
 
 ```bash
 python3 ../../cypher.py .    # regenerates model.cypher from model.json and sample.json
@@ -145,7 +164,7 @@ cypher-shell -f model.cypher
 | `owl:someValuesFrom` a nested class expression, e.g. `ConsigneeRole` ⊑ `participates in at some time` some (`ReceivingProcess` ⊓ ...) | A relationship to the named members of the intersection, else the property's range |
 | `owl:allValuesFrom` restriction, e.g. BFO's `Process` ⊑ `occurrent part of` only `Process` | Relationship from the restricted class to the narrower class |
 | Cardinalities, qualified or not | Counts, e.g. `count: 1` |
-| Datatype property, e.g. `iof:hasDateTimeInstantValue` | Property of each class of its domain, e.g. `LIST<ZONED DATETIME>` on `TemporalInstantValueExpression` |
+| Datatype property, e.g. `iof:hasDateTimeInstantValue` | Property of each class of its domain, e.g. `LIST<ZONED DATETIME>` on `TemporalInstantValueExpression`, named by its local name; without a domain, e.g. `hasTextValue`, a property of `Entity` |
 | Datatype property ranges: `xsd:string` → `STRING`, `xsd:dateTime` → `ZONED DATETIME` | The property's type; a property without a range, like `hasSimpleExpressionValue`, a `STRING` |
 | Datatype property that isn't functional | A `LIST<T>`, since IOF allows several values |
 | Term IRI, e.g. `https://spec.industrialontologies.org/ontology/construct/Factory` | `reference` and `extensions.custom.iri`; `extensions.custom.module` (e.g. `SupplyChain`, `BFO`), `extensions.custom.area`, and `subPropertyOf` and `disjointWith` where present |
@@ -170,7 +189,7 @@ sentence in its description for each.
   `Consignor`, `OfferingForSaleBusinessProcess`, `TransportEquipmentRole` and so on; the IRI is kept in
   `reference`. All the IOF modules share one namespace, `construct/`, so the module is the one that declares
   the term.
-- **Definitions are read as necessary conditions.** IOF defines 96 classes with `owl:equivalentClass`, e.g. an
+- **Definitions are read as necessary conditions.** IOF defines 108 classes with `owl:equivalentClass`, e.g. an
   `Agent` is exactly a person, group of agents or engineered system that has some agent role. The ontology
   keeps what such a definition requires of every member, as implied labels and required relationships, but
   can't say that meeting the conditions makes something a member.
@@ -190,13 +209,16 @@ sentence in its description for each.
 - **Subclass axioms that are unions aren't kept.** Three classes are subclasses of a union rather than a named
   class, e.g. an `Event` is either a `Process` or a `ProcessBoundary`. That's a choice, not a supertype, so it
   can't be an implied label; `Event` is still an `Occurrent`.
-- **Some restrictions and properties are left out.** Two `owl:allValuesFrom` restrictions whose filler names no
-  class, on `DispositionToExhibitUndesirableBehavior` and `MaterialStateConditionExpression`, have no node to
-  point at. Supply Chain's `hasTextValue` has no domain and no class restricts it. Both are reported by the
-  generator.
+- **Some restrictions are left out.** Six `owl:allValuesFrom` restrictions whose filler names no class have no
+  node to point at: those on `DispositionToExhibitUndesirableBehavior` and `MaterialStateConditionExpression`,
+  and Production Planning's, which say what a plan or specification can't be part of, e.g. every part of a
+  `ProcessPlan` is *not* a `ProductionPlan`, by the complement of a class, on `OperationSpecification`,
+  `ProcessPlan`, `ProcessStepSpecification` and `ProductionPlan`. They're reported by the generator.
 - **Many relationships end at `Entity`.** Where neither a property, its inverse nor its superproperties says
-  what's at an end, the end is `Entity`, e.g. `InformationContentEntity` `IS_ABOUT` `Entity`. 20 of the 477
-  relationships touch `Entity`, which every node also carries as its top label.
+  what's at an end, the end is `Entity`, e.g. `InformationContentEntity` `IS_ABOUT` `Entity`. 21 of the 505
+  relationships touch `Entity`, which every node also carries as its top label. In the same way, Supply Chain's
+  `hasTextValue`, which has no domain and which no class restricts, is a property of `Entity`, so any node, e.g.
+  an identifier, can carry a text value.
 - **Properties aren't inherited.** A relationship is defined on the class whose domain or restriction
   declares it. A node of a subclass carries its superclasses' labels, through which it has their
   relationships too.

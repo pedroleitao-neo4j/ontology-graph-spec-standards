@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Generates the IOF Core, Supply Chain and Maintenance ontology from the IOF ontology repository.
+"""Generates the IOF Core, Supply Chain, Maintenance, Certification and Production Planning ontology from the IOF
+ontology repository.
 
 Usage: python3 generate.py [path/to/iof/ontology]
 
-The three entry modules are the Core, Supply Chain and Maintenance ontologies of the Industrial
-Ontologies Foundry (IOF), at the commit of the repository's Release_202603 tag. Their owl:imports,
+The five entry modules are the Core, Supply Chain, Maintenance, Certification and Production Planning
+ontologies of the Industrial Ontologies Foundry (IOF), at the commit of the repository's Release_202603 tag. Their owl:imports,
 followed to the full closure, add the Basic Formal Ontology (BFO 2020) they're built on and the
 IOF annotation vocabulary. Each import is resolved to a file through the release's own XML catalog,
 catalog-v001.xml, and the files are downloaded from raw.githubusercontent.com at the pinned commit
@@ -24,8 +25,18 @@ RAW = f"https://raw.githubusercontent.com/iofoundry/ontology/{COMMIT}/"
 CATALOG = "catalog-v001.xml"
 IOF = "https://spec.industrialontologies.org/ontology/"
 OBO = "http://purl.obolibrary.org/obo/"
-ENTRY = [IOF + tail for tail in ("core/Core/", "supplychain/SupplyChain/", "maintenance/Maintenance/")]
+ENTRY = [
+    IOF + tail
+    for tail in (
+        "core/Core/",
+        "supplychain/SupplyChain/",
+        "maintenance/Maintenance/",
+        "certification/Certification/",
+        "productionplanning/ProductionPlanning/",
+    )
+]
 SCHEMA = "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json"
+DATA = "IOF"  # whose data a node's uri is the IRI in
 MAX_DESCRIPTION = 1024
 
 RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -110,6 +121,8 @@ MODULES = {
     "core/Core": "Core",
     "supplychain/SupplyChain": "SupplyChain",
     "maintenance/Maintenance": "Maintenance",
+    "certification/Certification": "Certification",
+    "productionplanning/ProductionPlanning": "ProductionPlanning",
     "core/meta/AnnotationVocabulary": "AnnotationVocabulary",
 }
 AREAS = {
@@ -117,6 +130,8 @@ AREAS = {
     "Core": "Core",
     "SupplyChain": "Supply chain",
     "Maintenance": "Maintenance",
+    "Certification": "Certification",
+    "ProductionPlanning": "Production planning",
 }
 
 
@@ -345,7 +360,7 @@ class Ontology:
         # The annotation vocabulary's one class, MaturityLevel, rates the IOF's own modules, not
         # the domain, so it's left out.
         housekeeping = {c for c in declared(OWL + "Class") if self.declared_in[c] == "AnnotationVocabulary"}
-        self.classes = declared(OWL + "Class") - housekeeping
+        self.classes = declared(OWL + "Class") - housekeeping - deprecated
         self.data_properties = declared(OWL + "DatatypeProperty") - deprecated
         # An rdf:Property that is neither an annotation nor a datatype property relates individuals.
         self.properties = (declared(OWL + "ObjectProperty") | (declared(RDF + "Property") - self.data_properties - declared(OWL + "AnnotationProperty"))) - deprecated
@@ -411,6 +426,10 @@ class Ontology:
         for BFO_0000040, whose local name is an opaque identifier, or 'consignor' for Shipper,
         which IOF has renamed without changing its IRI."""
         return self.said(iri)
+
+    def property_name(self, iri):
+        """The name of a datatype property: its local name, e.g. hasSimpleExpressionValue."""
+        return local(iri)
 
     def kinds(self, iri):
         return {local(k) for k in self.iris(iri, TYPE)}
@@ -565,7 +584,7 @@ def build(onto):
                 "uri": {
                     "type": "STRING",
                     "name": "uri",
-                    "description": f"The identifier of the {name} individual: its IRI in IOF data. Unique within a "
+                    "description": f"The identifier of the {name} individual: its IRI in {DATA} data. Unique within a "
                     "data set; individuals that are blank nodes are given generated identifiers.",
                     "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs",
                 }
@@ -805,11 +824,11 @@ def build(onto):
         return types.pop(), bases, facets
 
     # The datatype properties, as properties of each class of their domain, and of each class a
-    # restriction places them on. One that IOF neither gives a domain nor restricts is
-    # left out: its values can't be attached to a node.
+    # restriction places them on. One that is neither given a domain nor restricted, like Supply
+    # Chain's hasTextValue, is a property of Entity, as the unconstrained end of an object property is.
     node_properties = 0
-    for iri in sorted(onto.data_properties, key=local):
-        name = local(iri)
+    for iri in sorted(onto.data_properties, key=onto.property_name):
+        name = onto.property_name(iri)
         for domain in sorted(c for c in onto.end_classes(iri, "domain") if c not in onto.names):
             onto.dropped.setdefault("domains, ranges or fillers outside the import closure", []).append(
                 f"{name} ({local(domain)})"
@@ -817,8 +836,7 @@ def build(onto):
         domains = sorted(c for c in onto.end_classes(iri, "domain") if c in onto.names)
         restricting = sorted((c for (c, p) in restricted_data if p == iri), key=onto.names.get)
         if not domains and not restricting:
-            onto.dropped.setdefault("datatype properties without a domain or a restriction", []).append(name)
-            continue
+            domains = [ENTITY]
         # A datatype property without a range, like hasSimpleExpressionValue, holds a string.
         declared = datatypes_of(onto.values(iri, RANGE) or [("iri", RDFS + "Literal")], name)
         functional = "FunctionalProperty" in onto.kinds(iri)
@@ -908,17 +926,20 @@ META = {
     "schema": SCHEMA,
     "version": "202603",
     "id": "iof-202603",
-    "name": "IOF Core, Supply Chain and Maintenance",
+    "name": "IOF Core, Supply Chain, Maintenance, Certification and Production Planning",
     "description": (
-        "The Core, Supply Chain and Maintenance ontologies of the Industrial Ontologies Foundry (IOF), developed by "
+        "The Core, Supply Chain, Maintenance, Certification and Production Planning ontologies of the Industrial "
+        "Ontologies Foundry (IOF), developed by "
         "the IOF under the Open Applications Group (https://spec.industrialontologies.org) and licensed under MIT, "
         "from Release 202603. Core holds the notions common to manufacturing: agents and the roles they play, "
         "products, materials, equipment and engineered systems, planned and manufacturing processes, capabilities "
         "and functions, and the plans, specifications, identifiers and measurements that describe them. Supply "
         "Chain adds suppliers, buyers, carriers and distributors, the sourcing, shipping, storage and logistics "
         "processes between them, and the shipments, lots and locations they handle; Maintenance adds failures, "
-        "failure modes and maintenance states, and the maintenance activities and work orders that answer them. "
-        "Both are built on the Basic Formal Ontology (BFO 2020), which the closure of their owl:imports adds: each "
+        "failure modes and maintenance states, and the maintenance activities and work orders that answer them; "
+        "Certification adds certifying bodies, attesting agents and processes, and the certificates they grant; "
+        "Production Planning adds production plans and orders, process plans, operations and process steps, and "
+        "the machines, tools and operators that carry them out. All are built on the Basic Formal Ontology (BFO 2020), which the closure of their owl:imports adds: each "
         "class is a node, each object property a relationship from its domain to its range (one direction per "
         "inverse pair), each datatype property a property, each class restriction a count, and each superclass "
         "an implied label."
