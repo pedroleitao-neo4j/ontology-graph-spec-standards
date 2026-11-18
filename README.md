@@ -3,6 +3,25 @@
 A library of ontologies for industry standards, each generated from the standard's official sources and expressed in
 [Neo4j's ontology graph specification](https://github.com/neo4j/ontology-graph-spec).
 
+The standards come from organisations including:
+
+<p>
+  <a href="https://www.iso.org" title="ISO"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/ISO_Logo_%28Red_square%29.svg" alt="ISO" height="40"></a>&nbsp;
+  <a href="https://www.iec.ch" title="IEC"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/International_Electrotechnical_Commission_Logo.svg" alt="IEC" height="40"></a>&nbsp;
+  <a href="https://dexpi.org" title="DEXPI"><img src="https://github.com/DEXPI.png?size=80" alt="DEXPI" height="40"></a>&nbsp;
+  <a href="https://industrialdigitaltwin.org" title="Industrial Digital Twin Association"><img src="https://github.com/admin-shell-io.png?size=80" alt="IDTA" height="40"></a>&nbsp;
+  <a href="https://www.automationml.org" title="AutomationML e.V."><img src="https://github.com/AutomationML.png?size=80" alt="AutomationML" height="40"></a>&nbsp;
+  <a href="https://www.entsoe.eu" title="ENTSO-E"><img src="https://github.com/entsoe.png?size=80" alt="ENTSO-E" height="40"></a>&nbsp;
+  <a href="https://www.industrialontologies.org" title="Industrial Ontologies Foundry"><img src="https://github.com/iofoundry.png?size=80" alt="IOF" height="40"></a>&nbsp;
+  <a href="https://www.mitre.org" title="MITRE"><img src="https://github.com/mitre.png?size=80" alt="MITRE" height="40"></a>&nbsp;
+  <a href="https://www.oasis-open.org" title="OASIS Open"><img src="https://github.com/oasis-open.png?size=80" alt="OASIS" height="40"></a>&nbsp;
+  <a href="https://cyberdomainontology.org" title="Cyber Domain Ontology, a Linux Foundation project"><img src="https://github.com/linuxfoundation.png?size=80" alt="Linux Foundation" height="40"></a>&nbsp;
+  <a href="https://caseontology.org" title="CASE Community"><img src="https://github.com/casework.png?size=80" alt="CASE" height="40"></a>&nbsp;
+  <a href="https://op.europa.eu" title="Publications Office of the European Union"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg" alt="European Union" height="40"></a>&nbsp;
+  <a href="https://www.w3.org" title="W3C"><img src="https://github.com/w3c.png?size=80" alt="W3C" height="40"></a>&nbsp;
+  <a href="https://edmcouncil.org" title="EDM Council"><img src="https://github.com/edmcouncil.png?size=80" alt="EDM Council" height="40"></a>
+</p>
+
 ## Structure
 
 The standards are grouped by domain:
