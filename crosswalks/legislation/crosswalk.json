@@ -1,0 +1,79 @@
+{
+  "id": "legislation",
+  "name": "Legislation: ELI 1.4 and Akoma Ntoso 1.0",
+  "description": "A crosswalk between ELI 1.4, the European Legislation Identifier ontology for publishing legislation as linked data, and Akoma Ntoso 1.0 (OASIS LegalDocML), the XML vocabulary for the text of legislative documents. Both identify an act at the levels of FRBR: ELI's legal resource, legal expression and format are Akoma Ntoso's FRBR work, expression and manifestation, and the Akoma Ntoso FRBR URI of each level serves as its ELI local identifier. ELI describes acts from the outside, as metadata about them and the links between them; Akoma Ntoso describes them from the inside, down to their articles and the people, organizations and concepts their text refers to, whose TLC references point at the same IRIs ELI's agents and concepts are identified by. ELI records an amendment as a relationship between acts or their subdivisions, where Akoma Ntoso records it as a modification element in the analysis of the amending and the amended act.",
+  "standards": {
+    "eli": "legal/ELI",
+    "akn": "legal/AkomaNtoso"
+  },
+  "mappings": [
+    {
+      "subject": "eli:LegalResource",
+      "predicate": "closeMatch",
+      "object": "akn:FRBRWork",
+      "properties": {
+        "number": "frbrNumber",
+        "id_local": "frbrUri"
+      },
+      "comment": "Both are the abstract act, the FRBR work, whatever its versions and languages. ELI's legal resource is the act itself, holding its metadata; Akoma Ntoso's FRBR work is the work level of a document's identification block, and an Akoma Ntoso document carries one for its own act. The act's number is the same in both, and the Akoma Ntoso work-level FRBR URI is the act's local identifier in ELI.",
+      "source": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRWork.html"
+    },
+    {
+      "subject": "eli:LegalExpression",
+      "predicate": "closeMatch",
+      "object": "akn:FRBRExpression",
+      "properties": {
+        "id_local": "frbrUri"
+      },
+      "comment": "Both are a version of the act in one language, the FRBR expression: an original, amended or consolidated text. ELI gives an expression its title and publication dates; Akoma Ntoso its version number, languages and whether it is authoritative. The expression-level FRBR URI is the expression's local identifier in ELI.",
+      "source": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRExpression.html"
+    },
+    {
+      "subject": "eli:Format",
+      "predicate": "closeMatch",
+      "object": "akn:FRBRManifestation",
+      "properties": {
+        "id_local": "frbrUri"
+      },
+      "comment": "Both are an embodiment of an expression in a format, the FRBR manifestation, e.g. the Akoma Ntoso XML or a PDF. The manifestation-level FRBR URI is the format's local identifier in ELI.",
+      "source": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRManifestation.html"
+    },
+    {
+      "subject": "eli:LegalResourceSubdivision",
+      "predicate": "closeMatch",
+      "object": "akn:Hierarchy",
+      "comment": "Both are a part of an act at any level, from a chapter to an article or a paragraph. ELI identifies a subdivision as a legal resource of its own, part of the act; Akoma Ntoso marks it up as a hierarchical element of the act's body, with its number and heading. Their numbers are written differently, e.g. 5 and 5., so the crosswalk doesn't compare them.",
+      "source": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_hierElements.html"
+    },
+    {
+      "subject": "eli:Organization",
+      "predicate": "closeMatch",
+      "object": "akn:TLCOrganization",
+      "properties": {
+        "uri": "href"
+      },
+      "comment": "An organization that passes, publishes or holds the rights to an act. ELI identifies the organization by its IRI; an Akoma Ntoso TLC reference stands for it within one document, pointing at the same IRI by its href, and the document's text and metadata refer to it through the reference.",
+      "source": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_TLCs.html"
+    },
+    {
+      "subject": "eli:Person",
+      "predicate": "closeMatch",
+      "object": "akn:TLCPerson",
+      "properties": {
+        "uri": "href"
+      },
+      "comment": "A person involved in an act, identified by an IRI in ELI and by a TLC reference pointing at it in Akoma Ntoso.",
+      "source": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_TLCs.html"
+    },
+    {
+      "subject": "eli:Concept",
+      "predicate": "closeMatch",
+      "object": "akn:TLCConcept",
+      "properties": {
+        "uri": "href"
+      },
+      "comment": "A subject an act is about, from a thesaurus or authority table: an ELI work is about a SKOS concept, an Akoma Ntoso term in the text refers to a TLC concept pointing at the same IRI. ELI's concept also stands for authority-table values, such as languages or resource types, which Akoma Ntoso holds as attribute values rather than references.",
+      "source": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_TLCs.html"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "source": "crosswalk.json, from the model.json of STIX 2.1, MITRE ATT&CK 20.1, MITRE D3FEND 1.6.0",
+  "link": "the term in its standard",
+  "areas": {
+    "field": "standard",
+    "groups": [
+      {
+        "name": "STIX 2.1",
+        "values": [
+          "STIX 2.1"
+        ]
+      },
+      {
+        "name": "MITRE ATT&CK 20.1",
+        "values": [
+          "MITRE ATT&CK 20.1"
+        ]
+      },
+      {
+        "name": "MITRE D3FEND 1.6.0",
+        "values": [
+          "MITRE D3FEND 1.6.0"
+        ]
+      }
+    ]
+  },
+  "sub": [
+    "standard",
+    "#properties"
+  ],
+  "lines": {
+    "by": "field:exact",
+    "legend": {
+      "main": "skos:exactMatch",
+      "dashed": "skos:closeMatch, broadMatch, narrowMatch or relatedMatch"
+    }
+  }
+}

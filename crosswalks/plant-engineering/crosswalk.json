@@ -1,0 +1,59 @@
+{
+  "id": "plant-engineering",
+  "name": "Plant engineering: CFIHOS 2.0 and DEXPI 2.0.1",
+  "description": "A crosswalk between CFIHOS 2.0, the data and documents a contractor hands over to the owner of a process facility, and DEXPI 2.0.1, the P&ID data engineering tools exchange. Both describe the same plant from different sides: CFIHOS by its tags, their classes and the serialised equipment that fulfils them, DEXPI by the tagged plant items on a P&ID, their components, nozzles and piping. They meet in the plant breakdown and the tag: a CFIHOS tag is the handover record of a DEXPI tagged plant item, joined by the tag name both carry. Where CFIHOS gives a pump's motor a tag of its own, DEXPI draws it as a component of the pump, under a sub-tag.",
+  "standards": {
+    "cfihos": "industrial/CFIHOS2.0",
+    "dexpi": "industrial/DEXPI"
+  },
+  "mappings": [
+    {
+      "subject": "cfihos:Company",
+      "predicate": "narrowMatch",
+      "object": "dexpi:Enterprise",
+      "properties": {"companyName": "enterpriseName"},
+      "comment": "A CFIHOS company is any legal entity in the handover, the owner and operator as well as contractors, manufacturers and suppliers; a DEXPI enterprise is the ISA-95 enterprise at the top of the plant breakdown, i.e. the owner or operator. The enterprise is the narrower of the two."
+    },
+    {
+      "subject": "cfihos:Site",
+      "predicate": "closeMatch",
+      "object": "dexpi:Site",
+      "properties": {"siteCode": "siteIdentificationCode", "siteName": "siteName"},
+      "comment": "Both are the geographical site a plant stands on; DEXPI defines it as ISA-95 does."
+    },
+    {
+      "subject": "cfihos:Plant",
+      "predicate": "closeMatch",
+      "object": "dexpi:ProcessPlant",
+      "properties": {"plantCode": "processPlantIdentificationCode", "plantName": "processPlantName"},
+      "comment": "Both are the assembly of equipment performing a process, the root of the plant's functional breakdown: a CFIHOS plant decomposes into process units and tags, a DEXPI process plant into plant sections, systems and trains."
+    },
+    {
+      "subject": "cfihos:ProcessUnit",
+      "predicate": "closeMatch",
+      "object": "dexpi:PlantSection",
+      "properties": {"processUnitCode": "plantSectionIdentificationCode", "processUnitName": "plantSectionName"},
+      "comment": "A CFIHOS process unit is the process engineer's breakdown of a plant into sub-functions; a DEXPI plant section, defined by ISO 10209, is the same level of the breakdown."
+    },
+    {
+      "subject": "cfihos:Area",
+      "predicate": "closeMatch",
+      "object": "dexpi:PlantArea",
+      "properties": {"areaCode": "plantAreaIdentificationCode", "areaName": "plantAreaName"},
+      "comment": "Both are the physical area of a plant an item stands in; DEXPI defines it as ISA-95 does."
+    },
+    {
+      "subject": "cfihos:Tag",
+      "predicate": "closeMatch",
+      "object": "dexpi:TaggedPlantItem",
+      "properties": {"tagName": "tagName"},
+      "comment": "A CFIHOS tag is the specification of a function in the plant that equipment fulfils; a DEXPI tagged plant item is the same function as drawn on a P&ID. The tag name joins them. CFIHOS keeps the tag apart from the serialised equipment installed against it, which a P&ID doesn't show."
+    },
+    {
+      "subject": "cfihos:Tag",
+      "predicate": "closeMatch",
+      "object": "dexpi:MotorAsComponent",
+      "comment": "CFIHOS tags a pump's driver on its own, e.g. PM-2001A, with the pump as its parent tag; DEXPI draws the motor as a component of the pump, named by a sub-tag. The two describe the same motor, but share no identifier."
+    }
+  ]
+}

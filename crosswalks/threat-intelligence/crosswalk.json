@@ -1,0 +1,133 @@
+{
+  "id": "threat-intelligence",
+  "name": "Threat intelligence: STIX 2.1, MITRE ATT&CK 20.1 and MITRE D3FEND 1.6.0",
+  "description": "A crosswalk between STIX 2.1, the language threat intelligence is shared in, MITRE ATT&CK, the knowledge base of adversary behaviour, and MITRE D3FEND, the knowledge graph of the countermeasures to it. ATT&CK is published as STIX 2.1: its techniques are attack patterns, its groups intrusion sets, its software malware and tools, its mitigations courses of action and its campaigns campaigns, each with the same STIX id, so a STIX bundle that cites ATT&CK cites its objects directly. D3FEND imports ATT&CK's Enterprise tactics, techniques and mitigations as classes of its own, by ATT&CK id, and relates them to the defensive techniques and digital artifacts it defines. Joined, the three lead from what an intelligence report saw, through the behaviour it was an instance of, to the defences against it.",
+  "standards": {
+    "stix": "cybersecurity/STIX2.1",
+    "attack": "cybersecurity/ATTACK",
+    "d3fend": "cybersecurity/D3FEND"
+  },
+  "mappings": [
+    {
+      "subject": "stix:AttackPattern",
+      "predicate": "narrowMatch",
+      "object": "attack:Technique",
+      "properties": {"id": "stixId", "name": "name"},
+      "comment": "ATT&CK publishes its techniques and sub-techniques as STIX attack-pattern objects, keeping their STIX ids. A STIX attack pattern may come from elsewhere, e.g. CAPEC, so the ATT&CK technique is the narrower.",
+      "source": "https://mitre-attack.github.io/attack-data-model/schemas/"
+    },
+    {
+      "subject": "stix:IntrusionSet",
+      "predicate": "narrowMatch",
+      "object": "attack:Group",
+      "properties": {"id": "stixId", "name": "name"},
+      "comment": "ATT&CK publishes its groups as STIX intrusion-set objects. Any intrusion set a producer tracks is a STIX intrusion set, so the ATT&CK group is the narrower.",
+      "source": "https://mitre-attack.github.io/attack-data-model/schemas/"
+    },
+    {
+      "subject": "stix:Campaign",
+      "predicate": "narrowMatch",
+      "object": "attack:Campaign",
+      "properties": {"id": "stixId", "name": "name"},
+      "comment": "ATT&CK publishes its campaigns as STIX campaign objects.",
+      "source": "https://mitre-attack.github.io/attack-data-model/schemas/"
+    },
+    {
+      "subject": "stix:Malware",
+      "predicate": "narrowMatch",
+      "object": "attack:Malware",
+      "properties": {"id": "stixId", "name": "name"},
+      "comment": "ATT&CK publishes the malware among its software as STIX malware objects.",
+      "source": "https://mitre-attack.github.io/attack-data-model/schemas/"
+    },
+    {
+      "subject": "stix:Tool",
+      "predicate": "narrowMatch",
+      "object": "attack:Tool",
+      "properties": {"id": "stixId", "name": "name"},
+      "comment": "ATT&CK publishes the legitimate tools among its software as STIX tool objects.",
+      "source": "https://mitre-attack.github.io/attack-data-model/schemas/"
+    },
+    {
+      "subject": "stix:CourseOfAction",
+      "predicate": "narrowMatch",
+      "object": "attack:Mitigation",
+      "properties": {"id": "stixId", "name": "name"},
+      "comment": "ATT&CK publishes its mitigations as STIX course-of-action objects. A STIX course of action may be any action taken to prevent or respond to an attack, e.g. blocking a campaign's infrastructure, so the ATT&CK mitigation is the narrower.",
+      "source": "https://mitre-attack.github.io/attack-data-model/schemas/"
+    },
+    {
+      "subject": "attack:Technique",
+      "predicate": "closeMatch",
+      "object": "d3fend:OffensiveTechnique",
+      "properties": {"attackId": "attackId", "name": "name"},
+      "comment": "D3FEND imports ATT&CK's Enterprise techniques and sub-techniques as offensive technique classes, named by their ATT&CK ids. D3FEND's offensive techniques also include classes of its own grouping them by tactic, e.g. Initial Access Technique, and ATT&CK's Mobile and ICS techniques are other D3FEND classes.",
+      "source": "https://d3fend.mitre.org/offensive-technique/attack/T1566.001/"
+    },
+    {
+      "subject": "attack:Technique",
+      "predicate": "closeMatch",
+      "object": "d3fend:ATTACKICSTechnique",
+      "properties": {"attackId": "attackId", "name": "name"},
+      "comment": "D3FEND imports ATT&CK's ICS techniques as classes of their own."
+    },
+    {
+      "subject": "attack:Technique",
+      "predicate": "closeMatch",
+      "object": "d3fend:ATTACKMobileTechnique",
+      "properties": {"attackId": "attackId", "name": "name"},
+      "comment": "D3FEND imports ATT&CK's Mobile techniques as classes of their own."
+    },
+    {
+      "subject": "attack:Tactic",
+      "predicate": "closeMatch",
+      "object": "d3fend:OffensiveTactic",
+      "properties": {"name": "name"},
+      "comment": "D3FEND imports ATT&CK's Enterprise tactics as offensive tactic classes, named by their ATT&CK ids, e.g. TA0001; the ATT&CK id is in the class IRI, not a property of its own, so the name joins them.",
+      "source": "https://d3fend.mitre.org/"
+    },
+    {
+      "subject": "attack:Mitigation",
+      "predicate": "narrowMatch",
+      "object": "d3fend:ATTACKEnterpriseMitigation",
+      "properties": {"name": "name"},
+      "comment": "D3FEND imports ATT&CK's Enterprise mitigations, named by their ATT&CK ids, e.g. M1021, and relates each to the defensive techniques that implement it. ATT&CK's Mobile and ICS mitigations have no D3FEND counterpart, so the D3FEND class is the narrower.",
+      "source": "https://d3fend.mitre.org/"
+    },
+    {
+      "subject": "stix:File",
+      "predicate": "relatedMatch",
+      "object": "d3fend:File",
+      "link": "INSTANCE_OF",
+      "comment": "A STIX file is one observed file, with its name and hashes; a D3FEND file is a class of digital artifact, e.g. Executable File or Email Attachment, that offensive techniques produce and defensive techniques analyse. An observed file is an instance of the classes it belongs to."
+    },
+    {
+      "subject": "stix:EmailMessage",
+      "predicate": "relatedMatch",
+      "object": "d3fend:DigitalArtifact",
+      "link": "INSTANCE_OF",
+      "comment": "A STIX email message is one observed message; D3FEND's Email is a class of digital artifact, and D3FEND's email filtering and analysis techniques act on its instances."
+    },
+    {
+      "subject": "stix:Url",
+      "predicate": "relatedMatch",
+      "object": "d3fend:DigitalArtifact",
+      "link": "INSTANCE_OF",
+      "comment": "A STIX URL is one observed URL; D3FEND's URL is a class of digital artifact, analysed by URL Analysis."
+    },
+    {
+      "subject": "stix:Process",
+      "predicate": "relatedMatch",
+      "object": "d3fend:Process",
+      "link": "INSTANCE_OF",
+      "comment": "A STIX process is one observed process; D3FEND's Process is a class of digital artifact."
+    },
+    {
+      "subject": "stix:NetworkTraffic",
+      "predicate": "relatedMatch",
+      "object": "d3fend:NetworkTraffic",
+      "link": "INSTANCE_OF",
+      "comment": "A STIX network traffic object is one observed flow; D3FEND's network traffic classes, e.g. Outbound Internet Web Traffic, are the kinds of traffic its filtering and analysis techniques act on."
+    }
+  ]
+}

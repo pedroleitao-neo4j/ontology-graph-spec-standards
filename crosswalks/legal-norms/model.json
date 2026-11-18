@@ -1,0 +1,1248 @@
+{
+  "schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json",
+  "version": "1.0",
+  "id": "crosswalk-legal-norms",
+  "name": "Legal norms: ODRL 2.2, LegalRuleML 1.0 and LKIF Core 1.1",
+  "description": "A crosswalk between three ways of writing down what may, must and must not be done. ODRL 2.2 is a policy language: Permissions, Prohibitions and Duties granting Actions over Assets to Parties. LegalRuleML 1.0 marks up the rules of legal texts: Deontic Specifications borne by parties, held in Prescriptive Statements with their strength, sources, authorities and penalties. LKIF Core 1.1 is a legal ontology: Norms borne by legal sources that qualify behaviour as allowed, obliged or disallowed, held by agents playing legal roles. All three share the deontic triad of permission, obligation and prohibition, and agents to bear it; they differ in what a norm is, a rule over an asset, a formula in a statement, or a mental qualification of behaviour.",
+  "nodes": {
+    "odrl__Action": {
+      "labels": {
+        "identifier": "odrl__Action"
+      },
+      "description": "An operation on an Asset. Actions may be allowed by Permissions, disallowed by Prohibitions, or made mandatory by Duties. Specialises schema:Action.",
+      "reference": "http://www.w3.org/ns/odrl/2/Action",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Action individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Action": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "odrl__uri_Action_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "ODRL 2.2"
+        }
+      }
+    },
+    "odrl__Agreement": {
+      "labels": {
+        "identifier": "odrl__Agreement"
+      },
+      "description": "A Policy that grants the assignee a Rule over an Asset from an assigner. An Agreement Policy MUST contain at least one Permission or Prohibition rule, a Party with Assigner function, and a Party with Assignee function (in the same Permission or Prohibition). The Agreement Policy will grant the terms of the Policy from the Assigner to the Assignee.",
+      "reference": "http://www.w3.org/ns/odrl/2/Agreement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Agreement individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "profile": {
+          "type": "LIST<STRING>",
+          "name": "profile",
+          "description": "The identifier(s) of an ODRL Profile that the Policy conforms to. The profile property is mandatory if the Policy is using an ODRL Profile. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/profile",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/profile"
+            }
+          }
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Agreement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "odrl__uri_Agreement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "ODRL 2.2"
+        }
+      }
+    },
+    "odrl__Asset": {
+      "labels": {
+        "identifier": "odrl__Asset"
+      },
+      "description": "A resource or a collection of resources that are the subject of a Rule. The Asset entity can be any form of identifiable resource, such as data/information, content/media, applications, or services. Furthermore, it can be used to represent other Asset entities that are needed to undertake the Policy expression, such as with the Duty entity. To describe more details about the Asset, it is recommended to use Dublin Core [[dcterms]] elements or other content metadata.",
+      "reference": "http://www.w3.org/ns/odrl/2/Asset",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Asset individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Asset": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "odrl__uri_Asset_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "ODRL 2.2"
+        }
+      }
+    },
+    "odrl__Duty": {
+      "labels": {
+        "identifier": "odrl__Duty"
+      },
+      "description": "The obligation to perform an Action.",
+      "reference": "http://www.w3.org/ns/odrl/2/Duty",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Duty individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Duty": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "odrl__uri_Duty_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "ODRL 2.2"
+        }
+      }
+    },
+    "odrl__Party": {
+      "labels": {
+        "identifier": "odrl__Party"
+      },
+      "description": "An entity or a collection of entities that undertake Roles in a Rule. The Party entity could be a person, group of people, organisation, or agent. An agent is a person or thing that takes an active role or produces a specified effect. To describe more details about the Party, it is recommended to use W3C vCard Ontology [[vcard-rdf]] or FOAF Vocabulary [[foaf]]. Specialises schema:Person and schema:Organization and foaf:Person and foaf:Organization and foaf:Agent and vcard:Individual and vcard:Organization and vcard:Agent.",
+      "reference": "http://www.w3.org/ns/odrl/2/Party",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Party individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Party": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "odrl__uri_Party_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "ODRL 2.2"
+        }
+      }
+    },
+    "odrl__Permission": {
+      "labels": {
+        "identifier": "odrl__Permission"
+      },
+      "description": "The ability to perform an Action over an Asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/Permission",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Permission individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Permission": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "odrl__uri_Permission_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "ODRL 2.2"
+        }
+      }
+    },
+    "odrl__Prohibition": {
+      "labels": {
+        "identifier": "odrl__Prohibition"
+      },
+      "description": "The inability to perform an Action over an Asset.",
+      "reference": "http://www.w3.org/ns/odrl/2/Prohibition",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Prohibition individual: its IRI in ODRL data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        },
+        "uid": {
+          "type": "LIST<STRING>",
+          "name": "uid",
+          "description": "An unambiguous identifier. Used by the Policy, Rule, Asset, Party, Constraint, and Logical Constraint Classes. Holds the IRI of each resource it refers to, which ODRL leaves unconstrained.",
+          "reference": "http://www.w3.org/ns/odrl/2/uid",
+          "extensions": {
+            "custom": {
+              "iri": "http://www.w3.org/ns/odrl/2/uid",
+              "unionEnds": true
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Prohibition": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "odrl__uri_Prohibition_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "ODRL 2.2"
+        }
+      }
+    },
+    "lrml__Agent": {
+      "labels": {
+        "identifier": "lrml__Agent"
+      },
+      "description": "An entity that acts or has the capability to act.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Agent",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Agent: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Agent": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_Agent_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__Authority": {
+      "labels": {
+        "identifier": "lrml__Authority"
+      },
+      "description": "A person or organization with the power to create, endorse, or enforce Legal Norms.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Authority",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Authority: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Authority": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_Authority_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__Figure": {
+      "labels": {
+        "identifier": "lrml__Figure"
+      },
+      "description": "An instantiation of a function by an Actor.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Figure",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Figure: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Figure": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_Figure_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__LegalSource": {
+      "labels": {
+        "identifier": "lrml__LegalSource"
+      },
+      "description": "A source of one or more Legal Norms formulated in any format and endorsed by an Authority.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#LegalSource",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalSource: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalSource": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_LegalSource_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__Obligation": {
+      "labels": {
+        "identifier": "lrml__Obligation"
+      },
+      "description": "A Deontic Specification for a state, an act, or a course of action to which a Bearer is legally bound, and which, if it is not achieved or performed, results in a Violation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Obligation",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Obligation: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Obligation": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_Obligation_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__PenaltyStatement": {
+      "labels": {
+        "identifier": "lrml__PenaltyStatement"
+      },
+      "description": "A Legal Statement of a sanction (e.g. a punishment or a correction).",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PenaltyStatement",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PenaltyStatement: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PenaltyStatement": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_PenaltyStatement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__Permission": {
+      "labels": {
+        "identifier": "lrml__Permission"
+      },
+      "description": "A Deontic Specification for a state, an act, or a course of action where the Bearer has no Obligation or Prohibition to the contrary. A weak Permission is the absence of the Obligation or Prohibition to the contrary; a strong Permission is an exception or derogation of the Obligation or Prohibition to the contrary.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Permission",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Permission: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Permission": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_Permission_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__Prohibition": {
+      "labels": {
+        "identifier": "lrml__Prohibition"
+      },
+      "description": "A Deontic Specification for a state, an act, or a course of action to which a Bearer is legally bound, and which, if it is achieved or performed, results in a Violation.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Prohibition",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Prohibition: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Prohibition": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_Prohibition_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lrml__Right": {
+      "labels": {
+        "identifier": "lrml__Right"
+      },
+      "description": "(see also Permission) a Deontic Specification that gives a Permission to a party (the Bearer) and implies there are Obligations or Prohibitions on other parties (the AuxiliaryParty) such that the Bearer can (eventually) exercise the Right.",
+      "reference": "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Right",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Right: its IRI in LegalRuleML data. Unique within a data set; resources that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Right": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lrml__uri_Right_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LegalRuleML 1.0"
+        }
+      }
+    },
+    "lkif__Action": {
+      "labels": {
+        "identifier": "lkif__Action"
+      },
+      "description": "An action is a change which is brought about by a single agent, playing a role. The agent is the holder of some indended outcome of the action: an action is always intentional. The intention of the agent has usually corresponds with an expectation the intended outcome to be brought about: the agent believes in some expectation. Note that the intention might not correspond with the *actual* outcome of the action. NOTE (OWL 1.1) the action may actually be 'part of' the intention of the agent, that is: intends some (expression:Intention and Self).",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/action.ttl#L155",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Action individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Action": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_Action_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__Agent": {
+      "labels": {
+        "identifier": "lkif__Agent"
+      },
+      "description": "An agent is any owl:Thing which can act, i.e. play the 'actor' role wrt. an action. It is a holder for propositional attitudes.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/action.ttl#L140",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Agent individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Agent": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_Agent_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__Contract": {
+      "labels": {
+        "identifier": "lkif__Contract"
+      },
+      "description": "A contract bears one or more norms, all of which are uttered by some natural person or legal person. It cannot bear expressions which are uttered by a different kind of agent.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/norm.ttl#L67",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Contract individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Contract": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_Contract_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__LegalRole": {
+      "labels": {
+        "identifier": "lkif__LegalRole"
+      },
+      "description": "A legal role is a role played in a legal context. Legal role players can be both Agents and other 'things'.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/legal-role.ttl#L36",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalRole individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalRole": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_LegalRole_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__LegalSource": {
+      "labels": {
+        "identifier": "lkif__LegalSource"
+      },
+      "description": "A legal source is a source for legal statements, both norms and legal expressions. In a sense it is literally a 'source' of law.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/norm.ttl#L406",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegalSource individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegalSource": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_LegalSource_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__LegislativeBody": {
+      "labels": {
+        "identifier": "lkif__LegislativeBody"
+      },
+      "description": "A legislature is a type of (representative) deliberative assembly with the power to adopt laws.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/legal-action.ttl#L99",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the LegislativeBody individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_LegislativeBody": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_LegislativeBody_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__Obligation": {
+      "labels": {
+        "identifier": "lkif__Obligation",
+        "implied": [
+          "lkif__Permission"
+        ]
+      },
+      "description": "See prohibition. Equivalent to Prohibition.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/norm.ttl#L272",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Obligation individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Obligation": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_Obligation_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__Permission": {
+      "labels": {
+        "identifier": "lkif__Permission"
+      },
+      "description": "Permission allows propositions, to which therefore the predication Allowed applies. The thing(s) allowed is/are a subset of the thing(s) qualified by the permission. If S then P(A) means that S is qualified and S and A is allowed.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/norm.ttl#L326",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Permission individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Permission": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_Permission_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__PhysicalObject": {
+      "labels": {
+        "identifier": "lkif__PhysicalObject"
+      },
+      "description": "A physical object is a physical entity consisting of matter, it has a spatio-temporal extension.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/process.ttl#L68",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the PhysicalObject individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_PhysicalObject": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_PhysicalObject_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__Prohibition": {
+      "labels": {
+        "identifier": "lkif__Prohibition",
+        "implied": [
+          "lkif__Permission"
+        ]
+      },
+      "description": "Prohibition obliges/allows thing(s), to which therefore the predication Obliged applies, and disallows thing(s), to which therefore the predication Disallowed applies. The union of the thing(s) allowed and the thing(s) disallowed is qualified by the prohibition. The things allowed and disallowed by the prohibition are disjoint (and completely partition the space of things qualified). If S then O(A) means that S is qualified, S and A is obliged/allowed, and S and not A is disallowed. If S then F(A) means that S is qualified, S and A is disallowed, and S and not A is obliged/allowed. The difference between Obligation and Prohibition is in which part of the partition of the qualified space is explicitly described by the normative statement. Alternative label: directive. Equivalent to Obligation.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/norm.ttl#L285",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Prohibition individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Prohibition": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_Prohibition_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    },
+    "lkif__Right": {
+      "labels": {
+        "identifier": "lkif__Right"
+      },
+      "description": "A right is the legal or moral entitlement to do or refrain from doing something or to obtain or refrain from obtaining an action, thing or recogition in civil society.",
+      "reference": "https://github.com/RinkeHoekstra/lkif-core/blob/1958d940c4157678c7f5445b07b35e093e918f31/norm.ttl#L357",
+      "properties": {
+        "uri": {
+          "type": "STRING",
+          "name": "uri",
+          "description": "The identifier of the Right individual: its IRI in LKIF data. Unique within a data set; individuals that are blank nodes are given generated identifiers.",
+          "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+        }
+      },
+      "constraints": {
+        "key_Right": {
+          "type": "KEY",
+          "properties": [
+            "uri"
+          ],
+          "name": "lkif__uri_Right_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "LKIF Core 1.1"
+        }
+      }
+    }
+  },
+  "relationships": {
+    "odrl__Permission_SAME_AS_lrml__Permission": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Permission"
+      },
+      "to": {
+        "node": "lrml__Permission"
+      },
+      "description": "odrl:Permission skos:closeMatch lrml:Permission. Both state that an act may be done. ODRL scopes the permission to an Action over a target Asset granted to an assignee, and may attach Duties the assignee must meet to exercise it; LegalRuleML names a Bearer and distinguishes weak permissions, the mere absence of a contrary obligation, from strong ones that derogate from it. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Prohibition_SAME_AS_lrml__Prohibition": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Prohibition"
+      },
+      "to": {
+        "node": "lrml__Prohibition"
+      },
+      "description": "odrl:Prohibition skos:closeMatch lrml:Prohibition. Both state that an act must not be done. ODRL attaches remedies, Duties to perform if the prohibition is broken; LegalRuleML ties penalties to the statement holding the prohibition through a Reparation. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Duty_SAME_AS_lrml__Obligation": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Duty"
+      },
+      "to": {
+        "node": "lrml__Obligation"
+      },
+      "description": "odrl:Duty skos:closeMatch lrml:Obligation. ODRL's Duty is its obligation to perform an Action, which a Policy holds through the obligation property; LegalRuleML's Obligation is the deontic specification whose breach is a Violation. ODRL also uses Duties as the conditions of a Permission and as the consequences and remedies of other rules, where LegalRuleML would write a separate statement. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Duty_RELATED_TO_lrml__PenaltyStatement": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "odrl__Duty"
+      },
+      "to": {
+        "node": "lrml__PenaltyStatement"
+      },
+      "description": "odrl:Duty skos:relatedMatch lrml:PenaltyStatement. A Duty that is the consequence of another Duty, e.g. to pay a late fee if the rent is not paid, is what LegalRuleML writes as a Penalty Statement, linked to the statement it repairs by a Reparation. The ODRL consequence relationship and the LegalRuleML Reparation say the same thing in two shapes, so the two nodes are related, not the same.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    },
+    "odrl__Permission_SAME_AS_lkif__Permission": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Permission"
+      },
+      "to": {
+        "node": "lkif__Permission"
+      },
+      "description": "odrl:Permission skos:broadMatch lkif:Permission. LKIF's Permission is the broadest of its norms: it allows something, and its subclasses Obligation and Prohibition also allow what they oblige. An ODRL Permission is the plain permission, so LKIF's class is the broader. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:broadMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Prohibition_SAME_AS_lkif__Prohibition": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Prohibition"
+      },
+      "to": {
+        "node": "lkif__Prohibition"
+      },
+      "description": "odrl:Prohibition skos:closeMatch lkif:Prohibition. Both forbid an act. LKIF reads a prohibition as disallowing one behaviour and obliging its complement, and so as equivalent to an obligation; ODRL keeps the two apart. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Duty_SAME_AS_lkif__Obligation": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Duty"
+      },
+      "to": {
+        "node": "lkif__Obligation"
+      },
+      "description": "odrl:Duty skos:closeMatch lkif:Obligation. Both oblige an act. LKIF's Obligation qualifies the obliged behaviour rather than naming an action and asset, and is a kind of LKIF Permission, since what is obliged is allowed. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "lrml__Permission_SAME_AS_lkif__Permission": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__Permission"
+      },
+      "to": {
+        "node": "lkif__Permission"
+      },
+      "description": "lrml:Permission skos:broadMatch lkif:Permission. LegalRuleML's Permission is one modality beside Obligation and Prohibition; LKIF's Permission is their common superclass, and the broader. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:broadMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "lrml__Prohibition_SAME_AS_lkif__Prohibition": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__Prohibition"
+      },
+      "to": {
+        "node": "lkif__Prohibition"
+      },
+      "description": "lrml:Prohibition skos:closeMatch lkif:Prohibition. Both forbid an act. LegalRuleML names who bears the prohibition; LKIF names the agent that holds the norm and the behaviour it disallows. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "lrml__Obligation_SAME_AS_lkif__Obligation": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__Obligation"
+      },
+      "to": {
+        "node": "lkif__Obligation"
+      },
+      "description": "lrml:Obligation skos:closeMatch lkif:Obligation. Both oblige an act. LegalRuleML defines an obligation by its breach, a Violation; LKIF by the behaviour it qualifies as obliged. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "lrml__Right_SAME_AS_lkif__Right": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__Right"
+      },
+      "to": {
+        "node": "lkif__Right"
+      },
+      "description": "lrml:Right skos:closeMatch lkif:Right. LegalRuleML's Right is a permission for its Bearer implying obligations on an Auxiliary Party; LKIF's Right is an entitlement, refined into Hohfeldian kinds such as obligative, permissive and liability rights.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false
+        }
+      }
+    },
+    "odrl__Party_SAME_AS_lrml__Agent": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Party"
+      },
+      "to": {
+        "node": "lrml__Agent"
+      },
+      "description": "odrl:Party skos:closeMatch lrml:Agent. Both are whoever acts: ODRL's Party, a foaf:Agent, takes functions such as assigner and assignee in a Rule; a LegalRuleML Agent is an entity that acts or can act. LegalRuleML puts the function in a Figure apart from the Agent. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Party_SAME_AS_lkif__Agent": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Party"
+      },
+      "to": {
+        "node": "lkif__Agent"
+      },
+      "description": "odrl:Party skos:closeMatch lkif:Agent. Both are whoever acts. An ODRL Party may also be a collection of parties; an LKIF Agent plays roles and holds propositional attitudes, norms among them. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "lrml__Agent_SAME_AS_lkif__Agent": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__Agent"
+      },
+      "to": {
+        "node": "lkif__Agent"
+      },
+      "description": "lrml:Agent skos:closeMatch lkif:Agent. Both are an entity that acts or can act. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "lrml__Authority_SAME_AS_lkif__LegislativeBody": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__Authority"
+      },
+      "to": {
+        "node": "lkif__LegislativeBody"
+      },
+      "description": "lrml:Authority skos:narrowMatch lkif:LegislativeBody. A LegalRuleML Authority is any person or organization with the power to create, endorse or enforce legal norms, courts and agencies as well as legislatures; LKIF's Legislative Body is the assembly that adopts laws, the narrower of the two. LegalRuleML keeps the Authority apart from the Agent, so a legislature is two LegalRuleML nodes and one LKIF node.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:narrowMatch",
+          "exact": false
+        }
+      }
+    },
+    "lrml__Figure_SAME_AS_lkif__LegalRole": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__Figure"
+      },
+      "to": {
+        "node": "lkif__LegalRole"
+      },
+      "description": "lrml:Figure skos:closeMatch lkif:LegalRole. A LegalRuleML Figure is a Function, such as tenant, instantiated by an Actor; an LKIF legal role is a role an agent plays in a legal context, such as a lease. Both pair a party with the part it plays. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "lrml__LegalSource_SAME_AS_lkif__LegalSource": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "lrml__LegalSource"
+      },
+      "to": {
+        "node": "lkif__LegalSource"
+      },
+      "description": "lrml:LegalSource skos:closeMatch lkif:LegalSource. Both are the source of law that norms come from, such as a statute or one of its sections. LKIF's legal source is a medium bearing norms and expressions; LegalRuleML's is endorsed by an Authority and cited through Legal References. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Asset_SAME_AS_lkif__PhysicalObject": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "odrl__Asset"
+      },
+      "to": {
+        "node": "lkif__PhysicalObject"
+      },
+      "description": "odrl:Asset skos:relatedMatch lkif:PhysicalObject. An ODRL Asset is anything a rule is about, usually content or a service; an LKIF Physical Object is anything material. The classes only overlap, but a physical thing a policy governs, such as a rented dwelling, is the same thing in both. Linked nodes share uri.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false,
+          "properties": {
+            "uri": "uri"
+          }
+        }
+      }
+    },
+    "odrl__Agreement_RELATED_TO_lkif__Contract": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "odrl__Agreement"
+      },
+      "to": {
+        "node": "lkif__Contract"
+      },
+      "description": "odrl:Agreement skos:relatedMatch lkif:Contract. An ODRL Agreement is a policy granted by an assigner to an assignee, i.e. the terms of a contract as rules; an LKIF Contract is the legal document that bears a contract's norms. The agreement expresses what the contract bears.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    },
+    "odrl__Action_RELATED_TO_lkif__Action": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "odrl__Action"
+      },
+      "to": {
+        "node": "lkif__Action"
+      },
+      "description": "odrl:Action skos:relatedMatch lkif:Action. An ODRL Action is a kind of operation, such as odrl:compensate, that rules permit, prohibit or require; an LKIF Action is one act an agent performs at a time. The ODRL action is the type of which LKIF actions are occurrences, so data doesn't link them.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    }
+  }
+}

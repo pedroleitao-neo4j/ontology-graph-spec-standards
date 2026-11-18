@@ -1,0 +1,26 @@
+# mapping_set_id: https://github.com/pedroleitao-neo4j/ontology-graph-spec-standards/blob/main/crosswalks/plant-engineering/mappings.sssom.tsv
+# mapping_set_title: Plant engineering: CFIHOS 2.0 and DEXPI 2.0.1
+# license: https://creativecommons.org/licenses/by/4.0/
+# curie_map:
+#   skos: http://www.w3.org/2004/02/skos/core#
+#   semapv: https://w3id.org/semapv/vocab/
+#   cfihos: https://github.com/pedroleitao-neo4j/ontology-graph-spec-standards/blob/main/industrial/CFIHOS2.0/model.json#
+#   dexpi: https://github.com/pedroleitao-neo4j/ontology-graph-spec-standards/blob/main/industrial/DEXPI/model.json#
+subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	subject_source_version	object_source_version	comment
+cfihos:Company	Company	skos:narrowMatch	dexpi:Enterprise	Enterprise	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A CFIHOS company is any legal entity in the handover, the owner and operator as well as contractors, manufacturers and suppliers; a DEXPI enterprise is the ISA-95 enterprise at the top of the plant breakdown, i.e. the owner or operator. The enterprise is the narrower of the two.
+cfihos:Company.companyName	companyName	skos:exactMatch	dexpi:Enterprise.enterpriseName	enterpriseName	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Company and dexpi:Enterprise share.
+cfihos:Site	Site	skos:closeMatch	dexpi:Site	Site	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	Both are the geographical site a plant stands on; DEXPI defines it as ISA-95 does.
+cfihos:Site.siteCode	siteCode	skos:exactMatch	dexpi:Site.siteIdentificationCode	siteIdentificationCode	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Site and dexpi:Site share.
+cfihos:Site.siteName	siteName	skos:exactMatch	dexpi:Site.siteName	siteName	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Site and dexpi:Site share.
+cfihos:Plant	Plant	skos:closeMatch	dexpi:ProcessPlant	ProcessPlant	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	Both are the assembly of equipment performing a process, the root of the plant's functional breakdown: a CFIHOS plant decomposes into process units and tags, a DEXPI process plant into plant sections, systems and trains.
+cfihos:Plant.plantCode	plantCode	skos:exactMatch	dexpi:ProcessPlant.processPlantIdentificationCode	processPlantIdentificationCode	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Plant and dexpi:ProcessPlant share.
+cfihos:Plant.plantName	plantName	skos:exactMatch	dexpi:ProcessPlant.processPlantName	processPlantName	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Plant and dexpi:ProcessPlant share.
+cfihos:ProcessUnit	ProcessUnit	skos:closeMatch	dexpi:PlantSection	PlantSection	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A CFIHOS process unit is the process engineer's breakdown of a plant into sub-functions; a DEXPI plant section, defined by ISO 10209, is the same level of the breakdown.
+cfihos:ProcessUnit.processUnitCode	processUnitCode	skos:exactMatch	dexpi:PlantSection.plantSectionIdentificationCode	plantSectionIdentificationCode	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:ProcessUnit and dexpi:PlantSection share.
+cfihos:ProcessUnit.processUnitName	processUnitName	skos:exactMatch	dexpi:PlantSection.plantSectionName	plantSectionName	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:ProcessUnit and dexpi:PlantSection share.
+cfihos:Area	Area	skos:closeMatch	dexpi:PlantArea	PlantArea	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	Both are the physical area of a plant an item stands in; DEXPI defines it as ISA-95 does.
+cfihos:Area.areaCode	areaCode	skos:exactMatch	dexpi:PlantArea.plantAreaIdentificationCode	plantAreaIdentificationCode	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Area and dexpi:PlantArea share.
+cfihos:Area.areaName	areaName	skos:exactMatch	dexpi:PlantArea.plantAreaName	plantAreaName	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Area and dexpi:PlantArea share.
+cfihos:Tag	Tag	skos:closeMatch	dexpi:TaggedPlantItem	TaggedPlantItem	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A CFIHOS tag is the specification of a function in the plant that equipment fulfils; a DEXPI tagged plant item is the same function as drawn on a P&ID. The tag name joins them. CFIHOS keeps the tag apart from the serialised equipment installed against it, which a P&ID doesn't show.
+cfihos:Tag.tagName	tagName	skos:exactMatch	dexpi:TaggedPlantItem.tagName	tagName	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	A property cfihos:Tag and dexpi:TaggedPlantItem share.
+cfihos:Tag	Tag	skos:closeMatch	dexpi:MotorAsComponent	MotorAsComponent	semapv:ManualMappingCuration	cfihos-2.0	dexpi-2.0.1	CFIHOS tags a pump's driver on its own, e.g. PM-2001A, with the pump as its parent tag; DEXPI draws the motor as a component of the pump, named by a sub-tag. The two describe the same motor, but share no identifier.

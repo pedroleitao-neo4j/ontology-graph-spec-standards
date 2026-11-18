@@ -1,0 +1,2116 @@
+{
+  "schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json",
+  "version": "1.0",
+  "id": "crosswalk-digital-twin",
+  "name": "Digital twin: Asset Administration Shell 3.2 and AutomationML 2.1",
+  "description": "A crosswalk between the Asset Administration Shell 3.2 (IEC 63278), the digital twin of Industrie 4.0, and AutomationML Edition 2.1 (IEC 62714, CAEX 3.0), the format plant engineering tools exchange. The two meet across a component's life: the supplier publishes the component's asset administration shell, and the plant builder places the component in the AutomationML instance hierarchy of the plant it engineers. AutomationML e.V. and Plattform Industrie 4.0 publish how each carries the other. The Application Recommendation Asset Administration Shell Representation (AR 004E) serialises an AAS in AutomationML: the shell, its asset, submodels and submodel elements become internal elements with roles from the AssetAdministrationShellRoleClassLib, named by their idShort, with their attributes as AutomationML attributes. The Application Recommendation AutomationML in Asset Administration Shells (AR AMLinAAS) goes the other way: it references an AutomationML file from an AAS submodel and publishes AutomationML attributes as AAS properties.",
+  "nodes": {
+    "aas__AssetAdministrationShell": {
+      "labels": {
+        "identifier": "aas__AssetAdministrationShell"
+      },
+      "description": "An asset administration shell.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetAdministrationShell",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the AssetAdministrationShell node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The globally unique identification of the element. Multiplicity 1..1.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Identifiable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Identifiable/id",
+              "aasType": "xs:string",
+              "lower": 1,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_AssetAdministrationShell": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_AssetAdministrationShell_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__AssetInformation": {
+      "labels": {
+        "identifier": "aas__AssetInformation"
+      },
+      "description": "In 'AssetInformation' identifying meta data of the asset that is represented by an AAS is defined.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the AssetInformation node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "assetKind": {
+          "type": "STRING",
+          "name": "assetKind",
+          "description": "Denotes whether the Asset is of kind 'Type' or 'Instance', 'Role' or 'Batch'. Multiplicity 1..1. Values of AAS enumeration AssetKind.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/AssetInformation/assetKind",
+              "aasType": "AssetKind",
+              "lower": 1,
+              "upper": 1
+            }
+          },
+          "one_of": [
+            "Batch",
+            "Instance",
+            "NotApplicable",
+            "Role",
+            "Type"
+          ]
+        },
+        "globalAssetId": {
+          "type": "STRING",
+          "name": "globalAssetId",
+          "description": "Global identifier of the asset the AAS is representing.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/AssetInformation/globalAssetId",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "assetType": {
+          "type": "STRING",
+          "name": "assetType",
+          "description": "In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset under consideration as identified by 'globalAssetId'.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#AssetInformation",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/AssetInformation/assetType",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_AssetInformation": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_AssetInformation_key"
+        },
+        "exists_AssetInformation_assetKind": {
+          "type": "EXISTS",
+          "properties": [
+            "assetKind"
+          ],
+          "name": "aas__assetKind_AssetInformation_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__ConceptDescription": {
+      "labels": {
+        "identifier": "aas__ConceptDescription"
+      },
+      "description": "The semantics of a property or other elements that may have a semantic description is defined by a concept description.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/concept-description.html#ConceptDescription",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the ConceptDescription node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The globally unique identification of the element. Multiplicity 1..1.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Identifiable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Identifiable/id",
+              "aasType": "xs:string",
+              "lower": 1,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_ConceptDescription": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_ConceptDescription_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__File": {
+      "labels": {
+        "identifier": "aas__File"
+      },
+      "description": "A File is a data element that represents an address to a file (a locator).",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#File",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the File node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "value": {
+          "type": "STRING",
+          "name": "value",
+          "description": "Path and name of the referenced file (with file extension).",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#File",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/File/value",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "contentType": {
+          "type": "STRING",
+          "name": "contentType",
+          "description": "Content type of the content of the file.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#File",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/File/contentType",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_File": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_File_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__Key": {
+      "labels": {
+        "identifier": "aas__Key"
+      },
+      "description": "A key is a reference to an element by its ID.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Key",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the Key node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "type": {
+          "type": "STRING",
+          "name": "type",
+          "description": "Denotes which kind of entity is referenced. Multiplicity 1..1. Values of AAS enumeration KeyTypes.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Key",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Key/type",
+              "aasType": "KeyTypes",
+              "lower": 1,
+              "upper": 1
+            }
+          },
+          "one_of": [
+            "AnnotatedRelationshipElement",
+            "AssetAdministrationShell",
+            "BasicEventElement",
+            "Blob",
+            "Capability",
+            "ConceptDescription",
+            "DataElement",
+            "Entity",
+            "EventElement",
+            "File",
+            "FragmentReference",
+            "GlobalReference",
+            "Identifiable",
+            "MultiLanguageProperty",
+            "Operation",
+            "Property",
+            "Range",
+            "Referable",
+            "ReferenceElement",
+            "RelationshipElement",
+            "Submodel",
+            "SubmodelElement",
+            "SubmodelElementCollection",
+            "SubmodelElementList"
+          ]
+        },
+        "value": {
+          "type": "STRING",
+          "name": "value",
+          "description": "The key value, for example an IRDI or an URI. Multiplicity 1..1.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Key",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Key/value",
+              "aasType": "xs:string",
+              "lower": 1,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Key": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_Key_key"
+        },
+        "exists_Key_type": {
+          "type": "EXISTS",
+          "properties": [
+            "type"
+          ],
+          "name": "aas__type_Key_exists"
+        },
+        "exists_Key_value": {
+          "type": "EXISTS",
+          "properties": [
+            "value"
+          ],
+          "name": "aas__value_Key_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__Property": {
+      "labels": {
+        "identifier": "aas__Property"
+      },
+      "description": "A property is a data element that has a single value.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Property",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the Property node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "valueType": {
+          "type": "STRING",
+          "name": "valueType",
+          "description": "Data type of the value. Multiplicity 1..1. Values of AAS enumeration DataTypeDefXsd.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Property",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Property/valueType",
+              "aasType": "DataTypeDefXsd",
+              "lower": 1,
+              "upper": 1
+            }
+          },
+          "one_of": [
+            "xs:anyURI",
+            "xs:base64Binary",
+            "xs:boolean",
+            "xs:byte",
+            "xs:date",
+            "xs:dateTime",
+            "xs:decimal",
+            "xs:double",
+            "xs:duration",
+            "xs:float",
+            "xs:gDay",
+            "xs:gMonth",
+            "xs:gMonthDay",
+            "xs:gYear",
+            "xs:gYearMonth",
+            "xs:hexBinary",
+            "xs:int",
+            "xs:integer",
+            "xs:long",
+            "xs:negativeInteger",
+            "xs:nonNegativeInteger",
+            "xs:nonPositiveInteger",
+            "xs:positiveInteger",
+            "xs:short",
+            "xs:string",
+            "xs:time",
+            "xs:unsignedByte",
+            "xs:unsignedInt",
+            "xs:unsignedLong",
+            "xs:unsignedShort"
+          ]
+        },
+        "value": {
+          "type": "STRING",
+          "name": "value",
+          "description": "The value of the property instance.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#Property",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Property/value",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Property": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_Property_key"
+        },
+        "exists_Property_valueType": {
+          "type": "EXISTS",
+          "properties": [
+            "valueType"
+          ],
+          "name": "aas__valueType_Property_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__Qualifier": {
+      "labels": {
+        "identifier": "aas__Qualifier"
+      },
+      "description": "A qualifier is a type-value-pair that makes additional statements w.r.t. the value of the element.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the Qualifier node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "kind": {
+          "type": "STRING",
+          "name": "kind",
+          "description": "The qualifier kind describes the kind of the qualifier that is applied to the element. Values of AAS enumeration QualifierKind.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Qualifier/kind",
+              "aasType": "QualifierKind",
+              "lower": 0,
+              "upper": 1
+            }
+          },
+          "one_of": [
+            "ConceptQualifier",
+            "TemplateQualifier",
+            "ValueQualifier"
+          ]
+        },
+        "type": {
+          "type": "STRING",
+          "name": "type",
+          "description": "The qualifier type describes the type of the qualifier that is applied to the element. Multiplicity 1..1.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Qualifier/type",
+              "aasType": "xs:string",
+              "lower": 1,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "valueType": {
+          "type": "STRING",
+          "name": "valueType",
+          "description": "Data type of the qualifier value. Multiplicity 1..1. Values of AAS enumeration DataTypeDefXsd.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Qualifier/valueType",
+              "aasType": "DataTypeDefXsd",
+              "lower": 1,
+              "upper": 1
+            }
+          },
+          "one_of": [
+            "xs:anyURI",
+            "xs:base64Binary",
+            "xs:boolean",
+            "xs:byte",
+            "xs:date",
+            "xs:dateTime",
+            "xs:decimal",
+            "xs:double",
+            "xs:duration",
+            "xs:float",
+            "xs:gDay",
+            "xs:gMonth",
+            "xs:gMonthDay",
+            "xs:gYear",
+            "xs:gYearMonth",
+            "xs:hexBinary",
+            "xs:int",
+            "xs:integer",
+            "xs:long",
+            "xs:negativeInteger",
+            "xs:nonNegativeInteger",
+            "xs:nonPositiveInteger",
+            "xs:positiveInteger",
+            "xs:short",
+            "xs:string",
+            "xs:time",
+            "xs:unsignedByte",
+            "xs:unsignedInt",
+            "xs:unsignedLong",
+            "xs:unsignedShort"
+          ]
+        },
+        "value": {
+          "type": "STRING",
+          "name": "value",
+          "description": "The qualifier value is the value of the qualifier.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Qualifier",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Qualifier/value",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Qualifier": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_Qualifier_key"
+        },
+        "exists_Qualifier_type": {
+          "type": "EXISTS",
+          "properties": [
+            "type"
+          ],
+          "name": "aas__type_Qualifier_exists"
+        },
+        "exists_Qualifier_valueType": {
+          "type": "EXISTS",
+          "properties": [
+            "valueType"
+          ],
+          "name": "aas__valueType_Qualifier_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__Reference": {
+      "labels": {
+        "identifier": "aas__Reference"
+      },
+      "description": "Reference to either a model element of the same or another AAS or to an external entity.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Reference",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the Reference node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "type": {
+          "type": "STRING",
+          "name": "type",
+          "description": "Type of the reference. Multiplicity 1..1. Values of AAS enumeration ReferenceTypes.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html#Reference",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Reference/type",
+              "aasType": "ReferenceTypes",
+              "lower": 1,
+              "upper": 1
+            }
+          },
+          "one_of": [
+            "ExternalReference",
+            "ModelReference"
+          ]
+        }
+      },
+      "constraints": {
+        "key_Reference": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_Reference_key"
+        },
+        "exists_Reference_type": {
+          "type": "EXISTS",
+          "properties": [
+            "type"
+          ],
+          "name": "aas__type_Reference_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__ReferenceElement": {
+      "labels": {
+        "identifier": "aas__ReferenceElement"
+      },
+      "description": "A reference element is a data element that defines a logical reference to another element within the same or another AAS or a reference to an external object or entity.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#ReferenceElement",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the ReferenceElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_ReferenceElement": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_ReferenceElement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__RelationshipElement": {
+      "labels": {
+        "identifier": "aas__RelationshipElement",
+        "implied": [
+          "aas__SubmodelElement"
+        ]
+      },
+      "description": "A relationship element is used to define a relationship between two elements being either referable (model reference) or external (global reference).",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/submodel-elements.html#RelationshipElement",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the RelationshipElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_RelationshipElement": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_RelationshipElement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__Submodel": {
+      "labels": {
+        "identifier": "aas__Submodel"
+      },
+      "description": "A submodel defines a specific aspect of the asset represented by the AAS.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#Submodel",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the Submodel node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The globally unique identification of the element. Multiplicity 1..1.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Identifiable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Identifiable/id",
+              "aasType": "xs:string",
+              "lower": 1,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "kind": {
+          "type": "STRING",
+          "name": "kind",
+          "description": "Kind of the element: either template or instance. Values of AAS enumeration ModellingKind.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#HasKind",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/HasKind/kind",
+              "aasType": "ModellingKind",
+              "lower": 0,
+              "upper": 1
+            }
+          },
+          "one_of": [
+            "Instance",
+            "Template"
+          ]
+        }
+      },
+      "constraints": {
+        "key_Submodel": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_Submodel_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aas__SubmodelElement": {
+      "labels": {
+        "identifier": "aas__SubmodelElement"
+      },
+      "description": "A submodel element is an element suitable for the description and differentiation of assets.",
+      "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/core.html#SubmodelElement",
+      "properties": {
+        "uid": {
+          "type": "STRING",
+          "name": "uid",
+          "description": "The identifier of the SubmodelElement node in the graph, set by the loader: not part of the AAS metamodel. For an Identifiable, its id; for a Referable within one, e.g. a submodel element, the Identifiable's id followed by the element's idShort path; for any other element, e.g. a Reference or a Key, an identifier generated from its parent's uid and its position.",
+          "extensions": {
+            "custom": {
+              "addedByOntology": true
+            }
+          }
+        },
+        "category": {
+          "type": "STRING",
+          "name": "category",
+          "description": "The category is a value that gives further meta information w.r.t. to the class of the element. It affects the expected existence of attributes and the applicability of constraints.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/category",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "idShort": {
+          "type": "STRING",
+          "name": "idShort",
+          "description": "In case of identifiables this attribute is a short name of the element. In case of referable this ID is an identifying string of the element within its name space.",
+          "reference": "https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/common.html#Referable",
+          "extensions": {
+            "custom": {
+              "iri": "https://admin-shell.io/aas/3/2/Referable/idShort",
+              "aasType": "xs:string",
+              "lower": 0,
+              "upper": 1,
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_SubmodelElement": {
+          "type": "KEY",
+          "properties": [
+            "uid"
+          ],
+          "name": "aas__uid_SubmodelElement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "Asset Administration Shell 3.2"
+        }
+      }
+    },
+    "aml__InternalElement": {
+      "labels": {
+        "identifier": "aml__InternalElement"
+      },
+      "description": "Shall be used in order to define nested objects inside of a SystemUnitClass or another InternalElement. Allows description of the internal structure of a CAEX object. Defines base structures for a hierarchical object instance. The instance maybe part of the InstanceHierarchy or a SystemUnitClass.",
+      "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L346",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the InternalElement: its ID attribute, a unique identifier of the CAEX object, e.g. a UUID. Where it has none, as classes in a library often don't, one the loader assigns, e.g. its path.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ID"
+            }
+          }
+        },
+        "refBaseSystemUnitPath": {
+          "type": "STRING",
+          "name": "refBaseSystemUnitPath",
+          "description": "Stores the reference of an InternalElement to a class or instance definition. References contain the full path information.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L346",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "RefBaseSystemUnitPath",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "name": {
+          "type": "STRING",
+          "name": "name",
+          "description": "Describes the name of the CAEX object. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "Name",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "changeMode": {
+          "type": "STRING",
+          "name": "changeMode",
+          "description": "Optionally describes the change state of a CAEX object. If used, the ChangeMode shall have the following value range: state, create, delete and change. This information should be used for further change management applications. Defaults to `state`.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ChangeMode",
+              "xsdType": "ChangeMode",
+              "default": "state"
+            }
+          },
+          "one_of": [
+            "state",
+            "create",
+            "delete",
+            "change"
+          ]
+        },
+        "description": {
+          "type": "STRING",
+          "name": "description",
+          "description": "Textual description for CAEX objects.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Description"
+            }
+          }
+        },
+        "version": {
+          "type": "STRING",
+          "name": "version",
+          "description": "Organizational information about the state of the version.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Version"
+            }
+          }
+        },
+        "copyright": {
+          "type": "STRING",
+          "name": "copyright",
+          "description": "Organizational information about copyright.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Copyright"
+            }
+          }
+        },
+        "additionalInformation": {
+          "type": "LIST<STRING>",
+          "name": "additionalInformation",
+          "description": "Optional auxiliary field that may contain any additional information about a CAEX object. Multiplicity 0..*.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "AdditionalInformation"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_InternalElement": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "aml__id_InternalElement_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "AutomationML Edition 2.1 (CAEX 3.0)"
+        }
+      }
+    },
+    "aml__Attribute": {
+      "labels": {
+        "identifier": "aml__Attribute"
+      },
+      "description": "Characterizes properties of the SystemUnitClass. Defines base structures for attribute definitions.",
+      "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L607",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the Attribute: its ID attribute, a unique identifier of the CAEX object, e.g. a UUID. Where it has none, as classes in a library often don't, one the loader assigns, e.g. its path.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ID"
+            }
+          }
+        },
+        "unit": {
+          "type": "STRING",
+          "name": "unit",
+          "description": "Describes the unit of the attribute.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L607",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "Unit",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "attributeDataType": {
+          "type": "STRING",
+          "name": "attributeDataType",
+          "description": "Describes the data type of the attribute using XML notation.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L607",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "AttributeDataType"
+            }
+          }
+        },
+        "refAttributeType": {
+          "type": "STRING",
+          "name": "refAttributeType",
+          "description": "References an attribute type in the attribute library.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L607",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "RefAttributeType",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "defaultValue": {
+          "type": "STRING",
+          "name": "defaultValue",
+          "description": "A predefined default value for an attribute.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L607",
+          "extensions": {
+            "custom": {
+              "xsdElement": "DefaultValue",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "value": {
+          "type": "STRING",
+          "name": "value",
+          "description": "Element describing the value of an attribute.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L607",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Value",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "name": {
+          "type": "STRING",
+          "name": "name",
+          "description": "Describes the name of the CAEX object. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "Name",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "changeMode": {
+          "type": "STRING",
+          "name": "changeMode",
+          "description": "Optionally describes the change state of a CAEX object. If used, the ChangeMode shall have the following value range: state, create, delete and change. This information should be used for further change management applications. Defaults to `state`.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ChangeMode",
+              "xsdType": "ChangeMode",
+              "default": "state"
+            }
+          },
+          "one_of": [
+            "state",
+            "create",
+            "delete",
+            "change"
+          ]
+        },
+        "description": {
+          "type": "STRING",
+          "name": "description",
+          "description": "Textual description for CAEX objects.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Description"
+            }
+          }
+        },
+        "version": {
+          "type": "STRING",
+          "name": "version",
+          "description": "Organizational information about the state of the version.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Version"
+            }
+          }
+        },
+        "copyright": {
+          "type": "STRING",
+          "name": "copyright",
+          "description": "Organizational information about copyright.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Copyright"
+            }
+          }
+        },
+        "additionalInformation": {
+          "type": "LIST<STRING>",
+          "name": "additionalInformation",
+          "description": "Optional auxiliary field that may contain any additional information about a CAEX object. Multiplicity 0..*.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "AdditionalInformation"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Attribute": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "aml__id_Attribute_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "AutomationML Edition 2.1 (CAEX 3.0)"
+        }
+      }
+    },
+    "aml__RefSemantic": {
+      "labels": {
+        "identifier": "aml__RefSemantic"
+      },
+      "description": "A reference to a definition of a defined attribute, e. g. to an attribute in a standardized library, this allows the semantic definition of the attribute.",
+      "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L624",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the RefSemantic, which CAEX doesn't give it: one the loader assigns, unique within the graph.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686"
+        },
+        "correspondingAttributePath": {
+          "type": "STRING",
+          "name": "correspondingAttributePath",
+          "description": "The CorrespondingAttributePath of the RefSemantic. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L624",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "CorrespondingAttributePath",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "changeMode": {
+          "type": "STRING",
+          "name": "changeMode",
+          "description": "Optionally describes the change state of a CAEX object. If used, the ChangeMode shall have the following value range: state, create, delete and change. This information should be used for further change management applications. Defaults to `state`.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ChangeMode",
+              "xsdType": "ChangeMode",
+              "default": "state"
+            }
+          },
+          "one_of": [
+            "state",
+            "create",
+            "delete",
+            "change"
+          ]
+        },
+        "description": {
+          "type": "STRING",
+          "name": "description",
+          "description": "Textual description for CAEX objects.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Description"
+            }
+          }
+        },
+        "version": {
+          "type": "STRING",
+          "name": "version",
+          "description": "Organizational information about the state of the version.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Version"
+            }
+          }
+        },
+        "copyright": {
+          "type": "STRING",
+          "name": "copyright",
+          "description": "Organizational information about copyright.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Copyright"
+            }
+          }
+        },
+        "additionalInformation": {
+          "type": "LIST<STRING>",
+          "name": "additionalInformation",
+          "description": "Optional auxiliary field that may contain any additional information about a CAEX object. Multiplicity 0..*.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "AdditionalInformation"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_RefSemantic": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "aml__id_RefSemantic_key"
+        },
+        "exists_RefSemantic_correspondingAttributePath": {
+          "type": "EXISTS",
+          "properties": [
+            "correspondingAttributePath"
+          ],
+          "name": "aml__correspondingAttributePath_RefSemantic_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "AutomationML Edition 2.1 (CAEX 3.0)"
+        }
+      }
+    },
+    "aml__InternalLink": {
+      "labels": {
+        "identifier": "aml__InternalLink"
+      },
+      "description": "Shall be used in order to define the relationships between internal interfaces of InternalElements.",
+      "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L517",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the InternalLink: its ID attribute, a unique identifier of the CAEX object, e.g. a UUID. Where it has none, as classes in a library often don't, one the loader assigns, e.g. its path.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ID"
+            }
+          }
+        },
+        "refPartnerSideA": {
+          "type": "STRING",
+          "name": "refPartnerSideA",
+          "description": "The RefPartnerSideA of the InternalLink. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L517",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "RefPartnerSideA",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "refPartnerSideB": {
+          "type": "STRING",
+          "name": "refPartnerSideB",
+          "description": "The RefPartnerSideB of the InternalLink. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L517",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "RefPartnerSideB",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "name": {
+          "type": "STRING",
+          "name": "name",
+          "description": "Describes the name of the CAEX object. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "Name",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "changeMode": {
+          "type": "STRING",
+          "name": "changeMode",
+          "description": "Optionally describes the change state of a CAEX object. If used, the ChangeMode shall have the following value range: state, create, delete and change. This information should be used for further change management applications. Defaults to `state`.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ChangeMode",
+              "xsdType": "ChangeMode",
+              "default": "state"
+            }
+          },
+          "one_of": [
+            "state",
+            "create",
+            "delete",
+            "change"
+          ]
+        },
+        "description": {
+          "type": "STRING",
+          "name": "description",
+          "description": "Textual description for CAEX objects.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Description"
+            }
+          }
+        },
+        "version": {
+          "type": "STRING",
+          "name": "version",
+          "description": "Organizational information about the state of the version.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Version"
+            }
+          }
+        },
+        "copyright": {
+          "type": "STRING",
+          "name": "copyright",
+          "description": "Organizational information about copyright.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Copyright"
+            }
+          }
+        },
+        "additionalInformation": {
+          "type": "LIST<STRING>",
+          "name": "additionalInformation",
+          "description": "Optional auxiliary field that may contain any additional information about a CAEX object. Multiplicity 0..*.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "AdditionalInformation"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_InternalLink": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "aml__id_InternalLink_key"
+        },
+        "exists_InternalLink_refPartnerSideA": {
+          "type": "EXISTS",
+          "properties": [
+            "refPartnerSideA"
+          ],
+          "name": "aml__refPartnerSideA_InternalLink_exists"
+        },
+        "exists_InternalLink_refPartnerSideB": {
+          "type": "EXISTS",
+          "properties": [
+            "refPartnerSideB"
+          ],
+          "name": "aml__refPartnerSideB_InternalLink_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "AutomationML Edition 2.1 (CAEX 3.0)"
+        }
+      }
+    },
+    "aml__SystemUnitClass": {
+      "labels": {
+        "identifier": "aml__SystemUnitClass"
+      },
+      "description": "Shall be used for SystemUnitClass definition, provides definition of a class of a SystemUnitClass type. Defines base structures for a hierarchical SystemUnitClass tree. The hierarchical structure of a SystemUnit library has organizational character only.",
+      "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L389",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the SystemUnitClass: its ID attribute, a unique identifier of the CAEX object, e.g. a UUID. Where it has none, as classes in a library often don't, one the loader assigns, e.g. its path.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ID"
+            }
+          }
+        },
+        "refBaseClassPath": {
+          "type": "STRING",
+          "name": "refBaseClassPath",
+          "description": "Stores the reference of a class to its base class. References contain the full path to the referred class object.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L389",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "RefBaseClassPath",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "name": {
+          "type": "STRING",
+          "name": "name",
+          "description": "Describes the name of the CAEX object. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "Name",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "changeMode": {
+          "type": "STRING",
+          "name": "changeMode",
+          "description": "Optionally describes the change state of a CAEX object. If used, the ChangeMode shall have the following value range: state, create, delete and change. This information should be used for further change management applications. Defaults to `state`.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ChangeMode",
+              "xsdType": "ChangeMode",
+              "default": "state"
+            }
+          },
+          "one_of": [
+            "state",
+            "create",
+            "delete",
+            "change"
+          ]
+        },
+        "description": {
+          "type": "STRING",
+          "name": "description",
+          "description": "Textual description for CAEX objects.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Description"
+            }
+          }
+        },
+        "version": {
+          "type": "STRING",
+          "name": "version",
+          "description": "Organizational information about the state of the version.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Version"
+            }
+          }
+        },
+        "copyright": {
+          "type": "STRING",
+          "name": "copyright",
+          "description": "Organizational information about copyright.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Copyright"
+            }
+          }
+        },
+        "additionalInformation": {
+          "type": "LIST<STRING>",
+          "name": "additionalInformation",
+          "description": "Optional auxiliary field that may contain any additional information about a CAEX object. Multiplicity 0..*.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "AdditionalInformation"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_SystemUnitClass": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "aml__id_SystemUnitClass_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "AutomationML Edition 2.1 (CAEX 3.0)"
+        }
+      }
+    },
+    "aml__ExternalDataReference": {
+      "labels": {
+        "identifier": "aml__ExternalDataReference"
+      },
+      "description": "The AutomationML interface class ExternalDataReference, from the AutomationMLInterfaceClassLib (Standard Automation Markup Language Interface Class Library) 2.10.0, at AutomationMLInterfaceClassLib/AutomationMLBaseInterface/ExternalDataConnector/ExternalDataReference. It is an ExternalDataConnector. Carried by an ExternalInterface whose RefBaseClassPath refers to this interface class, or to one derived from it. The interface class defines the attributes MIMEType.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2021/11/Whitepaper-AutomationML-Edition-2.1.zip",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the ExternalInterface: its ID attribute, unique within the CAEX file, or one the loader assigns.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686"
+        },
+        "refBaseClassPath": {
+          "type": "STRING",
+          "name": "refBaseClassPath",
+          "description": "Stores the reference of a class to its base class. References contain the full path to the referred class object.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L584",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "RefBaseClassPath",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "name": {
+          "type": "STRING",
+          "name": "name",
+          "description": "Describes the name of the CAEX object. Multiplicity 1..1.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L686",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "Name",
+              "xsdType": "xs:string"
+            }
+          }
+        },
+        "changeMode": {
+          "type": "STRING",
+          "name": "changeMode",
+          "description": "Optionally describes the change state of a CAEX object. If used, the ChangeMode shall have the following value range: state, create, delete and change. This information should be used for further change management applications. Defaults to `state`.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdAttribute": "ChangeMode",
+              "xsdType": "ChangeMode",
+              "default": "state"
+            }
+          },
+          "one_of": [
+            "state",
+            "create",
+            "delete",
+            "change"
+          ]
+        },
+        "description": {
+          "type": "STRING",
+          "name": "description",
+          "description": "Textual description for CAEX objects.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Description"
+            }
+          }
+        },
+        "version": {
+          "type": "STRING",
+          "name": "version",
+          "description": "Organizational information about the state of the version.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Version"
+            }
+          }
+        },
+        "copyright": {
+          "type": "STRING",
+          "name": "copyright",
+          "description": "Organizational information about copyright.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "Copyright"
+            }
+          }
+        },
+        "additionalInformation": {
+          "type": "LIST<STRING>",
+          "name": "additionalInformation",
+          "description": "Optional auxiliary field that may contain any additional information about a CAEX object. Multiplicity 0..*.",
+          "reference": "https://github.com/AutomationML/AMLEngine2.1/blob/098106acd50ca74c10a12d2cbecdae047c1f9b4b/Samples/WikiSnippets/src/CAEX_ClassModel_V.3.0.xsd#L708",
+          "extensions": {
+            "custom": {
+              "xsdElement": "AdditionalInformation"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_ExternalDataReference": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "aml__id_ExternalDataReference_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "AutomationML Edition 2.1 (CAEX 3.0)"
+        }
+      }
+    }
+  },
+  "relationships": {
+    "aas__AssetAdministrationShell_SAME_AS_aml__InternalElement": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "aas__AssetAdministrationShell"
+      },
+      "to": {
+        "node": "aml__InternalElement"
+      },
+      "description": "aas:AssetAdministrationShell skos:closeMatch aml:InternalElement. An AAS is serialised as an internal element with the role class AssetAdministrationShellRoleClassLib/AssetAdministrationShell, named by its idShort (AR 004E rules 2, 14 and 16). Its id becomes the value of an AutomationML attribute, not the internal element's ID, which stays a UUID. Linked nodes share idShort and name.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "idShort": "name"
+          }
+        }
+      }
+    },
+    "aas__AssetInformation_SAME_AS_aml__InternalElement": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "aas__AssetInformation"
+      },
+      "to": {
+        "node": "aml__InternalElement"
+      },
+      "description": "aas:AssetInformation skos:closeMatch aml:InternalElement. The asset an AAS describes is an internal element with the role class AssetAdministrationShellRoleClassLib/Asset (AR 004E 5.1.2). The recommendation was written for AAS metamodel 2.0, where the asset was an identifiable of its own; in 3.x it is the shell's asset information, with no idShort to name the element by.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__Submodel_SAME_AS_aml__InternalElement": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "aas__Submodel"
+      },
+      "to": {
+        "node": "aml__InternalElement"
+      },
+      "description": "aas:Submodel skos:closeMatch aml:InternalElement. A submodel of kind Instance is an internal element with the role class AssetAdministrationShellRoleClassLib/Submodel, named by its idShort, inside the shell's internal element (AR 004E rules 2, 16 and 5.1.3). Linked nodes share idShort and name.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "idShort": "name"
+          }
+        }
+      }
+    },
+    "aas__Submodel_RELATED_TO_aml__SystemUnitClass": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "aas__Submodel"
+      },
+      "to": {
+        "node": "aml__SystemUnitClass"
+      },
+      "description": "aas:Submodel skos:relatedMatch aml:SystemUnitClass. A submodel of kind Template, and the shell holding it, become system unit classes in a system unit class library, e.g. AssetAdministrationShellSystemUnitClasses, carrying the same roles as their instances (AR 004E rules 24 to 26).",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__SubmodelElement_SAME_AS_aml__InternalElement": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "aas__SubmodelElement"
+      },
+      "to": {
+        "node": "aml__InternalElement"
+      },
+      "description": "aas:SubmodelElement skos:closeMatch aml:InternalElement. Every submodel element is an internal element whose role class is its subtype, e.g. AssetAdministrationShellRoleClassLib/Property, named by its idShort; a collection's elements are internal elements inside it (AR 004E rules 9 and 13). Linked nodes share idShort and name.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "idShort": "name"
+          }
+        }
+      }
+    },
+    "aas__File_RELATED_TO_aml__ExternalDataReference": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "aas__File"
+      },
+      "to": {
+        "node": "aml__ExternalDataReference"
+      },
+      "description": "aas:File skos:relatedMatch aml:ExternalDataReference. A File element's internal element references its file through a FileDataReference interface, derived from ExternalDataReference, whose refURI and MIMEType attributes carry the file's path and content type (AR 004E rule 10 and 4.7).",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__ReferenceElement_RELATED_TO_aml__InternalLink": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "aas__ReferenceElement"
+      },
+      "to": {
+        "node": "aml__InternalLink"
+      },
+      "description": "aas:ReferenceElement skos:relatedMatch aml:InternalLink. A reference element pointing inside the AAS has a ReferableReference interface, joined by an internal link to the element it refers to; an external reference is a serialised string instead (AR 004E rule 11).",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__RelationshipElement_RELATED_TO_aml__InternalLink": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "aas__RelationshipElement"
+      },
+      "to": {
+        "node": "aml__InternalLink"
+      },
+      "description": "aas:RelationshipElement skos:relatedMatch aml:InternalLink. A relationship element's first and second elements are ReferableReference interfaces, each joined by an internal link to the element it refers to when that is inside the AAS (AR 004E rule 11).",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__ConceptDescription_SAME_AS_aml__InternalElement": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "aas__ConceptDescription"
+      },
+      "to": {
+        "node": "aml__InternalElement"
+      },
+      "description": "aas:ConceptDescription skos:closeMatch aml:InternalElement. A concept description is an internal element with the role class AssetAdministrationShellRoleClassLib/ConceptDescription, in an instance hierarchy such as AssetAdministrationShellConceptDescriptions. Its name joins its idShort, ID type and ID, so the names don't match (AR 004E rules 15 and 20).",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__Qualifier_SAME_AS_aml__Attribute": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "aas__Qualifier"
+      },
+      "to": {
+        "node": "aml__Attribute"
+      },
+      "description": "aas:Qualifier skos:closeMatch aml:Attribute. A qualifier is a complex attribute named Qualifier:<type>=<value>, with the qualifier's own attributes as nested attributes (AR 004E rule 7).",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__Reference_RELATED_TO_aml__Attribute": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "aas__Reference"
+      },
+      "to": {
+        "node": "aml__Attribute"
+      },
+      "description": "aas:Reference skos:relatedMatch aml:Attribute. A reference-valued attribute of an AAS element, e.g. its semanticId, is an attribute whose value is the reference serialised as a string (AR 004E rule 6 and 6.2.6). The attribute's RefSemantic, e.g. AAS:HasSemantics/semanticId, names the metamodel attribute it holds, not the reference's meaning.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2022/04/Asset-Administration-Shell-Representation-V1_0_0.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false
+        }
+      }
+    },
+    "aas__Property_SAME_AS_aml__Attribute": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "aas__Property"
+      },
+      "to": {
+        "node": "aml__Attribute"
+      },
+      "description": "aas:Property skos:closeMatch aml:Attribute. An AAS property can publish an AutomationML attribute of the element that holds the asset's engineering data, named as the attribute and holding its value; the recommendation relates them by a RelationshipElement in the AutomationML submodel, or by a property already in another submodel such as the Digital Nameplate (AR AMLinAAS 3.3). Linked nodes share idShort and name, value.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2024/05/AR-Integrating-AML-projects-in-AAS.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "idShort": "name",
+            "value": "value"
+          }
+        }
+      }
+    },
+    "aas__Key_RELATED_TO_aml__RefSemantic": {
+      "type": "RELATED_TO",
+      "from": {
+        "node": "aas__Key"
+      },
+      "to": {
+        "node": "aml__RefSemantic"
+      },
+      "description": "aas:Key skos:relatedMatch aml:RefSemantic. An attribute published as a property shares its meaning: the key of the property's semanticId, e.g. an ECLASS IRDI, is the path the attribute's RefSemantic gives. AR 004E uses RefSemantic differently, for the AAS metamodel attribute an attribute serialises (6.2.5), so this holds for published engineering attributes, not for a serialised AAS. Linked nodes share value and correspondingAttributePath.",
+      "reference": "https://www.automationml.org/wp-content/uploads/2024/05/AR-Integrating-AML-projects-in-AAS.zip",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:relatedMatch",
+          "exact": false,
+          "properties": {
+            "value": "correspondingAttributePath"
+          }
+        }
+      }
+    }
+  }
+}

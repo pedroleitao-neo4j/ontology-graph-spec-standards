@@ -1,0 +1,46 @@
+# mapping_set_id: https://github.com/pedroleitao-neo4j/ontology-graph-spec-standards/blob/main/crosswalks/threat-intelligence/mappings.sssom.tsv
+# mapping_set_title: Threat intelligence: STIX 2.1, MITRE ATT&CK 20.1 and MITRE D3FEND 1.6.0
+# license: https://creativecommons.org/licenses/by/4.0/
+# curie_map:
+#   skos: http://www.w3.org/2004/02/skos/core#
+#   semapv: https://w3id.org/semapv/vocab/
+#   stix: https://github.com/pedroleitao-neo4j/ontology-graph-spec-standards/blob/main/cybersecurity/STIX2.1/model.json#
+#   attack: https://github.com/pedroleitao-neo4j/ontology-graph-spec-standards/blob/main/cybersecurity/ATTACK/model.json#
+#   d3fend: https://github.com/pedroleitao-neo4j/ontology-graph-spec-standards/blob/main/cybersecurity/D3FEND/model.json#
+subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	subject_source_version	object_source_version	comment
+stix:AttackPattern	AttackPattern	skos:narrowMatch	attack:Technique	Technique	semapv:ManualMappingCuration	stix-2.1	mitre-attack	ATT&CK publishes its techniques and sub-techniques as STIX attack-pattern objects, keeping their STIX ids. A STIX attack pattern may come from elsewhere, e.g. CAPEC, so the ATT&CK technique is the narrower.
+stix:AttackPattern.id	id	skos:exactMatch	attack:Technique.stixId	stixId	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:AttackPattern and attack:Technique share.
+stix:AttackPattern.name	name	skos:exactMatch	attack:Technique.name	name	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:AttackPattern and attack:Technique share.
+stix:IntrusionSet	IntrusionSet	skos:narrowMatch	attack:Group	Group	semapv:ManualMappingCuration	stix-2.1	mitre-attack	ATT&CK publishes its groups as STIX intrusion-set objects. Any intrusion set a producer tracks is a STIX intrusion set, so the ATT&CK group is the narrower.
+stix:IntrusionSet.id	id	skos:exactMatch	attack:Group.stixId	stixId	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:IntrusionSet and attack:Group share.
+stix:IntrusionSet.name	name	skos:exactMatch	attack:Group.name	name	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:IntrusionSet and attack:Group share.
+stix:Campaign	Campaign	skos:narrowMatch	attack:Campaign	Campaign	semapv:ManualMappingCuration	stix-2.1	mitre-attack	ATT&CK publishes its campaigns as STIX campaign objects.
+stix:Campaign.id	id	skos:exactMatch	attack:Campaign.stixId	stixId	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:Campaign and attack:Campaign share.
+stix:Campaign.name	name	skos:exactMatch	attack:Campaign.name	name	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:Campaign and attack:Campaign share.
+stix:Malware	Malware	skos:narrowMatch	attack:Malware	Malware	semapv:ManualMappingCuration	stix-2.1	mitre-attack	ATT&CK publishes the malware among its software as STIX malware objects.
+stix:Malware.id	id	skos:exactMatch	attack:Malware.stixId	stixId	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:Malware and attack:Malware share.
+stix:Malware.name	name	skos:exactMatch	attack:Malware.name	name	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:Malware and attack:Malware share.
+stix:Tool	Tool	skos:narrowMatch	attack:Tool	Tool	semapv:ManualMappingCuration	stix-2.1	mitre-attack	ATT&CK publishes the legitimate tools among its software as STIX tool objects.
+stix:Tool.id	id	skos:exactMatch	attack:Tool.stixId	stixId	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:Tool and attack:Tool share.
+stix:Tool.name	name	skos:exactMatch	attack:Tool.name	name	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:Tool and attack:Tool share.
+stix:CourseOfAction	CourseOfAction	skos:narrowMatch	attack:Mitigation	Mitigation	semapv:ManualMappingCuration	stix-2.1	mitre-attack	ATT&CK publishes its mitigations as STIX course-of-action objects. A STIX course of action may be any action taken to prevent or respond to an attack, e.g. blocking a campaign's infrastructure, so the ATT&CK mitigation is the narrower.
+stix:CourseOfAction.id	id	skos:exactMatch	attack:Mitigation.stixId	stixId	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:CourseOfAction and attack:Mitigation share.
+stix:CourseOfAction.name	name	skos:exactMatch	attack:Mitigation.name	name	semapv:ManualMappingCuration	stix-2.1	mitre-attack	A property stix:CourseOfAction and attack:Mitigation share.
+attack:Technique	Technique	skos:closeMatch	d3fend:OffensiveTechnique	OffensiveTechnique	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	D3FEND imports ATT&CK's Enterprise techniques and sub-techniques as offensive technique classes, named by their ATT&CK ids. D3FEND's offensive techniques also include classes of its own grouping them by tactic, e.g. Initial Access Technique, and ATT&CK's Mobile and ICS techniques are other D3FEND classes.
+attack:Technique.attackId	attackId	skos:exactMatch	d3fend:OffensiveTechnique.attackId	attackId	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Technique and d3fend:OffensiveTechnique share.
+attack:Technique.name	name	skos:exactMatch	d3fend:OffensiveTechnique.name	name	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Technique and d3fend:OffensiveTechnique share.
+attack:Technique	Technique	skos:closeMatch	d3fend:ATTACKICSTechnique	ATTACKICSTechnique	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	D3FEND imports ATT&CK's ICS techniques as classes of their own.
+attack:Technique.attackId	attackId	skos:exactMatch	d3fend:ATTACKICSTechnique.attackId	attackId	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Technique and d3fend:ATTACKICSTechnique share.
+attack:Technique.name	name	skos:exactMatch	d3fend:ATTACKICSTechnique.name	name	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Technique and d3fend:ATTACKICSTechnique share.
+attack:Technique	Technique	skos:closeMatch	d3fend:ATTACKMobileTechnique	ATTACKMobileTechnique	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	D3FEND imports ATT&CK's Mobile techniques as classes of their own.
+attack:Technique.attackId	attackId	skos:exactMatch	d3fend:ATTACKMobileTechnique.attackId	attackId	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Technique and d3fend:ATTACKMobileTechnique share.
+attack:Technique.name	name	skos:exactMatch	d3fend:ATTACKMobileTechnique.name	name	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Technique and d3fend:ATTACKMobileTechnique share.
+attack:Tactic	Tactic	skos:closeMatch	d3fend:OffensiveTactic	OffensiveTactic	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	D3FEND imports ATT&CK's Enterprise tactics as offensive tactic classes, named by their ATT&CK ids, e.g. TA0001; the ATT&CK id is in the class IRI, not a property of its own, so the name joins them.
+attack:Tactic.name	name	skos:exactMatch	d3fend:OffensiveTactic.name	name	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Tactic and d3fend:OffensiveTactic share.
+attack:Mitigation	Mitigation	skos:narrowMatch	d3fend:ATTACKEnterpriseMitigation	ATTACKEnterpriseMitigation	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	D3FEND imports ATT&CK's Enterprise mitigations, named by their ATT&CK ids, e.g. M1021, and relates each to the defensive techniques that implement it. ATT&CK's Mobile and ICS mitigations have no D3FEND counterpart, so the D3FEND class is the narrower.
+attack:Mitigation.name	name	skos:exactMatch	d3fend:ATTACKEnterpriseMitigation.name	name	semapv:ManualMappingCuration	mitre-attack	d3fend-1.6.0	A property attack:Mitigation and d3fend:ATTACKEnterpriseMitigation share.
+stix:File	File	skos:relatedMatch	d3fend:File	File	semapv:ManualMappingCuration	stix-2.1	d3fend-1.6.0	A STIX file is one observed file, with its name and hashes; a D3FEND file is a class of digital artifact, e.g. Executable File or Email Attachment, that offensive techniques produce and defensive techniques analyse. An observed file is an instance of the classes it belongs to.
+stix:EmailMessage	EmailMessage	skos:relatedMatch	d3fend:DigitalArtifact	DigitalArtifact	semapv:ManualMappingCuration	stix-2.1	d3fend-1.6.0	A STIX email message is one observed message; D3FEND's Email is a class of digital artifact, and D3FEND's email filtering and analysis techniques act on its instances.
+stix:Url	Url	skos:relatedMatch	d3fend:DigitalArtifact	DigitalArtifact	semapv:ManualMappingCuration	stix-2.1	d3fend-1.6.0	A STIX URL is one observed URL; D3FEND's URL is a class of digital artifact, analysed by URL Analysis.
+stix:Process	Process	skos:relatedMatch	d3fend:Process	Process	semapv:ManualMappingCuration	stix-2.1	d3fend-1.6.0	A STIX process is one observed process; D3FEND's Process is a class of digital artifact.
+stix:NetworkTraffic	NetworkTraffic	skos:relatedMatch	d3fend:NetworkTraffic	NetworkTraffic	semapv:ManualMappingCuration	stix-2.1	d3fend-1.6.0	A STIX network traffic object is one observed flow; D3FEND's network traffic classes, e.g. Outbound Internet Web Traffic, are the kinds of traffic its filtering and analysis techniques act on.

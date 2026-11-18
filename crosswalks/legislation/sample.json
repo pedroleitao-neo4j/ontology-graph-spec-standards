@@ -1,0 +1,277 @@
+{
+  "scenario": "The Consumer Protection (Amendment) Act, 2024 of the fictional jurisdiction zz, and the Consumer Protection Act, 2012 it amends, as the Akoma Ntoso sample marks them up and as ELI metadata, added here, publishes them: each act as a legal resource with an English expression and an Akoma Ntoso XML format, the article of the amending act that substitutes an article of the principal act, the National Assembly that passed the act, the National Council for Law Reporting that publishes it, and the concept of consumer protection it is about. Each ELI node is linked to the Akoma Ntoso node describing the same thing, and the act's Akoma Ntoso FRBR URIs are the ELI local identifiers of its work, expression and format. The ELI IRIs are fictional; the ELI sample's GDPR has no Akoma Ntoso counterpart and is not linked.",
+  "nodes": {
+    "eli:act2024": {
+      "node": "eli:LegalResource",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2024/7",
+        "number": [
+          "7"
+        ],
+        "id_local": [
+          "/akn/zz/act/2024/7"
+        ],
+        "date_document": "2024-03-12",
+        "date_publication": "2024-03-15",
+        "first_date_entry_in_force": "2024-04-01"
+      }
+    },
+    "eli:act2024En": {
+      "node": "eli:LegalExpression",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2024/7/eng",
+        "id_local": [
+          "/akn/zz/act/2024/7/eng@"
+        ],
+        "title": [
+          "Consumer Protection (Amendment) Act, 2024"
+        ],
+        "date_publication": "2024-03-15"
+      }
+    },
+    "eli:act2024EnXml": {
+      "node": "eli:Format",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2024/7/eng/xml",
+        "id_local": [
+          "/akn/zz/act/2024/7/eng@.akn"
+        ],
+        "media_type": [
+          "application/akn+xml"
+        ],
+        "published_in": [
+          "Official Gazette, Gazette Notice No. 1234"
+        ]
+      }
+    },
+    "eli:act2024Art5": {
+      "node": "eli:LegalResourceSubdivision",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2024/7/art_5",
+        "number": [
+          "5"
+        ],
+        "description": [
+          "Substitution of section 3 of the principal Act"
+        ]
+      }
+    },
+    "eli:act2012": {
+      "node": "eli:LegalResource",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2012/12",
+        "number": [
+          "12"
+        ],
+        "id_local": [
+          "/akn/zz/act/2012/12"
+        ],
+        "date_document": "2012-12-14"
+      }
+    },
+    "eli:act2012En": {
+      "node": "eli:LegalExpression",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2012/12/2024-04-01/eng",
+        "id_local": [
+          "/akn/zz/act/2012/12/eng@2024-04-01"
+        ],
+        "title": [
+          "Consumer Protection Act, 2012"
+        ],
+        "version_date": "2024-04-01"
+      }
+    },
+    "eli:act2012EnXml": {
+      "node": "eli:Format",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2012/12/2024-04-01/eng/xml",
+        "id_local": [
+          "/akn/zz/act/2012/12/eng@2024-04-01.akn"
+        ],
+        "media_type": [
+          "application/akn+xml"
+        ]
+      }
+    },
+    "eli:act2012Art3": {
+      "node": "eli:LegalResourceSubdivision",
+      "properties": {
+        "uri": "https://example.org/eli/zz/act/2012/12/art_3",
+        "number": [
+          "3"
+        ],
+        "description": [
+          "Unfair contract terms"
+        ]
+      }
+    },
+    "eli:xml": {
+      "node": "eli:FormatType",
+      "properties": {
+        "uri": "http://publications.europa.eu/resource/authority/file-type/XML",
+        "prefLabel": [
+          "XML"
+        ]
+      }
+    },
+    "eli:nationalAssembly": {
+      "node": "eli:Organization",
+      "properties": {
+        "uri": "https://example.org/ontology/agent/ZZ_NationalAssembly"
+      }
+    },
+    "eli:lawReporting": {
+      "node": "eli:Organization",
+      "properties": {
+        "uri": "https://example.org/ontology/agent/ZZ_NationalCouncilForLawReporting"
+      }
+    },
+    "eli:consumerProtection": {
+      "node": "eli:Concept",
+      "properties": {
+        "uri": "https://example.org/ontology/concept/consumerProtection",
+        "prefLabel": [
+          "consumer protection"
+        ]
+      }
+    }
+  },
+  "relationships": [
+    [
+      "eli:act2024En",
+      "eli:REALIZES",
+      "eli:act2024"
+    ],
+    [
+      "eli:act2024EnXml",
+      "eli:EMBODIES",
+      "eli:act2024En"
+    ],
+    [
+      "eli:act2024EnXml",
+      "eli:FORMAT",
+      "eli:xml"
+    ],
+    [
+      "eli:act2024En",
+      "eli:LANGUAGE",
+      "eli:eng"
+    ],
+    [
+      "eli:act2024Art5",
+      "eli:IS_PART_OF",
+      "eli:act2024"
+    ],
+    [
+      "eli:act2024",
+      "eli:PASSED_BY",
+      "eli:nationalAssembly"
+    ],
+    [
+      "eli:act2024En",
+      "eli:PUBLISHER_AGENT",
+      "eli:lawReporting"
+    ],
+    [
+      "eli:act2024EnXml",
+      "eli:PUBLISHER_AGENT",
+      "eli:lawReporting"
+    ],
+    [
+      "eli:act2024",
+      "eli:IS_ABOUT",
+      "eli:consumerProtection"
+    ],
+    [
+      "eli:act2024",
+      "eli:AMENDS",
+      "eli:act2012"
+    ],
+    [
+      "eli:act2024Art5",
+      "eli:AMENDS",
+      "eli:act2012Art3"
+    ],
+    [
+      "eli:act2012En",
+      "eli:REALIZES",
+      "eli:act2012"
+    ],
+    [
+      "eli:act2012EnXml",
+      "eli:EMBODIES",
+      "eli:act2012En"
+    ],
+    [
+      "eli:act2012EnXml",
+      "eli:FORMAT",
+      "eli:xml"
+    ],
+    [
+      "eli:act2012En",
+      "eli:LANGUAGE",
+      "eli:eng"
+    ],
+    [
+      "eli:act2012Art3",
+      "eli:IS_PART_OF",
+      "eli:act2012"
+    ],
+    [
+      "eli:act2024",
+      "SAME_AS",
+      "akn:work"
+    ],
+    [
+      "eli:act2024En",
+      "SAME_AS",
+      "akn:expression"
+    ],
+    [
+      "eli:act2024EnXml",
+      "SAME_AS",
+      "akn:manifestation"
+    ],
+    [
+      "eli:act2024Art5",
+      "SAME_AS",
+      "akn:article5"
+    ],
+    [
+      "eli:act2012",
+      "SAME_AS",
+      "akn:amendedWork"
+    ],
+    [
+      "eli:act2012En",
+      "SAME_AS",
+      "akn:amendedExpression"
+    ],
+    [
+      "eli:act2012EnXml",
+      "SAME_AS",
+      "akn:amendedManifestation"
+    ],
+    [
+      "eli:act2012Art3",
+      "SAME_AS",
+      "akn:amendedArticle3"
+    ],
+    [
+      "eli:nationalAssembly",
+      "SAME_AS",
+      "akn:parliament"
+    ],
+    [
+      "eli:lawReporting",
+      "SAME_AS",
+      "akn:publisher"
+    ],
+    [
+      "eli:consumerProtection",
+      "SAME_AS",
+      "akn:conceptConsumer"
+    ]
+  ]
+}

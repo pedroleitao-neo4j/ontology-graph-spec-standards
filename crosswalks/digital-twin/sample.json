@@ -1,0 +1,220 @@
+{
+  "scenario": "The belt conveyor of assembly cell AC-1 is driven by the Halden HSM 140 servo motor, serial number 2407-00381, whose asset administration shell Halden Antriebe publishes. Kellerman Automation adds the drive to the conveyor in its AutomationML file, playing both the actuating drive role and the AAS asset role, with its serial number as an attribute whose RefSemantic is the ECLASS IRDI of the nameplate's serial number. Inside the drive it carries the motor's shell as Application Recommendation AR 004E serialises it: an internal element with the AssetAdministrationShell role, named by the shell's idShort and holding the shell's id, with the Nameplate and TechnicalData submodels and, inside the technical data, the TechnicalProperties collection and its RatedTorque property, whose value and semanticId are attributes. Links join the AAS sample's shell, asset information, submodels, collection and property to those elements; the nameplate's serial number property to the drive's attribute it publishes, and its semantic ID to the attribute's RefSemantic; and the rated torque's semanticId reference to the attribute serialising it.",
+  "nodes": {
+    "aml:extRefAas": {
+      "node": "aml:ExternalReference",
+      "properties": {
+        "id": "file/ExternalReference/AssetAdministrationShellRoleClassLib",
+        "path": "AssetAdministrationShellLib.aml",
+        "alias": "AssetAdministrationShellRoleClassLib"
+      }
+    },
+    "aml:drive": {
+      "node": "aml:ActuatingDrive",
+      "properties": {
+        "id": "e1b2c3d4-0006-4a5b-8c6d-7e8f9a0b1c2d",
+        "name": "ConveyorDrive1",
+        "description": "The servo motor driving the part conveyor: a Halden HSM 140, serial number 2407-00381."
+      }
+    },
+    "aml:rrDrive": {
+      "node": "aml:RoleRequirements",
+      "properties": {
+        "id": "e1b2c3d4-0006-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements:ActuatingDrive",
+        "refBaseRoleClassPath": "AutomationMLExtendedRoleClassLib/ActuatingDrive"
+      }
+    },
+    "aml:rrDriveAsset": {
+      "node": "aml:RoleRequirements",
+      "properties": {
+        "id": "e1b2c3d4-0006-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements:Asset",
+        "refBaseRoleClassPath": "AssetAdministrationShellRoleClassLib/Asset"
+      }
+    },
+    "aml:driveSerial": {
+      "node": "aml:Attribute",
+      "properties": {
+        "id": "e1b2c3d4-0006-4a5b-8c6d-7e8f9a0b1c2d/att:SerialNumber",
+        "name": "SerialNumber",
+        "value": "2407-00381",
+        "attributeDataType": "xs:string"
+      }
+    },
+    "aml:driveSerialSem": {
+      "node": "aml:RefSemantic",
+      "properties": {
+        "id": "e1b2c3d4-0006-4a5b-8c6d-7e8f9a0b1c2d/att:SerialNumber/RefSemantic",
+        "correspondingAttributePath": "0173-1#02-AAM556#002"
+      }
+    },
+    "aml:aas": {
+      "node": "aml:InternalElement",
+      "properties": {
+        "id": "e1b2c3d4-0007-4a5b-8c6d-7e8f9a0b1c2d",
+        "name": "HSM_140_30_SN2407_00381",
+        "description": "The asset administration shell of the drive, as Halden Antriebe publishes it."
+      }
+    },
+    "aml:rrAas": {
+      "node": "aml:RoleRequirements",
+      "properties": {
+        "id": "e1b2c3d4-0007-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+        "refBaseRoleClassPath": "AssetAdministrationShellRoleClassLib/AssetAdministrationShell"
+      }
+    },
+    "aml:aasIdentification": {
+      "node": "aml:Attribute",
+      "properties": {
+        "id": "e1b2c3d4-0007-4a5b-8c6d-7e8f9a0b1c2d/att:identification",
+        "name": "identification"
+      }
+    },
+    "aml:aasIdentificationSem": {
+      "node": "aml:RefSemantic",
+      "properties": {
+        "id": "e1b2c3d4-0007-4a5b-8c6d-7e8f9a0b1c2d/att:identification/RefSemantic",
+        "correspondingAttributePath": "AAS:Identifiable/identification"
+      }
+    },
+    "aml:aasId": {
+      "node": "aml:Attribute",
+      "properties": {
+        "id": "e1b2c3d4-0007-4a5b-8c6d-7e8f9a0b1c2d/att:identification/att:id",
+        "name": "id",
+        "value": "https://halden-antriebe.example/ids/aas/HSM-140-30/2407-00381",
+        "attributeDataType": "xs:string"
+      }
+    },
+    "aml:aasIdSem": {
+      "node": "aml:RefSemantic",
+      "properties": {
+        "id": "e1b2c3d4-0007-4a5b-8c6d-7e8f9a0b1c2d/att:identification/att:id/RefSemantic",
+        "correspondingAttributePath": "AAS:Identifier/id"
+      }
+    },
+    "aml:nameplate": {
+      "node": "aml:InternalElement",
+      "properties": {
+        "id": "e1b2c3d4-0008-4a5b-8c6d-7e8f9a0b1c2d",
+        "name": "Nameplate"
+      }
+    },
+    "aml:rrNameplate": {
+      "node": "aml:RoleRequirements",
+      "properties": {
+        "id": "e1b2c3d4-0008-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+        "refBaseRoleClassPath": "AssetAdministrationShellRoleClassLib/Submodel"
+      }
+    },
+    "aml:techData": {
+      "node": "aml:InternalElement",
+      "properties": {
+        "id": "e1b2c3d4-0009-4a5b-8c6d-7e8f9a0b1c2d",
+        "name": "TechnicalData"
+      }
+    },
+    "aml:rrTechData": {
+      "node": "aml:RoleRequirements",
+      "properties": {
+        "id": "e1b2c3d4-0009-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+        "refBaseRoleClassPath": "AssetAdministrationShellRoleClassLib/Submodel"
+      }
+    },
+    "aml:techProps": {
+      "node": "aml:InternalElement",
+      "properties": {
+        "id": "e1b2c3d4-000a-4a5b-8c6d-7e8f9a0b1c2d",
+        "name": "TechnicalProperties"
+      }
+    },
+    "aml:rrTechProps": {
+      "node": "aml:RoleRequirements",
+      "properties": {
+        "id": "e1b2c3d4-000a-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+        "refBaseRoleClassPath": "AssetAdministrationShellRoleClassLib/SubmodelElementCollection"
+      }
+    },
+    "aml:ratedTorque": {
+      "node": "aml:InternalElement",
+      "properties": {
+        "id": "e1b2c3d4-000b-4a5b-8c6d-7e8f9a0b1c2d",
+        "name": "RatedTorque"
+      }
+    },
+    "aml:rrRatedTorque": {
+      "node": "aml:RoleRequirements",
+      "properties": {
+        "id": "e1b2c3d4-000b-4a5b-8c6d-7e8f9a0b1c2d/RoleRequirements",
+        "refBaseRoleClassPath": "AssetAdministrationShellRoleClassLib/Property"
+      }
+    },
+    "aml:ratedTorqueValue": {
+      "node": "aml:Attribute",
+      "properties": {
+        "id": "e1b2c3d4-000b-4a5b-8c6d-7e8f9a0b1c2d/att:value",
+        "name": "value",
+        "value": "30.0",
+        "attributeDataType": "xs:double"
+      }
+    },
+    "aml:ratedTorqueValueSem": {
+      "node": "aml:RefSemantic",
+      "properties": {
+        "id": "e1b2c3d4-000b-4a5b-8c6d-7e8f9a0b1c2d/att:value/RefSemantic",
+        "correspondingAttributePath": "AAS:Property/value"
+      }
+    },
+    "aml:ratedTorqueSemanticId": {
+      "node": "aml:Attribute",
+      "properties": {
+        "id": "e1b2c3d4-000b-4a5b-8c6d-7e8f9a0b1c2d/att:semanticId",
+        "name": "semanticId",
+        "value": "[ModelRef](ConceptDescription)https://halden-antriebe.example/ids/cd/RatedTorque",
+        "attributeDataType": "xs:string"
+      }
+    },
+    "aml:ratedTorqueSemanticIdSem": {
+      "node": "aml:RefSemantic",
+      "properties": {
+        "id": "e1b2c3d4-000b-4a5b-8c6d-7e8f9a0b1c2d/att:semanticId/RefSemantic",
+        "correspondingAttributePath": "AAS:HasSemantics/semanticId"
+      }
+    }
+  },
+  "relationships": [
+    ["aml:file", "aml:HAS_EXTERNAL_REFERENCE", "aml:extRefAas"],
+    ["aml:conveyor", "aml:HAS_INTERNAL_ELEMENT", "aml:drive"],
+    ["aml:drive", "aml:HAS_ROLE_REQUIREMENTS", "aml:rrDrive"],
+    ["aml:drive", "aml:HAS_ROLE_REQUIREMENTS", "aml:rrDriveAsset"],
+    ["aml:drive", "aml:HAS_ATTRIBUTE", "aml:driveSerial"],
+    ["aml:driveSerial", "aml:HAS_REF_SEMANTIC", "aml:driveSerialSem"],
+    ["aml:drive", "aml:HAS_INTERNAL_ELEMENT", "aml:aas"],
+    ["aml:aas", "aml:HAS_ROLE_REQUIREMENTS", "aml:rrAas"],
+    ["aml:aas", "aml:HAS_ATTRIBUTE", "aml:aasIdentification"],
+    ["aml:aasIdentification", "aml:HAS_REF_SEMANTIC", "aml:aasIdentificationSem"],
+    ["aml:aasIdentification", "aml:HAS_ATTRIBUTE", "aml:aasId"],
+    ["aml:aasId", "aml:HAS_REF_SEMANTIC", "aml:aasIdSem"],
+    ["aml:aas", "aml:HAS_INTERNAL_ELEMENT", "aml:nameplate"],
+    ["aml:nameplate", "aml:HAS_ROLE_REQUIREMENTS", "aml:rrNameplate"],
+    ["aml:aas", "aml:HAS_INTERNAL_ELEMENT", "aml:techData"],
+    ["aml:techData", "aml:HAS_ROLE_REQUIREMENTS", "aml:rrTechData"],
+    ["aml:techData", "aml:HAS_INTERNAL_ELEMENT", "aml:techProps"],
+    ["aml:techProps", "aml:HAS_ROLE_REQUIREMENTS", "aml:rrTechProps"],
+    ["aml:techProps", "aml:HAS_INTERNAL_ELEMENT", "aml:ratedTorque"],
+    ["aml:ratedTorque", "aml:HAS_ROLE_REQUIREMENTS", "aml:rrRatedTorque"],
+    ["aml:ratedTorque", "aml:HAS_ATTRIBUTE", "aml:ratedTorqueValue"],
+    ["aml:ratedTorqueValue", "aml:HAS_REF_SEMANTIC", "aml:ratedTorqueValueSem"],
+    ["aml:ratedTorque", "aml:HAS_ATTRIBUTE", "aml:ratedTorqueSemanticId"],
+    ["aml:ratedTorqueSemanticId", "aml:HAS_REF_SEMANTIC", "aml:ratedTorqueSemanticIdSem"],
+
+    ["aas:shell", "SAME_AS", "aml:aas"],
+    ["aas:assetInfo", "SAME_AS", "aml:drive"],
+    ["aas:nameplate", "SAME_AS", "aml:nameplate"],
+    ["aas:techData", "SAME_AS", "aml:techData"],
+    ["aas:techProps", "SAME_AS", "aml:techProps"],
+    ["aas:ratedTorque", "SAME_AS", "aml:ratedTorque"],
+    ["aas:ratedTorque_HAS_SEMANTIC_ID", "RELATED_TO", "aml:ratedTorqueSemanticId"],
+    ["aas:serialNumber", "SAME_AS", "aml:driveSerial"],
+    ["aas:serialNumber_HAS_SEMANTIC_ID_k0", "RELATED_TO", "aml:driveSerialSem"]
+  ]
+}

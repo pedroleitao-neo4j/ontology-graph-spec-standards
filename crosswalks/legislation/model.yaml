@@ -1,0 +1,1535 @@
+"schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json"
+"version": "1.0"
+"id": "crosswalk-legislation"
+"name": "Legislation: ELI 1.4 and Akoma Ntoso 1.0"
+"description": "A crosswalk between ELI 1.4, the European Legislation Identifier ontology for publishing legislation as linked data, and Akoma Ntoso 1.0 (OASIS LegalDocML), the XML vocabulary for the text of legislative documents. Both identify an act at the levels of FRBR: ELI's legal resource, legal expression and format are Akoma Ntoso's FRBR work, expression and manifestation, and the Akoma Ntoso FRBR URI of each level serves as its ELI local identifier. ELI describes acts from the outside, as metadata about them and the links between them; Akoma Ntoso describes them from the inside, down to their articles and the people, organizations and concepts their text refers to, whose TLC references point at the same IRIs ELI's agents and concepts are identified by. ELI records an amendment as a relationship between acts or their subdivisions, where Akoma Ntoso records it as a modification element in the analysis of the amending and the amended act."
+"nodes":
+  "eli__LegalExpression":
+    "labels":
+      "identifier": "eli__LegalExpression"
+    "description": "The intellectual realisation of a legal resource in the form of a \"sequence of signs\" (typically alpha-numeric characters in a legal context). For example, any version of the legal resource whose content is specified and different from others for any reason: language, versions, etc.; Note that ELI ontology accommodates different point of view on what should be considered a new legal resource, or a new legal expression of the same resource. Typically, a consolidated version can be viewed, in the context of ELI, either as separate legal resource (linked to original version and previous consolidated version using corresponding ELI relations), or as a different legal expression of the same legal resource."
+    "reference": "http://data.europa.eu/eli/ontology#LegalExpression"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the LegalExpression: its IRI. For a legal resource or expression, its ELI, e.g. http://data.europa.eu/eli/reg/2016/679/oj. Unique within a data set; resources that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+      "cites":
+        "type": "LIST<STRING>"
+        "name": "cites"
+        "description": "Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals. Holds the IRI of each resource it refers to, which ELI allows to be anything, not only an ELI resource. The inverse ELI property is 'cited_by'."
+        "reference": "http://data.europa.eu/eli/ontology#cites"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#cites"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "inverseOf": "cited_by"
+            "unionEnds": true
+      "cited_by_case_law":
+        "type": "LIST<STRING>"
+        "name": "cited_by_case_law"
+        "description": "Indicates that this LegalResource or LegalExpression is being cited in a case law, identified by a suitable URI. If the case law cannot be identified by a suitable URI, the property \"eli:cited_by_case_law_reference\" can be used with a textual reference to the case law. The actual citation link is expressed from the case law to the legislation, but legal portals may use the link from a legislation to a case law to e.g. refer to representative case laws about a legislation. Holds the IRI of each resource it refers to, which ELI allows to be anything, not only an ELI resource. See also eli:cited_by_case_law_reference."
+        "reference": "http://data.europa.eu/eli/ontology#cited_by_case_law"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#cited_by_case_law"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "unionEnds": true
+      "related_to":
+        "type": "LIST<STRING>"
+        "name": "related_to"
+        "description": "Indicates a somehow related other document, not necessarily a legal resource. Note that citation links should use the cites property. Holds the IRI of each resource it refers to, which ELI allows to be anything, not only an ELI resource."
+        "reference": "http://data.europa.eu/eli/ontology#related_to"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#related_to"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "unionEnds": true
+      "uri_schema":
+        "type": "STRING"
+        "name": "uri_schema"
+        "description": "Schema describing the URI of an ELI instance. ELI uses URI template specifications (IETF RFC 6570). Schemes should be associated with member states and will be published in a registry. Holds the IRI of the resource it refers to, which ELI allows to be anything, not only an ELI resource."
+        "reference": "http://data.europa.eu/eli/ontology#uri_schema"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#uri_schema"
+            "functional": true
+            "unionEnds": true
+      "cited_by_case_law_reference":
+        "type": "LIST<STRING>"
+        "name": "cited_by_case_law_reference"
+        "description": "Indicates that this LegalResource or LegalExpression is being cited in a case law that cannot be identified by a suitable URI and that is indicated by textual reference. An ECLI (European Case Law Identifier) can be used here. When the case law can be identified by a suitable URI, the property eli:cited_by_case_law should be used instead. See also eli:cited_by_case_law."
+        "reference": "http://data.europa.eu/eli/ontology#cited_by_case_law_reference"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#cited_by_case_law_reference"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "datatypes":
+              - "rdfs:Literal"
+            "unionEnds": true
+      "date_applicability":
+        "type": "LIST<DATE>"
+        "name": "date_applicability"
+        "description": "The date at which the legislation becomes applicable. This is distinct from the date of entry into force : a text may come in force today, and state it will become applicable in 3 months. The group notes that applicability dates can lead to complex situations, e.g. a text with different applicability dates for different jurisdictions; specific extensions to the model should be used for such situations."
+        "reference": "http://data.europa.eu/eli/ontology#date_applicability"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_applicability"
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "date_no_longer_in_force":
+        "type": "DATE"
+        "name": "date_no_longer_in_force"
+        "description": "The last date any part of the legislation is in force, if the date is known (can be seen as the end date of a dc:valid range for this resource). See also eli:first_date_entry_in_force."
+        "reference": "http://data.europa.eu/eli/ontology#date_no_longer_in_force"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_no_longer_in_force"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "date_publication":
+        "type": "DATE"
+        "name": "date_publication"
+        "description": "Date of publication of the official version of the legislation, in hard copy or online, depending on what the official publication is, and when it was published. Publication dates at the level of legal expressions can be separately asserted, using standard Dublin Core properties."
+        "reference": "http://data.europa.eu/eli/ontology#date_publication"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_publication"
+            "specificPropertyOf":
+              - "dcterms:issued"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "description":
+        "type": "LIST<STRING>"
+        "name": "description"
+        "description": "An account of the resource (definition from Dubin Core), e.g a summary."
+        "reference": "http://data.europa.eu/eli/ontology#description"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#description"
+            "specificPropertyOf":
+              - "dcterms:description"
+            "datatypes":
+              - "rdfs:Literal"
+            "unionEnds": true
+      "first_date_entry_in_force":
+        "type": "DATE"
+        "name": "first_date_entry_in_force"
+        "description": "The first date any part of the legal resource or legal expression came into force (can be seen as the start date of a dc:valid range for this resource). See also eli:date_no_longer_in_force."
+        "reference": "http://data.europa.eu/eli/ontology#first_date_entry_in_force"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#first_date_entry_in_force"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "id_local":
+        "type": "LIST<STRING>"
+        "name": "id_local"
+        "description": "The unique identifier used in a local reference system to maintain backwards compatibility. For examples the CELEX at EU level, or the NOR in France."
+        "reference": "http://data.europa.eu/eli/ontology#id_local"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#id_local"
+            "specificPropertyOf":
+              - "dcterms:identifier"
+            "datatypes":
+              - "xsd:anyURI"
+              - "xsd:string"
+            "unionEnds": true
+      "number":
+        "type": "LIST<STRING>"
+        "name": "number"
+        "description": "An identifier or other disambiguating feature for a legal resource or legal expression. This can be the number of a legislation, the number of an article, or the issue number of an official journal."
+        "reference": "http://data.europa.eu/eli/ontology#number"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#number"
+            "datatypes":
+              - "xsd:string"
+            "unionEnds": true
+      "publisher":
+        "type": "LIST<STRING>"
+        "name": "publisher"
+        "description": "An entity responsible for making the resource available (definition from Dublin Core). This property should be used when the value cannot be identified by a suitable URI; if a URI is available, the property \"publisher_agent\" should be used. See also eli:publisher_agent."
+        "reference": "http://data.europa.eu/eli/ontology#publisher"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#publisher"
+            "specificPropertyOf":
+              - "dcterms:publisher"
+            "datatypes":
+              - "rdfs:Literal"
+            "unionEnds": true
+      "version_date":
+        "type": "DATE"
+        "name": "version_date"
+        "description": "The point-in-time at which the provided description of the legislation is valid."
+        "reference": "http://data.europa.eu/eli/ontology#version_date"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#version_date"
+            "specificPropertyOf":
+              - "dcterms:date"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "title":
+        "type": "LIST<STRING>"
+        "name": "title"
+        "description": "The title, or name, of an expression. Note that, if needed, a title can also be stated on a legal resource using the Dublin Core \"title\" property. See also eli:title_alternative, eli:title_short."
+        "reference": "http://data.europa.eu/eli/ontology#title"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#title"
+            "specificPropertyOf":
+              - "dcterms:title"
+            "datatypes":
+              - "rdfs:Literal"
+      "title_alternative":
+        "type": "LIST<STRING>"
+        "name": "title_alternative"
+        "description": "An alternative title of the expression (if any). Note that, if needed, an alternative title can also be stated on a work using the Dublin Core \"alternative\" property."
+        "reference": "http://data.europa.eu/eli/ontology#title_alternative"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#title_alternative"
+            "specificPropertyOf":
+              - "dcterms:alternative"
+            "datatypes":
+              - "rdfs:Literal"
+      "title_short":
+        "type": "LIST<STRING>"
+        "name": "title_short"
+        "description": "Established short title of the expression (if any)."
+        "reference": "http://data.europa.eu/eli/ontology#title_short"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#title_short"
+            "specificPropertyOf":
+              - "dcterms:alternative"
+            "datatypes":
+              - "rdfs:Literal"
+    "constraints":
+      "key_LegalExpression":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "eli__uri_LegalExpression_key"
+    "extensions":
+      "custom":
+        "standard": "ELI 1.4"
+  "eli__LegalResource":
+    "labels":
+      "identifier": "eli__LegalResource"
+    "description": "A work in a legislative corpus. This applies to acts that have been legally enacted (whether or not they are still in force). For example, the abstract concept of the legal resource; e.g. \"act 3 of 2005\" (adapted from Akoma Ntoso) A legal resource can represent a legal act or any component of a legal act, like an article. Legal resources can be linked together using properties defined in the model. Note that ELI ontology accommodates different point of view on what should be considered a new legal resource, or a new legal expression of the same resource. Typically, a consolidated version can be viewed, in the context of ELI, either as separate legal resource (linked to original version and previous consolidated version using corresponding ELI relations), or as a different legal expression of the same legal resource."
+    "reference": "http://data.europa.eu/eli/ontology#LegalResource"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the LegalResource: its IRI. For a legal resource or expression, its ELI, e.g. http://data.europa.eu/eli/reg/2016/679/oj. Unique within a data set; resources that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+      "cites":
+        "type": "LIST<STRING>"
+        "name": "cites"
+        "description": "Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals. Holds the IRI of each resource it refers to, which ELI allows to be anything, not only an ELI resource. The inverse ELI property is 'cited_by'."
+        "reference": "http://data.europa.eu/eli/ontology#cites"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#cites"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "inverseOf": "cited_by"
+            "unionEnds": true
+      "cited_by_case_law":
+        "type": "LIST<STRING>"
+        "name": "cited_by_case_law"
+        "description": "Indicates that this LegalResource or LegalExpression is being cited in a case law, identified by a suitable URI. If the case law cannot be identified by a suitable URI, the property \"eli:cited_by_case_law_reference\" can be used with a textual reference to the case law. The actual citation link is expressed from the case law to the legislation, but legal portals may use the link from a legislation to a case law to e.g. refer to representative case laws about a legislation. Holds the IRI of each resource it refers to, which ELI allows to be anything, not only an ELI resource. See also eli:cited_by_case_law_reference."
+        "reference": "http://data.europa.eu/eli/ontology#cited_by_case_law"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#cited_by_case_law"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "unionEnds": true
+      "related_to":
+        "type": "LIST<STRING>"
+        "name": "related_to"
+        "description": "Indicates a somehow related other document, not necessarily a legal resource. Note that citation links should use the cites property. Holds the IRI of each resource it refers to, which ELI allows to be anything, not only an ELI resource."
+        "reference": "http://data.europa.eu/eli/ontology#related_to"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#related_to"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "unionEnds": true
+      "uri_schema":
+        "type": "STRING"
+        "name": "uri_schema"
+        "description": "Schema describing the URI of an ELI instance. ELI uses URI template specifications (IETF RFC 6570). Schemes should be associated with member states and will be published in a registry. Holds the IRI of the resource it refers to, which ELI allows to be anything, not only an ELI resource."
+        "reference": "http://data.europa.eu/eli/ontology#uri_schema"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#uri_schema"
+            "functional": true
+            "unionEnds": true
+      "cited_by_case_law_reference":
+        "type": "LIST<STRING>"
+        "name": "cited_by_case_law_reference"
+        "description": "Indicates that this LegalResource or LegalExpression is being cited in a case law that cannot be identified by a suitable URI and that is indicated by textual reference. An ECLI (European Case Law Identifier) can be used here. When the case law can be identified by a suitable URI, the property eli:cited_by_case_law should be used instead. See also eli:cited_by_case_law."
+        "reference": "http://data.europa.eu/eli/ontology#cited_by_case_law_reference"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#cited_by_case_law_reference"
+            "specificPropertyOf":
+              - "dcterms:relation"
+            "datatypes":
+              - "rdfs:Literal"
+            "unionEnds": true
+      "date_applicability":
+        "type": "LIST<DATE>"
+        "name": "date_applicability"
+        "description": "The date at which the legislation becomes applicable. This is distinct from the date of entry into force : a text may come in force today, and state it will become applicable in 3 months. The group notes that applicability dates can lead to complex situations, e.g. a text with different applicability dates for different jurisdictions; specific extensions to the model should be used for such situations."
+        "reference": "http://data.europa.eu/eli/ontology#date_applicability"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_applicability"
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "date_no_longer_in_force":
+        "type": "DATE"
+        "name": "date_no_longer_in_force"
+        "description": "The last date any part of the legislation is in force, if the date is known (can be seen as the end date of a dc:valid range for this resource). See also eli:first_date_entry_in_force."
+        "reference": "http://data.europa.eu/eli/ontology#date_no_longer_in_force"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_no_longer_in_force"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "date_publication":
+        "type": "DATE"
+        "name": "date_publication"
+        "description": "Date of publication of the official version of the legislation, in hard copy or online, depending on what the official publication is, and when it was published. Publication dates at the level of legal expressions can be separately asserted, using standard Dublin Core properties."
+        "reference": "http://data.europa.eu/eli/ontology#date_publication"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_publication"
+            "specificPropertyOf":
+              - "dcterms:issued"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "description":
+        "type": "LIST<STRING>"
+        "name": "description"
+        "description": "An account of the resource (definition from Dubin Core), e.g a summary."
+        "reference": "http://data.europa.eu/eli/ontology#description"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#description"
+            "specificPropertyOf":
+              - "dcterms:description"
+            "datatypes":
+              - "rdfs:Literal"
+            "unionEnds": true
+      "first_date_entry_in_force":
+        "type": "DATE"
+        "name": "first_date_entry_in_force"
+        "description": "The first date any part of the legal resource or legal expression came into force (can be seen as the start date of a dc:valid range for this resource). See also eli:date_no_longer_in_force."
+        "reference": "http://data.europa.eu/eli/ontology#first_date_entry_in_force"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#first_date_entry_in_force"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "id_local":
+        "type": "LIST<STRING>"
+        "name": "id_local"
+        "description": "The unique identifier used in a local reference system to maintain backwards compatibility. For examples the CELEX at EU level, or the NOR in France."
+        "reference": "http://data.europa.eu/eli/ontology#id_local"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#id_local"
+            "specificPropertyOf":
+              - "dcterms:identifier"
+            "datatypes":
+              - "xsd:anyURI"
+              - "xsd:string"
+            "unionEnds": true
+      "number":
+        "type": "LIST<STRING>"
+        "name": "number"
+        "description": "An identifier or other disambiguating feature for a legal resource or legal expression. This can be the number of a legislation, the number of an article, or the issue number of an official journal."
+        "reference": "http://data.europa.eu/eli/ontology#number"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#number"
+            "datatypes":
+              - "xsd:string"
+            "unionEnds": true
+      "responsibility_of":
+        "type": "LIST<STRING>"
+        "name": "responsibility_of"
+        "description": "An individual, organisation or organisational unit that has some kind of responsibility for the legislation. Typically the ministry who is/was in charge of elaborating the legislation, or the adressee for potential questions about the legislation once it is published. This property should be used when the value cannot be identified by a suitable URI; if a URI is available, the property \"responsibility_of_agent\" should be used. See also eli:responsibility_of_agent."
+        "reference": "http://data.europa.eu/eli/ontology#responsibility_of"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#responsibility_of"
+            "originalName": "service"
+            "datatypes":
+              - "xsd:string"
+      "version_date":
+        "type": "DATE"
+        "name": "version_date"
+        "description": "The point-in-time at which the provided description of the legislation is valid."
+        "reference": "http://data.europa.eu/eli/ontology#version_date"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#version_date"
+            "specificPropertyOf":
+              - "dcterms:date"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+            "unionEnds": true
+      "date_document":
+        "type": "DATE"
+        "name": "date_document"
+        "description": "Date of adoption or signature (of the form yyyy-mm-dd)."
+        "reference": "http://data.europa.eu/eli/ontology#date_document"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_document"
+            "specificPropertyOf":
+              - "dcterms:date"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+    "constraints":
+      "key_LegalResource":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "eli__uri_LegalResource_key"
+    "extensions":
+      "custom":
+        "standard": "ELI 1.4"
+  "eli__Format":
+    "labels":
+      "identifier": "eli__Format"
+    "description": "The physical embodiment of a legal expression, either on paper or in any electronic format. For example, any electronic or physical format of the legal expression (XML, TIFF, PDF, etc.) ; e.g. PDF version of act 3 of 2005. (adapted from Akoma Ntoso). Note that the notion of Format in ELI is more precise than a FRBR Manifestation in the sense that a Format in ELI can carry a legal value (see the property eli:legal_value)."
+    "reference": "http://data.europa.eu/eli/ontology#Format"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Format: its IRI. Unique within a data set; resources that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+      "licence":
+        "type": "STRING"
+        "name": "licence"
+        "description": "A legal document giving official permission to do something with the resource (Definition from Dublin Core). Holds the IRI of the resource it refers to, which ELI allows to be anything, not only an ELI resource."
+        "reference": "http://data.europa.eu/eli/ontology#licence"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#licence"
+            "specificPropertyOf":
+              - "dcterms:license"
+            "functional": true
+      "uri_schema":
+        "type": "STRING"
+        "name": "uri_schema"
+        "description": "Schema describing the URI of an ELI instance. ELI uses URI template specifications (IETF RFC 6570). Schemes should be associated with member states and will be published in a registry. Holds the IRI of the resource it refers to, which ELI allows to be anything, not only an ELI resource."
+        "reference": "http://data.europa.eu/eli/ontology#uri_schema"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#uri_schema"
+            "functional": true
+            "unionEnds": true
+      "id_local":
+        "type": "LIST<STRING>"
+        "name": "id_local"
+        "description": "The unique identifier used in a local reference system to maintain backwards compatibility. For examples the CELEX at EU level, or the NOR in France."
+        "reference": "http://data.europa.eu/eli/ontology#id_local"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#id_local"
+            "specificPropertyOf":
+              - "dcterms:identifier"
+            "datatypes":
+              - "xsd:anyURI"
+              - "xsd:string"
+            "unionEnds": true
+      "published_in":
+        "type": "LIST<STRING>"
+        "name": "published_in"
+        "description": "Reference to the Official Journal or other publication manifestation in which this format is published. This property should be used when the value cannot be identified by a suitable URI; if a URI is available, the property \"published_in_format\" should be used. See also eli:published_in_format."
+        "reference": "http://data.europa.eu/eli/ontology#published_in"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#published_in"
+            "datatypes":
+              - "rdfs:Literal"
+      "publisher":
+        "type": "LIST<STRING>"
+        "name": "publisher"
+        "description": "An entity responsible for making the resource available (definition from Dublin Core). This property should be used when the value cannot be identified by a suitable URI; if a URI is available, the property \"publisher_agent\" should be used. See also eli:publisher_agent."
+        "reference": "http://data.europa.eu/eli/ontology#publisher"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#publisher"
+            "specificPropertyOf":
+              - "dcterms:publisher"
+            "datatypes":
+              - "rdfs:Literal"
+            "unionEnds": true
+      "rights":
+        "type": "STRING"
+        "name": "rights"
+        "description": "Information about rights held in and over the resource (definition from Dublin Core). For example, that property can be used to provide a link to a page that describes the licensing terms."
+        "reference": "http://data.europa.eu/eli/ontology#rights"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#rights"
+            "specificPropertyOf":
+              - "dcterms:rights"
+            "functional": true
+            "datatypes":
+              - "rdfs:Literal"
+      "rightsholder":
+        "type": "LIST<STRING>"
+        "name": "rightsholder"
+        "description": "A person or organisation owning or managing rights over the resource (definition from Dublin Core). This property should be used when the value cannot be identified by a suitable URI; if a URI is available, the property \"rightsholder_agent\" should be used."
+        "reference": "http://data.europa.eu/eli/ontology#rightsholder"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#rightsholder"
+            "specificPropertyOf":
+              - "dcterms:rightsHolder"
+            "datatypes":
+              - "rdfs:Literal"
+      "is_exemplified_by":
+        "type": "LIST<STRING>"
+        "name": "is_exemplified_by"
+        "description": "Link to a concrete file URL. Relates a manifestation to a single exemplar or instance of that manifestation. Holds the IRI of each resource it refers to, which ELI allows to be anything."
+        "reference": "http://data.europa.eu/eli/ontology#is_exemplified_by"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#is_exemplified_by"
+            "subPropertyOf":
+              - "frbroo:R7i_has_example"
+      "media_type":
+        "type": "LIST<STRING>"
+        "name": "media_type"
+        "description": "The file format of the manifestation. This field is intended to capture the technical file format and will serve as a basis for content negotiation for the server to return the appropriate file based on the client preference. Although not mandatory, this property is highly encouraged. Possible URIs values MUST be taken from http://www.iana.org/assignments/media-types (e.g. http://www.iana.org/assignments/media-types/application/xml). See also the \"format\" property. Holds the IRI of each resource it refers to, which ELI allows to be anything, not only an ELI resource. See also eli:format."
+        "reference": "http://data.europa.eu/eli/ontology#media_type"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#media_type"
+            "specificPropertyOf":
+              - "dcterms:format"
+    "constraints":
+      "key_Format":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "eli__uri_Format_key"
+    "extensions":
+      "custom":
+        "standard": "ELI 1.4"
+  "eli__LegalResourceSubdivision":
+    "labels":
+      "identifier": "eli__LegalResourceSubdivision"
+      "implied":
+        - "eli__LegalResource"
+    "description": "A component of a legal act, at an arbitrary level of precision, like a chapter, an article, an alinea, a paragraph or an list item. A subdivision can be linked with its parent and children subdivision using the properties eli:has_part / eli:is_part_of."
+    "reference": "http://data.europa.eu/eli/ontology#LegalResourceSubdivision"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the LegalResourceSubdivision: its IRI. For a legal resource or expression, its ELI, e.g. http://data.europa.eu/eli/reg/2016/679/oj. Unique within a data set; resources that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+      "date_document":
+        "type": "DATE"
+        "name": "date_document"
+        "description": "Date of adoption or signature (of the form yyyy-mm-dd)."
+        "reference": "http://data.europa.eu/eli/ontology#date_document"
+        "extensions":
+          "custom":
+            "iri": "http://data.europa.eu/eli/ontology#date_document"
+            "specificPropertyOf":
+              - "dcterms:date"
+            "functional": true
+            "datatypes":
+              - "xsd:date"
+    "constraints":
+      "key_LegalResourceSubdivision":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "eli__uri_LegalResourceSubdivision_key"
+    "extensions":
+      "custom":
+        "standard": "ELI 1.4"
+  "eli__Organization":
+    "labels":
+      "identifier": "eli__Organization"
+    "description": "Institutions or groups of people that have obtained a legal recognition as a group and can act collectively as agents."
+    "reference": "http://data.europa.eu/eli/ontology#Organization"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Organization: its IRI. Unique within a data set; resources that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+    "constraints":
+      "key_Organization":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "eli__uri_Organization_key"
+    "extensions":
+      "custom":
+        "standard": "ELI 1.4"
+  "eli__Person":
+    "labels":
+      "identifier": "eli__Person"
+    "description": "A real person who live or has lived."
+    "reference": "http://data.europa.eu/eli/ontology#Person"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Person: its IRI. Unique within a data set; resources that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+    "constraints":
+      "key_Person":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "eli__uri_Person_key"
+    "extensions":
+      "custom":
+        "standard": "ELI 1.4"
+  "eli__Concept":
+    "labels":
+      "identifier": "eli__Concept"
+    "description": "An idea or notion; a unit of thought, from a concept scheme such as an authority table or a thesaurus (SKOS). ELI's concept classes, e.g. InForce or ResourceType, are concepts of their scheme, and eli:is_about takes concepts from any scheme, e.g. EuroVoc."
+    "reference": "http://www.w3.org/2004/02/skos/core#Concept"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Concept: its IRI. For a concept, its IRI in its scheme, e.g. http://publications.europa.eu/resource/authority/language/FRA. Unique within a data set; resources that are blank nodes are given generated identifiers."
+        "reference": "https://www.w3.org/TR/rdf11-concepts/#section-IRIs"
+      "prefLabel":
+        "type": "LIST<STRING>"
+        "name": "prefLabel"
+        "description": "The preferred labels of the concept, at most one per language, e.g. `in force` for eli:InForce-inForce. Taken from the concept scheme, e.g. an EU authority table."
+        "reference": "http://www.w3.org/2004/02/skos/core#prefLabel"
+        "extensions":
+          "custom":
+            "iri": "http://www.w3.org/2004/02/skos/core#prefLabel"
+    "constraints":
+      "key_Concept":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "eli__uri_Concept_key"
+    "extensions":
+      "custom":
+        "standard": "ELI 1.4"
+  "akn__FRBRExpression":
+    "labels":
+      "identifier": "akn__FRBRExpression"
+    "description": "The element FRBRExpression is the metadata container of identifying properties related to the Expression level according to the FRBR hierarchy."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRExpression.html"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the FRBRExpression: an IRI unique across documents. For a document, its expression IRI, e.g. /akn/ke/act/2010-08-27/1/eng@; for an element within a document, the document's IRI followed by # and the element's eId, or where it has none its wId, GUID or an identifier the loader assigns."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-nc/v1.0/os/akn-nc-v1.0-os.html"
+      "frbrVersionNumber":
+        "type": "STRING"
+        "name": "frbrVersionNumber"
+        "description": "The element FRBRversionNumber is the metadata property containing the value of the version number if appropriate to identify the specific expression here contained. It allows an arbitrary string."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRversionNumber.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRversionNumber"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+            "upper": 1
+      "frbrAuthoritative":
+        "type": "BOOLEAN"
+        "name": "frbrAuthoritative"
+        "description": "The element FRBRauthoritative is the metadata property containing a boolean value to determine whether the document contains authoritative text (i.e., content that is the official, authoritative product of an official workflow from an entity that is entrusted with generating an official, authoriative version of the document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRauthoritative.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRauthoritative"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:boolean"
+            "lower": 0
+            "upper": 1
+      "frbrMasterExpression":
+        "type": "STRING"
+        "name": "frbrMasterExpression"
+        "description": "The element FRBRmasterExpression is the metadata property identifying the master expression, i.e., the expression whose ids are used as permanent ids in the wId attributes. An expression without the FRBRmasterExpression element is considered a master expression itself, i.e., the first version, or the most important version, of a document expressed in the only language, or in the most important language. Any other situation (subsequent versions, or language variants, or content variants) must have the FRBRmasterExpression element pointing to the URI of the master expression. If the FRBRmasterEpression is specified, but without a href pointing to the masterExpression, it is assumed that NO master expression exist in reality, but an UR-Expression exist, whose ids are used in this expression as wIds."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRmasterExpression.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRmasterExpression"
+            "xsdAttribute": "href"
+            "xsdType": "xsd:anyURI"
+            "lower": 0
+            "upper": 1
+      "frbrLanguage":
+        "type": "LIST<STRING>"
+        "name": "frbrLanguage"
+        "description": "The element FRBRlanguage is the metadata property containing a RFC4646 (three-letter code) of the main human language used in the content of this expression."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRlanguage.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRlanguage"
+            "xsdAttribute": "language"
+            "xsdType": "language"
+            "lower": 1
+      "frbrThis":
+        "type": "STRING"
+        "name": "frbrThis"
+        "description": "The element FRBRthis is the metadata property containing the IRI of the specific component of the document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRthis.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRthis"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 1
+            "upper": 1
+      "frbrUri":
+        "type": "LIST<STRING>"
+        "name": "frbrUri"
+        "description": "The element FRBRuri is the metadata property containing the IRI of the whole document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRuri.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRuri"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 1
+      "frbrAlias":
+        "type": "LIST<STRING>"
+        "name": "frbrAlias"
+        "description": "The element FRBRalias is the metadata property containing additional well-known names of the document in the respective level of the FRBR hierarchy."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRalias.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRalias"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrAliasName":
+        "type": "LIST<STRING>"
+        "name": "frbrAliasName"
+        "description": "The name of the FRBRalias: The attribute name is used to give a name to all generic elements."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRalias.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRalias"
+            "xsdAttribute": "name"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrDate":
+        "type": "LIST<STRING>"
+        "name": "frbrDate"
+        "description": "The element FRBRdate is the metadata property containing a relevant date of the document in the respective level of the FRBR hierarchy. Attribute name specifies which actual date is contained here."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRdate.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRdate"
+            "xsdAttribute": "date"
+            "xsdType": "xsd:date xsd:dateTime"
+            "lower": 1
+      "frbrDateName":
+        "type": "LIST<STRING>"
+        "name": "frbrDateName"
+        "description": "The name of the FRBRdate: The attribute name is used to give a name to all generic elements."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRdate.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRdate"
+            "xsdAttribute": "name"
+            "xsdType": "xsd:string"
+            "lower": 1
+    "constraints":
+      "key_FRBRExpression":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "akn__uri_FRBRExpression_key"
+    "extensions":
+      "custom":
+        "standard": "Akoma Ntoso 1.0"
+  "akn__FRBRManifestation":
+    "labels":
+      "identifier": "akn__FRBRManifestation"
+    "description": "The element FRBRManifestation is the metadata container of identifying properties related to the Manifestation level according to the FRBR hierarchy."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRManifestation.html"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the FRBRManifestation: an IRI unique across documents. For a document, its expression IRI, e.g. /akn/ke/act/2010-08-27/1/eng@; for an element within a document, the document's IRI followed by # and the element's eId, or where it has none its wId, GUID or an identifier the loader assigns."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-nc/v1.0/os/akn-nc-v1.0-os.html"
+      "frbrFormat":
+        "type": "STRING"
+        "name": "frbrFormat"
+        "description": "The element FRBRformat is the metadata property containing the Internet Media Type specification for the data format to be used in the manifestation-level IRI of this document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRformat.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRformat"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+            "upper": 1
+      "frbrThis":
+        "type": "STRING"
+        "name": "frbrThis"
+        "description": "The element FRBRthis is the metadata property containing the IRI of the specific component of the document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRthis.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRthis"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 1
+            "upper": 1
+      "frbrUri":
+        "type": "LIST<STRING>"
+        "name": "frbrUri"
+        "description": "The element FRBRuri is the metadata property containing the IRI of the whole document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRuri.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRuri"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 1
+      "frbrAlias":
+        "type": "LIST<STRING>"
+        "name": "frbrAlias"
+        "description": "The element FRBRalias is the metadata property containing additional well-known names of the document in the respective level of the FRBR hierarchy."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRalias.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRalias"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrAliasName":
+        "type": "LIST<STRING>"
+        "name": "frbrAliasName"
+        "description": "The name of the FRBRalias: The attribute name is used to give a name to all generic elements."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRalias.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRalias"
+            "xsdAttribute": "name"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrDate":
+        "type": "LIST<STRING>"
+        "name": "frbrDate"
+        "description": "The element FRBRdate is the metadata property containing a relevant date of the document in the respective level of the FRBR hierarchy. Attribute name specifies which actual date is contained here."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRdate.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRdate"
+            "xsdAttribute": "date"
+            "xsdType": "xsd:date xsd:dateTime"
+            "lower": 1
+      "frbrDateName":
+        "type": "LIST<STRING>"
+        "name": "frbrDateName"
+        "description": "The name of the FRBRdate: The attribute name is used to give a name to all generic elements."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRdate.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRdate"
+            "xsdAttribute": "name"
+            "xsdType": "xsd:string"
+            "lower": 1
+    "constraints":
+      "key_FRBRManifestation":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "akn__uri_FRBRManifestation_key"
+    "extensions":
+      "custom":
+        "standard": "Akoma Ntoso 1.0"
+  "akn__FRBRWork":
+    "labels":
+      "identifier": "akn__FRBRWork"
+    "description": "The element FRBRWork is the metadata container of identifying properties related to the Work level according to the FRBR hierarchy."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRWork.html"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the FRBRWork: an IRI unique across documents. For a document, its expression IRI, e.g. /akn/ke/act/2010-08-27/1/eng@; for an element within a document, the document's IRI followed by # and the element's eId, or where it has none its wId, GUID or an identifier the loader assigns."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-nc/v1.0/os/akn-nc-v1.0-os.html"
+      "frbrCountry":
+        "type": "STRING"
+        "name": "frbrCountry"
+        "description": "The element FRBRcountry is the metadata property containing a ISO 3166-1 Alpha-2 code for the country or jurisdiction to be used in the work-level IRI of this document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRcountry.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRcountry"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 1
+            "upper": 1
+      "frbrSubtype":
+        "type": "STRING"
+        "name": "frbrSubtype"
+        "description": "The element FRBRsubtype is the metadata property containing a string for the specific subtype of the document to be used in the work-level IRI of this document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRsubtype.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRsubtype"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+            "upper": 1
+      "frbrNumber":
+        "type": "LIST<STRING>"
+        "name": "frbrNumber"
+        "description": "The element FRBRnumber is the metadata property containing a string or number for the number to be used in the work-level IRI of this document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRnumber.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRnumber"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrName":
+        "type": "LIST<STRING>"
+        "name": "frbrName"
+        "description": "The element FRBRname is the metadata property containing a string for the title to be used in the work-level IRI of this document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRname.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRname"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrPrescriptive":
+        "type": "BOOLEAN"
+        "name": "frbrPrescriptive"
+        "description": "The element FRBRprescriptive is the metadata property containing a boolean value to determine whether the document contains prescriptive text (i.e., text that is or might become prescriptive, such as an act or a bill) or not (such as, for instance, a non-normative resolution from an assembly."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRprescriptive.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRprescriptive"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:boolean"
+            "lower": 0
+            "upper": 1
+      "frbrAuthoritative":
+        "type": "BOOLEAN"
+        "name": "frbrAuthoritative"
+        "description": "The element FRBRauthoritative is the metadata property containing a boolean value to determine whether the document contains authoritative text (i.e., content that is the official, authoritative product of an official workflow from an entity that is entrusted with generating an official, authoriative version of the document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRauthoritative.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRauthoritative"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:boolean"
+            "lower": 0
+            "upper": 1
+      "frbrThis":
+        "type": "STRING"
+        "name": "frbrThis"
+        "description": "The element FRBRthis is the metadata property containing the IRI of the specific component of the document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRthis.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRthis"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 1
+            "upper": 1
+      "frbrUri":
+        "type": "LIST<STRING>"
+        "name": "frbrUri"
+        "description": "The element FRBRuri is the metadata property containing the IRI of the whole document."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRuri.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRuri"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 1
+      "frbrAlias":
+        "type": "LIST<STRING>"
+        "name": "frbrAlias"
+        "description": "The element FRBRalias is the metadata property containing additional well-known names of the document in the respective level of the FRBR hierarchy."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRalias.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRalias"
+            "xsdAttribute": "value"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrAliasName":
+        "type": "LIST<STRING>"
+        "name": "frbrAliasName"
+        "description": "The name of the FRBRalias: The attribute name is used to give a name to all generic elements."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRalias.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRalias"
+            "xsdAttribute": "name"
+            "xsdType": "xsd:string"
+            "lower": 0
+      "frbrDate":
+        "type": "LIST<STRING>"
+        "name": "frbrDate"
+        "description": "The element FRBRdate is the metadata property containing a relevant date of the document in the respective level of the FRBR hierarchy. Attribute name specifies which actual date is contained here."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRdate.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRdate"
+            "xsdAttribute": "date"
+            "xsdType": "xsd:date xsd:dateTime"
+            "lower": 1
+      "frbrDateName":
+        "type": "LIST<STRING>"
+        "name": "frbrDateName"
+        "description": "The name of the FRBRdate: The attribute name is used to give a name to all generic elements."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRdate.html"
+        "extensions":
+          "custom":
+            "xsdElement": "FRBRdate"
+            "xsdAttribute": "name"
+            "xsdType": "xsd:string"
+            "lower": 1
+    "constraints":
+      "key_FRBRWork":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "akn__uri_FRBRWork_key"
+      "exists_FRBRWork_frbrCountry":
+        "type": "EXISTS"
+        "properties":
+          - "frbrCountry"
+        "name": "akn__frbrCountry_FRBRWork_exists"
+    "extensions":
+      "custom":
+        "standard": "Akoma Ntoso 1.0"
+  "akn__Hierarchy":
+    "labels":
+      "identifier": "akn__Hierarchy"
+    "description": "The group hierElements lists all the elements that are hierarchical. A label carried by Alinea, Article, Book, Chapter, Clause, Division, Hcontainer, Indent, Level, List, Paragraph, Part, Point, Proviso, Rule, Section, Subchapter, Subclause, Subdivision, Sublist, Subparagraph, Subpart, Subrule, Subsection, Subtitle, Title, Tome and Transitional."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_hierElements.html"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the Hierarchy: an IRI unique across documents. For a document, its expression IRI, e.g. /akn/ke/act/2010-08-27/1/eng@; for an element within a document, the document's IRI followed by # and the element's eId, or where it has none its wId, GUID or an identifier the loader assigns."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-nc/v1.0/os/akn-nc-v1.0-os.html"
+      "num":
+        "type": "LIST<STRING>"
+        "name": "num"
+        "description": "The element num is a heading element in a hierarchy that contains a number or any other ordered mechanism to identify the structure."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_num.html"
+        "extensions":
+          "custom":
+            "xsdElement": "num"
+            "xsdType": "mixed text"
+            "lower": 0
+      "heading":
+        "type": "LIST<STRING>"
+        "name": "heading"
+        "description": "The element heading is a heading element in a hierarchy that contains a title or any other textual content to describe the structure."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_heading.html"
+        "extensions":
+          "custom":
+            "xsdElement": "heading"
+            "xsdType": "mixed text"
+            "lower": 0
+      "subheading":
+        "type": "LIST<STRING>"
+        "name": "subheading"
+        "description": "The element subheading is a heading element in a hierarchy that contains a subtitle or any other textual content to further describe the structure."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_subheading.html"
+        "extensions":
+          "custom":
+            "xsdElement": "subheading"
+            "xsdType": "mixed text"
+            "lower": 0
+      "period":
+        "type": "STRING"
+        "name": "period"
+        "description": "The period attribute is used in versioned content and metadata elements to indicate a time interval in which they were in force, in efficacy, or in any other type of interval as specified in the corresponding temporalGroup. Resolved to the TemporalGroup it identifies by the period relationship."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_period.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "period"
+            "xsdType": "temporalGroupRef"
+            "attributeGroup": "period"
+      "status":
+        "type": "STRING"
+        "name": "status"
+        "description": "These attributes are those already defined in attribute list \"period\", plus the attribute status, that allows to specify the status of the piece of text it wraps. One of `removed`, `temporarilyRemoved`, `translated`, `editorial`, `edited`, `verbatim`, `incomplete`, `unknown`, `undefined` and `ignored`."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_enactment.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "status"
+            "xsdType": "statusType"
+            "attributeGroup": "enactment"
+        "one_of":
+          - "removed"
+          - "temporarilyRemoved"
+          - "translated"
+          - "editorial"
+          - "edited"
+          - "verbatim"
+          - "incomplete"
+          - "unknown"
+          - "undefined"
+          - "ignored"
+      "eId":
+        "type": "STRING"
+        "name": "eId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "eId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "wId":
+        "type": "STRING"
+        "name": "wId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "wId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "guid":
+        "type": "STRING"
+        "name": "guid"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "GUID"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "refersTo":
+        "type": "LIST<STRING>"
+        "name": "refersTo"
+        "description": "This attribute creates a connection between the element and an element of the Akoma Ntoso ontology to which it refers. In elements using this attribute definition the refersTo attribute is optional. Resolved to the RefItem it identifies by the refers to relationship."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_refers.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "refersTo"
+            "xsdType": "referenceRef"
+            "attributeGroup": "refers"
+      "lang":
+        "type": "STRING"
+        "name": "lang"
+        "description": "These attribute specify the human language in which the content of the element is expressed as well as the rules for whitespace management in the element. Values for xml:lang are taken from the RFC 4646. Both xml:lang and xml:space are reserved attributes of the XML language, and cannot be used for any other purpose than these ones."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_xmllang.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "xml:lang"
+            "xsdType": "xml:lang"
+            "attributeGroup": "xmllang"
+      "alternativeTo":
+        "type": "STRING"
+        "name": "alternativeTo"
+        "description": "The attribute alternativeTo is used to specify, when the element contains an alternative version of some content, the eId of the main element which this element is an alternative copy of."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_alt.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "alternativeTo"
+            "xsdType": "eIdRef"
+            "attributeGroup": "alt"
+    "constraints":
+      "key_Hierarchy":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "akn__uri_Hierarchy_key"
+    "extensions":
+      "custom":
+        "standard": "Akoma Ntoso 1.0"
+  "akn__TLCConcept":
+    "labels":
+      "identifier": "akn__TLCConcept"
+    "description": "The element TLCConcept is a metadata reference to the Akoma Ntoso IRI of an ontology instance of the class Concept."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_TLCConcept.html"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the TLCConcept: an IRI unique across documents. For a document, its expression IRI, e.g. /akn/ke/act/2010-08-27/1/eng@; for an element within a document, the document's IRI followed by # and the element's eId, or where it has none its wId, GUID or an identifier the loader assigns."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-nc/v1.0/os/akn-nc-v1.0-os.html"
+      "eId":
+        "type": "STRING"
+        "name": "eId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "eId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "wId":
+        "type": "STRING"
+        "name": "wId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "wId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "guid":
+        "type": "STRING"
+        "name": "guid"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "GUID"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "href":
+        "type": "STRING"
+        "name": "href"
+        "description": "The attribute href is used to specify an internal or external destination for a reference, a citation, an access to the ontology or a hypertext link. In elements using this attribute definition the href attribute is required."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_link.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "href"
+            "xsdType": "xsd:anyURI"
+            "attributeGroup": "link"
+      "showAs":
+        "type": "STRING"
+        "name": "showAs"
+        "description": "These attributes are used in metadata to propose visible representations of the metadata itself. Both a full visualization (attribute showAs) and an abbreviated one (attribute shortForm) can be specified."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_show.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "showAs"
+            "xsdType": "xsd:string"
+            "attributeGroup": "show"
+      "shortForm":
+        "type": "STRING"
+        "name": "shortForm"
+        "description": "These attributes are used in metadata to propose visible representations of the metadata itself. Both a full visualization (attribute showAs) and an abbreviated one (attribute shortForm) can be specified."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_show.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "shortForm"
+            "xsdType": "xsd:string"
+            "attributeGroup": "show"
+    "constraints":
+      "key_TLCConcept":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "akn__uri_TLCConcept_key"
+    "extensions":
+      "custom":
+        "standard": "Akoma Ntoso 1.0"
+  "akn__TLCOrganization":
+    "labels":
+      "identifier": "akn__TLCOrganization"
+    "description": "The element TLCOrganization is a metadata reference to the Akoma Ntoso IRI of an ontology instance of the class Organization."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_TLCOrganization.html"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the TLCOrganization: an IRI unique across documents. For a document, its expression IRI, e.g. /akn/ke/act/2010-08-27/1/eng@; for an element within a document, the document's IRI followed by # and the element's eId, or where it has none its wId, GUID or an identifier the loader assigns."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-nc/v1.0/os/akn-nc-v1.0-os.html"
+      "eId":
+        "type": "STRING"
+        "name": "eId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "eId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "wId":
+        "type": "STRING"
+        "name": "wId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "wId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "guid":
+        "type": "STRING"
+        "name": "guid"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "GUID"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "href":
+        "type": "STRING"
+        "name": "href"
+        "description": "The attribute href is used to specify an internal or external destination for a reference, a citation, an access to the ontology or a hypertext link. In elements using this attribute definition the href attribute is required."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_link.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "href"
+            "xsdType": "xsd:anyURI"
+            "attributeGroup": "link"
+      "showAs":
+        "type": "STRING"
+        "name": "showAs"
+        "description": "These attributes are used in metadata to propose visible representations of the metadata itself. Both a full visualization (attribute showAs) and an abbreviated one (attribute shortForm) can be specified."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_show.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "showAs"
+            "xsdType": "xsd:string"
+            "attributeGroup": "show"
+      "shortForm":
+        "type": "STRING"
+        "name": "shortForm"
+        "description": "These attributes are used in metadata to propose visible representations of the metadata itself. Both a full visualization (attribute showAs) and an abbreviated one (attribute shortForm) can be specified."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_show.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "shortForm"
+            "xsdType": "xsd:string"
+            "attributeGroup": "show"
+    "constraints":
+      "key_TLCOrganization":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "akn__uri_TLCOrganization_key"
+    "extensions":
+      "custom":
+        "standard": "Akoma Ntoso 1.0"
+  "akn__TLCPerson":
+    "labels":
+      "identifier": "akn__TLCPerson"
+    "description": "The element TLCPerson is a metadata reference to the Akoma Ntoso IRI of an ontology instance of the class Person."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_TLCPerson.html"
+    "properties":
+      "uri":
+        "type": "STRING"
+        "name": "uri"
+        "description": "The identifier of the TLCPerson: an IRI unique across documents. For a document, its expression IRI, e.g. /akn/ke/act/2010-08-27/1/eng@; for an element within a document, the document's IRI followed by # and the element's eId, or where it has none its wId, GUID or an identifier the loader assigns."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-nc/v1.0/os/akn-nc-v1.0-os.html"
+      "eId":
+        "type": "STRING"
+        "name": "eId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "eId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "wId":
+        "type": "STRING"
+        "name": "wId"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "wId"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "guid":
+        "type": "STRING"
+        "name": "guid"
+        "description": "These attributes identify the element in an absolute manner. In elements using this attribute definition the eId attribute is required whenever the Akoma Ntoso naming Convention is used. The wId is used to mark the identifier that the structure used to have in the original version, and is only needed when a renumbering occurred."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_idreq.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "GUID"
+            "xsdType": "noWhiteSpace"
+            "attributeGroup": "idreq"
+      "href":
+        "type": "STRING"
+        "name": "href"
+        "description": "The attribute href is used to specify an internal or external destination for a reference, a citation, an access to the ontology or a hypertext link. In elements using this attribute definition the href attribute is required."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_link.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "href"
+            "xsdType": "xsd:anyURI"
+            "attributeGroup": "link"
+      "showAs":
+        "type": "STRING"
+        "name": "showAs"
+        "description": "These attributes are used in metadata to propose visible representations of the metadata itself. Both a full visualization (attribute showAs) and an abbreviated one (attribute shortForm) can be specified."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_show.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "showAs"
+            "xsdType": "xsd:string"
+            "attributeGroup": "show"
+      "shortForm":
+        "type": "STRING"
+        "name": "shortForm"
+        "description": "These attributes are used in metadata to propose visible representations of the metadata itself. Both a full visualization (attribute showAs) and an abbreviated one (attribute shortForm) can be specified."
+        "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Attribute_Group_show.html"
+        "extensions":
+          "custom":
+            "xsdAttribute": "shortForm"
+            "xsdType": "xsd:string"
+            "attributeGroup": "show"
+    "constraints":
+      "key_TLCPerson":
+        "type": "KEY"
+        "properties":
+          - "uri"
+        "name": "akn__uri_TLCPerson_key"
+    "extensions":
+      "custom":
+        "standard": "Akoma Ntoso 1.0"
+"relationships":
+  "eli__LegalResource_SAME_AS_akn__FRBRWork":
+    "type": "SAME_AS"
+    "from":
+      "node": "eli__LegalResource"
+    "to":
+      "node": "akn__FRBRWork"
+    "description": "eli:LegalResource skos:closeMatch akn:FRBRWork. Both are the abstract act, the FRBR work, whatever its versions and languages. ELI's legal resource is the act itself, holding its metadata; Akoma Ntoso's FRBR work is the work level of a document's identification block, and an Akoma Ntoso document carries one for its own act. The act's number is the same in both, and the Akoma Ntoso work-level FRBR URI is the act's local identifier in ELI. Linked nodes share number and frbrNumber, id_local and frbrUri."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRWork.html"
+    "extensions":
+      "custom":
+        "predicate": "skos:closeMatch"
+        "exact": false
+        "properties":
+          "number": "frbrNumber"
+          "id_local": "frbrUri"
+  "eli__LegalExpression_SAME_AS_akn__FRBRExpression":
+    "type": "SAME_AS"
+    "from":
+      "node": "eli__LegalExpression"
+    "to":
+      "node": "akn__FRBRExpression"
+    "description": "eli:LegalExpression skos:closeMatch akn:FRBRExpression. Both are a version of the act in one language, the FRBR expression: an original, amended or consolidated text. ELI gives an expression its title and publication dates; Akoma Ntoso its version number, languages and whether it is authoritative. The expression-level FRBR URI is the expression's local identifier in ELI. Linked nodes share id_local and frbrUri."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRExpression.html"
+    "extensions":
+      "custom":
+        "predicate": "skos:closeMatch"
+        "exact": false
+        "properties":
+          "id_local": "frbrUri"
+  "eli__Format_SAME_AS_akn__FRBRManifestation":
+    "type": "SAME_AS"
+    "from":
+      "node": "eli__Format"
+    "to":
+      "node": "akn__FRBRManifestation"
+    "description": "eli:Format skos:closeMatch akn:FRBRManifestation. Both are an embodiment of an expression in a format, the FRBR manifestation, e.g. the Akoma Ntoso XML or a PDF. The manifestation-level FRBR URI is the format's local identifier in ELI. Linked nodes share id_local and frbrUri."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_FRBRManifestation.html"
+    "extensions":
+      "custom":
+        "predicate": "skos:closeMatch"
+        "exact": false
+        "properties":
+          "id_local": "frbrUri"
+  "eli__LegalResourceSubdivision_SAME_AS_akn__Hierarchy":
+    "type": "SAME_AS"
+    "from":
+      "node": "eli__LegalResourceSubdivision"
+    "to":
+      "node": "akn__Hierarchy"
+    "description": "eli:LegalResourceSubdivision skos:closeMatch akn:Hierarchy. Both are a part of an act at any level, from a chapter to an article or a paragraph. ELI identifies a subdivision as a legal resource of its own, part of the act; Akoma Ntoso marks it up as a hierarchical element of the act's body, with its number and heading. Their numbers are written differently, e.g. 5 and 5., so the crosswalk doesn't compare them."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_hierElements.html"
+    "extensions":
+      "custom":
+        "predicate": "skos:closeMatch"
+        "exact": false
+  "eli__Organization_SAME_AS_akn__TLCOrganization":
+    "type": "SAME_AS"
+    "from":
+      "node": "eli__Organization"
+    "to":
+      "node": "akn__TLCOrganization"
+    "description": "eli:Organization skos:closeMatch akn:TLCOrganization. An organization that passes, publishes or holds the rights to an act. ELI identifies the organization by its IRI; an Akoma Ntoso TLC reference stands for it within one document, pointing at the same IRI by its href, and the document's text and metadata refer to it through the reference. Linked nodes share uri and href."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_TLCs.html"
+    "extensions":
+      "custom":
+        "predicate": "skos:closeMatch"
+        "exact": false
+        "properties":
+          "uri": "href"
+  "eli__Person_SAME_AS_akn__TLCPerson":
+    "type": "SAME_AS"
+    "from":
+      "node": "eli__Person"
+    "to":
+      "node": "akn__TLCPerson"
+    "description": "eli:Person skos:closeMatch akn:TLCPerson. A person involved in an act, identified by an IRI in ELI and by a TLC reference pointing at it in Akoma Ntoso. Linked nodes share uri and href."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_TLCs.html"
+    "extensions":
+      "custom":
+        "predicate": "skos:closeMatch"
+        "exact": false
+        "properties":
+          "uri": "href"
+  "eli__Concept_SAME_AS_akn__TLCConcept":
+    "type": "SAME_AS"
+    "from":
+      "node": "eli__Concept"
+    "to":
+      "node": "akn__TLCConcept"
+    "description": "eli:Concept skos:closeMatch akn:TLCConcept. A subject an act is about, from a thesaurus or authority table: an ELI work is about a SKOS concept, an Akoma Ntoso term in the text refers to a TLC concept pointing at the same IRI. ELI's concept also stands for authority-table values, such as languages or resource types, which Akoma Ntoso holds as attribute values rather than references. Linked nodes share uri and href."
+    "reference": "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part2-specs/os-part2-specs_xsd_Element_Group_TLCs.html"
+    "extensions":
+      "custom":
+        "predicate": "skos:closeMatch"
+        "exact": false
+        "properties":
+          "uri": "href"

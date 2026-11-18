@@ -74,6 +74,87 @@ nodes, labelled by the category they belong to, e.g. `DefensiveTechnique` or `Di
 active objects become nodes, labelled `Technique`, `Group` or `DetectionStrategy` and so on. Every other standard maps
 its classes or object types to labels. Each folder's README explains its mapping.
 
+## Crosswalks
+
+The standards overlap: a CFIHOS tag is a tagged plant item on a DEXPI P&ID, an ATT&CK technique is a STIX attack
+pattern, an ODRL duty is an obligation in LegalRuleML. A crosswalk in [`crosswalks/`](crosswalks) maps the nodes of
+two or more standards to each other, and links their sample data into one graph.
+
+| Crosswalk | Standards | Mappings | Links |
+|---|---|---|---|
+| [Plant engineering](crosswalks/plant-engineering) | CFIHOS 2.0, DEXPI 2.0.1 | 7 | 7 |
+| [Digital twin](crosswalks/digital-twin) | Asset Administration Shell 3.2, AutomationML 2.1 | 13 | 9 |
+| [Threat intelligence](crosswalks/threat-intelligence) | STIX 2.1, MITRE ATT&CK 20.1, MITRE D3FEND 1.6.0 | 16 | 21 |
+| [Legislation](crosswalks/legislation) | ELI 1.4, Akoma Ntoso 1.0 | 7 | 11 |
+| [Legal norms](crosswalks/legal-norms) | ODRL 2.2, LegalRuleML 1.0, LKIF Core 1.1 | 20 | 26 |
+
+Each crosswalk's folder holds:
+
+| File | Contents |
+|---|---|
+| `crosswalk.json` | The mappings, written by hand: each maps a node of one standard to a node of another, as SKOS does (exact, close, broad, narrow or related match), names the properties they share, and says why and where they differ |
+| `sample.json` | The links between the standards' sample data, and any nodes the crosswalk adds so that the samples describe the same things |
+| `model.json`, `model.yaml`, `model.svg`, `diagram.json` | The crosswalk as a graph spec model: the nodes it maps, and a relationship for each mapping, e.g. `SAME_AS` |
+| `mappings.sssom.tsv` | The mappings in the [Simple Standard for Sharing Ontological Mappings](https://mapping-commons.github.io/sssom/) |
+| `model.cypher` | A script loading every standard's constraints and sample data, and the links between them, into one database |
+| `README.md` | What the crosswalk maps, where the standards differ, and queries across them |
+
+Standards share many labels and relationship types with keys and meanings of their own. In a crosswalk, each
+standard's labels and relationship types are therefore prefixed, as [neosemantics](https://neo4j.com/labs/neosemantics/)
+does: `cfihos__Tag`, `stix__USES`. The links between standards are not prefixed. [`crosswalk.py`](crosswalk.py)
+checks that every mapping names real nodes and properties. It checks the combined data the way `cypher.py` checks a
+standard's own, and checks that linked nodes agree on the properties their mapping says they share. It then writes
+the generated files. Its format is described at the top of the script.
+
+```bash
+python3 crosswalk.py                                 # rebuilds every crosswalk
+python3 crosswalk.py crosswalks/plant-engineering    # one
+python3 visualise.py crosswalks/plant-engineering    # redraws its diagram
+```
+
+### Loading the crosswalks into Neo4j
+
+The data to load is each crosswalk's `model.cypher`, which `crosswalk.py` generates. Each script holds the
+constraints and sample data of every standard in the crosswalk, and the links between them. The crosswalks share no
+standard, and so no label, so all five can go into one database.
+
+[`app/load.py`](app/load.py) loads them. It reads the connection from a `.env` file at the root of the repository,
+with the variables of the credentials file Aura gives you. [`.env.example`](.env.example) shows them:
+
+```bash
+cp .env.example .env                                  # then fill in NEO4J_URI, NEO4J_USERNAME and NEO4J_PASSWORD
+python3 -m venv .venv && .venv/bin/pip install -r app/requirements.txt
+.venv/bin/python app/load.py                          # loads every crosswalk
+.venv/bin/python app/load.py plant-engineering        # or some, by the name of their folder
+```
+
+The loader creates each script's constraints one by one, then sends its data in batches, so a remote database such as
+Aura takes a few minutes rather than thousands of round trips. Where the database refuses a constraint, as Community
+Edition refuses node keys and existence constraints, it creates a node key as a uniqueness constraint and leaves the
+others out, and says which. Every statement merges, so loading again changes nothing. `--reset` deletes every node
+and constraint in the database first, so use it only on a database that holds nothing else.
+
+A script also runs on its own against an empty database of Neo4j 5 or later, Enterprise Edition, e.g. with
+`cypher-shell -f crosswalks/plant-engineering/model.cypher`. Once loaded, the links join the standards. For
+example, every DEXPI pump with its CFIHOS handover status:
+
+```cypher
+MATCH (tag:cfihos__Tag)-[:SAME_AS]->(pump:dexpi__CentrifugalPump)
+RETURN pump.tagName, pump.designVolumeFlowRate, tag.tagStatus
+```
+
+### The crosswalk explorer
+
+The [crosswalk explorer](app) is a web app for browsing the crosswalks once they're loaded. It shows a crosswalk's
+data as one graph, with a band per standard. It also shows each linked thing as every standard describes it, side
+by side, and lists the mappings. It uses the same `.env` and virtual environment as the loader:
+
+```bash
+.venv/bin/python app/server.py                        # serves the explorer at http://localhost:8000
+```
+
+The [app's README](app) describes its views.
+
 ## Adding a standard
 
 Each folder follows the same pattern, and a new one should too:
@@ -122,4 +203,5 @@ python3 cypher.py industrial/DEXPI   # one folder
 
 Run a script against an empty database of Neo4j 5 or later, e.g. with `cypher-shell -f model.cypher`. It needs
 Enterprise Edition, for node key and property existence constraints. Every statement merges, so a script can be run
-more than once. Each standard has its own labels and constraints, so load each one into a database of its own.
+more than once. Each standard has its own labels and constraints, so load each one into a database of its own. To load several
+together, use the `model.cypher` of a [crosswalk](#crosswalks), which prefixes them.

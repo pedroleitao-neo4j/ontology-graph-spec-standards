@@ -1,0 +1,32 @@
+{
+  "source": "crosswalk.json, from the model.json of Asset Administration Shell 3.2, AutomationML Edition 2.1 (CAEX 3.0)",
+  "link": "the term in its standard",
+  "areas": {
+    "field": "standard",
+    "groups": [
+      {
+        "name": "Asset Administration Shell 3.2",
+        "values": [
+          "Asset Administration Shell 3.2"
+        ]
+      },
+      {
+        "name": "AutomationML Edition 2.1 (CAEX 3.0)",
+        "values": [
+          "AutomationML Edition 2.1 (CAEX 3.0)"
+        ]
+      }
+    ]
+  },
+  "sub": [
+    "standard",
+    "#properties"
+  ],
+  "lines": {
+    "by": "field:exact",
+    "legend": {
+      "main": "skos:exactMatch",
+      "dashed": "skos:closeMatch, broadMatch, narrowMatch or relatedMatch"
+    }
+  }
+}

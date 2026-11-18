@@ -1,0 +1,1548 @@
+{
+  "schema": "https://neo4j.com/docs/ontology-graph-spec/1.1.0/schema.json",
+  "version": "1.0",
+  "id": "crosswalk-plant-engineering",
+  "name": "Plant engineering: CFIHOS 2.0 and DEXPI 2.0.1",
+  "description": "A crosswalk between CFIHOS 2.0, the data and documents a contractor hands over to the owner of a process facility, and DEXPI 2.0.1, the P&ID data engineering tools exchange. Both describe the same plant from different sides: CFIHOS by its tags, their classes and the serialised equipment that fulfils them, DEXPI by the tagged plant items on a P&ID, their components, nozzles and piping. They meet in the plant breakdown and the tag: a CFIHOS tag is the handover record of a DEXPI tagged plant item, joined by the tag name both carry. Where CFIHOS gives a pump's motor a tag of its own, DEXPI draws it as a component of the pump, under a sub-tag.",
+  "nodes": {
+    "cfihos__Site": {
+      "labels": {
+        "identifier": "cfihos__Site"
+      },
+      "description": "A geographical surface that can be identified on a map.",
+      "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-00000001",
+      "properties": {
+        "siteCode": {
+          "type": "STRING",
+          "name": "siteCode",
+          "description": "A code that uniquely identifies the site. At most 40 characters. e.g. `KAS`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000003",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000003",
+              "format": "Text, max 40 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "siteName": {
+          "type": "STRING",
+          "name": "siteName",
+          "description": "A unique name to identify a geographical location. At most 100 characters. e.g. `Kashagan field`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000004",
+          "pattern": "^[\\s\\S]{0,100}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000004",
+              "format": "Text, max 100 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "measurementSystemCode": {
+          "type": "STRING",
+          "name": "measurementSystemCode",
+          "description": "The default measurement system that is used by a site. Must be present in MEASUREMENT SYSTEM. At most 10 characters. e.g. `SI`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000240",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000240",
+              "format": "Text, max 10 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Site": {
+          "type": "KEY",
+          "properties": [
+            "siteCode"
+          ],
+          "name": "cfihos__siteCode_Site_key"
+        },
+        "exists_Site_siteName": {
+          "type": "EXISTS",
+          "properties": [
+            "siteName"
+          ],
+          "name": "cfihos__siteName_Site_exists"
+        },
+        "exists_Site_measurementSystemCode": {
+          "type": "EXISTS",
+          "properties": [
+            "measurementSystemCode"
+          ],
+          "name": "cfihos__measurementSystemCode_Site_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "CFIHOS 2.0"
+        }
+      }
+    },
+    "cfihos__Plant": {
+      "labels": {
+        "identifier": "cfihos__Plant"
+      },
+      "description": "An assembly of equipment that perform a physical or chemical process, including production, transportation and storage. A Plant represents the 'high level' function to be performed, and during the design, a Plant is decomposed in Process Units and Tags.",
+      "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-00000031",
+      "properties": {
+        "plantCode": {
+          "type": "STRING",
+          "name": "plantCode",
+          "description": "A code that uniquely identifies the plant. At most 40 characters. e.g. `6000`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000005",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000005",
+              "format": "Text, max 40 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "plantName": {
+          "type": "STRING",
+          "name": "plantName",
+          "description": "The full name of the plant. At most 100 characters. e.g. `Onshore Processing Facility (OPF)`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000006",
+          "pattern": "^[\\s\\S]{0,100}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000006",
+              "format": "Text, max 100 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "siteCode": {
+          "type": "STRING",
+          "name": "siteCode",
+          "description": "A code that uniquely identifies the site. Must be present in SITE. At most 40 characters. e.g. `KAS`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000003",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000003",
+              "format": "Text, max 40 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "isoLanguageCode": {
+          "type": "STRING",
+          "name": "isoLanguageCode",
+          "description": "The language that should be used by default for all exchange of information related to that plant. Must be present in ISO LANGUAGE. At most 2 characters. e.g. `EN`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000147",
+          "pattern": "^[\\s\\S]{0,2}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000147",
+              "format": "Text, max 2 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "measurementSystemCode": {
+          "type": "STRING",
+          "name": "measurementSystemCode",
+          "description": "The default measurement system that is used by a plant. Must be present in MEASUREMENT SYSTEM. At most 10 characters. e.g. `SI`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000240",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000240",
+              "format": "Text, max 10 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "industrialComplexCode": {
+          "type": "STRING",
+          "name": "industrialComplexCode",
+          "description": "A code that uniquely identifies the industrial complex. Must be present in INDUSTRIAL COMPLEX. At most 40 characters. e.g. `VSI`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000367",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000367",
+              "format": "Text, max 40 characters",
+              "requirement": "Optional"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Plant": {
+          "type": "KEY",
+          "properties": [
+            "plantCode"
+          ],
+          "name": "cfihos__plantCode_Plant_key"
+        },
+        "exists_Plant_plantName": {
+          "type": "EXISTS",
+          "properties": [
+            "plantName"
+          ],
+          "name": "cfihos__plantName_Plant_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "CFIHOS 2.0"
+        }
+      }
+    },
+    "cfihos__ProcessUnit": {
+      "labels": {
+        "identifier": "cfihos__ProcessUnit"
+      },
+      "description": "A decomposition of the 'high level' Facility function into more granular 'sub-functions'. This facility breakdown structure is decided by the process engineer.",
+      "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-00000002",
+      "properties": {
+        "plantCode": {
+          "type": "STRING",
+          "name": "plantCode",
+          "description": "The plant the process unit is part of. Must be present in PLANT. At most 40 characters. e.g. `6000`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000005",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000005",
+              "format": "Text, max 40 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "processUnitCode": {
+          "type": "STRING",
+          "name": "processUnitCode",
+          "description": "A code that uniquely identifies the process unit within the plant. At most 40 characters. e.g. `36`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000157",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000157",
+              "format": "Text, max 40 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "processUnitName": {
+          "type": "STRING",
+          "name": "processUnitName",
+          "description": "A name describing the function of the process unit. At most 100 characters. e.g. `Inlet compression`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000008",
+          "pattern": "^[\\s\\S]{0,100}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000008",
+              "format": "Text, max 100 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_ProcessUnit": {
+          "type": "KEY",
+          "properties": [
+            "plantCode",
+            "processUnitCode"
+          ],
+          "name": "cfihos__plantCode_processUnitCode_ProcessUnit_key"
+        },
+        "exists_ProcessUnit_processUnitName": {
+          "type": "EXISTS",
+          "properties": [
+            "processUnitName"
+          ],
+          "name": "cfihos__processUnitName_ProcessUnit_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "CFIHOS 2.0"
+        }
+      }
+    },
+    "cfihos__Area": {
+      "labels": {
+        "identifier": "cfihos__Area"
+      },
+      "description": "A geographical surface occupied by a Plant. A plant area is created to identify the physical location of an equipment within a plant.",
+      "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-00000003",
+      "properties": {
+        "plantCode": {
+          "type": "STRING",
+          "name": "plantCode",
+          "description": "The plant the area is part of. Must be present in PLANT. At most 40 characters. e.g. `6000`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000005",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000005",
+              "format": "Text, max 40 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "areaCode": {
+          "type": "STRING",
+          "name": "areaCode",
+          "description": "A code that uniquely identifies the area within the plant. At most 10 characters. e.g. `Topsides`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000001",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000001",
+              "format": "Text, max 10 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "areaName": {
+          "type": "STRING",
+          "name": "areaName",
+          "description": "A name describing the location of an area within the plant. At most 100 characters. e.g. `Topsides Deck 1`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000002",
+          "pattern": "^[\\s\\S]{0,100}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000002",
+              "format": "Text, max 100 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Area": {
+          "type": "KEY",
+          "properties": [
+            "plantCode",
+            "areaCode"
+          ],
+          "name": "cfihos__plantCode_areaCode_Area_key"
+        },
+        "exists_Area_areaName": {
+          "type": "EXISTS",
+          "properties": [
+            "areaName"
+          ],
+          "name": "cfihos__areaName_Area_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "CFIHOS 2.0"
+        }
+      }
+    },
+    "cfihos__Tag": {
+      "labels": {
+        "identifier": "cfihos__Tag"
+      },
+      "description": "An object designed for performing functional requirements and serving as a specification for equipment.",
+      "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-00000028",
+      "properties": {
+        "plantCode": {
+          "type": "STRING",
+          "name": "plantCode",
+          "description": "The plant where the tag is or will be located. Must be present in PROCESS UNIT. At most 40 characters. e.g. `6000`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000005",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000005",
+              "format": "Text, max 40 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "tagName": {
+          "type": "STRING",
+          "name": "tagName",
+          "description": "The full name of a tag. At most 33 characters. e.g. `036FV001`. Different companies have different tag naming conventions. A tag name shall be unique within a plant.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000166",
+          "pattern": "^[\\s\\S]{0,33}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000166",
+              "format": "Text, max 33 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "tagDescription": {
+          "type": "STRING",
+          "name": "tagDescription",
+          "description": "A functional description of the tag. At most 255 characters. e.g. `'Hot Oil Circulation Pump' that clearly describes the function of the pump (the equipment assigned can be centrifugal or reciprocating pump). 'V 431 Separator Relief Valve' that clearly describes the function of the valve, with additional parent related information.`. The description can also include the parent tag, where required. It should not include tag class, manufacturer and model information.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000177",
+          "pattern": "^[\\s\\S]{0,255}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000177",
+              "format": "Text, max 255 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "parentTagName": {
+          "type": "STRING",
+          "name": "parentTagName",
+          "description": "An identification of the parentage of the tag. Must be present in TAG. At most 33 characters. e.g. `600-036F001`. The parent tag (also called main tag) can be a package, an instrument loop or an electrical circuit.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000178",
+          "pattern": "^[\\s\\S]{0,33}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000178",
+              "format": "Text, max 33 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "processUnitCode": {
+          "type": "STRING",
+          "name": "processUnitCode",
+          "description": "The process unit within the plant to which the tag provides part of the functionality. Must be present in PROCESS UNIT. At most 40 characters. e.g. `36`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000157",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000157",
+              "format": "Text, max 40 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "areaCode": {
+          "type": "STRING",
+          "name": "areaCode",
+          "description": "The geographical area within the plant where the tag is located. Must be present in AREA. At most 10 characters. e.g. `Topsides`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000001",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000001",
+              "format": "Text, max 10 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "constructionAssemblyCode": {
+          "type": "STRING",
+          "name": "constructionAssemblyCode",
+          "description": "The construction assembly of a plant where the tag resides. Must be present in CONSTRUCTION ASSEMBLY. At most 10 characters. e.g. `CIU`. This should be a leaf node construction assembly.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000130",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000130",
+              "format": "Text, max 10 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "commissioningUnitCode": {
+          "type": "STRING",
+          "name": "commissioningUnitCode",
+          "description": "The unit that will or has commissioned the tag. Must be present in LEAF NODE COMMISSIONING UNIT. At most 10 characters. e.g. `980`. This should be a leaf node commissioning unit.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000009",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000009",
+              "format": "Text, max 10 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "maintenanceUnitCode": {
+          "type": "STRING",
+          "name": "maintenanceUnitCode",
+          "description": "The unit that is in charge of maintaining the tag. Must be present in MAINTENANCE SYSTEM. At most 10 characters. e.g. `KZ.KAS.H01.B02`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000013",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000013",
+              "format": "Text, max 10 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "maintenanceSystemCode": {
+          "type": "STRING",
+          "name": "maintenanceSystemCode",
+          "description": "The maintenance system through which the tag is maintained. Must be present in MAINTENANCE SYSTEM. At most 10 characters. e.g. `A01.01`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000015",
+          "pattern": "^[\\s\\S]{0,10}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000015",
+              "format": "Text, max 10 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "corrosionLoopCode": {
+          "type": "STRING",
+          "name": "corrosionLoopCode",
+          "description": "The corrosion loop that includes the tag. Must be present in CORROSION LOOP. At most 40 characters. e.g. `CL1101`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000018",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000018",
+              "format": "Text, max 40 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "tagClassName": {
+          "type": "STRING",
+          "name": "tagClassName",
+          "description": "The full name of the tag or equipment class. Must be present in TAG CLASS. At most 100 characters. e.g. `control panel`. The initial set of values will be the CFIHOS unique ids that were assigned to tag classes.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000040",
+          "pattern": "^[\\s\\S]{0,100}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000040",
+              "format": "Text, max 100 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "tagStatus": {
+          "type": "STRING",
+          "name": "tagStatus",
+          "description": "An identification of the engineering phase in which the tag is. Must be present in ENGINEERING STATUS. At most 40 characters. e.g. `ASB`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000025",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000025",
+              "format": "Text, max 40 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "tagRequisitionNumber": {
+          "type": "STRING",
+          "name": "tagRequisitionNumber",
+          "description": "A requisition number that has been placed to acquire the tag. At most 50 characters. e.g. `1234567`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000026",
+          "pattern": "^[\\s\\S]{0,50}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000026",
+              "format": "Text, max 50 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "designedByCompanyName": {
+          "type": "STRING",
+          "name": "designedByCompanyName",
+          "description": "The company responsible for the design of the tag. Must be present in COMPANY. At most 30 characters. e.g. `KWAC`. It is sometimes extracted from maintenance management system. The owner / operator and the EPC company need to align on the name of companies.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000179",
+          "pattern": "^[\\s\\S]{0,30}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000179",
+              "format": "Text, max 30 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "productionCriticalItemIndicator": {
+          "type": "BOOLEAN",
+          "name": "productionCriticalItemIndicator",
+          "description": "An indication whether the loss of the functionality provided by the tag would have an immediate cost impact, like a loss of production. e.g. `Yes`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000027",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000027",
+              "format": "Boolean (Yes/No)",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "safetyCriticalItemIndicator": {
+          "type": "BOOLEAN",
+          "name": "safetyCriticalItemIndicator",
+          "description": "An indication whether the tag should be considered as a safety critical element, as per International Standards. e.g. `Yes`. Safety Critical Elements (SCEs) are those elements of risk barriers, including equipment, hardware, and related control systems, for which : - the failure of which could lead to a major accident or event, or - that mitigate the consequences of a major accident or event. The basis for the selection of SCEs is the assessment of Major Accidents identified in each Asset HSE Case or those documents that support the Case.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000028",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000028",
+              "format": "Boolean (Yes/No)",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "safetyCriticalItemGroupCode": {
+          "type": "STRING",
+          "name": "safetyCriticalItemGroupCode",
+          "description": "The safety critical item group assigned to the tag, and identified according to International Standard. Must be present in SAFETY CRITICAL ITEM GROUP. At most 40 characters. e.g. `DS001`. This is only required if safety critical item indicator =Yes.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000029",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000029",
+              "format": "Text, max 40 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "safetyCriticalItemReasonAwarded": {
+          "type": "STRING",
+          "name": "safetyCriticalItemReasonAwarded",
+          "description": "A documentation of the outcome of the SCE assessment. At most 30 characters. e.g. `from safety case`. This is only required if safety critical item indicator =Yes. It is populated according to International Standard.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000030",
+          "pattern": "^[\\s\\S]{0,30}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000030",
+              "format": "Text, max 30 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "manufacturerCompanyName": {
+          "type": "STRING",
+          "name": "manufacturerCompanyName",
+          "description": "A name used to uniquely identify the company who manufactures the model / part. Must be present in MODEL PART. At most 30 characters. e.g. `Flowserve`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000158",
+          "pattern": "^[\\s\\S]{0,30}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000158",
+              "format": "Text, max 30 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "modelPartName": {
+          "type": "STRING",
+          "name": "modelPartName",
+          "description": "A unique name to identify the model part of the manufacturer. Must be present in MODEL PART. At most 100 characters. e.g. `A4 V726 PN 40`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000159",
+          "pattern": "^[\\s\\S]{0,100}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000159",
+              "format": "Text, max 100 characters",
+              "requirement": "Optional"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Tag": {
+          "type": "KEY",
+          "properties": [
+            "plantCode",
+            "tagName"
+          ],
+          "name": "cfihos__plantCode_tagName_Tag_key"
+        },
+        "exists_Tag_tagDescription": {
+          "type": "EXISTS",
+          "properties": [
+            "tagDescription"
+          ],
+          "name": "cfihos__tagDescription_Tag_exists"
+        },
+        "exists_Tag_processUnitCode": {
+          "type": "EXISTS",
+          "properties": [
+            "processUnitCode"
+          ],
+          "name": "cfihos__processUnitCode_Tag_exists"
+        },
+        "exists_Tag_tagClassName": {
+          "type": "EXISTS",
+          "properties": [
+            "tagClassName"
+          ],
+          "name": "cfihos__tagClassName_Tag_exists"
+        },
+        "exists_Tag_tagStatus": {
+          "type": "EXISTS",
+          "properties": [
+            "tagStatus"
+          ],
+          "name": "cfihos__tagStatus_Tag_exists"
+        },
+        "exists_Tag_designedByCompanyName": {
+          "type": "EXISTS",
+          "properties": [
+            "designedByCompanyName"
+          ],
+          "name": "cfihos__designedByCompanyName_Tag_exists"
+        },
+        "exists_Tag_productionCriticalItemIndicator": {
+          "type": "EXISTS",
+          "properties": [
+            "productionCriticalItemIndicator"
+          ],
+          "name": "cfihos__productionCriticalItemIndicator_Tag_exists"
+        },
+        "exists_Tag_safetyCriticalItemIndicator": {
+          "type": "EXISTS",
+          "properties": [
+            "safetyCriticalItemIndicator"
+          ],
+          "name": "cfihos__safetyCriticalItemIndicator_Tag_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "CFIHOS 2.0"
+        }
+      }
+    },
+    "cfihos__Company": {
+      "labels": {
+        "identifier": "cfihos__Company"
+      },
+      "description": "A legal entity engaged in business as a proprietorship, partnership, corporation, or other form.",
+      "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-00000009",
+      "properties": {
+        "companyName": {
+          "type": "STRING",
+          "name": "companyName",
+          "description": "A name used to uniquely identify the company. At most 30 characters. e.g. `Flowserve`. It is sometimes extracted from maintenance management system. The owner / operator and the EPC company need to align on the name of companies.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000150",
+          "pattern": "^[\\s\\S]{0,30}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000150",
+              "format": "Text, max 30 characters",
+              "requirement": "Identifier"
+            }
+          }
+        },
+        "manufacturerIndicator": {
+          "type": "BOOLEAN",
+          "name": "manufacturerIndicator",
+          "description": "An indicator whether the company is a manufacturer or not. e.g. `Yes`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000036",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000036",
+              "format": "Boolean (Yes/No)",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "supplierIndicator": {
+          "type": "BOOLEAN",
+          "name": "supplierIndicator",
+          "description": "An indicator whether the company is a supplier or not. e.g. `Yes`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000037",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000037",
+              "format": "Boolean (Yes/No)",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "companyContactPerson": {
+          "type": "STRING",
+          "name": "companyContactPerson",
+          "description": "The name of the person to contact in the company. At most 40 characters. e.g. `Mr K. Uchida`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000038",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000038",
+              "format": "Text, max 40 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "companyContactPersonFunction": {
+          "type": "STRING",
+          "name": "companyContactPersonFunction",
+          "description": "A description of the role of the contact person within the organisation of the company. At most 40 characters. e.g. `Project Manager`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000039",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000039",
+              "format": "Text, max 40 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "companyAddressLine1": {
+          "type": "STRING",
+          "name": "companyAddressLine1",
+          "description": "The first line of the address of the company. At most 40 characters. e.g. `6, Water side Business Park Eastways`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000149",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000149",
+              "format": "Text, max 40 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "companyAddressLine2": {
+          "type": "STRING",
+          "name": "companyAddressLine2",
+          "description": "The second line of the address of the company. At most 40 characters. e.g. `New Braunfels`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000185",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000185",
+              "format": "Text, max 40 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "companyAddressLine3": {
+          "type": "STRING",
+          "name": "companyAddressLine3",
+          "description": "The third line of the address of the company. At most 40 characters. e.g. `Tokyo 105-0004`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000186",
+          "pattern": "^[\\s\\S]{0,40}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000186",
+              "format": "Text, max 40 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "isoCountryCode": {
+          "type": "STRING",
+          "name": "isoCountryCode",
+          "description": "The country where the company address is located. Must be present in ISO COUNTRY. At most 2 characters. e.g. `US`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000151",
+          "pattern": "^[\\s\\S]{0,2}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000151",
+              "format": "Text, max 2 characters",
+              "requirement": "Mandatory"
+            }
+          }
+        },
+        "companyTelephoneNumber": {
+          "type": "STRING",
+          "name": "companyTelephoneNumber",
+          "description": "The official telephone number of the company. At most 20 characters. e.g. `+44 (0)1932 249866`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000167",
+          "pattern": "^[\\s\\S]{0,20}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000167",
+              "format": "Text, max 20 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "companyFaxNumber": {
+          "type": "STRING",
+          "name": "companyFaxNumber",
+          "description": "The official fax number of the company. At most 20 characters. e.g. `+7 095 230 62 44`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000156",
+          "pattern": "^[\\s\\S]{0,20}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000156",
+              "format": "Text, max 20 characters",
+              "requirement": "Optional"
+            }
+          }
+        },
+        "companyEmailAddress": {
+          "type": "STRING",
+          "name": "companyEmailAddress",
+          "description": "The official email address of the company. At most 255 characters. e.g. `projectjapanmachinery.com`.",
+          "reference": "https://www.posccaesar.org/cfihos/v2.0/CFIHOS-10000155",
+          "pattern": "^[\\s\\S]{0,255}$",
+          "extensions": {
+            "custom": {
+              "cfihosCode": "CFIHOS-10000155",
+              "format": "Text, max 255 characters",
+              "requirement": "Optional"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Company": {
+          "type": "KEY",
+          "properties": [
+            "companyName"
+          ],
+          "name": "cfihos__companyName_Company_key"
+        },
+        "exists_Company_manufacturerIndicator": {
+          "type": "EXISTS",
+          "properties": [
+            "manufacturerIndicator"
+          ],
+          "name": "cfihos__manufacturerIndicator_Company_exists"
+        },
+        "exists_Company_supplierIndicator": {
+          "type": "EXISTS",
+          "properties": [
+            "supplierIndicator"
+          ],
+          "name": "cfihos__supplierIndicator_Company_exists"
+        },
+        "exists_Company_companyContactPerson": {
+          "type": "EXISTS",
+          "properties": [
+            "companyContactPerson"
+          ],
+          "name": "cfihos__companyContactPerson_Company_exists"
+        },
+        "exists_Company_companyAddressLine1": {
+          "type": "EXISTS",
+          "properties": [
+            "companyAddressLine1"
+          ],
+          "name": "cfihos__companyAddressLine1_Company_exists"
+        },
+        "exists_Company_isoCountryCode": {
+          "type": "EXISTS",
+          "properties": [
+            "isoCountryCode"
+          ],
+          "name": "cfihos__isoCountryCode_Company_exists"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "CFIHOS 2.0"
+        }
+      }
+    },
+    "dexpi__PlantArea": {
+      "labels": {
+        "identifier": "dexpi__PlantArea"
+      },
+      "description": "An area as defined by ISA 95.",
+      "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/PlantArea.html",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the PlantArea: the id attribute of its Object element in a DEXPI XML exchange file. Unique within that file.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/_static/DEXPI_XML_Schema_doc/schemas/DEXPI_XML_Schema_xsd/complexTypes/Object.html",
+          "extensions": {
+            "custom": {
+              "dexpiType": "ID"
+            }
+          }
+        },
+        "plantAreaIdentificationCode": {
+          "type": "STRING",
+          "name": "plantAreaIdentificationCode",
+          "description": "The identification code of the plant area according to ISA-95. e.g. `F4`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/PlantArea.html#sp:plant.plantstructure.plantarea.plantareaidentificationcode",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.PLANT_AREA_IDENTIFICATION_CODE_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "plantAreaName": {
+          "type": "STRING",
+          "name": "plantAreaName",
+          "description": "The name of the plant area according to ISA-95. e.g. `Area F4`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/PlantArea.html#sp:plant.plantstructure.plantarea.plantareaname",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.AREA_ISA95_NAME_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_PlantArea": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "dexpi__id_PlantArea_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "DEXPI 2.0.1"
+        }
+      }
+    },
+    "dexpi__Enterprise": {
+      "labels": {
+        "identifier": "dexpi__Enterprise"
+      },
+      "description": "An enterprise as defined by ISA 95.",
+      "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/Enterprise.html",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the Enterprise: the id attribute of its Object element in a DEXPI XML exchange file. Unique within that file.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/_static/DEXPI_XML_Schema_doc/schemas/DEXPI_XML_Schema_xsd/complexTypes/Object.html",
+          "extensions": {
+            "custom": {
+              "dexpiType": "ID"
+            }
+          }
+        },
+        "enterpriseIdentificationCode": {
+          "type": "STRING",
+          "name": "enterpriseIdentificationCode",
+          "description": "The identification code of the enterprise. e.g. `C1248`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/Enterprise.html#sp:plant.plantstructure.enterprise.enterpriseidentificationcode",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.ENTERPRISE_IDENTIFICATION_CODE_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "enterpriseName": {
+          "type": "STRING",
+          "name": "enterpriseName",
+          "description": "The name of the enterprise. e.g. `CompAny Ltd.`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/Enterprise.html#sp:plant.plantstructure.enterprise.enterprisename",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.ENTERPRISE_NAME_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Enterprise": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "dexpi__id_Enterprise_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "DEXPI 2.0.1"
+        }
+      }
+    },
+    "dexpi__Site": {
+      "labels": {
+        "identifier": "dexpi__Site"
+      },
+      "description": "A site as defined by ISA 95.",
+      "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/Site.html",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the Site: the id attribute of its Object element in a DEXPI XML exchange file. Unique within that file.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/_static/DEXPI_XML_Schema_doc/schemas/DEXPI_XML_Schema_xsd/complexTypes/Object.html",
+          "extensions": {
+            "custom": {
+              "dexpiType": "ID"
+            }
+          }
+        },
+        "siteIdentificationCode": {
+          "type": "STRING",
+          "name": "siteIdentificationCode",
+          "description": "The identification code of the site. e.g. `DC`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/Site.html#sp:plant.plantstructure.site.siteidentificationcode",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.SITE_IDENTIFICATION_CODE_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "siteName": {
+          "type": "STRING",
+          "name": "siteName",
+          "description": "The name of the site. e.g. `Dexpi City`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/Site.html#sp:plant.plantstructure.site.sitename",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.SITE_NAME_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_Site": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "dexpi__id_Site_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "DEXPI 2.0.1"
+        }
+      }
+    },
+    "dexpi__ProcessPlant": {
+      "labels": {
+        "identifier": "dexpi__ProcessPlant"
+      },
+      "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/ProcessPlant.html",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the ProcessPlant: the id attribute of its Object element in a DEXPI XML exchange file. Unique within that file.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/_static/DEXPI_XML_Schema_doc/schemas/DEXPI_XML_Schema_xsd/complexTypes/Object.html",
+          "extensions": {
+            "custom": {
+              "dexpiType": "ID"
+            }
+          }
+        },
+        "processPlantIdentificationCode": {
+          "type": "STRING",
+          "name": "processPlantIdentificationCode",
+          "description": "The identification code of the process plant. e.g. `ABC`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/ProcessPlant.html#sp:plant.plantstructure.processplant.processplantidentificationcode",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.PROCESS_PLANT_IDENTIFICATION_CODE_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "processPlantName": {
+          "type": "STRING",
+          "name": "processPlantName",
+          "description": "The name of the process plant. e.g. `ABC Plant`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/ProcessPlant.html#sp:plant.plantstructure.processplant.processplantname",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.PROCESS_PLANT_NAME_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_ProcessPlant": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "dexpi__id_ProcessPlant_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "DEXPI 2.0.1"
+        }
+      }
+    },
+    "dexpi__PlantSection": {
+      "labels": {
+        "identifier": "dexpi__PlantSection"
+      },
+      "description": "A plant section as defined by ISO 10209:2012.",
+      "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/PlantSection.html",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the PlantSection: the id attribute of its Object element in a DEXPI XML exchange file. Unique within that file.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/_static/DEXPI_XML_Schema_doc/schemas/DEXPI_XML_Schema_xsd/complexTypes/Object.html",
+          "extensions": {
+            "custom": {
+              "dexpiType": "ID"
+            }
+          }
+        },
+        "plantSectionIdentificationCode": {
+          "type": "STRING",
+          "name": "plantSectionIdentificationCode",
+          "description": "The identification code of the plant section. e.g. `10`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/PlantSection.html#sp:plant.plantstructure.plantsection.plantsectionidentificationcode",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.PLANT_SECTION_IDENTIFICATION_CODE_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "plantSectionName": {
+          "type": "STRING",
+          "name": "plantSectionName",
+          "description": "The name of the plant section. e.g. `Utilities`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/PlantStructure/PlantSection.html#sp:plant.plantstructure.plantsection.plantsectionname",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.PLANT_SECTION_NAME_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_PlantSection": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "dexpi__id_PlantSection_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "DEXPI 2.0.1"
+        }
+      }
+    },
+    "dexpi__TaggedPlantItem": {
+      "labels": {
+        "identifier": "dexpi__TaggedPlantItem"
+      },
+      "description": "A fully tagged item in a plant.",
+      "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/TaggedPlantItem.html",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the TaggedPlantItem: the id attribute of its Object element in a DEXPI XML exchange file. Unique within that file.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/_static/DEXPI_XML_Schema_doc/schemas/DEXPI_XML_Schema_xsd/complexTypes/Object.html",
+          "extensions": {
+            "custom": {
+              "dexpiType": "ID"
+            }
+          }
+        },
+        "tagName": {
+          "type": "STRING",
+          "name": "tagName",
+          "description": "The tag number of the TaggedPlantItem. See also TagNamePrefix, TagNameSequenceNumber, and TagNameSuffix. e.g. `P4714-A`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/TaggedPlantItem.html#sp:plant.processequipment.taggedplantitem.tagname",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.TAG_NAME_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "tagNamePrefix": {
+          "type": "STRING",
+          "name": "tagNamePrefix",
+          "description": "The prefix part of the tag number of the TaggedPlantItem. For example, the prefix of the tag number \"P4714-A\" is \"P\". The prefix often indicates the type of the equipment item, e.g., \"P\" can indicate a pump. See also TagName. e.g. `P`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/TaggedPlantItem.html#sp:plant.processequipment.taggedplantitem.tagnameprefix",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.TAG_NAME_PREFIX_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "tagNameSequenceNumber": {
+          "type": "STRING",
+          "name": "tagNameSequenceNumber",
+          "description": "The sequence number part of the tag number of the TaggedPlantItem. For example, the sequence number of the tag number \"P4714-A\" is \"4714\". e.g. `4714`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/TaggedPlantItem.html#sp:plant.processequipment.taggedplantitem.tagnamesequencenumber",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.TAG_NAME_SEQUENCE_NUMBER_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        },
+        "tagNameSuffix": {
+          "type": "STRING",
+          "name": "tagNameSuffix",
+          "description": "The suffix part of the tag number of an TaggedPlantItem item. For example, the suffix of the tag number \"P4714-A\" is \"A\". e.g. `A`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/TaggedPlantItem.html#sp:plant.processequipment.taggedplantitem.tagnamesuffix",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.TAG_NAME_SUFFIX_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_TaggedPlantItem": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "dexpi__id_TaggedPlantItem_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "DEXPI 2.0.1"
+        }
+      }
+    },
+    "dexpi__MotorAsComponent": {
+      "labels": {
+        "identifier": "dexpi__MotorAsComponent"
+      },
+      "description": "A driver that is powered by electricity or internal combustion and is used as component of an apparatus or of a machine.",
+      "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/MotorAsComponent.html",
+      "properties": {
+        "id": {
+          "type": "STRING",
+          "name": "id",
+          "description": "The identifier of the MotorAsComponent: the id attribute of its Object element in a DEXPI XML exchange file. Unique within that file.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/_static/DEXPI_XML_Schema_doc/schemas/DEXPI_XML_Schema_xsd/complexTypes/Object.html",
+          "extensions": {
+            "custom": {
+              "dexpiType": "ID"
+            }
+          }
+        },
+        "nominalPower": {
+          "type": "STRING",
+          "name": "nominalPower",
+          "description": "The nominal power of the MotorAsComponent. e.g. `400 Kilowatt`. Values of DEXPI type PhysicalQuantity with UnitType → PowerUnit.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/MotorAsComponent.html#sp:plant.processequipment.motorascomponent.nominalpower",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.NOMINAL_POWER",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | PhysicalQuantity with UnitType → PowerUnit"
+            }
+          }
+        },
+        "nominalRotationalFrequency": {
+          "type": "STRING",
+          "name": "nominalRotationalFrequency",
+          "description": "The nominal rotational frequency of the MotorAsComponent. e.g. `240 ReciprocalMinute`. Values of DEXPI type PhysicalQuantity with UnitType → RotationalFrequencyUnit.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/MotorAsComponent.html#sp:plant.processequipment.motorascomponent.nominalrotationalfrequency",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.NOMINAL_ROTATIONAL_FREQUENCY",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | PhysicalQuantity with UnitType → RotationalFrequencyUnit"
+            }
+          }
+        },
+        "subTagName": {
+          "type": "STRING",
+          "name": "subTagName",
+          "description": "The sub tag name of the MotorAsComponent. e.g. `ST1`.",
+          "reference": "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/MotorAsComponent.html#sp:plant.processequipment.motorascomponent.subtagname",
+          "extensions": {
+            "custom": {
+              "rdl": "DEXPI_RDL.SUB_TAG_NAME_ASSIGNMENT_CLASS",
+              "lower": 0,
+              "upper": 1,
+              "dexpiType": "Undefined | String"
+            }
+          }
+        }
+      },
+      "constraints": {
+        "key_MotorAsComponent": {
+          "type": "KEY",
+          "properties": [
+            "id"
+          ],
+          "name": "dexpi__id_MotorAsComponent_key"
+        }
+      },
+      "extensions": {
+        "custom": {
+          "standard": "DEXPI 2.0.1"
+        }
+      }
+    }
+  },
+  "relationships": {
+    "cfihos__Company_SAME_AS_dexpi__Enterprise": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "cfihos__Company"
+      },
+      "to": {
+        "node": "dexpi__Enterprise"
+      },
+      "description": "cfihos:Company skos:narrowMatch dexpi:Enterprise. A CFIHOS company is any legal entity in the handover, the owner and operator as well as contractors, manufacturers and suppliers; a DEXPI enterprise is the ISA-95 enterprise at the top of the plant breakdown, i.e. the owner or operator. The enterprise is the narrower of the two. Linked nodes share companyName and enterpriseName.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:narrowMatch",
+          "exact": false,
+          "properties": {
+            "companyName": "enterpriseName"
+          }
+        }
+      }
+    },
+    "cfihos__Site_SAME_AS_dexpi__Site": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "cfihos__Site"
+      },
+      "to": {
+        "node": "dexpi__Site"
+      },
+      "description": "cfihos:Site skos:closeMatch dexpi:Site. Both are the geographical site a plant stands on; DEXPI defines it as ISA-95 does. Linked nodes share siteCode and siteIdentificationCode, siteName.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "siteCode": "siteIdentificationCode",
+            "siteName": "siteName"
+          }
+        }
+      }
+    },
+    "cfihos__Plant_SAME_AS_dexpi__ProcessPlant": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "cfihos__Plant"
+      },
+      "to": {
+        "node": "dexpi__ProcessPlant"
+      },
+      "description": "cfihos:Plant skos:closeMatch dexpi:ProcessPlant. Both are the assembly of equipment performing a process, the root of the plant's functional breakdown: a CFIHOS plant decomposes into process units and tags, a DEXPI process plant into plant sections, systems and trains. Linked nodes share plantCode and processPlantIdentificationCode, plantName and processPlantName.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "plantCode": "processPlantIdentificationCode",
+            "plantName": "processPlantName"
+          }
+        }
+      }
+    },
+    "cfihos__ProcessUnit_SAME_AS_dexpi__PlantSection": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "cfihos__ProcessUnit"
+      },
+      "to": {
+        "node": "dexpi__PlantSection"
+      },
+      "description": "cfihos:ProcessUnit skos:closeMatch dexpi:PlantSection. A CFIHOS process unit is the process engineer's breakdown of a plant into sub-functions; a DEXPI plant section, defined by ISO 10209, is the same level of the breakdown. Linked nodes share processUnitCode and plantSectionIdentificationCode, processUnitName and plantSectionName.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "processUnitCode": "plantSectionIdentificationCode",
+            "processUnitName": "plantSectionName"
+          }
+        }
+      }
+    },
+    "cfihos__Area_SAME_AS_dexpi__PlantArea": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "cfihos__Area"
+      },
+      "to": {
+        "node": "dexpi__PlantArea"
+      },
+      "description": "cfihos:Area skos:closeMatch dexpi:PlantArea. Both are the physical area of a plant an item stands in; DEXPI defines it as ISA-95 does. Linked nodes share areaCode and plantAreaIdentificationCode, areaName and plantAreaName.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "areaCode": "plantAreaIdentificationCode",
+            "areaName": "plantAreaName"
+          }
+        }
+      }
+    },
+    "cfihos__Tag_SAME_AS_dexpi__TaggedPlantItem": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "cfihos__Tag"
+      },
+      "to": {
+        "node": "dexpi__TaggedPlantItem"
+      },
+      "description": "cfihos:Tag skos:closeMatch dexpi:TaggedPlantItem. A CFIHOS tag is the specification of a function in the plant that equipment fulfils; a DEXPI tagged plant item is the same function as drawn on a P&ID. The tag name joins them. CFIHOS keeps the tag apart from the serialised equipment installed against it, which a P&ID doesn't show. Linked nodes share tagName.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false,
+          "properties": {
+            "tagName": "tagName"
+          }
+        }
+      }
+    },
+    "cfihos__Tag_SAME_AS_dexpi__MotorAsComponent": {
+      "type": "SAME_AS",
+      "from": {
+        "node": "cfihos__Tag"
+      },
+      "to": {
+        "node": "dexpi__MotorAsComponent"
+      },
+      "description": "cfihos:Tag skos:closeMatch dexpi:MotorAsComponent. CFIHOS tags a pump's driver on its own, e.g. PM-2001A, with the pump as its parent tag; DEXPI draws the motor as a component of the pump, named by a sub-tag. The two describe the same motor, but share no identifier.",
+      "extensions": {
+        "custom": {
+          "predicate": "skos:closeMatch",
+          "exact": false
+        }
+      }
+    }
+  }
+}

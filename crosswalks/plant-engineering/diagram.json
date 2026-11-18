@@ -1,0 +1,32 @@
+{
+  "source": "crosswalk.json, from the model.json of CFIHOS 2.0, DEXPI 2.0.1",
+  "link": "the term in its standard",
+  "areas": {
+    "field": "standard",
+    "groups": [
+      {
+        "name": "CFIHOS 2.0",
+        "values": [
+          "CFIHOS 2.0"
+        ]
+      },
+      {
+        "name": "DEXPI 2.0.1",
+        "values": [
+          "DEXPI 2.0.1"
+        ]
+      }
+    ]
+  },
+  "sub": [
+    "standard",
+    "#properties"
+  ],
+  "lines": {
+    "by": "field:exact",
+    "legend": {
+      "main": "skos:exactMatch",
+      "dashed": "skos:closeMatch, broadMatch, narrowMatch or relatedMatch"
+    }
+  }
+}

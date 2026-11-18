@@ -3,7 +3,8 @@
 
 Usage: python3 cypher.py [FOLDER ...]
 
-For each folder given, or every folder below this script that holds both a model.json and a sample.json, reads the
+For each folder given, or every folder below this script that holds both a model.json and a sample.json but no
+crosswalk.json, whose Cypher scripts crosswalk.py writes, reads the
 model and the sample data, checks the data against the model and writes model.cypher beside them. The script creates
 the model's constraints, then merges the sample nodes and relationships, so it can be run more than once.
 
@@ -391,7 +392,8 @@ def write(folder):
 def main():
     here = Path(__file__).resolve().parent
     folders = [Path(arg).resolve() for arg in sys.argv[1:]] or sorted(
-        path.parent for path in here.rglob("sample.json") if (path.parent / "model.json").exists())
+        path.parent for path in here.rglob("sample.json")
+        if (path.parent / "model.json").exists() and not (path.parent / "crosswalk.json").exists())
     results = [write(folder) for folder in folders]
     sys.exit(0 if all(results) else 1)
 

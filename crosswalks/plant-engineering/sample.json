@@ -1,0 +1,13 @@
+{
+  "scenario": "The Kestrel Gas Processing Plant as its CFIHOS handover and its DEXPI P&ID describe it, linked where the two describe the same thing: the operator, Kestrel Energy; the plant; its condensate stabilisation and export unit; the export pumps P-2001A and P-2001B; and their motors, tagged PM-2001A and PM-2001B in the handover and drawn as components of the pumps on the P&ID. The two samples name the site and the area differently, so they are not linked.",
+  "nodes": {},
+  "relationships": [
+    ["cfihos:co-op", "SAME_AS", "dexpi:KE"],
+    ["cfihos:plant", "SAME_AS", "dexpi:ABC"],
+    ["cfihos:pu20", "SAME_AS", "dexpi:S20"],
+    ["cfihos:tag-P-2001A", "SAME_AS", "dexpi:P-2001A"],
+    ["cfihos:tag-P-2001B", "SAME_AS", "dexpi:P-2001B"],
+    ["cfihos:tag-PM-2001A", "SAME_AS", "dexpi:P-2001A-M"],
+    ["cfihos:tag-PM-2001B", "SAME_AS", "dexpi:P-2001B-M"]
+  ]
+}

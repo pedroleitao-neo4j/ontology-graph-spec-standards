@@ -1,0 +1,38 @@
+{
+  "source": "crosswalk.json, from the model.json of ODRL 2.2, LegalRuleML 1.0, LKIF Core 1.1",
+  "link": "the term in its standard",
+  "areas": {
+    "field": "standard",
+    "groups": [
+      {
+        "name": "ODRL 2.2",
+        "values": [
+          "ODRL 2.2"
+        ]
+      },
+      {
+        "name": "LegalRuleML 1.0",
+        "values": [
+          "LegalRuleML 1.0"
+        ]
+      },
+      {
+        "name": "LKIF Core 1.1",
+        "values": [
+          "LKIF Core 1.1"
+        ]
+      }
+    ]
+  },
+  "sub": [
+    "standard",
+    "#properties"
+  ],
+  "lines": {
+    "by": "field:exact",
+    "legend": {
+      "main": "skos:exactMatch",
+      "dashed": "skos:closeMatch, broadMatch, narrowMatch or relatedMatch"
+    }
+  }
+}

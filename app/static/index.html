@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crosswalk explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="#/">Crosswalk explorer</a>
+    <nav class="crosswalks" id="crosswalks" aria-label="Crosswalks"></nav>
+  </header>
+
+  <section class="about" id="about" aria-live="polite"></section>
+
+  <div class="views" role="tablist" aria-label="Views">
+    <a class="view" id="view-graph" role="tab" href="#">Graph</a>
+    <a class="view" id="view-things" role="tab" href="#">Linked things</a>
+    <a class="view" id="view-mappings" role="tab" href="#">Mappings</a>
+  </div>
+
+  <main id="main">
+    <div class="graph" id="graph" hidden>
+      <div class="graph-stage" id="graph-stage">
+        <svg id="graph-svg" role="img" aria-label="The crosswalk's data as a graph, a band per standard"></svg>
+        <div class="graph-tools">
+          <label class="search">
+            <span class="visually-hidden">Find a node in the graph</span>
+            <input id="graph-find" type="search" autocomplete="off" spellcheck="false" placeholder="Find a node">
+          </label>
+          <button type="button" id="graph-fit">Fit</button>
+          <label class="toggle"><input type="checkbox" id="graph-names"> All names</label>
+          <span class="graph-found" id="graph-found" aria-live="polite"></span>
+        </div>
+        <div class="graph-legend" id="graph-legend" aria-hidden="true"></div>
+        <div class="graph-tip" id="graph-tip" hidden></div>
+      </div>
+      <aside class="graph-panel" id="graph-panel" aria-live="polite"></aside>
+    </div>
+    <div class="explorer" id="explorer">
+      <aside class="rail">
+        <label class="search">
+          <span class="visually-hidden">Search this crosswalk</span>
+          <input id="search" type="search" autocomplete="off" spellcheck="false"
+                 placeholder="Search names and identifiers">
+        </label>
+        <p class="rail-note" id="rail-note"></p>
+        <ol class="things" id="things"></ol>
+      </aside>
+      <section class="concordance" id="concordance" aria-live="polite"></section>
+    </div>
+    <section class="mappings" id="mappings" hidden></section>
+  </main>
+
+  <p class="notice" id="notice" role="alert" hidden></p>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

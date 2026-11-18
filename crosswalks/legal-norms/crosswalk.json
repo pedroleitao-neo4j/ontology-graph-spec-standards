@@ -1,0 +1,148 @@
+{
+  "id": "legal-norms",
+  "name": "Legal norms: ODRL 2.2, LegalRuleML 1.0 and LKIF Core 1.1",
+  "description": "A crosswalk between three ways of writing down what may, must and must not be done. ODRL 2.2 is a policy language: Permissions, Prohibitions and Duties granting Actions over Assets to Parties. LegalRuleML 1.0 marks up the rules of legal texts: Deontic Specifications borne by parties, held in Prescriptive Statements with their strength, sources, authorities and penalties. LKIF Core 1.1 is a legal ontology: Norms borne by legal sources that qualify behaviour as allowed, obliged or disallowed, held by agents playing legal roles. All three share the deontic triad of permission, obligation and prohibition, and agents to bear it; they differ in what a norm is, a rule over an asset, a formula in a statement, or a mental qualification of behaviour.",
+  "standards": {
+    "odrl": "legal/ODRL",
+    "lrml": "legal/LegalRuleML",
+    "lkif": "legal/LKIF-Core"
+  },
+  "mappings": [
+    {
+      "subject": "odrl:Permission",
+      "predicate": "closeMatch",
+      "object": "lrml:Permission",
+      "properties": {"uri": "uri"},
+      "comment": "Both state that an act may be done. ODRL scopes the permission to an Action over a target Asset granted to an assignee, and may attach Duties the assignee must meet to exercise it; LegalRuleML names a Bearer and distinguishes weak permissions, the mere absence of a contrary obligation, from strong ones that derogate from it."
+    },
+    {
+      "subject": "odrl:Prohibition",
+      "predicate": "closeMatch",
+      "object": "lrml:Prohibition",
+      "properties": {"uri": "uri"},
+      "comment": "Both state that an act must not be done. ODRL attaches remedies, Duties to perform if the prohibition is broken; LegalRuleML ties penalties to the statement holding the prohibition through a Reparation."
+    },
+    {
+      "subject": "odrl:Duty",
+      "predicate": "closeMatch",
+      "object": "lrml:Obligation",
+      "properties": {"uri": "uri"},
+      "comment": "ODRL's Duty is its obligation to perform an Action, which a Policy holds through the obligation property; LegalRuleML's Obligation is the deontic specification whose breach is a Violation. ODRL also uses Duties as the conditions of a Permission and as the consequences and remedies of other rules, where LegalRuleML would write a separate statement."
+    },
+    {
+      "subject": "odrl:Duty",
+      "predicate": "relatedMatch",
+      "object": "lrml:PenaltyStatement",
+      "comment": "A Duty that is the consequence of another Duty, e.g. to pay a late fee if the rent is not paid, is what LegalRuleML writes as a Penalty Statement, linked to the statement it repairs by a Reparation. The ODRL consequence relationship and the LegalRuleML Reparation say the same thing in two shapes, so the two nodes are related, not the same."
+    },
+    {
+      "subject": "odrl:Permission",
+      "predicate": "broadMatch",
+      "object": "lkif:Permission",
+      "properties": {"uri": "uri"},
+      "comment": "LKIF's Permission is the broadest of its norms: it allows something, and its subclasses Obligation and Prohibition also allow what they oblige. An ODRL Permission is the plain permission, so LKIF's class is the broader."
+    },
+    {
+      "subject": "odrl:Prohibition",
+      "predicate": "closeMatch",
+      "object": "lkif:Prohibition",
+      "properties": {"uri": "uri"},
+      "comment": "Both forbid an act. LKIF reads a prohibition as disallowing one behaviour and obliging its complement, and so as equivalent to an obligation; ODRL keeps the two apart."
+    },
+    {
+      "subject": "odrl:Duty",
+      "predicate": "closeMatch",
+      "object": "lkif:Obligation",
+      "properties": {"uri": "uri"},
+      "comment": "Both oblige an act. LKIF's Obligation qualifies the obliged behaviour rather than naming an action and asset, and is a kind of LKIF Permission, since what is obliged is allowed."
+    },
+    {
+      "subject": "lrml:Permission",
+      "predicate": "broadMatch",
+      "object": "lkif:Permission",
+      "properties": {"uri": "uri"},
+      "comment": "LegalRuleML's Permission is one modality beside Obligation and Prohibition; LKIF's Permission is their common superclass, and the broader."
+    },
+    {
+      "subject": "lrml:Prohibition",
+      "predicate": "closeMatch",
+      "object": "lkif:Prohibition",
+      "properties": {"uri": "uri"},
+      "comment": "Both forbid an act. LegalRuleML names who bears the prohibition; LKIF names the agent that holds the norm and the behaviour it disallows."
+    },
+    {
+      "subject": "lrml:Obligation",
+      "predicate": "closeMatch",
+      "object": "lkif:Obligation",
+      "properties": {"uri": "uri"},
+      "comment": "Both oblige an act. LegalRuleML defines an obligation by its breach, a Violation; LKIF by the behaviour it qualifies as obliged."
+    },
+    {
+      "subject": "lrml:Right",
+      "predicate": "closeMatch",
+      "object": "lkif:Right",
+      "comment": "LegalRuleML's Right is a permission for its Bearer implying obligations on an Auxiliary Party; LKIF's Right is an entitlement, refined into Hohfeldian kinds such as obligative, permissive and liability rights."
+    },
+    {
+      "subject": "odrl:Party",
+      "predicate": "closeMatch",
+      "object": "lrml:Agent",
+      "properties": {"uri": "uri"},
+      "comment": "Both are whoever acts: ODRL's Party, a foaf:Agent, takes functions such as assigner and assignee in a Rule; a LegalRuleML Agent is an entity that acts or can act. LegalRuleML puts the function in a Figure apart from the Agent."
+    },
+    {
+      "subject": "odrl:Party",
+      "predicate": "closeMatch",
+      "object": "lkif:Agent",
+      "properties": {"uri": "uri"},
+      "comment": "Both are whoever acts. An ODRL Party may also be a collection of parties; an LKIF Agent plays roles and holds propositional attitudes, norms among them."
+    },
+    {
+      "subject": "lrml:Agent",
+      "predicate": "closeMatch",
+      "object": "lkif:Agent",
+      "properties": {"uri": "uri"},
+      "comment": "Both are an entity that acts or can act."
+    },
+    {
+      "subject": "lrml:Authority",
+      "predicate": "narrowMatch",
+      "object": "lkif:LegislativeBody",
+      "comment": "A LegalRuleML Authority is any person or organization with the power to create, endorse or enforce legal norms, courts and agencies as well as legislatures; LKIF's Legislative Body is the assembly that adopts laws, the narrower of the two. LegalRuleML keeps the Authority apart from the Agent, so a legislature is two LegalRuleML nodes and one LKIF node."
+    },
+    {
+      "subject": "lrml:Figure",
+      "predicate": "closeMatch",
+      "object": "lkif:LegalRole",
+      "properties": {"uri": "uri"},
+      "comment": "A LegalRuleML Figure is a Function, such as tenant, instantiated by an Actor; an LKIF legal role is a role an agent plays in a legal context, such as a lease. Both pair a party with the part it plays."
+    },
+    {
+      "subject": "lrml:LegalSource",
+      "predicate": "closeMatch",
+      "object": "lkif:LegalSource",
+      "properties": {"uri": "uri"},
+      "comment": "Both are the source of law that norms come from, such as a statute or one of its sections. LKIF's legal source is a medium bearing norms and expressions; LegalRuleML's is endorsed by an Authority and cited through Legal References."
+    },
+    {
+      "subject": "odrl:Asset",
+      "predicate": "relatedMatch",
+      "object": "lkif:PhysicalObject",
+      "link": "SAME_AS",
+      "properties": {"uri": "uri"},
+      "comment": "An ODRL Asset is anything a rule is about, usually content or a service; an LKIF Physical Object is anything material. The classes only overlap, but a physical thing a policy governs, such as a rented dwelling, is the same thing in both."
+    },
+    {
+      "subject": "odrl:Agreement",
+      "predicate": "relatedMatch",
+      "object": "lkif:Contract",
+      "comment": "An ODRL Agreement is a policy granted by an assigner to an assignee, i.e. the terms of a contract as rules; an LKIF Contract is the legal document that bears a contract's norms. The agreement expresses what the contract bears."
+    },
+    {
+      "subject": "odrl:Action",
+      "predicate": "relatedMatch",
+      "object": "lkif:Action",
+      "comment": "An ODRL Action is a kind of operation, such as odrl:compensate, that rules permit, prohibit or require; an LKIF Action is one act an agent performs at a time. The ODRL action is the type of which LKIF actions are occurrences, so data doesn't link them."
+    }
+  ]
+}
