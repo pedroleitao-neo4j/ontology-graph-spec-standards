@@ -1,7 +1,7 @@
 # Standards
 
 A library of ontologies for industry standards, each generated from the standard's official sources and expressed in
-[Neo4j's ontology graph specification](https://github.com/neo4j/ontology-graph-spec). Every standard defines how an industry exchanges data — how a piping diagram moves between engineering tools, how threat intelligence is shared between organisations, how legislation is published and cited. That definition lives in schemas, OWL files and XML specifications that don't fit a graph, so each ontology here translates one standard's model into nodes and relationships you can query and extend. Businesses already hold data in these standards and in domain-specific ontologies; the aim of this library is to ease the transition of that data into Neo4j.
+[Neo4j's ontology graph specification](https://github.com/neo4j/ontology-graph-spec). Every standard defines how an industry exchanges data - how a piping diagram moves between engineering tools, how threat intelligence is shared between organisations, how legislation is published and cited. That definition lives in schemas, OWL files and XML specifications that don't fit a graph, so each ontology here translates one standard's model into nodes and relationships you can query and extend. Businesses already hold data in these standards and in domain-specific ontologies; the aim of this library is to ease the transition of that data into Neo4j.
 
 The standards come from organisations including:
 
